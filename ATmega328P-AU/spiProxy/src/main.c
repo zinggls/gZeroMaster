@@ -173,7 +173,7 @@ int main(void)
 		//Address
 		UART_RX_STR(t_rx_addr);
 		data[0] = (uint8_t)(strtol(t_rx_addr, NULL, 16));
-		UART_TX_STR(t_rx_addr);
+		//UART_TX_STR(t_rx_addr);
 		
 		if(data[0] > 0x7f)
 		{
