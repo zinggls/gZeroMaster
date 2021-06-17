@@ -167,47 +167,43 @@ int main(void)
 	B0_Init();
 	/* Replace with your application code */
 	while (1) {
-	  char t_rx_addr[4] = {0, };
-	  char t_rx_data[4] = {0, };
-	  UART_TX_STR("If input address bigger than 0x80, all register value is displayed\n");
-	  UART_TX_STR("Please Input Address(hex) : ");
-	  UART_RX_STR(t_rx_addr);
-	  UART_TX_CH(0x0A);
-	  data[0] = (uint8_t)(strtol(t_rx_addr, NULL, 16));
-	  UART_TX_CH(0x0a);
-	  UART_TX_STR("Input Address(hex) : ");
-	  UART_TX_STR(t_rx_addr);
-	  UART_TX_CH(0x0a);
-	  if(data[0] > 0x7f)
-	  {
-		  B0_reg_show();
-		  continue;
-	  }
-	  UART_TX_STR("Write : 0, Read : 1");
-	  UART_TX_CH(0x0A);
-	  rw = UART_RX_CH();
- 	  rw = rw & 1;
-		if(!rw)
+		char t_rx_addr[4] = {0, };
+		char t_rx_data[4] = {0, };
+
+		//Address
+		UART_RX_STR(t_rx_addr);
+		data[0] = (uint8_t)(strtol(t_rx_addr, NULL, 16));
+		UART_TX_STR(t_rx_addr);
+		
+		if(data[0] > 0x7f)
 		{
-			UART_TX_STR("Write\n");
-			UART_TX_STR("Please Input Data(hex) : ");
-			UART_TX_CH(0x0A);
+			B0_reg_show();
+			continue;
+		}
+
+		//"Write : 0, Read : 1"
+		rw = UART_RX_CH();
+		UART_TX_CH(rw);
+		rw = rw & 1;
+		if(!rw) {
+			//Write
+			
+			//Data(hex)
 			UART_RX_STR(t_rx_data);
-			UART_TX_CH(0x0A);
-			UART_TX_STR("Input Data(hex) : ");
 			UART_TX_STR(t_rx_data);
-			UART_TX_CH(0x0A);
+
 		    data[1] = (uint8_t)(strtol(t_rx_data, NULL, 16));						
 			SPI_0_write_reg(data[0], data[1]);			
-		}		
-		else
-		{
-			UART_TX_STR("Read\n");
+			UART_TX_CH('W');
+		}else{
+			//Read
+			
+			//Data(hex)
 			SPI_0_read_reg(data[0], &data[1]);
-			UART_TX_STR("Output Data(hex) : ");
+			
 			hextostr(data[1], t_tx);
 			UART_TX_STR(t_tx);
-			UART_TX_CH(0x0a);		
+			UART_TX_CH('R');
 		}
 	}
 }
