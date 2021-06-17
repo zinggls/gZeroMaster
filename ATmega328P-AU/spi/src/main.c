@@ -1,6 +1,5 @@
 ﻿#include <atmel_start.h>
 #include <string.h>
-#include <util/delay.h>
 
 /*
  * UART Initiallize
@@ -58,37 +57,21 @@ void hextostr(uint8_t h, char* str)
 
 void B0_Init(void)
 {
-	_delay_ms(10);
 	SPI_0_write_reg(0x02, 0x18); //RX_REG1 INIT
-	_delay_ms(10);
 	SPI_0_write_reg(0x07, 0x0); //TX_REG1[23:16] INIT
-	_delay_ms(10);
 	SPI_0_write_reg(0x06, 0x10); //TX_REG1[15:8] INIT
-	_delay_ms(10);
 	SPI_0_write_reg(0x05, 0x10); //TX_REG1[7:0] INIT
-	_delay_ms(10);
 	SPI_0_write_reg(0x0d, 0x01); //TX_REG2[16] INIT
-	_delay_ms(10);
 	SPI_0_write_reg(0x0c, 0xf7); //TX_REG2[15:8] INIT
-	_delay_ms(10);
 	SPI_0_write_reg(0x0b, 0xb7); //TX_REG2[7:0] INIT
-	_delay_ms(10);
 	SPI_0_write_reg(0x11, 0x01); //BIAS_REG1[0] INIT
-	_delay_ms(10);
 	SPI_0_write_reg(0x12, 0x99); //BIAS_REG2 INIT
-	_delay_ms(10);
 	SPI_0_write_reg(0x13, 0x99); //BIAS_REG3 INIT
-	_delay_ms(10);
 	SPI_0_write_reg(0x14, 0x96); //BIAS_REG4 INIT
-	_delay_ms(10);
 	SPI_0_write_reg(0x15, 0x66); //BIAS_REG5 INIT
-	_delay_ms(10);
 	SPI_0_write_reg(0x16, 0x66); //BIAS_REG6 INIT
-	_delay_ms(10);
 	SPI_0_write_reg(0x17, 0x06); //BIAS_REG7 INIT
-	_delay_ms(10);
 	SPI_0_write_reg(0x18, 0x50); //BIAS_REG8 INIT
-	_delay_ms(10);
 }
 
 void B0_reg_show(void)

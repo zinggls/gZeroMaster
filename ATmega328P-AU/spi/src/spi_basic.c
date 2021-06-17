@@ -188,10 +188,15 @@ void SPI_0_read_block(void *block, uint8_t size)
 		b++;
 	}
 }
+
+#include <clock_config.h>
+#include <util/delay.h>
+
 void SPI_0_write_reg(uint8_t addr, uint8_t data)
 {
 	uint8_t temp[2] = {(addr << 1), data};
 
+	_delay_ms(10);
 	drive_slave_select_low();	
 	SPI_0_write_block(temp, 2);
 	drive_slave_select_high();
@@ -201,6 +206,7 @@ void SPI_0_read_reg(uint8_t addr, uint8_t* data)
 {
 	uint8_t temp = ((addr << 1) | 1);
 
+	_delay_ms(10);
 	drive_slave_select_low();
 	SPI_0_write_block(&temp, 1);	
 	SPI_0_read_block(data, 1);
