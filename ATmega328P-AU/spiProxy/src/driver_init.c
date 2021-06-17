@@ -70,8 +70,48 @@ void SPI_0_initialization(void)
 	    // <true"> High
 	    false);
 
+	// Set pin direction to input
+	PB2_set_dir(PORT_DIR_OUT);
+
+	PB2_set_level(true);
+
 	SPI_0_init();
 }
+
+void UART_Init(void) {
+	UCSR0A = 0;
+	UCSR0B = (1<<RXCIE0) | (1<<RXEN0) | (1<<TXEN0);        //RX INT enable, RX & TX Enable
+	UCSR0C = (1<<UCSZ01) | (1<<UCSZ00);                    //8bit no parity
+	UBRR0H = 0;
+	UBRR0L = 103;                                        //9600 baudrate
+}
+
+void USART_0_initialization(void)
+{
+
+	// Set pin direction to input
+	PD0_set_dir(PORT_DIR_IN);
+
+	PD0_set_pull_mode(
+	// <y> Pull configuration
+	// <id> pad_pull_config
+	// <PORT_PULL_OFF"> Off
+	// <PORT_PULL_UP"> Pull-up
+	PORT_PULL_OFF);
+
+	// Set pin direction to output
+	PD1_set_dir(PORT_DIR_OUT);
+
+	PD1_set_level(
+	// <y> Initial level
+	// <id> pad_initial_level
+	// <false"> Low
+	// <true"> High
+	false);
+
+	UART_Init();
+}
+
 
 /**
  * \brief System initialization
@@ -83,4 +123,6 @@ void system_init()
 	sysctrl_init();
 
 	SPI_0_initialization();
+	
+	USART_0_initialization();
 }

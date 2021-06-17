@@ -43,6 +43,9 @@ typedef struct SPI_0_descriptor_s {
 
 static SPI_0_descriptor_t SPI_0_desc;
 
+static void drive_slave_select_low(void);
+static void drive_slave_select_high(void);
+
 /**
  * \brief Initialize SPI interface
  * If module is configured to disabled state, the clock to the SPI is disabled
@@ -94,6 +97,17 @@ void SPI_0_disable()
 {
 	SPCR &= ~(1 << SPE);
 }
+
+static void drive_slave_select_low()
+{
+	PORTB_set_pin_level(2, false);
+}
+
+static void drive_slave_select_high()
+{
+	PORTB_set_pin_level(2, true);
+}
+
 
 /**
  * \brief Exchange one byte over SPI SPI_0. Blocks until done.
@@ -173,4 +187,28 @@ void SPI_0_read_block(void *block, uint8_t size)
 		*b = SPDR;
 		b++;
 	}
+}
+
+#include <clock_config.h>
+#include <util/delay.h>
+
+void SPI_0_write_reg(uint8_t addr, uint8_t data)
+{
+	uint8_t temp[2] = {(addr << 1), data};
+
+	_delay_ms(10);
+	drive_slave_select_low();	
+	SPI_0_write_block(temp, 2);
+	drive_slave_select_high();
+}
+
+void SPI_0_read_reg(uint8_t addr, uint8_t* data)
+{
+	uint8_t temp = ((addr << 1) | 1);
+
+	_delay_ms(10);
+	drive_slave_select_low();
+	SPI_0_write_block(&temp, 1);	
+	SPI_0_read_block(data, 1);
+	drive_slave_select_high();
 }

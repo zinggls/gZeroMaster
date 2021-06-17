@@ -72,6 +72,10 @@ void SPI_0_write_block(void *block, uint8_t size);
 
 void SPI_0_read_block(void *block, uint8_t size);
 
+void SPI_0_write_reg(uint8_t addr, uint8_t data);
+
+void SPI_0_read_reg(uint8_t addr, uint8_t* data);
+
 #ifdef __cplusplus
 }
 #endif

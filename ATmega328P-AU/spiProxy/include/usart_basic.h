@@ -1,9 +1,7 @@
-
-
 /**
  * \file
  *
- * \brief Tinymega System related support
+ * \brief USART basic driver.
  *
  (c) 2020 Microchip Technology Inc. and its subsidiaries.
 
@@ -24,47 +22,58 @@
     FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS IN
     ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
     THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
+ *
  */
 
-/**
- * \addtogroup doc_driver_system
- *
- * \section doc_driver_system_rev Revision History
- * - v0.0.0.1 Initial Commit
- *
- *@{
- */
+#ifndef USART_BASIC_H_INCLUDED
+#define USART_BASIC_H_INCLUDED
 
-#ifndef SYSTEM_INCLUDED
-#define SYSTEM_INCLUDED
+#include <atmel_start.h>
+#include <stdbool.h>
 
-#include "port.h"
-#include <protected_io.h>
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#define MCU_RESET_CAUSE_POR (1 << PORF)
-#define MCU_RESET_CAUSE_EXT (1 << EXTRF)
-#define MCU_RESET_CAUSE_BOR (1 << BORF)
-#define MCU_RESET_CAUSE_WDT (1 << WDRF)
+// Synchronous baud calculation
+#define USART_0_GET_BAUD(BAUD_RATE) (uint16_t)(((float)16000000 / (2 * (float)BAUD_RATE)) - 1)
 
-static inline void mcu_init(void)
-{
-	/* On AVR devices all peripherals are enabled from power on reset, this
-	 * disables all peripherals to save power. Driver shall enable
-	 * peripheral if used */
+/* USART_0 Ringbuffer */
 
-	//PRR = (1 << PRSPI) | (1 << PRTIM2) | (1 << PRTIM0) | (1 << PRTIM1) | (1 << PRTWI) | (1 << PRUSART0) | (1 << PRADC);
+#define USART_0_RX_BUFFER_SIZE 8
+#define USART_0_TX_BUFFER_SIZE 8
+#define USART_0_RX_BUFFER_MASK (USART_0_RX_BUFFER_SIZE - 1)
+#define USART_0_TX_BUFFER_MASK (USART_0_TX_BUFFER_SIZE - 1)
 
-	/* Set all pins to low power mode */
-	PORTB_set_port_dir(0xff, PORT_DIR_OFF);
-	PORTC_set_port_dir(0x7f, PORT_DIR_OFF);
-	PORTD_set_port_dir(0xff, PORT_DIR_OFF);
-}
+typedef enum { RX_CB = 1, UDRE_CB } usart_cb_type_t;
+typedef void (*usart_cb_t)(void);
+
+int8_t USART_0_init();
+
+void USART_0_enable();
+
+void USART_0_enable_rx();
+
+void USART_0_enable_tx();
+
+void USART_0_disable();
+
+uint8_t USART_0_get_data();
+
+bool USART_0_is_tx_ready();
+
+bool USART_0_is_rx_ready();
+
+bool USART_0_is_tx_busy();
+
+uint8_t USART_0_read(void);
+
+void USART_0_write(const uint8_t data);
+
+void USART_0_set_ISR_cb(usart_cb_t cb, usart_cb_type_t type);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* SYSTEM_INCLUDED */
+#endif /* USART_BASIC_H_INCLUDED */
