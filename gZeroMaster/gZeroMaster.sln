@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.31410.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tests", "tests\tests.vcxproj", "{80F3E3F5-095E-446E-B7C3-200342D8B34B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BDCD0825-F7AC-4B44-B9D0-B013E7BF64CF} = {BDCD0825-F7AC-4B44-B9D0-B013E7BF64CF}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Serial", "Serial\Serial.vcxproj", "{BDCD0825-F7AC-4B44-B9D0-B013E7BF64CF}"
 EndProject

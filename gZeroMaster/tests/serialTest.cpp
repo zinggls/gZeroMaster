@@ -4,6 +4,6 @@
 #include <Serial.h>
 
 TEST(Serial, open) {
-	EXPECT_EQ(1, 1);
+	CSerial serial;
 	EXPECT_TRUE(true);
 }
