@@ -190,4 +190,6 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 	CString str;
 	m_comPort.GetLBText(m_comPort.GetCurSel(), str);
 	L(_T("Connecting to ")+str);
+
+	CSerial serial;
 }
