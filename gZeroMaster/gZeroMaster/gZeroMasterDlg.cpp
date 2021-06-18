@@ -279,6 +279,8 @@ void CgZeroMasterDlg::ReadResisters()
 void CgZeroMasterDlg::OnBnClickedConnectButton()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	GetDlgItem(IDC_COM_COMBO)->EnableWindow(FALSE);
+
 	CString str;
 	m_comPort.GetLBText(m_comPort.GetCurSel(), str);
 	if (!m_serial.IsOpen()) {
@@ -305,6 +307,7 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 	else {
 		LONG lLastError = m_serial.Close();
 		if (lLastError == ERROR_SUCCESS) {
+			GetDlgItem(IDC_COM_COMBO)->EnableWindow(TRUE);
 			GetDlgItem(IDC_CONNECT_BUTTON)->SetWindowTextW(_T("connect"));
 			L(str + _T(" closed"));
 		}
