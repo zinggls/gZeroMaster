@@ -232,10 +232,43 @@ BOOL CgZeroMasterDlg::ReadResister(int addr,int *value)
 	return TRUE;
 }
 
+/*
+*   address(Dec)	address(Hex)	Register		: DefaultValue
+	2				2				RX_REG1[4:0]	: 18
+	7				7				TX_REG1[23:16]	: 00
+	6				6				TX_REG1[15:8]	: 10
+	5				5				TX_REG1[7:0]	: 10
+	13				D				TX_REG216		: 01
+	12				C				TX_REG2[15:8]	: F7
+	11				B				TX_REG2[7:0]	: B7
+	17				11				BIAS_REG10		: 01
+	18				12				BIAS_REG2[7:0]	: 99
+	19				13				BIAS_REG3[7:0]	: 99
+	20				14				BIAS_REG4[7:0]	: 96
+	21				15				BIAS_REG5[7:0]	: 66
+	22				16				BIAS_REG6[7:0]	: 66
+	23				17				BIAS_REG7[7:0]	: 06
+	24				18				BIAS_REG8[7:0]	: 50
+*/
+
 void CgZeroMasterDlg::ReadResisters()
 {
 	int regVal;
-	ReadResister(2,&regVal);
+	ReadResister(2, &regVal);
+	ReadResister(7, &regVal);
+	ReadResister(6, &regVal);
+	ReadResister(5, &regVal);
+	ReadResister(13,&regVal);
+	ReadResister(12,&regVal);
+	ReadResister(11,&regVal);
+	ReadResister(17,&regVal);
+	ReadResister(18,&regVal);
+	ReadResister(19,&regVal);
+	ReadResister(20,&regVal);
+	ReadResister(21,&regVal);
+	ReadResister(22,&regVal);
+	ReadResister(23,&regVal);
+	ReadResister(24,&regVal);
 }
 
 void CgZeroMasterDlg::OnBnClickedConnectButton()
