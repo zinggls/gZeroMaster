@@ -105,7 +105,7 @@ BOOL CgZeroMasterDlg::OnInitDialog()
 	// TODO: 여기에 추가 초기화 작업을 추가합니다.
 	for (int i = 0; i < MAX_COMPORT; i++) {
 		CString strVal;
-		strVal.Format(_T("%d"), i);
+		strVal.Format(_T("COM%d"), i);
 		m_comPort.AddString(strVal);
 	}
 	m_comPort.SetCurSel(0);
@@ -188,5 +188,5 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	CString str;
 	m_comPort.GetLBText(m_comPort.GetCurSel(), str);
-	L(_T("Connecting to Comport ")+str);
+	L(_T("Connecting to ")+str);
 }
