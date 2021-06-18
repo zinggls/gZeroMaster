@@ -220,8 +220,8 @@ BOOL CgZeroMasterDlg::ReadResister(int addr,int *value)
 	L(str);
 
 	//spiProxy는 아래의 반응을 보이도록 정의되었음
-	ASSERT(buffer[0] == 1);		//Read(0x1) 명령을 처리했음을 의미
-	ASSERT(buffer[3] == 'R');	//Read가 끝났음을 의미
+	//ASSERT(buffer[0] == 1);		//Read(0x1) 명령을 처리했음을 의미
+	//ASSERT(buffer[3] == 'R');	//Read가 끝났음을 의미
 
 	buffer[3] = 0;	//문자열 끝을 나타내기 위해서
 	*value = (int)strtol(buffer + 1, NULL, 16);
