@@ -231,9 +231,10 @@ BOOL CgZeroMasterDlg::ReadResister(int addr,int *value)
 	buffer[3] = 0;	//문자열 끝을 나타내기 위해서
 	*value = (int)strtol(buffer + 1, NULL, 16);
 
+#ifdef DEBUG_READ
 	str.Format(_T("Address:0x%02x Register:0x%02x"), addr,*value);
 	L(str);
-
+#endif // DEBUG_READ
 	return TRUE;
 }
 
@@ -256,24 +257,35 @@ BOOL CgZeroMasterDlg::ReadResister(int addr,int *value)
 	24				18				BIAS_REG8[7:0]	: 50
 */
 
+BOOL CgZeroMasterDlg::PrintRegister(int addr,CString name)
+{
+	int value;
+	if (ReadResister(addr,&value) == FALSE) return FALSE;
+
+	CString str;
+	str.Format(_T("Address:0x%02x %s 0x%02x"), addr,name.GetBuffer(),value);
+	L(str);
+
+	return TRUE;
+}
+
 void CgZeroMasterDlg::ReadResisters()
 {
-	int regVal;
-	ReadResister(2, &regVal);
-	ReadResister(7, &regVal);
-	ReadResister(6, &regVal);
-	ReadResister(5, &regVal);
-	ReadResister(13,&regVal);
-	ReadResister(12,&regVal);
-	ReadResister(11,&regVal);
-	ReadResister(17,&regVal);
-	ReadResister(18,&regVal);
-	ReadResister(19,&regVal);
-	ReadResister(20,&regVal);
-	ReadResister(21,&regVal);
-	ReadResister(22,&regVal);
-	ReadResister(23,&regVal);
-	ReadResister(24,&regVal);
+	PrintRegister(2 , _T("RX_REG1[4:0]"));
+	PrintRegister(7 , _T("TX_REG1[23:16]"));
+	PrintRegister(6 , _T("TX_REG1[15:8]"));
+	PrintRegister(5 , _T("TX_REG1[7:0]"));
+	PrintRegister(13, _T("TX_REG216"));
+	PrintRegister(12, _T("TX_REG2[15:8]"));
+	PrintRegister(11, _T("TX_REG2[7:0]"));
+	PrintRegister(17, _T("BIAS_REG10"));
+	PrintRegister(18, _T("BIAS_REG2[7:0]"));
+	PrintRegister(19, _T("BIAS_REG3[7:0]"));
+	PrintRegister(20, _T("BIAS_REG4[7:0]"));
+	PrintRegister(21, _T("BIAS_REG5[7:0]"));
+	PrintRegister(22, _T("BIAS_REG6[7:0]"));
+	PrintRegister(23, _T("BIAS_REG7[7:0]"));
+	PrintRegister(24, _T("BIAS_REG8[7:0]"));
 }
 
 void CgZeroMasterDlg::OnBnClickedConnectButton()
