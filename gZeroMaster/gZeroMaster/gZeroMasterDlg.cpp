@@ -67,6 +67,7 @@ BEGIN_MESSAGE_MAP(CgZeroMasterDlg, CDialogEx)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
+	ON_BN_CLICKED(IDC_CONNECT_BUTTON, &CgZeroMasterDlg::OnBnClickedConnectButton)
 END_MESSAGE_MAP()
 
 
@@ -180,4 +181,12 @@ void CgZeroMasterDlg::L(const TCHAR* str, ...)
 	delete[](buffer);
 
 	m_log.SetTopIndex(m_log.GetCount() - 1);
+}
+
+void CgZeroMasterDlg::OnBnClickedConnectButton()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	CString str;
+	m_comPort.GetLBText(m_comPort.GetCurSel(), str);
+	L(_T("Connecting to Comport ")+str);
 }

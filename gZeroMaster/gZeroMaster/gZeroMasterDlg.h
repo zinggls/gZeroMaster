@@ -38,4 +38,5 @@ public:
 	CComboBox m_comPort;
 
 	void L(const TCHAR* str, ...);
+	afx_msg void OnBnClickedConnectButton();
 };
