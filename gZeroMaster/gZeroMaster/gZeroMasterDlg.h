@@ -4,6 +4,8 @@
 
 #pragma once
 
+#include <Serial.h>
+
 #define MAX_LOG					1000
 #define MAX_COMPORT				25
 
@@ -34,6 +36,7 @@ protected:
 	afx_msg HCURSOR OnQueryDragIcon();
 	DECLARE_MESSAGE_MAP()
 public:
+	CSerial m_serial;
 	CListBox m_log;
 	CComboBox m_comPort;
 

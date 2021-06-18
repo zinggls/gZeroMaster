@@ -7,7 +7,6 @@
 #include "gZeroMaster.h"
 #include "gZeroMasterDlg.h"
 #include "afxdialogex.h"
-#include <Serial.h>
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -191,13 +190,11 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 	m_comPort.GetLBText(m_comPort.GetCurSel(), str);
 	L(_T("Connecting to ")+str);
 
-	CSerial serial;
-
-	LONG lLastError = serial.Open(str, 0, 0, false);
+	LONG lLastError = m_serial.Open(str, 0, 0, false);
 	if (lLastError == ERROR_SUCCESS) {
 		L(str + _T(" opened"));
 
-		lLastError = serial.Close();
+		lLastError = m_serial.Close();
 		if (lLastError == ERROR_SUCCESS) {
 			L(str + _T(" closed"));
 		}
