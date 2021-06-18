@@ -188,21 +188,26 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	CString str;
 	m_comPort.GetLBText(m_comPort.GetCurSel(), str);
-	L(_T("Connecting to ")+str);
+	if (!m_serial.IsOpen()) {
+		L(_T("Connecting to ") + str+_T("..."));
 
-	LONG lLastError = m_serial.Open(str, 0, 0, false);
-	if (lLastError == ERROR_SUCCESS) {
-		L(str + _T(" opened"));
-
-		lLastError = m_serial.Close();
+		LONG lLastError = m_serial.Open(str, 0, 0, false);
 		if (lLastError == ERROR_SUCCESS) {
+			GetDlgItem(IDC_CONNECT_BUTTON)->SetWindowTextW(_T("Disconnect"));
+			L(str + _T(" opened"));
+		}
+		else {
+			L(str + _T(" open failed"));
+		}
+	}
+	else {
+		LONG lLastError = m_serial.Close();
+		if (lLastError == ERROR_SUCCESS) {
+			GetDlgItem(IDC_CONNECT_BUTTON)->SetWindowTextW(_T("connect"));
 			L(str + _T(" closed"));
 		}
 		else {
 			L(str + _T(" close failed"));
 		}
-	}
-	else {
-		L(str + _T(" open failed"));
 	}
 }
