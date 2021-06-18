@@ -231,7 +231,7 @@ BOOL CgZeroMasterDlg::ReadResister(int addr,int *value)
 	buffer[3] = 0;	//문자열 끝을 나타내기 위해서
 	*value = (int)strtol(buffer + 1, NULL, 16);
 
-	str.Format(_T("Address:0x%x Register:0x%x"), addr,*value);
+	str.Format(_T("Address:0x%02x Register:0x%02x"), addr,*value);
 	L(str);
 
 	return TRUE;
