@@ -207,8 +207,11 @@ BOOL CgZeroMasterDlg::ReadResister(int addr,int *value)
 		ErrorMsg(m_serial.GetLastError(), _T("Unable to send data"));
 		return FALSE;
 	}
+
+#ifdef DEBUG_READ
 	str.Format(_T("%d bytes written"), dwBytesWrite);
 	L(str);
+#endif // DEBUG_READ
 
 	DWORD dwBytesRead = 0;
 	if (m_serial.Read(buffer, 4, &dwBytesRead) != ERROR_SUCCESS) {
@@ -216,8 +219,10 @@ BOOL CgZeroMasterDlg::ReadResister(int addr,int *value)
 		ErrorMsg(m_serial.GetLastError(), _T("Unable to receive data"));
 		return FALSE;
 	}
+#ifdef DEBUG_READ
 	str.Format(_T("%d bytes received"), dwBytesRead);
 	L(str);
+#endif // DEBUG_READ
 
 	//spiProxy는 아래의 반응을 보이도록 정의되었음
 	//ASSERT(buffer[0] == 1);		//Read(0x1) 명령을 처리했음을 의미
