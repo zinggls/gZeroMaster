@@ -7,6 +7,7 @@
 #include "gZeroMaster.h"
 #include "gZeroMasterDlg.h"
 #include "afxdialogex.h"
+#include <Serial.h>
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
