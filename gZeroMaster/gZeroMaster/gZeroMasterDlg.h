@@ -5,6 +5,7 @@
 #pragma once
 
 #define MAX_LOG					1000
+#define MAX_COMPORT				25
 
 // CgZeroMasterDlg 대화 상자
 class CgZeroMasterDlg : public CDialogEx
@@ -34,6 +35,7 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	CListBox m_log;
+	CComboBox m_comPort;
 
 	void L(const TCHAR* str, ...);
 };

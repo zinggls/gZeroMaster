@@ -60,6 +60,7 @@ void CgZeroMasterDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_LOG_LIST, m_log);
+	DDX_Control(pDX, IDC_COM_COMBO, m_comPort);
 }
 
 BEGIN_MESSAGE_MAP(CgZeroMasterDlg, CDialogEx)
@@ -101,6 +102,12 @@ BOOL CgZeroMasterDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// 작은 아이콘을 설정합니다.
 
 	// TODO: 여기에 추가 초기화 작업을 추가합니다.
+	for (int i = 0; i < MAX_COMPORT; i++) {
+		CString strVal;
+		strVal.Format(_T("%d"), i);
+		m_comPort.AddString(strVal);
+	}
+	m_comPort.SetCurSel(0);
 
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
