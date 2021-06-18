@@ -183,6 +183,61 @@ void CgZeroMasterDlg::L(const TCHAR* str, ...)
 	m_log.SetTopIndex(m_log.GetCount() - 1);
 }
 
+void CgZeroMasterDlg::ErrorMsg(LONG lError, LPCTSTR lptszMessage)
+{
+	CString str;
+	str.Format(_T("%s(error code:%d)"), lptszMessage, lError);
+	L(str);
+}
+
+BOOL CgZeroMasterDlg::ReadResister(int addr,int *value)
+{
+	char buffer[4] = { 0, };
+	sprintf_s(buffer, "%x", addr);
+
+	int index = strlen(buffer);
+	buffer[index] = 0xd;		//Enter
+	buffer[index + 1] = 0x1;	//Read	0x1
+
+	CString str;
+
+	DWORD dwBytesWrite = 0;
+	LONG lLastError = m_serial.Write(buffer, index+2,&dwBytesWrite);
+	if (lLastError != ERROR_SUCCESS) {
+		ErrorMsg(m_serial.GetLastError(), _T("Unable to send data"));
+		return FALSE;
+	}
+	str.Format(_T("%d bytes written"), dwBytesWrite);
+	L(str);
+
+	DWORD dwBytesRead = 0;
+	if (m_serial.Read(buffer, 4, &dwBytesRead) != ERROR_SUCCESS) {
+	//if (m_serial.Read(buffer, 4, &dwBytesRead, 0, INFINITE) != ERROR_SUCCESS) {
+		ErrorMsg(m_serial.GetLastError(), _T("Unable to receive data"));
+		return FALSE;
+	}
+	str.Format(_T("%d bytes received"), dwBytesRead);
+	L(str);
+
+	//spiProxy는 아래의 반응을 보이도록 정의되었음
+	ASSERT(buffer[0] == 1);		//Read(0x1) 명령을 처리했음을 의미
+	ASSERT(buffer[3] == 'R');	//Read가 끝났음을 의미
+
+	buffer[3] = 0;	//문자열 끝을 나타내기 위해서
+	*value = (int)strtol(buffer + 1, NULL, 16);
+
+	str.Format(_T("Address:0x%x Register:0x%x"), addr,*value);
+	L(str);
+
+	return TRUE;
+}
+
+void CgZeroMasterDlg::ReadResisters()
+{
+	int regVal;
+	ReadResister(2,&regVal);
+}
+
 void CgZeroMasterDlg::OnBnClickedConnectButton()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
@@ -195,6 +250,15 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 		if (lLastError == ERROR_SUCCESS) {
 			GetDlgItem(IDC_CONNECT_BUTTON)->SetWindowTextW(_T("Disconnect"));
 			L(str + _T(" opened"));
+
+			lLastError = m_serial.Setup(CSerial::EBaud4800, CSerial::EData8, CSerial::EParNone, CSerial::EStop1);
+			if (lLastError != ERROR_SUCCESS) return ErrorMsg(m_serial.GetLastError(), _T("Unable to set COM-port setting"));
+			L(_T("setup ok"));
+
+			lLastError = m_serial.SetupReadTimeouts(CSerial::EReadTimeoutBlocking);
+			if (lLastError != ERROR_SUCCESS) return ErrorMsg(m_serial.GetLastError(), _T("Unable to set COM-port read timeout"));
+
+			ReadResisters();
 		}
 		else {
 			L(str + _T(" open failed"));

@@ -42,4 +42,7 @@ public:
 
 	void L(const TCHAR* str, ...);
 	afx_msg void OnBnClickedConnectButton();
+	void ErrorMsg(LONG lError, LPCTSTR lptszMessage);
+	BOOL ReadResister(int addr, int* value);
+	void ReadResisters();
 };
