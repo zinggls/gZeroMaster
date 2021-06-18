@@ -4,6 +4,7 @@
 
 #pragma once
 
+#define MAX_LOG					1000
 
 // CgZeroMasterDlg 대화 상자
 class CgZeroMasterDlg : public CDialogEx
@@ -31,4 +32,8 @@ protected:
 	afx_msg void OnPaint();
 	afx_msg HCURSOR OnQueryDragIcon();
 	DECLARE_MESSAGE_MAP()
+public:
+	CListBox m_log;
+
+	void L(const TCHAR* str, ...);
 };

@@ -59,6 +59,7 @@ CgZeroMasterDlg::CgZeroMasterDlg(CWnd* pParent /*=nullptr*/)
 void CgZeroMasterDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_LOG_LIST, m_log);
 }
 
 BEGIN_MESSAGE_MAP(CgZeroMasterDlg, CDialogEx)
@@ -153,3 +154,23 @@ HCURSOR CgZeroMasterDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
+void CgZeroMasterDlg::L(const TCHAR* str, ...)
+{
+	if (m_log.GetCount() >= MAX_LOG) {
+		m_log.AddString(_T("Log >= MAX_LOG, Reset log"));
+		m_log.ResetContent();
+	}
+
+	va_list args;
+	va_start(args, str);
+
+	int len = _vsctprintf(str, args) + 1;	//_vscprintf doesn't count terminating '\0'
+	TCHAR* buffer = new TCHAR[len];
+	_vstprintf(buffer, len, str, args);
+	va_end(args);
+
+	m_log.AddString(buffer);
+	delete[](buffer);
+
+	m_log.SetTopIndex(m_log.GetCount() - 1);
+}
