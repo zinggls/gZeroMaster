@@ -192,4 +192,20 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 	L(_T("Connecting to ")+str);
 
 	CSerial serial;
+
+	LONG lLastError = serial.Open(str, 0, 0, false);
+	if (lLastError == ERROR_SUCCESS) {
+		L(str + _T(" opened"));
+
+		lLastError = serial.Close();
+		if (lLastError == ERROR_SUCCESS) {
+			L(str + _T(" closed"));
+		}
+		else {
+			L(str + _T(" close failed"));
+		}
+	}
+	else {
+		L(str + _T(" open failed"));
+	}
 }
