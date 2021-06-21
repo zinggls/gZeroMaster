@@ -415,7 +415,7 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 	}
 }
 
-void CgZeroMasterDlg::ShowBits(unsigned char byte)
+CString CgZeroMasterDlg::Bits(unsigned char byte)
 {
 	CString strBit;
 	(byte & 0x80) ? strBit += "1" : strBit += "0";
@@ -426,7 +426,7 @@ void CgZeroMasterDlg::ShowBits(unsigned char byte)
 	(byte & 0x04) ? strBit += "1" : strBit += "0";
 	(byte & 0x02) ? strBit += "1" : strBit += "0";
 	(byte & 0x01) ? strBit += "1" : strBit += "0";
-	L(strBit);
+	return strBit;
 }
 
 void CgZeroMasterDlg::OnStnClickedRxReg1Static()
@@ -435,7 +435,7 @@ void CgZeroMasterDlg::OnStnClickedRxReg1Static()
 	L(_T("OnStnClickedRxReg1Static"));
 
 	int value = (int)_tcstol(m_strRxReg1.GetBuffer(), NULL, 16);
-	ShowBits(value & 0xff);
+	L(Bits(value & 0xff));
 }
 
 

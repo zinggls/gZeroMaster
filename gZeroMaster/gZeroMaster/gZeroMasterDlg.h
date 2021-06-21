@@ -70,7 +70,7 @@ public:
 	void ReadResisters();
 	BOOL PrintRegister(int addr, CString name, CString& valueStr);
 	void ClearResisterValues();
-	void ShowBits(unsigned char byte);
+	CString Bits(unsigned char byte);
 	afx_msg void OnStnClickedRxReg1Static();
 	afx_msg void OnStnClickedTxReg1TopStatic();
 	afx_msg void OnStnClickedTxReg1MidStatic();
