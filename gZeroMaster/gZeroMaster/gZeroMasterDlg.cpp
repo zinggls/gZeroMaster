@@ -78,7 +78,7 @@ void CgZeroMasterDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_RX_REG1_STATIC, m_strRxReg1);
 	DDX_Text(pDX, IDC_TX_REG1_TOP_STATIC, m_strTxReg1Top);
 	DDX_Text(pDX, IDC_TX_REG1_MID_STATIC, m_strTxReg1Mid);
-	DDX_Control(pDX, IDC_TX_REG1_BOT_STATIC, m_strTxReg1Bot);
+	DDX_Text(pDX, IDC_TX_REG1_BOT_STATIC, m_strTxReg1Bot);
 	DDX_Text(pDX, IDC_TX_REG2_TOP_STATIC, m_strTxReg2Top);
 	DDX_Text(pDX, IDC_TX_REG2_MID_STATIC, m_strTxReg2Mid);
 	DDX_Text(pDX, IDC_TX_REG2_BOT_STATIC, m_strTxReg2Bot);

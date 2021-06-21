@@ -42,7 +42,7 @@ public:
 	CString m_strRxReg1;
 	CString m_strTxReg1Top;
 	CString m_strTxReg1Mid;
-	CStatic m_strTxReg1Bot;
+	CString m_strTxReg1Bot;
 	CString m_strTxReg2Top;
 	CString m_strTxReg2Mid;
 	CString m_strTxReg2Bot;
