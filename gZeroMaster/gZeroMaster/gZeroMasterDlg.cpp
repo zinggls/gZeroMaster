@@ -286,35 +286,38 @@ BOOL CgZeroMasterDlg::ReadResister(int addr,int *value)
 	24				18				BIAS_REG8[7:0]	: 50
 */
 
-BOOL CgZeroMasterDlg::PrintRegister(int addr,CString name)
+BOOL CgZeroMasterDlg::PrintRegister(int addr,CString name, CString& valueStr)
 {
 	int value;
 	if (ReadResister(addr,&value) == FALSE) return FALSE;
+
+	valueStr.Format(_T("0x%02x"), value);
 
 	CString str;
 	str.Format(_T("Address:0x%02x %s 0x%02x"), addr,name.GetBuffer(),value);
 	L(str);
 
+	UpdateData(FALSE);
 	return TRUE;
 }
 
 void CgZeroMasterDlg::ReadResisters()
 {
-	PrintRegister(2 , _T("RX_REG1[4:0]"));
-	PrintRegister(7 , _T("TX_REG1[23:16]"));
-	PrintRegister(6 , _T("TX_REG1[15:8]"));
-	PrintRegister(5 , _T("TX_REG1[7:0]"));
-	PrintRegister(13, _T("TX_REG216"));
-	PrintRegister(12, _T("TX_REG2[15:8]"));
-	PrintRegister(11, _T("TX_REG2[7:0]"));
-	PrintRegister(17, _T("BIAS_REG10"));
-	PrintRegister(18, _T("BIAS_REG2[7:0]"));
-	PrintRegister(19, _T("BIAS_REG3[7:0]"));
-	PrintRegister(20, _T("BIAS_REG4[7:0]"));
-	PrintRegister(21, _T("BIAS_REG5[7:0]"));
-	PrintRegister(22, _T("BIAS_REG6[7:0]"));
-	PrintRegister(23, _T("BIAS_REG7[7:0]"));
-	PrintRegister(24, _T("BIAS_REG8[7:0]"));
+	PrintRegister(2, _T("RX_REG1[4:0]"), m_strRxReg1);
+	PrintRegister(7, _T("TX_REG1[23:16]"), m_strTxReg1Top);
+	PrintRegister(6, _T("TX_REG1[15:8]"), m_strTxReg1Mid);
+	PrintRegister(5, _T("TX_REG1[7:0]"), m_strTxReg1Bot);
+	PrintRegister(13, _T("TX_REG216"), m_strTxReg2Top);
+	PrintRegister(12, _T("TX_REG2[15:8]"), m_strTxReg2Mid);
+	PrintRegister(11, _T("TX_REG2[7:0]"), m_strTxReg2Bot);
+	PrintRegister(17, _T("BIAS_REG10"), m_strBiasReg1);
+	PrintRegister(18, _T("BIAS_REG2[7:0]"), m_strBiasReg2);
+	PrintRegister(19, _T("BIAS_REG3[7:0]"), m_strBiasReg3);
+	PrintRegister(20, _T("BIAS_REG4[7:0]"), m_strBiasReg4);
+	PrintRegister(21, _T("BIAS_REG5[7:0]"), m_strBiasReg5);
+	PrintRegister(22, _T("BIAS_REG6[7:0]"), m_strBiasReg6);
+	PrintRegister(23, _T("BIAS_REG7[7:0]"), m_strBiasReg7);
+	PrintRegister(24, _T("BIAS_REG8[7:0]"), m_strBiasReg8);
 }
 
 void CgZeroMasterDlg::OnBnClickedConnectButton()
