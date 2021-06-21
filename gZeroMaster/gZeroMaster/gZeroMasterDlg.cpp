@@ -169,6 +169,7 @@ BOOL CgZeroMasterDlg::OnInitDialog()
 	m_comPort.SetCurSel(0);
 
 	BitControlEnable(FALSE);
+	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_HIDE);
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
 
@@ -420,6 +421,7 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 		}
 		ClearResisterValues();
 		GetDlgItem(IDC_COM_COMBO)->EnableWindow(TRUE);
+		GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_HIDE);
 	}
 }
 
@@ -453,6 +455,7 @@ void CgZeroMasterDlg::OnStnClickedRxReg1Static()
 {
 	if (!m_serial.IsOpen()) return;
 
+	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_SHOW);
 	L(_T("RX_REG1[4:0]"));
 	L(_T("    [4]:RX Data Interface enable"));
 	L(_T("    [3]:Limiting Amplifier enable"));
@@ -467,6 +470,7 @@ void CgZeroMasterDlg::OnStnClickedTxReg1TopStatic()
 {
 	if (!m_serial.IsOpen()) return;
 
+	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_SHOW);
 	L(_T("TX_REG1[23:16]"));
 	L(_T("    [7:0]:Duty cycle control"));
 	ShowBits(_tcstol(m_strTxReg1Top.GetBuffer(), NULL, 16) & 0xff);
@@ -479,6 +483,7 @@ void CgZeroMasterDlg::OnStnClickedTxReg1MidStatic()
 {
 	if (!m_serial.IsOpen()) return;
 
+	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_SHOW);
 	L(_T("TX_REG1[15:8]"));
 	L(_T("    [7:0]:VCO oscillation frequency control(3:10)"));
 	ShowBits(_tcstol(m_strTxReg1Mid.GetBuffer(), NULL, 16) & 0xff);
@@ -491,6 +496,7 @@ void CgZeroMasterDlg::OnStnClickedTxReg1BotStatic()
 {
 	if (!m_serial.IsOpen()) return;
 
+	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_SHOW);
 	L(_T("TX_REG1[7:0]"));
 	L(_T("    [7:5]:VCO oscillation frequency control(0:2)"));
 	L(_T("    [4]:Regulator Reference Voltage  Control"));
@@ -505,6 +511,7 @@ void CgZeroMasterDlg::OnStnClickedTxReg2TopStatic()
 {
 	if (!m_serial.IsOpen()) return;
 
+	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_SHOW);
 	L(_T("TX_REG2[16]"));
 	L(_T("    [0]:VCO power up/down 0: VCO off, 1: VCO on"));
 	ShowBits(_tcstol(m_strTxReg2Top.GetBuffer(), NULL, 16) & 0xff);
@@ -517,6 +524,7 @@ void CgZeroMasterDlg::OnStnClickedTxReg2MidStatic()
 {
 	if (!m_serial.IsOpen()) return;
 
+	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_SHOW);
 	L(_T("TX_REG2[15:8]"));
 	L(_T("    [7]:Modulator power down --0: MOD off, 1: MOD on"));
 	L(_T("    [6]:Test buffer power down--0: test buff off, 1: test buff on"));
@@ -533,6 +541,7 @@ void CgZeroMasterDlg::OnStnClickedTxReg2BotStatic()
 {
 	if (!m_serial.IsOpen()) return;
 
+	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_SHOW);
 	L(_T("TX_REG2[7:0]"));
 	L(_T("    [7:4]:PA gain control 1"));
 	L(_T("    [3:0]:Test Buffer Current control"));
@@ -546,6 +555,7 @@ void CgZeroMasterDlg::OnStnClickedBiasReg1Static()
 {
 	if (!m_serial.IsOpen()) return;
 
+	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_SHOW);
 	L(_T("BIAS_REG1[0]"));
 	L(_T("    [0]:BIAS block Enable"));
 	ShowBits(_tcstol(m_strBiasReg1.GetBuffer(), NULL, 16) & 0xff);
@@ -558,6 +568,7 @@ void CgZeroMasterDlg::OnStnClickedBiasReg2Static()
 {
 	if (!m_serial.IsOpen()) return;
 
+	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_SHOW);
 	L(_T("BIAS_REG2[7:0]"));
 	L(_T("    [7:4]:Control LNA 3rd stage biasing current"));
 	L(_T("    [3:0]:Control LNA 1st & 2nd stages biasing current"));
@@ -571,6 +582,7 @@ void CgZeroMasterDlg::OnStnClickedBiasReg3Static()
 {
 	if (!m_serial.IsOpen()) return;
 
+	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_SHOW);
 	L(_T("BIAS_REG3[7:0]"));
 	L(_T("    [7:4]:Control LNA 5th stage biasing current"));
 	L(_T("    [3:0]:Control LNA 4th stage biasing current"));
@@ -584,6 +596,7 @@ void CgZeroMasterDlg::OnStnClickedBiasReg4Static()
 {
 	if (!m_serial.IsOpen()) return;
 
+	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_SHOW);
 	L(_T("BIAS_REG4[7:0]"));
 	L(_T("    [7:4]:Control the demodulator's current"));
 	L(_T("    [3:0]:Control the demodulator's current"));
@@ -597,6 +610,7 @@ void CgZeroMasterDlg::OnStnClickedBiasReg5Static()
 {
 	if (!m_serial.IsOpen()) return;
 
+	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_SHOW);
 	L(_T("BIAS_REG5[7:0]"));
 	L(_T("    [7:4]:Control the biasing current for LA's FB"));
 	L(_T("    [3:0]:Control the biasing current for LA's core"));
@@ -610,6 +624,7 @@ void CgZeroMasterDlg::OnStnClickedBiasReg6Static()
 {
 	if (!m_serial.IsOpen()) return;
 
+	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_SHOW);
 	L(_T("BIAS_REG6[7:0]"));
 	L(_T("    [7:4]:Control the biasing current for LA's O/P buffer"));
 	L(_T("    [3:0]:Control the biasing current for LA's I/P buffer"));
@@ -623,6 +638,7 @@ void CgZeroMasterDlg::OnStnClickedBiasReg7Static()
 {
 	if (!m_serial.IsOpen()) return;
 
+	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_SHOW);
 	L(_T("BIAS_REG7[7:0]"));
 	L(_T("    [7:4]:Control the biasing current for LA's High/Low data rate"));
 	L(_T("    [3:0]:Control the biasing current for CMOS gain stage"));
@@ -636,6 +652,7 @@ void CgZeroMasterDlg::OnStnClickedBiasReg8Static()
 {
 	if (!m_serial.IsOpen()) return;
 
+	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_SHOW);
 	L(_T("BIAS_REG8[7:0]"));
 	L(_T("    [7:0]:Control the biasing current for CML interface stage. It aso controls the duty cycle"));
 	ShowBits(_tcstol(m_strBiasReg8.GetBuffer(), NULL, 16) & 0xff);
