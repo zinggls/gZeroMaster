@@ -415,11 +415,27 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 	}
 }
 
+void CgZeroMasterDlg::ShowBits(unsigned char byte)
+{
+	CString strBit;
+	(byte & 0x80) ? strBit += "1" : strBit += "0";
+	(byte & 0x40) ? strBit += "1" : strBit += "0";
+	(byte & 0x20) ? strBit += "1" : strBit += "0";
+	(byte & 0x10) ? strBit += "1" : strBit += "0";
+	(byte & 0x08) ? strBit += "1" : strBit += "0";
+	(byte & 0x04) ? strBit += "1" : strBit += "0";
+	(byte & 0x02) ? strBit += "1" : strBit += "0";
+	(byte & 0x01) ? strBit += "1" : strBit += "0";
+	L(strBit);
+}
 
 void CgZeroMasterDlg::OnStnClickedRxReg1Static()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	L(_T("OnStnClickedRxReg1Static"));
+
+	int value = (int)_tcstol(m_strRxReg1.GetBuffer(), NULL, 16);
+	ShowBits(value & 0xff);
 }
 
 
