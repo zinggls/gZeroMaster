@@ -240,7 +240,7 @@ BOOL CgZeroMasterDlg::ReadResister(int addr,int *value)
 	char buffer[4] = { 0, };
 	sprintf_s(buffer, "%x", addr);
 
-	int index = strlen(buffer);
+	size_t index = strlen(buffer);
 	buffer[index] = 0xd;		//Enter
 	buffer[index + 1] = 0x1;	//Read	0x1
 
