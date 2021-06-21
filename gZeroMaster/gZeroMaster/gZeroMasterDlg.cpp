@@ -170,6 +170,7 @@ BOOL CgZeroMasterDlg::OnInitDialog()
 
 	BitControlEnable(FALSE);
 	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_HIDE);
+	GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_HIDE);
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
 
@@ -422,6 +423,7 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 		ClearResisterValues();
 		GetDlgItem(IDC_COM_COMBO)->EnableWindow(TRUE);
 		GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_HIDE);
+		GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_HIDE);
 	}
 }
 
@@ -684,9 +686,11 @@ void CgZeroMasterDlg::OnBnClickedEditCheck()
 	m_bEdit = !m_bEdit;
 	if (m_bEdit) {
 		BitControlEnable(TRUE);
+		GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_SHOW);
 	}
 	else {
 		BitControlEnable(FALSE);
+		GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_HIDE);
 	}
 	UpdateData(FALSE);
 }
