@@ -63,6 +63,7 @@ public:
 	CEdit m_bit1;
 	CEdit m_bit0;
 	CString m_strChosenRegister;
+	BOOL m_bEdit;
 
 	void L(const TCHAR* str, ...);
 	afx_msg void OnBnClickedConnectButton();
@@ -89,4 +90,5 @@ public:
 	afx_msg void OnStnClickedBiasReg7Static();
 	afx_msg void OnStnClickedBiasReg8Static();
 	afx_msg void OnBnClickedLogClearButton();
+	afx_msg void OnBnClickedEditCheck();
 };

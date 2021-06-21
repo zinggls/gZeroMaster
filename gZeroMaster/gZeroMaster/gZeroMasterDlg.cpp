@@ -67,6 +67,7 @@ CgZeroMasterDlg::CgZeroMasterDlg(CWnd* pParent /*=nullptr*/)
 	, m_strBiasReg7(_T(""))
 	, m_strBiasReg8(_T(""))
 	, m_strChosenRegister(_T(""))
+	, m_bEdit(FALSE)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
@@ -100,6 +101,7 @@ void CgZeroMasterDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_BIT_EDIT1, m_bit1);
 	DDX_Control(pDX, IDC_BIT_EDIT0, m_bit0);
 	DDX_Text(pDX, IDC_CHOSEN_REGISTER_STATIC, m_strChosenRegister);
+	DDX_Check(pDX, IDC_EDIT_CHECK, m_bEdit);
 }
 
 BEGIN_MESSAGE_MAP(CgZeroMasterDlg, CDialogEx)
@@ -123,6 +125,7 @@ BEGIN_MESSAGE_MAP(CgZeroMasterDlg, CDialogEx)
 	ON_STN_CLICKED(IDC_BIAS_REG7_STATIC, &CgZeroMasterDlg::OnStnClickedBiasReg7Static)
 	ON_STN_CLICKED(IDC_BIAS_REG8_STATIC, &CgZeroMasterDlg::OnStnClickedBiasReg8Static)
 	ON_BN_CLICKED(IDC_LOG_CLEAR_BUTTON, &CgZeroMasterDlg::OnBnClickedLogClearButton)
+	ON_BN_CLICKED(IDC_EDIT_CHECK, &CgZeroMasterDlg::OnBnClickedEditCheck)
 END_MESSAGE_MAP()
 
 
@@ -651,5 +654,32 @@ void CgZeroMasterDlg::OnStnClickedBiasReg8Static()
 void CgZeroMasterDlg::OnBnClickedLogClearButton()
 {
 	m_log.ResetContent();
+	UpdateData(FALSE);
+}
+
+
+void CgZeroMasterDlg::OnBnClickedEditCheck()
+{
+	m_bEdit = !m_bEdit;
+	if (m_bEdit) {
+		m_bit7.EnableWindow(TRUE);
+		m_bit6.EnableWindow(TRUE);
+		m_bit5.EnableWindow(TRUE);
+		m_bit4.EnableWindow(TRUE);
+		m_bit3.EnableWindow(TRUE);
+		m_bit2.EnableWindow(TRUE);
+		m_bit1.EnableWindow(TRUE);
+		m_bit0.EnableWindow(TRUE);
+	}
+	else {
+		m_bit7.EnableWindow(FALSE);
+		m_bit6.EnableWindow(FALSE);
+		m_bit5.EnableWindow(FALSE);
+		m_bit4.EnableWindow(FALSE);
+		m_bit3.EnableWindow(FALSE);
+		m_bit2.EnableWindow(FALSE);
+		m_bit1.EnableWindow(FALSE);
+		m_bit0.EnableWindow(FALSE);
+	}
 	UpdateData(FALSE);
 }
