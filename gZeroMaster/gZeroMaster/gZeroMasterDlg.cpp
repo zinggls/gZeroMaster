@@ -369,6 +369,15 @@ void CgZeroMasterDlg::ClearResisterValues()
 	m_strBiasReg7.Empty();
 	m_strBiasReg8.Empty();
 	UpdateData(FALSE);
+
+	m_bit7.SetWindowText(_T(""));
+	m_bit6.SetWindowText(_T(""));
+	m_bit5.SetWindowText(_T(""));
+	m_bit4.SetWindowText(_T(""));
+	m_bit3.SetWindowText(_T(""));
+	m_bit2.SetWindowText(_T(""));
+	m_bit1.SetWindowText(_T(""));
+	m_bit0.SetWindowText(_T(""));
 }
 
 void CgZeroMasterDlg::OnBnClickedConnectButton()
