@@ -61,4 +61,5 @@ public:
 	BOOL ReadResister(int addr, int* value);
 	void ReadResisters();
 	BOOL PrintRegister(int addr, CString name, CString& valueStr);
+	void ClearResisterValues();
 };

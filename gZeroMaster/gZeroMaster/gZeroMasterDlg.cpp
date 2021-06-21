@@ -320,6 +320,26 @@ void CgZeroMasterDlg::ReadResisters()
 	PrintRegister(24, _T("BIAS_REG8[7:0]"), m_strBiasReg8);
 }
 
+void CgZeroMasterDlg::ClearResisterValues()
+{
+	m_strRxReg1.Empty();
+	m_strTxReg1Top.Empty();
+	m_strTxReg1Mid.Empty();
+	m_strTxReg1Bot.Empty();
+	m_strTxReg2Top.Empty();
+	m_strTxReg2Mid.Empty();
+	m_strTxReg2Bot.Empty();
+	m_strBiasReg1.Empty();
+	m_strBiasReg2.Empty();
+	m_strBiasReg3.Empty();
+	m_strBiasReg4.Empty();
+	m_strBiasReg5.Empty();
+	m_strBiasReg6.Empty();
+	m_strBiasReg7.Empty();
+	m_strBiasReg8.Empty();
+	UpdateData(FALSE);
+}
+
 void CgZeroMasterDlg::OnBnClickedConnectButton()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
@@ -359,6 +379,7 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 		else {
 			L(str + _T(" close failed"));
 		}
+		ClearResisterValues();
 		GetDlgItem(IDC_COM_COMBO)->EnableWindow(TRUE);
 	}
 }
