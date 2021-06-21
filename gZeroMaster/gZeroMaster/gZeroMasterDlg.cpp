@@ -66,6 +66,7 @@ CgZeroMasterDlg::CgZeroMasterDlg(CWnd* pParent /*=nullptr*/)
 	, m_strBiasReg6(_T(""))
 	, m_strBiasReg7(_T(""))
 	, m_strBiasReg8(_T(""))
+	, m_strChosenRegister(_T(""))
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
@@ -98,6 +99,7 @@ void CgZeroMasterDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_BIT_EDIT2, m_bit2);
 	DDX_Control(pDX, IDC_BIT_EDIT1, m_bit1);
 	DDX_Control(pDX, IDC_BIT_EDIT0, m_bit0);
+	DDX_Text(pDX, IDC_CHOSEN_REGISTER_STATIC, m_strChosenRegister);
 }
 
 BEGIN_MESSAGE_MAP(CgZeroMasterDlg, CDialogEx)

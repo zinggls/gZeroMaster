@@ -62,6 +62,7 @@ public:
 	CEdit m_bit2;
 	CEdit m_bit1;
 	CEdit m_bit0;
+	CString m_strChosenRegister;
 
 	void L(const TCHAR* str, ...);
 	afx_msg void OnBnClickedConnectButton();
