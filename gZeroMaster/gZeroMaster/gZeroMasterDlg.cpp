@@ -105,6 +105,21 @@ BEGIN_MESSAGE_MAP(CgZeroMasterDlg, CDialogEx)
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
 	ON_BN_CLICKED(IDC_CONNECT_BUTTON, &CgZeroMasterDlg::OnBnClickedConnectButton)
+	ON_STN_CLICKED(IDC_RX_REG1_STATIC, &CgZeroMasterDlg::OnStnClickedRxReg1Static)
+	ON_STN_CLICKED(IDC_TX_REG1_TOP_STATIC, &CgZeroMasterDlg::OnStnClickedTxReg1TopStatic)
+	ON_STN_CLICKED(IDC_TX_REG1_MID_STATIC, &CgZeroMasterDlg::OnStnClickedTxReg1MidStatic)
+	ON_STN_CLICKED(IDC_TX_REG1_BOT_STATIC, &CgZeroMasterDlg::OnStnClickedTxReg1BotStatic)
+	ON_STN_CLICKED(IDC_TX_REG2_TOP_STATIC, &CgZeroMasterDlg::OnStnClickedTxReg2TopStatic)
+	ON_STN_CLICKED(IDC_TX_REG2_MID_STATIC, &CgZeroMasterDlg::OnStnClickedTxReg2MidStatic)
+	ON_STN_CLICKED(IDC_TX_REG2_BOT_STATIC, &CgZeroMasterDlg::OnStnClickedTxReg2BotStatic)
+	ON_STN_CLICKED(IDC_BIAS_REG1_STATIC, &CgZeroMasterDlg::OnStnClickedBiasReg1Static)
+	ON_STN_CLICKED(IDC_BIAS_REG2_STATIC, &CgZeroMasterDlg::OnStnClickedBiasReg2Static)
+	ON_STN_CLICKED(IDC_BIAS_REG3_STATIC, &CgZeroMasterDlg::OnStnClickedBiasReg3Static)
+	ON_STN_CLICKED(IDC_BIAS_REG4_STATIC, &CgZeroMasterDlg::OnStnClickedBiasReg4Static)
+	ON_STN_CLICKED(IDC_BIAS_REG5_STATIC, &CgZeroMasterDlg::OnStnClickedBiasReg5Static)
+	ON_STN_CLICKED(IDC_BIAS_REG6_STATIC, &CgZeroMasterDlg::OnStnClickedBiasReg6Static)
+	ON_STN_CLICKED(IDC_BIAS_REG7_STATIC, &CgZeroMasterDlg::OnStnClickedBiasReg7Static)
+	ON_STN_CLICKED(IDC_BIAS_REG8_STATIC, &CgZeroMasterDlg::OnStnClickedBiasReg8Static)
 END_MESSAGE_MAP()
 
 
@@ -398,4 +413,109 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 		ClearResisterValues();
 		GetDlgItem(IDC_COM_COMBO)->EnableWindow(TRUE);
 	}
+}
+
+
+void CgZeroMasterDlg::OnStnClickedRxReg1Static()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	L(_T("OnStnClickedRxReg1Static"));
+}
+
+
+void CgZeroMasterDlg::OnStnClickedTxReg1TopStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	L(_T("OnStnClickedTxReg1TopStatic"));
+}
+
+
+void CgZeroMasterDlg::OnStnClickedTxReg1MidStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	L(_T("OnStnClickedTxReg1MidStatic"));
+}
+
+
+void CgZeroMasterDlg::OnStnClickedTxReg1BotStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	L(_T("OnStnClickedTxReg1BotStatic"));
+}
+
+
+void CgZeroMasterDlg::OnStnClickedTxReg2TopStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	L(_T("OnStnClickedTxReg2TopStatic"));
+}
+
+
+void CgZeroMasterDlg::OnStnClickedTxReg2MidStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	L(_T("OnStnClickedTxReg2MidStatic"));
+}
+
+
+void CgZeroMasterDlg::OnStnClickedTxReg2BotStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	L(_T("OnStnClickedTxReg2BotStatic"));
+}
+
+
+void CgZeroMasterDlg::OnStnClickedBiasReg1Static()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	L(_T("OnStnClickedBiasReg1Static"));
+}
+
+
+void CgZeroMasterDlg::OnStnClickedBiasReg2Static()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	L(_T("OnStnClickedBiasReg2Static"));
+}
+
+
+void CgZeroMasterDlg::OnStnClickedBiasReg3Static()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	L(_T("OnStnClickedBiasReg3Static"));
+}
+
+
+void CgZeroMasterDlg::OnStnClickedBiasReg4Static()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	L(_T("OnStnClickedBiasReg4Static"));
+}
+
+
+void CgZeroMasterDlg::OnStnClickedBiasReg5Static()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	L(_T("OnStnClickedBiasReg5Static"));
+}
+
+
+void CgZeroMasterDlg::OnStnClickedBiasReg6Static()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	L(_T("OnStnClickedBiasReg6Static"));
+}
+
+
+void CgZeroMasterDlg::OnStnClickedBiasReg7Static()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	L(_T("OnStnClickedBiasReg7Static"));
+}
+
+
+void CgZeroMasterDlg::OnStnClickedBiasReg8Static()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	L(_T("OnStnClickedBiasReg8Static"));
 }
