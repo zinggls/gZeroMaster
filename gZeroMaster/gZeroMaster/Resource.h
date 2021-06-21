@@ -35,6 +35,21 @@
 #define IDC_BIT_EDIT8                   1026
 #define IDC_BIT_EDIT0                   1026
 #define IDC_CHOSEN_REGISTER_STATIC      1027
+#define IDC_RX_REG1_LABEL               1028
+#define IDC_TX_REG1_TOP_LABEL           1029
+#define IDC_TX_REG1_MID_LABEL           1030
+#define IDC_TX_REG1_BOT_LABEL           1031
+#define IDC_TX_REG2_TOP_LABEL           1032
+#define IDC_TX_REG2_MID_LABEL           1033
+#define IDC_TX_REG2_BOT_LABEL           1034
+#define IDC_BIAS_REG1_LABEL             1035
+#define IDC_BIAS_REG2_LABEL             1036
+#define IDC_BIAS_REG3_LABEL             1037
+#define IDC_BIAS_REG4_LABEL             1038
+#define IDC_BIAS_REG5_LABEL             1039
+#define IDC_BIAS_REG6_LABEL             1040
+#define IDC_BIAS_REG7_LABEL             1041
+#define IDC_BIAS_REG8_LABEL             1042
 
 // Next default values for new objects
 // 
@@ -42,7 +57,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        130
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1028
+#define _APS_NEXT_CONTROL_VALUE         1043
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

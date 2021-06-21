@@ -456,6 +456,8 @@ void CgZeroMasterDlg::OnStnClickedRxReg1Static()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	ShowBits(_tcstol(m_strRxReg1.GetBuffer(), NULL, 16) & 0xff);
+	GetDlgItem(IDC_RX_REG1_LABEL)->GetWindowText(m_strChosenRegister);
+	UpdateData(FALSE);
 }
 
 
@@ -463,6 +465,8 @@ void CgZeroMasterDlg::OnStnClickedTxReg1TopStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	ShowBits(_tcstol(m_strTxReg1Top.GetBuffer(), NULL, 16) & 0xff);
+	GetDlgItem(IDC_TX_REG1_TOP_LABEL)->GetWindowText(m_strChosenRegister);
+	UpdateData(FALSE);
 }
 
 
@@ -470,6 +474,8 @@ void CgZeroMasterDlg::OnStnClickedTxReg1MidStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	ShowBits(_tcstol(m_strTxReg1Mid.GetBuffer(), NULL, 16) & 0xff);
+	GetDlgItem(IDC_TX_REG1_MID_LABEL)->GetWindowText(m_strChosenRegister);
+	UpdateData(FALSE);
 }
 
 
@@ -477,6 +483,8 @@ void CgZeroMasterDlg::OnStnClickedTxReg1BotStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	ShowBits(_tcstol(m_strTxReg1Bot.GetBuffer(), NULL, 16) & 0xff);
+	GetDlgItem(IDC_TX_REG1_BOT_LABEL)->GetWindowText(m_strChosenRegister);
+	UpdateData(FALSE);
 }
 
 
@@ -484,6 +492,8 @@ void CgZeroMasterDlg::OnStnClickedTxReg2TopStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	ShowBits(_tcstol(m_strTxReg2Top.GetBuffer(), NULL, 16) & 0xff);
+	GetDlgItem(IDC_TX_REG2_TOP_LABEL)->GetWindowText(m_strChosenRegister);
+	UpdateData(FALSE);
 }
 
 
@@ -491,6 +501,8 @@ void CgZeroMasterDlg::OnStnClickedTxReg2MidStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	ShowBits(_tcstol(m_strTxReg2Mid.GetBuffer(), NULL, 16) & 0xff);
+	GetDlgItem(IDC_TX_REG2_MID_LABEL)->GetWindowText(m_strChosenRegister);
+	UpdateData(FALSE);
 }
 
 
@@ -498,6 +510,8 @@ void CgZeroMasterDlg::OnStnClickedTxReg2BotStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	ShowBits(_tcstol(m_strTxReg2Bot.GetBuffer(), NULL, 16) & 0xff);
+	GetDlgItem(IDC_TX_REG2_BOT_LABEL)->GetWindowText(m_strChosenRegister);
+	UpdateData(FALSE);
 }
 
 
@@ -505,6 +519,8 @@ void CgZeroMasterDlg::OnStnClickedBiasReg1Static()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	ShowBits(_tcstol(m_strBiasReg1.GetBuffer(), NULL, 16) & 0xff);
+	GetDlgItem(IDC_BIAS_REG1_LABEL)->GetWindowText(m_strChosenRegister);
+	UpdateData(FALSE);
 }
 
 
@@ -512,6 +528,8 @@ void CgZeroMasterDlg::OnStnClickedBiasReg2Static()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	ShowBits(_tcstol(m_strBiasReg2.GetBuffer(), NULL, 16) & 0xff);
+	GetDlgItem(IDC_BIAS_REG2_LABEL)->GetWindowText(m_strChosenRegister);
+	UpdateData(FALSE);
 }
 
 
@@ -519,6 +537,8 @@ void CgZeroMasterDlg::OnStnClickedBiasReg3Static()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	ShowBits(_tcstol(m_strBiasReg3.GetBuffer(), NULL, 16) & 0xff);
+	GetDlgItem(IDC_BIAS_REG3_LABEL)->GetWindowText(m_strChosenRegister);
+	UpdateData(FALSE);
 }
 
 
@@ -526,6 +546,8 @@ void CgZeroMasterDlg::OnStnClickedBiasReg4Static()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	ShowBits(_tcstol(m_strBiasReg4.GetBuffer(), NULL, 16) & 0xff);
+	GetDlgItem(IDC_BIAS_REG4_LABEL)->GetWindowText(m_strChosenRegister);
+	UpdateData(FALSE);
 }
 
 
@@ -533,6 +555,8 @@ void CgZeroMasterDlg::OnStnClickedBiasReg5Static()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	ShowBits(_tcstol(m_strBiasReg5.GetBuffer(), NULL, 16) & 0xff);
+	GetDlgItem(IDC_BIAS_REG5_LABEL)->GetWindowText(m_strChosenRegister);
+	UpdateData(FALSE);
 }
 
 
@@ -540,6 +564,8 @@ void CgZeroMasterDlg::OnStnClickedBiasReg6Static()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	ShowBits(_tcstol(m_strBiasReg6.GetBuffer(), NULL, 16) & 0xff);
+	GetDlgItem(IDC_BIAS_REG6_LABEL)->GetWindowText(m_strChosenRegister);
+	UpdateData(FALSE);
 }
 
 
@@ -547,6 +573,8 @@ void CgZeroMasterDlg::OnStnClickedBiasReg7Static()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	ShowBits(_tcstol(m_strBiasReg7.GetBuffer(), NULL, 16) & 0xff);
+	GetDlgItem(IDC_BIAS_REG7_LABEL)->GetWindowText(m_strChosenRegister);
+	UpdateData(FALSE);
 }
 
 
@@ -554,4 +582,6 @@ void CgZeroMasterDlg::OnStnClickedBiasReg8Static()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	ShowBits(_tcstol(m_strBiasReg8.GetBuffer(), NULL, 16) & 0xff);
+	GetDlgItem(IDC_BIAS_REG8_LABEL)->GetWindowText(m_strChosenRegister);
+	UpdateData(FALSE);
 }
