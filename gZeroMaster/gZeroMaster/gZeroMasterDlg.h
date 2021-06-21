@@ -39,6 +39,21 @@ public:
 	CSerial m_serial;
 	CListBox m_log;
 	CComboBox m_comPort;
+	CString m_strRxReg1;
+	CString m_strTxReg1Top;
+	CString m_strTxReg1Mid;
+	CStatic m_strTxReg1Bot;
+	CString m_strTxReg2Top;
+	CString m_strTxReg2Mid;
+	CString m_strTxReg2Bot;
+	CString m_strBiasReg1;
+	CString m_strBiasReg2;
+	CString m_strBiasReg3;
+	CString m_strBiasReg4;
+	CString m_strBiasReg5;
+	CString m_strBiasReg6;
+	CString m_strBiasReg7;
+	CString m_strBiasReg8;
 
 	void L(const TCHAR* str, ...);
 	afx_msg void OnBnClickedConnectButton();

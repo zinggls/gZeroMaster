@@ -52,6 +52,20 @@ END_MESSAGE_MAP()
 
 CgZeroMasterDlg::CgZeroMasterDlg(CWnd* pParent /*=nullptr*/)
 	: CDialogEx(IDD_GZEROMASTER_DIALOG, pParent)
+	, m_strRxReg1(_T(""))
+	, m_strTxReg1Top(_T(""))
+	, m_strTxReg1Mid(_T(""))
+	, m_strTxReg2Top(_T(""))
+	, m_strTxReg2Mid(_T(""))
+	, m_strTxReg2Bot(_T(""))
+	, m_strBiasReg1(_T(""))
+	, m_strBiasReg2(_T(""))
+	, m_strBiasReg3(_T(""))
+	, m_strBiasReg4(_T(""))
+	, m_strBiasReg5(_T(""))
+	, m_strBiasReg6(_T(""))
+	, m_strBiasReg7(_T(""))
+	, m_strBiasReg8(_T(""))
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
@@ -61,6 +75,21 @@ void CgZeroMasterDlg::DoDataExchange(CDataExchange* pDX)
 	CDialogEx::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_LOG_LIST, m_log);
 	DDX_Control(pDX, IDC_COM_COMBO, m_comPort);
+	DDX_Text(pDX, IDC_RX_REG1_STATIC, m_strRxReg1);
+	DDX_Text(pDX, IDC_TX_REG1_TOP_STATIC, m_strTxReg1Top);
+	DDX_Text(pDX, IDC_TX_REG1_MID_STATIC, m_strTxReg1Mid);
+	DDX_Control(pDX, IDC_TX_REG1_BOT_STATIC, m_strTxReg1Bot);
+	DDX_Text(pDX, IDC_TX_REG2_TOP_STATIC, m_strTxReg2Top);
+	DDX_Text(pDX, IDC_TX_REG2_MID_STATIC, m_strTxReg2Mid);
+	DDX_Text(pDX, IDC_TX_REG2_BOT_STATIC, m_strTxReg2Bot);
+	DDX_Text(pDX, IDC_BIAS_REG1_STATIC, m_strBiasReg1);
+	DDX_Text(pDX, IDC_BIAS_REG2_STATIC, m_strBiasReg2);
+	DDX_Text(pDX, IDC_BIAS_REG3_STATIC, m_strBiasReg3);
+	DDX_Text(pDX, IDC_BIAS_REG4_STATIC, m_strBiasReg4);
+	DDX_Text(pDX, IDC_BIAS_REG5_STATIC, m_strBiasReg5);
+	DDX_Text(pDX, IDC_BIAS_REG6_STATIC, m_strBiasReg6);
+	DDX_Text(pDX, IDC_BIAS_REG7_STATIC, m_strBiasReg7);
+	DDX_Text(pDX, IDC_BIAS_REG8_STATIC, m_strBiasReg8);
 }
 
 BEGIN_MESSAGE_MAP(CgZeroMasterDlg, CDialogEx)
