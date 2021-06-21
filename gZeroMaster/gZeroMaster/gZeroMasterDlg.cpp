@@ -122,6 +122,7 @@ BEGIN_MESSAGE_MAP(CgZeroMasterDlg, CDialogEx)
 	ON_STN_CLICKED(IDC_BIAS_REG6_STATIC, &CgZeroMasterDlg::OnStnClickedBiasReg6Static)
 	ON_STN_CLICKED(IDC_BIAS_REG7_STATIC, &CgZeroMasterDlg::OnStnClickedBiasReg7Static)
 	ON_STN_CLICKED(IDC_BIAS_REG8_STATIC, &CgZeroMasterDlg::OnStnClickedBiasReg8Static)
+	ON_BN_CLICKED(IDC_LOG_CLEAR_BUTTON, &CgZeroMasterDlg::OnBnClickedLogClearButton)
 END_MESSAGE_MAP()
 
 
@@ -628,5 +629,12 @@ void CgZeroMasterDlg::OnStnClickedBiasReg8Static()
 	L(_T("[7:0]:Control the biasing current for CML interface stage. It aso controls the duty cycle"));
 	ShowBits(_tcstol(m_strBiasReg8.GetBuffer(), NULL, 16) & 0xff);
 	GetDlgItem(IDC_BIAS_REG8_LABEL)->GetWindowText(m_strChosenRegister);
+	UpdateData(FALSE);
+}
+
+
+void CgZeroMasterDlg::OnBnClickedLogClearButton()
+{
+	m_log.ResetContent();
 	UpdateData(FALSE);
 }
