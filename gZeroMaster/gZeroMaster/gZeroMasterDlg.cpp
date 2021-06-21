@@ -451,96 +451,96 @@ void CgZeroMasterDlg::OnStnClickedRxReg1Static()
 void CgZeroMasterDlg::OnStnClickedTxReg1TopStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	L(_T("OnStnClickedTxReg1TopStatic"));
+	ShowBits(_tcstol(m_strTxReg1Top.GetBuffer(), NULL, 16) & 0xff);
 }
 
 
 void CgZeroMasterDlg::OnStnClickedTxReg1MidStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	L(_T("OnStnClickedTxReg1MidStatic"));
+	ShowBits(_tcstol(m_strTxReg1Mid.GetBuffer(), NULL, 16) & 0xff);
 }
 
 
 void CgZeroMasterDlg::OnStnClickedTxReg1BotStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	L(_T("OnStnClickedTxReg1BotStatic"));
+	ShowBits(_tcstol(m_strTxReg1Bot.GetBuffer(), NULL, 16) & 0xff);
 }
 
 
 void CgZeroMasterDlg::OnStnClickedTxReg2TopStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	L(_T("OnStnClickedTxReg2TopStatic"));
+	ShowBits(_tcstol(m_strTxReg2Top.GetBuffer(), NULL, 16) & 0xff);
 }
 
 
 void CgZeroMasterDlg::OnStnClickedTxReg2MidStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	L(_T("OnStnClickedTxReg2MidStatic"));
+	ShowBits(_tcstol(m_strTxReg2Mid.GetBuffer(), NULL, 16) & 0xff);
 }
 
 
 void CgZeroMasterDlg::OnStnClickedTxReg2BotStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	L(_T("OnStnClickedTxReg2BotStatic"));
+	ShowBits(_tcstol(m_strTxReg2Bot.GetBuffer(), NULL, 16) & 0xff);
 }
 
 
 void CgZeroMasterDlg::OnStnClickedBiasReg1Static()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	L(_T("OnStnClickedBiasReg1Static"));
+	ShowBits(_tcstol(m_strBiasReg1.GetBuffer(), NULL, 16) & 0xff);
 }
 
 
 void CgZeroMasterDlg::OnStnClickedBiasReg2Static()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	L(_T("OnStnClickedBiasReg2Static"));
+	ShowBits(_tcstol(m_strBiasReg2.GetBuffer(), NULL, 16) & 0xff);
 }
 
 
 void CgZeroMasterDlg::OnStnClickedBiasReg3Static()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	L(_T("OnStnClickedBiasReg3Static"));
+	ShowBits(_tcstol(m_strBiasReg3.GetBuffer(), NULL, 16) & 0xff);
 }
 
 
 void CgZeroMasterDlg::OnStnClickedBiasReg4Static()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	L(_T("OnStnClickedBiasReg4Static"));
+	ShowBits(_tcstol(m_strBiasReg4.GetBuffer(), NULL, 16) & 0xff);
 }
 
 
 void CgZeroMasterDlg::OnStnClickedBiasReg5Static()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	L(_T("OnStnClickedBiasReg5Static"));
+	ShowBits(_tcstol(m_strBiasReg5.GetBuffer(), NULL, 16) & 0xff);
 }
 
 
 void CgZeroMasterDlg::OnStnClickedBiasReg6Static()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	L(_T("OnStnClickedBiasReg6Static"));
+	ShowBits(_tcstol(m_strBiasReg6.GetBuffer(), NULL, 16) & 0xff);
 }
 
 
 void CgZeroMasterDlg::OnStnClickedBiasReg7Static()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	L(_T("OnStnClickedBiasReg7Static"));
+	ShowBits(_tcstol(m_strBiasReg7.GetBuffer(), NULL, 16) & 0xff);
 }
 
 
 void CgZeroMasterDlg::OnStnClickedBiasReg8Static()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	L(_T("OnStnClickedBiasReg8Static"));
+	ShowBits(_tcstol(m_strBiasReg8.GetBuffer(), NULL, 16) & 0xff);
 }
