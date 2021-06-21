@@ -429,13 +429,22 @@ CString CgZeroMasterDlg::Bits(unsigned char byte)
 	return strBit;
 }
 
+void CgZeroMasterDlg::ShowBits(unsigned char byte)
+{
+	(byte & 0x80) ? m_bit7.SetWindowText(_T("1")) : m_bit7.SetWindowText(_T("0"));
+	(byte & 0x40) ? m_bit6.SetWindowText(_T("1")) : m_bit6.SetWindowText(_T("0"));
+	(byte & 0x20) ? m_bit5.SetWindowText(_T("1")) : m_bit5.SetWindowText(_T("0"));
+	(byte & 0x10) ? m_bit4.SetWindowText(_T("1")) : m_bit4.SetWindowText(_T("0"));
+	(byte & 0x08) ? m_bit3.SetWindowText(_T("1")) : m_bit3.SetWindowText(_T("0"));
+	(byte & 0x04) ? m_bit2.SetWindowText(_T("1")) : m_bit2.SetWindowText(_T("0"));
+	(byte & 0x02) ? m_bit1.SetWindowText(_T("1")) : m_bit1.SetWindowText(_T("0"));
+	(byte & 0x01) ? m_bit0.SetWindowText(_T("1")) : m_bit0.SetWindowText(_T("0"));
+}
+
 void CgZeroMasterDlg::OnStnClickedRxReg1Static()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	L(_T("OnStnClickedRxReg1Static"));
-
-	int value = (int)_tcstol(m_strRxReg1.GetBuffer(), NULL, 16);
-	L(Bits(value & 0xff));
+	ShowBits(_tcstol(m_strRxReg1.GetBuffer(), NULL, 16) & 0xff);
 }
 
 

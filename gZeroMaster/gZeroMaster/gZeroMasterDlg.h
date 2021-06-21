@@ -71,6 +71,7 @@ public:
 	BOOL PrintRegister(int addr, CString name, CString& valueStr);
 	void ClearResisterValues();
 	CString Bits(unsigned char byte);
+	void ShowBits(unsigned char byte);
 	afx_msg void OnStnClickedRxReg1Static();
 	afx_msg void OnStnClickedTxReg1TopStatic();
 	afx_msg void OnStnClickedTxReg1MidStatic();
