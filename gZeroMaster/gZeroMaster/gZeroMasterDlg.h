@@ -54,6 +54,14 @@ public:
 	CString m_strBiasReg6;
 	CString m_strBiasReg7;
 	CString m_strBiasReg8;
+	CEdit m_bit7;
+	CEdit m_bit6;
+	CEdit m_bit5;
+	CEdit m_bit4;
+	CEdit m_bit3;
+	CEdit m_bit2;
+	CEdit m_bit1;
+	CEdit m_bit0;
 
 	void L(const TCHAR* str, ...);
 	afx_msg void OnBnClickedConnectButton();

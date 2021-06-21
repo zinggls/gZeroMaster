@@ -90,6 +90,14 @@ void CgZeroMasterDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_BIAS_REG6_STATIC, m_strBiasReg6);
 	DDX_Text(pDX, IDC_BIAS_REG7_STATIC, m_strBiasReg7);
 	DDX_Text(pDX, IDC_BIAS_REG8_STATIC, m_strBiasReg8);
+	DDX_Control(pDX, IDC_BIT_EDIT7, m_bit7);
+	DDX_Control(pDX, IDC_BIT_EDIT6, m_bit6);
+	DDX_Control(pDX, IDC_BIT_EDIT5, m_bit5);
+	DDX_Control(pDX, IDC_BIT_EDIT4, m_bit4);
+	DDX_Control(pDX, IDC_BIT_EDIT3, m_bit3);
+	DDX_Control(pDX, IDC_BIT_EDIT2, m_bit2);
+	DDX_Control(pDX, IDC_BIT_EDIT1, m_bit1);
+	DDX_Control(pDX, IDC_BIT_EDIT0, m_bit0);
 }
 
 BEGIN_MESSAGE_MAP(CgZeroMasterDlg, CDialogEx)
@@ -139,6 +147,14 @@ BOOL CgZeroMasterDlg::OnInitDialog()
 	}
 	m_comPort.SetCurSel(0);
 
+	m_bit7.EnableWindow(FALSE);
+	m_bit6.EnableWindow(FALSE);
+	m_bit5.EnableWindow(FALSE);
+	m_bit4.EnableWindow(FALSE);
+	m_bit3.EnableWindow(FALSE);
+	m_bit2.EnableWindow(FALSE);
+	m_bit1.EnableWindow(FALSE);
+	m_bit0.EnableWindow(FALSE);
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
 
