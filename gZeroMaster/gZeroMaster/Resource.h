@@ -25,6 +25,15 @@
 #define IDC_BIAS_REG6_STATIC            1015
 #define IDC_BIAS_REG7_STATIC            1016
 #define IDC_BIAS_REG8_STATIC            1017
+#define IDC_BIT_EDIT7                   1019
+#define IDC_BIT_EDIT6                   1020
+#define IDC_BIT_EDIT5                   1021
+#define IDC_BIT_EDIT4                   1022
+#define IDC_BIT_EDIT3                   1023
+#define IDC_BIT_EDIT2                   1024
+#define IDC_BIT_EDIT1                   1025
+#define IDC_BIT_EDIT8                   1026
+#define IDC_BIT_EDIT0                   1026
 
 // Next default values for new objects
 // 
@@ -32,7 +41,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        130
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1004
+#define _APS_NEXT_CONTROL_VALUE         1020
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif
