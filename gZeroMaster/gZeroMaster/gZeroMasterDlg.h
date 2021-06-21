@@ -91,4 +91,5 @@ public:
 	afx_msg void OnStnClickedBiasReg8Static();
 	afx_msg void OnBnClickedLogClearButton();
 	afx_msg void OnBnClickedEditCheck();
+	void BitControlEnable(BOOL b);
 };

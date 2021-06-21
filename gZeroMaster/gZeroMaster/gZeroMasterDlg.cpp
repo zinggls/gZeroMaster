@@ -168,14 +168,7 @@ BOOL CgZeroMasterDlg::OnInitDialog()
 	}
 	m_comPort.SetCurSel(0);
 
-	m_bit7.EnableWindow(FALSE);
-	m_bit6.EnableWindow(FALSE);
-	m_bit5.EnableWindow(FALSE);
-	m_bit4.EnableWindow(FALSE);
-	m_bit3.EnableWindow(FALSE);
-	m_bit2.EnableWindow(FALSE);
-	m_bit1.EnableWindow(FALSE);
-	m_bit0.EnableWindow(FALSE);
+	BitControlEnable(FALSE);
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
 
@@ -657,29 +650,26 @@ void CgZeroMasterDlg::OnBnClickedLogClearButton()
 	UpdateData(FALSE);
 }
 
+void CgZeroMasterDlg::BitControlEnable(BOOL b)
+{
+	m_bit7.EnableWindow(b);
+	m_bit6.EnableWindow(b);
+	m_bit5.EnableWindow(b);
+	m_bit4.EnableWindow(b);
+	m_bit3.EnableWindow(b);
+	m_bit2.EnableWindow(b);
+	m_bit1.EnableWindow(b);
+	m_bit0.EnableWindow(b);
+}
 
 void CgZeroMasterDlg::OnBnClickedEditCheck()
 {
 	m_bEdit = !m_bEdit;
 	if (m_bEdit) {
-		m_bit7.EnableWindow(TRUE);
-		m_bit6.EnableWindow(TRUE);
-		m_bit5.EnableWindow(TRUE);
-		m_bit4.EnableWindow(TRUE);
-		m_bit3.EnableWindow(TRUE);
-		m_bit2.EnableWindow(TRUE);
-		m_bit1.EnableWindow(TRUE);
-		m_bit0.EnableWindow(TRUE);
+		BitControlEnable(TRUE);
 	}
 	else {
-		m_bit7.EnableWindow(FALSE);
-		m_bit6.EnableWindow(FALSE);
-		m_bit5.EnableWindow(FALSE);
-		m_bit4.EnableWindow(FALSE);
-		m_bit3.EnableWindow(FALSE);
-		m_bit2.EnableWindow(FALSE);
-		m_bit1.EnableWindow(FALSE);
-		m_bit0.EnableWindow(FALSE);
+		BitControlEnable(FALSE);
 	}
 	UpdateData(FALSE);
 }
