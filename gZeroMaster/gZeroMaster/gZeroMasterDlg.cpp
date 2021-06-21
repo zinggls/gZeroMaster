@@ -313,6 +313,7 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 			ReadResisters();
 		}
 		else {
+			GetDlgItem(IDC_COM_COMBO)->EnableWindow(TRUE);
 			L(str + _T(" open failed"));
 		}
 	}
@@ -326,5 +327,6 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 		else {
 			L(str + _T(" close failed"));
 		}
+		GetDlgItem(IDC_COM_COMBO)->EnableWindow(TRUE);
 	}
 }
