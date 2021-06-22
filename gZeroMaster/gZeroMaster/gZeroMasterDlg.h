@@ -5,6 +5,7 @@
 #pragma once
 
 #include <Serial.h>
+#include <map>
 
 #define MAX_LOG					1000
 #define MAX_COMPORT				25
@@ -64,6 +65,7 @@ public:
 	CEdit m_bit0;
 	CString m_strChosenRegister;
 	BOOL m_bEdit;
+	std::map<CString, int> m_regMap;
 
 	void L(const TCHAR* str, ...);
 	afx_msg void OnBnClickedConnectButton();

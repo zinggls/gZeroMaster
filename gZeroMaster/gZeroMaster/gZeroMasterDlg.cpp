@@ -179,6 +179,22 @@ BOOL CgZeroMasterDlg::OnInitDialog()
 	BitControlEnable(FALSE);
 	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_HIDE);
 	ShowWriteButtons(SW_HIDE);
+
+	m_regMap.insert( std::pair<CString,int>(_T("RX_REG1 [4:0]"), 2) );
+	m_regMap.insert( std::pair<CString, int>(_T("TX_REG1 [23:16]"), 7) );
+	m_regMap.insert( std::pair<CString, int>(_T("TX_REG1 [15:8]"), 6) );
+	m_regMap.insert( std::pair<CString, int>(_T("TX_REG1 [7:0]"), 5) );
+	m_regMap.insert( std::pair<CString, int>(_T("TX_REG2 [16]"), 13) );
+	m_regMap.insert( std::pair<CString, int>(_T("TX_REG2 [15:8]"), 12) );
+	m_regMap.insert( std::pair<CString, int>(_T("TX_REG2 [7:0]"), 11) );
+	m_regMap.insert( std::pair<CString, int>(_T("BIAS_REG1 [0]"), 17) );
+	m_regMap.insert( std::pair<CString, int>(_T("BIAS_REG2 [7:0]"), 18) );
+	m_regMap.insert( std::pair<CString, int>(_T("BIAS_REG3 [7:0]"), 19) );
+	m_regMap.insert( std::pair<CString, int>(_T("BIAS_REG4 [7:0]"), 20) );
+	m_regMap.insert( std::pair<CString, int>(_T("BIAS_REG5 [7:0]"), 21) );
+	m_regMap.insert( std::pair<CString, int>(_T("BIAS_REG6 [7:0]"), 22) );
+	m_regMap.insert( std::pair<CString, int>(_T("BIAS_REG7 [7:0]"), 23) );
+	m_regMap.insert( std::pair<CString, int>(_T("BIAS_REG8 [7:0]"), 24) );
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
 
