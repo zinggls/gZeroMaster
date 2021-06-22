@@ -685,11 +685,9 @@ void CgZeroMasterDlg::OnBnClickedEditCheck()
 {
 	m_bEdit = !m_bEdit;
 	if (m_bEdit) {
-		BitControlEnable(TRUE);
 		GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_SHOW);
 	}
 	else {
-		BitControlEnable(FALSE);
 		GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_HIDE);
 	}
 	UpdateData(FALSE);
