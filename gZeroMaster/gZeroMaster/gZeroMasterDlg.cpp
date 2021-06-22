@@ -68,6 +68,7 @@ CgZeroMasterDlg::CgZeroMasterDlg(CWnd* pParent /*=nullptr*/)
 	, m_strBiasReg8(_T(""))
 	, m_strChosenRegister(_T(""))
 	, m_bEdit(FALSE)
+	, m_strHex(_T(""))
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
@@ -102,6 +103,7 @@ void CgZeroMasterDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_BIT_EDIT0, m_bit0);
 	DDX_Text(pDX, IDC_CHOSEN_REGISTER_STATIC, m_strChosenRegister);
 	DDX_Check(pDX, IDC_EDIT_CHECK, m_bEdit);
+	DDX_Text(pDX, IDC_HEX_VALUE_STATIC, m_strHex);
 }
 
 BEGIN_MESSAGE_MAP(CgZeroMasterDlg, CDialogEx)
@@ -496,6 +498,7 @@ void CgZeroMasterDlg::ShowBits(unsigned char byte)
 	(byte & 0x04) ? m_bit2.SetWindowText(_T("1")) : m_bit2.SetWindowText(_T("0"));
 	(byte & 0x02) ? m_bit1.SetWindowText(_T("1")) : m_bit1.SetWindowText(_T("0"));
 	(byte & 0x01) ? m_bit0.SetWindowText(_T("1")) : m_bit0.SetWindowText(_T("0"));
+	ShowHexa();
 }
 
 void CgZeroMasterDlg::OnStnClickedRxReg1Static()
@@ -756,6 +759,7 @@ void CgZeroMasterDlg::ToggleBit(CEdit& bit)
 	CString strCurVal;
 	bit.GetWindowText(strCurVal);
 	(strCurVal == _T("0")) ? bit.SetWindowText(_T("1")) : bit.SetWindowText(_T("0"));
+	ShowHexa();
 }
 
 void CgZeroMasterDlg::OnBnClickedBit7Button()
@@ -914,4 +918,10 @@ void CgZeroMasterDlg::OnBnClickedWriteButton()
 	ASSERT(itt != m_valMap.end());
 
 	PrintRegister(it->second, m_strChosenRegister, itt->second);
+}
+
+void CgZeroMasterDlg::ShowHexa()
+{
+	m_strHex.Format(_T("0x%02x"), GetValueFromBits());
+	UpdateData(FALSE);
 }

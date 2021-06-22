@@ -67,6 +67,7 @@ public:
 	BOOL m_bEdit;
 	std::map<CString, int> m_regMap;
 	std::map<CString, CString&> m_valMap;
+	CString m_strHex;
 
 	void L(const TCHAR* str, ...);
 	afx_msg void OnBnClickedConnectButton();
@@ -109,4 +110,5 @@ public:
 	int GetValueFromBits();
 	BOOL WriteRegister(int addr, int value);
 	afx_msg void OnBnClickedWriteButton();
+	void ShowHexa();
 };
