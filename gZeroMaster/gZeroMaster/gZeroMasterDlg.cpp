@@ -126,6 +126,14 @@ BEGIN_MESSAGE_MAP(CgZeroMasterDlg, CDialogEx)
 	ON_STN_CLICKED(IDC_BIAS_REG8_STATIC, &CgZeroMasterDlg::OnStnClickedBiasReg8Static)
 	ON_BN_CLICKED(IDC_LOG_CLEAR_BUTTON, &CgZeroMasterDlg::OnBnClickedLogClearButton)
 	ON_BN_CLICKED(IDC_EDIT_CHECK, &CgZeroMasterDlg::OnBnClickedEditCheck)
+	ON_BN_CLICKED(IDC_BIT7_BUTTON, &CgZeroMasterDlg::OnBnClickedBit7Button)
+	ON_BN_CLICKED(IDC_BIT6_BUTTON, &CgZeroMasterDlg::OnBnClickedBit6Button)
+	ON_BN_CLICKED(IDC_BIT5_BUTTON, &CgZeroMasterDlg::OnBnClickedBit5Button)
+	ON_BN_CLICKED(IDC_BIT4_BUTTON, &CgZeroMasterDlg::OnBnClickedBit4Button)
+	ON_BN_CLICKED(IDC_BIT3_BUTTON, &CgZeroMasterDlg::OnBnClickedBit3Button)
+	ON_BN_CLICKED(IDC_BIT2_BUTTON, &CgZeroMasterDlg::OnBnClickedBit2Button)
+	ON_BN_CLICKED(IDC_BIT1_BUTTON, &CgZeroMasterDlg::OnBnClickedBit1Button)
+	ON_BN_CLICKED(IDC_BIT0_BUTTON, &CgZeroMasterDlg::OnBnClickedBit0Button)
 END_MESSAGE_MAP()
 
 
@@ -704,4 +712,58 @@ void CgZeroMasterDlg::ShowWriteButtons(int nCmdShow)
 	GetDlgItem(IDC_BIT2_BUTTON)->ShowWindow(nCmdShow);
 	GetDlgItem(IDC_BIT1_BUTTON)->ShowWindow(nCmdShow);
 	GetDlgItem(IDC_BIT0_BUTTON)->ShowWindow(nCmdShow);
+}
+
+void CgZeroMasterDlg::ToggleBit(CEdit& bit)
+{
+	CString strCurVal;
+	bit.GetWindowText(strCurVal);
+	(strCurVal == _T("0")) ? bit.SetWindowText(_T("1")) : bit.SetWindowText(_T("0"));
+}
+
+void CgZeroMasterDlg::OnBnClickedBit7Button()
+{
+	ToggleBit(m_bit7);
+}
+
+
+void CgZeroMasterDlg::OnBnClickedBit6Button()
+{
+	ToggleBit(m_bit6);
+}
+
+
+void CgZeroMasterDlg::OnBnClickedBit5Button()
+{
+	ToggleBit(m_bit5);
+}
+
+
+void CgZeroMasterDlg::OnBnClickedBit4Button()
+{
+	ToggleBit(m_bit4);
+}
+
+
+void CgZeroMasterDlg::OnBnClickedBit3Button()
+{
+	ToggleBit(m_bit3);
+}
+
+
+void CgZeroMasterDlg::OnBnClickedBit2Button()
+{
+	ToggleBit(m_bit2);
+}
+
+
+void CgZeroMasterDlg::OnBnClickedBit1Button()
+{
+	ToggleBit(m_bit1);
+}
+
+
+void CgZeroMasterDlg::OnBnClickedBit0Button()
+{
+	ToggleBit(m_bit0);
 }

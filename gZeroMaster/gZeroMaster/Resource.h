@@ -61,7 +61,6 @@
 #define IDC_BIT3_BUTTON                 1051
 #define IDC_BIT2_BUTTON                 1052
 #define IDC_BIT1_BUTTON                 1053
-#define IDC_BIT7_BUTTON8                1054
 #define IDC_BIT0_BUTTON                 1054
 
 // Next default values for new objects
