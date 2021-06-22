@@ -913,12 +913,7 @@ void CgZeroMasterDlg::OnBnClickedWriteButton()
 		L(m_strChosenRegister + _T(" update failed"));
 		return;
 	}
-
-	std::map<CString, CString&>::iterator itt;
-	itt = m_valMap.find(m_strChosenRegister);
-	ASSERT(itt != m_valMap.end());
-
-	PrintRegister(it->second, m_strChosenRegister, itt->second);
+	ReadResisters();
 }
 
 void CgZeroMasterDlg::ShowHexa()
