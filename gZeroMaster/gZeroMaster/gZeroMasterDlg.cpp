@@ -450,6 +450,8 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 		GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_HIDE);
 		ShowWriteButtons(SW_HIDE);
 		GetDlgItem(IDC_READ_ALL_BUTTON)->ShowWindow(SW_HIDE);
+		m_strChosenRegister.Empty();
+		UpdateData(FALSE);
 	}
 }
 
