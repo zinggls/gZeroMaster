@@ -135,6 +135,7 @@ BEGIN_MESSAGE_MAP(CgZeroMasterDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BIT1_BUTTON, &CgZeroMasterDlg::OnBnClickedBit1Button)
 	ON_BN_CLICKED(IDC_BIT0_BUTTON, &CgZeroMasterDlg::OnBnClickedBit0Button)
 	ON_BN_CLICKED(IDC_READ_ALL_BUTTON, &CgZeroMasterDlg::OnBnClickedReadAllButton)
+	ON_BN_CLICKED(IDC_WRITE_BUTTON, &CgZeroMasterDlg::OnBnClickedWriteButton)
 END_MESSAGE_MAP()
 
 
@@ -301,7 +302,7 @@ BOOL CgZeroMasterDlg::ReadResister(int addr,int *value)
 #endif // DEBUG_READ
 
 	DWORD dwBytesRead = 0;
-	if (m_serial.Read(buffer, 4, &dwBytesRead) != ERROR_SUCCESS) {
+	if (m_serial.Read(buffer, 2, &dwBytesRead) != ERROR_SUCCESS) {
 	//if (m_serial.Read(buffer, 4, &dwBytesRead, 0, INFINITE) != ERROR_SUCCESS) {
 		ErrorMsg(m_serial.GetLastError(), _T("Unable to receive data"));
 		return FALSE;
@@ -311,12 +312,9 @@ BOOL CgZeroMasterDlg::ReadResister(int addr,int *value)
 	L(str);
 #endif // DEBUG_READ
 
-	//spiProxy는 아래의 반응을 보이도록 정의되었음
-	//ASSERT(buffer[0] == 1);		//Read(0x1) 명령을 처리했음을 의미
-	//ASSERT(buffer[3] == 'R');	//Read가 끝났음을 의미
 
-	buffer[3] = 0;	//문자열 끝을 나타내기 위해서
-	*value = (int)strtol(buffer + 1, NULL, 16);
+	buffer[2] = 0;	//문자열 끝을 나타내기 위해서
+	*value = (int)strtol(buffer, NULL, 16);
 
 #ifdef DEBUG_READ
 	str.Format(_T("Address:0x%02x Register:0x%02x"), addr,*value);
@@ -793,4 +791,90 @@ void CgZeroMasterDlg::OnBnClickedReadAllButton()
 {
 	ClearResisterValues();
 	ReadResisters();
+}
+
+
+int CgZeroMasterDlg::GetValueFromBits()
+{
+	int value = 0;
+
+	CString str;
+	m_bit7.GetWindowText(str);
+	if (str == _T("1")) value = 0x80;
+
+	m_bit6.GetWindowText(str);
+	if (str == _T("1")) value |= 0x40;
+
+	m_bit5.GetWindowText(str);
+	if (str == _T("1")) value |= 0x20;
+
+	m_bit4.GetWindowText(str);
+	if (str == _T("1")) value |= 0x10;
+
+	m_bit3.GetWindowText(str);
+	if (str == _T("1")) value |= 0x08;
+
+	m_bit2.GetWindowText(str);
+	if (str == _T("1")) value |= 0x04;
+
+	m_bit1.GetWindowText(str);
+	if (str == _T("1")) value |= 0x02;
+
+	m_bit0.GetWindowText(str);
+	if (str == _T("1")) value |= 0x01;
+
+	str.Format(_T("0x%02x"), value);
+	L(_T("Value read from the Bits:") + str);
+	return value;
+}
+
+
+BOOL CgZeroMasterDlg::WriteRegister(int addr, int value)
+{
+	char buffer[12] = { 0, };
+	sprintf_s(buffer, sizeof(buffer), "%x", addr);
+
+	size_t index = strlen(buffer);
+	buffer[index] = 0xd;            //Enter
+	buffer[index + 1] = 0x0;        //Write    0x0
+
+	sprintf_s(buffer + index + 2, sizeof(buffer) - index - 2, "%x", value);
+	size_t valLen = strlen(buffer + index + 2);
+
+	buffer[index + 2 + valLen] = 0xd;
+
+	DWORD dwBytesWrite = 0;
+	LONG lLastError = m_serial.Write(buffer, index + valLen + 3, &dwBytesWrite);
+	if (lLastError != ERROR_SUCCESS) {
+		ErrorMsg(m_serial.GetLastError(), _T("Unable to send data"));
+		return FALSE;
+	}
+	CString str;
+	str.Format(_T("%d bytes sent"), dwBytesWrite);
+	L(str);
+	return TRUE;
+}
+
+
+void CgZeroMasterDlg::OnBnClickedWriteButton()
+{
+	ASSERT(m_strChosenRegister.IsEmpty() == FALSE);
+
+	std::map<CString, int>::iterator it;
+
+	it = m_regMap.find(m_strChosenRegister);
+	ASSERT(it != m_regMap.end());
+
+	BOOL b = WriteRegister(it->second, GetValueFromBits());
+	if (b) {
+		L(m_strChosenRegister + _T(" updated"));
+	}
+	else {
+		L(m_strChosenRegister + _T(" update failed"));
+		return;
+	}
+
+	CString strUpdated;
+	PrintRegister(it->second, m_strChosenRegister, strUpdated);
+	L(_T("Updated:") + strUpdated);
 }

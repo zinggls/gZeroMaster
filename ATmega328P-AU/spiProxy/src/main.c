@@ -183,18 +183,18 @@ int main(void)
 
 		//"Write : 0, Read : 1"
 		rw = UART_RX_CH();
-		UART_TX_CH(rw);
+		//UART_TX_CH(rw);
 		rw = rw & 1;
 		if(!rw) {
 			//Write
 			
 			//Data(hex)
 			UART_RX_STR(t_rx_data);
-			UART_TX_STR(t_rx_data);
+			//UART_TX_STR(t_rx_data);
 
 		    data[1] = (uint8_t)(strtol(t_rx_data, NULL, 16));						
 			SPI_0_write_reg(data[0], data[1]);			
-			UART_TX_CH('W');
+			//UART_TX_CH('W');
 		}else{
 			//Read
 			
@@ -203,7 +203,7 @@ int main(void)
 			
 			hextostr(data[1], t_tx);
 			UART_TX_STR(t_tx);
-			UART_TX_CH('R');
+			//UART_TX_CH('R');
 		}
 	}
 }
