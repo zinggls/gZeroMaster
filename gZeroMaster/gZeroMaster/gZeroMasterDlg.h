@@ -66,6 +66,7 @@ public:
 	CString m_strChosenRegister;
 	BOOL m_bEdit;
 	std::map<CString, int> m_regMap;
+	std::map<CString, CString&> m_valMap;
 
 	void L(const TCHAR* str, ...);
 	afx_msg void OnBnClickedConnectButton();
