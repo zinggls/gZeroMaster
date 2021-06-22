@@ -170,7 +170,7 @@ BOOL CgZeroMasterDlg::OnInitDialog()
 
 	BitControlEnable(FALSE);
 	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_HIDE);
-	GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_HIDE);
+	ShowWriteButtons(SW_HIDE);
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
 
@@ -423,7 +423,7 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 		ClearResisterValues();
 		GetDlgItem(IDC_COM_COMBO)->EnableWindow(TRUE);
 		GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_HIDE);
-		GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_HIDE);
+		ShowWriteButtons(SW_HIDE);
 	}
 }
 
@@ -685,10 +685,23 @@ void CgZeroMasterDlg::OnBnClickedEditCheck()
 {
 	m_bEdit = !m_bEdit;
 	if (m_bEdit) {
-		GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_SHOW);
+		ShowWriteButtons(SW_SHOW);
 	}
 	else {
-		GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_HIDE);
+		ShowWriteButtons(SW_HIDE);
 	}
 	UpdateData(FALSE);
+}
+
+void CgZeroMasterDlg::ShowWriteButtons(int nCmdShow)
+{
+	GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_BIT7_BUTTON)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_BIT6_BUTTON)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_BIT5_BUTTON)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_BIT4_BUTTON)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_BIT3_BUTTON)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_BIT2_BUTTON)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_BIT1_BUTTON)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_BIT0_BUTTON)->ShowWindow(nCmdShow);
 }

@@ -92,4 +92,5 @@ public:
 	afx_msg void OnBnClickedLogClearButton();
 	afx_msg void OnBnClickedEditCheck();
 	void BitControlEnable(BOOL b);
+	void ShowWriteButtons(int nCmdShow);
 };
