@@ -200,23 +200,6 @@ BOOL CgZeroMasterDlg::OnInitDialog()
 	m_regMap.insert( std::pair<CString, int>(_T("BIAS_REG6 [7:0]"), 22) );
 	m_regMap.insert( std::pair<CString, int>(_T("BIAS_REG7 [7:0]"), 23) );
 	m_regMap.insert( std::pair<CString, int>(_T("BIAS_REG8 [7:0]"), 24) );
-
-	m_valMap.insert(std::pair<CString, CString&>(_T("RX_REG1 [4:0]"), m_strRxReg1));
-	m_valMap.insert(std::pair<CString, CString&>(_T("TX_REG1 [23:16]"), m_strTxReg1Top));
-	m_valMap.insert(std::pair<CString, CString&>(_T("TX_REG1 [15:8]"), m_strTxReg1Mid));
-	m_valMap.insert(std::pair<CString, CString&>(_T("TX_REG1 [7:0]"), m_strTxReg1Bot));
-	m_valMap.insert(std::pair<CString, CString&>(_T("TX_REG2 [16]"), m_strTxReg2Top));
-	m_valMap.insert(std::pair<CString, CString&>(_T("TX_REG2 [15:8]"), m_strTxReg2Mid));
-	m_valMap.insert(std::pair<CString, CString&>(_T("TX_REG2 [7:0]"), m_strTxReg2Bot));
-	m_valMap.insert(std::pair<CString, CString&>(_T("BIAS_REG1 [0]"), m_strBiasReg1));
-	m_valMap.insert(std::pair<CString, CString&>(_T("BIAS_REG2 [7:0]"), m_strBiasReg2));
-	m_valMap.insert(std::pair<CString, CString&>(_T("BIAS_REG3 [7:0]"), m_strBiasReg3));
-	m_valMap.insert(std::pair<CString, CString&>(_T("BIAS_REG4 [7:0]"), m_strBiasReg4));
-	m_valMap.insert(std::pair<CString, CString&>(_T("BIAS_REG5 [7:0]"), m_strBiasReg5));
-	m_valMap.insert(std::pair<CString, CString&>(_T("BIAS_REG6 [7:0]"), m_strBiasReg6));
-	m_valMap.insert(std::pair<CString, CString&>(_T("BIAS_REG7 [7:0]"), m_strBiasReg7));
-	m_valMap.insert(std::pair<CString, CString&>(_T("BIAS_REG8 [7:0]"), m_strBiasReg8));
-
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
 

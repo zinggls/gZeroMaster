@@ -66,7 +66,6 @@ public:
 	CString m_strChosenRegister;
 	BOOL m_bEdit;
 	std::map<CString, int> m_regMap;
-	std::map<CString, CString&> m_valMap;
 	CString m_strHex;
 
 	void L(const TCHAR* str, ...);
