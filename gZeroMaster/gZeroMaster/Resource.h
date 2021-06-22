@@ -55,6 +55,7 @@
 #define IDC_BUTTON1                     1045
 #define IDC_WRITE_BUTTON                1045
 #define IDC_BIT7_BUTTON                 1046
+#define IDC_READ_ALL_BUTTON             1047
 #define IDC_BIT6_BUTTON                 1048
 #define IDC_BIT5_BUTTON                 1049
 #define IDC_BIT4_BUTTON                 1050
@@ -69,7 +70,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        130
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1047
+#define _APS_NEXT_CONTROL_VALUE         1048
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

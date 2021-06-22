@@ -134,6 +134,7 @@ BEGIN_MESSAGE_MAP(CgZeroMasterDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BIT2_BUTTON, &CgZeroMasterDlg::OnBnClickedBit2Button)
 	ON_BN_CLICKED(IDC_BIT1_BUTTON, &CgZeroMasterDlg::OnBnClickedBit1Button)
 	ON_BN_CLICKED(IDC_BIT0_BUTTON, &CgZeroMasterDlg::OnBnClickedBit0Button)
+	ON_BN_CLICKED(IDC_READ_ALL_BUTTON, &CgZeroMasterDlg::OnBnClickedReadAllButton)
 END_MESSAGE_MAP()
 
 
@@ -782,4 +783,11 @@ void CgZeroMasterDlg::OnBnClickedBit1Button()
 void CgZeroMasterDlg::OnBnClickedBit0Button()
 {
 	ToggleBit(m_bit0);
+}
+
+
+void CgZeroMasterDlg::OnBnClickedReadAllButton()
+{
+	ClearResisterValues();
+	ReadResisters();
 }
