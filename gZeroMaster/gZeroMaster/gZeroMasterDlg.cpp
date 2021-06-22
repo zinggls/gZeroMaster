@@ -180,6 +180,7 @@ BOOL CgZeroMasterDlg::OnInitDialog()
 	BitControlEnable(FALSE);
 	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_HIDE);
 	ShowWriteButtons(SW_HIDE);
+	GetDlgItem(IDC_READ_ALL_BUTTON)->ShowWindow(SW_HIDE);
 
 	m_regMap.insert( std::pair<CString,int>(_T("RX_REG1 [4:0]"), 2) );
 	m_regMap.insert( std::pair<CString, int>(_T("TX_REG1 [23:16]"), 7) );
@@ -429,6 +430,7 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 			if (lLastError != ERROR_SUCCESS) return ErrorMsg(m_serial.GetLastError(), _T("Unable to set COM-port read timeout"));
 
 			ReadResisters();
+			GetDlgItem(IDC_READ_ALL_BUTTON)->ShowWindow(SW_SHOW);
 		}
 		else {
 			GetDlgItem(IDC_COM_COMBO)->EnableWindow(TRUE);
@@ -449,6 +451,7 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 		GetDlgItem(IDC_COM_COMBO)->EnableWindow(TRUE);
 		GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_HIDE);
 		ShowWriteButtons(SW_HIDE);
+		GetDlgItem(IDC_READ_ALL_BUTTON)->ShowWindow(SW_HIDE);
 	}
 }
 
