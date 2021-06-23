@@ -896,7 +896,58 @@ void CgZeroMasterDlg::OnBnClickedWriteButton()
 		L(m_strChosenRegister + _T(" update failed"));
 		return;
 	}
-	ReadResisters();
+
+	Sleep(100);	//주의! 여기서 Sleep이 없으면 PrintRegister과정의 Serial Read에서 Blocking된다.
+	switch (it->second)
+	{
+	case 2:
+		PrintRegister(2, _T("RX_REG1[4:0]"), m_strRxReg1);
+		break;
+	case 7:
+		PrintRegister(7, _T("TX_REG1[23:16]"), m_strTxReg1Top);
+		break;
+	case 6:
+		PrintRegister(6, _T("TX_REG1[15:8]"), m_strTxReg1Mid);
+		break;
+	case 5:
+		PrintRegister(5, _T("TX_REG1[7:0]"), m_strTxReg1Bot);
+		break;
+	case 13:
+		PrintRegister(13, _T("TX_REG216"), m_strTxReg2Top);
+		break;
+	case 12:
+		PrintRegister(12, _T("TX_REG2[15:8]"), m_strTxReg2Mid);
+		break;
+	case 11:
+		PrintRegister(11, _T("TX_REG2[7:0]"), m_strTxReg2Bot);
+		break;
+	case 17:
+		PrintRegister(17, _T("BIAS_REG10"), m_strBiasReg1);
+		break;
+	case 18:
+		PrintRegister(18, _T("BIAS_REG2[7:0]"), m_strBiasReg2);
+		break;
+	case 19:
+		PrintRegister(19, _T("BIAS_REG3[7:0]"), m_strBiasReg3);
+		break;
+	case 20:
+		PrintRegister(20, _T("BIAS_REG4[7:0]"), m_strBiasReg4);
+		break;
+	case 21:
+		PrintRegister(21, _T("BIAS_REG5[7:0]"), m_strBiasReg5);
+		break;
+	case 22:
+		PrintRegister(22, _T("BIAS_REG6[7:0]"), m_strBiasReg6);
+		break;
+	case 23:
+		PrintRegister(23, _T("BIAS_REG7[7:0]"), m_strBiasReg7);
+		break;
+	case 24:
+		PrintRegister(24, _T("BIAS_REG8[7:0]"), m_strBiasReg8);
+		break;
+	default:
+		break;
+	}
 }
 
 void CgZeroMasterDlg::ShowHexa()
