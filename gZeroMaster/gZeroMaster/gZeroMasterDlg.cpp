@@ -305,7 +305,6 @@ BOOL CgZeroMasterDlg::ReadResister(int addr,int *value)
 
 	DWORD dwBytesRead = 0;
 	if (m_serial.Read(buffer, 2, &dwBytesRead) != ERROR_SUCCESS) {
-	//if (m_serial.Read(buffer, 4, &dwBytesRead, 0, INFINITE) != ERROR_SUCCESS) {
 		ErrorMsg(m_serial.GetLastError(), _T("Unable to receive data"));
 		return FALSE;
 	}
