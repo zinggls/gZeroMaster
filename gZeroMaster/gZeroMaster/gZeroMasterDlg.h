@@ -75,6 +75,7 @@ public:
 	BOOL m_bEdit;
 	std::map<CString, CReg> m_regMap;
 	CString m_strHex;
+	CTabCtrl m_tab;
 
 	void L(const TCHAR* str, ...);
 	afx_msg void OnBnClickedConnectButton();

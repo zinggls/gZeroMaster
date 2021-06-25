@@ -104,6 +104,7 @@ void CgZeroMasterDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_CHOSEN_REGISTER_STATIC, m_strChosenRegister);
 	DDX_Check(pDX, IDC_EDIT_CHECK, m_bEdit);
 	DDX_Text(pDX, IDC_HEX_VALUE_STATIC, m_strHex);
+	DDX_Control(pDX, IDC_TAB, m_tab);
 }
 
 BEGIN_MESSAGE_MAP(CgZeroMasterDlg, CDialogEx)
@@ -200,6 +201,9 @@ BOOL CgZeroMasterDlg::OnInitDialog()
 	m_regMap.insert( std::pair<CString, CReg>(_T("BIAS_REG6 [7:0]"), CReg(22, &m_strBiasReg6)) );
 	m_regMap.insert( std::pair<CString, CReg>(_T("BIAS_REG7 [7:0]"), CReg(23, &m_strBiasReg7)) );
 	m_regMap.insert( std::pair<CString, CReg>(_T("BIAS_REG8 [7:0]"), CReg(24, &m_strBiasReg8)) );
+
+	m_tab.InsertItem(0, _T("Semantic"));
+	m_tab.InsertItem(1, _T("Raw"));
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
 

@@ -65,6 +65,8 @@
 #define IDC_BIT1_BUTTON                 1053
 #define IDC_BIT0_BUTTON                 1054
 #define IDC_HEX_VALUE_STATIC            1055
+#define IDC_TAB1                        1056
+#define IDC_TAB                         1056
 
 // Next default values for new objects
 // 
@@ -72,7 +74,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        133
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1056
+#define _APS_NEXT_CONTROL_VALUE         1057
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif
