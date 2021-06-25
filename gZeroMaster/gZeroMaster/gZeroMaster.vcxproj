@@ -203,6 +203,8 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CRaw.h" />
+    <ClInclude Include="CSemantic.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="gZeroMaster.h" />
     <ClInclude Include="gZeroMasterDlg.h" />
@@ -211,6 +213,8 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CRaw.cpp" />
+    <ClCompile Include="CSemantic.cpp" />
     <ClCompile Include="gZeroMaster.cpp" />
     <ClCompile Include="gZeroMasterDlg.cpp" />
     <ClCompile Include="pch.cpp">

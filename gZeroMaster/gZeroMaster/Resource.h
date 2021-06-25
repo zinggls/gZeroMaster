@@ -8,6 +8,8 @@
 #define IDD_GZEROMASTER_DIALOG          102
 #define IDR_MAINFRAME                   130
 #define IDI_GLS_ICON                    131
+#define IDD_SEMANTIC_DIALOG             133
+#define IDD_RAW_DIALOG                  135
 #define IDC_LOG_LIST                    1000
 #define IDC_COM_COMBO                   1001
 #define IDC_CONNECT_BUTTON              1002
@@ -72,7 +74,7 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        133
+#define _APS_NEXT_RESOURCE_VALUE        137
 #define _APS_NEXT_COMMAND_VALUE         32771
 #define _APS_NEXT_CONTROL_VALUE         1057
 #define _APS_NEXT_SYMED_VALUE           101

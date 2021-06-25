@@ -18,6 +18,9 @@ public:
 	CString* m_pStr;
 };
 
+class CSemantic;
+class CRaw;
+
 // CgZeroMasterDlg 대화 상자
 class CgZeroMasterDlg : public CDialogEx
 {
@@ -76,6 +79,8 @@ public:
 	std::map<CString, CReg> m_regMap;
 	CString m_strHex;
 	CTabCtrl m_tab;
+	CSemantic *m_pSemantic;
+	CRaw *m_pRaw;
 
 	void L(const TCHAR* str, ...);
 	afx_msg void OnBnClickedConnectButton();
@@ -119,4 +124,5 @@ public:
 	BOOL WriteRegister(int addr, int value);
 	afx_msg void OnBnClickedWriteButton();
 	void ShowHexa();
+	afx_msg void OnTcnSelchangeTab(NMHDR* pNMHDR, LRESULT* pResult);
 };

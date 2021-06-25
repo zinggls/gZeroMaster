@@ -7,6 +7,8 @@
 #include "gZeroMaster.h"
 #include "gZeroMasterDlg.h"
 #include "afxdialogex.h"
+#include "CSemantic.h"
+#include "CRaw.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -69,6 +71,8 @@ CgZeroMasterDlg::CgZeroMasterDlg(CWnd* pParent /*=nullptr*/)
 	, m_strChosenRegister(_T(""))
 	, m_bEdit(FALSE)
 	, m_strHex(_T(""))
+	, m_pSemantic(NULL)
+	, m_pRaw(NULL)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
@@ -139,6 +143,7 @@ BEGIN_MESSAGE_MAP(CgZeroMasterDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BIT0_BUTTON, &CgZeroMasterDlg::OnBnClickedBit0Button)
 	ON_BN_CLICKED(IDC_READ_ALL_BUTTON, &CgZeroMasterDlg::OnBnClickedReadAllButton)
 	ON_BN_CLICKED(IDC_WRITE_BUTTON, &CgZeroMasterDlg::OnBnClickedWriteButton)
+	ON_NOTIFY(TCN_SELCHANGE, IDC_TAB, &CgZeroMasterDlg::OnTcnSelchangeTab)
 END_MESSAGE_MAP()
 
 
@@ -204,6 +209,21 @@ BOOL CgZeroMasterDlg::OnInitDialog()
 
 	m_tab.InsertItem(0, _T("Semantic"));
 	m_tab.InsertItem(1, _T("Raw"));
+
+	m_tab.SetCurSel(0);
+
+	CRect rect;
+	m_tab.GetWindowRect(rect);
+
+	m_pSemantic = new CSemantic();
+	m_pSemantic->Create(IDD_SEMANTIC_DIALOG, &m_tab);
+	m_pSemantic->MoveWindow(0, 20, rect.Width(), rect.Height());
+	m_pSemantic->ShowWindow(SW_SHOW);
+
+	m_pRaw = new CRaw();
+	m_pRaw->Create(IDD_RAW_DIALOG, &m_tab);
+	m_pRaw->MoveWindow(0, 20, rect.Width(), rect.Height());
+	m_pRaw->ShowWindow(SW_HIDE);
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
 
@@ -895,4 +915,24 @@ void CgZeroMasterDlg::ShowHexa()
 {
 	m_strHex.Format(_T("0x%02x"), GetValueFromBits());
 	UpdateData(FALSE);
+}
+
+void CgZeroMasterDlg::OnTcnSelchangeTab(NMHDR* pNMHDR, LRESULT* pResult)
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	if (IDC_TAB == pNMHDR->idFrom) {
+		int iSelect = m_tab.GetCurSel();
+		switch (iSelect)
+		{
+		case 0:
+			m_pSemantic->ShowWindow(SW_SHOW);
+			m_pRaw->ShowWindow(SW_HIDE);
+			break;
+		case 1:
+			m_pSemantic->ShowWindow(SW_HIDE);
+			m_pRaw->ShowWindow(SW_SHOW);
+			break;
+		}
+	}
+	*pResult = 0;
 }
