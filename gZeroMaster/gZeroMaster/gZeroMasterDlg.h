@@ -125,4 +125,5 @@ public:
 	afx_msg void OnBnClickedWriteButton();
 	void ShowHexa();
 	afx_msg void OnTcnSelchangeTab(NMHDR* pNMHDR, LRESULT* pResult);
+	afx_msg void OnDestroy();
 };

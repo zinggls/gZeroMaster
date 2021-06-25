@@ -144,6 +144,7 @@ BEGIN_MESSAGE_MAP(CgZeroMasterDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_READ_ALL_BUTTON, &CgZeroMasterDlg::OnBnClickedReadAllButton)
 	ON_BN_CLICKED(IDC_WRITE_BUTTON, &CgZeroMasterDlg::OnBnClickedWriteButton)
 	ON_NOTIFY(TCN_SELCHANGE, IDC_TAB, &CgZeroMasterDlg::OnTcnSelchangeTab)
+	ON_WM_DESTROY()
 END_MESSAGE_MAP()
 
 
@@ -935,4 +936,14 @@ void CgZeroMasterDlg::OnTcnSelchangeTab(NMHDR* pNMHDR, LRESULT* pResult)
 		}
 	}
 	*pResult = 0;
+}
+
+
+void CgZeroMasterDlg::OnDestroy()
+{
+	CDialogEx::OnDestroy();
+
+	// TODO: 여기에 메시지 처리기 코드를 추가합니다.
+	delete m_pSemantic;
+	delete m_pRaw;
 }
