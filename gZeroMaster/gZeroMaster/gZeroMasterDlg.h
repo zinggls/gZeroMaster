@@ -10,6 +10,14 @@
 #define MAX_LOG					1000
 #define MAX_COMPORT				25
 
+class CReg {
+	CReg();
+public:
+	CReg(int addr, CString *pStr):m_nAddr(addr),m_pStr(pStr){}
+	int m_nAddr;
+	CString* m_pStr;
+};
+
 // CgZeroMasterDlg 대화 상자
 class CgZeroMasterDlg : public CDialogEx
 {
@@ -65,7 +73,7 @@ public:
 	CEdit m_bit0;
 	CString m_strChosenRegister;
 	BOOL m_bEdit;
-	std::map<CString, int> m_regMap;
+	std::map<CString, CReg> m_regMap;
 	CString m_strHex;
 
 	void L(const TCHAR* str, ...);
@@ -73,7 +81,7 @@ public:
 	void ErrorMsg(LONG lError, LPCTSTR lptszMessage);
 	BOOL ReadResister(int addr, int* value);
 	void ReadResisters();
-	BOOL PrintRegister(int addr, CString name, CString& valueStr);
+	BOOL PrintRegister(int addr, CString name, CString *pValueStr);
 	void ClearResisterValues();
 	CString Bits(unsigned char byte);
 	void ShowBits(unsigned char byte);

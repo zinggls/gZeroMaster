@@ -185,21 +185,21 @@ BOOL CgZeroMasterDlg::OnInitDialog()
 	ShowWriteButtons(SW_HIDE);
 	GetDlgItem(IDC_READ_ALL_BUTTON)->ShowWindow(SW_HIDE);
 
-	m_regMap.insert( std::pair<CString,int>(_T("RX_REG1 [4:0]"), 2) );
-	m_regMap.insert( std::pair<CString, int>(_T("TX_REG1 [23:16]"), 7) );
-	m_regMap.insert( std::pair<CString, int>(_T("TX_REG1 [15:8]"), 6) );
-	m_regMap.insert( std::pair<CString, int>(_T("TX_REG1 [7:0]"), 5) );
-	m_regMap.insert( std::pair<CString, int>(_T("TX_REG2 [16]"), 13) );
-	m_regMap.insert( std::pair<CString, int>(_T("TX_REG2 [15:8]"), 12) );
-	m_regMap.insert( std::pair<CString, int>(_T("TX_REG2 [7:0]"), 11) );
-	m_regMap.insert( std::pair<CString, int>(_T("BIAS_REG1 [0]"), 17) );
-	m_regMap.insert( std::pair<CString, int>(_T("BIAS_REG2 [7:0]"), 18) );
-	m_regMap.insert( std::pair<CString, int>(_T("BIAS_REG3 [7:0]"), 19) );
-	m_regMap.insert( std::pair<CString, int>(_T("BIAS_REG4 [7:0]"), 20) );
-	m_regMap.insert( std::pair<CString, int>(_T("BIAS_REG5 [7:0]"), 21) );
-	m_regMap.insert( std::pair<CString, int>(_T("BIAS_REG6 [7:0]"), 22) );
-	m_regMap.insert( std::pair<CString, int>(_T("BIAS_REG7 [7:0]"), 23) );
-	m_regMap.insert( std::pair<CString, int>(_T("BIAS_REG8 [7:0]"), 24) );
+	m_regMap.insert( std::pair<CString, CReg>(_T("RX_REG1 [4:0]"), CReg(2, &m_strRxReg1)) );
+	m_regMap.insert( std::pair<CString, CReg>(_T("TX_REG1 [23:16]"), CReg(7 ,&m_strTxReg1Top)) );
+	m_regMap.insert( std::pair<CString, CReg>(_T("TX_REG1 [15:8]"), CReg(6 ,&m_strTxReg1Mid)) );
+	m_regMap.insert( std::pair<CString, CReg>(_T("TX_REG1 [7:0]"), CReg(5, &m_strTxReg1Bot)) );
+	m_regMap.insert( std::pair<CString, CReg>(_T("TX_REG2 [16]"), CReg(13, &m_strTxReg2Top)) );
+	m_regMap.insert( std::pair<CString, CReg>(_T("TX_REG2 [15:8]"), CReg(12, &m_strTxReg2Mid)) );
+	m_regMap.insert( std::pair<CString, CReg>(_T("TX_REG2 [7:0]"), CReg(11, &m_strTxReg2Bot)) );
+	m_regMap.insert( std::pair<CString, CReg>(_T("BIAS_REG1 [0]"), CReg(17, &m_strBiasReg1)) );
+	m_regMap.insert( std::pair<CString, CReg>(_T("BIAS_REG2 [7:0]"), CReg(18, &m_strBiasReg2)) );
+	m_regMap.insert( std::pair<CString, CReg>(_T("BIAS_REG3 [7:0]"), CReg(19, &m_strBiasReg3)) );
+	m_regMap.insert( std::pair<CString, CReg>(_T("BIAS_REG4 [7:0]"), CReg(20, &m_strBiasReg4)) );
+	m_regMap.insert( std::pair<CString, CReg>(_T("BIAS_REG5 [7:0]"), CReg(21, &m_strBiasReg5)) );
+	m_regMap.insert( std::pair<CString, CReg>(_T("BIAS_REG6 [7:0]"), CReg(22, &m_strBiasReg6)) );
+	m_regMap.insert( std::pair<CString, CReg>(_T("BIAS_REG7 [7:0]"), CReg(23, &m_strBiasReg7)) );
+	m_regMap.insert( std::pair<CString, CReg>(_T("BIAS_REG8 [7:0]"), CReg(24, &m_strBiasReg8)) );
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
 
@@ -343,12 +343,12 @@ BOOL CgZeroMasterDlg::ReadResister(int addr,int *value)
 	24				18				BIAS_REG8[7:0]	: 50
 */
 
-BOOL CgZeroMasterDlg::PrintRegister(int addr,CString name, CString& valueStr)
+BOOL CgZeroMasterDlg::PrintRegister(int addr,CString name, CString *pValueStr)
 {
 	int value;
 	if (ReadResister(addr,&value) == FALSE) return FALSE;
 
-	valueStr.Format(_T("0x%02x"), value);
+	pValueStr->Format(_T("0x%02x"), value);
 
 	CString str;
 	str.Format(_T("Address:0x%02x %s 0x%02x"), addr,name.GetBuffer(),value);
@@ -360,21 +360,8 @@ BOOL CgZeroMasterDlg::PrintRegister(int addr,CString name, CString& valueStr)
 
 void CgZeroMasterDlg::ReadResisters()
 {
-	PrintRegister(2, _T("RX_REG1[4:0]"), m_strRxReg1);
-	PrintRegister(7, _T("TX_REG1[23:16]"), m_strTxReg1Top);
-	PrintRegister(6, _T("TX_REG1[15:8]"), m_strTxReg1Mid);
-	PrintRegister(5, _T("TX_REG1[7:0]"), m_strTxReg1Bot);
-	PrintRegister(13, _T("TX_REG216"), m_strTxReg2Top);
-	PrintRegister(12, _T("TX_REG2[15:8]"), m_strTxReg2Mid);
-	PrintRegister(11, _T("TX_REG2[7:0]"), m_strTxReg2Bot);
-	PrintRegister(17, _T("BIAS_REG10"), m_strBiasReg1);
-	PrintRegister(18, _T("BIAS_REG2[7:0]"), m_strBiasReg2);
-	PrintRegister(19, _T("BIAS_REG3[7:0]"), m_strBiasReg3);
-	PrintRegister(20, _T("BIAS_REG4[7:0]"), m_strBiasReg4);
-	PrintRegister(21, _T("BIAS_REG5[7:0]"), m_strBiasReg5);
-	PrintRegister(22, _T("BIAS_REG6[7:0]"), m_strBiasReg6);
-	PrintRegister(23, _T("BIAS_REG7[7:0]"), m_strBiasReg7);
-	PrintRegister(24, _T("BIAS_REG8[7:0]"), m_strBiasReg8);
+	for (std::map<CString, CReg>::iterator it = m_regMap.begin(); it != m_regMap.end(); it++)
+		PrintRegister(it->second.m_nAddr, it->first, it->second.m_pStr);
 }
 
 void CgZeroMasterDlg::ClearResisterValues()
@@ -882,12 +869,12 @@ void CgZeroMasterDlg::OnBnClickedWriteButton()
 {
 	ASSERT(m_strChosenRegister.IsEmpty() == FALSE);
 
-	std::map<CString, int>::iterator it;
+	std::map<CString, CReg>::iterator it;
 
 	it = m_regMap.find(m_strChosenRegister);
 	ASSERT(it != m_regMap.end());
 
-	BOOL b = WriteRegister(it->second, GetValueFromBits());
+	BOOL b = WriteRegister(it->second.m_nAddr, GetValueFromBits());
 	if (b) {
 		L(m_strChosenRegister + _T(" updated"));
 	}
@@ -897,56 +884,7 @@ void CgZeroMasterDlg::OnBnClickedWriteButton()
 	}
 
 	Sleep(100);	//주의! 여기서 Sleep이 없으면 PrintRegister과정의 Serial Read에서 Blocking된다.
-	switch (it->second)
-	{
-	case 2:
-		PrintRegister(2, _T("RX_REG1[4:0]"), m_strRxReg1);
-		break;
-	case 7:
-		PrintRegister(7, _T("TX_REG1[23:16]"), m_strTxReg1Top);
-		break;
-	case 6:
-		PrintRegister(6, _T("TX_REG1[15:8]"), m_strTxReg1Mid);
-		break;
-	case 5:
-		PrintRegister(5, _T("TX_REG1[7:0]"), m_strTxReg1Bot);
-		break;
-	case 13:
-		PrintRegister(13, _T("TX_REG216"), m_strTxReg2Top);
-		break;
-	case 12:
-		PrintRegister(12, _T("TX_REG2[15:8]"), m_strTxReg2Mid);
-		break;
-	case 11:
-		PrintRegister(11, _T("TX_REG2[7:0]"), m_strTxReg2Bot);
-		break;
-	case 17:
-		PrintRegister(17, _T("BIAS_REG10"), m_strBiasReg1);
-		break;
-	case 18:
-		PrintRegister(18, _T("BIAS_REG2[7:0]"), m_strBiasReg2);
-		break;
-	case 19:
-		PrintRegister(19, _T("BIAS_REG3[7:0]"), m_strBiasReg3);
-		break;
-	case 20:
-		PrintRegister(20, _T("BIAS_REG4[7:0]"), m_strBiasReg4);
-		break;
-	case 21:
-		PrintRegister(21, _T("BIAS_REG5[7:0]"), m_strBiasReg5);
-		break;
-	case 22:
-		PrintRegister(22, _T("BIAS_REG6[7:0]"), m_strBiasReg6);
-		break;
-	case 23:
-		PrintRegister(23, _T("BIAS_REG7[7:0]"), m_strBiasReg7);
-		break;
-	case 24:
-		PrintRegister(24, _T("BIAS_REG8[7:0]"), m_strBiasReg8);
-		break;
-	default:
-		break;
-	}
+	PrintRegister(it->second.m_nAddr, it->first, it->second.m_pStr);
 }
 
 void CgZeroMasterDlg::ShowHexa()
