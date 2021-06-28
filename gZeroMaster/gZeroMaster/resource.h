@@ -69,6 +69,14 @@
 #define IDC_HEX_VALUE_STATIC            1055
 #define IDC_TAB1                        1056
 #define IDC_TAB                         1056
+#define IDC_STATIC7                     1057
+#define IDC_STATIC6                     1058
+#define IDC_STATIC5                     1059
+#define IDC_STATIC4                     1060
+#define IDC_STATIC3                     1061
+#define IDC_STATIC2                     1062
+#define IDC_STATIC1                     1063
+#define IDC_STATIC0                     1064
 
 // Next default values for new objects
 // 
@@ -76,7 +84,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        137
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1057
+#define _APS_NEXT_CONTROL_VALUE         1065
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

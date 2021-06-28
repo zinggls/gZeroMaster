@@ -131,6 +131,7 @@ BOOL CRaw::OnInitDialog()
 	m_regMap.insert(std::pair<CString, CReg>(_T("BIAS_REG7 [7:0]"), CReg(23, &m_strBiasReg7)));
 	m_regMap.insert(std::pair<CString, CReg>(_T("BIAS_REG8 [7:0]"), CReg(24, &m_strBiasReg8)));
 
+	ShowBitWindow(SW_HIDE);
 	return TRUE;  // return TRUE unless you set the focus to a control
 				  // 예외: OCX 속성 페이지는 FALSE를 반환해야 합니다.
 }
@@ -272,6 +273,7 @@ CString CRaw::Bits(unsigned char byte)
 
 void CRaw::ShowBits(unsigned char byte)
 {
+	ShowBitWindow(SW_SHOW);
 	(byte & 0x80) ? m_bit7.SetWindowText(_T("1")) : m_bit7.SetWindowText(_T("0"));
 	(byte & 0x40) ? m_bit6.SetWindowText(_T("1")) : m_bit6.SetWindowText(_T("0"));
 	(byte & 0x20) ? m_bit5.SetWindowText(_T("1")) : m_bit5.SetWindowText(_T("0"));
@@ -699,4 +701,26 @@ void CRaw::ShowHexa()
 {
 	m_strHex.Format(_T("0x%02x"), GetValueFromBits());
 	UpdateData(FALSE);
+}
+
+void CRaw::ShowBitWindow(int nCmdShow)
+{
+	GetDlgItem(IDC_STATIC)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_BIT_EDIT7)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_BIT_EDIT6)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_BIT_EDIT5)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_BIT_EDIT4)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_BIT_EDIT3)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_BIT_EDIT2)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_BIT_EDIT1)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_BIT_EDIT0)->ShowWindow(nCmdShow);
+
+	GetDlgItem(IDC_STATIC7)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_STATIC6)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_STATIC5)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_STATIC4)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_STATIC3)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_STATIC2)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_STATIC1)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_STATIC0)->ShowWindow(nCmdShow);
 }
