@@ -77,6 +77,12 @@
 #define IDC_STATIC2                     1062
 #define IDC_STATIC1                     1063
 #define IDC_STATIC0                     1064
+#define IDC_RX_DATA_IF_ENABLE_CHECK     1065
+#define IDC_LIMITING_AMP_ENABLE_CHECK   1066
+#define IDC_LNA_GAIN_VALUE_STATIC       1067
+#define IDC_RX_DATA_IF_ENABLE_STATIC    1068
+#define IDC_LIMITING_AMP_ENABLE_STATIC  1069
+#define IDC_LNA_GAIN_STATIC             1070
 
 // Next default values for new objects
 // 
@@ -84,7 +90,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        137
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1065
+#define _APS_NEXT_CONTROL_VALUE         1071
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

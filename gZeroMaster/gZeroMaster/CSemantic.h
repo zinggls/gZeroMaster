@@ -20,4 +20,13 @@ protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV 지원입니다.
 
 	DECLARE_MESSAGE_MAP()
+public:
+	BOOL m_bRxDataInterface;
+	BOOL m_bLimitingAmplifier;
+
+public:
+	afx_msg void OnBnClickedRxDataIfEnableCheck();
+	afx_msg void OnBnClickedLimitingAmpEnableCheck();
+	virtual BOOL OnInitDialog();
+	CString m_strLnaGain;
 };
