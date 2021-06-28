@@ -1,5 +1,6 @@
 ﻿#pragma once
 
+class CgZeroMasterDlg;
 
 // CSemantic 대화 상자
 
@@ -23,10 +24,14 @@ protected:
 public:
 	BOOL m_bRxDataInterface;
 	BOOL m_bLimitingAmplifier;
+	CString m_strLnaGain;
+	CWnd* m_pParent;
 
 public:
+	CgZeroMasterDlg* Parent();
 	afx_msg void OnBnClickedRxDataIfEnableCheck();
 	afx_msg void OnBnClickedLimitingAmpEnableCheck();
 	virtual BOOL OnInitDialog();
-	CString m_strLnaGain;
+	void UpdateRegisters();
+	void UpdateRxReg1(CString strRxReg1);
 };

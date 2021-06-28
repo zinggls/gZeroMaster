@@ -5,6 +5,8 @@
 #include "gZeroMaster.h"
 #include "CSemantic.h"
 #include "afxdialogex.h"
+#include "gZeroMasterDlg.h"
+#include "CRaw.h"
 
 
 // CSemantic 대화 상자
@@ -16,6 +18,7 @@ CSemantic::CSemantic(CWnd* pParent /*=nullptr*/)
 	, m_bRxDataInterface(FALSE)
 	, m_bLimitingAmplifier(FALSE)
 	, m_strLnaGain(_T(""))
+	, m_pParent(pParent)
 {
 
 }
@@ -37,6 +40,12 @@ BEGIN_MESSAGE_MAP(CSemantic, CDialogEx)
 	ON_BN_CLICKED(IDC_RX_DATA_IF_ENABLE_CHECK, &CSemantic::OnBnClickedRxDataIfEnableCheck)
 	ON_BN_CLICKED(IDC_LIMITING_AMP_ENABLE_CHECK, &CSemantic::OnBnClickedLimitingAmpEnableCheck)
 END_MESSAGE_MAP()
+
+
+CgZeroMasterDlg* CSemantic::Parent()
+{
+	return dynamic_cast<CgZeroMasterDlg*>(m_pParent);
+}
 
 
 // CSemantic 메시지 처리기
@@ -69,4 +78,21 @@ BOOL CSemantic::OnInitDialog()
 	UpdateData(FALSE);
 	return TRUE;  // return TRUE unless you set the focus to a control
 				  // 예외: OCX 속성 페이지는 FALSE를 반환해야 합니다.
+}
+
+
+void CSemantic::UpdateRegisters()
+{
+	ASSERT(Parent());
+	UpdateRxReg1(Parent()->m_pRaw->m_strRxReg1);
+	UpdateData(FALSE);
+}
+
+void CSemantic::UpdateRxReg1(CString strRxReg1)
+{
+	int val = _tcstol(strRxReg1.GetBuffer(), NULL, 16) & 0xff;
+
+	m_bRxDataInterface = (val & 0x10) >> 4;
+	m_bLimitingAmplifier = (val & 0x08) >> 3;
+	m_strLnaGain.Format(_T("0x%02x"), val & 0x07);
 }
