@@ -236,6 +236,9 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 
 			lLastError = m_serial.SetupReadTimeouts(CSerial::EReadTimeoutBlocking);
 			if (lLastError != ERROR_SUCCESS) return ErrorMsg(m_serial.GetLastError(), _T("Unable to set COM-port read timeout"));
+
+			m_pRaw->ReadResisters();
+			m_pRaw->GetDlgItem(IDC_READ_ALL_BUTTON)->ShowWindow(SW_SHOW);
 		}
 		else {
 			GetDlgItem(IDC_COM_COMBO)->EnableWindow(TRUE);
@@ -253,6 +256,7 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 			L(str + _T(" close failed"));
 		}
 		GetDlgItem(IDC_COM_COMBO)->EnableWindow(TRUE);
+		m_pRaw->GetDlgItem(IDC_READ_ALL_BUTTON)->ShowWindow(SW_HIDE);
 	}
 }
 
@@ -276,10 +280,6 @@ void CgZeroMasterDlg::OnTcnSelchangeTab(NMHDR* pNMHDR, LRESULT* pResult)
 		case 1:
 			m_pSemantic->ShowWindow(SW_HIDE);
 			m_pRaw->ShowWindow(SW_SHOW);
-			if (m_serial.IsOpen()) {
-				m_pRaw->ReadResisters();
-				m_pRaw->GetDlgItem(IDC_READ_ALL_BUTTON)->ShowWindow(SW_SHOW);
-			}
 			break;
 		}
 	}
