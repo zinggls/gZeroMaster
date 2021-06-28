@@ -6,6 +6,7 @@
 #include "CRaw.h"
 #include "afxdialogex.h"
 #include "gZeroMasterDlg.h"
+#include "CSemantic.h"
 
 
 // CRaw 대화 상자
@@ -695,6 +696,7 @@ void CRaw::OnBnClickedWriteButton()
 
 	Sleep(100);	//주의! 여기서 Sleep이 없으면 PrintRegister과정의 Serial Read에서 Blocking된다.
 	PrintRegister(it->second.m_nAddr, it->first, it->second.m_pStr);
+	Parent()->m_pSemantic->UpdateRegisters();
 }
 
 void CRaw::ShowHexa()
