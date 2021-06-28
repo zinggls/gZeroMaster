@@ -239,6 +239,7 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 
 			m_pRaw->ReadResisters();
 			m_pSemantic->UpdateRegisters();
+			m_pSemantic->ControlEnable(TRUE);
 			m_pRaw->GetDlgItem(IDC_READ_ALL_BUTTON)->ShowWindow(SW_SHOW);
 		}
 		else {
@@ -257,6 +258,7 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 			L(str + _T(" close failed"));
 		}
 		GetDlgItem(IDC_COM_COMBO)->EnableWindow(TRUE);
+		m_pSemantic->ControlEnable(FALSE);
 		m_pRaw->GetDlgItem(IDC_READ_ALL_BUTTON)->ShowWindow(SW_HIDE);
 	}
 }

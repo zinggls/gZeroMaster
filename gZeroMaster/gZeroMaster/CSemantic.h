@@ -34,4 +34,5 @@ public:
 	virtual BOOL OnInitDialog();
 	void UpdateRegisters();
 	void UpdateRxReg1(CString strRxReg1);
+	void ControlEnable(BOOL b);
 };
