@@ -54,23 +54,6 @@ END_MESSAGE_MAP()
 
 CgZeroMasterDlg::CgZeroMasterDlg(CWnd* pParent /*=nullptr*/)
 	: CDialogEx(IDD_GZEROMASTER_DIALOG, pParent)
-	, m_strRxReg1(_T(""))
-	, m_strTxReg1Top(_T(""))
-	, m_strTxReg1Mid(_T(""))
-	, m_strTxReg2Top(_T(""))
-	, m_strTxReg2Mid(_T(""))
-	, m_strTxReg2Bot(_T(""))
-	, m_strBiasReg1(_T(""))
-	, m_strBiasReg2(_T(""))
-	, m_strBiasReg3(_T(""))
-	, m_strBiasReg4(_T(""))
-	, m_strBiasReg5(_T(""))
-	, m_strBiasReg6(_T(""))
-	, m_strBiasReg7(_T(""))
-	, m_strBiasReg8(_T(""))
-	, m_strChosenRegister(_T(""))
-	, m_bEdit(FALSE)
-	, m_strHex(_T(""))
 	, m_pSemantic(NULL)
 	, m_pRaw(NULL)
 {
@@ -82,32 +65,6 @@ void CgZeroMasterDlg::DoDataExchange(CDataExchange* pDX)
 	CDialogEx::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_LOG_LIST, m_log);
 	DDX_Control(pDX, IDC_COM_COMBO, m_comPort);
-	DDX_Text(pDX, IDC_RX_REG1_STATIC, m_strRxReg1);
-	DDX_Text(pDX, IDC_TX_REG1_TOP_STATIC, m_strTxReg1Top);
-	DDX_Text(pDX, IDC_TX_REG1_MID_STATIC, m_strTxReg1Mid);
-	DDX_Text(pDX, IDC_TX_REG1_BOT_STATIC, m_strTxReg1Bot);
-	DDX_Text(pDX, IDC_TX_REG2_TOP_STATIC, m_strTxReg2Top);
-	DDX_Text(pDX, IDC_TX_REG2_MID_STATIC, m_strTxReg2Mid);
-	DDX_Text(pDX, IDC_TX_REG2_BOT_STATIC, m_strTxReg2Bot);
-	DDX_Text(pDX, IDC_BIAS_REG1_STATIC, m_strBiasReg1);
-	DDX_Text(pDX, IDC_BIAS_REG2_STATIC, m_strBiasReg2);
-	DDX_Text(pDX, IDC_BIAS_REG3_STATIC, m_strBiasReg3);
-	DDX_Text(pDX, IDC_BIAS_REG4_STATIC, m_strBiasReg4);
-	DDX_Text(pDX, IDC_BIAS_REG5_STATIC, m_strBiasReg5);
-	DDX_Text(pDX, IDC_BIAS_REG6_STATIC, m_strBiasReg6);
-	DDX_Text(pDX, IDC_BIAS_REG7_STATIC, m_strBiasReg7);
-	DDX_Text(pDX, IDC_BIAS_REG8_STATIC, m_strBiasReg8);
-	DDX_Control(pDX, IDC_BIT_EDIT7, m_bit7);
-	DDX_Control(pDX, IDC_BIT_EDIT6, m_bit6);
-	DDX_Control(pDX, IDC_BIT_EDIT5, m_bit5);
-	DDX_Control(pDX, IDC_BIT_EDIT4, m_bit4);
-	DDX_Control(pDX, IDC_BIT_EDIT3, m_bit3);
-	DDX_Control(pDX, IDC_BIT_EDIT2, m_bit2);
-	DDX_Control(pDX, IDC_BIT_EDIT1, m_bit1);
-	DDX_Control(pDX, IDC_BIT_EDIT0, m_bit0);
-	DDX_Text(pDX, IDC_CHOSEN_REGISTER_STATIC, m_strChosenRegister);
-	DDX_Check(pDX, IDC_EDIT_CHECK, m_bEdit);
-	DDX_Text(pDX, IDC_HEX_VALUE_STATIC, m_strHex);
 	DDX_Control(pDX, IDC_TAB, m_tab);
 }
 
@@ -116,33 +73,7 @@ BEGIN_MESSAGE_MAP(CgZeroMasterDlg, CDialogEx)
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
 	ON_BN_CLICKED(IDC_CONNECT_BUTTON, &CgZeroMasterDlg::OnBnClickedConnectButton)
-	ON_STN_CLICKED(IDC_RX_REG1_STATIC, &CgZeroMasterDlg::OnStnClickedRxReg1Static)
-	ON_STN_CLICKED(IDC_TX_REG1_TOP_STATIC, &CgZeroMasterDlg::OnStnClickedTxReg1TopStatic)
-	ON_STN_CLICKED(IDC_TX_REG1_MID_STATIC, &CgZeroMasterDlg::OnStnClickedTxReg1MidStatic)
-	ON_STN_CLICKED(IDC_TX_REG1_BOT_STATIC, &CgZeroMasterDlg::OnStnClickedTxReg1BotStatic)
-	ON_STN_CLICKED(IDC_TX_REG2_TOP_STATIC, &CgZeroMasterDlg::OnStnClickedTxReg2TopStatic)
-	ON_STN_CLICKED(IDC_TX_REG2_MID_STATIC, &CgZeroMasterDlg::OnStnClickedTxReg2MidStatic)
-	ON_STN_CLICKED(IDC_TX_REG2_BOT_STATIC, &CgZeroMasterDlg::OnStnClickedTxReg2BotStatic)
-	ON_STN_CLICKED(IDC_BIAS_REG1_STATIC, &CgZeroMasterDlg::OnStnClickedBiasReg1Static)
-	ON_STN_CLICKED(IDC_BIAS_REG2_STATIC, &CgZeroMasterDlg::OnStnClickedBiasReg2Static)
-	ON_STN_CLICKED(IDC_BIAS_REG3_STATIC, &CgZeroMasterDlg::OnStnClickedBiasReg3Static)
-	ON_STN_CLICKED(IDC_BIAS_REG4_STATIC, &CgZeroMasterDlg::OnStnClickedBiasReg4Static)
-	ON_STN_CLICKED(IDC_BIAS_REG5_STATIC, &CgZeroMasterDlg::OnStnClickedBiasReg5Static)
-	ON_STN_CLICKED(IDC_BIAS_REG6_STATIC, &CgZeroMasterDlg::OnStnClickedBiasReg6Static)
-	ON_STN_CLICKED(IDC_BIAS_REG7_STATIC, &CgZeroMasterDlg::OnStnClickedBiasReg7Static)
-	ON_STN_CLICKED(IDC_BIAS_REG8_STATIC, &CgZeroMasterDlg::OnStnClickedBiasReg8Static)
 	ON_BN_CLICKED(IDC_LOG_CLEAR_BUTTON, &CgZeroMasterDlg::OnBnClickedLogClearButton)
-	ON_BN_CLICKED(IDC_EDIT_CHECK, &CgZeroMasterDlg::OnBnClickedEditCheck)
-	ON_BN_CLICKED(IDC_BIT7_BUTTON, &CgZeroMasterDlg::OnBnClickedBit7Button)
-	ON_BN_CLICKED(IDC_BIT6_BUTTON, &CgZeroMasterDlg::OnBnClickedBit6Button)
-	ON_BN_CLICKED(IDC_BIT5_BUTTON, &CgZeroMasterDlg::OnBnClickedBit5Button)
-	ON_BN_CLICKED(IDC_BIT4_BUTTON, &CgZeroMasterDlg::OnBnClickedBit4Button)
-	ON_BN_CLICKED(IDC_BIT3_BUTTON, &CgZeroMasterDlg::OnBnClickedBit3Button)
-	ON_BN_CLICKED(IDC_BIT2_BUTTON, &CgZeroMasterDlg::OnBnClickedBit2Button)
-	ON_BN_CLICKED(IDC_BIT1_BUTTON, &CgZeroMasterDlg::OnBnClickedBit1Button)
-	ON_BN_CLICKED(IDC_BIT0_BUTTON, &CgZeroMasterDlg::OnBnClickedBit0Button)
-	ON_BN_CLICKED(IDC_READ_ALL_BUTTON, &CgZeroMasterDlg::OnBnClickedReadAllButton)
-	ON_BN_CLICKED(IDC_WRITE_BUTTON, &CgZeroMasterDlg::OnBnClickedWriteButton)
 	ON_NOTIFY(TCN_SELCHANGE, IDC_TAB, &CgZeroMasterDlg::OnTcnSelchangeTab)
 	ON_WM_DESTROY()
 END_MESSAGE_MAP()
@@ -187,27 +118,6 @@ BOOL CgZeroMasterDlg::OnInitDialog()
 	}
 	m_comPort.SetCurSel(0);
 
-	BitControlEnable(FALSE);
-	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_HIDE);
-	ShowWriteButtons(SW_HIDE);
-	GetDlgItem(IDC_READ_ALL_BUTTON)->ShowWindow(SW_HIDE);
-
-	m_regMap.insert( std::pair<CString, CReg>(_T("RX_REG1 [4:0]"), CReg(2, &m_strRxReg1)) );
-	m_regMap.insert( std::pair<CString, CReg>(_T("TX_REG1 [23:16]"), CReg(7 ,&m_strTxReg1Top)) );
-	m_regMap.insert( std::pair<CString, CReg>(_T("TX_REG1 [15:8]"), CReg(6 ,&m_strTxReg1Mid)) );
-	m_regMap.insert( std::pair<CString, CReg>(_T("TX_REG1 [7:0]"), CReg(5, &m_strTxReg1Bot)) );
-	m_regMap.insert( std::pair<CString, CReg>(_T("TX_REG2 [16]"), CReg(13, &m_strTxReg2Top)) );
-	m_regMap.insert( std::pair<CString, CReg>(_T("TX_REG2 [15:8]"), CReg(12, &m_strTxReg2Mid)) );
-	m_regMap.insert( std::pair<CString, CReg>(_T("TX_REG2 [7:0]"), CReg(11, &m_strTxReg2Bot)) );
-	m_regMap.insert( std::pair<CString, CReg>(_T("BIAS_REG1 [0]"), CReg(17, &m_strBiasReg1)) );
-	m_regMap.insert( std::pair<CString, CReg>(_T("BIAS_REG2 [7:0]"), CReg(18, &m_strBiasReg2)) );
-	m_regMap.insert( std::pair<CString, CReg>(_T("BIAS_REG3 [7:0]"), CReg(19, &m_strBiasReg3)) );
-	m_regMap.insert( std::pair<CString, CReg>(_T("BIAS_REG4 [7:0]"), CReg(20, &m_strBiasReg4)) );
-	m_regMap.insert( std::pair<CString, CReg>(_T("BIAS_REG5 [7:0]"), CReg(21, &m_strBiasReg5)) );
-	m_regMap.insert( std::pair<CString, CReg>(_T("BIAS_REG6 [7:0]"), CReg(22, &m_strBiasReg6)) );
-	m_regMap.insert( std::pair<CString, CReg>(_T("BIAS_REG7 [7:0]"), CReg(23, &m_strBiasReg7)) );
-	m_regMap.insert( std::pair<CString, CReg>(_T("BIAS_REG8 [7:0]"), CReg(24, &m_strBiasReg8)) );
-
 	m_tab.InsertItem(0, _T("Semantic"));
 	m_tab.InsertItem(1, _T("Raw"));
 
@@ -216,12 +126,12 @@ BOOL CgZeroMasterDlg::OnInitDialog()
 	CRect rect;
 	m_tab.GetWindowRect(rect);
 
-	m_pSemantic = new CSemantic();
+	m_pSemantic = new CSemantic(this);
 	m_pSemantic->Create(IDD_SEMANTIC_DIALOG, &m_tab);
 	m_pSemantic->MoveWindow(0, 20, rect.Width(), rect.Height());
 	m_pSemantic->ShowWindow(SW_SHOW);
 
-	m_pRaw = new CRaw();
+	m_pRaw = new CRaw(this);
 	m_pRaw->Create(IDD_RAW_DIALOG, &m_tab);
 	m_pRaw->MoveWindow(0, 20, rect.Width(), rect.Height());
 	m_pRaw->ShowWindow(SW_HIDE);
@@ -305,119 +215,6 @@ void CgZeroMasterDlg::ErrorMsg(LONG lError, LPCTSTR lptszMessage)
 	L(str);
 }
 
-BOOL CgZeroMasterDlg::ReadResister(int addr,int *value)
-{
-	char buffer[4] = { 0, };
-	sprintf_s(buffer, "%x", addr);
-
-	size_t index = strlen(buffer);
-	buffer[index] = 0xd;		//Enter
-	buffer[index + 1] = 0x1;	//Read	0x1
-
-	CString str;
-
-	DWORD dwBytesWrite = 0;
-	LONG lLastError = m_serial.Write(buffer, index+2,&dwBytesWrite);
-	if (lLastError != ERROR_SUCCESS) {
-		ErrorMsg(m_serial.GetLastError(), _T("Unable to send data"));
-		return FALSE;
-	}
-
-#ifdef DEBUG_READ
-	str.Format(_T("%d bytes written"), dwBytesWrite);
-	L(str);
-#endif // DEBUG_READ
-
-	DWORD dwBytesRead = 0;
-	if (m_serial.Read(buffer, 2, &dwBytesRead) != ERROR_SUCCESS) {
-		ErrorMsg(m_serial.GetLastError(), _T("Unable to receive data"));
-		return FALSE;
-	}
-#ifdef DEBUG_READ
-	str.Format(_T("%d bytes received"), dwBytesRead);
-	L(str);
-#endif // DEBUG_READ
-
-
-	buffer[2] = 0;	//문자열 끝을 나타내기 위해서
-	*value = (int)strtol(buffer, NULL, 16);
-
-#ifdef DEBUG_READ
-	str.Format(_T("Address:0x%02x Register:0x%02x"), addr,*value);
-	L(str);
-#endif // DEBUG_READ
-	return TRUE;
-}
-
-/*
-*   address(Dec)	address(Hex)	Register		: DefaultValue
-	2				2				RX_REG1[4:0]	: 18
-	7				7				TX_REG1[23:16]	: 00
-	6				6				TX_REG1[15:8]	: 10
-	5				5				TX_REG1[7:0]	: 10
-	13				D				TX_REG216		: 01
-	12				C				TX_REG2[15:8]	: F7
-	11				B				TX_REG2[7:0]	: B7
-	17				11				BIAS_REG10		: 01
-	18				12				BIAS_REG2[7:0]	: 99
-	19				13				BIAS_REG3[7:0]	: 99
-	20				14				BIAS_REG4[7:0]	: 96
-	21				15				BIAS_REG5[7:0]	: 66
-	22				16				BIAS_REG6[7:0]	: 66
-	23				17				BIAS_REG7[7:0]	: 06
-	24				18				BIAS_REG8[7:0]	: 50
-*/
-
-BOOL CgZeroMasterDlg::PrintRegister(int addr,CString name, CString *pValueStr)
-{
-	int value;
-	if (ReadResister(addr,&value) == FALSE) return FALSE;
-
-	pValueStr->Format(_T("0x%02x"), value);
-
-	CString str;
-	str.Format(_T("Address:0x%02x %s 0x%02x"), addr,name.GetBuffer(),value);
-	L(str);
-
-	UpdateData(FALSE);
-	return TRUE;
-}
-
-void CgZeroMasterDlg::ReadResisters()
-{
-	for (std::map<CString, CReg>::iterator it = m_regMap.begin(); it != m_regMap.end(); it++)
-		PrintRegister(it->second.m_nAddr, it->first, it->second.m_pStr);
-}
-
-void CgZeroMasterDlg::ClearResisterValues()
-{
-	m_strRxReg1.Empty();
-	m_strTxReg1Top.Empty();
-	m_strTxReg1Mid.Empty();
-	m_strTxReg1Bot.Empty();
-	m_strTxReg2Top.Empty();
-	m_strTxReg2Mid.Empty();
-	m_strTxReg2Bot.Empty();
-	m_strBiasReg1.Empty();
-	m_strBiasReg2.Empty();
-	m_strBiasReg3.Empty();
-	m_strBiasReg4.Empty();
-	m_strBiasReg5.Empty();
-	m_strBiasReg6.Empty();
-	m_strBiasReg7.Empty();
-	m_strBiasReg8.Empty();
-	UpdateData(FALSE);
-
-	m_bit7.SetWindowText(_T(""));
-	m_bit6.SetWindowText(_T(""));
-	m_bit5.SetWindowText(_T(""));
-	m_bit4.SetWindowText(_T(""));
-	m_bit3.SetWindowText(_T(""));
-	m_bit2.SetWindowText(_T(""));
-	m_bit1.SetWindowText(_T(""));
-	m_bit0.SetWindowText(_T(""));
-}
-
 void CgZeroMasterDlg::OnBnClickedConnectButton()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
@@ -439,9 +236,6 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 
 			lLastError = m_serial.SetupReadTimeouts(CSerial::EReadTimeoutBlocking);
 			if (lLastError != ERROR_SUCCESS) return ErrorMsg(m_serial.GetLastError(), _T("Unable to set COM-port read timeout"));
-
-			ReadResisters();
-			GetDlgItem(IDC_READ_ALL_BUTTON)->ShowWindow(SW_SHOW);
 		}
 		else {
 			GetDlgItem(IDC_COM_COMBO)->EnableWindow(TRUE);
@@ -458,463 +252,13 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 		else {
 			L(str + _T(" close failed"));
 		}
-		ClearResisterValues();
 		GetDlgItem(IDC_COM_COMBO)->EnableWindow(TRUE);
-		GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_HIDE);
-		ShowWriteButtons(SW_HIDE);
-		GetDlgItem(IDC_READ_ALL_BUTTON)->ShowWindow(SW_HIDE);
-		m_strChosenRegister.Empty();
-		m_strHex.Empty();
-		UpdateData(FALSE);
 	}
 }
-
-CString CgZeroMasterDlg::Bits(unsigned char byte)
-{
-	CString strBit;
-	(byte & 0x80) ? strBit += "1" : strBit += "0";
-	(byte & 0x40) ? strBit += "1" : strBit += "0";
-	(byte & 0x20) ? strBit += "1" : strBit += "0";
-	(byte & 0x10) ? strBit += "1" : strBit += "0";
-	(byte & 0x08) ? strBit += "1" : strBit += "0";
-	(byte & 0x04) ? strBit += "1" : strBit += "0";
-	(byte & 0x02) ? strBit += "1" : strBit += "0";
-	(byte & 0x01) ? strBit += "1" : strBit += "0";
-	return strBit;
-}
-
-void CgZeroMasterDlg::ShowBits(unsigned char byte)
-{
-	(byte & 0x80) ? m_bit7.SetWindowText(_T("1")) : m_bit7.SetWindowText(_T("0"));
-	(byte & 0x40) ? m_bit6.SetWindowText(_T("1")) : m_bit6.SetWindowText(_T("0"));
-	(byte & 0x20) ? m_bit5.SetWindowText(_T("1")) : m_bit5.SetWindowText(_T("0"));
-	(byte & 0x10) ? m_bit4.SetWindowText(_T("1")) : m_bit4.SetWindowText(_T("0"));
-	(byte & 0x08) ? m_bit3.SetWindowText(_T("1")) : m_bit3.SetWindowText(_T("0"));
-	(byte & 0x04) ? m_bit2.SetWindowText(_T("1")) : m_bit2.SetWindowText(_T("0"));
-	(byte & 0x02) ? m_bit1.SetWindowText(_T("1")) : m_bit1.SetWindowText(_T("0"));
-	(byte & 0x01) ? m_bit0.SetWindowText(_T("1")) : m_bit0.SetWindowText(_T("0"));
-	ShowHexa();
-}
-
-void CgZeroMasterDlg::OnStnClickedRxReg1Static()
-{
-	if (!m_serial.IsOpen()) return;
-
-	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_SHOW);
-	L(_T("RX_REG1[4:0]"));
-	L(_T("    [4]:RX Data Interface enable"));
-	L(_T("    [3]:Limiting Amplifier enable"));
-	L(_T("    [2:0]:Control the LNA gain"));
-	ShowBits(_tcstol(m_strRxReg1.GetBuffer(), NULL, 16) & 0xff);
-	GetDlgItem(IDC_RX_REG1_LABEL)->GetWindowText(m_strChosenRegister);
-	UpdateData(FALSE);
-}
-
-
-void CgZeroMasterDlg::OnStnClickedTxReg1TopStatic()
-{
-	if (!m_serial.IsOpen()) return;
-
-	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_SHOW);
-	L(_T("TX_REG1[23:16]"));
-	L(_T("    [7:0]:Duty cycle control"));
-	ShowBits(_tcstol(m_strTxReg1Top.GetBuffer(), NULL, 16) & 0xff);
-	GetDlgItem(IDC_TX_REG1_TOP_LABEL)->GetWindowText(m_strChosenRegister);
-	UpdateData(FALSE);
-}
-
-
-void CgZeroMasterDlg::OnStnClickedTxReg1MidStatic()
-{
-	if (!m_serial.IsOpen()) return;
-
-	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_SHOW);
-	L(_T("TX_REG1[15:8]"));
-	L(_T("    [7:0]:VCO oscillation frequency control(3:10)"));
-	ShowBits(_tcstol(m_strTxReg1Mid.GetBuffer(), NULL, 16) & 0xff);
-	GetDlgItem(IDC_TX_REG1_MID_LABEL)->GetWindowText(m_strChosenRegister);
-	UpdateData(FALSE);
-}
-
-
-void CgZeroMasterDlg::OnStnClickedTxReg1BotStatic()
-{
-	if (!m_serial.IsOpen()) return;
-
-	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_SHOW);
-	L(_T("TX_REG1[7:0]"));
-	L(_T("    [7:5]:VCO oscillation frequency control(0:2)"));
-	L(_T("    [4]:Regulator Reference Voltage  Control"));
-	L(_T("    [3:0]:VCO_VDD Control"));
-	ShowBits(_tcstol(m_strTxReg1Bot.GetBuffer(), NULL, 16) & 0xff);
-	GetDlgItem(IDC_TX_REG1_BOT_LABEL)->GetWindowText(m_strChosenRegister);
-	UpdateData(FALSE);
-}
-
-
-void CgZeroMasterDlg::OnStnClickedTxReg2TopStatic()
-{
-	if (!m_serial.IsOpen()) return;
-
-	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_SHOW);
-	L(_T("TX_REG2[16]"));
-	L(_T("    [0]:VCO power up/down 0: VCO off, 1: VCO on"));
-	ShowBits(_tcstol(m_strTxReg2Top.GetBuffer(), NULL, 16) & 0xff);
-	GetDlgItem(IDC_TX_REG2_TOP_LABEL)->GetWindowText(m_strChosenRegister);
-	UpdateData(FALSE);
-}
-
-
-void CgZeroMasterDlg::OnStnClickedTxReg2MidStatic()
-{
-	if (!m_serial.IsOpen()) return;
-
-	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_SHOW);
-	L(_T("TX_REG2[15:8]"));
-	L(_T("    [7]:Modulator power down --0: MOD off, 1: MOD on"));
-	L(_T("    [6]:Test buffer power down--0: test buff off, 1: test buff on"));
-	L(_T("    [5]:DATA Input Select --0: SER (Inside), 1: Test buff(Outside)"));
-	L(_T("    [4]:PA power down 0: PA off, 1: PA on"));
-	L(_T("    [3:0]:PA gain control 2"));
-	ShowBits(_tcstol(m_strTxReg2Mid.GetBuffer(), NULL, 16) & 0xff);
-	GetDlgItem(IDC_TX_REG2_MID_LABEL)->GetWindowText(m_strChosenRegister);
-	UpdateData(FALSE);
-}
-
-
-void CgZeroMasterDlg::OnStnClickedTxReg2BotStatic()
-{
-	if (!m_serial.IsOpen()) return;
-
-	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_SHOW);
-	L(_T("TX_REG2[7:0]"));
-	L(_T("    [7:4]:PA gain control 1"));
-	L(_T("    [3:0]:Test Buffer Current control"));
-	ShowBits(_tcstol(m_strTxReg2Bot.GetBuffer(), NULL, 16) & 0xff);
-	GetDlgItem(IDC_TX_REG2_BOT_LABEL)->GetWindowText(m_strChosenRegister);
-	UpdateData(FALSE);
-}
-
-
-void CgZeroMasterDlg::OnStnClickedBiasReg1Static()
-{
-	if (!m_serial.IsOpen()) return;
-
-	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_SHOW);
-	L(_T("BIAS_REG1[0]"));
-	L(_T("    [0]:BIAS block Enable"));
-	ShowBits(_tcstol(m_strBiasReg1.GetBuffer(), NULL, 16) & 0xff);
-	GetDlgItem(IDC_BIAS_REG1_LABEL)->GetWindowText(m_strChosenRegister);
-	UpdateData(FALSE);
-}
-
-
-void CgZeroMasterDlg::OnStnClickedBiasReg2Static()
-{
-	if (!m_serial.IsOpen()) return;
-
-	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_SHOW);
-	L(_T("BIAS_REG2[7:0]"));
-	L(_T("    [7:4]:Control LNA 3rd stage biasing current"));
-	L(_T("    [3:0]:Control LNA 1st & 2nd stages biasing current"));
-	ShowBits(_tcstol(m_strBiasReg2.GetBuffer(), NULL, 16) & 0xff);
-	GetDlgItem(IDC_BIAS_REG2_LABEL)->GetWindowText(m_strChosenRegister);
-	UpdateData(FALSE);
-}
-
-
-void CgZeroMasterDlg::OnStnClickedBiasReg3Static()
-{
-	if (!m_serial.IsOpen()) return;
-
-	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_SHOW);
-	L(_T("BIAS_REG3[7:0]"));
-	L(_T("    [7:4]:Control LNA 5th stage biasing current"));
-	L(_T("    [3:0]:Control LNA 4th stage biasing current"));
-	ShowBits(_tcstol(m_strBiasReg3.GetBuffer(), NULL, 16) & 0xff);
-	GetDlgItem(IDC_BIAS_REG3_LABEL)->GetWindowText(m_strChosenRegister);
-	UpdateData(FALSE);
-}
-
-
-void CgZeroMasterDlg::OnStnClickedBiasReg4Static()
-{
-	if (!m_serial.IsOpen()) return;
-
-	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_SHOW);
-	L(_T("BIAS_REG4[7:0]"));
-	L(_T("    [7:4]:Control the demodulator's current"));
-	L(_T("    [3:0]:Control the demodulator's current"));
-	ShowBits(_tcstol(m_strBiasReg4.GetBuffer(), NULL, 16) & 0xff);
-	GetDlgItem(IDC_BIAS_REG4_LABEL)->GetWindowText(m_strChosenRegister);
-	UpdateData(FALSE);
-}
-
-
-void CgZeroMasterDlg::OnStnClickedBiasReg5Static()
-{
-	if (!m_serial.IsOpen()) return;
-
-	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_SHOW);
-	L(_T("BIAS_REG5[7:0]"));
-	L(_T("    [7:4]:Control the biasing current for LA's FB"));
-	L(_T("    [3:0]:Control the biasing current for LA's core"));
-	ShowBits(_tcstol(m_strBiasReg5.GetBuffer(), NULL, 16) & 0xff);
-	GetDlgItem(IDC_BIAS_REG5_LABEL)->GetWindowText(m_strChosenRegister);
-	UpdateData(FALSE);
-}
-
-
-void CgZeroMasterDlg::OnStnClickedBiasReg6Static()
-{
-	if (!m_serial.IsOpen()) return;
-
-	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_SHOW);
-	L(_T("BIAS_REG6[7:0]"));
-	L(_T("    [7:4]:Control the biasing current for LA's O/P buffer"));
-	L(_T("    [3:0]:Control the biasing current for LA's I/P buffer"));
-	ShowBits(_tcstol(m_strBiasReg6.GetBuffer(), NULL, 16) & 0xff);
-	GetDlgItem(IDC_BIAS_REG6_LABEL)->GetWindowText(m_strChosenRegister);
-	UpdateData(FALSE);
-}
-
-
-void CgZeroMasterDlg::OnStnClickedBiasReg7Static()
-{
-	if (!m_serial.IsOpen()) return;
-
-	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_SHOW);
-	L(_T("BIAS_REG7[7:0]"));
-	L(_T("    [7:4]:Control the biasing current for LA's High/Low data rate"));
-	L(_T("    [3:0]:Control the biasing current for CMOS gain stage"));
-	ShowBits(_tcstol(m_strBiasReg7.GetBuffer(), NULL, 16) & 0xff);
-	GetDlgItem(IDC_BIAS_REG7_LABEL)->GetWindowText(m_strChosenRegister);
-	UpdateData(FALSE);
-}
-
-
-void CgZeroMasterDlg::OnStnClickedBiasReg8Static()
-{
-	if (!m_serial.IsOpen()) return;
-
-	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_SHOW);
-	L(_T("BIAS_REG8[7:0]"));
-	L(_T("    [7:0]:Control the biasing current for CML interface stage. It aso controls the duty cycle"));
-	ShowBits(_tcstol(m_strBiasReg8.GetBuffer(), NULL, 16) & 0xff);
-	GetDlgItem(IDC_BIAS_REG8_LABEL)->GetWindowText(m_strChosenRegister);
-	UpdateData(FALSE);
-}
-
 
 void CgZeroMasterDlg::OnBnClickedLogClearButton()
 {
 	m_log.ResetContent();
-	UpdateData(FALSE);
-}
-
-void CgZeroMasterDlg::BitControlEnable(BOOL b)
-{
-	m_bit7.EnableWindow(b);
-	m_bit6.EnableWindow(b);
-	m_bit5.EnableWindow(b);
-	m_bit4.EnableWindow(b);
-	m_bit3.EnableWindow(b);
-	m_bit2.EnableWindow(b);
-	m_bit1.EnableWindow(b);
-	m_bit0.EnableWindow(b);
-}
-
-void CgZeroMasterDlg::OnBnClickedEditCheck()
-{
-	m_bEdit = !m_bEdit;
-	if (m_bEdit) {
-		ShowWriteButtons(SW_SHOW);
-	}
-	else {
-		ShowWriteButtons(SW_HIDE);
-	}
-	UpdateData(FALSE);
-}
-
-void CgZeroMasterDlg::ShowWriteButtons(int nCmdShow)
-{
-	GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(nCmdShow);
-	GetDlgItem(IDC_BIT7_BUTTON)->ShowWindow(nCmdShow);
-	GetDlgItem(IDC_BIT6_BUTTON)->ShowWindow(nCmdShow);
-	GetDlgItem(IDC_BIT5_BUTTON)->ShowWindow(nCmdShow);
-	GetDlgItem(IDC_BIT4_BUTTON)->ShowWindow(nCmdShow);
-	GetDlgItem(IDC_BIT3_BUTTON)->ShowWindow(nCmdShow);
-	GetDlgItem(IDC_BIT2_BUTTON)->ShowWindow(nCmdShow);
-	GetDlgItem(IDC_BIT1_BUTTON)->ShowWindow(nCmdShow);
-	GetDlgItem(IDC_BIT0_BUTTON)->ShowWindow(nCmdShow);
-}
-
-void CgZeroMasterDlg::ToggleBit(CEdit& bit)
-{
-	CString strCurVal;
-	bit.GetWindowText(strCurVal);
-	(strCurVal == _T("0")) ? bit.SetWindowText(_T("1")) : bit.SetWindowText(_T("0"));
-	ShowHexa();
-}
-
-void CgZeroMasterDlg::OnBnClickedBit7Button()
-{
-	ToggleBit(m_bit7);
-}
-
-
-void CgZeroMasterDlg::OnBnClickedBit6Button()
-{
-	ToggleBit(m_bit6);
-}
-
-
-void CgZeroMasterDlg::OnBnClickedBit5Button()
-{
-	ToggleBit(m_bit5);
-}
-
-
-void CgZeroMasterDlg::OnBnClickedBit4Button()
-{
-	ToggleBit(m_bit4);
-}
-
-
-void CgZeroMasterDlg::OnBnClickedBit3Button()
-{
-	ToggleBit(m_bit3);
-}
-
-
-void CgZeroMasterDlg::OnBnClickedBit2Button()
-{
-	ToggleBit(m_bit2);
-}
-
-
-void CgZeroMasterDlg::OnBnClickedBit1Button()
-{
-	ToggleBit(m_bit1);
-}
-
-
-void CgZeroMasterDlg::OnBnClickedBit0Button()
-{
-	ToggleBit(m_bit0);
-}
-
-
-void CgZeroMasterDlg::OnBnClickedReadAllButton()
-{
-	m_strRxReg1.Empty();
-	m_strTxReg1Top.Empty();
-	m_strTxReg1Mid.Empty();
-	m_strTxReg1Bot.Empty();
-	m_strTxReg2Top.Empty();
-	m_strTxReg2Mid.Empty();
-	m_strTxReg2Bot.Empty();
-	m_strBiasReg1.Empty();
-	m_strBiasReg2.Empty();
-	m_strBiasReg3.Empty();
-	m_strBiasReg4.Empty();
-	m_strBiasReg5.Empty();
-	m_strBiasReg6.Empty();
-	m_strBiasReg7.Empty();
-	m_strBiasReg8.Empty();
-	UpdateData(FALSE);
-
-	ReadResisters();
-}
-
-
-int CgZeroMasterDlg::GetValueFromBits()
-{
-	int value = 0;
-
-	CString str;
-	m_bit7.GetWindowText(str);
-	if (str == _T("1")) value = 0x80;
-
-	m_bit6.GetWindowText(str);
-	if (str == _T("1")) value |= 0x40;
-
-	m_bit5.GetWindowText(str);
-	if (str == _T("1")) value |= 0x20;
-
-	m_bit4.GetWindowText(str);
-	if (str == _T("1")) value |= 0x10;
-
-	m_bit3.GetWindowText(str);
-	if (str == _T("1")) value |= 0x08;
-
-	m_bit2.GetWindowText(str);
-	if (str == _T("1")) value |= 0x04;
-
-	m_bit1.GetWindowText(str);
-	if (str == _T("1")) value |= 0x02;
-
-	m_bit0.GetWindowText(str);
-	if (str == _T("1")) value |= 0x01;
-
-	str.Format(_T("0x%02x"), value);
-	L(_T("Value read from the Bits:") + str);
-	return value;
-}
-
-
-BOOL CgZeroMasterDlg::WriteRegister(int addr, int value)
-{
-	char buffer[12] = { 0, };
-	sprintf_s(buffer, sizeof(buffer), "%x", addr);
-
-	size_t index = strlen(buffer);
-	buffer[index] = 0xd;            //Enter
-	buffer[index + 1] = 0x0;        //Write    0x0
-
-	sprintf_s(buffer + index + 2, sizeof(buffer) - index - 2, "%x", value);
-	size_t valLen = strlen(buffer + index + 2);
-
-	buffer[index + 2 + valLen] = 0xd;
-
-	DWORD dwBytesWrite = 0;
-	LONG lLastError = m_serial.Write(buffer, index + valLen + 3, &dwBytesWrite);
-	if (lLastError != ERROR_SUCCESS) {
-		ErrorMsg(m_serial.GetLastError(), _T("Unable to send data"));
-		return FALSE;
-	}
-	CString str;
-	str.Format(_T("%d bytes sent"), dwBytesWrite);
-	L(str);
-	return TRUE;
-}
-
-
-void CgZeroMasterDlg::OnBnClickedWriteButton()
-{
-	ASSERT(m_strChosenRegister.IsEmpty() == FALSE);
-
-	std::map<CString, CReg>::iterator it;
-
-	it = m_regMap.find(m_strChosenRegister);
-	ASSERT(it != m_regMap.end());
-
-	BOOL b = WriteRegister(it->second.m_nAddr, GetValueFromBits());
-	if (b) {
-		L(m_strChosenRegister + _T(" updated"));
-	}
-	else {
-		L(m_strChosenRegister + _T(" update failed"));
-		return;
-	}
-
-	Sleep(100);	//주의! 여기서 Sleep이 없으면 PrintRegister과정의 Serial Read에서 Blocking된다.
-	PrintRegister(it->second.m_nAddr, it->first, it->second.m_pStr);
-}
-
-void CgZeroMasterDlg::ShowHexa()
-{
-	m_strHex.Format(_T("0x%02x"), GetValueFromBits());
 	UpdateData(FALSE);
 }
 
@@ -932,6 +276,10 @@ void CgZeroMasterDlg::OnTcnSelchangeTab(NMHDR* pNMHDR, LRESULT* pResult)
 		case 1:
 			m_pSemantic->ShowWindow(SW_HIDE);
 			m_pRaw->ShowWindow(SW_SHOW);
+			if (m_serial.IsOpen()) {
+				m_pRaw->ReadResisters();
+				m_pRaw->GetDlgItem(IDC_READ_ALL_BUTTON)->ShowWindow(SW_SHOW);
+			}
 			break;
 		}
 	}
