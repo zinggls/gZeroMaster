@@ -143,7 +143,7 @@ bool LimitedReadResister(CSerial& serial, int addr, int* value, int maxLoop)
 	return true;
 }
 
-void regReadTest(const TCHAR *comPort)
+void regReadTest(const TCHAR *comPort,int maxLoop)
 {
 	CSerial serial;
 
@@ -161,7 +161,7 @@ void regReadTest(const TCHAR *comPort)
 
 	int value;
 	for (int i = 0; i < sizeof(addr) / sizeof(int); i++) {
-		if (LimitedReadResister(serial, addr[i], &value, 100)) {
+		if (LimitedReadResister(serial, addr[i], &value, maxLoop)) {
 			printf("Address:0x%02x Register:0x%02x\n", addr[i], value);
 		}
 	}
@@ -171,5 +171,9 @@ void regReadTest(const TCHAR *comPort)
 }
 
 TEST(Serial, NonBlockingLimitedRegisterRead_NoRespondingComPort) {
-	regReadTest(_T("COM1"));	//COM1은 존재하는 포트이나 아래의 프로토콜을 지원하지 않는 포트임 따라서 데이터를 수신할 수 없는 포트임
+	regReadTest(_T("COM1"), 50000);	//COM1은 존재하는 포트이나 아래의 프로토콜을 지원하지 않는 포트임 따라서 데이터를 수신할 수 없는 포트임
+}
+
+TEST(Serial, NonBlockingLimitedRegisterRead_RespondingComPort) {
+	regReadTest(_T("COM5"),50000);	//COM5는 B0 SPI와 통신하며 요청한 주소의 레지스터값을 반환하는 포트임
 }
