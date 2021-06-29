@@ -83,6 +83,14 @@
 #define IDC_RX_DATA_IF_ENABLE_STATIC    1068
 #define IDC_LIMITING_AMP_ENABLE_STATIC  1069
 #define IDC_LNA_GAIN_STATIC             1070
+#define IDC_DUTY_CYCLE_STATIC           1071
+#define IDC_VCO_OSC_FREQ_STATIC         1072
+#define IDC_REG_REF_VOLT_STATIC         1073
+#define IDC_VCO_VDD_STATIC              1074
+#define IDC_DUTY_CYCLE_VALUE_STATIC     1075
+#define IDC_VCO_OSC_FREQ_VALUE_STATIC   1076
+#define IDC_VCO_VDD_VALUE_STATIC        1077
+#define IDC_REG_REF_VOLT_VALUE_COMBO    1078
 
 // Next default values for new objects
 // 
@@ -90,7 +98,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        137
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1071
+#define _APS_NEXT_CONTROL_VALUE         1079
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

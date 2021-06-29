@@ -26,6 +26,10 @@ public:
 	BOOL m_bLimitingAmplifier;
 	CString m_strLnaGain;
 	CWnd* m_pParent;
+	CString m_strDutyCycle;
+	CString m_strVcoOscFreq;
+	CComboBox m_regRefVolt;
+	CString m_strVcoVdd;
 
 public:
 	CgZeroMasterDlg* Parent();
