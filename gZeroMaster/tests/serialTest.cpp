@@ -143,10 +143,11 @@ bool LimitedReadResister(CSerial& serial, int addr, int* value, int maxLoop)
 	return true;
 }
 
-TEST(Serial, NonBlockingLimitedRegisterRead_NoRespondingComPort) {
+void regReadTest(const TCHAR *comPort)
+{
 	CSerial serial;
 
-	LONG lLastError = serial.Open(_T("COM1"), 0, 0, false);		//COM1은 존재하는 포트이나 아래의 프로토콜을 지원하지 않는 포트임 따라서 데이터를 수신할 수 없는 포트임
+	LONG lLastError = serial.Open(comPort, 0, 0, false);		//COM1은 존재하는 포트이나 아래의 프로토콜을 지원하지 않는 포트임 따라서 데이터를 수신할 수 없는 포트임
 	EXPECT_EQ(lLastError, ERROR_SUCCESS);
 
 	lLastError = serial.Setup(CSerial::EBaud4800, CSerial::EData8, CSerial::EParNone, CSerial::EStop1);
@@ -167,4 +168,8 @@ TEST(Serial, NonBlockingLimitedRegisterRead_NoRespondingComPort) {
 
 	lLastError = serial.Close();
 	EXPECT_EQ(lLastError, ERROR_SUCCESS);
+}
+
+TEST(Serial, NonBlockingLimitedRegisterRead_NoRespondingComPort) {
+	regReadTest(_T("COM1"));	//COM1은 존재하는 포트이나 아래의 프로토콜을 지원하지 않는 포트임 따라서 데이터를 수신할 수 없는 포트임
 }
