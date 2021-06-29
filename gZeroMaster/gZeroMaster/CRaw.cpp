@@ -151,8 +151,6 @@ BOOL CRaw::ReadResister(int addr, int* value)
 	buffer[index] = 0xd;		//Enter
 	buffer[index + 1] = 0x1;	//Read	0x1
 
-	CString str;
-
 	ASSERT(Parent());
 	ASSERT(Parent()->m_serial.IsOpen());
 
@@ -164,6 +162,7 @@ BOOL CRaw::ReadResister(int addr, int* value)
 	}
 
 #ifdef DEBUG_READ
+	CString str;
 	str.Format(_T("%d bytes written"), dwBytesWrite);
 	L(str);
 #endif // DEBUG_READ
