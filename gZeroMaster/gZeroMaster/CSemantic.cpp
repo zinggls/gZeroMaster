@@ -79,6 +79,9 @@ BOOL CSemantic::OnInitDialog()
 	// TODO:  여기에 추가 초기화 작업을 추가합니다.
 	ControlLabelEnable(FALSE);
 	ControlValueEnable(FALSE);
+
+	m_regRefVolt.AddString(_T("500mV"));	//0
+	m_regRefVolt.AddString(_T("400mV"));	//1
 	return TRUE;  // return TRUE unless you set the focus to a control
 				  // 예외: OCX 속성 페이지는 FALSE를 반환해야 합니다.
 }
@@ -106,6 +109,11 @@ void CSemantic::ControlLabelEnable(BOOL b)
 	GetDlgItem(IDC_RX_DATA_IF_ENABLE_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_LIMITING_AMP_ENABLE_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_LNA_GAIN_STATIC)->EnableWindow(b);
+
+	GetDlgItem(IDC_DUTY_CYCLE_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_VCO_OSC_FREQ_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_REG_REF_VOLT_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_VCO_VDD_STATIC)->EnableWindow(b);		
 }
 
 void CSemantic::ControlValueEnable(BOOL b)
@@ -113,4 +121,9 @@ void CSemantic::ControlValueEnable(BOOL b)
 	GetDlgItem(IDC_RX_DATA_IF_ENABLE_CHECK)->EnableWindow(b);
 	GetDlgItem(IDC_LIMITING_AMP_ENABLE_CHECK)->EnableWindow(b);
 	GetDlgItem(IDC_LNA_GAIN_VALUE_STATIC)->EnableWindow(b);
+
+	GetDlgItem(IDC_DUTY_CYCLE_VALUE_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_VCO_OSC_FREQ_VALUE_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_REG_REF_VOLT_VALUE_COMBO)->EnableWindow(b);
+	GetDlgItem(IDC_VCO_VDD_VALUE_STATIC)->EnableWindow(b);
 }
