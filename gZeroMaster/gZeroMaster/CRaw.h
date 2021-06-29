@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include <map>
+#define MAX_LOOP	50000
 
 class CgZeroMasterDlg;
 
@@ -65,9 +66,9 @@ public:
 public:
 	virtual BOOL OnInitDialog();
 	CgZeroMasterDlg* Parent();
-	BOOL ReadResister(int addr, int* value);
-	void ReadResisters();
-	BOOL PrintRegister(int addr, CString name, CString* pValueStr);
+	LONG ReadResister(int addr, int* value, int maxLoop);
+	BOOL ReadResisters();
+	BOOL PrintRegister(int addr, CString name, CString* pValueStr, int maxLoop);
 	void ClearResisterValues();
 	CString Bits(unsigned char byte);
 	void ShowBits(unsigned char byte);

@@ -234,13 +234,17 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 			if (lLastError != ERROR_SUCCESS) return ErrorMsg(m_serial.GetLastError(), _T("Unable to set COM-port setting"));
 			L(_T("setup ok"));
 
-			lLastError = m_serial.SetupReadTimeouts(CSerial::EReadTimeoutBlocking);
+			lLastError = m_serial.SetupReadTimeouts(CSerial::EReadTimeoutNonblocking);
 			if (lLastError != ERROR_SUCCESS) return ErrorMsg(m_serial.GetLastError(), _T("Unable to set COM-port read timeout"));
 
-			m_pRaw->ReadResisters();
-			m_pSemantic->UpdateRegisters();
-			m_pSemantic->ControlEnable(TRUE);
-			m_pRaw->GetDlgItem(IDC_READ_ALL_BUTTON)->ShowWindow(SW_SHOW);
+			if(m_pRaw->ReadResisters()) {
+				m_pSemantic->UpdateRegisters();
+				m_pSemantic->ControlEnable(TRUE);
+				m_pRaw->GetDlgItem(IDC_READ_ALL_BUTTON)->ShowWindow(SW_SHOW);
+			}
+			else {
+				L(_T("Can't read resgisters"));
+			}
 		}
 		else {
 			GetDlgItem(IDC_COM_COMBO)->EnableWindow(TRUE);

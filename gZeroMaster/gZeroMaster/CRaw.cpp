@@ -7,6 +7,7 @@
 #include "afxdialogex.h"
 #include "gZeroMasterDlg.h"
 #include "CSemantic.h"
+#include <list>
 
 
 // CRaw 대화 상자
@@ -142,7 +143,7 @@ CgZeroMasterDlg* CRaw::Parent()
 	return dynamic_cast<CgZeroMasterDlg*>(m_pParent);
 }
 
-BOOL CRaw::ReadResister(int addr, int* value)
+LONG CRaw::ReadResister(int addr, int* value, int maxLoop)
 {
 	char buffer[4] = { 0, };
 	sprintf_s(buffer, "%x", addr);
@@ -158,7 +159,7 @@ BOOL CRaw::ReadResister(int addr, int* value)
 	LONG lLastError = Parent()->m_serial.Write(buffer, index + 2, &dwBytesWrite);
 	if (lLastError != ERROR_SUCCESS) {
 		Parent()->ErrorMsg(Parent()->m_serial.GetLastError(), _T("Unable to send data"));
-		return FALSE;
+		return lLastError;
 	}
 
 #ifdef DEBUG_READ
@@ -167,16 +168,33 @@ BOOL CRaw::ReadResister(int addr, int* value)
 	L(str);
 #endif // DEBUG_READ
 
-	DWORD dwBytesRead = 0;
-	if (Parent()->m_serial.Read(buffer, 2, &dwBytesRead) != ERROR_SUCCESS) {
-		Parent()->ErrorMsg(Parent()->m_serial.GetLastError(), _T("Unable to receive data"));
-		return FALSE;
-	}
+	DWORD dwBytesReadSum, dwBytesRead;
+	dwBytesReadSum = dwBytesRead = 0;
+
+	int loop = 0;
+	std::list<char> charList;
+	do {
+		char tmp[2];
+		lLastError = Parent()->m_serial.Read(tmp, 2, &dwBytesRead);
+		if (lLastError != ERROR_SUCCESS) {
+			Parent()->ErrorMsg(Parent()->m_serial.GetLastError(), _T("Unable to receive data"));
+			return lLastError;
+		}
+		if (dwBytesRead > 0) {
+			dwBytesReadSum += dwBytesRead;
+			for (DWORD i = 0; i < dwBytesRead; i++) charList.push_back(tmp[i]);
+		}
+		loop++;
+	} while ((dwBytesReadSum < 2) && (loop < maxLoop));
+	if (dwBytesReadSum != 2) return ERROR_TIMEOUT;	//데이터를 Limited기한내에 못찾았음
+
+	int i = 0;
+	for (std::list<char>::iterator it = charList.begin(); it != charList.end(); ++it) buffer[i++] = *it;
+
 #ifdef DEBUG_READ
 	str.Format(_T("%d bytes received"), dwBytesRead);
 	L(str);
 #endif // DEBUG_READ
-
 
 	buffer[2] = 0;	//문자열 끝을 나타내기 위해서
 	*value = (int)strtol(buffer, NULL, 16);
@@ -185,7 +203,7 @@ BOOL CRaw::ReadResister(int addr, int* value)
 	str.Format(_T("Address:0x%02x Register:0x%02x"), addr, *value);
 	L(str);
 #endif // DEBUG_READ
-	return TRUE;
+	return ERROR_SUCCESS;
 }
 
 /*
@@ -207,10 +225,14 @@ BOOL CRaw::ReadResister(int addr, int* value)
 	24				18				BIAS_REG8[7:0]	: 50
 */
 
-BOOL CRaw::PrintRegister(int addr, CString name, CString* pValueStr)
+BOOL CRaw::PrintRegister(int addr, CString name, CString* pValueStr, int maxLoop)
 {
 	int value;
-	if (ReadResister(addr, &value) == FALSE) return FALSE;
+	LONG lLastError = ReadResister(addr, &value, maxLoop);
+	if (lLastError != ERROR_SUCCESS) {
+		Parent()->ErrorMsg(lLastError, _T("Error in ReadRegister"));
+		return FALSE;
+	}
 
 	pValueStr->Format(_T("0x%02x"), value);
 
@@ -222,10 +244,12 @@ BOOL CRaw::PrintRegister(int addr, CString name, CString* pValueStr)
 	return TRUE;
 }
 
-void CRaw::ReadResisters()
+BOOL CRaw::ReadResisters()
 {
 	for (std::map<CString, CReg>::iterator it = m_regMap.begin(); it != m_regMap.end(); it++)
-		PrintRegister(it->second.m_nAddr, it->first, it->second.m_pStr);
+		if(PrintRegister(it->second.m_nAddr, it->first, it->second.m_pStr, MAX_LOOP)!=TRUE) return FALSE;
+
+	return TRUE;
 }
 
 void CRaw::ClearResisterValues()
@@ -694,7 +718,7 @@ void CRaw::OnBnClickedWriteButton()
 	}
 
 	Sleep(100);	//주의! 여기서 Sleep이 없으면 PrintRegister과정의 Serial Read에서 Blocking된다.
-	PrintRegister(it->second.m_nAddr, it->first, it->second.m_pStr);
+	PrintRegister(it->second.m_nAddr, it->first, it->second.m_pStr, MAX_LOOP);
 	Parent()->m_pSemantic->UpdateRegisters();
 }
 
