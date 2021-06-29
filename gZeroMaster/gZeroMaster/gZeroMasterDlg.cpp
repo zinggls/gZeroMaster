@@ -215,6 +215,22 @@ void CgZeroMasterDlg::ErrorMsg(LONG lError, LPCTSTR lptszMessage)
 	L(str);
 }
 
+void CgZeroMasterDlg::SerialClose(CString& str)
+{
+	LONG lLastError = m_serial.Close();
+	if (lLastError == ERROR_SUCCESS) {
+		GetDlgItem(IDC_COM_COMBO)->EnableWindow(TRUE);
+		GetDlgItem(IDC_CONNECT_BUTTON)->SetWindowTextW(_T("connect"));
+		L(str + _T(" closed"));
+	}
+	else {
+		L(str + _T(" close failed"));
+	}
+	GetDlgItem(IDC_COM_COMBO)->EnableWindow(TRUE);
+	m_pSemantic->ControlEnable(FALSE);
+	m_pRaw->GetDlgItem(IDC_READ_ALL_BUTTON)->ShowWindow(SW_HIDE);
+}
+
 void CgZeroMasterDlg::OnBnClickedConnectButton()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
@@ -244,6 +260,7 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 			}
 			else {
 				L(_T("Can't read resgisters"));
+				SerialClose(str);
 			}
 		}
 		else {
@@ -252,18 +269,7 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 		}
 	}
 	else {
-		LONG lLastError = m_serial.Close();
-		if (lLastError == ERROR_SUCCESS) {
-			GetDlgItem(IDC_COM_COMBO)->EnableWindow(TRUE);
-			GetDlgItem(IDC_CONNECT_BUTTON)->SetWindowTextW(_T("connect"));
-			L(str + _T(" closed"));
-		}
-		else {
-			L(str + _T(" close failed"));
-		}
-		GetDlgItem(IDC_COM_COMBO)->EnableWindow(TRUE);
-		m_pSemantic->ControlEnable(FALSE);
-		m_pRaw->GetDlgItem(IDC_READ_ALL_BUTTON)->ShowWindow(SW_HIDE);
+		SerialClose(str);
 	}
 }
 
