@@ -118,6 +118,7 @@ void CSemantic::UpdateRegisters()
 	ASSERT(Parent());
 	UpdateRxReg1(Parent()->m_pRaw->m_strRxReg1);
 	UpdateTxReg1(Parent()->m_pRaw->m_strTxReg1Top, Parent()->m_pRaw->m_strTxReg1Mid, Parent()->m_pRaw->m_strTxReg1Bot);
+	UpdateTxReg2(Parent()->m_pRaw->m_strTxReg2Top, Parent()->m_pRaw->m_strTxReg2Mid, Parent()->m_pRaw->m_strTxReg2Bot);
 	UpdateData(FALSE);
 }
 
@@ -144,6 +145,11 @@ void CSemantic::UpdateTxReg1(CString strTxReg1Top, CString strTxReg1Mid, CString
 	m_strVcoOscFreq.Format(_T("0x%02x"), nVcoOscFreq);
 	m_regRefVolt.SetCurSel(nRefVolt);
 	m_strVcoVdd.Format(_T("0x%02x"), nVcoVdd);
+}
+
+void CSemantic::UpdateTxReg2(CString strTxReg2Top, CString strTxReg2Mid, CString strTxReg2Bot)
+{
+	//TODO
 }
 
 void CSemantic::ControlLabelEnable(BOOL b)
