@@ -19,6 +19,9 @@ CSemantic::CSemantic(CWnd* pParent /*=nullptr*/)
 	, m_bLimitingAmplifier(FALSE)
 	, m_strLnaGain(_T(""))
 	, m_pParent(pParent)
+	, m_strPaGainControl1(_T(""))
+	, m_strPaGainControl2(_T(""))
+	, m_strTestBufferCurrent(_T(""))
 {
 
 }
@@ -38,6 +41,14 @@ void CSemantic::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_VCO_OSC_FREQ_VALUE_STATIC, m_strVcoOscFreq);
 	DDX_Control(pDX, IDC_REG_REF_VOLT_VALUE_COMBO, m_regRefVolt);
 	DDX_Text(pDX, IDC_VCO_VDD_VALUE_STATIC, m_strVcoVdd);
+	DDX_Control(pDX, IDC_VCO_POWER_VALUE_COMBO, m_vcoPower);
+	DDX_Control(pDX, IDC_MODULATOR_POWER_VALUE_COMBO, m_modPower);
+	DDX_Control(pDX, IDC_TEST_BUFFER_POWER_VALUE_COMBO, m_testBufferPower);
+	DDX_Control(pDX, IDC_DATA_INPUT_SELECT_VALUE_COMBO, m_dataInputSelect);
+	DDX_Control(pDX, IDC_PA_POWER_VALUE_COMBO, m_paPower);
+	DDX_Text(pDX, IDC_PA_GAIN_CONTROL1_VALUE_STATIC, m_strPaGainControl1);
+	DDX_Text(pDX, IDC_PA_GAIN_CONTROL2_VALUE_STATIC, m_strPaGainControl2);
+	DDX_Text(pDX, IDC_TEST_BUFFER_CURRENT_VALUE_STATIC, m_strTestBufferCurrent);
 }
 
 
@@ -129,7 +140,16 @@ void CSemantic::ControlLabelEnable(BOOL b)
 	GetDlgItem(IDC_DUTY_CYCLE_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_VCO_OSC_FREQ_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_REG_REF_VOLT_STATIC)->EnableWindow(b);
-	GetDlgItem(IDC_VCO_VDD_STATIC)->EnableWindow(b);		
+	GetDlgItem(IDC_VCO_VDD_STATIC)->EnableWindow(b);
+
+	GetDlgItem(IDC_VCO_POWER_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_MODULATOR_POWER_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_TEST_BUFFER_POWER_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_DATA_INPUT_SELECT_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_PA_POWER_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_PA_GAIN_CONTROL1_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_PA_GAIN_CONTROL2_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_TEST_BUFFER_CURRENT_STATIC)->EnableWindow(b);		
 }
 
 void CSemantic::ControlValueEnable(BOOL b)
@@ -142,4 +162,13 @@ void CSemantic::ControlValueEnable(BOOL b)
 	GetDlgItem(IDC_VCO_OSC_FREQ_VALUE_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_REG_REF_VOLT_VALUE_COMBO)->EnableWindow(b);
 	GetDlgItem(IDC_VCO_VDD_VALUE_STATIC)->EnableWindow(b);
+
+	GetDlgItem(IDC_VCO_POWER_VALUE_COMBO)->EnableWindow(b);
+	GetDlgItem(IDC_MODULATOR_POWER_VALUE_COMBO)->EnableWindow(b);
+	GetDlgItem(IDC_TEST_BUFFER_POWER_VALUE_COMBO)->EnableWindow(b);
+	GetDlgItem(IDC_DATA_INPUT_SELECT_VALUE_COMBO)->EnableWindow(b);
+	GetDlgItem(IDC_PA_POWER_VALUE_COMBO)->EnableWindow(b);
+	GetDlgItem(IDC_PA_GAIN_CONTROL1_VALUE_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_PA_GAIN_CONTROL2_VALUE_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_TEST_BUFFER_CURRENT_VALUE_STATIC)->EnableWindow(b);
 }

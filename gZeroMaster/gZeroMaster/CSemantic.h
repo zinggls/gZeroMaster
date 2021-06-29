@@ -30,6 +30,14 @@ public:
 	CString m_strVcoOscFreq;
 	CComboBox m_regRefVolt;
 	CString m_strVcoVdd;
+	CComboBox m_vcoPower;
+	CComboBox m_modPower;
+	CComboBox m_testBufferPower;
+	CComboBox m_dataInputSelect;
+	CComboBox m_paPower;
+	CString m_strPaGainControl1;
+	CString m_strPaGainControl2;
+	CString m_strTestBufferCurrent;
 
 public:
 	CgZeroMasterDlg* Parent();
