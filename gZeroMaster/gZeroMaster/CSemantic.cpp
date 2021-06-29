@@ -93,6 +93,21 @@ BOOL CSemantic::OnInitDialog()
 
 	m_regRefVolt.AddString(_T("500mV"));	//0
 	m_regRefVolt.AddString(_T("400mV"));	//1
+
+	m_vcoPower.AddString(_T("VCO Off"));	//0
+	m_vcoPower.AddString(_T("VCO On"));		//1
+
+	m_modPower.AddString(_T("MOD Off"));	//0
+	m_modPower.AddString(_T("MOD On"));		//1
+
+	m_testBufferPower.AddString(_T("Test Buff Off"));	//0
+	m_testBufferPower.AddString(_T("Test Buff On"));	//1
+
+	m_dataInputSelect.AddString(_T("SER(Inside)"));			//0
+	m_dataInputSelect.AddString(_T("Test Buff(Outside)"));	//1
+
+	m_paPower.AddString(_T("PA Off"));		//0
+	m_paPower.AddString(_T("PA On"));		//1
 	return TRUE;  // return TRUE unless you set the focus to a control
 				  // 예외: OCX 속성 페이지는 FALSE를 반환해야 합니다.
 }
