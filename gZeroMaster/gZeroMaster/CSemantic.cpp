@@ -91,6 +91,7 @@ void CSemantic::UpdateRegisters()
 {
 	ASSERT(Parent());
 	UpdateRxReg1(Parent()->m_pRaw->m_strRxReg1);
+	UpdateTxReg1(Parent()->m_pRaw->m_strTxReg1Top, Parent()->m_pRaw->m_strTxReg1Mid, Parent()->m_pRaw->m_strTxReg1Bot);
 	UpdateData(FALSE);
 }
 
@@ -103,6 +104,21 @@ void CSemantic::UpdateRxReg1(CString strRxReg1)
 	m_strLnaGain.Format(_T("0x%02x"), val & 0x07);
 }
 
+void CSemantic::UpdateTxReg1(CString strTxReg1Top, CString strTxReg1Mid, CString strTxReg1Bot)
+{
+	m_strDutyCycle = strTxReg1Top;
+
+	int mid = _tcstol(strTxReg1Mid.GetBuffer(), NULL, 16) & 0xff;
+	int bot = _tcstol(strTxReg1Bot.GetBuffer(), NULL, 16) & 0xff;
+
+	int nVcoOscFreq = (bot & 0xe0) >> 5 | (mid << 3);
+	int nRefVolt = (bot & 0x10) >> 4;
+	int nVcoVdd = bot & 0x0f;
+
+	m_strVcoOscFreq.Format(_T("0x%02x"), nVcoOscFreq);
+	m_regRefVolt.SetCurSel(nRefVolt);
+	m_strVcoVdd.Format(_T("0x%02x"), nVcoVdd);
+}
 
 void CSemantic::ControlLabelEnable(BOOL b)
 {

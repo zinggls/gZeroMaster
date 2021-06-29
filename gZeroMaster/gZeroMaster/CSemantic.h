@@ -38,6 +38,7 @@ public:
 	virtual BOOL OnInitDialog();
 	void UpdateRegisters();
 	void UpdateRxReg1(CString strRxReg1);
+	void UpdateTxReg1(CString strTxReg1Top, CString strTxReg1Mid, CString strTxReg1Bot);
 	void ControlLabelEnable(BOOL b);
 	void ControlValueEnable(BOOL b);
 };
