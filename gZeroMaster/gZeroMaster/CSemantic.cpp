@@ -149,7 +149,19 @@ void CSemantic::UpdateTxReg1(CString strTxReg1Top, CString strTxReg1Mid, CString
 
 void CSemantic::UpdateTxReg2(CString strTxReg2Top, CString strTxReg2Mid, CString strTxReg2Bot)
 {
-	//TODO
+	int top = _tcstol(strTxReg2Top.GetBuffer(), NULL, 16) & 0x01;
+	int mid = _tcstol(strTxReg2Mid.GetBuffer(), NULL, 16) & 0xff;
+	int bot = _tcstol(strTxReg2Bot.GetBuffer(), NULL, 16) & 0xff;
+
+	m_vcoPower.SetCurSel(top);
+	m_modPower.SetCurSel((mid & 0x80) >> 7);
+	m_testBufferPower.SetCurSel((mid & 0x40) >> 6);
+	m_dataInputSelect.SetCurSel((mid & 0x20) >> 5);
+	m_paPower.SetCurSel((mid & 0x10) >> 4);
+
+	m_strPaGainControl2.Format(_T("0x%02x"),mid&0x0f);
+	m_strPaGainControl1.Format(_T("0x%02x"), (bot&0xf0)>>4 );
+	m_strTestBufferCurrent.Format(_T("0x%02x"),bot&0x0f);
 }
 
 void CSemantic::ControlLabelEnable(BOOL b)
