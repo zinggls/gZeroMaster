@@ -53,6 +53,7 @@ public:
 	CString m_strLaHLDataRateCurrent;
 	CString m_strCMOSGainStageCurrent;
 	CString m_strCMLInterfaceStageCurrent;
+	CSliderCtrl m_controlSlider;
 
 public:
 	CgZeroMasterDlg* Parent();
