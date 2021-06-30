@@ -130,6 +130,7 @@ BOOL CgZeroMasterDlg::OnInitDialog()
 	m_pSemantic->Create(IDD_SEMANTIC_DIALOG, &m_tab);
 	m_pSemantic->MoveWindow(0, 20, rect.Width(), rect.Height());
 	m_pSemantic->ShowWindow(SW_SHOW);
+	m_pSemantic->GetDlgItem(IDC_SEMANTIC_EDIT_CHECK)->EnableWindow(FALSE);
 
 	m_pRaw = new CRaw(this);
 	m_pRaw->Create(IDD_RAW_DIALOG, &m_tab);
@@ -229,6 +230,7 @@ void CgZeroMasterDlg::SerialClose(CString& str)
 	GetDlgItem(IDC_COM_COMBO)->EnableWindow(TRUE);
 	m_pSemantic->ControlLabelEnable(FALSE);
 	m_pSemantic->ControlValueEnable(FALSE);
+	m_pSemantic->GetDlgItem(IDC_SEMANTIC_EDIT_CHECK)->EnableWindow(FALSE);
 	m_pRaw->GetDlgItem(IDC_READ_ALL_BUTTON)->ShowWindow(SW_HIDE);
 }
 
@@ -258,6 +260,7 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 				m_pSemantic->UpdateRegisters();
 				m_pSemantic->ControlLabelEnable(TRUE);
 				m_pSemantic->ControlValueEnable(FALSE);
+				m_pSemantic->GetDlgItem(IDC_SEMANTIC_EDIT_CHECK)->EnableWindow(TRUE);
 				m_pRaw->GetDlgItem(IDC_READ_ALL_BUTTON)->ShowWindow(SW_SHOW);
 			}
 			else {
