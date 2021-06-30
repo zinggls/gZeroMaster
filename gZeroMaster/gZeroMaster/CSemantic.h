@@ -54,6 +54,7 @@ public:
 	CString m_strCMOSGainStageCurrent;
 	CString m_strCMLInterfaceStageCurrent;
 	CSliderCtrl m_controlSlider;
+	BOOL m_bSemanticEdit;
 
 public:
 	CgZeroMasterDlg* Parent();
@@ -74,4 +75,5 @@ public:
 	void UpdateBiasReg8(CString strBiasReg8);
 	void ControlLabelEnable(BOOL b);
 	void ControlValueEnable(BOOL b);
+	afx_msg void OnBnClickedSemanticEditCheck();
 };

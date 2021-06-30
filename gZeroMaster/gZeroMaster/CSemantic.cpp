@@ -36,6 +36,7 @@ CSemantic::CSemantic(CWnd* pParent /*=nullptr*/)
 	, m_strLaHLDataRateCurrent(_T(""))
 	, m_strCMOSGainStageCurrent(_T(""))
 	, m_strCMLInterfaceStageCurrent(_T(""))
+	, m_bSemanticEdit(FALSE)
 {
 
 }
@@ -79,12 +80,14 @@ void CSemantic::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_CMOS_GAIN_STAGE_CURRENT_VALUE_STATIC, m_strCMOSGainStageCurrent);
 	DDX_Text(pDX, IDC_CML_INTERFACE_STAGE_CURRENT_VALUE_STATIC, m_strCMLInterfaceStageCurrent);
 	DDX_Control(pDX, IDC_CONTROL_SLIDER, m_controlSlider);
+	DDX_Check(pDX, IDC_SEMANTIC_EDIT_CHECK, m_bSemanticEdit);
 }
 
 
 BEGIN_MESSAGE_MAP(CSemantic, CDialogEx)
 	ON_BN_CLICKED(IDC_RX_DATA_IF_ENABLE_CHECK, &CSemantic::OnBnClickedRxDataIfEnableCheck)
 	ON_BN_CLICKED(IDC_LIMITING_AMP_ENABLE_CHECK, &CSemantic::OnBnClickedLimitingAmpEnableCheck)
+	ON_BN_CLICKED(IDC_SEMANTIC_EDIT_CHECK, &CSemantic::OnBnClickedSemanticEditCheck)
 END_MESSAGE_MAP()
 
 
@@ -335,4 +338,17 @@ void CSemantic::ControlValueEnable(BOOL b)
 	GetDlgItem(IDC_CML_INTERFACE_STAGE_CURRENT_VALUE_STATIC)->EnableWindow(b);
 
 	GetDlgItem(IDC_CONTROL_SLIDER)->EnableWindow(b);
+}
+
+void CSemantic::OnBnClickedSemanticEditCheck()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	m_bSemanticEdit = !m_bSemanticEdit;
+	if (m_bSemanticEdit) {
+		ControlValueEnable(TRUE);
+	}
+	else {
+		ControlValueEnable(FALSE);
+	}
+	UpdateData(FALSE);
 }
