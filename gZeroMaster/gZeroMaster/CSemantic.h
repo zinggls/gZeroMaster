@@ -64,6 +64,7 @@ public:
 	void UpdateTxReg1(CString strTxReg1Top, CString strTxReg1Mid, CString strTxReg1Bot);
 	void UpdateTxReg2(CString strTxReg2Top, CString strTxReg2Mid, CString strTxReg2Bot);
 	void UpdateBiasReg1(CString strBiasReg1);
+	void UpdateBiasReg2(CString strBiasReg2);
 	void ControlLabelEnable(BOOL b);
 	void ControlValueEnable(BOOL b);
 };

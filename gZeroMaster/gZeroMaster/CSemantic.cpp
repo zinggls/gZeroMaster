@@ -149,6 +149,7 @@ void CSemantic::UpdateRegisters()
 	UpdateTxReg1(Parent()->m_pRaw->m_strTxReg1Top, Parent()->m_pRaw->m_strTxReg1Mid, Parent()->m_pRaw->m_strTxReg1Bot);
 	UpdateTxReg2(Parent()->m_pRaw->m_strTxReg2Top, Parent()->m_pRaw->m_strTxReg2Mid, Parent()->m_pRaw->m_strTxReg2Bot);
 	UpdateBiasReg1(Parent()->m_pRaw->m_strBiasReg1);
+	UpdateBiasReg2(Parent()->m_pRaw->m_strBiasReg2);
 	UpdateData(FALSE);
 }
 
@@ -197,6 +198,15 @@ void CSemantic::UpdateTxReg2(CString strTxReg2Top, CString strTxReg2Mid, CString
 void CSemantic::UpdateBiasReg1(CString strBiasReg1)
 {
 	m_bBiasBlockEnable = _tcstol(strBiasReg1.GetBuffer(), NULL, 16) & 0x01;
+}
+
+void CSemantic::UpdateBiasReg2(CString strBiasReg2)
+{
+	int reg2 = _tcstol(strBiasReg2.GetBuffer(), NULL, 16) & 0xff;
+
+	m_strLna3Current.Format(_T("0x%02x"),(reg2&0xf0)>>4);
+	m_strLna1Current.Format(_T("0x%02x"), reg2 & 0x0f);
+	m_strLna2Current = m_strLna1Current;
 }
 
 void CSemantic::ControlLabelEnable(BOOL b)
