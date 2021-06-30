@@ -69,6 +69,7 @@ public:
 	void UpdateBiasReg4(CString strBiasReg4);
 	void UpdateBiasReg5(CString strBiasReg5);
 	void UpdateBiasReg6(CString strBiasReg6);
+	void UpdateBiasReg7(CString strBiasReg7);
 	void ControlLabelEnable(BOOL b);
 	void ControlValueEnable(BOOL b);
 };

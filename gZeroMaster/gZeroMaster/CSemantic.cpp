@@ -154,6 +154,7 @@ void CSemantic::UpdateRegisters()
 	UpdateBiasReg4(Parent()->m_pRaw->m_strBiasReg4);
 	UpdateBiasReg5(Parent()->m_pRaw->m_strBiasReg5);
 	UpdateBiasReg6(Parent()->m_pRaw->m_strBiasReg6);
+	UpdateBiasReg7(Parent()->m_pRaw->m_strBiasReg7);
 	UpdateData(FALSE);
 }
 
@@ -243,6 +244,14 @@ void CSemantic::UpdateBiasReg6(CString strBiasReg6)
 
 	m_strLaOPBufferCurrent.Format(_T("0x%02x"), (reg6 & 0xf0) >> 4);
 	m_strLaIPBufferCurrent.Format(_T("0x%02x"), reg6 & 0x0f);
+}
+
+void CSemantic::UpdateBiasReg7(CString strBiasReg7)
+{
+	int reg7 = _tcstol(strBiasReg7.GetBuffer(), NULL, 16) & 0xff;
+
+	m_strLaHLDataRateCurrent.Format(_T("0x%02x"), (reg7 & 0xf0) >> 4);
+	m_strCMOSGainStageCurrent.Format(_T("0x%02x"), reg7 & 0x0f);
 }
 
 void CSemantic::ControlLabelEnable(BOOL b)
