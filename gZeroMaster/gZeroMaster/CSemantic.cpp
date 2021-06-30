@@ -156,8 +156,7 @@ void CSemantic::UpdateTxReg2(CString strTxReg2Top, CString strTxReg2Mid, CString
 	m_vcoPower.SetCurSel(top);
 	m_modPower.SetCurSel((mid & 0x80) >> 7);
 	m_testBufferPower.SetCurSel((mid & 0x40) >> 6);
-	//m_dataInputSelect.SetCurSel((mid & 0x20) >> 5);
-	m_dataInputSelect.SetCurSel(1);
+	m_dataInputSelect.SetCurSel((mid & 0x20) >> 5);
 	m_paPower.SetCurSel((mid & 0x10) >> 4);
 
 	m_strPaGainControl2.Format(_T("0x%02x"),mid&0x0f);
