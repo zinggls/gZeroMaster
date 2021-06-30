@@ -56,6 +56,9 @@ public:
 	CSliderCtrl m_controlSlider;
 	BOOL m_bSemanticEdit;
 
+	enum SelectStatic{ None=0,LnaGain,DutyCycle,VcoOsc,VcoVdd,PaGain1,PaGain2,TestBuffer,Lna1,Lna2,Lna3,Lna4,Lna5,RefStage,IpStage,Fb,Core,OP,IP,HL,CMOS,CML };
+	SelectStatic m_selected;
+
 public:
 	CgZeroMasterDlg* Parent();
 	afx_msg void OnBnClickedRxDataIfEnableCheck();
@@ -76,4 +79,7 @@ public:
 	void ControlLabelEnable(BOOL b);
 	void ControlValueEnable(BOOL b);
 	afx_msg void OnBnClickedSemanticEditCheck();
+	afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
+	afx_msg void OnStnClickedLnaGainValueStatic();
+	afx_msg void OnStnClickedDutyCycleValueStatic();
 };

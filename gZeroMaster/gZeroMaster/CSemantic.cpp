@@ -88,6 +88,9 @@ BEGIN_MESSAGE_MAP(CSemantic, CDialogEx)
 	ON_BN_CLICKED(IDC_RX_DATA_IF_ENABLE_CHECK, &CSemantic::OnBnClickedRxDataIfEnableCheck)
 	ON_BN_CLICKED(IDC_LIMITING_AMP_ENABLE_CHECK, &CSemantic::OnBnClickedLimitingAmpEnableCheck)
 	ON_BN_CLICKED(IDC_SEMANTIC_EDIT_CHECK, &CSemantic::OnBnClickedSemanticEditCheck)
+	ON_WM_CTLCOLOR()
+	ON_STN_CLICKED(IDC_LNA_GAIN_VALUE_STATIC, &CSemantic::OnStnClickedLnaGainValueStatic)
+	ON_STN_CLICKED(IDC_DUTY_CYCLE_VALUE_STATIC, &CSemantic::OnStnClickedDutyCycleValueStatic)
 END_MESSAGE_MAP()
 
 
@@ -143,6 +146,7 @@ BOOL CSemantic::OnInitDialog()
 	m_paPower.AddString(_T("PA On"));		//1
 
 	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_HIDE);
+	m_selected = None;
 	return TRUE;  // return TRUE unless you set the focus to a control
 				  // 예외: OCX 속성 페이지는 FALSE를 반환해야 합니다.
 }
@@ -353,4 +357,45 @@ void CSemantic::OnBnClickedSemanticEditCheck()
 		ControlValueEnable(FALSE);
 	}
 	UpdateData(FALSE);
+}
+
+
+HBRUSH CSemantic::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
+{
+	HBRUSH hbr = CDialogEx::OnCtlColor(pDC, pWnd, nCtlColor);
+
+	// TODO:  여기서 DC의 특성을 변경합니다.
+	if (pWnd->GetDlgCtrlID() == IDC_LNA_GAIN_VALUE_STATIC) {
+		if(m_selected==LnaGain)
+			pDC->SetTextColor(RGB(255, 0, 0));
+		else
+			pDC->SetTextColor(RGB(0, 0, 0));
+	}
+	else if (pWnd->GetDlgCtrlID() == IDC_DUTY_CYCLE_VALUE_STATIC) {
+		if (m_selected == DutyCycle)
+			pDC->SetTextColor(RGB(255, 0, 0));
+		else
+			pDC->SetTextColor(RGB(0, 0, 0));
+	}
+
+	// TODO:  기본값이 적당하지 않으면 다른 브러시를 반환합니다.
+	return hbr;
+}
+
+
+void CSemantic::OnStnClickedLnaGainValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	m_selected = LnaGain;
+	//GetDlgItem(IDC_LNA_GAIN_VALUE_STATIC)->Invalidate();
+	Invalidate();	//모든것을 다시 그리는 것은 비효율적이지만 제일 간단하다
+}
+
+
+void CSemantic::OnStnClickedDutyCycleValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	m_selected = DutyCycle;
+	//GetDlgItem(IDC_DUTY_CYCLE_VALUE_STATIC)->Invalidate();
+	Invalidate();	//모든것을 다시 그리는 것은 비효율적이지만 제일 간단하다
 }
