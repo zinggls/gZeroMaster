@@ -141,6 +141,8 @@ BOOL CSemantic::OnInitDialog()
 
 	m_paPower.AddString(_T("PA Off"));		//0
 	m_paPower.AddString(_T("PA On"));		//1
+
+	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_HIDE);
 	return TRUE;  // return TRUE unless you set the focus to a control
 				  // 예외: OCX 속성 페이지는 FALSE를 반환해야 합니다.
 }
