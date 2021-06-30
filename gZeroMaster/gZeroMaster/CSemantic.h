@@ -38,6 +38,21 @@ public:
 	CString m_strPaGainControl1;
 	CString m_strPaGainControl2;
 	CString m_strTestBufferCurrent;
+	BOOL m_bBiasBlockEnable;
+	CString m_strLna1Current;
+	CString m_strLna2Current;
+	CString m_strLna3Current;
+	CString m_strLna4Current;
+	CString m_strLna5Current;
+	CString m_strDemodRefStageCurrent;
+	CString m_strDemodIPStageCurrent;
+	CString m_strLaFBCurrent;
+	CString m_strLaCoreCurrent;
+	CString m_strLaOPBufferCurrent;
+	CString m_strLaIPBufferCurrent;
+	CString m_strLaHLDataRateCurrent;
+	CString m_strCMOSGainStageCurrent;
+	CString m_strCMLInterfaceStageCurrent;
 
 public:
 	CgZeroMasterDlg* Parent();

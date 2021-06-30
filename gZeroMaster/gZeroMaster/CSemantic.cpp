@@ -22,6 +22,20 @@ CSemantic::CSemantic(CWnd* pParent /*=nullptr*/)
 	, m_strPaGainControl1(_T(""))
 	, m_strPaGainControl2(_T(""))
 	, m_strTestBufferCurrent(_T(""))
+	, m_bBiasBlockEnable(FALSE)
+	, m_strLna1Current(_T(""))
+	, m_strLna2Current(_T(""))
+	, m_strLna3Current(_T(""))
+	, m_strLna4Current(_T(""))
+	, m_strLna5Current(_T(""))
+	, m_strDemodRefStageCurrent(_T(""))
+	, m_strDemodIPStageCurrent(_T(""))
+	, m_strLaCoreCurrent(_T(""))
+	, m_strLaOPBufferCurrent(_T(""))
+	, m_strLaIPBufferCurrent(_T(""))
+	, m_strLaHLDataRateCurrent(_T(""))
+	, m_strCMOSGainStageCurrent(_T(""))
+	, m_strCMLInterfaceStageCurrent(_T(""))
 {
 
 }
@@ -49,6 +63,21 @@ void CSemantic::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_PA_GAIN_CONTROL1_VALUE_STATIC, m_strPaGainControl1);
 	DDX_Text(pDX, IDC_PA_GAIN_CONTROL2_VALUE_STATIC, m_strPaGainControl2);
 	DDX_Text(pDX, IDC_TEST_BUFFER_CURRENT_VALUE_STATIC, m_strTestBufferCurrent);
+	DDX_Check(pDX, IDC_BIAS_BLOCK_ENABLE_CHECK, m_bBiasBlockEnable);
+	DDX_Text(pDX, IDC_LNA1_BIAS_CURRENT_VALUE_STATIC, m_strLna1Current);
+	DDX_Text(pDX, IDC_LNA2_BIAS_CURRENT_VALUE_STATIC, m_strLna2Current);
+	DDX_Text(pDX, IDC_LNA3_BIAS_CURRENT_VALUE_STATIC, m_strLna3Current);
+	DDX_Text(pDX, IDC_LNA4_BIAS_CURRENT_VALUE_STATIC, m_strLna4Current);
+	DDX_Text(pDX, IDC_LNA5_BIAS_CURRENT_VALUE_STATIC, m_strLna5Current);
+	DDX_Text(pDX, IDC_DEMOD_REF_STAGE_CURRENT_VALUE_STATIC, m_strDemodRefStageCurrent);
+	DDX_Text(pDX, IDC_DEMOD_IP_STAGE_CURRENT_VALUE_STATIC, m_strDemodIPStageCurrent);
+	DDX_Text(pDX, IDC_LA_FB_CURRENT_VALUE_STATIC, m_strLaFBCurrent);
+	DDX_Text(pDX, IDC_LA_CORE_CURRENT_VALUE_STATIC, m_strLaCoreCurrent);
+	DDX_Text(pDX, IDC_LA_OP_BUFFER_CURRENT_VALUE_STATIC, m_strLaOPBufferCurrent);
+	DDX_Text(pDX, IDC_LA_IP_BUFFER_CURRENT_VALUE_STATIC, m_strLaIPBufferCurrent);
+	DDX_Text(pDX, IDC_LA_HL_DATA_RATE_CURRENT_VALUE_STATIC, m_strLaHLDataRateCurrent);
+	DDX_Text(pDX, IDC_CMOS_GAIN_STAGE_CURRENT_VALUE_STATIC, m_strCMOSGainStageCurrent);
+	DDX_Text(pDX, IDC_CML_INTERFACE_STAGE_CURRENT_VALUE_STATIC, m_strCMLInterfaceStageCurrent);
 }
 
 
