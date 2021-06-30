@@ -333,4 +333,6 @@ void CSemantic::ControlValueEnable(BOOL b)
 	GetDlgItem(IDC_LA_HL_DATA_RATE_CURRENT_VALUE_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_CMOS_GAIN_STAGE_CURRENT_VALUE_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_CML_INTERFACE_STAGE_CURRENT_VALUE_STATIC)->EnableWindow(b);
+
+	GetDlgItem(IDC_CONTROL_SLIDER)->EnableWindow(b);
 }
