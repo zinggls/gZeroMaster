@@ -777,8 +777,8 @@ void CSemantic::OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
 
 void CSemantic::SliderValueUpdate()
 {
-	int curPos = m_controlSlider.GetPos();
-	m_strSliderValue.Format(_T("%d"), -1 * curPos);
+	int curPos = -1*m_controlSlider.GetPos();
+	m_strSliderValue.Format(_T("%d"), curPos);
 	UpdateData(FALSE);
 }
 
