@@ -507,7 +507,7 @@ void CSemantic::OnStnClickedDutyCycleValueStatic()
 	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
 
-	SetControlSlider(0, 255, m_strDutyCycle, 1, 1, 10);
+	SetControlSlider(0, 255, m_strDutyCycle, 10, 1, 10);
 	GetDlgItem(IDC_DUTY_CYCLE_STATIC)->GetWindowText(m_strSelectedStatic);
 	UpdateData(FALSE);
 }
@@ -520,7 +520,7 @@ void CSemantic::OnStnClickedVcoOscFreqValueStatic()
 	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
 
-	SetControlSlider(0, 2047, m_strVcoOscFreq, 1, 1, 10);
+	SetControlSlider(0, 2047, m_strVcoOscFreq, 50, 1, 50);
 	GetDlgItem(IDC_VCO_OSC_FREQ_STATIC)->GetWindowText(m_strSelectedStatic);
 	UpdateData(FALSE);
 }
@@ -754,7 +754,7 @@ void CSemantic::OnStnClickedCmlInterfaceStageCurrentValueStatic()
 	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
 
-	SetControlSlider(0, 255, m_strCMLInterfaceStageCurrent, 1, 1, 10);
+	SetControlSlider(0, 255, m_strCMLInterfaceStageCurrent, 10, 1, 10);
 	GetDlgItem(IDC_CML_INTERFACE_STAGE_CURRENT_STATIC)->GetWindowText(m_strSelectedStatic);
 	UpdateData(FALSE);
 }
