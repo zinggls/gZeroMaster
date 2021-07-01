@@ -487,6 +487,8 @@ void CSemantic::SetControlSlider(int min,int max,CString strCurVal,int ticFreq,i
 	m_controlSlider.SetTicFreq(ticFreq);
 	m_controlSlider.SetLineSize(lineSize);
 	m_controlSlider.SetPageSize(pageSize);
+
+	SliderValueUpdate();
 }
 
 
@@ -767,10 +769,16 @@ void CSemantic::OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
 {
 	// TODO: 여기에 메시지 처리기 코드를 추가 및/또는 기본값을 호출합니다.
 	if (pScrollBar == (CScrollBar*)&m_controlSlider) {
-		int curPos = m_controlSlider.GetPos();
-		m_strSliderValue.Format(_T("%d"),-1*curPos);
-		UpdateData(FALSE);
+		SliderValueUpdate();
 	}
 
 	CDialogEx::OnVScroll(nSBCode, nPos, pScrollBar);
+}
+
+
+void CSemantic::SliderValueUpdate()
+{
+	int curPos = m_controlSlider.GetPos();
+	m_strSliderValue.Format(_T("%d"), -1 * curPos);
+	UpdateData(FALSE);
 }
