@@ -467,7 +467,6 @@ void CSemantic::OnStnClickedLnaGainValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = LnaGain;
-	//GetDlgItem(IDC_LNA_GAIN_VALUE_STATIC)->Invalidate();
 	Invalidate();	//모든것을 다시 그리는 것은 비효율적이지만 제일 간단하다
 }
 
@@ -476,8 +475,7 @@ void CSemantic::OnStnClickedDutyCycleValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = DutyCycle;
-	//GetDlgItem(IDC_DUTY_CYCLE_VALUE_STATIC)->Invalidate();
-	Invalidate();	//모든것을 다시 그리는 것은 비효율적이지만 제일 간단하다
+	Invalidate();
 }
 
 
