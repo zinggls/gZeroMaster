@@ -800,6 +800,8 @@ void CSemantic::ShowSlider(int nCmdShow)
 
 CString CSemantic::DecToBin(int dec)
 {
+	if (dec == 0) return _T("0");
+
 	CString strBin;
 	int byte = dec & 0xff;
 	while (byte > 0) {
