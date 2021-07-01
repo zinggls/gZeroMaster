@@ -62,6 +62,7 @@ public:
 	CString m_strSelectedStatic;
 	CString m_strSliderMin;
 	CString m_strSliderMax;
+	CString m_strSliderValue;
 
 public:
 	CgZeroMasterDlg* Parent();
@@ -107,4 +108,5 @@ public:
 	afx_msg void OnStnClickedLaHlDataRateCurrentValueStatic();
 	afx_msg void OnStnClickedCmosGainStageCurrentValueStatic();
 	afx_msg void OnStnClickedCmlInterfaceStageCurrentValueStatic();
+	afx_msg void OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar);
 };

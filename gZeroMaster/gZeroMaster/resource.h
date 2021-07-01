@@ -149,6 +149,7 @@
 #define IDC_CML_INTERFACE_STAGE_CURRENT_STATIC 1133
 #define IDC_CML_INTERFACE_STAGE_CURRENT_VALUE_STATIC 1134
 #define IDC_SLIDER_MAX_STATIC           1135
+#define IDC_SLIDER_VALUE_STATIC         1136
 
 // Next default values for new objects
 // 
@@ -156,7 +157,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        137
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1120
+#define _APS_NEXT_CONTROL_VALUE         1137
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

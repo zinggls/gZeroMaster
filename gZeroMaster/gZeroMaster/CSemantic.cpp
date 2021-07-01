@@ -40,6 +40,7 @@ CSemantic::CSemantic(CWnd* pParent /*=nullptr*/)
 	, m_strSelectedStatic(_T(""))
 	, m_strSliderMin(_T(""))
 	, m_strSliderMax(_T(""))
+	, m_strSliderValue(_T(""))
 {
 
 }
@@ -87,6 +88,7 @@ void CSemantic::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_SELECTED_STATIC, m_strSelectedStatic);
 	DDX_Text(pDX, IDC_SLIDER_MIN_STATIC, m_strSliderMin);
 	DDX_Text(pDX, IDC_SLIDER_MAX_STATIC, m_strSliderMax);
+	DDX_Text(pDX, IDC_SLIDER_VALUE_STATIC, m_strSliderValue);
 }
 
 
@@ -116,6 +118,7 @@ BEGIN_MESSAGE_MAP(CSemantic, CDialogEx)
 	ON_STN_CLICKED(IDC_LA_HL_DATA_RATE_CURRENT_VALUE_STATIC, &CSemantic::OnStnClickedLaHlDataRateCurrentValueStatic)
 	ON_STN_CLICKED(IDC_CMOS_GAIN_STAGE_CURRENT_VALUE_STATIC, &CSemantic::OnStnClickedCmosGainStageCurrentValueStatic)
 	ON_STN_CLICKED(IDC_CML_INTERFACE_STAGE_CURRENT_VALUE_STATIC, &CSemantic::OnStnClickedCmlInterfaceStageCurrentValueStatic)
+	ON_WM_VSCROLL()
 END_MESSAGE_MAP()
 
 
@@ -757,4 +760,17 @@ void CSemantic::OnStnClickedCmlInterfaceStageCurrentValueStatic()
 	SetControlSlider(0, 255, m_strCMLInterfaceStageCurrent, 10, 1, 10);
 	GetDlgItem(IDC_CML_INTERFACE_STAGE_CURRENT_STATIC)->GetWindowText(m_strSelectedStatic);
 	UpdateData(FALSE);
+}
+
+
+void CSemantic::OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
+{
+	// TODO: 여기에 메시지 처리기 코드를 추가 및/또는 기본값을 호출합니다.
+	if (pScrollBar == (CScrollBar*)&m_controlSlider) {
+		int curPos = m_controlSlider.GetPos();
+		m_strSliderValue.Format(_T("%d"),-1*curPos);
+		UpdateData(FALSE);
+	}
+
+	CDialogEx::OnVScroll(nSBCode, nPos, pScrollBar);
 }
