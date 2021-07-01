@@ -41,6 +41,8 @@ CSemantic::CSemantic(CWnd* pParent /*=nullptr*/)
 	, m_strSliderMin(_T(""))
 	, m_strSliderMax(_T(""))
 	, m_strSliderValue(_T(""))
+	, m_strSliderValueHex(_T(""))
+	, m_strSliderValueBin(_T(""))
 {
 
 }
@@ -89,6 +91,8 @@ void CSemantic::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_SLIDER_MIN_STATIC, m_strSliderMin);
 	DDX_Text(pDX, IDC_SLIDER_MAX_STATIC, m_strSliderMax);
 	DDX_Text(pDX, IDC_SLIDER_VALUE_STATIC, m_strSliderValue);
+	DDX_Text(pDX, IDC_SLIDER_VALUE_HEX_STATIC, m_strSliderValueHex);
+	DDX_Text(pDX, IDC_SLIDER_VALUE_BIN_STATIC, m_strSliderValueBin);
 }
 
 
@@ -787,12 +791,10 @@ void CSemantic::OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
 void CSemantic::SliderValueUpdate()
 {
 	int curPos = -1*m_controlSlider.GetPos();
-	m_strSliderValue.Format(_T("%d"), curPos);
-	if (curPos) {
-		m_strSliderValue += _T("(");
-		m_strSliderValue += DecToBin(curPos);
-		m_strSliderValue += _T(")");
-	}
+	m_strSliderValue.Format(_T("Dec:%d"), curPos);
+	m_strSliderValueHex.Format(_T("Hex:0x%02x"), curPos);
+	m_strSliderValueBin = _T("Bin:");
+	m_strSliderValueBin+=DecToBin(curPos);
 	UpdateData(FALSE);
 }
 

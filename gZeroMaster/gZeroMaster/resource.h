@@ -150,6 +150,8 @@
 #define IDC_CML_INTERFACE_STAGE_CURRENT_VALUE_STATIC 1134
 #define IDC_SLIDER_MAX_STATIC           1135
 #define IDC_SLIDER_VALUE_STATIC         1136
+#define IDC_SLIDER_VALUE_HEX_STATIC     1137
+#define IDC_SLIDER_VALUE_BIN_STATIC     1138
 
 // Next default values for new objects
 // 
