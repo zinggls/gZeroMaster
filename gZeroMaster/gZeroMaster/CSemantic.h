@@ -111,4 +111,5 @@ public:
 	afx_msg void OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar);
 	void SliderValueUpdate();
 	void ShowSlider(int nCmdShow);
+	static CString DecToBin(int dec);
 };

@@ -778,7 +778,9 @@ void CSemantic::OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
 void CSemantic::SliderValueUpdate()
 {
 	int curPos = -1*m_controlSlider.GetPos();
-	m_strSliderValue.Format(_T("%d"), curPos);
+	m_strSliderValue.Format(_T("%d("), curPos);
+	m_strSliderValue += DecToBin(curPos);
+	m_strSliderValue += _T(")");
 	UpdateData(FALSE);
 }
 
@@ -790,4 +792,22 @@ void CSemantic::ShowSlider(int nCmdShow)
 	GetDlgItem(IDC_SLIDER_MIN_STATIC)->ShowWindow(nCmdShow);
 	GetDlgItem(IDC_SLIDER_VALUE_STATIC)->ShowWindow(nCmdShow);
 	GetDlgItem(IDC_SELECTED_STATIC)->ShowWindow(nCmdShow);
+}
+
+
+CString CSemantic::DecToBin(int dec)
+{
+	int nBytes = sizeof(int);
+
+	CString strBin;
+	int byte = dec & 0xff;
+	while (byte > 0) {
+		for (int i = 7; i >= 0; i--) {
+			CString strBit;
+			strBit.Format(_T("%d"), (byte >> i) & 1);
+			strBin += strBit;
+		}
+		byte = (byte >> 8) & 0xff;
+	}
+	return strBin;
 }
