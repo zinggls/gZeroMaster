@@ -476,9 +476,11 @@ void CSemantic::SetControlSlider(int min,int max,CString strCurVal,int ticFreq,i
 	int curVal = _tcstol(strCurVal.GetBuffer(), NULL, 16);
 
 	m_strSliderMin.Format(_T("Min:%d"), min);
-	m_strSliderMin += _T("(");
-	m_strSliderMin += DecToBin(min);
-	m_strSliderMin += _T(")");
+	if (min != 0) {
+		m_strSliderMin += _T("(");
+		m_strSliderMin += DecToBin(min);
+		m_strSliderMin += _T(")");
+	}
 
 	m_strSliderMax.Format(_T("Max:%d"), max);
 	m_strSliderMax += _T("(");
