@@ -173,7 +173,7 @@ BOOL CSemantic::OnInitDialog()
 	m_paPower.AddString(_T("PA Off"));		//0
 	m_paPower.AddString(_T("PA On"));		//1
 
-	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_HIDE);
+	ShowSlider(SW_HIDE);
 	m_selected = None;
 	return TRUE;  // return TRUE unless you set the focus to a control
 				  // 예외: OCX 속성 페이지는 FALSE를 반환해야 합니다.
@@ -370,8 +370,6 @@ void CSemantic::ControlValueEnable(BOOL b)
 	GetDlgItem(IDC_LA_HL_DATA_RATE_CURRENT_VALUE_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_CMOS_GAIN_STAGE_CURRENT_VALUE_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_CML_INTERFACE_STAGE_CURRENT_VALUE_STATIC)->EnableWindow(b);
-
-	GetDlgItem(IDC_CONTROL_SLIDER)->EnableWindow(b);
 }
 
 void CSemantic::OnBnClickedSemanticEditCheck()
@@ -384,6 +382,7 @@ void CSemantic::OnBnClickedSemanticEditCheck()
 	}
 	else {
 		ControlValueEnable(FALSE);
+		ShowSlider(SW_HIDE);
 	}
 	UpdateData(FALSE);
 }
@@ -496,7 +495,7 @@ void CSemantic::OnStnClickedLnaGainValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = LnaGain;
-	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
+	ShowSlider(SW_SHOW);
 	Invalidate();	//모든것을 다시 그리는 것은 비효율적이지만 제일 간단하다
 
 	SetControlSlider(0, 7, m_strLnaGain, 1, 1, 10);
@@ -509,7 +508,7 @@ void CSemantic::OnStnClickedDutyCycleValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = DutyCycle;
-	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
+	ShowSlider(SW_SHOW);
 	Invalidate();
 
 	SetControlSlider(0, 255, m_strDutyCycle, 10, 1, 10);
@@ -522,7 +521,7 @@ void CSemantic::OnStnClickedVcoOscFreqValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = VcoOsc;
-	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
+	ShowSlider(SW_SHOW);
 	Invalidate();
 
 	SetControlSlider(0, 2047, m_strVcoOscFreq, 50, 1, 50);
@@ -535,7 +534,7 @@ void CSemantic::OnStnClickedVcoVddValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = VcoVdd;
-	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
+	ShowSlider(SW_SHOW);
 	Invalidate();
 
 	SetControlSlider(0, 15, m_strVcoVdd, 1, 1, 10);
@@ -548,7 +547,7 @@ void CSemantic::OnStnClickedPaGainControl1ValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = PaGain1;
-	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
+	ShowSlider(SW_SHOW);
 	Invalidate();
 
 	SetControlSlider(0, 15, m_strPaGainControl1, 1, 1, 10);
@@ -561,7 +560,7 @@ void CSemantic::OnStnClickedPaGainControl2ValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = PaGain2;
-	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
+	ShowSlider(SW_SHOW);
 	Invalidate();
 
 	SetControlSlider(0, 15, m_strPaGainControl2, 1, 1, 10);
@@ -574,7 +573,7 @@ void CSemantic::OnStnClickedTestBufferCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = TestBuffer;
-	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
+	ShowSlider(SW_SHOW);
 	Invalidate();
 
 	SetControlSlider(0, 15, m_strTestBufferCurrent, 1, 1, 10);
@@ -587,7 +586,7 @@ void CSemantic::OnStnClickedLna1BiasCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = Lna1;
-	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
+	ShowSlider(SW_SHOW);
 	Invalidate();
 ;
 	SetControlSlider(0, 15, m_strLna1Current, 1, 1, 10);
@@ -600,7 +599,7 @@ void CSemantic::OnStnClickedLna2BiasCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = Lna2;
-	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
+	ShowSlider(SW_SHOW);
 	Invalidate();
 
 	SetControlSlider(0, 15, m_strLna2Current, 1, 1, 10);
@@ -613,7 +612,7 @@ void CSemantic::OnStnClickedLna3BiasCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = Lna3;
-	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
+	ShowSlider(SW_SHOW);
 	Invalidate();
 
 	SetControlSlider(0, 15, m_strLna3Current, 1, 1, 10);
@@ -626,7 +625,7 @@ void CSemantic::OnStnClickedLna4BiasCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = Lna4;
-	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
+	ShowSlider(SW_SHOW);
 	Invalidate();
 
 	SetControlSlider(0, 15, m_strLna4Current, 1, 1, 10);
@@ -639,7 +638,7 @@ void CSemantic::OnStnClickedLna5BiasCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = Lna5;
-	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
+	ShowSlider(SW_SHOW);
 	Invalidate();
 
 	SetControlSlider(0, 15, m_strLna5Current, 1, 1, 10);
@@ -652,7 +651,7 @@ void CSemantic::OnStnClickedDemodRefStageCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = RefStage;
-	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
+	ShowSlider(SW_SHOW);
 	Invalidate();
 
 	SetControlSlider(0, 15, m_strDemodRefStageCurrent, 1, 1, 10);
@@ -665,7 +664,7 @@ void CSemantic::OnStnClickedDemodIpStageCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = IpStage;
-	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
+	ShowSlider(SW_SHOW);
 	Invalidate();
 
 	SetControlSlider(0, 15, m_strDemodIPStageCurrent, 1, 1, 10);
@@ -678,7 +677,7 @@ void CSemantic::OnStnClickedLaFbCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = Fb;
-	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
+	ShowSlider(SW_SHOW);
 	Invalidate();
 
 	SetControlSlider(0, 15, m_strLaFBCurrent, 1, 1, 10);
@@ -691,7 +690,7 @@ void CSemantic::OnStnClickedLaCoreCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = Core;
-	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
+	ShowSlider(SW_SHOW);
 	Invalidate();
 
 	SetControlSlider(0, 15, m_strLaCoreCurrent, 1, 1, 10);
@@ -704,7 +703,7 @@ void CSemantic::OnStnClickedLaOpBufferCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = OP;
-	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
+	ShowSlider(SW_SHOW);
 	Invalidate();
 
 	SetControlSlider(0, 15, m_strLaOPBufferCurrent, 1, 1, 10);
@@ -717,7 +716,7 @@ void CSemantic::OnStnClickedLaIpBufferCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = IP;
-	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
+	ShowSlider(SW_SHOW);
 	Invalidate();
 
 	SetControlSlider(0, 15, m_strLaIPBufferCurrent, 1, 1, 10);
@@ -730,7 +729,7 @@ void CSemantic::OnStnClickedLaHlDataRateCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = HL;
-	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
+	ShowSlider(SW_SHOW);
 	Invalidate();
 
 	SetControlSlider(0, 15, m_strLaHLDataRateCurrent, 1, 1, 10);
@@ -743,7 +742,7 @@ void CSemantic::OnStnClickedCmosGainStageCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = CMOS;
-	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
+	ShowSlider(SW_SHOW);
 	Invalidate();
 
 	SetControlSlider(0, 15, m_strCMOSGainStageCurrent, 1, 1, 10);
@@ -756,7 +755,7 @@ void CSemantic::OnStnClickedCmlInterfaceStageCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = CML;
-	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
+	ShowSlider(SW_SHOW);
 	Invalidate();
 
 	SetControlSlider(0, 255, m_strCMLInterfaceStageCurrent, 10, 1, 10);
@@ -781,4 +780,14 @@ void CSemantic::SliderValueUpdate()
 	int curPos = m_controlSlider.GetPos();
 	m_strSliderValue.Format(_T("%d"), -1 * curPos);
 	UpdateData(FALSE);
+}
+
+
+void CSemantic::ShowSlider(int nCmdShow)
+{
+	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_SLIDER_MAX_STATIC)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_SLIDER_MIN_STATIC)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_SLIDER_VALUE_STATIC)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_SELECTED_STATIC)->ShowWindow(nCmdShow);
 }
