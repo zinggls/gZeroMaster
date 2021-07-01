@@ -467,6 +467,7 @@ void CSemantic::OnStnClickedLnaGainValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = LnaGain;
+	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();	//모든것을 다시 그리는 것은 비효율적이지만 제일 간단하다
 }
 
@@ -475,6 +476,7 @@ void CSemantic::OnStnClickedDutyCycleValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = DutyCycle;
+	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
 }
 
@@ -483,6 +485,7 @@ void CSemantic::OnStnClickedVcoOscFreqValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = VcoOsc;
+	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
 }
 
@@ -491,6 +494,7 @@ void CSemantic::OnStnClickedVcoVddValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = VcoVdd;
+	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
 }
 
@@ -499,6 +503,7 @@ void CSemantic::OnStnClickedPaGainControl1ValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = PaGain1;
+	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
 }
 
@@ -507,6 +512,7 @@ void CSemantic::OnStnClickedPaGainControl2ValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = PaGain2;
+	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
 }
 
@@ -515,6 +521,7 @@ void CSemantic::OnStnClickedTestBufferCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = TestBuffer;
+	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
 }
 
@@ -523,6 +530,7 @@ void CSemantic::OnStnClickedLna1BiasCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = Lna1;
+	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
 }
 
@@ -531,6 +539,7 @@ void CSemantic::OnStnClickedLna2BiasCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = Lna2;
+	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
 }
 
@@ -539,6 +548,7 @@ void CSemantic::OnStnClickedLna3BiasCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = Lna3;
+	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
 }
 
@@ -547,6 +557,7 @@ void CSemantic::OnStnClickedLna4BiasCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = Lna4;
+	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
 }
 
@@ -555,6 +566,7 @@ void CSemantic::OnStnClickedLna5BiasCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = Lna5;
+	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
 }
 
@@ -563,6 +575,7 @@ void CSemantic::OnStnClickedDemodRefStageCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = RefStage;
+	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
 }
 
@@ -571,6 +584,7 @@ void CSemantic::OnStnClickedDemodIpStageCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = IpStage;
+	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
 }
 
@@ -579,6 +593,7 @@ void CSemantic::OnStnClickedLaFbCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = Fb;
+	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
 }
 
@@ -587,6 +602,7 @@ void CSemantic::OnStnClickedLaCoreCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = Core;
+	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
 }
 
@@ -595,6 +611,7 @@ void CSemantic::OnStnClickedLaOpBufferCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = OP;
+	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
 }
 
@@ -603,6 +620,7 @@ void CSemantic::OnStnClickedLaIpBufferCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = IP;
+	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
 }
 
@@ -611,6 +629,7 @@ void CSemantic::OnStnClickedLaHlDataRateCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = HL;
+	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
 }
 
@@ -619,6 +638,7 @@ void CSemantic::OnStnClickedCmosGainStageCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = CMOS;
+	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
 }
 
@@ -627,5 +647,6 @@ void CSemantic::OnStnClickedCmlInterfaceStageCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = CML;
+	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
 }
