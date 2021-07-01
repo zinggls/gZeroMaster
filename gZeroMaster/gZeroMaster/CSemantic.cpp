@@ -91,6 +91,25 @@ BEGIN_MESSAGE_MAP(CSemantic, CDialogEx)
 	ON_WM_CTLCOLOR()
 	ON_STN_CLICKED(IDC_LNA_GAIN_VALUE_STATIC, &CSemantic::OnStnClickedLnaGainValueStatic)
 	ON_STN_CLICKED(IDC_DUTY_CYCLE_VALUE_STATIC, &CSemantic::OnStnClickedDutyCycleValueStatic)
+	ON_STN_CLICKED(IDC_VCO_OSC_FREQ_VALUE_STATIC, &CSemantic::OnStnClickedVcoOscFreqValueStatic)
+	ON_STN_CLICKED(IDC_VCO_VDD_VALUE_STATIC, &CSemantic::OnStnClickedVcoVddValueStatic)
+	ON_STN_CLICKED(IDC_PA_GAIN_CONTROL1_VALUE_STATIC, &CSemantic::OnStnClickedPaGainControl1ValueStatic)
+	ON_STN_CLICKED(IDC_PA_GAIN_CONTROL2_VALUE_STATIC, &CSemantic::OnStnClickedPaGainControl2ValueStatic)
+	ON_STN_CLICKED(IDC_TEST_BUFFER_CURRENT_VALUE_STATIC, &CSemantic::OnStnClickedTestBufferCurrentValueStatic)
+	ON_STN_CLICKED(IDC_LNA1_BIAS_CURRENT_VALUE_STATIC, &CSemantic::OnStnClickedLna1BiasCurrentValueStatic)
+	ON_STN_CLICKED(IDC_LNA2_BIAS_CURRENT_VALUE_STATIC, &CSemantic::OnStnClickedLna2BiasCurrentValueStatic)
+	ON_STN_CLICKED(IDC_LNA3_BIAS_CURRENT_VALUE_STATIC, &CSemantic::OnStnClickedLna3BiasCurrentValueStatic)
+	ON_STN_CLICKED(IDC_LNA4_BIAS_CURRENT_VALUE_STATIC, &CSemantic::OnStnClickedLna4BiasCurrentValueStatic)
+	ON_STN_CLICKED(IDC_LNA5_BIAS_CURRENT_VALUE_STATIC, &CSemantic::OnStnClickedLna5BiasCurrentValueStatic)
+	ON_STN_CLICKED(IDC_DEMOD_REF_STAGE_CURRENT_VALUE_STATIC, &CSemantic::OnStnClickedDemodRefStageCurrentValueStatic)
+	ON_STN_CLICKED(IDC_DEMOD_IP_STAGE_CURRENT_VALUE_STATIC, &CSemantic::OnStnClickedDemodIpStageCurrentValueStatic)
+	ON_STN_CLICKED(IDC_LA_FB_CURRENT_VALUE_STATIC, &CSemantic::OnStnClickedLaFbCurrentValueStatic)
+	ON_STN_CLICKED(IDC_LA_CORE_CURRENT_VALUE_STATIC, &CSemantic::OnStnClickedLaCoreCurrentValueStatic)
+	ON_STN_CLICKED(IDC_LA_OP_BUFFER_CURRENT_VALUE_STATIC, &CSemantic::OnStnClickedLaOpBufferCurrentValueStatic)
+	ON_STN_CLICKED(IDC_LA_IP_BUFFER_CURRENT_VALUE_STATIC, &CSemantic::OnStnClickedLaIpBufferCurrentValueStatic)
+	ON_STN_CLICKED(IDC_LA_HL_DATA_RATE_CURRENT_VALUE_STATIC, &CSemantic::OnStnClickedLaHlDataRateCurrentValueStatic)
+	ON_STN_CLICKED(IDC_CMOS_GAIN_STAGE_CURRENT_VALUE_STATIC, &CSemantic::OnStnClickedCmosGainStageCurrentValueStatic)
+	ON_STN_CLICKED(IDC_CML_INTERFACE_STAGE_CURRENT_VALUE_STATIC, &CSemantic::OnStnClickedCmlInterfaceStageCurrentValueStatic)
 END_MESSAGE_MAP()
 
 
@@ -361,22 +380,82 @@ void CSemantic::OnBnClickedSemanticEditCheck()
 }
 
 
+COLORREF CSemantic::SetColor(CDC* pDC, SelectStatic given)
+{
+	if (m_selected == given)
+		return pDC->SetTextColor(RGB(255, 0, 0));
+	else
+		return pDC->SetTextColor(RGB(0, 0, 0));
+}
+
+
 HBRUSH CSemantic::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 {
 	HBRUSH hbr = CDialogEx::OnCtlColor(pDC, pWnd, nCtlColor);
 
 	// TODO:  여기서 DC의 특성을 변경합니다.
 	if (pWnd->GetDlgCtrlID() == IDC_LNA_GAIN_VALUE_STATIC) {
-		if(m_selected==LnaGain)
-			pDC->SetTextColor(RGB(255, 0, 0));
-		else
-			pDC->SetTextColor(RGB(0, 0, 0));
+		SetColor(pDC, LnaGain);
 	}
 	else if (pWnd->GetDlgCtrlID() == IDC_DUTY_CYCLE_VALUE_STATIC) {
-		if (m_selected == DutyCycle)
-			pDC->SetTextColor(RGB(255, 0, 0));
-		else
-			pDC->SetTextColor(RGB(0, 0, 0));
+		SetColor(pDC, DutyCycle);
+	}
+	else if (pWnd->GetDlgCtrlID() == IDC_VCO_OSC_FREQ_VALUE_STATIC) {
+		SetColor(pDC, VcoOsc);
+	}
+	else if (pWnd->GetDlgCtrlID() == IDC_VCO_VDD_VALUE_STATIC) {
+		SetColor(pDC, VcoVdd);
+	}
+	else if (pWnd->GetDlgCtrlID() == IDC_PA_GAIN_CONTROL1_VALUE_STATIC) {
+		SetColor(pDC, PaGain1);
+	}
+	else if (pWnd->GetDlgCtrlID() == IDC_PA_GAIN_CONTROL2_VALUE_STATIC) {
+		SetColor(pDC, PaGain2);
+	}
+	else if (pWnd->GetDlgCtrlID() == IDC_TEST_BUFFER_CURRENT_VALUE_STATIC) {
+		SetColor(pDC, TestBuffer);
+	}
+	else if (pWnd->GetDlgCtrlID() == IDC_LNA1_BIAS_CURRENT_VALUE_STATIC) {
+		SetColor(pDC, Lna1);
+	}
+	else if (pWnd->GetDlgCtrlID() == IDC_LNA2_BIAS_CURRENT_VALUE_STATIC) {
+		SetColor(pDC, Lna2);
+	}
+	else if (pWnd->GetDlgCtrlID() == IDC_LNA3_BIAS_CURRENT_VALUE_STATIC) {
+		SetColor(pDC, Lna3);
+	}
+	else if (pWnd->GetDlgCtrlID() == IDC_LNA4_BIAS_CURRENT_VALUE_STATIC) {
+		SetColor(pDC, Lna4);
+	}
+	else if (pWnd->GetDlgCtrlID() == IDC_LNA5_BIAS_CURRENT_VALUE_STATIC) {
+		SetColor(pDC, Lna5);
+	}
+	else if (pWnd->GetDlgCtrlID() == IDC_DEMOD_REF_STAGE_CURRENT_VALUE_STATIC) {
+		SetColor(pDC, RefStage);
+	}
+	else if (pWnd->GetDlgCtrlID() == IDC_DEMOD_IP_STAGE_CURRENT_VALUE_STATIC) {
+		SetColor(pDC, IpStage);
+	}
+	else if (pWnd->GetDlgCtrlID() == IDC_LA_FB_CURRENT_VALUE_STATIC) {
+		SetColor(pDC, Fb);
+	}
+	else if (pWnd->GetDlgCtrlID() == IDC_LA_CORE_CURRENT_VALUE_STATIC) {
+		SetColor(pDC, Core);
+	}
+	else if (pWnd->GetDlgCtrlID() == IDC_LA_OP_BUFFER_CURRENT_VALUE_STATIC) {
+		SetColor(pDC, OP);
+	}
+	else if (pWnd->GetDlgCtrlID() == IDC_LA_IP_BUFFER_CURRENT_VALUE_STATIC) {
+		SetColor(pDC, IP);
+	}
+	else if (pWnd->GetDlgCtrlID() == IDC_LA_HL_DATA_RATE_CURRENT_VALUE_STATIC) {
+		SetColor(pDC, HL);
+	}
+	else if (pWnd->GetDlgCtrlID() == IDC_CMOS_GAIN_STAGE_CURRENT_VALUE_STATIC) {
+		SetColor(pDC, CMOS);
+	}
+	else if (pWnd->GetDlgCtrlID() == IDC_CML_INTERFACE_STAGE_CURRENT_VALUE_STATIC) {
+		SetColor(pDC, CML);
 	}
 
 	// TODO:  기본값이 적당하지 않으면 다른 브러시를 반환합니다.
@@ -399,4 +478,156 @@ void CSemantic::OnStnClickedDutyCycleValueStatic()
 	m_selected = DutyCycle;
 	//GetDlgItem(IDC_DUTY_CYCLE_VALUE_STATIC)->Invalidate();
 	Invalidate();	//모든것을 다시 그리는 것은 비효율적이지만 제일 간단하다
+}
+
+
+void CSemantic::OnStnClickedVcoOscFreqValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	m_selected = VcoOsc;
+	Invalidate();
+}
+
+
+void CSemantic::OnStnClickedVcoVddValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	m_selected = VcoVdd;
+	Invalidate();
+}
+
+
+void CSemantic::OnStnClickedPaGainControl1ValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	m_selected = PaGain1;
+	Invalidate();
+}
+
+
+void CSemantic::OnStnClickedPaGainControl2ValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	m_selected = PaGain2;
+	Invalidate();
+}
+
+
+void CSemantic::OnStnClickedTestBufferCurrentValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	m_selected = TestBuffer;
+	Invalidate();
+}
+
+
+void CSemantic::OnStnClickedLna1BiasCurrentValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	m_selected = Lna1;
+	Invalidate();
+}
+
+
+void CSemantic::OnStnClickedLna2BiasCurrentValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	m_selected = Lna2;
+	Invalidate();
+}
+
+
+void CSemantic::OnStnClickedLna3BiasCurrentValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	m_selected = Lna3;
+	Invalidate();
+}
+
+
+void CSemantic::OnStnClickedLna4BiasCurrentValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	m_selected = Lna4;
+	Invalidate();
+}
+
+
+void CSemantic::OnStnClickedLna5BiasCurrentValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	m_selected = Lna5;
+	Invalidate();
+}
+
+
+void CSemantic::OnStnClickedDemodRefStageCurrentValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	m_selected = RefStage;
+	Invalidate();
+}
+
+
+void CSemantic::OnStnClickedDemodIpStageCurrentValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	m_selected = IpStage;
+	Invalidate();
+}
+
+
+void CSemantic::OnStnClickedLaFbCurrentValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	m_selected = Fb;
+	Invalidate();
+}
+
+
+void CSemantic::OnStnClickedLaCoreCurrentValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	m_selected = Core;
+	Invalidate();
+}
+
+
+void CSemantic::OnStnClickedLaOpBufferCurrentValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	m_selected = OP;
+	Invalidate();
+}
+
+
+void CSemantic::OnStnClickedLaIpBufferCurrentValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	m_selected = IP;
+	Invalidate();
+}
+
+
+void CSemantic::OnStnClickedLaHlDataRateCurrentValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	m_selected = HL;
+	Invalidate();
+}
+
+
+void CSemantic::OnStnClickedCmosGainStageCurrentValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	m_selected = CMOS;
+	Invalidate();
+}
+
+
+void CSemantic::OnStnClickedCmlInterfaceStageCurrentValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	m_selected = CML;
+	Invalidate();
 }
