@@ -469,6 +469,24 @@ HBRUSH CSemantic::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 }
 
 
+void CSemantic::SetControlSlider(int min,int max,CString strCurVal,int ticFreq,int lineSize,int pageSize)
+{
+	int curVal = _tcstol(strCurVal.GetBuffer(), NULL, 16);
+
+	m_strSliderMin.Format(_T("Min:%d"), min);
+	m_strSliderMax.Format(_T("Max:%d"), max);
+
+	//슬라이더 컨트롤이 최대값이 아래로 표시되기때문에 최대값을 -1을 곱하여 최소갑인것 처럼 표시
+	m_controlSlider.SetRange(-1 * max, -1 * min);
+	m_controlSlider.SetRangeMin(-1 * max);
+	m_controlSlider.SetRangeMax(-1 * min);
+	m_controlSlider.SetPos(-1 * curVal);
+	m_controlSlider.SetTicFreq(ticFreq);
+	m_controlSlider.SetLineSize(lineSize);
+	m_controlSlider.SetPageSize(pageSize);
+}
+
+
 void CSemantic::OnStnClickedLnaGainValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
@@ -476,8 +494,7 @@ void CSemantic::OnStnClickedLnaGainValueStatic()
 	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();	//모든것을 다시 그리는 것은 비효율적이지만 제일 간단하다
 
-	m_strSliderMin.Format(_T("Min:0"));
-	m_strSliderMax.Format(_T("Max:7(111)"));
+	SetControlSlider(0, 7, m_strLnaGain, 1, 1, 10);
 	GetDlgItem(IDC_LNA_GAIN_STATIC)->GetWindowText(m_strSelectedStatic);
 	UpdateData(FALSE);
 }
@@ -490,8 +507,7 @@ void CSemantic::OnStnClickedDutyCycleValueStatic()
 	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
 
-	m_strSliderMin.Format(_T("Min:0"));
-	m_strSliderMax.Format(_T("Max:255(1111 1111)"));
+	SetControlSlider(0, 255, m_strDutyCycle, 1, 1, 10);
 	GetDlgItem(IDC_DUTY_CYCLE_STATIC)->GetWindowText(m_strSelectedStatic);
 	UpdateData(FALSE);
 }
@@ -504,8 +520,7 @@ void CSemantic::OnStnClickedVcoOscFreqValueStatic()
 	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
 
-	m_strSliderMin.Format(_T("Min:0"));
-	m_strSliderMax.Format(_T("Max:2047(111 1111 1111)"));
+	SetControlSlider(0, 2047, m_strVcoOscFreq, 1, 1, 10);
 	GetDlgItem(IDC_VCO_OSC_FREQ_STATIC)->GetWindowText(m_strSelectedStatic);
 	UpdateData(FALSE);
 }
@@ -518,8 +533,7 @@ void CSemantic::OnStnClickedVcoVddValueStatic()
 	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
 
-	m_strSliderMin.Format(_T("Min:0"));
-	m_strSliderMax.Format(_T("Max:15(1111)"));
+	SetControlSlider(0, 15, m_strVcoVdd, 1, 1, 10);
 	GetDlgItem(IDC_VCO_VDD_STATIC)->GetWindowText(m_strSelectedStatic);
 	UpdateData(FALSE);
 }
@@ -532,8 +546,7 @@ void CSemantic::OnStnClickedPaGainControl1ValueStatic()
 	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
 
-	m_strSliderMin.Format(_T("Min:0"));
-	m_strSliderMax.Format(_T("Max:15(1111)"));
+	SetControlSlider(0, 15, m_strPaGainControl1, 1, 1, 10);
 	GetDlgItem(IDC_PA_GAIN_CONTROL1_STATIC)->GetWindowText(m_strSelectedStatic);
 	UpdateData(FALSE);
 }
@@ -546,8 +559,7 @@ void CSemantic::OnStnClickedPaGainControl2ValueStatic()
 	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
 
-	m_strSliderMin.Format(_T("Min:0"));
-	m_strSliderMax.Format(_T("Max:15(1111)"));
+	SetControlSlider(0, 15, m_strPaGainControl2, 1, 1, 10);
 	GetDlgItem(IDC_PA_GAIN_CONTROL2_STATIC)->GetWindowText(m_strSelectedStatic);
 	UpdateData(FALSE);
 }
@@ -560,8 +572,7 @@ void CSemantic::OnStnClickedTestBufferCurrentValueStatic()
 	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
 
-	m_strSliderMin.Format(_T("Min:0"));
-	m_strSliderMax.Format(_T("Max:15(1111)"));
+	SetControlSlider(0, 15, m_strTestBufferCurrent, 1, 1, 10);
 	GetDlgItem(IDC_TEST_BUFFER_CURRENT_STATIC)->GetWindowText(m_strSelectedStatic);
 	UpdateData(FALSE);
 }
@@ -573,9 +584,8 @@ void CSemantic::OnStnClickedLna1BiasCurrentValueStatic()
 	m_selected = Lna1;
 	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
-
-	m_strSliderMin.Format(_T("Min:0"));
-	m_strSliderMax.Format(_T("Max:15(1111)"));
+;
+	SetControlSlider(0, 15, m_strLna1Current, 1, 1, 10);
 	GetDlgItem(IDC_LNA1_BIAS_CURRENT_STATIC)->GetWindowText(m_strSelectedStatic);
 	UpdateData(FALSE);
 }
@@ -588,8 +598,7 @@ void CSemantic::OnStnClickedLna2BiasCurrentValueStatic()
 	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
 
-	m_strSliderMin.Format(_T("Min:0"));
-	m_strSliderMax.Format(_T("Max:15(1111)"));
+	SetControlSlider(0, 15, m_strLna2Current, 1, 1, 10);
 	GetDlgItem(IDC_LNA2_BIAS_CURRENT_STATIC)->GetWindowText(m_strSelectedStatic);
 	UpdateData(FALSE);
 }
@@ -602,8 +611,7 @@ void CSemantic::OnStnClickedLna3BiasCurrentValueStatic()
 	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
 
-	m_strSliderMin.Format(_T("Min:0"));
-	m_strSliderMax.Format(_T("Max:15(1111)"));
+	SetControlSlider(0, 15, m_strLna3Current, 1, 1, 10);
 	GetDlgItem(IDC_LNA3_BIAS_CURRENT_STATIC)->GetWindowText(m_strSelectedStatic);
 	UpdateData(FALSE);
 }
@@ -616,8 +624,7 @@ void CSemantic::OnStnClickedLna4BiasCurrentValueStatic()
 	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
 
-	m_strSliderMin.Format(_T("Min:0"));
-	m_strSliderMax.Format(_T("Max:15(1111)"));
+	SetControlSlider(0, 15, m_strLna4Current, 1, 1, 10);
 	GetDlgItem(IDC_LNA4_BIAS_CURRENT_STATIC)->GetWindowText(m_strSelectedStatic);
 	UpdateData(FALSE);
 }
@@ -630,8 +637,7 @@ void CSemantic::OnStnClickedLna5BiasCurrentValueStatic()
 	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
 
-	m_strSliderMin.Format(_T("Min:0"));
-	m_strSliderMax.Format(_T("Max:15(1111)"));
+	SetControlSlider(0, 15, m_strLna5Current, 1, 1, 10);
 	GetDlgItem(IDC_LNA5_BIAS_CURRENT_STATIC)->GetWindowText(m_strSelectedStatic);
 	UpdateData(FALSE);
 }
@@ -644,8 +650,7 @@ void CSemantic::OnStnClickedDemodRefStageCurrentValueStatic()
 	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
 
-	m_strSliderMin.Format(_T("Min:0"));
-	m_strSliderMax.Format(_T("Max:15(1111)"));
+	SetControlSlider(0, 15, m_strDemodRefStageCurrent, 1, 1, 10);
 	GetDlgItem(IDC_DEMOD_REF_STAGE_CURRENT_STATIC)->GetWindowText(m_strSelectedStatic);
 	UpdateData(FALSE);
 }
@@ -658,8 +663,7 @@ void CSemantic::OnStnClickedDemodIpStageCurrentValueStatic()
 	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
 
-	m_strSliderMin.Format(_T("Min:0"));
-	m_strSliderMax.Format(_T("Max:15(1111)"));
+	SetControlSlider(0, 15, m_strDemodIPStageCurrent, 1, 1, 10);
 	GetDlgItem(IDC_DEMOD_IP_STAGE_CURRENT_STATIC)->GetWindowText(m_strSelectedStatic);
 	UpdateData(FALSE);
 }
@@ -672,8 +676,7 @@ void CSemantic::OnStnClickedLaFbCurrentValueStatic()
 	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
 
-	m_strSliderMin.Format(_T("Min:0"));
-	m_strSliderMax.Format(_T("Max:15(1111)"));
+	SetControlSlider(0, 15, m_strLaFBCurrent, 1, 1, 10);
 	GetDlgItem(IDC_LA_FB_CURRENT_STATIC)->GetWindowText(m_strSelectedStatic);
 	UpdateData(FALSE);
 }
@@ -686,8 +689,7 @@ void CSemantic::OnStnClickedLaCoreCurrentValueStatic()
 	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
 
-	m_strSliderMin.Format(_T("Min:0"));
-	m_strSliderMax.Format(_T("Max:15(1111)"));
+	SetControlSlider(0, 15, m_strLaCoreCurrent, 1, 1, 10);
 	GetDlgItem(IDC_LA_CORE_CURRENT_STATIC)->GetWindowText(m_strSelectedStatic);
 	UpdateData(FALSE);
 }
@@ -700,8 +702,7 @@ void CSemantic::OnStnClickedLaOpBufferCurrentValueStatic()
 	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
 
-	m_strSliderMin.Format(_T("Min:0"));
-	m_strSliderMax.Format(_T("Max:15(1111)"));
+	SetControlSlider(0, 15, m_strLaOPBufferCurrent, 1, 1, 10);
 	GetDlgItem(IDC_LA_OP_BUFFER_CURRENT_STATIC)->GetWindowText(m_strSelectedStatic);
 	UpdateData(FALSE);
 }
@@ -714,8 +715,7 @@ void CSemantic::OnStnClickedLaIpBufferCurrentValueStatic()
 	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
 
-	m_strSliderMin.Format(_T("Min:0"));
-	m_strSliderMax.Format(_T("Max:15(1111)"));
+	SetControlSlider(0, 15, m_strLaIPBufferCurrent, 1, 1, 10);
 	GetDlgItem(IDC_LA_IP_BUFFER_CURRENT_STATIC)->GetWindowText(m_strSelectedStatic);
 	UpdateData(FALSE);
 }
@@ -728,8 +728,7 @@ void CSemantic::OnStnClickedLaHlDataRateCurrentValueStatic()
 	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
 
-	m_strSliderMin.Format(_T("Min:0"));
-	m_strSliderMax.Format(_T("Max:15(1111)"));
+	SetControlSlider(0, 15, m_strLaHLDataRateCurrent, 1, 1, 10);
 	GetDlgItem(IDC_LA_HL_DATA_RATE_CURRENT_STATIC)->GetWindowText(m_strSelectedStatic);
 	UpdateData(FALSE);
 }
@@ -742,8 +741,7 @@ void CSemantic::OnStnClickedCmosGainStageCurrentValueStatic()
 	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
 
-	m_strSliderMin.Format(_T("Min:0"));
-	m_strSliderMax.Format(_T("Max:15(1111)"));
+	SetControlSlider(0, 15, m_strCMOSGainStageCurrent, 1, 1, 10);
 	GetDlgItem(IDC_CMOS_GAIN_STAGE_CURRENT_STATIC)->GetWindowText(m_strSelectedStatic);
 	UpdateData(FALSE);
 }
@@ -756,8 +754,7 @@ void CSemantic::OnStnClickedCmlInterfaceStageCurrentValueStatic()
 	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
 
-	m_strSliderMin.Format(_T("Min:0"));
-	m_strSliderMax.Format(_T("Max:255(1111 1111)"));
+	SetControlSlider(0, 255, m_strCMLInterfaceStageCurrent, 1, 1, 10);
 	GetDlgItem(IDC_CML_INTERFACE_STAGE_CURRENT_STATIC)->GetWindowText(m_strSelectedStatic);
 	UpdateData(FALSE);
 }
