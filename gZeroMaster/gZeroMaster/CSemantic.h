@@ -60,6 +60,8 @@ public:
 	SelectStatic m_selected;
 
 	CString m_strSelectedStatic;
+	CString m_strSliderMin;
+	CString m_strSliderMax;
 
 public:
 	CgZeroMasterDlg* Parent();
