@@ -37,6 +37,7 @@ CSemantic::CSemantic(CWnd* pParent /*=nullptr*/)
 	, m_strCMOSGainStageCurrent(_T(""))
 	, m_strCMLInterfaceStageCurrent(_T(""))
 	, m_bSemanticEdit(FALSE)
+	, m_strSelectedStatic(_T(""))
 {
 
 }
@@ -81,6 +82,7 @@ void CSemantic::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_CML_INTERFACE_STAGE_CURRENT_VALUE_STATIC, m_strCMLInterfaceStageCurrent);
 	DDX_Control(pDX, IDC_CONTROL_SLIDER, m_controlSlider);
 	DDX_Check(pDX, IDC_SEMANTIC_EDIT_CHECK, m_bSemanticEdit);
+	DDX_Text(pDX, IDC_SELECTED_STATIC, m_strSelectedStatic);
 }
 
 
@@ -469,6 +471,9 @@ void CSemantic::OnStnClickedLnaGainValueStatic()
 	m_selected = LnaGain;
 	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();	//모든것을 다시 그리는 것은 비효율적이지만 제일 간단하다
+
+	GetDlgItem(IDC_LNA_GAIN_STATIC)->GetWindowText(m_strSelectedStatic);
+	UpdateData(FALSE);
 }
 
 
@@ -478,6 +483,9 @@ void CSemantic::OnStnClickedDutyCycleValueStatic()
 	m_selected = DutyCycle;
 	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
+
+	GetDlgItem(IDC_DUTY_CYCLE_STATIC)->GetWindowText(m_strSelectedStatic);
+	UpdateData(FALSE);
 }
 
 
@@ -487,6 +495,9 @@ void CSemantic::OnStnClickedVcoOscFreqValueStatic()
 	m_selected = VcoOsc;
 	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
+
+	GetDlgItem(IDC_VCO_OSC_FREQ_STATIC)->GetWindowText(m_strSelectedStatic);
+	UpdateData(FALSE);
 }
 
 
@@ -496,6 +507,9 @@ void CSemantic::OnStnClickedVcoVddValueStatic()
 	m_selected = VcoVdd;
 	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
+
+	GetDlgItem(IDC_VCO_VDD_STATIC)->GetWindowText(m_strSelectedStatic);
+	UpdateData(FALSE);
 }
 
 
@@ -505,6 +519,9 @@ void CSemantic::OnStnClickedPaGainControl1ValueStatic()
 	m_selected = PaGain1;
 	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
+
+	GetDlgItem(IDC_PA_GAIN_CONTROL1_STATIC)->GetWindowText(m_strSelectedStatic);
+	UpdateData(FALSE);
 }
 
 
@@ -514,6 +531,9 @@ void CSemantic::OnStnClickedPaGainControl2ValueStatic()
 	m_selected = PaGain2;
 	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
+
+	GetDlgItem(IDC_PA_GAIN_CONTROL2_STATIC)->GetWindowText(m_strSelectedStatic);
+	UpdateData(FALSE);
 }
 
 
@@ -523,6 +543,9 @@ void CSemantic::OnStnClickedTestBufferCurrentValueStatic()
 	m_selected = TestBuffer;
 	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
+
+	GetDlgItem(IDC_TEST_BUFFER_CURRENT_STATIC)->GetWindowText(m_strSelectedStatic);
+	UpdateData(FALSE);
 }
 
 
@@ -532,6 +555,9 @@ void CSemantic::OnStnClickedLna1BiasCurrentValueStatic()
 	m_selected = Lna1;
 	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
+
+	GetDlgItem(IDC_LNA1_BIAS_CURRENT_STATIC)->GetWindowText(m_strSelectedStatic);
+	UpdateData(FALSE);
 }
 
 
@@ -541,6 +567,9 @@ void CSemantic::OnStnClickedLna2BiasCurrentValueStatic()
 	m_selected = Lna2;
 	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
+
+	GetDlgItem(IDC_LNA2_BIAS_CURRENT_STATIC)->GetWindowText(m_strSelectedStatic);
+	UpdateData(FALSE);
 }
 
 
@@ -550,6 +579,9 @@ void CSemantic::OnStnClickedLna3BiasCurrentValueStatic()
 	m_selected = Lna3;
 	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
+
+	GetDlgItem(IDC_LNA3_BIAS_CURRENT_STATIC)->GetWindowText(m_strSelectedStatic);
+	UpdateData(FALSE);
 }
 
 
@@ -559,6 +591,9 @@ void CSemantic::OnStnClickedLna4BiasCurrentValueStatic()
 	m_selected = Lna4;
 	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
+
+	GetDlgItem(IDC_LNA4_BIAS_CURRENT_STATIC)->GetWindowText(m_strSelectedStatic);
+	UpdateData(FALSE);
 }
 
 
@@ -568,6 +603,9 @@ void CSemantic::OnStnClickedLna5BiasCurrentValueStatic()
 	m_selected = Lna5;
 	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
+
+	GetDlgItem(IDC_LNA5_BIAS_CURRENT_STATIC)->GetWindowText(m_strSelectedStatic);
+	UpdateData(FALSE);
 }
 
 
@@ -577,6 +615,9 @@ void CSemantic::OnStnClickedDemodRefStageCurrentValueStatic()
 	m_selected = RefStage;
 	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
+
+	GetDlgItem(IDC_DEMOD_REF_STAGE_CURRENT_STATIC)->GetWindowText(m_strSelectedStatic);
+	UpdateData(FALSE);
 }
 
 
@@ -586,6 +627,9 @@ void CSemantic::OnStnClickedDemodIpStageCurrentValueStatic()
 	m_selected = IpStage;
 	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
+
+	GetDlgItem(IDC_DEMOD_IP_STAGE_CURRENT_STATIC)->GetWindowText(m_strSelectedStatic);
+	UpdateData(FALSE);
 }
 
 
@@ -595,6 +639,9 @@ void CSemantic::OnStnClickedLaFbCurrentValueStatic()
 	m_selected = Fb;
 	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
+
+	GetDlgItem(IDC_LA_FB_CURRENT_STATIC)->GetWindowText(m_strSelectedStatic);
+	UpdateData(FALSE);
 }
 
 
@@ -604,6 +651,9 @@ void CSemantic::OnStnClickedLaCoreCurrentValueStatic()
 	m_selected = Core;
 	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
+
+	GetDlgItem(IDC_LA_CORE_CURRENT_STATIC)->GetWindowText(m_strSelectedStatic);
+	UpdateData(FALSE);
 }
 
 
@@ -613,6 +663,9 @@ void CSemantic::OnStnClickedLaOpBufferCurrentValueStatic()
 	m_selected = OP;
 	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
+
+	GetDlgItem(IDC_LA_OP_BUFFER_CURRENT_STATIC)->GetWindowText(m_strSelectedStatic);
+	UpdateData(FALSE);
 }
 
 
@@ -622,6 +675,9 @@ void CSemantic::OnStnClickedLaIpBufferCurrentValueStatic()
 	m_selected = IP;
 	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
+
+	GetDlgItem(IDC_LA_IP_BUFFER_CURRENT_STATIC)->GetWindowText(m_strSelectedStatic);
+	UpdateData(FALSE);
 }
 
 
@@ -631,6 +687,9 @@ void CSemantic::OnStnClickedLaHlDataRateCurrentValueStatic()
 	m_selected = HL;
 	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
+
+	GetDlgItem(IDC_LA_HL_DATA_RATE_CURRENT_STATIC)->GetWindowText(m_strSelectedStatic);
+	UpdateData(FALSE);
 }
 
 
@@ -640,6 +699,9 @@ void CSemantic::OnStnClickedCmosGainStageCurrentValueStatic()
 	m_selected = CMOS;
 	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
+
+	GetDlgItem(IDC_CMOS_GAIN_STAGE_CURRENT_STATIC)->GetWindowText(m_strSelectedStatic);
+	UpdateData(FALSE);
 }
 
 
@@ -649,4 +711,7 @@ void CSemantic::OnStnClickedCmlInterfaceStageCurrentValueStatic()
 	m_selected = CML;
 	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(SW_SHOW);
 	Invalidate();
+
+	GetDlgItem(IDC_CML_INTERFACE_STAGE_CURRENT_STATIC)->GetWindowText(m_strSelectedStatic);
+	UpdateData(FALSE);
 }

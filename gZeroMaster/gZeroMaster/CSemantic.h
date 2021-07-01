@@ -59,6 +59,8 @@ public:
 	enum SelectStatic{ None=0,LnaGain,DutyCycle,VcoOsc,VcoVdd,PaGain1,PaGain2,TestBuffer,Lna1,Lna2,Lna3,Lna4,Lna5,RefStage,IpStage,Fb,Core,OP,IP,HL,CMOS,CML };
 	SelectStatic m_selected;
 
+	CString m_strSelectedStatic;
+
 public:
 	CgZeroMasterDlg* Parent();
 	afx_msg void OnBnClickedRxDataIfEnableCheck();
