@@ -23,6 +23,7 @@ CSemantic::CSemantic(CWnd* pParent /*=nullptr*/)
 	, m_strVcoPower(_T(""))
 	, m_strModPower(_T(""))
 	, m_strTestBufferPower(_T(""))
+	, m_strDataInputSelect(_T(""))
 	, m_strPaGainControl1(_T(""))
 	, m_strPaGainControl2(_T(""))
 	, m_strTestBufferCurrent(_T(""))
@@ -69,7 +70,7 @@ void CSemantic::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_VCO_POWER_VALUE_STATIC, m_strVcoPower);
 	DDX_Text(pDX, IDC_MODULATOR_POWER_VALUE_STATIC, m_strModPower);
 	DDX_Text(pDX, IDC_TEST_BUFFER_POWER_VALUE_STATIC, m_strTestBufferPower);
-	DDX_Control(pDX, IDC_DATA_INPUT_SELECT_VALUE_COMBO, m_dataInputSelect);
+	DDX_Text(pDX, IDC_DATA_INPUT_SELECT_VALUE_STATIC, m_strDataInputSelect);
 	DDX_Control(pDX, IDC_PA_POWER_VALUE_COMBO, m_paPower);
 	DDX_Text(pDX, IDC_PA_GAIN_CONTROL1_VALUE_STATIC, m_strPaGainControl1);
 	DDX_Text(pDX, IDC_PA_GAIN_CONTROL2_VALUE_STATIC, m_strPaGainControl2);
@@ -149,9 +150,6 @@ BOOL CSemantic::OnInitDialog()
 	m_BiasBlockEnable.AddString(_T("disable"));	//0
 	m_BiasBlockEnable.AddString(_T("enable"));	//1
 
-	m_dataInputSelect.AddString(_T("SER(Int)"));		//0
-	m_dataInputSelect.AddString(_T("Test Buff(Ext)"));	//1
-
 	m_paPower.AddString(_T("PA Off"));		//0
 	m_paPower.AddString(_T("PA On"));		//1
 
@@ -192,7 +190,7 @@ void CSemantic::UpdateRegisters()
 	(reg.m_nVcoPower) ? m_strVcoPower.Format(_T("VCO on")) : m_strVcoPower.Format(_T("VCO off"));
 	(reg.m_nModPower) ? m_strModPower.Format(_T("MOD on")) : m_strModPower.Format(_T("MOD off"));
 	(reg.m_nTestBufPower)? m_strTestBufferPower.Format(_T("test buff on")) : m_strTestBufferPower.Format(_T("test buff off"));
-	m_dataInputSelect.SetCurSel(reg.m_nDataInpSel);
+	(reg.m_nDataInpSel)? m_strDataInputSelect.Format(_T("Test buff(External)")) : m_strDataInputSelect.Format(_T("SER(Internal)"));
 	m_paPower.SetCurSel(reg.m_nPaPower);
 	m_strPaGainControl2.Format(_T("0x%02x"), reg.m_nPaGainCon2);
 	m_strPaGainControl1.Format(_T("0x%02x"), reg.m_nPaGainCon1);
@@ -369,7 +367,7 @@ void CSemantic::ControlValueEnable(BOOL b)
 	GetDlgItem(IDC_VCO_POWER_VALUE_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_MODULATOR_POWER_VALUE_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_TEST_BUFFER_POWER_VALUE_STATIC)->EnableWindow(b);
-	GetDlgItem(IDC_DATA_INPUT_SELECT_VALUE_COMBO)->EnableWindow(b);
+	GetDlgItem(IDC_DATA_INPUT_SELECT_VALUE_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_PA_POWER_VALUE_COMBO)->EnableWindow(b);
 	GetDlgItem(IDC_PA_GAIN_CONTROL1_VALUE_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_PA_GAIN_CONTROL2_VALUE_STATIC)->EnableWindow(b);
