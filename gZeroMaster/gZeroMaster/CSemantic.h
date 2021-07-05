@@ -61,7 +61,7 @@ protected:
 
 	DECLARE_MESSAGE_MAP()
 public:
-	CComboBox m_RxDataInterface;
+	CString m_strRxDataInterface;
 	CComboBox m_LimitingAmplifier;
 	CString m_strLnaGain;
 	CWnd* m_pParent;

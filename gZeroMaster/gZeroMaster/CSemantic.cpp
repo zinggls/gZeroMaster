@@ -15,6 +15,7 @@ IMPLEMENT_DYNAMIC(CSemantic, CDialogEx)
 
 CSemantic::CSemantic(CWnd* pParent /*=nullptr*/)
 	: CDialogEx(IDD_SEMANTIC_DIALOG, pParent)
+	, m_strRxDataInterface(_T(""))
 	, m_strLnaGain(_T(""))
 	, m_pParent(pParent)
 	, m_strPaGainControl1(_T(""))
@@ -52,7 +53,7 @@ CSemantic::~CSemantic()
 void CSemantic::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
-	DDX_Control(pDX, IDC_RX_DATA_IF_ENABLE_VALUE_COMBO, m_RxDataInterface);
+	DDX_Text(pDX, IDC_RX_DATA_IF_ENABLE_VALUE_STATIC, m_strRxDataInterface);
 	DDX_Control(pDX, IDC_LIMITING_AMP_ENABLE_VALUE_COMBO, m_LimitingAmplifier);
 	DDX_Text(pDX, IDC_LNA_GAIN_VALUE_STATIC, m_strLnaGain);
 	DDX_Text(pDX, IDC_DUTY_CYCLE_VALUE_STATIC, m_strDutyCycle);
@@ -140,9 +141,6 @@ BOOL CSemantic::OnInitDialog()
 	ControlLabelEnable(FALSE);
 	ControlValueEnable(FALSE);
 
-	m_RxDataInterface.AddString(_T("disable"));	//0
-	m_RxDataInterface.AddString(_T("enable"));	//1
-
 	m_LimitingAmplifier.AddString(_T("disable"));	//0
 	m_LimitingAmplifier.AddString(_T("enable"));	//1
 
@@ -192,7 +190,7 @@ void CSemantic::UpdateRegisters()
 	UpdateBiasReg7(Parent()->m_pRaw->m_strBiasReg7,reg);
 	UpdateBiasReg8(Parent()->m_pRaw->m_strBiasReg8,reg);
 
-	m_RxDataInterface.SetCurSel(reg.m_nRxData);
+	(reg.m_nRxData)?m_strRxDataInterface.Format(_T("enable")): m_strRxDataInterface.Format(_T("disable"));
 	m_LimitingAmplifier.SetCurSel(reg.m_nLimitAmp);
 	m_strLnaGain.Format(_T("0x%02x"), reg.m_nLnaGain);
 
@@ -369,7 +367,7 @@ void CSemantic::ControlLabelEnable(BOOL b)
 
 void CSemantic::ControlValueEnable(BOOL b)
 {
-	GetDlgItem(IDC_RX_DATA_IF_ENABLE_VALUE_COMBO)->EnableWindow(b);
+	GetDlgItem(IDC_RX_DATA_IF_ENABLE_VALUE_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_LIMITING_AMP_ENABLE_VALUE_COMBO)->EnableWindow(b);
 	GetDlgItem(IDC_LNA_GAIN_VALUE_STATIC)->EnableWindow(b);
 
