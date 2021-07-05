@@ -19,7 +19,7 @@ public:
 	int m_nVcoPower;
 	int m_nModPower;
 	int m_nTestBufPower;
-	int m_nDataInpSelt;
+	int m_nDataInpSel;
 	int m_nPaPower;
 	int m_nPaGainCon1;
 	int m_nPaGainCon2;
@@ -111,7 +111,7 @@ public:
 	void UpdateRegisters();
 	static void UpdateRxReg1(CString strRxReg1, CRegister& reg);
 	static void UpdateTxReg1(CString strTxReg1Top, CString strTxReg1Mid, CString strTxReg1Bot, CRegister& reg);
-	void UpdateTxReg2(CString strTxReg2Top, CString strTxReg2Mid, CString strTxReg2Bot);
+	static void UpdateTxReg2(CString strTxReg2Top, CString strTxReg2Mid, CString strTxReg2Bot, CRegister& reg);
 	void UpdateBiasReg1(CString strBiasReg1);
 	void UpdateBiasReg2(CString strBiasReg2);
 	void UpdateBiasReg3(CString strBiasReg3);
