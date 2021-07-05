@@ -183,7 +183,7 @@ void CSemantic::UpdateRegisters()
 	UpdateTxReg1(Parent()->m_pRaw->m_strTxReg1Top, Parent()->m_pRaw->m_strTxReg1Mid, Parent()->m_pRaw->m_strTxReg1Bot,reg);
 	UpdateTxReg2(Parent()->m_pRaw->m_strTxReg2Top, Parent()->m_pRaw->m_strTxReg2Mid, Parent()->m_pRaw->m_strTxReg2Bot,reg);
 	UpdateBiasReg1(Parent()->m_pRaw->m_strBiasReg1,reg);
-	UpdateBiasReg2(Parent()->m_pRaw->m_strBiasReg2);
+	UpdateBiasReg2(Parent()->m_pRaw->m_strBiasReg2,reg);
 	UpdateBiasReg3(Parent()->m_pRaw->m_strBiasReg3);
 	UpdateBiasReg4(Parent()->m_pRaw->m_strBiasReg4);
 	UpdateBiasReg5(Parent()->m_pRaw->m_strBiasReg5);
@@ -210,6 +210,10 @@ void CSemantic::UpdateRegisters()
 	m_strTestBufferCurrent.Format(_T("0x%02x"), reg.m_nTestBufCur);
 
 	m_BiasBlockEnable.SetCurSel(reg.m_nBiasBlock);
+
+	m_strLna3Current.Format(_T("0x%02x"), reg.m_nLna3Cur);
+	m_strLna1Current.Format(_T("0x%02x"), reg.m_nLna1Cur);
+	m_strLna2Current = m_strLna1Current;
 	UpdateData(FALSE);
 }
 
@@ -254,13 +258,13 @@ void CSemantic::UpdateBiasReg1(CString strBiasReg1, CRegister& reg)
 	reg.m_nBiasBlock = _tcstol(strBiasReg1.GetBuffer(), NULL, 16) & 0x01;
 }
 
-void CSemantic::UpdateBiasReg2(CString strBiasReg2)
+void CSemantic::UpdateBiasReg2(CString strBiasReg2, CRegister& reg)
 {
 	int reg2 = _tcstol(strBiasReg2.GetBuffer(), NULL, 16) & 0xff;
 
-	m_strLna3Current.Format(_T("0x%02x"),(reg2&0xf0)>>4);
-	m_strLna1Current.Format(_T("0x%02x"), reg2 & 0x0f);
-	m_strLna2Current = m_strLna1Current;
+	reg.m_nLna3Cur = (reg2 & 0xf0) >> 4;
+	reg.m_nLna1Cur = reg2 & 0x0f;
+	reg.m_nLna2Cur = reg.m_nLna1Cur;
 }
 
 void CSemantic::UpdateBiasReg3(CString strBiasReg3)
