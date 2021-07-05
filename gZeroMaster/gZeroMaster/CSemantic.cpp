@@ -15,14 +15,11 @@ IMPLEMENT_DYNAMIC(CSemantic, CDialogEx)
 
 CSemantic::CSemantic(CWnd* pParent /*=nullptr*/)
 	: CDialogEx(IDD_SEMANTIC_DIALOG, pParent)
-	, m_bRxDataInterface(FALSE)
-	, m_bLimitingAmplifier(FALSE)
 	, m_strLnaGain(_T(""))
 	, m_pParent(pParent)
 	, m_strPaGainControl1(_T(""))
 	, m_strPaGainControl2(_T(""))
 	, m_strTestBufferCurrent(_T(""))
-	, m_bBiasBlockEnable(FALSE)
 	, m_strLna1Current(_T(""))
 	, m_strLna2Current(_T(""))
 	, m_strLna3Current(_T(""))
@@ -54,8 +51,8 @@ CSemantic::~CSemantic()
 void CSemantic::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
-	DDX_Check(pDX, IDC_RX_DATA_IF_ENABLE_CHECK, m_bRxDataInterface);
-	DDX_Check(pDX, IDC_LIMITING_AMP_ENABLE_CHECK, m_bLimitingAmplifier);
+	DDX_Control(pDX, IDC_RX_DATA_IF_ENABLE_VALUE_COMBO, m_RxDataInterface);
+	DDX_Control(pDX, IDC_LIMITING_AMP_ENABLE_VALUE_COMBO, m_LimitingAmplifier);
 	DDX_Text(pDX, IDC_LNA_GAIN_VALUE_STATIC, m_strLnaGain);
 	DDX_Text(pDX, IDC_DUTY_CYCLE_VALUE_STATIC, m_strDutyCycle);
 	DDX_Text(pDX, IDC_VCO_OSC_FREQ_VALUE_STATIC, m_strVcoOscFreq);
@@ -70,7 +67,7 @@ void CSemantic::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_PA_GAIN_CONTROL1_VALUE_STATIC, m_strPaGainControl1);
 	DDX_Text(pDX, IDC_PA_GAIN_CONTROL2_VALUE_STATIC, m_strPaGainControl2);
 	DDX_Text(pDX, IDC_TEST_BUFFER_CURRENT_VALUE_STATIC, m_strTestBufferCurrent);
-	DDX_Check(pDX, IDC_BIAS_BLOCK_ENABLE_CHECK, m_bBiasBlockEnable);
+	DDX_Control(pDX, IDC_BIAS_BLOCK_ENABLE_VALUE_COMBO, m_BiasBlockEnable);
 	DDX_Text(pDX, IDC_LNA1_BIAS_CURRENT_VALUE_STATIC, m_strLna1Current);
 	DDX_Text(pDX, IDC_LNA2_BIAS_CURRENT_VALUE_STATIC, m_strLna2Current);
 	DDX_Text(pDX, IDC_LNA3_BIAS_CURRENT_VALUE_STATIC, m_strLna3Current);
@@ -97,8 +94,6 @@ void CSemantic::DoDataExchange(CDataExchange* pDX)
 
 
 BEGIN_MESSAGE_MAP(CSemantic, CDialogEx)
-	ON_BN_CLICKED(IDC_RX_DATA_IF_ENABLE_CHECK, &CSemantic::OnBnClickedRxDataIfEnableCheck)
-	ON_BN_CLICKED(IDC_LIMITING_AMP_ENABLE_CHECK, &CSemantic::OnBnClickedLimitingAmpEnableCheck)
 	ON_BN_CLICKED(IDC_SEMANTIC_EDIT_CHECK, &CSemantic::OnBnClickedSemanticEditCheck)
 	ON_WM_CTLCOLOR()
 	ON_STN_CLICKED(IDC_LNA_GAIN_VALUE_STATIC, &CSemantic::OnStnClickedLnaGainValueStatic)
@@ -136,22 +131,6 @@ CgZeroMasterDlg* CSemantic::Parent()
 // CSemantic 메시지 처리기
 
 
-void CSemantic::OnBnClickedRxDataIfEnableCheck()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_bRxDataInterface = !m_bRxDataInterface;
-	UpdateData(FALSE);
-}
-
-
-void CSemantic::OnBnClickedLimitingAmpEnableCheck()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_bLimitingAmplifier = !m_bLimitingAmplifier;
-	UpdateData(FALSE);
-}
-
-
 BOOL CSemantic::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
@@ -159,6 +138,15 @@ BOOL CSemantic::OnInitDialog()
 	// TODO:  여기에 추가 초기화 작업을 추가합니다.
 	ControlLabelEnable(FALSE);
 	ControlValueEnable(FALSE);
+
+	m_RxDataInterface.AddString(_T("disable"));	//0
+	m_RxDataInterface.AddString(_T("enable"));	//1
+
+	m_LimitingAmplifier.AddString(_T("disable"));	//0
+	m_LimitingAmplifier.AddString(_T("enable"));	//1
+
+	m_BiasBlockEnable.AddString(_T("disable"));	//0
+	m_BiasBlockEnable.AddString(_T("enable"));	//1
 
 	m_regRefVolt.AddString(_T("500mV"));	//0
 	m_regRefVolt.AddString(_T("400mV"));	//1
@@ -208,8 +196,8 @@ void CSemantic::UpdateRxReg1(CString strRxReg1)
 {
 	int val = _tcstol(strRxReg1.GetBuffer(), NULL, 16) & 0xff;
 
-	m_bRxDataInterface = (val & 0x10) >> 4;
-	m_bLimitingAmplifier = (val & 0x08) >> 3;
+	m_RxDataInterface.SetCurSel((val & 0x10) >> 4);
+	m_LimitingAmplifier.SetCurSel((val & 0x08) >> 3);
 	m_strLnaGain.Format(_T("0x%02x"), val & 0x07);
 }
 
@@ -248,7 +236,7 @@ void CSemantic::UpdateTxReg2(CString strTxReg2Top, CString strTxReg2Mid, CString
 
 void CSemantic::UpdateBiasReg1(CString strBiasReg1)
 {
-	m_bBiasBlockEnable = _tcstol(strBiasReg1.GetBuffer(), NULL, 16) & 0x01;
+	m_BiasBlockEnable.SetCurSel(_tcstol(strBiasReg1.GetBuffer(), NULL, 16) & 0x01);
 }
 
 void CSemantic::UpdateBiasReg2(CString strBiasReg2)
@@ -344,8 +332,8 @@ void CSemantic::ControlLabelEnable(BOOL b)
 
 void CSemantic::ControlValueEnable(BOOL b)
 {
-	GetDlgItem(IDC_RX_DATA_IF_ENABLE_CHECK)->EnableWindow(b);
-	GetDlgItem(IDC_LIMITING_AMP_ENABLE_CHECK)->EnableWindow(b);
+	GetDlgItem(IDC_RX_DATA_IF_ENABLE_VALUE_COMBO)->EnableWindow(b);
+	GetDlgItem(IDC_LIMITING_AMP_ENABLE_VALUE_COMBO)->EnableWindow(b);
 	GetDlgItem(IDC_LNA_GAIN_VALUE_STATIC)->EnableWindow(b);
 
 	GetDlgItem(IDC_DUTY_CYCLE_VALUE_STATIC)->EnableWindow(b);
@@ -362,7 +350,7 @@ void CSemantic::ControlValueEnable(BOOL b)
 	GetDlgItem(IDC_PA_GAIN_CONTROL2_VALUE_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_TEST_BUFFER_CURRENT_VALUE_STATIC)->EnableWindow(b);
 
-	GetDlgItem(IDC_BIAS_BLOCK_ENABLE_CHECK)->EnableWindow(b);
+	GetDlgItem(IDC_BIAS_BLOCK_ENABLE_VALUE_COMBO)->EnableWindow(b);
 	GetDlgItem(IDC_LNA1_BIAS_CURRENT_VALUE_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_LNA2_BIAS_CURRENT_VALUE_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_LNA3_BIAS_CURRENT_VALUE_STATIC)->EnableWindow(b);

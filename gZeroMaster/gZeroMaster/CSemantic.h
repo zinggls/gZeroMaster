@@ -22,8 +22,8 @@ protected:
 
 	DECLARE_MESSAGE_MAP()
 public:
-	BOOL m_bRxDataInterface;
-	BOOL m_bLimitingAmplifier;
+	CComboBox m_RxDataInterface;
+	CComboBox m_LimitingAmplifier;
 	CString m_strLnaGain;
 	CWnd* m_pParent;
 	CString m_strDutyCycle;
@@ -38,7 +38,7 @@ public:
 	CString m_strPaGainControl1;
 	CString m_strPaGainControl2;
 	CString m_strTestBufferCurrent;
-	BOOL m_bBiasBlockEnable;
+	CComboBox m_BiasBlockEnable;
 	CString m_strLna1Current;
 	CString m_strLna2Current;
 	CString m_strLna3Current;
@@ -68,8 +68,6 @@ public:
 
 public:
 	CgZeroMasterDlg* Parent();
-	afx_msg void OnBnClickedRxDataIfEnableCheck();
-	afx_msg void OnBnClickedLimitingAmpEnableCheck();
 	virtual BOOL OnInitDialog();
 	void UpdateRegisters();
 	void UpdateRxReg1(CString strRxReg1);
