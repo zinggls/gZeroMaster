@@ -69,7 +69,7 @@ public:
 	CString m_strVcoOscFreq;
 	CString m_strRegRefVolt;
 	CString m_strVcoVdd;
-	CComboBox m_vcoPower;
+	CString m_strVcoPower;
 	CComboBox m_modPower;
 	CComboBox m_testBufferPower;
 	CComboBox m_dataInputSelect;

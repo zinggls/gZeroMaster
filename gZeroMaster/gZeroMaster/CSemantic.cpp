@@ -20,6 +20,7 @@ CSemantic::CSemantic(CWnd* pParent /*=nullptr*/)
 	, m_strLnaGain(_T(""))
 	, m_pParent(pParent)
 	, m_strRegRefVolt(_T(""))
+	, m_strVcoPower(_T(""))
 	, m_strPaGainControl1(_T(""))
 	, m_strPaGainControl2(_T(""))
 	, m_strTestBufferCurrent(_T(""))
@@ -63,7 +64,7 @@ void CSemantic::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_VCO_OSC_FREQ_VALUE_STATIC, m_strVcoOscFreq);
 	DDX_Text(pDX, IDC_REG_REF_VOLT_VALUE_STATIC, m_strRegRefVolt);
 	DDX_Text(pDX, IDC_VCO_VDD_VALUE_STATIC, m_strVcoVdd);
-	DDX_Control(pDX, IDC_VCO_POWER_VALUE_COMBO, m_vcoPower);
+	DDX_Text(pDX, IDC_VCO_POWER_VALUE_STATIC, m_strVcoPower);
 	DDX_Control(pDX, IDC_MODULATOR_POWER_VALUE_COMBO, m_modPower);
 	DDX_Control(pDX, IDC_TEST_BUFFER_POWER_VALUE_COMBO, m_testBufferPower);
 	DDX_Control(pDX, IDC_DATA_INPUT_SELECT_VALUE_COMBO, m_dataInputSelect);
@@ -146,9 +147,6 @@ BOOL CSemantic::OnInitDialog()
 	m_BiasBlockEnable.AddString(_T("disable"));	//0
 	m_BiasBlockEnable.AddString(_T("enable"));	//1
 
-	m_vcoPower.AddString(_T("VCO Off"));	//0
-	m_vcoPower.AddString(_T("VCO On"));		//1
-
 	m_modPower.AddString(_T("MOD Off"));	//0
 	m_modPower.AddString(_T("MOD On"));		//1
 
@@ -195,7 +193,7 @@ void CSemantic::UpdateRegisters()
 	(reg.m_nRegRef) ? m_strRegRefVolt.Format(_T("400mV")) : m_strRegRefVolt.Format(_T("500mV"));
 	m_strVcoVdd.Format(_T("0x%02x"), reg.m_nVcoVdd);
 
-	m_vcoPower.SetCurSel(reg.m_nVcoPower);
+	(reg.m_nVcoPower) ? m_strVcoPower.Format(_T("VCO on")) : m_strVcoPower.Format(_T("VCO off"));
 	m_modPower.SetCurSel(reg.m_nModPower);
 	m_testBufferPower.SetCurSel(reg.m_nTestBufPower);
 	m_dataInputSelect.SetCurSel(reg.m_nDataInpSel);
@@ -372,7 +370,7 @@ void CSemantic::ControlValueEnable(BOOL b)
 	GetDlgItem(IDC_REG_REF_VOLT_VALUE_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_VCO_VDD_VALUE_STATIC)->EnableWindow(b);
 
-	GetDlgItem(IDC_VCO_POWER_VALUE_COMBO)->EnableWindow(b);
+	GetDlgItem(IDC_VCO_POWER_VALUE_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_MODULATOR_POWER_VALUE_COMBO)->EnableWindow(b);
 	GetDlgItem(IDC_TEST_BUFFER_POWER_VALUE_COMBO)->EnableWindow(b);
 	GetDlgItem(IDC_DATA_INPUT_SELECT_VALUE_COMBO)->EnableWindow(b);
