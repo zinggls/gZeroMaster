@@ -805,6 +805,8 @@ void CSemantic::ShowSlider(int nCmdShow)
 	GetDlgItem(IDC_SLIDER_MAX_STATIC)->ShowWindow(nCmdShow);
 	GetDlgItem(IDC_SLIDER_MIN_STATIC)->ShowWindow(nCmdShow);
 	GetDlgItem(IDC_SLIDER_VALUE_STATIC)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_SLIDER_VALUE_HEX_STATIC)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_SLIDER_VALUE_BIN_STATIC)->ShowWindow(nCmdShow);
 	GetDlgItem(IDC_SELECTED_STATIC)->ShowWindow(nCmdShow);
 }
 
