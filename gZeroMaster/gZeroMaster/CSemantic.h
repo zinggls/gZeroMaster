@@ -114,4 +114,5 @@ public:
 	void SliderValueUpdate();
 	void ShowSlider(int nCmdShow);
 	static CString DecToBin(int dec);
+	afx_msg void OnBnClickedReadAllButton();
 };

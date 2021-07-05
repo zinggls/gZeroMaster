@@ -123,6 +123,7 @@ BEGIN_MESSAGE_MAP(CSemantic, CDialogEx)
 	ON_STN_CLICKED(IDC_CMOS_GAIN_STAGE_CURRENT_VALUE_STATIC, &CSemantic::OnStnClickedCmosGainStageCurrentValueStatic)
 	ON_STN_CLICKED(IDC_CML_INTERFACE_STAGE_CURRENT_VALUE_STATIC, &CSemantic::OnStnClickedCmlInterfaceStageCurrentValueStatic)
 	ON_WM_VSCROLL()
+	ON_BN_CLICKED(IDC_READ_ALL_BUTTON, &CSemantic::OnBnClickedReadAllButton)
 END_MESSAGE_MAP()
 
 
@@ -826,4 +827,10 @@ CString CSemantic::DecToBin(int dec)
 		byte = (byte >> 8) & 0xff;
 	}
 	return strBin;
+}
+
+void CSemantic::OnBnClickedReadAllButton()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	UpdateRegisters();
 }
