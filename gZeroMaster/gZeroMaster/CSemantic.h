@@ -73,7 +73,7 @@ public:
 	CString m_strModPower;
 	CString m_strTestBufferPower;
 	CString m_strDataInputSelect;
-	CComboBox m_paPower;
+	CString m_strPaPower;
 	CString m_strPaGainControl1;
 	CString m_strPaGainControl2;
 	CString m_strTestBufferCurrent;
