@@ -187,7 +187,7 @@ void CSemantic::UpdateRegisters()
 	UpdateBiasReg3(Parent()->m_pRaw->m_strBiasReg3,reg);
 	UpdateBiasReg4(Parent()->m_pRaw->m_strBiasReg4,reg);
 	UpdateBiasReg5(Parent()->m_pRaw->m_strBiasReg5,reg);
-	UpdateBiasReg6(Parent()->m_pRaw->m_strBiasReg6);
+	UpdateBiasReg6(Parent()->m_pRaw->m_strBiasReg6,reg);
 	UpdateBiasReg7(Parent()->m_pRaw->m_strBiasReg7);
 	UpdateBiasReg8(Parent()->m_pRaw->m_strBiasReg8);
 
@@ -223,6 +223,9 @@ void CSemantic::UpdateRegisters()
 
 	m_strLaFBCurrent.Format(_T("0x%02x"), reg.m_nLaFBCur);
 	m_strLaCoreCurrent.Format(_T("0x%02x"), reg.m_nLaCoreCur);
+
+	m_strLaOPBufferCurrent.Format(_T("0x%02x"), reg.m_nLaOPBufCur);
+	m_strLaIPBufferCurrent.Format(_T("0x%02x"), reg.m_nLaIPBufCur);
 	UpdateData(FALSE);
 }
 
@@ -300,12 +303,12 @@ void CSemantic::UpdateBiasReg5(CString strBiasReg5, CRegister& reg)
 	reg.m_nLaCoreCur = reg5 & 0x0f;
 }
 
-void CSemantic::UpdateBiasReg6(CString strBiasReg6)
+void CSemantic::UpdateBiasReg6(CString strBiasReg6, CRegister& reg)
 {
 	int reg6 = _tcstol(strBiasReg6.GetBuffer(), NULL, 16) & 0xff;
 
-	m_strLaOPBufferCurrent.Format(_T("0x%02x"), (reg6 & 0xf0) >> 4);
-	m_strLaIPBufferCurrent.Format(_T("0x%02x"), reg6 & 0x0f);
+	reg.m_nLaOPBufCur = (reg6 & 0xf0) >> 4;
+	reg.m_nLaIPBufCur = reg6 & 0x0f;
 }
 
 void CSemantic::UpdateBiasReg7(CString strBiasReg7)
