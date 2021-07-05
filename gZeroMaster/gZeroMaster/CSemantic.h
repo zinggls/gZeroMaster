@@ -67,7 +67,7 @@ public:
 	CWnd* m_pParent;
 	CString m_strDutyCycle;
 	CString m_strVcoOscFreq;
-	CComboBox m_regRefVolt;
+	CString m_strRegRefVolt;
 	CString m_strVcoVdd;
 	CComboBox m_vcoPower;
 	CComboBox m_modPower;
