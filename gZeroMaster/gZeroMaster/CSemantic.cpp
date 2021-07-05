@@ -16,6 +16,7 @@ IMPLEMENT_DYNAMIC(CSemantic, CDialogEx)
 CSemantic::CSemantic(CWnd* pParent /*=nullptr*/)
 	: CDialogEx(IDD_SEMANTIC_DIALOG, pParent)
 	, m_strRxDataInterface(_T(""))
+	, m_strLimitingAmplifier(_T(""))
 	, m_strLnaGain(_T(""))
 	, m_pParent(pParent)
 	, m_strPaGainControl1(_T(""))
@@ -54,7 +55,7 @@ void CSemantic::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
 	DDX_Text(pDX, IDC_RX_DATA_IF_ENABLE_VALUE_STATIC, m_strRxDataInterface);
-	DDX_Control(pDX, IDC_LIMITING_AMP_ENABLE_VALUE_COMBO, m_LimitingAmplifier);
+	DDX_Text(pDX, IDC_LIMITING_AMP_ENABLE_VALUE_STATIC, m_strLimitingAmplifier);
 	DDX_Text(pDX, IDC_LNA_GAIN_VALUE_STATIC, m_strLnaGain);
 	DDX_Text(pDX, IDC_DUTY_CYCLE_VALUE_STATIC, m_strDutyCycle);
 	DDX_Text(pDX, IDC_VCO_OSC_FREQ_VALUE_STATIC, m_strVcoOscFreq);
@@ -141,9 +142,6 @@ BOOL CSemantic::OnInitDialog()
 	ControlLabelEnable(FALSE);
 	ControlValueEnable(FALSE);
 
-	m_LimitingAmplifier.AddString(_T("disable"));	//0
-	m_LimitingAmplifier.AddString(_T("enable"));	//1
-
 	m_BiasBlockEnable.AddString(_T("disable"));	//0
 	m_BiasBlockEnable.AddString(_T("enable"));	//1
 
@@ -191,7 +189,7 @@ void CSemantic::UpdateRegisters()
 	UpdateBiasReg8(Parent()->m_pRaw->m_strBiasReg8,reg);
 
 	(reg.m_nRxData)?m_strRxDataInterface.Format(_T("enable")): m_strRxDataInterface.Format(_T("disable"));
-	m_LimitingAmplifier.SetCurSel(reg.m_nLimitAmp);
+	(reg.m_nLimitAmp) ? m_strLimitingAmplifier.Format(_T("enable")) : m_strLimitingAmplifier.Format(_T("disable"));
 	m_strLnaGain.Format(_T("0x%02x"), reg.m_nLnaGain);
 
 	m_strDutyCycle.Format(_T("0x%02x"), reg.m_nDutyCycle);
@@ -368,7 +366,7 @@ void CSemantic::ControlLabelEnable(BOOL b)
 void CSemantic::ControlValueEnable(BOOL b)
 {
 	GetDlgItem(IDC_RX_DATA_IF_ENABLE_VALUE_STATIC)->EnableWindow(b);
-	GetDlgItem(IDC_LIMITING_AMP_ENABLE_VALUE_COMBO)->EnableWindow(b);
+	GetDlgItem(IDC_LIMITING_AMP_ENABLE_VALUE_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_LNA_GAIN_VALUE_STATIC)->EnableWindow(b);
 
 	GetDlgItem(IDC_DUTY_CYCLE_VALUE_STATIC)->EnableWindow(b);
