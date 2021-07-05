@@ -119,7 +119,7 @@ public:
 	static void UpdateBiasReg5(CString strBiasReg5, CRegister& reg);
 	static void UpdateBiasReg6(CString strBiasReg6, CRegister& reg);
 	static void UpdateBiasReg7(CString strBiasReg7, CRegister& reg);
-	void UpdateBiasReg8(CString strBiasReg8);
+	static void UpdateBiasReg8(CString strBiasReg8, CRegister& reg);
 	void ControlLabelEnable(BOOL b);
 	void ControlValueEnable(BOOL b);
 	afx_msg void OnBnClickedSemanticEditCheck();
