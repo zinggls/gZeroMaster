@@ -178,7 +178,8 @@ BOOL CSemantic::OnInitDialog()
 void CSemantic::UpdateRegisters()
 {
 	ASSERT(Parent());
-	UpdateRxReg1(Parent()->m_pRaw->m_strRxReg1);
+	CRegister reg;
+	UpdateRxReg1(Parent()->m_pRaw->m_strRxReg1,reg);
 	UpdateTxReg1(Parent()->m_pRaw->m_strTxReg1Top, Parent()->m_pRaw->m_strTxReg1Mid, Parent()->m_pRaw->m_strTxReg1Bot);
 	UpdateTxReg2(Parent()->m_pRaw->m_strTxReg2Top, Parent()->m_pRaw->m_strTxReg2Mid, Parent()->m_pRaw->m_strTxReg2Bot);
 	UpdateBiasReg1(Parent()->m_pRaw->m_strBiasReg1);
@@ -189,16 +190,20 @@ void CSemantic::UpdateRegisters()
 	UpdateBiasReg6(Parent()->m_pRaw->m_strBiasReg6);
 	UpdateBiasReg7(Parent()->m_pRaw->m_strBiasReg7);
 	UpdateBiasReg8(Parent()->m_pRaw->m_strBiasReg8);
+
+	m_RxDataInterface.SetCurSel(reg.m_nRxData);
+	m_LimitingAmplifier.SetCurSel(reg.m_nLimitAmp);
+	m_strLnaGain.Format(_T("0x%02x"), reg.m_nLnaGain);
 	UpdateData(FALSE);
 }
 
-void CSemantic::UpdateRxReg1(CString strRxReg1)
+void CSemantic::UpdateRxReg1(CString strRxReg1, CRegister &reg)
 {
 	int val = _tcstol(strRxReg1.GetBuffer(), NULL, 16) & 0xff;
 
-	m_RxDataInterface.SetCurSel((val & 0x10) >> 4);
-	m_LimitingAmplifier.SetCurSel((val & 0x08) >> 3);
-	m_strLnaGain.Format(_T("0x%02x"), val & 0x07);
+	reg.m_nRxData = (val & 0x10) >> 4;
+	reg.m_nLimitAmp = (val & 0x08) >> 3;
+	reg.m_nLnaGain = val & 0x07;
 }
 
 void CSemantic::UpdateTxReg1(CString strTxReg1Top, CString strTxReg1Mid, CString strTxReg1Bot)

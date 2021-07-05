@@ -4,6 +4,45 @@ class CgZeroMasterDlg;
 
 // CSemantic 대화 상자
 
+class CRegister {
+public:
+	//RX
+	int m_nRxData;
+	int m_nLimitAmp;
+	int m_nLnaGain;
+
+	//TX
+	int m_nDutyCycle;
+	int m_nVcoOsc;;
+	int m_nRegRef;
+	int m_nVcoVdd;
+	int m_nVcoPower;
+	int m_nModPower;
+	int m_nTestBufPower;
+	int m_nDataInpSelt;
+	int m_nPaPower;
+	int m_nPaGainCon1;
+	int m_nPaGainCon2;
+	int m_nTestBufCur;
+
+	//BIAS
+	int m_nBiasBlock;
+	int m_nLna1Cur;
+	int m_nLna2Cur;
+	int m_nLna3Cur;
+	int m_nLna4Cur;
+	int m_nLna5Cur;
+	int m_nDemodRefStageCur;
+	int m_nDemodIPStageCur;
+	int m_nLaFBCur;
+	int m_nLaCoreCur;
+	int m_nLaOPBufCur;
+	int m_nLaIPBufCur;
+	int m_nLaHLDataRateCur;
+	int m_nCMOSGainStageCur;
+	int m_nCMLInterfaceStageCur;
+};
+
 class CSemantic : public CDialogEx
 {
 	DECLARE_DYNAMIC(CSemantic)
@@ -70,7 +109,7 @@ public:
 	CgZeroMasterDlg* Parent();
 	virtual BOOL OnInitDialog();
 	void UpdateRegisters();
-	void UpdateRxReg1(CString strRxReg1);
+	static void UpdateRxReg1(CString strRxReg1, CRegister& reg);
 	void UpdateTxReg1(CString strTxReg1Top, CString strTxReg1Mid, CString strTxReg1Bot);
 	void UpdateTxReg2(CString strTxReg2Top, CString strTxReg2Mid, CString strTxReg2Bot);
 	void UpdateBiasReg1(CString strBiasReg1);
