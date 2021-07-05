@@ -115,7 +115,7 @@ public:
 	static void UpdateBiasReg1(CString strBiasReg1, CRegister& reg);
 	static void UpdateBiasReg2(CString strBiasReg2, CRegister& reg);
 	static void UpdateBiasReg3(CString strBiasReg3, CRegister& reg);
-	void UpdateBiasReg4(CString strBiasReg4);
+	static void UpdateBiasReg4(CString strBiasReg4, CRegister& reg);
 	void UpdateBiasReg5(CString strBiasReg5);
 	void UpdateBiasReg6(CString strBiasReg6);
 	void UpdateBiasReg7(CString strBiasReg7);
