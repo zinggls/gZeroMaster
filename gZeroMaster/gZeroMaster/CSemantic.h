@@ -70,7 +70,7 @@ public:
 	CString m_strRegRefVolt;
 	CString m_strVcoVdd;
 	CString m_strVcoPower;
-	CComboBox m_modPower;
+	CString m_strModPower;
 	CComboBox m_testBufferPower;
 	CComboBox m_dataInputSelect;
 	CComboBox m_paPower;
