@@ -110,7 +110,7 @@ public:
 	virtual BOOL OnInitDialog();
 	void UpdateRegisters();
 	static void UpdateRxReg1(CString strRxReg1, CRegister& reg);
-	void UpdateTxReg1(CString strTxReg1Top, CString strTxReg1Mid, CString strTxReg1Bot);
+	static void UpdateTxReg1(CString strTxReg1Top, CString strTxReg1Mid, CString strTxReg1Bot, CRegister& reg);
 	void UpdateTxReg2(CString strTxReg2Top, CString strTxReg2Mid, CString strTxReg2Bot);
 	void UpdateBiasReg1(CString strBiasReg1);
 	void UpdateBiasReg2(CString strBiasReg2);

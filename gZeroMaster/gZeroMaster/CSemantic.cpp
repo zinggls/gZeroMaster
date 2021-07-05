@@ -180,7 +180,7 @@ void CSemantic::UpdateRegisters()
 	ASSERT(Parent());
 	CRegister reg;
 	UpdateRxReg1(Parent()->m_pRaw->m_strRxReg1,reg);
-	UpdateTxReg1(Parent()->m_pRaw->m_strTxReg1Top, Parent()->m_pRaw->m_strTxReg1Mid, Parent()->m_pRaw->m_strTxReg1Bot);
+	UpdateTxReg1(Parent()->m_pRaw->m_strTxReg1Top, Parent()->m_pRaw->m_strTxReg1Mid, Parent()->m_pRaw->m_strTxReg1Bot,reg);
 	UpdateTxReg2(Parent()->m_pRaw->m_strTxReg2Top, Parent()->m_pRaw->m_strTxReg2Mid, Parent()->m_pRaw->m_strTxReg2Bot);
 	UpdateBiasReg1(Parent()->m_pRaw->m_strBiasReg1);
 	UpdateBiasReg2(Parent()->m_pRaw->m_strBiasReg2);
@@ -194,6 +194,11 @@ void CSemantic::UpdateRegisters()
 	m_RxDataInterface.SetCurSel(reg.m_nRxData);
 	m_LimitingAmplifier.SetCurSel(reg.m_nLimitAmp);
 	m_strLnaGain.Format(_T("0x%02x"), reg.m_nLnaGain);
+
+	m_strDutyCycle.Format(_T("0x%02x"), reg.m_nDutyCycle);
+	m_strVcoOscFreq.Format(_T("0x%02x"),reg.m_nVcoOsc);
+	m_regRefVolt.SetCurSel(reg.m_nRegRef);
+	m_strVcoVdd.Format(_T("0x%02x"), reg.m_nVcoVdd);
 	UpdateData(FALSE);
 }
 
@@ -206,20 +211,15 @@ void CSemantic::UpdateRxReg1(CString strRxReg1, CRegister &reg)
 	reg.m_nLnaGain = val & 0x07;
 }
 
-void CSemantic::UpdateTxReg1(CString strTxReg1Top, CString strTxReg1Mid, CString strTxReg1Bot)
+void CSemantic::UpdateTxReg1(CString strTxReg1Top, CString strTxReg1Mid, CString strTxReg1Bot, CRegister& reg)
 {
-	m_strDutyCycle = strTxReg1Top;
-
 	int mid = _tcstol(strTxReg1Mid.GetBuffer(), NULL, 16) & 0xff;
 	int bot = _tcstol(strTxReg1Bot.GetBuffer(), NULL, 16) & 0xff;
 
-	int nVcoOscFreq = (bot & 0xe0) >> 5 | (mid << 3);
-	int nRefVolt = (bot & 0x10) >> 4;
-	int nVcoVdd = bot & 0x0f;
-
-	m_strVcoOscFreq.Format(_T("0x%02x"), nVcoOscFreq);
-	m_regRefVolt.SetCurSel(nRefVolt);
-	m_strVcoVdd.Format(_T("0x%02x"), nVcoVdd);
+	reg.m_nDutyCycle = _tcstol(strTxReg1Top.GetBuffer(), NULL, 16) & 0xff;
+	reg.m_nVcoOsc = (bot & 0xe0) >> 5 | (mid << 3);
+	reg.m_nRegRef = (bot & 0x10) >> 4;
+	reg.m_nVcoVdd = bot & 0x0f;
 }
 
 void CSemantic::UpdateTxReg2(CString strTxReg2Top, CString strTxReg2Mid, CString strTxReg2Bot)
