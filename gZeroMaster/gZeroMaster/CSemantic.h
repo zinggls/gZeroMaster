@@ -77,7 +77,7 @@ public:
 	CString m_strPaGainControl1;
 	CString m_strPaGainControl2;
 	CString m_strTestBufferCurrent;
-	CComboBox m_BiasBlockEnable;
+	CString m_strBiasBlockEnable;
 	CString m_strLna1Current;
 	CString m_strLna2Current;
 	CString m_strLna3Current;

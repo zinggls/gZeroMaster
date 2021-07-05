@@ -28,6 +28,7 @@ CSemantic::CSemantic(CWnd* pParent /*=nullptr*/)
 	, m_strPaGainControl1(_T(""))
 	, m_strPaGainControl2(_T(""))
 	, m_strTestBufferCurrent(_T(""))
+	, m_strBiasBlockEnable(_T(""))
 	, m_strLna1Current(_T(""))
 	, m_strLna2Current(_T(""))
 	, m_strLna3Current(_T(""))
@@ -76,7 +77,7 @@ void CSemantic::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_PA_GAIN_CONTROL1_VALUE_STATIC, m_strPaGainControl1);
 	DDX_Text(pDX, IDC_PA_GAIN_CONTROL2_VALUE_STATIC, m_strPaGainControl2);
 	DDX_Text(pDX, IDC_TEST_BUFFER_CURRENT_VALUE_STATIC, m_strTestBufferCurrent);
-	DDX_Control(pDX, IDC_BIAS_BLOCK_ENABLE_VALUE_COMBO, m_BiasBlockEnable);
+	DDX_Text(pDX, IDC_BIAS_BLOCK_ENABLE_VALUE_STATIC, m_strBiasBlockEnable);
 	DDX_Text(pDX, IDC_LNA1_BIAS_CURRENT_VALUE_STATIC, m_strLna1Current);
 	DDX_Text(pDX, IDC_LNA2_BIAS_CURRENT_VALUE_STATIC, m_strLna2Current);
 	DDX_Text(pDX, IDC_LNA3_BIAS_CURRENT_VALUE_STATIC, m_strLna3Current);
@@ -148,9 +149,6 @@ BOOL CSemantic::OnInitDialog()
 	ControlLabelEnable(FALSE);
 	ControlValueEnable(FALSE);
 
-	m_BiasBlockEnable.AddString(_T("disable"));	//0
-	m_BiasBlockEnable.AddString(_T("enable"));	//1
-
 	ShowSlider(SW_HIDE);
 	m_selected = None;
 
@@ -194,7 +192,7 @@ void CSemantic::UpdateRegisters()
 	m_strPaGainControl1.Format(_T("0x%02x"), reg.m_nPaGainCon1);
 	m_strTestBufferCurrent.Format(_T("0x%02x"), reg.m_nTestBufCur);
 
-	m_BiasBlockEnable.SetCurSel(reg.m_nBiasBlock);
+	(reg.m_nBiasBlock) ? m_strBiasBlockEnable.Format(_T("enable")) : m_strBiasBlockEnable.Format(_T("disable"));
 
 	m_strLna3Current.Format(_T("0x%02x"), reg.m_nLna3Cur);
 	m_strLna1Current.Format(_T("0x%02x"), reg.m_nLna1Cur);
@@ -371,7 +369,7 @@ void CSemantic::ControlValueEnable(BOOL b)
 	GetDlgItem(IDC_PA_GAIN_CONTROL2_VALUE_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_TEST_BUFFER_CURRENT_VALUE_STATIC)->EnableWindow(b);
 
-	GetDlgItem(IDC_BIAS_BLOCK_ENABLE_VALUE_COMBO)->EnableWindow(b);
+	GetDlgItem(IDC_BIAS_BLOCK_ENABLE_VALUE_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_LNA1_BIAS_CURRENT_VALUE_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_LNA2_BIAS_CURRENT_VALUE_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_LNA3_BIAS_CURRENT_VALUE_STATIC)->EnableWindow(b);
