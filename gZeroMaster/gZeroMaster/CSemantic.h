@@ -118,7 +118,7 @@ public:
 	static void UpdateBiasReg4(CString strBiasReg4, CRegister& reg);
 	static void UpdateBiasReg5(CString strBiasReg5, CRegister& reg);
 	static void UpdateBiasReg6(CString strBiasReg6, CRegister& reg);
-	void UpdateBiasReg7(CString strBiasReg7);
+	static void UpdateBiasReg7(CString strBiasReg7, CRegister& reg);
 	void UpdateBiasReg8(CString strBiasReg8);
 	void ControlLabelEnable(BOOL b);
 	void ControlValueEnable(BOOL b);

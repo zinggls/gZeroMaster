@@ -188,7 +188,7 @@ void CSemantic::UpdateRegisters()
 	UpdateBiasReg4(Parent()->m_pRaw->m_strBiasReg4,reg);
 	UpdateBiasReg5(Parent()->m_pRaw->m_strBiasReg5,reg);
 	UpdateBiasReg6(Parent()->m_pRaw->m_strBiasReg6,reg);
-	UpdateBiasReg7(Parent()->m_pRaw->m_strBiasReg7);
+	UpdateBiasReg7(Parent()->m_pRaw->m_strBiasReg7,reg);
 	UpdateBiasReg8(Parent()->m_pRaw->m_strBiasReg8);
 
 	m_RxDataInterface.SetCurSel(reg.m_nRxData);
@@ -226,6 +226,9 @@ void CSemantic::UpdateRegisters()
 
 	m_strLaOPBufferCurrent.Format(_T("0x%02x"), reg.m_nLaOPBufCur);
 	m_strLaIPBufferCurrent.Format(_T("0x%02x"), reg.m_nLaIPBufCur);
+
+	m_strLaHLDataRateCurrent.Format(_T("0x%02x"), reg.m_nLaHLDataRateCur);
+	m_strCMOSGainStageCurrent.Format(_T("0x%02x"), reg.m_nCMOSGainStageCur);
 	UpdateData(FALSE);
 }
 
@@ -311,12 +314,12 @@ void CSemantic::UpdateBiasReg6(CString strBiasReg6, CRegister& reg)
 	reg.m_nLaIPBufCur = reg6 & 0x0f;
 }
 
-void CSemantic::UpdateBiasReg7(CString strBiasReg7)
+void CSemantic::UpdateBiasReg7(CString strBiasReg7, CRegister& reg)
 {
 	int reg7 = _tcstol(strBiasReg7.GetBuffer(), NULL, 16) & 0xff;
 
-	m_strLaHLDataRateCurrent.Format(_T("0x%02x"), (reg7 & 0xf0) >> 4);
-	m_strCMOSGainStageCurrent.Format(_T("0x%02x"), reg7 & 0x0f);
+	reg.m_nLaHLDataRateCur = (reg7 & 0xf0) >> 4;
+	reg.m_nCMOSGainStageCur = reg7 & 0x0f;
 }
 
 void CSemantic::UpdateBiasReg8(CString strBiasReg8)
