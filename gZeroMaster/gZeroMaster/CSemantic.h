@@ -166,4 +166,5 @@ public:
 	afx_msg void OnStnClickedBiasBlockEnableValueStatic();
 	void ResetValues();
 	afx_msg void OnCbnSelchangeControlCombo();
+	afx_msg void OnBnClickedWriteButton();
 };

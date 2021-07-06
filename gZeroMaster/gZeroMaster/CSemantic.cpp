@@ -140,6 +140,7 @@ BEGIN_MESSAGE_MAP(CSemantic, CDialogEx)
 	ON_STN_CLICKED(IDC_PA_POWER_VALUE_STATIC, &CSemantic::OnStnClickedPaPowerValueStatic)
 	ON_STN_CLICKED(IDC_BIAS_BLOCK_ENABLE_VALUE_STATIC, &CSemantic::OnStnClickedBiasBlockEnableValueStatic)
 	ON_CBN_SELCHANGE(IDC_CONTROL_COMBO, &CSemantic::OnCbnSelchangeControlCombo)
+	ON_BN_CLICKED(IDC_WRITE_BUTTON, &CSemantic::OnBnClickedWriteButton)
 END_MESSAGE_MAP()
 
 
@@ -1303,6 +1304,83 @@ void CSemantic::OnCbnSelchangeControlCombo()
 		break;
 	case BiasBlock:
 		(m_controlCombo.GetCurSel() == reg.m_nBiasBlock) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
+		break;
+	default:
+		break;
+	}
+}
+
+
+void CSemantic::OnBnClickedWriteButton()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	//ControlCombo
+	switch (m_selected) {
+	case RxData:
+		break;
+	case LimAmp:
+		break;
+	case RegRef:
+		break;
+	case VcoPow:
+		break;
+	case ModPow:
+		break;
+	case TestBufPow:
+		break;
+	case DataInp:
+		break;
+	case PaPow:
+		break;
+	case BiasBlock:
+		break;
+	default:
+		break;
+	}
+
+	//ControlSlide
+	switch (m_selected) {
+	case LnaGain:
+		break;
+	case DutyCycle:
+		break;
+	case VcoOsc:
+		break;
+	case VcoVdd:
+		break;
+	case PaGain1:
+		break;
+	case PaGain2:
+		break;
+	case TestBuffer:
+		break;
+	case Lna1:
+		break;
+	case Lna2:
+		break;
+	case Lna3:
+		break;
+	case Lna4:
+		break;
+	case Lna5:
+		break;
+	case RefStage:
+		break;
+	case IpStage:
+		break;
+	case Fb:
+		break;
+	case Core:
+		break;
+	case OP:
+		break;
+	case IP:
+		break;
+	case HL:
+		break;
+	case CMOS:
+		break;
+	case CML:
 		break;
 	default:
 		break;
