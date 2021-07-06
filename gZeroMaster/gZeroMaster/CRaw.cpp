@@ -613,23 +613,7 @@ void CRaw::OnBnClickedBit0Button()
 
 void CRaw::OnBnClickedReadAllButton()
 {
-	m_strRxReg1.Empty();
-	m_strTxReg1Top.Empty();
-	m_strTxReg1Mid.Empty();
-	m_strTxReg1Bot.Empty();
-	m_strTxReg2Top.Empty();
-	m_strTxReg2Mid.Empty();
-	m_strTxReg2Bot.Empty();
-	m_strBiasReg1.Empty();
-	m_strBiasReg2.Empty();
-	m_strBiasReg3.Empty();
-	m_strBiasReg4.Empty();
-	m_strBiasReg5.Empty();
-	m_strBiasReg6.Empty();
-	m_strBiasReg7.Empty();
-	m_strBiasReg8.Empty();
-	UpdateData(FALSE);
-
+	ResetValues();
 	ReadResisters();
 }
 
