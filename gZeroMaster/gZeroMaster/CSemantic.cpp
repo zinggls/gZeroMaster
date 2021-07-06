@@ -139,6 +139,7 @@ BEGIN_MESSAGE_MAP(CSemantic, CDialogEx)
 	ON_STN_CLICKED(IDC_DATA_INPUT_SELECT_VALUE_STATIC, &CSemantic::OnStnClickedDataInputSelectValueStatic)
 	ON_STN_CLICKED(IDC_PA_POWER_VALUE_STATIC, &CSemantic::OnStnClickedPaPowerValueStatic)
 	ON_STN_CLICKED(IDC_BIAS_BLOCK_ENABLE_VALUE_STATIC, &CSemantic::OnStnClickedBiasBlockEnableValueStatic)
+	ON_CBN_SELCHANGE(IDC_CONTROL_COMBO, &CSemantic::OnCbnSelchangeControlCombo)
 END_MESSAGE_MAP()
 
 
@@ -1196,4 +1197,43 @@ void CSemantic::ResetValues()
 	m_strCMOSGainStageCurrent.Empty();
 	m_strCMLInterfaceStageCurrent.Empty();
 	UpdateData(FALSE);
+}
+
+void CSemantic::OnCbnSelchangeControlCombo()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	CRegister reg;
+	Parse(Parent()->m_pRaw, reg);
+
+	switch (m_selected) {
+	case RxData:
+		(m_controlCombo.GetCurSel() == reg.m_nRxData) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
+		break;
+	case LimAmp:
+		(m_controlCombo.GetCurSel() == reg.m_nLimitAmp) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
+		break;
+	case RegRef:
+		(m_controlCombo.GetCurSel() == reg.m_nRegRef) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
+		break;
+	case VcoPow:
+		(m_controlCombo.GetCurSel() == reg.m_nVcoPower) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
+		break;
+	case ModPow:
+		(m_controlCombo.GetCurSel() == reg.m_nModPower) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
+		break;
+	case TestBufPow:
+		(m_controlCombo.GetCurSel() == reg.m_nTestBufPower) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
+		break;
+	case DataInp:
+		(m_controlCombo.GetCurSel() == reg.m_nDataInpSel) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
+		break;
+	case PaPow:
+		(m_controlCombo.GetCurSel() == reg.m_nPaPower) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
+		break;
+	case BiasBlock:
+		(m_controlCombo.GetCurSel() == reg.m_nBiasBlock) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
+		break;
+	default:
+		break;
+	}
 }
