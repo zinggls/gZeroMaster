@@ -129,6 +129,15 @@ BEGIN_MESSAGE_MAP(CSemantic, CDialogEx)
 	ON_STN_CLICKED(IDC_CML_INTERFACE_STAGE_CURRENT_VALUE_STATIC, &CSemantic::OnStnClickedCmlInterfaceStageCurrentValueStatic)
 	ON_WM_VSCROLL()
 	ON_BN_CLICKED(IDC_READ_ALL_BUTTON, &CSemantic::OnBnClickedReadAllButton)
+	ON_STN_CLICKED(IDC_RX_DATA_IF_ENABLE_VALUE_STATIC, &CSemantic::OnStnClickedRxDataIfEnableValueStatic)
+	ON_STN_CLICKED(IDC_LIMITING_AMP_ENABLE_VALUE_STATIC, &CSemantic::OnStnClickedLimitingAmpEnableValueStatic)
+	ON_STN_CLICKED(IDC_REG_REF_VOLT_VALUE_STATIC, &CSemantic::OnStnClickedRegRefVoltValueStatic)
+	ON_STN_CLICKED(IDC_VCO_POWER_VALUE_STATIC, &CSemantic::OnStnClickedVcoPowerValueStatic)
+	ON_STN_CLICKED(IDC_MODULATOR_POWER_VALUE_STATIC, &CSemantic::OnStnClickedModulatorPowerValueStatic)
+	ON_STN_CLICKED(IDC_TEST_BUFFER_POWER_VALUE_STATIC, &CSemantic::OnStnClickedTestBufferPowerValueStatic)
+	ON_STN_CLICKED(IDC_DATA_INPUT_SELECT_VALUE_STATIC, &CSemantic::OnStnClickedDataInputSelectValueStatic)
+	ON_STN_CLICKED(IDC_PA_POWER_VALUE_STATIC, &CSemantic::OnStnClickedPaPowerValueStatic)
+	ON_STN_CLICKED(IDC_BIAS_BLOCK_ENABLE_VALUE_STATIC, &CSemantic::OnStnClickedBiasBlockEnableValueStatic)
 END_MESSAGE_MAP()
 
 
@@ -478,6 +487,33 @@ HBRUSH CSemantic::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 	}
 	else if (pWnd->GetDlgCtrlID() == IDC_CML_INTERFACE_STAGE_CURRENT_VALUE_STATIC) {
 		SetColor(pDC, CML);
+	}
+	else if (pWnd->GetDlgCtrlID() == IDC_RX_DATA_IF_ENABLE_VALUE_STATIC) {
+		SetColor(pDC, RxData);
+	}
+	else if (pWnd->GetDlgCtrlID() == IDC_LIMITING_AMP_ENABLE_VALUE_STATIC) {
+		SetColor(pDC, LimAmp);
+	}
+	else if (pWnd->GetDlgCtrlID() == IDC_REG_REF_VOLT_VALUE_STATIC) {
+		SetColor(pDC, RegRef);
+	}
+	else if (pWnd->GetDlgCtrlID() == IDC_VCO_POWER_VALUE_STATIC) {
+		SetColor(pDC, VcoPow);
+	}
+	else if (pWnd->GetDlgCtrlID() == IDC_MODULATOR_POWER_VALUE_STATIC) {
+		SetColor(pDC, ModPow);
+	}
+	else if (pWnd->GetDlgCtrlID() == IDC_TEST_BUFFER_POWER_VALUE_STATIC) {
+		SetColor(pDC, TestBufPow);
+	}
+	else if (pWnd->GetDlgCtrlID() == IDC_DATA_INPUT_SELECT_VALUE_STATIC) {
+		SetColor(pDC, DataInp);
+	}
+	else if (pWnd->GetDlgCtrlID() == IDC_PA_POWER_VALUE_STATIC) {
+		SetColor(pDC, PaPow);
+	}
+	else if (pWnd->GetDlgCtrlID() == IDC_BIAS_BLOCK_ENABLE_VALUE_STATIC) {
+		SetColor(pDC, BiasBlock);
 	}
 
 	// TODO:  기본값이 적당하지 않으면 다른 브러시를 반환합니다.
@@ -843,4 +879,77 @@ void CSemantic::OnBnClickedReadAllButton()
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	Parent()->m_pRaw->OnBnClickedReadAllButton();
 	UpdateRegisters();
+}
+
+
+void CSemantic::OnStnClickedRxDataIfEnableValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	m_selected = RxData;
+	Invalidate();
+}
+
+
+
+void CSemantic::OnStnClickedLimitingAmpEnableValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	m_selected = LimAmp;
+	Invalidate();
+}
+
+
+void CSemantic::OnStnClickedRegRefVoltValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	m_selected = RegRef;
+	Invalidate();
+}
+
+
+void CSemantic::OnStnClickedVcoPowerValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	m_selected = VcoPow;
+	Invalidate();
+}
+
+
+void CSemantic::OnStnClickedModulatorPowerValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	m_selected = ModPow;
+	Invalidate();
+}
+
+
+void CSemantic::OnStnClickedTestBufferPowerValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	m_selected = TestBufPow;
+	Invalidate();
+}
+
+
+void CSemantic::OnStnClickedDataInputSelectValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	m_selected = DataInp;
+	Invalidate();
+}
+
+
+void CSemantic::OnStnClickedPaPowerValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	m_selected = PaPow;
+	Invalidate();
+}
+
+
+void CSemantic::OnStnClickedBiasBlockEnableValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	m_selected = BiasBlock;
+	Invalidate();
 }

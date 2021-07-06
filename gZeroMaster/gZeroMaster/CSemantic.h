@@ -95,7 +95,7 @@ public:
 	CSliderCtrl m_controlSlider;
 	BOOL m_bSemanticEdit;
 
-	enum SelectStatic{ None=0,LnaGain,DutyCycle,VcoOsc,VcoVdd,PaGain1,PaGain2,TestBuffer,Lna1,Lna2,Lna3,Lna4,Lna5,RefStage,IpStage,Fb,Core,OP,IP,HL,CMOS,CML };
+	enum SelectStatic{ None=0,RxData,LimAmp,LnaGain,DutyCycle,VcoOsc,RegRef,VcoVdd,VcoPow,ModPow,TestBufPow,DataInp,PaPow,PaGain1,PaGain2,TestBuffer,BiasBlock,Lna1,Lna2,Lna3,Lna4,Lna5,RefStage,IpStage,Fb,Core,OP,IP,HL,CMOS,CML };
 	SelectStatic m_selected;
 
 	CString m_strSelectedStatic;
@@ -152,4 +152,13 @@ public:
 	void ShowSlider(int nCmdShow);
 	static CString DecToBin(int dec);
 	afx_msg void OnBnClickedReadAllButton();
+	afx_msg void OnStnClickedRxDataIfEnableValueStatic();
+	afx_msg void OnStnClickedLimitingAmpEnableValueStatic();
+	afx_msg void OnStnClickedRegRefVoltValueStatic();
+	afx_msg void OnStnClickedVcoPowerValueStatic();
+	afx_msg void OnStnClickedModulatorPowerValueStatic();
+	afx_msg void OnStnClickedTestBufferPowerValueStatic();
+	afx_msg void OnStnClickedDataInputSelectValueStatic();
+	afx_msg void OnStnClickedPaPowerValueStatic();
+	afx_msg void OnStnClickedBiasBlockEnableValueStatic();
 };
