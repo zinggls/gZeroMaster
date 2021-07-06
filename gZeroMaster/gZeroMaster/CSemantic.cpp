@@ -881,14 +881,64 @@ void CSemantic::OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
 {
 	// TODO: 여기에 메시지 처리기 코드를 추가 및/또는 기본값을 호출합니다.
 	if (pScrollBar == (CScrollBar*)&m_controlSlider) {
-		SliderValueUpdate();
+		int curPos = SliderValueUpdate();
+
+		CString strCur;
+		strCur.Format(_T("0x%02x"), curPos);
+		switch (m_selected) {
+		case LnaGain:
+			(strCur ==m_strLnaGain) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
+			break;
+		case DutyCycle:
+			break;
+		case VcoOsc:
+			break;
+		case VcoVdd:
+			break;
+		case PaGain1:
+			break;
+		case PaGain2:
+			break;
+		case TestBuffer:
+			break;
+		case Lna1:
+			break;
+		case Lna2:
+			break;
+		case Lna3:
+			break;
+		case Lna4:
+			break;
+		case Lna5:
+			break;
+		case RefStage:
+			break;
+		case IpStage:
+			break;
+		case Fb:
+			break;
+		case Core:
+			break;
+		case OP:
+			break;
+		case IP:
+			break;
+		case HL:
+			break;
+		case CMOS:
+			break;
+		case CML:
+			break;
+		default:
+			break;
+		}
 	}
 
 	CDialogEx::OnVScroll(nSBCode, nPos, pScrollBar);
 }
 
 
-void CSemantic::SliderValueUpdate()
+int CSemantic::SliderValueUpdate()
 {
 	int curPos = -1*m_controlSlider.GetPos();
 	m_strSliderValue.Format(_T("Dec:%d"), curPos);
@@ -896,6 +946,7 @@ void CSemantic::SliderValueUpdate()
 	m_strSliderValueBin = _T("Bin:");
 	m_strSliderValueBin+=DecToBin(curPos);
 	UpdateData(FALSE);
+	return curPos;
 }
 
 
