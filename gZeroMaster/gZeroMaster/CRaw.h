@@ -105,4 +105,5 @@ public:
 	afx_msg void OnBnClickedWriteButton();
 	void ShowHexa();
 	void ShowBitWindow(int nCmdShow);
+	void ResetValues();
 };

@@ -164,4 +164,5 @@ public:
 	afx_msg void OnStnClickedDataInputSelectValueStatic();
 	afx_msg void OnStnClickedPaPowerValueStatic();
 	afx_msg void OnStnClickedBiasBlockEnableValueStatic();
+	void ResetValues();
 };
