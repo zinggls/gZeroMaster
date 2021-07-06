@@ -416,6 +416,7 @@ void CSemantic::OnBnClickedSemanticEditCheck()
 		ControlValueEnable(FALSE);
 		ShowSlider(SW_HIDE);
 		GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_HIDE);
+		GetDlgItem(IDC_CONTROL_COMBO)->ShowWindow(SW_HIDE);
 	}
 	UpdateData(FALSE);
 }
