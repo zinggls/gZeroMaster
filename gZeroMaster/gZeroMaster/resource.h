@@ -152,6 +152,7 @@
 #define IDC_RX_DATA_IF_ENABLE_VALUE_STATIC2 1139
 #define IDC_BIAS_BLOCK_ENABLE_VALUE_STATIC 1140
 #define IDC_REG_REF_VOLT_VALUE_STATIC   1141
+#define IDC_CONTROL_COMBO               1142
 
 // Next default values for new objects
 // 
@@ -159,7 +160,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        137
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1142
+#define _APS_NEXT_CONTROL_VALUE         1143
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

@@ -104,6 +104,7 @@ public:
 	CString m_strSliderValue;
 	CString m_strSliderValueHex;
 	CString m_strSliderValueBin;
+	CComboBox m_controlCombo;
 
 public:
 	CgZeroMasterDlg* Parent();
