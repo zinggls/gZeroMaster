@@ -956,7 +956,7 @@ void CSemantic::OnStnClickedTestBufferPowerValueStatic()
 	GetDlgItem(IDC_SELECTED_STATIC)->ShowWindow(SW_SHOW);
 	Invalidate();
 
-	GetDlgItem(IDC_TEST_BUFFER_POWER_VALUE_STATIC)->GetWindowText(m_strSelectedStatic);
+	GetDlgItem(IDC_TEST_BUFFER_POWER_STATIC)->GetWindowText(m_strSelectedStatic);
 	UpdateData(FALSE);
 }
 
