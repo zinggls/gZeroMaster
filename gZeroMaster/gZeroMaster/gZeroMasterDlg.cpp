@@ -216,8 +216,44 @@ void CgZeroMasterDlg::ErrorMsg(LONG lError, LPCTSTR lptszMessage)
 	L(str);
 }
 
+void CgZeroMasterDlg::Reset()
+{
+	m_pSemantic->m_strRxDataInterface.Empty();
+	m_pSemantic->m_strLimitingAmplifier.Empty();
+	m_pSemantic->m_strLnaGain.Empty();
+	m_pSemantic->m_strDutyCycle.Empty();
+	m_pSemantic->m_strVcoOscFreq.Empty();
+	m_pSemantic->m_strRegRefVolt.Empty();
+	m_pSemantic->m_strVcoVdd.Empty();
+	m_pSemantic->m_strVcoPower.Empty();
+	m_pSemantic->m_strModPower.Empty();
+	m_pSemantic->m_strTestBufferPower.Empty();
+	m_pSemantic->m_strDataInputSelect.Empty();
+	m_pSemantic->m_strPaPower.Empty();
+	m_pSemantic->m_strPaGainControl1.Empty();
+	m_pSemantic->m_strPaGainControl2.Empty();
+	m_pSemantic->m_strTestBufferCurrent.Empty();
+	m_pSemantic->m_strBiasBlockEnable.Empty();
+	m_pSemantic->m_strLna1Current.Empty();
+	m_pSemantic->m_strLna2Current.Empty();
+	m_pSemantic->m_strLna3Current.Empty();
+	m_pSemantic->m_strLna4Current.Empty();
+	m_pSemantic->m_strLna5Current.Empty();
+	m_pSemantic->m_strDemodRefStageCurrent.Empty();
+	m_pSemantic->m_strDemodIPStageCurrent.Empty();
+	m_pSemantic->m_strLaFBCurrent.Empty();
+	m_pSemantic->m_strLaCoreCurrent.Empty();
+	m_pSemantic->m_strLaOPBufferCurrent.Empty();
+	m_pSemantic->m_strLaIPBufferCurrent.Empty();
+	m_pSemantic->m_strLaHLDataRateCurrent.Empty();
+	m_pSemantic->m_strCMOSGainStageCurrent.Empty();
+	m_pSemantic->m_strCMLInterfaceStageCurrent.Empty();
+	m_pSemantic->UpdateData(FALSE);
+}
+
 void CgZeroMasterDlg::SerialClose(CString& str)
 {
+	Reset();
 	LONG lLastError = m_serial.Close();
 	if (lLastError == ERROR_SUCCESS) {
 		GetDlgItem(IDC_COM_COMBO)->EnableWindow(TRUE);

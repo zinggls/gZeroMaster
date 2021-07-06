@@ -47,6 +47,7 @@ public:
 	CRaw *m_pRaw;
 
 	void L(const TCHAR* str, ...);
+	void Reset();
 	void SerialClose(CString& str);
 	afx_msg void OnBnClickedConnectButton();
 	afx_msg void OnBnClickedLogClearButton();
