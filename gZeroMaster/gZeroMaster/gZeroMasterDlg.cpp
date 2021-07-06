@@ -242,6 +242,7 @@ void CgZeroMasterDlg::SerialClose(CString& str)
 
 	m_pSemantic->GetDlgItem(IDC_SEMANTIC_EDIT_CHECK)->EnableWindow(FALSE);
 	m_pSemantic->GetDlgItem(IDC_READ_ALL_BUTTON)->ShowWindow(SW_HIDE);
+	m_pSemantic->GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_HIDE);
 	m_pRaw->GetDlgItem(IDC_READ_ALL_BUTTON)->ShowWindow(SW_HIDE);
 }
 
