@@ -890,6 +890,15 @@ void CSemantic::OnStnClickedRxDataIfEnableValueStatic()
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = RxData;
 	ShowSlider(SW_HIDE);
+
+	for (int i = m_controlCombo.GetCount() - 1; i >= 0; i--) m_controlCombo.DeleteString(i);
+	m_controlCombo.AddString(_T("disable"));	//0
+	m_controlCombo.AddString(_T("enable"));		//1
+
+	CRegister reg;
+	UpdateRxReg1(Parent()->m_pRaw->m_strRxReg1, reg);
+	m_controlCombo.SetCurSel(reg.m_nRxData);
+
 	GetDlgItem(IDC_CONTROL_COMBO)->ShowWindow(SW_SHOW);
 	GetDlgItem(IDC_SELECTED_STATIC)->ShowWindow(SW_SHOW);
 	Invalidate();
@@ -905,6 +914,15 @@ void CSemantic::OnStnClickedLimitingAmpEnableValueStatic()
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = LimAmp;
 	ShowSlider(SW_HIDE);
+
+	for (int i = m_controlCombo.GetCount() - 1; i >= 0; i--) m_controlCombo.DeleteString(i);
+	m_controlCombo.AddString(_T("disable"));	//0
+	m_controlCombo.AddString(_T("enable"));		//1
+
+	CRegister reg;
+	UpdateRxReg1(Parent()->m_pRaw->m_strRxReg1, reg);
+	m_controlCombo.SetCurSel(reg.m_nLimitAmp);
+
 	GetDlgItem(IDC_CONTROL_COMBO)->ShowWindow(SW_SHOW);
 	GetDlgItem(IDC_SELECTED_STATIC)->ShowWindow(SW_SHOW);
 	Invalidate();
