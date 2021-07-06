@@ -1006,6 +1006,15 @@ void CSemantic::OnStnClickedTestBufferPowerValueStatic()
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = TestBufPow;
 	ShowSlider(SW_HIDE);
+
+	for (int i = m_controlCombo.GetCount() - 1; i >= 0; i--) m_controlCombo.DeleteString(i);
+	m_controlCombo.AddString(_T("Test Buff Off"));	//0
+	m_controlCombo.AddString(_T("Test Buff On"));	//1
+
+	CRegister reg;
+	UpdateTxReg2(Parent()->m_pRaw->m_strTxReg2Top, Parent()->m_pRaw->m_strTxReg2Mid, Parent()->m_pRaw->m_strTxReg2Bot, reg);
+	m_controlCombo.SetCurSel(reg.m_nTestBufPower);
+
 	GetDlgItem(IDC_CONTROL_COMBO)->ShowWindow(SW_SHOW);
 	GetDlgItem(IDC_SELECTED_STATIC)->ShowWindow(SW_SHOW);
 	Invalidate();
