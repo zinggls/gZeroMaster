@@ -902,7 +902,7 @@ void CSemantic::OnStnClickedRxDataIfEnableValueStatic()
 	m_controlCombo.AddString(_T("enable"));		//1
 
 	CRegister reg;
-	UpdateRxReg1(Parent()->m_pRaw->m_strRxReg1, reg);
+	Parse(Parent()->m_pRaw, reg);
 	m_controlCombo.SetCurSel(reg.m_nRxData);
 
 	GetDlgItem(IDC_CONTROL_COMBO)->ShowWindow(SW_SHOW);
@@ -926,7 +926,7 @@ void CSemantic::OnStnClickedLimitingAmpEnableValueStatic()
 	m_controlCombo.AddString(_T("enable"));		//1
 
 	CRegister reg;
-	UpdateRxReg1(Parent()->m_pRaw->m_strRxReg1, reg);
+	Parse(Parent()->m_pRaw, reg);
 	m_controlCombo.SetCurSel(reg.m_nLimitAmp);
 
 	GetDlgItem(IDC_CONTROL_COMBO)->ShowWindow(SW_SHOW);
@@ -949,7 +949,7 @@ void CSemantic::OnStnClickedRegRefVoltValueStatic()
 	m_controlCombo.AddString(_T("400mV"));	//1
 
 	CRegister reg;
-	UpdateTxReg1(Parent()->m_pRaw->m_strTxReg1Top, Parent()->m_pRaw->m_strTxReg1Mid, Parent()->m_pRaw->m_strTxReg1Bot, reg);
+	Parse(Parent()->m_pRaw, reg);
 	m_controlCombo.SetCurSel(reg.m_nRegRef);
 
 	GetDlgItem(IDC_CONTROL_COMBO)->ShowWindow(SW_SHOW);
@@ -972,7 +972,7 @@ void CSemantic::OnStnClickedVcoPowerValueStatic()
 	m_controlCombo.AddString(_T("VCO On"));		//1
 
 	CRegister reg;
-	UpdateTxReg2(Parent()->m_pRaw->m_strTxReg2Top, Parent()->m_pRaw->m_strTxReg2Mid, Parent()->m_pRaw->m_strTxReg2Bot, reg);
+	Parse(Parent()->m_pRaw, reg);
 	m_controlCombo.SetCurSel(reg.m_nVcoPower);
 
 	GetDlgItem(IDC_CONTROL_COMBO)->ShowWindow(SW_SHOW);
@@ -995,7 +995,7 @@ void CSemantic::OnStnClickedModulatorPowerValueStatic()
 	m_controlCombo.AddString(_T("Mod On"));		//1
 
 	CRegister reg;
-	UpdateTxReg2(Parent()->m_pRaw->m_strTxReg2Top, Parent()->m_pRaw->m_strTxReg2Mid, Parent()->m_pRaw->m_strTxReg2Bot, reg);
+	Parse(Parent()->m_pRaw, reg);
 	m_controlCombo.SetCurSel(reg.m_nModPower);
 
 	GetDlgItem(IDC_CONTROL_COMBO)->ShowWindow(SW_SHOW);
@@ -1018,7 +1018,7 @@ void CSemantic::OnStnClickedTestBufferPowerValueStatic()
 	m_controlCombo.AddString(_T("Test Buff On"));	//1
 
 	CRegister reg;
-	UpdateTxReg2(Parent()->m_pRaw->m_strTxReg2Top, Parent()->m_pRaw->m_strTxReg2Mid, Parent()->m_pRaw->m_strTxReg2Bot, reg);
+	Parse(Parent()->m_pRaw, reg);
 	m_controlCombo.SetCurSel(reg.m_nTestBufPower);
 
 	GetDlgItem(IDC_CONTROL_COMBO)->ShowWindow(SW_SHOW);
@@ -1041,7 +1041,7 @@ void CSemantic::OnStnClickedDataInputSelectValueStatic()
 	m_controlCombo.AddString(_T("Test Buff(External)"));	//1
 
 	CRegister reg;
-	UpdateTxReg2(Parent()->m_pRaw->m_strTxReg2Top, Parent()->m_pRaw->m_strTxReg2Mid, Parent()->m_pRaw->m_strTxReg2Bot, reg);
+	Parse(Parent()->m_pRaw, reg);
 	m_controlCombo.SetCurSel(reg.m_nDataInpSel);
 
 	GetDlgItem(IDC_CONTROL_COMBO)->ShowWindow(SW_SHOW);
@@ -1064,7 +1064,7 @@ void CSemantic::OnStnClickedPaPowerValueStatic()
 	m_controlCombo.AddString(_T("PA On"));	//1
 
 	CRegister reg;
-	UpdateTxReg2(Parent()->m_pRaw->m_strTxReg2Top, Parent()->m_pRaw->m_strTxReg2Mid, Parent()->m_pRaw->m_strTxReg2Bot, reg);
+	Parse(Parent()->m_pRaw, reg);
 	m_controlCombo.SetCurSel(reg.m_nPaPower);
 
 	GetDlgItem(IDC_CONTROL_COMBO)->ShowWindow(SW_SHOW);
@@ -1087,7 +1087,7 @@ void CSemantic::OnStnClickedBiasBlockEnableValueStatic()
 	m_controlCombo.AddString(_T("enable"));		//1
 
 	CRegister reg;
-	UpdateBiasReg1(Parent()->m_pRaw->m_strBiasReg1, reg);
+	Parse(Parent()->m_pRaw, reg);
 	m_controlCombo.SetCurSel(reg.m_nBiasBlock);
 
 	GetDlgItem(IDC_CONTROL_COMBO)->ShowWindow(SW_SHOW);
