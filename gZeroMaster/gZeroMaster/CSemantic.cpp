@@ -886,7 +886,12 @@ void CSemantic::OnStnClickedRxDataIfEnableValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = RxData;
+	ShowSlider(SW_HIDE);
+	GetDlgItem(IDC_SELECTED_STATIC)->ShowWindow(SW_SHOW);
 	Invalidate();
+
+	GetDlgItem(IDC_RX_DATA_IF_ENABLE_STATIC)->GetWindowText(m_strSelectedStatic);
+	UpdateData(FALSE);
 }
 
 
@@ -895,7 +900,12 @@ void CSemantic::OnStnClickedLimitingAmpEnableValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = LimAmp;
+	ShowSlider(SW_HIDE);
+	GetDlgItem(IDC_SELECTED_STATIC)->ShowWindow(SW_SHOW);
 	Invalidate();
+
+	GetDlgItem(IDC_LIMITING_AMP_ENABLE_STATIC)->GetWindowText(m_strSelectedStatic);
+	UpdateData(FALSE);
 }
 
 
@@ -903,7 +913,12 @@ void CSemantic::OnStnClickedRegRefVoltValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = RegRef;
+	ShowSlider(SW_HIDE);
+	GetDlgItem(IDC_SELECTED_STATIC)->ShowWindow(SW_SHOW);
 	Invalidate();
+
+	GetDlgItem(IDC_REG_REF_VOLT_STATIC)->GetWindowText(m_strSelectedStatic);
+	UpdateData(FALSE);
 }
 
 
@@ -911,7 +926,12 @@ void CSemantic::OnStnClickedVcoPowerValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = VcoPow;
+	ShowSlider(SW_HIDE);
+	GetDlgItem(IDC_SELECTED_STATIC)->ShowWindow(SW_SHOW);
 	Invalidate();
+
+	GetDlgItem(IDC_VCO_POWER_STATIC)->GetWindowText(m_strSelectedStatic);
+	UpdateData(FALSE);
 }
 
 
@@ -919,7 +939,12 @@ void CSemantic::OnStnClickedModulatorPowerValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = ModPow;
+	ShowSlider(SW_HIDE);
+	GetDlgItem(IDC_SELECTED_STATIC)->ShowWindow(SW_SHOW);
 	Invalidate();
+
+	GetDlgItem(IDC_MODULATOR_POWER_STATIC)->GetWindowText(m_strSelectedStatic);
+	UpdateData(FALSE);
 }
 
 
@@ -927,7 +952,12 @@ void CSemantic::OnStnClickedTestBufferPowerValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = TestBufPow;
+	ShowSlider(SW_HIDE);
+	GetDlgItem(IDC_SELECTED_STATIC)->ShowWindow(SW_SHOW);
 	Invalidate();
+
+	GetDlgItem(IDC_TEST_BUFFER_POWER_VALUE_STATIC)->GetWindowText(m_strSelectedStatic);
+	UpdateData(FALSE);
 }
 
 
@@ -935,7 +965,12 @@ void CSemantic::OnStnClickedDataInputSelectValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = DataInp;
+	ShowSlider(SW_HIDE);
+	GetDlgItem(IDC_SELECTED_STATIC)->ShowWindow(SW_SHOW);
 	Invalidate();
+
+	GetDlgItem(IDC_DATA_INPUT_SELECT_STATIC)->GetWindowText(m_strSelectedStatic);
+	UpdateData(FALSE);
 }
 
 
@@ -943,7 +978,12 @@ void CSemantic::OnStnClickedPaPowerValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = PaPow;
+	ShowSlider(SW_HIDE);
+	GetDlgItem(IDC_SELECTED_STATIC)->ShowWindow(SW_SHOW);
 	Invalidate();
+
+	GetDlgItem(IDC_PA_POWER_STATIC)->GetWindowText(m_strSelectedStatic);
+	UpdateData(FALSE);
 }
 
 
@@ -951,5 +991,10 @@ void CSemantic::OnStnClickedBiasBlockEnableValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_selected = BiasBlock;
+	ShowSlider(SW_HIDE);
+	GetDlgItem(IDC_SELECTED_STATIC)->ShowWindow(SW_SHOW);
 	Invalidate();
+
+	GetDlgItem(IDC_BIAS_BLOCK_ENABLE_STATIC)->GetWindowText(m_strSelectedStatic);
+	UpdateData(FALSE);
 }
