@@ -110,7 +110,7 @@ public:
 public:
 	CgZeroMasterDlg* Parent();
 	virtual BOOL OnInitDialog();
-	void Parse(CRaw* pRaw, CRegister& reg);
+	static void Parse(CRaw* pRaw, CRegister& reg);
 	void UpdateRegisters();
 	static void UpdateRxReg1(CString strRxReg1, CRegister& reg);
 	static void UpdateTxReg1(CString strTxReg1Top, CString strTxReg1Mid, CString strTxReg1Bot, CRegister& reg);
