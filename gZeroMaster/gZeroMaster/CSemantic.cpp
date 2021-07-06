@@ -169,21 +169,27 @@ BOOL CSemantic::OnInitDialog()
 }
 
 
+void CSemantic::Parse(CRaw* pRaw, CRegister& reg)
+{
+	UpdateRxReg1(pRaw->m_strRxReg1, reg);
+	UpdateTxReg1(pRaw->m_strTxReg1Top, pRaw->m_strTxReg1Mid, pRaw->m_strTxReg1Bot, reg);
+	UpdateTxReg2(pRaw->m_strTxReg2Top, pRaw->m_strTxReg2Mid, pRaw->m_strTxReg2Bot, reg);
+	UpdateBiasReg1(pRaw->m_strBiasReg1, reg);
+	UpdateBiasReg2(pRaw->m_strBiasReg2, reg);
+	UpdateBiasReg3(pRaw->m_strBiasReg3, reg);
+	UpdateBiasReg4(pRaw->m_strBiasReg4, reg);
+	UpdateBiasReg5(pRaw->m_strBiasReg5, reg);
+	UpdateBiasReg6(pRaw->m_strBiasReg6, reg);
+	UpdateBiasReg7(pRaw->m_strBiasReg7, reg);
+	UpdateBiasReg8(pRaw->m_strBiasReg8, reg);
+}
+
+
 void CSemantic::UpdateRegisters()
 {
 	ASSERT(Parent());
 	CRegister reg;
-	UpdateRxReg1(Parent()->m_pRaw->m_strRxReg1,reg);
-	UpdateTxReg1(Parent()->m_pRaw->m_strTxReg1Top, Parent()->m_pRaw->m_strTxReg1Mid, Parent()->m_pRaw->m_strTxReg1Bot,reg);
-	UpdateTxReg2(Parent()->m_pRaw->m_strTxReg2Top, Parent()->m_pRaw->m_strTxReg2Mid, Parent()->m_pRaw->m_strTxReg2Bot,reg);
-	UpdateBiasReg1(Parent()->m_pRaw->m_strBiasReg1,reg);
-	UpdateBiasReg2(Parent()->m_pRaw->m_strBiasReg2,reg);
-	UpdateBiasReg3(Parent()->m_pRaw->m_strBiasReg3,reg);
-	UpdateBiasReg4(Parent()->m_pRaw->m_strBiasReg4,reg);
-	UpdateBiasReg5(Parent()->m_pRaw->m_strBiasReg5,reg);
-	UpdateBiasReg6(Parent()->m_pRaw->m_strBiasReg6,reg);
-	UpdateBiasReg7(Parent()->m_pRaw->m_strBiasReg7,reg);
-	UpdateBiasReg8(Parent()->m_pRaw->m_strBiasReg8,reg);
+	Parse(Parent()->m_pRaw, reg);
 
 	(reg.m_nRxData)?m_strRxDataInterface.Format(_T("enable")): m_strRxDataInterface.Format(_T("disable"));
 	(reg.m_nLimitAmp) ? m_strLimitingAmplifier.Format(_T("enable")) : m_strLimitingAmplifier.Format(_T("disable"));
