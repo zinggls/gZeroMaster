@@ -1509,6 +1509,12 @@ int CSemantic::OnNewRegRef(int val)
 }
 
 
+int CSemantic::OnNewVcoPow(int val)
+{
+	return (val & 0xfe) | m_controlCombo.GetCurSel();
+}
+
+
 BOOL CSemantic::UpdateSemanticValue(int addr, int (CSemantic::*fpNewRegVal)(int), void (CSemantic::*fpUpdateData)(CRegister&))
 {
 	int oldRegVal;
@@ -1567,6 +1573,8 @@ void CSemantic::OnBnClickedWriteButton()
 		ASSERT(bRtn);
 		break;
 	case SelectStatic::VcoPow:
+		bRtn = UpdateSemanticValue(13, &CSemantic::OnNewVcoPow, &CSemantic::UpdateVcoPower);
+		ASSERT(bRtn);
 		break;
 	case SelectStatic::ModPow:
 		break;
