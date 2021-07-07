@@ -207,6 +207,7 @@ public:
 	int OnNewPaPow(int val);
 	int OnNewBiasBlock(int val);
 	int OnNewLnaGain(int val);
+	int OnNewDutyCycle(int val);
 	BOOL UpdateSemanticValue(int addr, int (CSemantic::* fpNewRegVal)(int), void (CSemantic::* fpUpdateData)(CRegister&));
 	afx_msg void OnBnClickedWriteButton();
 };

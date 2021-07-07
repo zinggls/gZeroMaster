@@ -1557,6 +1557,12 @@ int CSemantic::OnNewLnaGain(int val)
 }
 
 
+int CSemantic::OnNewDutyCycle(int val)
+{
+	return SliderPos();
+}
+
+
 BOOL CSemantic::UpdateSemanticValue(int addr, int (CSemantic::*fpNewRegVal)(int), void (CSemantic::*fpUpdateData)(CRegister&))
 {
 	int oldRegVal;
@@ -1659,6 +1665,8 @@ void CSemantic::OnBnClickedWriteButton()
 		ASSERT(bRtn);
 		break;
 	case SelectStatic::DutyCycle:
+		bRtn = UpdateSemanticValue(7, &CSemantic::OnNewDutyCycle, &CSemantic::UpdateDutyCycle);
+		ASSERT(bRtn);
 		break;
 	case SelectStatic::VcoOsc:
 		break;
