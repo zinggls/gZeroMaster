@@ -248,6 +248,12 @@ void CSemantic::UpdateTestBufferPower(CRegister& reg)
 }
 
 
+void CSemantic::UpdateDataInputSelect(CRegister& reg)
+{
+	(reg.m_nDataInpSel) ? m_strDataInputSelect.Format(_T("Test buff(External)")) : m_strDataInputSelect.Format(_T("SER(Internal)"));
+}
+
+
 void CSemantic::UpdateRegisters()
 {
 	ASSERT(Parent());
@@ -266,7 +272,7 @@ void CSemantic::UpdateRegisters()
 	UpdateVcoPower(reg);
 	UpdateModPower(reg);
 	UpdateTestBufferPower(reg);
-	(reg.m_nDataInpSel)? m_strDataInputSelect.Format(_T("Test buff(External)")) : m_strDataInputSelect.Format(_T("SER(Internal)"));
+	UpdateDataInputSelect(reg);
 	(reg.m_nPaPower) ? m_strPaPower.Format(_T("PA on")) : m_strPaPower.Format(_T("PA off"));
 	m_strPaGainControl2.Format(_T("0x%02x"), reg.m_nPaGainCon2);
 	m_strPaGainControl1.Format(_T("0x%02x"), reg.m_nPaGainCon1);

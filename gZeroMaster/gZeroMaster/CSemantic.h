@@ -121,6 +121,7 @@ public:
 	void UpdateVcoPower(CRegister& reg);
 	void UpdateModPower(CRegister& reg);
 	void UpdateTestBufferPower(CRegister& reg);
+	void UpdateDataInputSelect(CRegister& reg);
 	void UpdateRegisters();
 	static void UpdateRxReg1(CString strRxReg1, CRegister& reg);
 	static void UpdateTxReg1(CString strTxReg1Top, CString strTxReg1Mid, CString strTxReg1Bot, CRegister& reg);
