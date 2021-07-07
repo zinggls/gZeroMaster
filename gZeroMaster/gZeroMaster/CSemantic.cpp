@@ -362,6 +362,12 @@ void CSemantic::UpdateCMOSGainStageCurrent(CRegister& reg)
 }
 
 
+void CSemantic::UpdateCMLInterfaceStageCurrent(CRegister& reg)
+{
+	m_strCMLInterfaceStageCurrent.Format(_T("0x%02x"), reg.m_nCMLInterfaceStageCur);
+}
+
+
 void CSemantic::UpdateRegisters()
 {
 	ASSERT(Parent());
@@ -407,7 +413,7 @@ void CSemantic::UpdateRegisters()
 	UpdateLaHLDataRateCurrent(reg);
 	UpdateCMOSGainStageCurrent(reg);
 
-	m_strCMLInterfaceStageCurrent.Format(_T("0x%02x"), reg.m_nCMLInterfaceStageCur);
+	UpdateCMLInterfaceStageCurrent(reg);
 	UpdateData(FALSE);
 }
 
