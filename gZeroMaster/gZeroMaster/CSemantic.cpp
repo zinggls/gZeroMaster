@@ -1603,4 +1603,6 @@ void CSemantic::OnBnClickedWriteButton()
 	default:
 		break;
 	}
+
+	GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE);
 }
