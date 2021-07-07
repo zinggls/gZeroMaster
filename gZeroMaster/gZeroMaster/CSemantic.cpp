@@ -1539,6 +1539,12 @@ int CSemantic::OnNewPaPow(int val)
 }
 
 
+int CSemantic::OnNewBiasBlock(int val)
+{
+	return (val & 0xfe) | m_controlCombo.GetCurSel();
+}
+
+
 BOOL CSemantic::UpdateSemanticValue(int addr, int (CSemantic::*fpNewRegVal)(int), void (CSemantic::*fpUpdateData)(CRegister&))
 {
 	int oldRegVal;
@@ -1552,7 +1558,16 @@ BOOL CSemantic::UpdateSemanticValue(int addr, int (CSemantic::*fpNewRegVal)(int)
 			Parent()->ErrorMsg(lLastError, _T("Error in WriteRegister"));
 		}
 		else {
-			BOOL bRead = Parent()->m_pRaw->ReadResister(addr);
+			CString str;
+			str.Format(_T("ReadRegister Address:0x%02x..."), addr);
+			Parent()->L(str);
+
+			BOOL bRead = FALSE;
+			do {
+				bRead = Parent()->m_pRaw->ReadResister(addr);
+			} while (!bRead);
+			Parent()->L(_T("ReadRegister done"));
+
 			if (!bRead) {
 				CString str;
 				str.Format(_T("Error in ReadRegister at addr:0x%02x"), addr);
@@ -1617,6 +1632,8 @@ void CSemantic::OnBnClickedWriteButton()
 		ASSERT(bRtn);
 		break;
 	case SelectStatic::BiasBlock:
+		bRtn = UpdateSemanticValue(17, &CSemantic::OnNewBiasBlock, &CSemantic::UpdateBiasBlockEnable);
+		ASSERT(bRtn);
 		break;
 	default:
 		break;
