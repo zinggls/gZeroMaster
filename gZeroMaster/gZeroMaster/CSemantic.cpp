@@ -224,6 +224,12 @@ void CSemantic::UpdateRegRefVolt(CRegister& reg)
 }
 
 
+void CSemantic::UpdateVcoVdd(CRegister& reg)
+{
+	m_strVcoVdd.Format(_T("0x%02x"), reg.m_nVcoVdd);
+}
+
+
 void CSemantic::UpdateRegisters()
 {
 	ASSERT(Parent());
@@ -237,7 +243,7 @@ void CSemantic::UpdateRegisters()
 	UpdateDutyCycle(reg);
 	UpdateVcoOscFreq(reg);
 	UpdateRegRefVolt(reg);
-	m_strVcoVdd.Format(_T("0x%02x"), reg.m_nVcoVdd);
+	UpdateVcoVdd(reg);
 
 	(reg.m_nVcoPower) ? m_strVcoPower.Format(_T("VCO on")) : m_strVcoPower.Format(_T("VCO off"));
 	(reg.m_nModPower) ? m_strModPower.Format(_T("MOD on")) : m_strModPower.Format(_T("MOD off"));
