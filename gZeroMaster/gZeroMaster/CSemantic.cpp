@@ -1563,6 +1563,18 @@ int CSemantic::OnNewDutyCycle(int val)
 }
 
 
+int CSemantic::OnNewVcoOscUp(int val)
+{
+	return (SliderPos() & 0x7f8) >> 3;
+}
+
+
+int CSemantic::OnNewVcoOscDown(int val)
+{
+	return (SliderPos() & 0x7) << 5 | (val & 0x1f);
+}
+
+
 BOOL CSemantic::UpdateSemanticValue(int addr, int (CSemantic::*fpNewRegVal)(int), void (CSemantic::*fpUpdateData)(CRegister&))
 {
 	int oldRegVal;
@@ -1593,15 +1605,16 @@ BOOL CSemantic::UpdateSemanticValue(int addr, int (CSemantic::*fpNewRegVal)(int)
 				Parent()->ErrorMsg(lLastError, str);
 			}
 			else {
-				CRegister reg;
-				Parse(Parent()->m_pRaw, reg);
-				(this->*fpUpdateData)(reg);
-				UpdateData(FALSE);
+				if (fpUpdateData) {
+					CRegister reg;
+					Parse(Parent()->m_pRaw, reg);
+					(this->*fpUpdateData)(reg);
+					UpdateData(FALSE);
 
-				CString str;
-				str.Format(_T("Address:0x%02x Old Register:0x%02x New Register:0x%02x"), addr, oldRegVal, newRegVal);
-				Parent()->L(str);
-
+					CString str;
+					str.Format(_T("Address:0x%02x Old Register:0x%02x New Register:0x%02x"), addr, oldRegVal, newRegVal);
+					Parent()->L(str);
+				}
 				return TRUE;
 			}
 		}
@@ -1669,6 +1682,10 @@ void CSemantic::OnBnClickedWriteButton()
 		ASSERT(bRtn);
 		break;
 	case SelectStatic::VcoOsc:
+		bRtn = UpdateSemanticValue(6, &CSemantic::OnNewVcoOscUp, NULL);
+		ASSERT(bRtn);
+		bRtn = UpdateSemanticValue(5, &CSemantic::OnNewVcoOscDown, &CSemantic::UpdateVcoOscFreq);
+		ASSERT(bRtn);
 		break;
 	case SelectStatic::VcoVdd:
 		break;
