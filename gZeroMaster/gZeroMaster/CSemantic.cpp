@@ -188,13 +188,19 @@ void CSemantic::Parse(CRaw* pRaw, CRegister& reg)
 }
 
 
+void CSemantic::UpdateRxData(CRegister &reg)
+{
+	(reg.m_nRxData) ? m_strRxDataInterface.Format(_T("enable")) : m_strRxDataInterface.Format(_T("disable"));
+}
+
+
 void CSemantic::UpdateRegisters()
 {
 	ASSERT(Parent());
 	CRegister reg;
 	Parse(Parent()->m_pRaw, reg);
 
-	(reg.m_nRxData)?m_strRxDataInterface.Format(_T("enable")): m_strRxDataInterface.Format(_T("disable"));
+	UpdateRxData(reg);
 	(reg.m_nLimitAmp) ? m_strLimitingAmplifier.Format(_T("enable")) : m_strLimitingAmplifier.Format(_T("disable"));
 	m_strLnaGain.Format(_T("0x%02x"), reg.m_nLnaGain);
 
