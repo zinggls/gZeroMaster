@@ -1491,40 +1491,50 @@ void CSemantic::OnCbnSelchangeControlCombo()
 }
 
 
+int CSemantic::OnNewRxData(int val)
+{
+	return (val & 0xe0) | m_controlCombo.GetCurSel() << 4 | (val & 0x0f);
+}
+
+
+void CSemantic::UpdateSemanticValue(int addr, int (CSemantic::*fpNewRegVal)(int), void (CSemantic::*fpUpdateData)(CRegister&))
+{
+	int oldRegVal;
+	LONG lLastError = Parent()->m_pRaw->ReadResister(addr, &oldRegVal, MAX_LOOP);
+	if (lLastError != ERROR_SUCCESS) {
+		Parent()->ErrorMsg(lLastError, _T("Error in ReadRegister"));
+	}
+	else {
+		int newRegVal = (this->*fpNewRegVal)(oldRegVal);
+		if (Parent()->m_pRaw->WriteRegister(addr, newRegVal) != TRUE) {
+			Parent()->ErrorMsg(lLastError, _T("Error in WriteRegister"));
+		}
+		else {
+			BOOL bRead = Parent()->m_pRaw->ReadResister(addr);
+			ASSERT(bRead);
+
+			CRegister reg;
+			Parse(Parent()->m_pRaw, reg);
+			(this->*fpUpdateData)(reg);
+			UpdateData(FALSE);
+
+			CString str;
+			str.Format(_T("Address:0x%02x Old Register:0x%02x New Register:0x%02x"), addr, oldRegVal, newRegVal);
+			Parent()->L(str);
+		}
+	}
+}
+
+
 void CSemantic::OnBnClickedWriteButton()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	Parent()->L(_T("Writing..."));
 
-	int addr;
-	LONG lLastError;
-	CRegister reg;
 	//ControlCombo
 	switch (m_selected) {
 	case SelectStatic::RxData:
-		int oldRegVal;
-		addr = 2;
-		lLastError = Parent()->m_pRaw->ReadResister(addr, &oldRegVal, MAX_LOOP);
-		if (lLastError != ERROR_SUCCESS) {
-			Parent()->ErrorMsg(lLastError, _T("Error in ReadRegister"));
-		}
-		else {
-			int newRegVal = (oldRegVal & 0xe0) | m_controlCombo.GetCurSel()<<4 | (oldRegVal & 0x0f);
-			if (Parent()->m_pRaw->WriteRegister(addr, newRegVal) != TRUE) {
-				Parent()->ErrorMsg(lLastError, _T("Error in WriteRegister"));
-			}
-			else {
-				BOOL bRead = Parent()->m_pRaw->ReadResister(addr);
-				ASSERT(bRead);
-				Parse(Parent()->m_pRaw, reg);
-				UpdateRxData(reg);
-				UpdateData(FALSE);
-
-				CString str;
-				str.Format(_T("Address:0x%02x Old Register:0x%02x New Register:0x%02x"), addr, oldRegVal, newRegVal);
-				Parent()->L(str);
-			}
-		}
+		UpdateSemanticValue(2, &CSemantic::OnNewRxData, &CSemantic::UpdateRxData);
 		break;
 	case SelectStatic::LimAmp:
 		break;

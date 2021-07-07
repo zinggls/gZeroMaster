@@ -196,5 +196,7 @@ public:
 	afx_msg void OnStnClickedBiasBlockEnableValueStatic();
 	void ResetValues();
 	afx_msg void OnCbnSelchangeControlCombo();
+	int OnNewRxData(int val);
+	void UpdateSemanticValue(int addr, int (CSemantic::* fpNewRegVal)(int), void (CSemantic::* fpUpdateData)(CRegister&));
 	afx_msg void OnBnClickedWriteButton();
 };
