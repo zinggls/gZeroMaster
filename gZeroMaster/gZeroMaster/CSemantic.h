@@ -212,6 +212,7 @@ public:
 	int OnNewVcoOscDown(int val);
 	int OnNewVcoVdd(int val);
 	int OnNewPaGain1(int val);
+	int OnNewPaGain2(int val);
 	BOOL UpdateSemanticValue(int addr, int (CSemantic::* fpNewRegVal)(int), void (CSemantic::* fpUpdateData)(CRegister&));
 	afx_msg void OnBnClickedWriteButton();
 };
