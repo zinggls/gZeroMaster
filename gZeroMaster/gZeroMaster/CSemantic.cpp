@@ -260,6 +260,12 @@ void CSemantic::UpdateDataPaPower(CRegister& reg)
 }
 
 
+void CSemantic::UpdatePaGainControl2(CRegister& reg)
+{
+	m_strPaGainControl2.Format(_T("0x%02x"), reg.m_nPaGainCon2);
+}
+
+
 void CSemantic::UpdateRegisters()
 {
 	ASSERT(Parent());
@@ -280,7 +286,7 @@ void CSemantic::UpdateRegisters()
 	UpdateTestBufferPower(reg);
 	UpdateDataInputSelect(reg);
 	UpdateDataPaPower(reg);
-	m_strPaGainControl2.Format(_T("0x%02x"), reg.m_nPaGainCon2);
+	UpdatePaGainControl2(reg);
 	m_strPaGainControl1.Format(_T("0x%02x"), reg.m_nPaGainCon1);
 	m_strTestBufferCurrent.Format(_T("0x%02x"), reg.m_nTestBufCur);
 
