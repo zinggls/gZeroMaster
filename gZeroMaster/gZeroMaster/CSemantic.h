@@ -203,6 +203,7 @@ public:
 	int OnNewModPow(int val);
 	int OnNewTestBufPow(int val);
 	int OnNewDataInp(int val);
+	int OnNewPaPow(int val);
 	BOOL UpdateSemanticValue(int addr, int (CSemantic::* fpNewRegVal)(int), void (CSemantic::* fpUpdateData)(CRegister&));
 	afx_msg void OnBnClickedWriteButton();
 };

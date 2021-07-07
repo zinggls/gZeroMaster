@@ -1533,6 +1533,12 @@ int CSemantic::OnNewDataInp(int val)
 }
 
 
+int CSemantic::OnNewPaPow(int val)
+{
+	return (val & 0xe0) | m_controlCombo.GetCurSel() << 4 | (val & 0x0f);
+}
+
+
 BOOL CSemantic::UpdateSemanticValue(int addr, int (CSemantic::*fpNewRegVal)(int), void (CSemantic::*fpUpdateData)(CRegister&))
 {
 	int oldRegVal;
@@ -1607,6 +1613,8 @@ void CSemantic::OnBnClickedWriteButton()
 		ASSERT(bRtn);
 		break;
 	case SelectStatic::PaPow:
+		bRtn = UpdateSemanticValue(12, &CSemantic::OnNewPaPow, &CSemantic::UpdateDataPaPower);
+		ASSERT(bRtn);
 		break;
 	case SelectStatic::BiasBlock:
 		break;
