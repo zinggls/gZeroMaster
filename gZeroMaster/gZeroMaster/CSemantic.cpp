@@ -1628,44 +1628,35 @@ void CSemantic::OnBnClickedWriteButton()
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	Parent()->L(_T("Writing..."));
 
-	BOOL bRtn;
+	BOOL bRtn = TRUE;
 	//ControlCombo
 	switch (m_selected) {
 	case SelectStatic::RxData:
 		bRtn = UpdateSemanticValue(2, &CSemantic::OnNewRxData, &CSemantic::UpdateRxData);
-		ASSERT(bRtn);
 		break;
 	case SelectStatic::LimAmp:
 		bRtn = UpdateSemanticValue(2, &CSemantic::OnNewLimAmp, &CSemantic::UpdateLimitAmp);
-		ASSERT(bRtn);
 		break;
 	case SelectStatic::RegRef:
 		bRtn = UpdateSemanticValue(5, &CSemantic::OnNewRegRef, &CSemantic::UpdateRegRefVolt);
-		ASSERT(bRtn);
 		break;
 	case SelectStatic::VcoPow:
 		bRtn = UpdateSemanticValue(13, &CSemantic::OnNewVcoPow, &CSemantic::UpdateVcoPower);
-		ASSERT(bRtn);
 		break;
 	case SelectStatic::ModPow:
 		bRtn = UpdateSemanticValue(12, &CSemantic::OnNewModPow, &CSemantic::UpdateModPower);
-		ASSERT(bRtn);
 		break;
 	case SelectStatic::TestBufPow:
 		bRtn = UpdateSemanticValue(12, &CSemantic::OnNewTestBufPow, &CSemantic::UpdateTestBufferPower);
-		ASSERT(bRtn);
 		break;
 	case SelectStatic::DataInp:
 		bRtn = UpdateSemanticValue(12, &CSemantic::OnNewDataInp, &CSemantic::UpdateDataInputSelect);
-		ASSERT(bRtn);
 		break;
 	case SelectStatic::PaPow:
 		bRtn = UpdateSemanticValue(12, &CSemantic::OnNewPaPow, &CSemantic::UpdateDataPaPower);
-		ASSERT(bRtn);
 		break;
 	case SelectStatic::BiasBlock:
 		bRtn = UpdateSemanticValue(17, &CSemantic::OnNewBiasBlock, &CSemantic::UpdateBiasBlockEnable);
-		ASSERT(bRtn);
 		break;
 	default:
 		break;
@@ -1675,17 +1666,14 @@ void CSemantic::OnBnClickedWriteButton()
 	switch (m_selected) {
 	case SelectStatic::LnaGain:
 		bRtn = UpdateSemanticValue(2, &CSemantic::OnNewLnaGain, &CSemantic::UpdateLnaGain);
-		ASSERT(bRtn);
 		break;
 	case SelectStatic::DutyCycle:
 		bRtn = UpdateSemanticValue(7, &CSemantic::OnNewDutyCycle, &CSemantic::UpdateDutyCycle);
-		ASSERT(bRtn);
 		break;
 	case SelectStatic::VcoOsc:
 		bRtn = UpdateSemanticValue(6, &CSemantic::OnNewVcoOscUp, NULL);
 		ASSERT(bRtn);
 		bRtn = UpdateSemanticValue(5, &CSemantic::OnNewVcoOscDown, &CSemantic::UpdateVcoOscFreq);
-		ASSERT(bRtn);
 		break;
 	case SelectStatic::VcoVdd:
 		break;
@@ -1726,6 +1714,6 @@ void CSemantic::OnBnClickedWriteButton()
 	default:
 		break;
 	}
-
+	ASSERT(bRtn);
 	GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE);
 }
