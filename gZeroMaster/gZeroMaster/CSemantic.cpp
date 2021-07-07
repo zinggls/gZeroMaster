@@ -194,6 +194,12 @@ void CSemantic::UpdateRxData(CRegister &reg)
 }
 
 
+void CSemantic::UpdateLimitAmp(CRegister& reg)
+{
+	(reg.m_nLimitAmp) ? m_strLimitingAmplifier.Format(_T("enable")) : m_strLimitingAmplifier.Format(_T("disable"));
+}
+
+
 void CSemantic::UpdateRegisters()
 {
 	ASSERT(Parent());
@@ -201,7 +207,7 @@ void CSemantic::UpdateRegisters()
 	Parse(Parent()->m_pRaw, reg);
 
 	UpdateRxData(reg);
-	(reg.m_nLimitAmp) ? m_strLimitingAmplifier.Format(_T("enable")) : m_strLimitingAmplifier.Format(_T("disable"));
+	UpdateLimitAmp(reg);
 	m_strLnaGain.Format(_T("0x%02x"), reg.m_nLnaGain);
 
 	m_strDutyCycle.Format(_T("0x%02x"), reg.m_nDutyCycle);
