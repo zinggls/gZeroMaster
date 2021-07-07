@@ -320,6 +320,12 @@ void CSemantic::UpdateDemodRefStageCurrent(CRegister& reg)
 }
 
 
+void CSemantic::UpdateDemodIPStageCurrent(CRegister& reg)
+{
+	m_strDemodIPStageCurrent.Format(_T("0x%02x"), reg.m_nDemodIPStageCur);
+}
+
+
 void CSemantic::UpdateRegisters()
 {
 	ASSERT(Parent());
@@ -354,7 +360,7 @@ void CSemantic::UpdateRegisters()
 	UpdateLna4Current(reg);
 
 	UpdateDemodRefStageCurrent(reg);
-	m_strDemodIPStageCurrent.Format(_T("0x%02x"), reg.m_nDemodIPStageCur);
+	UpdateDemodIPStageCurrent(reg);
 
 	m_strLaFBCurrent.Format(_T("0x%02x"), reg.m_nLaFBCur);
 	m_strLaCoreCurrent.Format(_T("0x%02x"), reg.m_nLaCoreCur);
