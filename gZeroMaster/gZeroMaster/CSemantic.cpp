@@ -1497,6 +1497,12 @@ int CSemantic::OnNewRxData(int val)
 }
 
 
+int CSemantic::OnNewLimAmp(int val)
+{
+	return (val & 0xf0) | m_controlCombo.GetCurSel() << 3 | (val & 0x07);
+}
+
+
 BOOL CSemantic::UpdateSemanticValue(int addr, int (CSemantic::*fpNewRegVal)(int), void (CSemantic::*fpUpdateData)(CRegister&))
 {
 	int oldRegVal;
@@ -1547,6 +1553,8 @@ void CSemantic::OnBnClickedWriteButton()
 		ASSERT(bRtn);
 		break;
 	case SelectStatic::LimAmp:
+		bRtn = UpdateSemanticValue(2, &CSemantic::OnNewLimAmp, &CSemantic::UpdateLimitAmp);
+		ASSERT(bRtn);
 		break;
 	case SelectStatic::RegRef:
 		break;
