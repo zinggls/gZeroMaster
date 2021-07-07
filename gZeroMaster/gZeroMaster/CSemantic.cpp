@@ -254,6 +254,12 @@ void CSemantic::UpdateDataInputSelect(CRegister& reg)
 }
 
 
+void CSemantic::UpdateDataPaPower(CRegister& reg)
+{
+	(reg.m_nPaPower) ? m_strPaPower.Format(_T("PA on")) : m_strPaPower.Format(_T("PA off"));
+}
+
+
 void CSemantic::UpdateRegisters()
 {
 	ASSERT(Parent());
@@ -273,7 +279,7 @@ void CSemantic::UpdateRegisters()
 	UpdateModPower(reg);
 	UpdateTestBufferPower(reg);
 	UpdateDataInputSelect(reg);
-	(reg.m_nPaPower) ? m_strPaPower.Format(_T("PA on")) : m_strPaPower.Format(_T("PA off"));
+	UpdateDataPaPower(reg);
 	m_strPaGainControl2.Format(_T("0x%02x"), reg.m_nPaGainCon2);
 	m_strPaGainControl1.Format(_T("0x%02x"), reg.m_nPaGainCon1);
 	m_strTestBufferCurrent.Format(_T("0x%02x"), reg.m_nTestBufCur);
