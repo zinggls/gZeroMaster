@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 #include <map>
-#define MAX_LOOP	50000
+#define MAX_LOOP	100000
 
 class CgZeroMasterDlg;
 
