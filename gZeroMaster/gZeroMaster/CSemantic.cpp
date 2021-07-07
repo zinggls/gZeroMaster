@@ -1593,6 +1593,12 @@ int CSemantic::OnNewPaGain2(int val)
 }
 
 
+int CSemantic::OnNewTestBuffer(int val)
+{
+	return (val & 0xf0) | (SliderPos() & 0x0f);
+}
+
+
 BOOL CSemantic::UpdateSemanticValue(int addr, int (CSemantic::*fpNewRegVal)(int), void (CSemantic::*fpUpdateData)(CRegister&))
 {
 	int oldRegVal;
@@ -1703,6 +1709,7 @@ void CSemantic::OnBnClickedWriteButton()
 		bRtn = UpdateSemanticValue(12, &CSemantic::OnNewPaGain2, &CSemantic::UpdatePaGainControl2);
 		break;
 	case SelectStatic::TestBuffer:
+		bRtn = UpdateSemanticValue(11, &CSemantic::OnNewTestBuffer, &CSemantic::UpdateTestBufferCurrent);
 		break;
 	case SelectStatic::Lna1:
 		break;
