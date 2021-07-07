@@ -1667,6 +1667,12 @@ int CSemantic::OnNewIP(int val)
 }
 
 
+int CSemantic::OnNewHL(int val)
+{
+	return (SliderPos() & 0x0f) << 4 | (val & 0x0f);
+}
+
+
 BOOL CSemantic::UpdateSemanticValue(int addr, int (CSemantic::*fpNewRegVal)(int), void (CSemantic::*fpUpdateData)(CRegister&))
 {
 	int oldRegVal;
@@ -1813,6 +1819,7 @@ void CSemantic::OnBnClickedWriteButton()
 		bRtn = UpdateSemanticValue(22, &CSemantic::OnNewIP, &CSemantic::UpdateLaIPBufferCurrent);
 		break;
 	case SelectStatic::HL:
+		bRtn = UpdateSemanticValue(23, &CSemantic::OnNewHL, &CSemantic::UpdateLaHLDataRateCurrent);
 		break;
 	case SelectStatic::CMOS:
 		break;
