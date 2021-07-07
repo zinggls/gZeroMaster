@@ -1643,6 +1643,12 @@ int CSemantic::OnNewIpStage(int val)
 }
 
 
+int CSemantic::OnNewFb(int val)
+{
+	return (SliderPos() & 0x0f) << 4 | (val & 0x0f);
+}
+
+
 BOOL CSemantic::UpdateSemanticValue(int addr, int (CSemantic::*fpNewRegVal)(int), void (CSemantic::*fpUpdateData)(CRegister&))
 {
 	int oldRegVal;
@@ -1777,6 +1783,7 @@ void CSemantic::OnBnClickedWriteButton()
 		bRtn = UpdateSemanticValue(20, &CSemantic::OnNewIpStage, &CSemantic::UpdateDemodIPStageCurrent);
 		break;
 	case SelectStatic::Fb:
+		bRtn = UpdateSemanticValue(21, &CSemantic::OnNewFb, &CSemantic::UpdateLaFBCurrent);
 		break;
 	case SelectStatic::Core:
 		break;
