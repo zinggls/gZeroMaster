@@ -1679,6 +1679,12 @@ int CSemantic::OnNewCMOS(int val)
 }
 
 
+int CSemantic::OnNewCML(int val)
+{
+	return SliderPos() & 0xff;
+}
+
+
 BOOL CSemantic::UpdateSemanticValue(int addr, int (CSemantic::*fpNewRegVal)(int), void (CSemantic::*fpUpdateData)(CRegister&))
 {
 	int oldRegVal;
@@ -1831,6 +1837,7 @@ void CSemantic::OnBnClickedWriteButton()
 		bRtn = UpdateSemanticValue(23, &CSemantic::OnNewCMOS, &CSemantic::UpdateCMOSGainStageCurrent);
 		break;
 	case SelectStatic::CML:
+		bRtn = UpdateSemanticValue(24, &CSemantic::OnNewCML, &CSemantic::UpdateCMLInterfaceStageCurrent);
 		break;
 	default:
 		break;
