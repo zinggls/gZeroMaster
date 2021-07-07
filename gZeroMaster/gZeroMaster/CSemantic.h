@@ -220,6 +220,7 @@ public:
 	int OnNewLna4(int val);
 	int OnNewLna5(int val);
 	int OnNewRefStage(int val);
+	int OnNewIpStage(int val);
 	BOOL UpdateSemanticValue(int addr, int (CSemantic::* fpNewRegVal)(int), void (CSemantic::* fpUpdateData)(CRegister&));
 	afx_msg void OnBnClickedWriteButton();
 };
