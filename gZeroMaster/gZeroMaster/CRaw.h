@@ -68,6 +68,7 @@ public:
 	CgZeroMasterDlg* Parent();
 	LONG ReadResister(int addr, int* value, int maxLoop);
 	BOOL ReadResisters();
+	BOOL ReadResister(int addr);
 	BOOL PrintRegister(int addr, CString name, CString* pValueStr, int maxLoop);
 	void ClearResisterValues();
 	CString Bits(unsigned char byte);

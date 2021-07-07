@@ -252,6 +252,16 @@ BOOL CRaw::ReadResisters()
 	return TRUE;
 }
 
+BOOL CRaw::ReadResister(int addr)
+{
+	for (std::map<CString, CReg>::iterator it = m_regMap.begin(); it != m_regMap.end(); it++) {
+		if (addr == it->second.m_nAddr) {
+			if (PrintRegister(it->second.m_nAddr, it->first, it->second.m_pStr, MAX_LOOP) == TRUE) return TRUE;
+		}
+	}
+	return FALSE;
+}
+
 void CRaw::ClearResisterValues()
 {
 	m_strRxReg1.Empty();
