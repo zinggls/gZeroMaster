@@ -124,6 +124,7 @@ public:
 	void UpdateDataInputSelect(CRegister& reg);
 	void UpdateDataPaPower(CRegister& reg);
 	void UpdatePaGainControl2(CRegister& reg);
+	void UpdatePaGainControl1(CRegister& reg);
 	void UpdateRegisters();
 	static void UpdateRxReg1(CString strRxReg1, CRegister& reg);
 	static void UpdateTxReg1(CString strTxReg1Top, CString strTxReg1Mid, CString strTxReg1Bot, CRegister& reg);
