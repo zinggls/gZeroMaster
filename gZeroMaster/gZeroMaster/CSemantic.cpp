@@ -200,6 +200,12 @@ void CSemantic::UpdateLimitAmp(CRegister& reg)
 }
 
 
+void CSemantic::UpdateLnaGain(CRegister& reg)
+{
+	m_strLnaGain.Format(_T("0x%02x"), reg.m_nLnaGain);
+}
+
+
 void CSemantic::UpdateRegisters()
 {
 	ASSERT(Parent());
@@ -208,7 +214,7 @@ void CSemantic::UpdateRegisters()
 
 	UpdateRxData(reg);
 	UpdateLimitAmp(reg);
-	m_strLnaGain.Format(_T("0x%02x"), reg.m_nLnaGain);
+	UpdateLnaGain(reg);
 
 	m_strDutyCycle.Format(_T("0x%02x"), reg.m_nDutyCycle);
 	m_strVcoOscFreq.Format(_T("0x%02x"),reg.m_nVcoOsc);
