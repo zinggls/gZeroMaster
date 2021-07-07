@@ -218,6 +218,7 @@ public:
 	int OnNewLna2(int val);
 	int OnNewLna3(int val);
 	int OnNewLna4(int val);
+	int OnNewLna5(int val);
 	BOOL UpdateSemanticValue(int addr, int (CSemantic::* fpNewRegVal)(int), void (CSemantic::* fpUpdateData)(CRegister&));
 	afx_msg void OnBnClickedWriteButton();
 };

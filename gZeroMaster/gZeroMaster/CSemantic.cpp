@@ -1625,6 +1625,12 @@ int CSemantic::OnNewLna4(int val)
 }
 
 
+int CSemantic::OnNewLna5(int val)
+{
+	return (SliderPos() & 0x0f) << 4 | (val & 0x0f);
+}
+
+
 BOOL CSemantic::UpdateSemanticValue(int addr, int (CSemantic::*fpNewRegVal)(int), void (CSemantic::*fpUpdateData)(CRegister&))
 {
 	int oldRegVal;
@@ -1750,6 +1756,7 @@ void CSemantic::OnBnClickedWriteButton()
 		bRtn = UpdateSemanticValue(19, &CSemantic::OnNewLna4, &CSemantic::UpdateLna4Current);
 		break;
 	case SelectStatic::Lna5:
+		bRtn = UpdateSemanticValue(19, &CSemantic::OnNewLna5, &CSemantic::UpdateLna5Current);
 		break;
 	case SelectStatic::RefStage:
 		break;
