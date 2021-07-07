@@ -293,12 +293,14 @@ void CSemantic::UpdateLna3Current(CRegister& reg)
 void CSemantic::UpdateLna1Current(CRegister& reg)
 {
 	m_strLna1Current.Format(_T("0x%02x"), reg.m_nLna1Cur);
+	m_strLna2Current = m_strLna1Current;
 }
 
 
 void CSemantic::UpdateLna2Current(CRegister& reg)
 {
 	m_strLna2Current.Format(_T("0x%02x"), reg.m_nLna1Cur);
+	m_strLna1Current = m_strLna2Current;
 }
 
 
