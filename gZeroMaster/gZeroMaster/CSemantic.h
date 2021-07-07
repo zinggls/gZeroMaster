@@ -198,6 +198,7 @@ public:
 	afx_msg void OnCbnSelchangeControlCombo();
 	int OnNewRxData(int val);
 	int OnNewLimAmp(int val);
+	int OnNewRegRef(int val);
 	BOOL UpdateSemanticValue(int addr, int (CSemantic::* fpNewRegVal)(int), void (CSemantic::* fpUpdateData)(CRegister&));
 	afx_msg void OnBnClickedWriteButton();
 };
