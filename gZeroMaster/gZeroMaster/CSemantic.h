@@ -224,6 +224,7 @@ public:
 	int OnNewFb(int val);
 	int OnNewCore(int val);
 	int OnNewOP(int val);
+	int OnNewIP(int val);
 	BOOL UpdateSemanticValue(int addr, int (CSemantic::* fpNewRegVal)(int), void (CSemantic::* fpUpdateData)(CRegister&));
 	afx_msg void OnBnClickedWriteButton();
 };
