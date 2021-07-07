@@ -1840,4 +1840,5 @@ void CSemantic::OnBnClickedWriteButton()
 	}
 	ASSERT(bRtn);
 	GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE);
+	Parent()->L(_T("Writing done"));
 }
