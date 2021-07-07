@@ -139,6 +139,7 @@ public:
 	void UpdateLaOPBufferCurrent(CRegister& reg);
 	void UpdateLaIPBufferCurrent(CRegister& reg);
 	void UpdateLaHLDataRateCurrent(CRegister& reg);
+	void UpdateCMOSGainStageCurrent(CRegister& reg);
 	void UpdateRegisters();
 	static void UpdateRxReg1(CString strRxReg1, CRegister& reg);
 	static void UpdateTxReg1(CString strTxReg1Top, CString strTxReg1Mid, CString strTxReg1Bot, CRegister& reg);
