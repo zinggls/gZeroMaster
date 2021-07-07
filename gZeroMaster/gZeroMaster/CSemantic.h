@@ -210,6 +210,7 @@ public:
 	int OnNewDutyCycle(int val);
 	int OnNewVcoOscUp(int val);
 	int OnNewVcoOscDown(int val);
+	int OnNewVcoVdd(int val);
 	BOOL UpdateSemanticValue(int addr, int (CSemantic::* fpNewRegVal)(int), void (CSemantic::* fpUpdateData)(CRegister&));
 	afx_msg void OnBnClickedWriteButton();
 };

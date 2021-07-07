@@ -1575,6 +1575,12 @@ int CSemantic::OnNewVcoOscDown(int val)
 }
 
 
+int CSemantic::OnNewVcoVdd(int val)
+{
+	return (val & 0xf0) | (SliderPos() & 0x0f);
+}
+
+
 BOOL CSemantic::UpdateSemanticValue(int addr, int (CSemantic::*fpNewRegVal)(int), void (CSemantic::*fpUpdateData)(CRegister&))
 {
 	int oldRegVal;
@@ -1676,6 +1682,7 @@ void CSemantic::OnBnClickedWriteButton()
 		bRtn = UpdateSemanticValue(5, &CSemantic::OnNewVcoOscDown, &CSemantic::UpdateVcoOscFreq);
 		break;
 	case SelectStatic::VcoVdd:
+		bRtn = UpdateSemanticValue(5, &CSemantic::OnNewVcoVdd, &CSemantic::UpdateVcoVdd);
 		break;
 	case SelectStatic::PaGain1:
 		break;
