@@ -43,7 +43,7 @@ CSemantic::CSemantic(CWnd* pParent /*=nullptr*/)
 	, m_strCMOSGainStageCurrent(_T(""))
 	, m_strCMLInterfaceStageCurrent(_T(""))
 	, m_bSemanticEdit(FALSE)
-	, m_selected(None)
+	, m_selected(SelectStatic::None)
 	, m_strSelectedStatic(_T(""))
 	, m_strSliderMin(_T(""))
 	, m_strSliderMax(_T(""))
@@ -163,7 +163,7 @@ BOOL CSemantic::OnInitDialog()
 
 	ShowSlider(SW_HIDE);
 	GetDlgItem(IDC_CONTROL_COMBO)->ShowWindow(SW_HIDE);
-	m_selected = None;
+	m_selected = SelectStatic::None;
 
 	GetDlgItem(IDC_READ_ALL_BUTTON)->ShowWindow(SW_HIDE);
 	GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_HIDE);
@@ -411,7 +411,7 @@ void CSemantic::OnBnClickedSemanticEditCheck()
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_bSemanticEdit = !m_bSemanticEdit;
 	if (m_bSemanticEdit) {
-		m_selected = None;
+		m_selected = SelectStatic::None;
 		ControlValueEnable(TRUE);
 	}
 	else {
@@ -439,94 +439,94 @@ HBRUSH CSemantic::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 
 	// TODO:  여기서 DC의 특성을 변경합니다.
 	if (pWnd->GetDlgCtrlID() == IDC_LNA_GAIN_VALUE_STATIC) {
-		SetColor(pDC, LnaGain);
+		SetColor(pDC, SelectStatic::LnaGain);
 	}
 	else if (pWnd->GetDlgCtrlID() == IDC_DUTY_CYCLE_VALUE_STATIC) {
-		SetColor(pDC, DutyCycle);
+		SetColor(pDC, SelectStatic::DutyCycle);
 	}
 	else if (pWnd->GetDlgCtrlID() == IDC_VCO_OSC_FREQ_VALUE_STATIC) {
-		SetColor(pDC, VcoOsc);
+		SetColor(pDC, SelectStatic::VcoOsc);
 	}
 	else if (pWnd->GetDlgCtrlID() == IDC_VCO_VDD_VALUE_STATIC) {
-		SetColor(pDC, VcoVdd);
+		SetColor(pDC, SelectStatic::VcoVdd);
 	}
 	else if (pWnd->GetDlgCtrlID() == IDC_PA_GAIN_CONTROL1_VALUE_STATIC) {
-		SetColor(pDC, PaGain1);
+		SetColor(pDC, SelectStatic::PaGain1);
 	}
 	else if (pWnd->GetDlgCtrlID() == IDC_PA_GAIN_CONTROL2_VALUE_STATIC) {
-		SetColor(pDC, PaGain2);
+		SetColor(pDC, SelectStatic::PaGain2);
 	}
 	else if (pWnd->GetDlgCtrlID() == IDC_TEST_BUFFER_CURRENT_VALUE_STATIC) {
-		SetColor(pDC, TestBuffer);
+		SetColor(pDC, SelectStatic::TestBuffer);
 	}
 	else if (pWnd->GetDlgCtrlID() == IDC_LNA1_BIAS_CURRENT_VALUE_STATIC) {
-		SetColor(pDC, Lna1);
+		SetColor(pDC, SelectStatic::Lna1);
 	}
 	else if (pWnd->GetDlgCtrlID() == IDC_LNA2_BIAS_CURRENT_VALUE_STATIC) {
-		SetColor(pDC, Lna2);
+		SetColor(pDC, SelectStatic::Lna2);
 	}
 	else if (pWnd->GetDlgCtrlID() == IDC_LNA3_BIAS_CURRENT_VALUE_STATIC) {
-		SetColor(pDC, Lna3);
+		SetColor(pDC, SelectStatic::Lna3);
 	}
 	else if (pWnd->GetDlgCtrlID() == IDC_LNA4_BIAS_CURRENT_VALUE_STATIC) {
-		SetColor(pDC, Lna4);
+		SetColor(pDC, SelectStatic::Lna4);
 	}
 	else if (pWnd->GetDlgCtrlID() == IDC_LNA5_BIAS_CURRENT_VALUE_STATIC) {
-		SetColor(pDC, Lna5);
+		SetColor(pDC, SelectStatic::Lna5);
 	}
 	else if (pWnd->GetDlgCtrlID() == IDC_DEMOD_REF_STAGE_CURRENT_VALUE_STATIC) {
-		SetColor(pDC, RefStage);
+		SetColor(pDC, SelectStatic::RefStage);
 	}
 	else if (pWnd->GetDlgCtrlID() == IDC_DEMOD_IP_STAGE_CURRENT_VALUE_STATIC) {
-		SetColor(pDC, IpStage);
+		SetColor(pDC, SelectStatic::IpStage);
 	}
 	else if (pWnd->GetDlgCtrlID() == IDC_LA_FB_CURRENT_VALUE_STATIC) {
-		SetColor(pDC, Fb);
+		SetColor(pDC, SelectStatic::Fb);
 	}
 	else if (pWnd->GetDlgCtrlID() == IDC_LA_CORE_CURRENT_VALUE_STATIC) {
-		SetColor(pDC, Core);
+		SetColor(pDC, SelectStatic::Core);
 	}
 	else if (pWnd->GetDlgCtrlID() == IDC_LA_OP_BUFFER_CURRENT_VALUE_STATIC) {
-		SetColor(pDC, OP);
+		SetColor(pDC, SelectStatic::OP);
 	}
 	else if (pWnd->GetDlgCtrlID() == IDC_LA_IP_BUFFER_CURRENT_VALUE_STATIC) {
-		SetColor(pDC, IP);
+		SetColor(pDC, SelectStatic::IP);
 	}
 	else if (pWnd->GetDlgCtrlID() == IDC_LA_HL_DATA_RATE_CURRENT_VALUE_STATIC) {
-		SetColor(pDC, HL);
+		SetColor(pDC, SelectStatic::HL);
 	}
 	else if (pWnd->GetDlgCtrlID() == IDC_CMOS_GAIN_STAGE_CURRENT_VALUE_STATIC) {
-		SetColor(pDC, CMOS);
+		SetColor(pDC, SelectStatic::CMOS);
 	}
 	else if (pWnd->GetDlgCtrlID() == IDC_CML_INTERFACE_STAGE_CURRENT_VALUE_STATIC) {
-		SetColor(pDC, CML);
+		SetColor(pDC, SelectStatic::CML);
 	}
 	else if (pWnd->GetDlgCtrlID() == IDC_RX_DATA_IF_ENABLE_VALUE_STATIC) {
-		SetColor(pDC, RxData);
+		SetColor(pDC, SelectStatic::RxData);
 	}
 	else if (pWnd->GetDlgCtrlID() == IDC_LIMITING_AMP_ENABLE_VALUE_STATIC) {
-		SetColor(pDC, LimAmp);
+		SetColor(pDC, SelectStatic::LimAmp);
 	}
 	else if (pWnd->GetDlgCtrlID() == IDC_REG_REF_VOLT_VALUE_STATIC) {
-		SetColor(pDC, RegRef);
+		SetColor(pDC, SelectStatic::RegRef);
 	}
 	else if (pWnd->GetDlgCtrlID() == IDC_VCO_POWER_VALUE_STATIC) {
-		SetColor(pDC, VcoPow);
+		SetColor(pDC, SelectStatic::VcoPow);
 	}
 	else if (pWnd->GetDlgCtrlID() == IDC_MODULATOR_POWER_VALUE_STATIC) {
-		SetColor(pDC, ModPow);
+		SetColor(pDC, SelectStatic::ModPow);
 	}
 	else if (pWnd->GetDlgCtrlID() == IDC_TEST_BUFFER_POWER_VALUE_STATIC) {
-		SetColor(pDC, TestBufPow);
+		SetColor(pDC, SelectStatic::TestBufPow);
 	}
 	else if (pWnd->GetDlgCtrlID() == IDC_DATA_INPUT_SELECT_VALUE_STATIC) {
-		SetColor(pDC, DataInp);
+		SetColor(pDC, SelectStatic::DataInp);
 	}
 	else if (pWnd->GetDlgCtrlID() == IDC_PA_POWER_VALUE_STATIC) {
-		SetColor(pDC, PaPow);
+		SetColor(pDC, SelectStatic::PaPow);
 	}
 	else if (pWnd->GetDlgCtrlID() == IDC_BIAS_BLOCK_ENABLE_VALUE_STATIC) {
-		SetColor(pDC, BiasBlock);
+		SetColor(pDC, SelectStatic::BiasBlock);
 	}
 
 	// TODO:  기본값이 적당하지 않으면 다른 브러시를 반환합니다.
@@ -566,7 +566,7 @@ void CSemantic::SetControlSlider(int min,int max,CString strCurVal,int ticFreq,i
 void CSemantic::OnStnClickedLnaGainValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = LnaGain;
+	m_selected = SelectStatic::LnaGain;
 	ShowSlider(SW_SHOW);
 	Invalidate();	//모든것을 다시 그리는 것은 비효율적이지만 제일 간단하다
 
@@ -581,7 +581,7 @@ void CSemantic::OnStnClickedLnaGainValueStatic()
 void CSemantic::OnStnClickedDutyCycleValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = DutyCycle;
+	m_selected = SelectStatic::DutyCycle;
 	ShowSlider(SW_SHOW);
 	Invalidate();
 
@@ -596,7 +596,7 @@ void CSemantic::OnStnClickedDutyCycleValueStatic()
 void CSemantic::OnStnClickedVcoOscFreqValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = VcoOsc;
+	m_selected = SelectStatic::VcoOsc;
 	ShowSlider(SW_SHOW);
 	Invalidate();
 
@@ -611,7 +611,7 @@ void CSemantic::OnStnClickedVcoOscFreqValueStatic()
 void CSemantic::OnStnClickedVcoVddValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = VcoVdd;
+	m_selected = SelectStatic::VcoVdd;
 	ShowSlider(SW_SHOW);
 	Invalidate();
 
@@ -626,7 +626,7 @@ void CSemantic::OnStnClickedVcoVddValueStatic()
 void CSemantic::OnStnClickedPaGainControl1ValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = PaGain1;
+	m_selected = SelectStatic::PaGain1;
 	ShowSlider(SW_SHOW);
 	Invalidate();
 
@@ -641,7 +641,7 @@ void CSemantic::OnStnClickedPaGainControl1ValueStatic()
 void CSemantic::OnStnClickedPaGainControl2ValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = PaGain2;
+	m_selected = SelectStatic::PaGain2;
 	ShowSlider(SW_SHOW);
 	Invalidate();
 
@@ -656,7 +656,7 @@ void CSemantic::OnStnClickedPaGainControl2ValueStatic()
 void CSemantic::OnStnClickedTestBufferCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = TestBuffer;
+	m_selected = SelectStatic::TestBuffer;
 	ShowSlider(SW_SHOW);
 	Invalidate();
 
@@ -671,7 +671,7 @@ void CSemantic::OnStnClickedTestBufferCurrentValueStatic()
 void CSemantic::OnStnClickedLna1BiasCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = Lna1;
+	m_selected = SelectStatic::Lna1;
 	ShowSlider(SW_SHOW);
 	Invalidate();
 ;
@@ -686,7 +686,7 @@ void CSemantic::OnStnClickedLna1BiasCurrentValueStatic()
 void CSemantic::OnStnClickedLna2BiasCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = Lna2;
+	m_selected = SelectStatic::Lna2;
 	ShowSlider(SW_SHOW);
 	Invalidate();
 
@@ -701,7 +701,7 @@ void CSemantic::OnStnClickedLna2BiasCurrentValueStatic()
 void CSemantic::OnStnClickedLna3BiasCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = Lna3;
+	m_selected = SelectStatic::Lna3;
 	ShowSlider(SW_SHOW);
 	Invalidate();
 
@@ -716,7 +716,7 @@ void CSemantic::OnStnClickedLna3BiasCurrentValueStatic()
 void CSemantic::OnStnClickedLna4BiasCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = Lna4;
+	m_selected = SelectStatic::Lna4;
 	ShowSlider(SW_SHOW);
 	Invalidate();
 
@@ -731,7 +731,7 @@ void CSemantic::OnStnClickedLna4BiasCurrentValueStatic()
 void CSemantic::OnStnClickedLna5BiasCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = Lna5;
+	m_selected = SelectStatic::Lna5;
 	ShowSlider(SW_SHOW);
 	Invalidate();
 
@@ -746,7 +746,7 @@ void CSemantic::OnStnClickedLna5BiasCurrentValueStatic()
 void CSemantic::OnStnClickedDemodRefStageCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = RefStage;
+	m_selected = SelectStatic::RefStage;
 	ShowSlider(SW_SHOW);
 	Invalidate();
 
@@ -761,7 +761,7 @@ void CSemantic::OnStnClickedDemodRefStageCurrentValueStatic()
 void CSemantic::OnStnClickedDemodIpStageCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = IpStage;
+	m_selected = SelectStatic::IpStage;
 	ShowSlider(SW_SHOW);
 	Invalidate();
 
@@ -776,7 +776,7 @@ void CSemantic::OnStnClickedDemodIpStageCurrentValueStatic()
 void CSemantic::OnStnClickedLaFbCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = Fb;
+	m_selected = SelectStatic::Fb;
 	ShowSlider(SW_SHOW);
 	Invalidate();
 
@@ -791,7 +791,7 @@ void CSemantic::OnStnClickedLaFbCurrentValueStatic()
 void CSemantic::OnStnClickedLaCoreCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = Core;
+	m_selected = SelectStatic::Core;
 	ShowSlider(SW_SHOW);
 	Invalidate();
 
@@ -806,7 +806,7 @@ void CSemantic::OnStnClickedLaCoreCurrentValueStatic()
 void CSemantic::OnStnClickedLaOpBufferCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = OP;
+	m_selected = SelectStatic::OP;
 	ShowSlider(SW_SHOW);
 	Invalidate();
 
@@ -821,7 +821,7 @@ void CSemantic::OnStnClickedLaOpBufferCurrentValueStatic()
 void CSemantic::OnStnClickedLaIpBufferCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = IP;
+	m_selected = SelectStatic::IP;
 	ShowSlider(SW_SHOW);
 	Invalidate();
 
@@ -836,7 +836,7 @@ void CSemantic::OnStnClickedLaIpBufferCurrentValueStatic()
 void CSemantic::OnStnClickedLaHlDataRateCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = HL;
+	m_selected = SelectStatic::HL;
 	ShowSlider(SW_SHOW);
 	Invalidate();
 
@@ -851,7 +851,7 @@ void CSemantic::OnStnClickedLaHlDataRateCurrentValueStatic()
 void CSemantic::OnStnClickedCmosGainStageCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = CMOS;
+	m_selected = SelectStatic::CMOS;
 	ShowSlider(SW_SHOW);
 	Invalidate();
 
@@ -866,7 +866,7 @@ void CSemantic::OnStnClickedCmosGainStageCurrentValueStatic()
 void CSemantic::OnStnClickedCmlInterfaceStageCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = CML;
+	m_selected = SelectStatic::CML;
 	ShowSlider(SW_SHOW);
 	Invalidate();
 
@@ -887,67 +887,67 @@ void CSemantic::OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
 		CString strCur;
 		strCur.Format(_T("0x%02x"), curPos);
 		switch (m_selected) {
-		case LnaGain:
+		case SelectStatic::LnaGain:
 			(strCur ==m_strLnaGain) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
 			break;
-		case DutyCycle:
+		case SelectStatic::DutyCycle:
 			(strCur == m_strDutyCycle) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
 			break;
-		case VcoOsc:
+		case SelectStatic::VcoOsc:
 			(strCur == m_strVcoOscFreq) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
 			break;
-		case VcoVdd:
+		case SelectStatic::VcoVdd:
 			(strCur == m_strVcoVdd) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
 			break;
-		case PaGain1:
+		case SelectStatic::PaGain1:
 			(strCur == m_strPaGainControl1) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
 			break;
-		case PaGain2:
+		case SelectStatic::PaGain2:
 			(strCur == m_strPaGainControl2) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
 			break;
-		case TestBuffer:
+		case SelectStatic::TestBuffer:
 			(strCur == m_strTestBufferCurrent) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
 			break;
-		case Lna1:
+		case SelectStatic::Lna1:
 			(strCur == m_strLna1Current) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
 			break;
-		case Lna2:
+		case SelectStatic::Lna2:
 			(strCur == m_strLna2Current) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
 			break;
-		case Lna3:
+		case SelectStatic::Lna3:
 			(strCur == m_strLna3Current) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
 			break;
-		case Lna4:
+		case SelectStatic::Lna4:
 			(strCur == m_strLna4Current) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
 			break;
-		case Lna5:
+		case SelectStatic::Lna5:
 			(strCur == m_strLna5Current) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
 			break;
-		case RefStage:
+		case SelectStatic::RefStage:
 			(strCur == m_strDemodRefStageCurrent) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
 			break;
-		case IpStage:
+		case SelectStatic::IpStage:
 			(strCur == m_strDemodIPStageCurrent) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
 			break;
-		case Fb:
+		case SelectStatic::Fb:
 			(strCur == m_strLaFBCurrent) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
 			break;
-		case Core:
+		case SelectStatic::Core:
 			(strCur == m_strLaCoreCurrent) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
 			break;
-		case OP:
+		case SelectStatic::OP:
 			(strCur == m_strLaOPBufferCurrent) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
 			break;
-		case IP:
+		case SelectStatic::IP:
 			(strCur == m_strLaIPBufferCurrent) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
 			break;
-		case HL:
+		case SelectStatic::HL:
 			(strCur == m_strLaHLDataRateCurrent) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
 			break;
-		case CMOS:
+		case SelectStatic::CMOS:
 			(strCur == m_strCMOSGainStageCurrent) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
 			break;
-		case CML:
+		case SelectStatic::CML:
 			(strCur == m_strCMLInterfaceStageCurrent) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
 			break;
 		default:
@@ -1013,7 +1013,7 @@ void CSemantic::OnBnClickedReadAllButton()
 void CSemantic::OnStnClickedRxDataIfEnableValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = RxData;
+	m_selected = SelectStatic::RxData;
 	ShowSlider(SW_HIDE);
 
 	for (int i = m_controlCombo.GetCount() - 1; i >= 0; i--) m_controlCombo.DeleteString(i);
@@ -1039,7 +1039,7 @@ void CSemantic::OnStnClickedRxDataIfEnableValueStatic()
 void CSemantic::OnStnClickedLimitingAmpEnableValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = LimAmp;
+	m_selected = SelectStatic::LimAmp;
 	ShowSlider(SW_HIDE);
 
 	for (int i = m_controlCombo.GetCount() - 1; i >= 0; i--) m_controlCombo.DeleteString(i);
@@ -1064,7 +1064,7 @@ void CSemantic::OnStnClickedLimitingAmpEnableValueStatic()
 void CSemantic::OnStnClickedRegRefVoltValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = RegRef;
+	m_selected = SelectStatic::RegRef;
 	ShowSlider(SW_HIDE);
 
 	for (int i = m_controlCombo.GetCount() - 1; i >= 0; i--) m_controlCombo.DeleteString(i);
@@ -1089,7 +1089,7 @@ void CSemantic::OnStnClickedRegRefVoltValueStatic()
 void CSemantic::OnStnClickedVcoPowerValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = VcoPow;
+	m_selected = SelectStatic::VcoPow;
 	ShowSlider(SW_HIDE);
 
 	for (int i = m_controlCombo.GetCount() - 1; i >= 0; i--) m_controlCombo.DeleteString(i);
@@ -1114,7 +1114,7 @@ void CSemantic::OnStnClickedVcoPowerValueStatic()
 void CSemantic::OnStnClickedModulatorPowerValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = ModPow;
+	m_selected = SelectStatic::ModPow;
 	ShowSlider(SW_HIDE);
 
 	for (int i = m_controlCombo.GetCount() - 1; i >= 0; i--) m_controlCombo.DeleteString(i);
@@ -1139,7 +1139,7 @@ void CSemantic::OnStnClickedModulatorPowerValueStatic()
 void CSemantic::OnStnClickedTestBufferPowerValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = TestBufPow;
+	m_selected = SelectStatic::TestBufPow;
 	ShowSlider(SW_HIDE);
 
 	for (int i = m_controlCombo.GetCount() - 1; i >= 0; i--) m_controlCombo.DeleteString(i);
@@ -1164,7 +1164,7 @@ void CSemantic::OnStnClickedTestBufferPowerValueStatic()
 void CSemantic::OnStnClickedDataInputSelectValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = DataInp;
+	m_selected = SelectStatic::DataInp;
 	ShowSlider(SW_HIDE);
 
 	for (int i = m_controlCombo.GetCount() - 1; i >= 0; i--) m_controlCombo.DeleteString(i);
@@ -1189,7 +1189,7 @@ void CSemantic::OnStnClickedDataInputSelectValueStatic()
 void CSemantic::OnStnClickedPaPowerValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = PaPow;
+	m_selected = SelectStatic::PaPow;
 	ShowSlider(SW_HIDE);
 
 	for (int i = m_controlCombo.GetCount() - 1; i >= 0; i--) m_controlCombo.DeleteString(i);
@@ -1214,7 +1214,7 @@ void CSemantic::OnStnClickedPaPowerValueStatic()
 void CSemantic::OnStnClickedBiasBlockEnableValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = BiasBlock;
+	m_selected = SelectStatic::BiasBlock;
 	ShowSlider(SW_HIDE);
 
 	for (int i = m_controlCombo.GetCount() - 1; i >= 0; i--) m_controlCombo.DeleteString(i);
@@ -1278,31 +1278,31 @@ void CSemantic::OnCbnSelchangeControlCombo()
 	Parse(Parent()->m_pRaw, reg);
 
 	switch (m_selected) {
-	case RxData:
+	case SelectStatic::RxData:
 		(m_controlCombo.GetCurSel() == reg.m_nRxData) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
 		break;
-	case LimAmp:
+	case SelectStatic::LimAmp:
 		(m_controlCombo.GetCurSel() == reg.m_nLimitAmp) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
 		break;
-	case RegRef:
+	case SelectStatic::RegRef:
 		(m_controlCombo.GetCurSel() == reg.m_nRegRef) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
 		break;
-	case VcoPow:
+	case SelectStatic::VcoPow:
 		(m_controlCombo.GetCurSel() == reg.m_nVcoPower) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
 		break;
-	case ModPow:
+	case SelectStatic::ModPow:
 		(m_controlCombo.GetCurSel() == reg.m_nModPower) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
 		break;
-	case TestBufPow:
+	case SelectStatic::TestBufPow:
 		(m_controlCombo.GetCurSel() == reg.m_nTestBufPower) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
 		break;
-	case DataInp:
+	case SelectStatic::DataInp:
 		(m_controlCombo.GetCurSel() == reg.m_nDataInpSel) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
 		break;
-	case PaPow:
+	case SelectStatic::PaPow:
 		(m_controlCombo.GetCurSel() == reg.m_nPaPower) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
 		break;
-	case BiasBlock:
+	case SelectStatic::BiasBlock:
 		(m_controlCombo.GetCurSel() == reg.m_nBiasBlock) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
 		break;
 	default:
@@ -1316,23 +1316,23 @@ void CSemantic::OnBnClickedWriteButton()
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	//ControlCombo
 	switch (m_selected) {
-	case RxData:
+	case SelectStatic::RxData:
 		break;
-	case LimAmp:
+	case SelectStatic::LimAmp:
 		break;
-	case RegRef:
+	case SelectStatic::RegRef:
 		break;
-	case VcoPow:
+	case SelectStatic::VcoPow:
 		break;
-	case ModPow:
+	case SelectStatic::ModPow:
 		break;
-	case TestBufPow:
+	case SelectStatic::TestBufPow:
 		break;
-	case DataInp:
+	case SelectStatic::DataInp:
 		break;
-	case PaPow:
+	case SelectStatic::PaPow:
 		break;
-	case BiasBlock:
+	case SelectStatic::BiasBlock:
 		break;
 	default:
 		break;
@@ -1340,47 +1340,47 @@ void CSemantic::OnBnClickedWriteButton()
 
 	//ControlSlide
 	switch (m_selected) {
-	case LnaGain:
+	case SelectStatic::LnaGain:
 		break;
-	case DutyCycle:
+	case SelectStatic::DutyCycle:
 		break;
-	case VcoOsc:
+	case SelectStatic::VcoOsc:
 		break;
-	case VcoVdd:
+	case SelectStatic::VcoVdd:
 		break;
-	case PaGain1:
+	case SelectStatic::PaGain1:
 		break;
-	case PaGain2:
+	case SelectStatic::PaGain2:
 		break;
-	case TestBuffer:
+	case SelectStatic::TestBuffer:
 		break;
-	case Lna1:
+	case SelectStatic::Lna1:
 		break;
-	case Lna2:
+	case SelectStatic::Lna2:
 		break;
-	case Lna3:
+	case SelectStatic::Lna3:
 		break;
-	case Lna4:
+	case SelectStatic::Lna4:
 		break;
-	case Lna5:
+	case SelectStatic::Lna5:
 		break;
-	case RefStage:
+	case SelectStatic::RefStage:
 		break;
-	case IpStage:
+	case SelectStatic::IpStage:
 		break;
-	case Fb:
+	case SelectStatic::Fb:
 		break;
-	case Core:
+	case SelectStatic::Core:
 		break;
-	case OP:
+	case SelectStatic::OP:
 		break;
-	case IP:
+	case SelectStatic::IP:
 		break;
-	case HL:
+	case SelectStatic::HL:
 		break;
-	case CMOS:
+	case SelectStatic::CMOS:
 		break;
-	case CML:
+	case SelectStatic::CML:
 		break;
 	default:
 		break;

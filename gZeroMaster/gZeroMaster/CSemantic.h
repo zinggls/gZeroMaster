@@ -96,7 +96,7 @@ public:
 	CSliderCtrl m_controlSlider;
 	BOOL m_bSemanticEdit;
 
-	enum SelectStatic{ None=0,RxData,LimAmp,LnaGain,DutyCycle,VcoOsc,RegRef,VcoVdd,VcoPow,ModPow,TestBufPow,DataInp,PaPow,PaGain1,PaGain2,TestBuffer,BiasBlock,Lna1,Lna2,Lna3,Lna4,Lna5,RefStage,IpStage,Fb,Core,OP,IP,HL,CMOS,CML };
+	enum class SelectStatic{ None=0,RxData,LimAmp,LnaGain,DutyCycle,VcoOsc,RegRef,VcoVdd,VcoPow,ModPow,TestBufPow,DataInp,PaPow,PaGain1,PaGain2,TestBuffer,BiasBlock,Lna1,Lna2,Lna3,Lna4,Lna5,RefStage,IpStage,Fb,Core,OP,IP,HL,CMOS,CML };
 	SelectStatic m_selected;
 
 	CString m_strSelectedStatic;
