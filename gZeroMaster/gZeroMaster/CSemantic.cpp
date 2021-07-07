@@ -1550,7 +1550,7 @@ BOOL CSemantic::UpdateSemanticValue(int addr, int (CSemantic::*fpNewRegVal)(int)
 	int oldRegVal;
 	LONG lLastError = Parent()->m_pRaw->ReadResister(addr, &oldRegVal, MAX_LOOP);
 	if (lLastError != ERROR_SUCCESS) {
-		Parent()->ErrorMsg(lLastError, _T("Error in ReadRegister"));
+		Parent()->ErrorMsg(lLastError, _T("CSemantic::UpdateSemanticValue Error in ReadRegister"));
 	}
 	else {
 		int newRegVal = (this->*fpNewRegVal)(oldRegVal);
@@ -1565,6 +1565,7 @@ BOOL CSemantic::UpdateSemanticValue(int addr, int (CSemantic::*fpNewRegVal)(int)
 			BOOL bRead = FALSE;
 			do {
 				bRead = Parent()->m_pRaw->ReadResister(addr);
+				bRead ? Parent()->L(_T("ReadRegister=True")) : Parent()->L(_T("ReadRegister=False"));
 			} while (!bRead);
 			Parent()->L(_T("ReadRegister done"));
 

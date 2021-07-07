@@ -230,7 +230,7 @@ BOOL CRaw::PrintRegister(int addr, CString name, CString* pValueStr, int maxLoop
 	int value;
 	LONG lLastError = ReadResister(addr, &value, maxLoop);
 	if (lLastError != ERROR_SUCCESS) {
-		Parent()->ErrorMsg(lLastError, _T("Error in ReadRegister"));
+		Parent()->ErrorMsg(lLastError, _T("CRaw::PrintRegister Error in ReadRegister"));
 		return FALSE;
 	}
 
