@@ -212,6 +212,12 @@ void CSemantic::UpdateDutyCycle(CRegister& reg)
 }
 
 
+void CSemantic::UpdateVcoOscFreq(CRegister& reg)
+{
+	m_strVcoOscFreq.Format(_T("0x%02x"), reg.m_nVcoOsc);
+}
+
+
 void CSemantic::UpdateRegisters()
 {
 	ASSERT(Parent());
@@ -223,7 +229,7 @@ void CSemantic::UpdateRegisters()
 	UpdateLnaGain(reg);
 
 	UpdateDutyCycle(reg);
-	m_strVcoOscFreq.Format(_T("0x%02x"),reg.m_nVcoOsc);
+	UpdateVcoOscFreq(reg);
 	(reg.m_nRegRef) ? m_strRegRefVolt.Format(_T("400mV")) : m_strRegRefVolt.Format(_T("500mV"));
 	m_strVcoVdd.Format(_T("0x%02x"), reg.m_nVcoVdd);
 
