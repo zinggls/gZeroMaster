@@ -344,6 +344,12 @@ void CSemantic::UpdateLaOPBufferCurrent(CRegister& reg)
 }
 
 
+void CSemantic::UpdateLaIPBufferCurrent(CRegister& reg)
+{
+	m_strLaIPBufferCurrent.Format(_T("0x%02x"), reg.m_nLaIPBufCur);
+}
+
+
 void CSemantic::UpdateRegisters()
 {
 	ASSERT(Parent());
@@ -384,7 +390,7 @@ void CSemantic::UpdateRegisters()
 	UpdateLaCoreCurrent(reg);
 
 	UpdateLaOPBufferCurrent(reg);
-	m_strLaIPBufferCurrent.Format(_T("0x%02x"), reg.m_nLaIPBufCur);
+	UpdateLaIPBufferCurrent(reg);
 
 	m_strLaHLDataRateCurrent.Format(_T("0x%02x"), reg.m_nLaHLDataRateCur);
 	m_strCMOSGainStageCurrent.Format(_T("0x%02x"), reg.m_nCMOSGainStageCur);
