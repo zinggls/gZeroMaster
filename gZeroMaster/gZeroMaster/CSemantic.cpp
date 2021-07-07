@@ -1739,8 +1739,8 @@ void CSemantic::OnBnClickedWriteButton()
 	Parent()->L(_T("Writing..."));
 
 	BOOL bRtn = TRUE;
-	//ControlCombo
 	switch (m_selected) {
+	//ControlCombo
 	case SelectStatic::RxData:
 		bRtn = UpdateSemanticValue(2, &CSemantic::OnNewRxData, &CSemantic::UpdateRxData);
 		break;
@@ -1768,12 +1768,8 @@ void CSemantic::OnBnClickedWriteButton()
 	case SelectStatic::BiasBlock:
 		bRtn = UpdateSemanticValue(17, &CSemantic::OnNewBiasBlock, &CSemantic::UpdateBiasBlockEnable);
 		break;
-	default:
-		break;
-	}
 
 	//ControlSlide
-	switch (m_selected) {
 	case SelectStatic::LnaGain:
 		bRtn = UpdateSemanticValue(2, &CSemantic::OnNewLnaGain, &CSemantic::UpdateLnaGain);
 		break;
