@@ -230,6 +230,12 @@ void CSemantic::UpdateVcoVdd(CRegister& reg)
 }
 
 
+void CSemantic::UpdateVcoPower(CRegister& reg)
+{
+	(reg.m_nVcoPower) ? m_strVcoPower.Format(_T("VCO on")) : m_strVcoPower.Format(_T("VCO off"));
+}
+
+
 void CSemantic::UpdateRegisters()
 {
 	ASSERT(Parent());
@@ -245,7 +251,7 @@ void CSemantic::UpdateRegisters()
 	UpdateRegRefVolt(reg);
 	UpdateVcoVdd(reg);
 
-	(reg.m_nVcoPower) ? m_strVcoPower.Format(_T("VCO on")) : m_strVcoPower.Format(_T("VCO off"));
+	UpdateVcoPower(reg);
 	(reg.m_nModPower) ? m_strModPower.Format(_T("MOD on")) : m_strModPower.Format(_T("MOD off"));
 	(reg.m_nTestBufPower)? m_strTestBufferPower.Format(_T("test buff on")) : m_strTestBufferPower.Format(_T("test buff off"));
 	(reg.m_nDataInpSel)? m_strDataInputSelect.Format(_T("Test buff(External)")) : m_strDataInputSelect.Format(_T("SER(Internal)"));

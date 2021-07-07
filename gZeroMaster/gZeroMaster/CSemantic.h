@@ -118,6 +118,7 @@ public:
 	void UpdateVcoOscFreq(CRegister& reg);
 	void UpdateRegRefVolt(CRegister& reg);
 	void UpdateVcoVdd(CRegister& reg);
+	void UpdateVcoPower(CRegister& reg);
 	void UpdateRegisters();
 	static void UpdateRxReg1(CString strRxReg1, CRegister& reg);
 	static void UpdateTxReg1(CString strTxReg1Top, CString strTxReg1Mid, CString strTxReg1Bot, CRegister& reg);
