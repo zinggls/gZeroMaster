@@ -134,6 +134,7 @@ public:
 	void UpdateLna4Current(CRegister& reg);
 	void UpdateDemodRefStageCurrent(CRegister& reg);
 	void UpdateDemodIPStageCurrent(CRegister& reg);
+	void UpdateLaFBCurrent(CRegister& reg);
 	void UpdateRegisters();
 	static void UpdateRxReg1(CString strRxReg1, CRegister& reg);
 	static void UpdateTxReg1(CString strTxReg1Top, CString strTxReg1Mid, CString strTxReg1Bot, CRegister& reg);

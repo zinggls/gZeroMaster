@@ -326,6 +326,12 @@ void CSemantic::UpdateDemodIPStageCurrent(CRegister& reg)
 }
 
 
+void CSemantic::UpdateLaFBCurrent(CRegister& reg)
+{
+	m_strLaFBCurrent.Format(_T("0x%02x"), reg.m_nLaFBCur);
+}
+
+
 void CSemantic::UpdateRegisters()
 {
 	ASSERT(Parent());
@@ -362,7 +368,7 @@ void CSemantic::UpdateRegisters()
 	UpdateDemodRefStageCurrent(reg);
 	UpdateDemodIPStageCurrent(reg);
 
-	m_strLaFBCurrent.Format(_T("0x%02x"), reg.m_nLaFBCur);
+	UpdateLaFBCurrent(reg);
 	m_strLaCoreCurrent.Format(_T("0x%02x"), reg.m_nLaCoreCur);
 
 	m_strLaOPBufferCurrent.Format(_T("0x%02x"), reg.m_nLaOPBufCur);
