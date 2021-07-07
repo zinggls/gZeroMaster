@@ -181,6 +181,7 @@ public:
 	afx_msg void OnStnClickedCmosGainStageCurrentValueStatic();
 	afx_msg void OnStnClickedCmlInterfaceStageCurrentValueStatic();
 	afx_msg void OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar);
+	int SliderPos();
 	int SliderValueUpdate();
 	void ShowSlider(int nCmdShow);
 	static CString DecToBin(int dec);

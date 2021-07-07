@@ -1139,9 +1139,15 @@ void CSemantic::OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
 }
 
 
+int CSemantic::SliderPos()
+{
+	return -1 * m_controlSlider.GetPos();
+}
+
+
 int CSemantic::SliderValueUpdate()
 {
-	int curPos = -1*m_controlSlider.GetPos();
+	int curPos = SliderPos();
 	m_strSliderValue.Format(_T("Dec:%d"), curPos);
 	m_strSliderValueHex.Format(_T("Hex:0x%02x"), curPos);
 	m_strSliderValueBin = _T("Bin:");
@@ -1547,8 +1553,7 @@ int CSemantic::OnNewBiasBlock(int val)
 
 int CSemantic::OnNewLnaGain(int val)
 {
-	int curPos = -1 * m_controlSlider.GetPos();
-	return (val & 0xf8) | curPos;
+	return (val & 0xf8) | SliderPos();
 }
 
 
