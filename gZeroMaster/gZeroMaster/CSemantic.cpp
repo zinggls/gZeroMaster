@@ -1521,6 +1521,12 @@ int CSemantic::OnNewModPow(int val)
 }
 
 
+int CSemantic::OnNewTestBufPow(int val)
+{
+	return (val & 0x80) | m_controlCombo.GetCurSel() << 6 | (val & 0x3f);
+}
+
+
 BOOL CSemantic::UpdateSemanticValue(int addr, int (CSemantic::*fpNewRegVal)(int), void (CSemantic::*fpUpdateData)(CRegister&))
 {
 	int oldRegVal;
@@ -1587,6 +1593,8 @@ void CSemantic::OnBnClickedWriteButton()
 		ASSERT(bRtn);
 		break;
 	case SelectStatic::TestBufPow:
+		bRtn = UpdateSemanticValue(12, &CSemantic::OnNewTestBufPow, &CSemantic::UpdateTestBufferPower);
+		ASSERT(bRtn);
 		break;
 	case SelectStatic::DataInp:
 		break;
