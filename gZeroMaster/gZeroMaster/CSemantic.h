@@ -223,6 +223,7 @@ public:
 	int OnNewIpStage(int val);
 	int OnNewFb(int val);
 	int OnNewCore(int val);
+	int OnNewOP(int val);
 	BOOL UpdateSemanticValue(int addr, int (CSemantic::* fpNewRegVal)(int), void (CSemantic::* fpUpdateData)(CRegister&));
 	afx_msg void OnBnClickedWriteButton();
 };
