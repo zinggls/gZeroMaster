@@ -272,6 +272,12 @@ void CSemantic::UpdatePaGainControl1(CRegister& reg)
 }
 
 
+void CSemantic::UpdateTestBufferCurrent(CRegister& reg)
+{
+	m_strTestBufferCurrent.Format(_T("0x%02x"), reg.m_nTestBufCur);
+}
+
+
 void CSemantic::UpdateRegisters()
 {
 	ASSERT(Parent());
@@ -294,7 +300,7 @@ void CSemantic::UpdateRegisters()
 	UpdateDataPaPower(reg);
 	UpdatePaGainControl2(reg);
 	UpdatePaGainControl1(reg);
-	m_strTestBufferCurrent.Format(_T("0x%02x"), reg.m_nTestBufCur);
+	UpdateTestBufferCurrent(reg);
 
 	(reg.m_nBiasBlock) ? m_strBiasBlockEnable.Format(_T("enable")) : m_strBiasBlockEnable.Format(_T("disable"));
 
