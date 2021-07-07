@@ -1649,6 +1649,12 @@ int CSemantic::OnNewFb(int val)
 }
 
 
+int CSemantic::OnNewCore(int val)
+{
+	return (val & 0xf0) | (SliderPos() & 0x0f);
+}
+
+
 BOOL CSemantic::UpdateSemanticValue(int addr, int (CSemantic::*fpNewRegVal)(int), void (CSemantic::*fpUpdateData)(CRegister&))
 {
 	int oldRegVal;
@@ -1786,6 +1792,7 @@ void CSemantic::OnBnClickedWriteButton()
 		bRtn = UpdateSemanticValue(21, &CSemantic::OnNewFb, &CSemantic::UpdateLaFBCurrent);
 		break;
 	case SelectStatic::Core:
+		bRtn = UpdateSemanticValue(21, &CSemantic::OnNewCore, &CSemantic::UpdateLaCoreCurrent);
 		break;
 	case SelectStatic::OP:
 		break;
