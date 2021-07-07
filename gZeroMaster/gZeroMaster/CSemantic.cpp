@@ -1605,6 +1605,12 @@ int CSemantic::OnNewLna1(int val)
 }
 
 
+int CSemantic::OnNewLna2(int val)
+{
+	return OnNewLna1(val);
+}
+
+
 BOOL CSemantic::UpdateSemanticValue(int addr, int (CSemantic::*fpNewRegVal)(int), void (CSemantic::*fpUpdateData)(CRegister&))
 {
 	int oldRegVal;
@@ -1721,6 +1727,7 @@ void CSemantic::OnBnClickedWriteButton()
 		bRtn = UpdateSemanticValue(18, &CSemantic::OnNewLna1, &CSemantic::UpdateLna1Current);
 		break;
 	case SelectStatic::Lna2:
+		bRtn = UpdateSemanticValue(18, &CSemantic::OnNewLna2, &CSemantic::UpdateLna2Current);
 		break;
 	case SelectStatic::Lna3:
 		break;
