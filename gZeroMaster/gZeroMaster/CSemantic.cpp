@@ -1497,7 +1497,7 @@ int CSemantic::OnNewRxData(int val)
 }
 
 
-void CSemantic::UpdateSemanticValue(int addr, int (CSemantic::*fpNewRegVal)(int), void (CSemantic::*fpUpdateData)(CRegister&))
+BOOL CSemantic::UpdateSemanticValue(int addr, int (CSemantic::*fpNewRegVal)(int), void (CSemantic::*fpUpdateData)(CRegister&))
 {
 	int oldRegVal;
 	LONG lLastError = Parent()->m_pRaw->ReadResister(addr, &oldRegVal, MAX_LOOP);
@@ -1511,18 +1511,26 @@ void CSemantic::UpdateSemanticValue(int addr, int (CSemantic::*fpNewRegVal)(int)
 		}
 		else {
 			BOOL bRead = Parent()->m_pRaw->ReadResister(addr);
-			ASSERT(bRead);
+			if (!bRead) {
+				CString str;
+				str.Format(_T("Error in ReadRegister at addr:0x%02x"), addr);
+				Parent()->ErrorMsg(lLastError, str);
+			}
+			else {
+				CRegister reg;
+				Parse(Parent()->m_pRaw, reg);
+				(this->*fpUpdateData)(reg);
+				UpdateData(FALSE);
 
-			CRegister reg;
-			Parse(Parent()->m_pRaw, reg);
-			(this->*fpUpdateData)(reg);
-			UpdateData(FALSE);
+				CString str;
+				str.Format(_T("Address:0x%02x Old Register:0x%02x New Register:0x%02x"), addr, oldRegVal, newRegVal);
+				Parent()->L(str);
 
-			CString str;
-			str.Format(_T("Address:0x%02x Old Register:0x%02x New Register:0x%02x"), addr, oldRegVal, newRegVal);
-			Parent()->L(str);
+				return TRUE;
+			}
 		}
 	}
+	return FALSE;
 }
 
 
@@ -1531,10 +1539,12 @@ void CSemantic::OnBnClickedWriteButton()
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	Parent()->L(_T("Writing..."));
 
+	BOOL bRtn;
 	//ControlCombo
 	switch (m_selected) {
 	case SelectStatic::RxData:
-		UpdateSemanticValue(2, &CSemantic::OnNewRxData, &CSemantic::UpdateRxData);
+		bRtn = UpdateSemanticValue(2, &CSemantic::OnNewRxData, &CSemantic::UpdateRxData);
+		ASSERT(bRtn);
 		break;
 	case SelectStatic::LimAmp:
 		break;
