@@ -114,6 +114,7 @@ public:
 	void UpdateRxData(CRegister& reg);
 	void UpdateLimitAmp(CRegister& reg);
 	void UpdateLnaGain(CRegister& reg);
+	void UpdateDutyCycle(CRegister& reg);
 	void UpdateRegisters();
 	static void UpdateRxReg1(CString strRxReg1, CRegister& reg);
 	static void UpdateTxReg1(CString strTxReg1Top, CString strTxReg1Mid, CString strTxReg1Bot, CRegister& reg);
