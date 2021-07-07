@@ -1314,9 +1314,30 @@ void CSemantic::OnCbnSelchangeControlCombo()
 void CSemantic::OnBnClickedWriteButton()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	Parent()->L(_T("Writing..."));
+
+	int addr;
+	LONG lLastError;
 	//ControlCombo
 	switch (m_selected) {
 	case SelectStatic::RxData:
+		int oldRegVal;
+		addr = 2;
+		lLastError = Parent()->m_pRaw->ReadResister(addr, &oldRegVal, MAX_LOOP);
+		if (lLastError != ERROR_SUCCESS) {
+			Parent()->ErrorMsg(lLastError, _T("Error in ReadRegister"));
+		}
+		else {
+			int newRegVal = (oldRegVal & 0xe0) | m_controlCombo.GetCurSel()<<4 | (oldRegVal & 0x0f);
+			if (Parent()->m_pRaw->WriteRegister(addr, newRegVal) != TRUE) {
+				Parent()->ErrorMsg(lLastError, _T("Error in WriteRegister"));
+			}
+			else {
+				CString str;
+				str.Format(_T("Address:0x%02x Old Register:0x%02x New Register:0x%02x"), addr, oldRegVal, newRegVal);
+				Parent()->L(str);
+			}
+		}
 		break;
 	case SelectStatic::LimAmp:
 		break;
