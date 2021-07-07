@@ -214,6 +214,7 @@ public:
 	int OnNewPaGain1(int val);
 	int OnNewPaGain2(int val);
 	int OnNewTestBuffer(int val);
+	int OnNewLna1(int val);
 	BOOL UpdateSemanticValue(int addr, int (CSemantic::* fpNewRegVal)(int), void (CSemantic::* fpUpdateData)(CRegister&));
 	afx_msg void OnBnClickedWriteButton();
 };
