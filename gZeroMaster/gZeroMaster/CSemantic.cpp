@@ -290,6 +290,12 @@ void CSemantic::UpdateLna3Current(CRegister& reg)
 }
 
 
+void CSemantic::UpdateLna1Current(CRegister& reg)
+{
+	m_strLna1Current.Format(_T("0x%02x"), reg.m_nLna1Cur);
+}
+
+
 void CSemantic::UpdateRegisters()
 {
 	ASSERT(Parent());
@@ -317,7 +323,7 @@ void CSemantic::UpdateRegisters()
 	UpdateBiasBlockEnable(reg);
 
 	UpdateLna3Current(reg);
-	m_strLna1Current.Format(_T("0x%02x"), reg.m_nLna1Cur);
+	UpdateLna1Current(reg);
 	m_strLna2Current = m_strLna1Current;
 
 	m_strLna5Current.Format(_T("0x%02x"), reg.m_nLna5Cur);
