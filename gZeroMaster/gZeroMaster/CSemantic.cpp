@@ -1498,6 +1498,7 @@ void CSemantic::OnBnClickedWriteButton()
 
 	int addr;
 	LONG lLastError;
+	CRegister reg;
 	//ControlCombo
 	switch (m_selected) {
 	case SelectStatic::RxData:
@@ -1513,6 +1514,12 @@ void CSemantic::OnBnClickedWriteButton()
 				Parent()->ErrorMsg(lLastError, _T("Error in WriteRegister"));
 			}
 			else {
+				BOOL bRead = Parent()->m_pRaw->ReadResister(addr);
+				ASSERT(bRead);
+				Parse(Parent()->m_pRaw, reg);
+				UpdateRxData(reg);
+				UpdateData(FALSE);
+
 				CString str;
 				str.Format(_T("Address:0x%02x Old Register:0x%02x New Register:0x%02x"), addr, oldRegVal, newRegVal);
 				Parent()->L(str);
