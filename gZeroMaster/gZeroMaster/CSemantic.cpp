@@ -1545,6 +1545,13 @@ int CSemantic::OnNewBiasBlock(int val)
 }
 
 
+int CSemantic::OnNewLnaGain(int val)
+{
+	int curPos = -1 * m_controlSlider.GetPos();
+	return (val & 0xf8) | curPos;
+}
+
+
 BOOL CSemantic::UpdateSemanticValue(int addr, int (CSemantic::*fpNewRegVal)(int), void (CSemantic::*fpUpdateData)(CRegister&))
 {
 	int oldRegVal;
@@ -1643,6 +1650,8 @@ void CSemantic::OnBnClickedWriteButton()
 	//ControlSlide
 	switch (m_selected) {
 	case SelectStatic::LnaGain:
+		bRtn = UpdateSemanticValue(2, &CSemantic::OnNewLnaGain, &CSemantic::UpdateLnaGain);
+		ASSERT(bRtn);
 		break;
 	case SelectStatic::DutyCycle:
 		break;
