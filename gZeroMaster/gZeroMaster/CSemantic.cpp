@@ -1190,6 +1190,7 @@ CString CSemantic::DecToBin(int dec)
 		strBin += _T(" ");	//4비트 마다 공백
 		byte = dec & 0xff;
 	}
+	TRACE(_T("DecToBin:")+strBin+_T("\n"));
 	return strBin;
 }
 
