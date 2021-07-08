@@ -723,13 +723,13 @@ void CSemantic::SetControlSlider(int min,int max,CString strCurVal,int ticFreq,i
 	m_strSliderMin.Format(_T("Min:%d"), min);
 	if (min != 0) {
 		m_strSliderMin += _T("(");
-		m_strSliderMin += DecToBin(min);
+		m_strSliderMin += DecToBin(min).TrimLeft(_T('0'));
 		m_strSliderMin += _T(")");
 	}
 
 	m_strSliderMax.Format(_T("Max:%d"), max);
 	m_strSliderMax += _T("(");
-	m_strSliderMax += DecToBin(max);
+	m_strSliderMax += DecToBin(max).TrimLeft(_T('0'));
 	m_strSliderMax += _T(")");
 
 	//슬라이더 컨트롤이 최대값이 아래로 표시되기때문에 최대값을 -1을 곱하여 최소갑인것 처럼 표시
@@ -1153,7 +1153,7 @@ int CSemantic::SliderValueUpdate()
 	m_strSliderValue.Format(_T("Dec:%d"), curPos);
 	m_strSliderValueHex.Format(_T("Hex:0x%02x"), curPos);
 	m_strSliderValueBin = _T("Bin:");
-	m_strSliderValueBin+=DecToBin(curPos);
+	m_strSliderValueBin+=DecToBin(curPos).TrimLeft(_T('0'));
 	UpdateData(FALSE);
 	return curPos;
 }
