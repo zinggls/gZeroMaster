@@ -729,7 +729,7 @@ void CSemantic::SetControlSlider(int min,int max,CString strCurVal,int ticFreq,i
 
 	m_strSliderMax.Format(_T("Max:%d"), max);
 	m_strSliderMax += _T("(");
-	m_strSliderMax += DecToBin(max).TrimLeft(_T('0')).TrimLeft();
+	(max > 0xff) ? m_strSliderMax += DecToBin(max).Right(15) : m_strSliderMax += DecToBin(max).Right(10);
 	m_strSliderMax += _T(")");
 
 	//슬라이더 컨트롤이 최대값이 아래로 표시되기때문에 최대값을 -1을 곱하여 최소갑인것 처럼 표시
