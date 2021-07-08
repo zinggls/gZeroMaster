@@ -1153,7 +1153,8 @@ int CSemantic::SliderValueUpdate()
 	m_strSliderValue.Format(_T("Dec:%d"), curPos);
 	m_strSliderValueHex.Format(_T("Hex:0x%02x"), curPos);
 	m_strSliderValueBin = _T("Bin:");
-	m_strSliderValueBin+= (DecToBin(curPos).TrimLeft(_T('0')));
+	m_strSliderValueBin += (DecToBin(curPos).TrimLeft(_T('0')));
+	if (curPos == 0) m_strSliderValueBin += _T('0');
 	UpdateData(FALSE);
 	return curPos;
 }
