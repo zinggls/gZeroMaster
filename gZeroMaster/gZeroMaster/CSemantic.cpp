@@ -1174,17 +1174,20 @@ void CSemantic::ShowSlider(int nCmdShow)
 
 CString CSemantic::DecToBin(int dec)
 {
+	ASSERT(dec>=0 && dec <= 0xffff);	//2바이트 까지만 지원
 	if (dec == 0) return _T("0");
 
 	CString strBin;
-	int byte = dec & 0xff;
-	while (byte > 0) {
+	int byte = (dec & 0xff00) >> 8;
+	for (int n = 0; n < 2; n++) {
 		for (int i = 7; i >= 0; i--) {
 			CString strBit;
 			strBit.Format(_T("%d"), (byte >> i) & 1);
 			strBin += strBit;
+			if (i == 4) strBin += _T(" ");	//4비트 마다 공백
 		}
-		byte = (byte >> 8) & 0xff;
+		strBin += _T(" ");	//4비트 마다 공백
+		byte = dec & 0xff;
 	}
 	return strBin;
 }
