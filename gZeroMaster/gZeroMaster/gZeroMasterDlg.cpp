@@ -79,6 +79,7 @@ BEGIN_MESSAGE_MAP(CgZeroMasterDlg, CDialogEx)
 	ON_WM_CONTEXTMENU()
 	ON_COMMAND(ID_MAINMENU_CLEARLOG, &CgZeroMasterDlg::OnMainmenuClearlog)
 	ON_COMMAND(ID_MAINMENU_SAVE, &CgZeroMasterDlg::OnMainmenuSave)
+	ON_COMMAND(ID_MAINMENU_LOAD, &CgZeroMasterDlg::OnMainmenuLoad)
 END_MESSAGE_MAP()
 
 
@@ -339,7 +340,14 @@ void CgZeroMasterDlg::OnContextMenu(CWnd* /*pWnd*/, CPoint point)
 
 	CMenu* pMenu = popup.GetSubMenu(0);
 	pMenu->EnableMenuItem(ID_MAINMENU_CLEARLOG, MF_ENABLED);
-	(m_serial.IsOpen()) ? pMenu->EnableMenuItem(ID_MAINMENU_SAVE, MF_ENABLED) : pMenu->EnableMenuItem(ID_MAINMENU_SAVE, MF_GRAYED);
+	if (m_serial.IsOpen()) {
+		pMenu->EnableMenuItem(ID_MAINMENU_LOAD, MF_ENABLED);
+		pMenu->EnableMenuItem(ID_MAINMENU_SAVE, MF_ENABLED);
+	}
+	else {
+		pMenu->EnableMenuItem(ID_MAINMENU_LOAD, MF_GRAYED);
+		pMenu->EnableMenuItem(ID_MAINMENU_SAVE, MF_GRAYED);
+	}
 	pMenu->TrackPopupMenu(TPM_LEFTALIGN || TPM_RIGHTBUTTON, point.x, point.y, this);
 }
 
@@ -384,4 +392,9 @@ void CgZeroMasterDlg::SaveRegisters(CString fileName)
 	WritePrivateProfileString(_T("BIAS_REG6 [7:0]"), _T("Hex"), m_pRaw->m_strBiasReg6, fileName);
 	WritePrivateProfileString(_T("BIAS_REG7 [7:0]"), _T("Hex"), m_pRaw->m_strBiasReg7, fileName);
 	WritePrivateProfileString(_T("BIAS_REG8 [7:0]"), _T("Hex"), m_pRaw->m_strBiasReg8, fileName);
+}
+
+void CgZeroMasterDlg::OnMainmenuLoad()
+{
+	// TODO: 여기에 명령 처리기 코드를 추가합니다.
 }

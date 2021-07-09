@@ -58,4 +58,5 @@ public:
 	afx_msg void OnMainmenuClearlog();
 	afx_msg void OnMainmenuSave();
 	void SaveRegisters(CString fileName);
+	afx_msg void OnMainmenuLoad();
 };
