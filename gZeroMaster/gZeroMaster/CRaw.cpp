@@ -625,6 +625,7 @@ void CRaw::OnBnClickedReadAllButton()
 {
 	ResetValues();
 	ReadResisters();
+	Parent()->m_pSemantic->UpdateRegisters();
 }
 
 
