@@ -78,6 +78,7 @@ BEGIN_MESSAGE_MAP(CgZeroMasterDlg, CDialogEx)
 	ON_WM_DESTROY()
 	ON_WM_CONTEXTMENU()
 	ON_COMMAND(ID_MAINMENU_CLEARLOG, &CgZeroMasterDlg::OnMainmenuClearlog)
+	ON_COMMAND(ID_MAINMENU_SAVE, &CgZeroMasterDlg::OnMainmenuSave)
 END_MESSAGE_MAP()
 
 
@@ -346,4 +347,18 @@ void CgZeroMasterDlg::OnMainmenuClearlog()
 	// TODO: 여기에 명령 처리기 코드를 추가합니다.
 	m_log.ResetContent();
 	ASSERT(m_log.GetCount() == 0);
+}
+
+
+void CgZeroMasterDlg::OnMainmenuSave()
+{
+	// TODO: 여기에 명령 처리기 코드를 추가합니다.
+	TCHAR szFilter[] = _T("ini (*.ini)|All Files(*.*)|*.*||");
+	CFileDialog dlg(FALSE, NULL, NULL, OFN_HIDEREADONLY, szFilter);
+	if (IDOK == dlg.DoModal()) {
+		CString fileName = dlg.GetPathName();
+		if(dlg.GetFileExt().IsEmpty()) fileName += _T(".ini");
+		L(_T("Filaname:") + fileName);
+	}
+	UpdateData(FALSE);
 }

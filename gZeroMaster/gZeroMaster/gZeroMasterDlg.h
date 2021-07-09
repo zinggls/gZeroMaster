@@ -56,4 +56,5 @@ public:
 	afx_msg void OnDestroy();
 	afx_msg void OnContextMenu(CWnd* /*pWnd*/, CPoint /*point*/);
 	afx_msg void OnMainmenuClearlog();
+	afx_msg void OnMainmenuSave();
 };

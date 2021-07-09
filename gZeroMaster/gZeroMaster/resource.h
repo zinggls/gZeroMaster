@@ -155,13 +155,14 @@
 #define IDC_REG_REF_VOLT_VALUE_STATIC   1141
 #define IDC_CONTROL_COMBO               1142
 #define ID_MAINMENU_CLEARLOG            32771
+#define ID_MAINMENU_SAVE                32772
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        138
-#define _APS_NEXT_COMMAND_VALUE         32772
+#define _APS_NEXT_COMMAND_VALUE         32773
 #define _APS_NEXT_CONTROL_VALUE         1143
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
