@@ -76,6 +76,7 @@ BEGIN_MESSAGE_MAP(CgZeroMasterDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_LOG_CLEAR_BUTTON, &CgZeroMasterDlg::OnBnClickedLogClearButton)
 	ON_NOTIFY(TCN_SELCHANGE, IDC_TAB, &CgZeroMasterDlg::OnTcnSelchangeTab)
 	ON_WM_DESTROY()
+	ON_WM_CONTEXTMENU()
 END_MESSAGE_MAP()
 
 
@@ -325,4 +326,15 @@ void CgZeroMasterDlg::OnDestroy()
 	// TODO: 여기에 메시지 처리기 코드를 추가합니다.
 	delete m_pSemantic;
 	delete m_pRaw;
+}
+
+
+void CgZeroMasterDlg::OnContextMenu(CWnd* /*pWnd*/, CPoint point)
+{
+	// TODO: 여기에 메시지 처리기 코드를 추가합니다.
+	CMenu popup;
+	popup.LoadMenu(IDR_MAIN_MENU);
+
+	CMenu* pMenu = popup.GetSubMenu(0);
+	pMenu->TrackPopupMenu(TPM_LEFTALIGN || TPM_RIGHTBUTTON, point.x, point.y, this);
 }

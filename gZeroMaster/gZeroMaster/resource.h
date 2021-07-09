@@ -10,6 +10,7 @@
 #define IDI_GLS_ICON                    131
 #define IDD_SEMANTIC_DIALOG             133
 #define IDD_RAW_DIALOG                  135
+#define IDR_MAIN_MENU                   137
 #define IDC_LOG_LIST                    1000
 #define IDC_COM_COMBO                   1001
 #define IDC_CONNECT_BUTTON              1002
@@ -153,13 +154,14 @@
 #define IDC_BIAS_BLOCK_ENABLE_VALUE_STATIC 1140
 #define IDC_REG_REF_VOLT_VALUE_STATIC   1141
 #define IDC_CONTROL_COMBO               1142
+#define ID_MAINMENU_CLEARLOG            32771
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        137
-#define _APS_NEXT_COMMAND_VALUE         32771
+#define _APS_NEXT_RESOURCE_VALUE        138
+#define _APS_NEXT_COMMAND_VALUE         32772
 #define _APS_NEXT_CONTROL_VALUE         1143
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
