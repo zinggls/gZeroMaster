@@ -397,4 +397,11 @@ void CgZeroMasterDlg::SaveRegisters(CString fileName)
 void CgZeroMasterDlg::OnMainmenuLoad()
 {
 	// TODO: 여기에 명령 처리기 코드를 추가합니다.
+	TCHAR szFilter[] = _T("ini (*.ini) | All Files(*.*) |*.*||");
+	CFileDialog dlg(TRUE, NULL, _T("*"), OFN_HIDEREADONLY , szFilter);
+	if (IDOK == dlg.DoModal()) {
+		CString fileName = dlg.GetPathName();
+		L(_T("Filaname:") + fileName);
+	}
+	UpdateData(FALSE);
 }
