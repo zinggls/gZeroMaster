@@ -370,6 +370,7 @@ void CgZeroMasterDlg::OnMainmenuSave()
 		if(dlg.GetFileExt().IsEmpty()) fileName += _T(".ini");
 		L(_T("Filaname:") + fileName);
 		SaveRegisters(fileName);
+		L(_T("Registers are saved in ") + fileName);
 	}
 	UpdateData(FALSE);
 }
