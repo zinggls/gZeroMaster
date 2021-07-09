@@ -338,6 +338,8 @@ void CgZeroMasterDlg::OnContextMenu(CWnd* /*pWnd*/, CPoint point)
 	popup.LoadMenu(IDR_MAIN_MENU);
 
 	CMenu* pMenu = popup.GetSubMenu(0);
+	pMenu->EnableMenuItem(ID_MAINMENU_CLEARLOG, MF_ENABLED);
+	(m_serial.IsOpen()) ? pMenu->EnableMenuItem(ID_MAINMENU_SAVE, MF_ENABLED) : pMenu->EnableMenuItem(ID_MAINMENU_SAVE, MF_GRAYED);
 	pMenu->TrackPopupMenu(TPM_LEFTALIGN || TPM_RIGHTBUTTON, point.x, point.y, this);
 }
 
