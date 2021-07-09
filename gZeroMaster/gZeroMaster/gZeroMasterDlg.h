@@ -59,4 +59,6 @@ public:
 	afx_msg void OnMainmenuSave();
 	void SaveRegisters(CString fileName);
 	afx_msg void OnMainmenuLoad();
+	BOOL LoadValue(TCHAR *regTagName, CString *pTargetStr, CString fileName);
+	BOOL LoadRegisters(CString fileName);
 };
