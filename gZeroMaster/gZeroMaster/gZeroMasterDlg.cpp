@@ -77,6 +77,7 @@ BEGIN_MESSAGE_MAP(CgZeroMasterDlg, CDialogEx)
 	ON_NOTIFY(TCN_SELCHANGE, IDC_TAB, &CgZeroMasterDlg::OnTcnSelchangeTab)
 	ON_WM_DESTROY()
 	ON_WM_CONTEXTMENU()
+	ON_COMMAND(ID_MAINMENU_CLEARLOG, &CgZeroMasterDlg::OnMainmenuClearlog)
 END_MESSAGE_MAP()
 
 
@@ -337,4 +338,12 @@ void CgZeroMasterDlg::OnContextMenu(CWnd* /*pWnd*/, CPoint point)
 
 	CMenu* pMenu = popup.GetSubMenu(0);
 	pMenu->TrackPopupMenu(TPM_LEFTALIGN || TPM_RIGHTBUTTON, point.x, point.y, this);
+}
+
+
+void CgZeroMasterDlg::OnMainmenuClearlog()
+{
+	// TODO: 여기에 명령 처리기 코드를 추가합니다.
+	m_log.ResetContent();
+	ASSERT(m_log.GetCount() == 0);
 }
