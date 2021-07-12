@@ -1941,31 +1941,51 @@ int CSemantic::VcoVdd()
 
 int CSemantic::VcoPow()
 {
+	ASSERT(m_strVcoPower == _T("VCO off") || m_strVcoPower == _T("VCO on"));
 
+	if (m_strVcoPower == _T("VCO off")) return 0;
+	ASSERT(m_strVcoPower == _T("VCO on"));
+	return 1;
 }
 
 
 int CSemantic::ModPow()
 {
+	ASSERT(m_strModPower == _T("MOD off") || m_strModPower == _T("MOD on"));
 
+	if (m_strModPower == _T("MOD off")) return 0;
+	ASSERT(m_strModPower == _T("MOD on"));
+	return 1;
 }
 
 
 int CSemantic::TestBufPow()
 {
+	ASSERT(m_strTestBufferPower == _T("test buff off") || m_strTestBufferPower == _T("test buff on"));
 
+	if (m_strTestBufferPower == _T("test buff off")) return 0;
+	ASSERT(m_strTestBufferPower == _T("test buff on"));
+	return 1;
 }
 
 
 int CSemantic::DataInp()
 {
+	ASSERT(m_strDataInputSelect == _T("SER(Internal)") || m_strDataInputSelect == _T("Test Buff(External)"));
 
+	if (m_strDataInputSelect == _T("SER(Internal)")) return 0;
+	ASSERT(m_strDataInputSelect == _T("Test Buff(External)"));
+	return 1;
 }
 
 
 int CSemantic::PaPow()
 {
+	ASSERT(m_strPaPower == _T("PA off") || m_strPaPower == _T("PA on"));
 
+	if (m_strPaPower == _T("PA off")) return 0;
+	ASSERT(m_strPaPower == _T("PA on"));
+	return 1;
 }
 
 
