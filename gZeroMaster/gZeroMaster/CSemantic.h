@@ -197,6 +197,7 @@ public:
 	afx_msg void OnStnClickedBiasBlockEnableValueStatic();
 	void ResetValues();
 	afx_msg void OnCbnSelchangeControlCombo();
+	int ComboSel();
 	int OnNewRxData(int val);
 	int OnNewLimAmp(int val);
 	int OnNewRegRef(int val);

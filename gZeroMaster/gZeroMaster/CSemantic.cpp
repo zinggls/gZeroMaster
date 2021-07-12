@@ -1473,31 +1473,31 @@ void CSemantic::OnCbnSelchangeControlCombo()
 
 	switch (m_selected) {
 	case SelectStatic::RxData:
-		(m_controlCombo.GetCurSel() == reg.m_nRxData) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
+		(ComboSel() == reg.m_nRxData) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
 		break;
 	case SelectStatic::LimAmp:
-		(m_controlCombo.GetCurSel() == reg.m_nLimitAmp) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
+		(ComboSel() == reg.m_nLimitAmp) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
 		break;
 	case SelectStatic::RegRef:
-		(m_controlCombo.GetCurSel() == reg.m_nRegRef) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
+		(ComboSel() == reg.m_nRegRef) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
 		break;
 	case SelectStatic::VcoPow:
-		(m_controlCombo.GetCurSel() == reg.m_nVcoPower) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
+		(ComboSel() == reg.m_nVcoPower) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
 		break;
 	case SelectStatic::ModPow:
-		(m_controlCombo.GetCurSel() == reg.m_nModPower) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
+		(ComboSel() == reg.m_nModPower) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
 		break;
 	case SelectStatic::TestBufPow:
-		(m_controlCombo.GetCurSel() == reg.m_nTestBufPower) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
+		(ComboSel() == reg.m_nTestBufPower) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
 		break;
 	case SelectStatic::DataInp:
-		(m_controlCombo.GetCurSel() == reg.m_nDataInpSel) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
+		(ComboSel() == reg.m_nDataInpSel) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
 		break;
 	case SelectStatic::PaPow:
-		(m_controlCombo.GetCurSel() == reg.m_nPaPower) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
+		(ComboSel() == reg.m_nPaPower) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
 		break;
 	case SelectStatic::BiasBlock:
-		(m_controlCombo.GetCurSel() == reg.m_nBiasBlock) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
+		(ComboSel() == reg.m_nBiasBlock) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
 		break;
 	default:
 		break;
@@ -1505,57 +1505,63 @@ void CSemantic::OnCbnSelchangeControlCombo()
 }
 
 
+int CSemantic::ComboSel()
+{
+	return m_controlCombo.GetCurSel();
+}
+
+
 int CSemantic::OnNewRxData(int val)
 {
-	return (val & 0xe0) | m_controlCombo.GetCurSel() << 4 | (val & 0x0f);
+	return (val & 0xe0) | ComboSel() << 4 | (val & 0x0f);
 }
 
 
 int CSemantic::OnNewLimAmp(int val)
 {
-	return (val & 0xf0) | m_controlCombo.GetCurSel() << 3 | (val & 0x07);
+	return (val & 0xf0) | ComboSel() << 3 | (val & 0x07);
 }
 
 
 int CSemantic::OnNewRegRef(int val)
 {
-	return (val & 0xe0) | m_controlCombo.GetCurSel() << 4 | (val & 0x0f);
+	return (val & 0xe0) | ComboSel() << 4 | (val & 0x0f);
 }
 
 
 int CSemantic::OnNewVcoPow(int val)
 {
-	return (val & 0xfe) | m_controlCombo.GetCurSel();
+	return (val & 0xfe) | ComboSel();
 }
 
 
 int CSemantic::OnNewModPow(int val)
 {
-	return (val & 0x7f) | m_controlCombo.GetCurSel() << 7;
+	return (val & 0x7f) | ComboSel() << 7;
 }
 
 
 int CSemantic::OnNewTestBufPow(int val)
 {
-	return (val & 0x80) | m_controlCombo.GetCurSel() << 6 | (val & 0x3f);
+	return (val & 0x80) | ComboSel() << 6 | (val & 0x3f);
 }
 
 
 int CSemantic::OnNewDataInp(int val)
 {
-	return (val & 0xc0) | m_controlCombo.GetCurSel() << 5 | (val & 0x1f);
+	return (val & 0xc0) | ComboSel() << 5 | (val & 0x1f);
 }
 
 
 int CSemantic::OnNewPaPow(int val)
 {
-	return (val & 0xe0) | m_controlCombo.GetCurSel() << 4 | (val & 0x0f);
+	return (val & 0xe0) | ComboSel() << 4 | (val & 0x0f);
 }
 
 
 int CSemantic::OnNewBiasBlock(int val)
 {
-	return (val & 0xfe) | m_controlCombo.GetCurSel();
+	return (val & 0xfe) | ComboSel();
 }
 
 
