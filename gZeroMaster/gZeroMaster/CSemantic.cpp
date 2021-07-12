@@ -1992,7 +1992,7 @@ int CSemantic::TestBufPow()
 
 int CSemantic::DataInp()
 {
-	return strToInt(_T("SER(Internal)"), _T("Test Buff(External)"), m_strDataInputSelect);
+	return strToInt(_T("SER(Internal)"), _T("Test buff(External)"), m_strDataInputSelect);
 }
 
 
@@ -2106,5 +2106,7 @@ int CSemantic::CMOS()
 
 int CSemantic::CML()
 {
-	return Read4BitValue(m_strCMLInterfaceStageCurrent);
+	int val = _tcstol(m_strCMLInterfaceStageCurrent.GetBuffer(), NULL, 16);
+	ASSERT(val >= 0 && val <= 0xff);
+	return val;
 }
