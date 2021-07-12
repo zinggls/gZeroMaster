@@ -242,6 +242,7 @@ public:
 	int VcoOsc();
 	int RegRef();
 	int Read4BitValue(CString str);
+	int Read8BitValue(CString str);
 	int VcoVdd();
 	int VcoPow();
 	int ModPow();

@@ -1966,6 +1966,14 @@ int CSemantic::Read4BitValue(CString str)
 }
 
 
+int CSemantic::Read8BitValue(CString str)
+{
+	int val = _tcstol(str.GetBuffer(), NULL, 16);
+	ASSERT(val >= 0 && val <= 0xff);
+	return val;
+}
+
+
 int CSemantic::VcoVdd()
 {
 	return Read4BitValue(m_strVcoVdd);
