@@ -1867,3 +1867,182 @@ void CSemantic::OnBnClickedWriteAllButton()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 }
+
+
+int CSemantic::RxData()
+{
+
+}
+
+
+int CSemantic::LimAmp()
+{
+
+}
+
+
+int CSemantic::LnaGain()
+{
+
+}
+
+
+int CSemantic::DutyCycle()
+{
+
+}
+
+
+int CSemantic::VcoOsc()
+{
+
+}
+
+
+int CSemantic::RegRef()
+{
+
+}
+
+
+int CSemantic::VcoVdd()
+{
+
+}
+
+
+int CSemantic::VcoPow()
+{
+
+}
+
+
+int CSemantic::ModPow()
+{
+
+}
+
+
+int CSemantic::TestBufPow()
+{
+
+}
+
+
+int CSemantic::DataInp()
+{
+
+}
+
+
+int CSemantic::PaPow()
+{
+
+}
+
+
+int CSemantic::PaGain1()
+{
+
+}
+
+
+int CSemantic::PaGain2()
+{
+
+}
+
+
+int CSemantic::TestBuffer()
+{
+}
+
+
+int CSemantic::BiasBlock()
+{
+
+}
+
+
+int CSemantic::Lna1()
+{
+
+}
+
+
+int CSemantic::Lna2()
+{
+
+}
+
+
+int CSemantic::Lna3()
+{
+
+}
+
+
+int CSemantic::Lna4()
+{
+
+}
+
+
+int CSemantic::Lna5()
+{
+
+}
+
+
+int CSemantic::RefStage()
+{
+
+}
+
+
+int CSemantic::IpStage()
+{
+
+}
+
+
+int CSemantic::Fb()
+{
+
+}
+
+
+int CSemantic::Core()
+{
+
+}
+
+
+int CSemantic::OP()
+{
+
+}
+
+
+int CSemantic::IP()
+{
+
+}
+
+
+int CSemantic::HL()
+{
+
+}
+
+
+int CSemantic::CMOS()
+{
+
+}
+
+
+int CSemantic::CML()
+{
+
+}
