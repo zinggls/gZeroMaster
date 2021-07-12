@@ -232,7 +232,7 @@ public:
 	BOOL UpdateSemanticValue(int addr, int (CSemantic::* fpNewRegVal)(int, int), int newVal, void (CSemantic::* fpUpdateData)(CRegister&));
 	afx_msg void OnBnClickedWriteButton();
 	afx_msg void OnBnClickedWriteAllButton();
-	BOOL UpdateSelected(SelectStatic selected);
+	BOOL UpdateSelected(SelectStatic selected, BOOL bCommonControl);
 	static int disableOrEnable(CString str);
 	static int strToInt(CString zero, CString one, CString str);
 	int RxData();
