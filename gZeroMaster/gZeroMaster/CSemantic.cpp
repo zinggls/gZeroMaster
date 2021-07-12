@@ -1938,9 +1938,7 @@ int CSemantic::LnaGain()
 
 int CSemantic::DutyCycle()
 {
-	int val = _tcstol(m_strDutyCycle.GetBuffer(), NULL, 16);
-	ASSERT(val >= 0 && val <= 0xff);
-	return val;
+	return Read8BitValue(m_strDutyCycle);
 }
 
 
@@ -2114,7 +2112,5 @@ int CSemantic::CMOS()
 
 int CSemantic::CML()
 {
-	int val = _tcstol(m_strCMLInterfaceStageCurrent.GetBuffer(), NULL, 16);
-	ASSERT(val >= 0 && val <= 0xff);
-	return val;
+	return Read8BitValue(m_strCMLInterfaceStageCurrent);
 }
