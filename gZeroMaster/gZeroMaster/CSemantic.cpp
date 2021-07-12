@@ -1869,6 +1869,16 @@ void CSemantic::OnBnClickedWriteAllButton()
 }
 
 
+int CSemantic::disableOrEnable(CString str)
+{
+	ASSERT(str == _T("disable") || str == _T("enable"));
+
+	if (str == _T("disable")) return 0;
+	ASSERT(str == _T("enable"));
+	return 1;
+}
+
+
 int CSemantic::RxData()
 {
 
