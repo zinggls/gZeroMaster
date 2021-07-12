@@ -368,7 +368,7 @@ void CgZeroMasterDlg::OnMainmenuSave()
 	if (IDOK == dlg.DoModal()) {
 		CString fileName = dlg.GetPathName();
 		if(dlg.GetFileExt().IsEmpty()) fileName += _T(".ini");
-		L(_T("Filaname:") + fileName);
+		L(_T("Filename:") + fileName);
 		SaveRegisters(fileName);
 		L(_T("Registers are saved in ") + fileName);
 	}
@@ -402,7 +402,7 @@ void CgZeroMasterDlg::OnMainmenuLoad()
 	CFileDialog dlg(TRUE, NULL, _T("*"), OFN_HIDEREADONLY , szFilter);
 	if (IDOK == dlg.DoModal()) {
 		CString fileName = dlg.GetPathName();
-		L(_T("Filaname:") + fileName);
+		L(_T("Filename:") + fileName);
 		if (LoadRegisters(fileName)) {
 			L(_T("Registers are loaded from ") + fileName);
 		}
