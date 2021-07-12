@@ -141,6 +141,7 @@ BEGIN_MESSAGE_MAP(CSemantic, CDialogEx)
 	ON_STN_CLICKED(IDC_BIAS_BLOCK_ENABLE_VALUE_STATIC, &CSemantic::OnStnClickedBiasBlockEnableValueStatic)
 	ON_CBN_SELCHANGE(IDC_CONTROL_COMBO, &CSemantic::OnCbnSelchangeControlCombo)
 	ON_BN_CLICKED(IDC_WRITE_BUTTON, &CSemantic::OnBnClickedWriteButton)
+	ON_BN_CLICKED(IDC_WRITE_ALL_BUTTON, &CSemantic::OnBnClickedWriteAllButton)
 END_MESSAGE_MAP()
 
 
@@ -166,6 +167,7 @@ BOOL CSemantic::OnInitDialog()
 	m_selected = SelectStatic::None;
 
 	GetDlgItem(IDC_READ_ALL_BUTTON)->ShowWindow(SW_HIDE);
+	GetDlgItem(IDC_WRITE_ALL_BUTTON)->ShowWindow(SW_HIDE);
 	GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_HIDE);
 	return TRUE;  // return TRUE unless you set the focus to a control
 				  // 예외: OCX 속성 페이지는 FALSE를 반환해야 합니다.
@@ -1845,4 +1847,10 @@ void CSemantic::OnBnClickedWriteButton()
 	ASSERT(bRtn);
 	GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE);
 	Parent()->L(_T("Writing done"));
+}
+
+
+void CSemantic::OnBnClickedWriteAllButton()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 }

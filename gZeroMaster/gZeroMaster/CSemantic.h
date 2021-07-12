@@ -230,4 +230,5 @@ public:
 	int OnNewCML(int val);
 	BOOL UpdateSemanticValue(int addr, int (CSemantic::* fpNewRegVal)(int), void (CSemantic::* fpUpdateData)(CRegister&));
 	afx_msg void OnBnClickedWriteButton();
+	afx_msg void OnBnClickedWriteAllButton();
 };
