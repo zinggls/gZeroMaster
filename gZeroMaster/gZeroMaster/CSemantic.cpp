@@ -1893,25 +1893,35 @@ int CSemantic::LimAmp()
 
 int CSemantic::LnaGain()
 {
-
+	int val = _tcstol(m_strLnaGain.GetBuffer(), NULL, 16);
+	ASSERT(val >= 0 && val <= 0x7);
+	return val;
 }
 
 
 int CSemantic::DutyCycle()
 {
-
+	int val = _tcstol(m_strDutyCycle.GetBuffer(), NULL, 16);
+	ASSERT(val >= 0 && val <= 0xff);
+	return val;
 }
 
 
 int CSemantic::VcoOsc()
 {
-
+	int val = _tcstol(m_strVcoOscFreq.GetBuffer(), NULL, 16);
+	ASSERT(val >= 0 && val <= 0x7ff);
+	return val;
 }
 
 
 int CSemantic::RegRef()
 {
+	ASSERT(m_strRegRefVolt == _T("500mV") || m_strRegRefVolt == _T("400mV"));
 
+	if (m_strRegRefVolt == _T("500mV")) return 0;
+	ASSERT(m_strRegRefVolt == _T("400mV"));
+	return 1;
 }
 
 
