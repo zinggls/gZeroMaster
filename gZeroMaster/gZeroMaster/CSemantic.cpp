@@ -1871,11 +1871,7 @@ void CSemantic::OnBnClickedWriteAllButton()
 
 int CSemantic::disableOrEnable(CString str)
 {
-	ASSERT(str == _T("disable") || str == _T("enable"));
-
-	if (str == _T("disable")) return 0;
-	ASSERT(str == _T("enable"));
-	return 1;
+	return strToInt(_T("disable"), _T("enable"), str);
 }
 
 
@@ -1927,11 +1923,7 @@ int CSemantic::VcoOsc()
 
 int CSemantic::RegRef()
 {
-	ASSERT(m_strRegRefVolt == _T("500mV") || m_strRegRefVolt == _T("400mV"));
-
-	if (m_strRegRefVolt == _T("500mV")) return 0;
-	ASSERT(m_strRegRefVolt == _T("400mV"));
-	return 1;
+	return strToInt(_T("500mV"), _T("400mV"), m_strRegRefVolt);
 }
 
 
@@ -1951,51 +1943,31 @@ int CSemantic::VcoVdd()
 
 int CSemantic::VcoPow()
 {
-	ASSERT(m_strVcoPower == _T("VCO off") || m_strVcoPower == _T("VCO on"));
-
-	if (m_strVcoPower == _T("VCO off")) return 0;
-	ASSERT(m_strVcoPower == _T("VCO on"));
-	return 1;
+	return strToInt(_T("VCO off"), _T("VCO on"), m_strVcoPower);
 }
 
 
 int CSemantic::ModPow()
 {
-	ASSERT(m_strModPower == _T("MOD off") || m_strModPower == _T("MOD on"));
-
-	if (m_strModPower == _T("MOD off")) return 0;
-	ASSERT(m_strModPower == _T("MOD on"));
-	return 1;
+	return strToInt(_T("MOD off"), _T("MOD on"), m_strModPower);
 }
 
 
 int CSemantic::TestBufPow()
 {
-	ASSERT(m_strTestBufferPower == _T("test buff off") || m_strTestBufferPower == _T("test buff on"));
-
-	if (m_strTestBufferPower == _T("test buff off")) return 0;
-	ASSERT(m_strTestBufferPower == _T("test buff on"));
-	return 1;
+	return strToInt(_T("test buff off"), _T("test buff on"), m_strTestBufferPower);
 }
 
 
 int CSemantic::DataInp()
 {
-	ASSERT(m_strDataInputSelect == _T("SER(Internal)") || m_strDataInputSelect == _T("Test Buff(External)"));
-
-	if (m_strDataInputSelect == _T("SER(Internal)")) return 0;
-	ASSERT(m_strDataInputSelect == _T("Test Buff(External)"));
-	return 1;
+	return strToInt(_T("SER(Internal)"), _T("Test Buff(External)"), m_strDataInputSelect);
 }
 
 
 int CSemantic::PaPow()
 {
-	ASSERT(m_strPaPower == _T("PA off") || m_strPaPower == _T("PA on"));
-
-	if (m_strPaPower == _T("PA off")) return 0;
-	ASSERT(m_strPaPower == _T("PA on"));
-	return 1;
+	return strToInt(_T("PA off"), _T("PA on"), m_strPaPower);
 }
 
 
