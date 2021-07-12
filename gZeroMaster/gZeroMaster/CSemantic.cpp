@@ -1511,193 +1511,193 @@ int CSemantic::ComboSel()
 }
 
 
-int CSemantic::OnNewRxData(int val)
+int CSemantic::OnNewRxData(int val, int newVal)
 {
-	return (val & 0xe0) | ComboSel() << 4 | (val & 0x0f);
+	return (val & 0xe0) | newVal << 4 | (val & 0x0f);
 }
 
 
-int CSemantic::OnNewLimAmp(int val)
+int CSemantic::OnNewLimAmp(int val, int newVal)
 {
-	return (val & 0xf0) | ComboSel() << 3 | (val & 0x07);
+	return (val & 0xf0) | newVal << 3 | (val & 0x07);
 }
 
 
-int CSemantic::OnNewRegRef(int val)
+int CSemantic::OnNewRegRef(int val, int newVal)
 {
-	return (val & 0xe0) | ComboSel() << 4 | (val & 0x0f);
+	return (val & 0xe0) | newVal << 4 | (val & 0x0f);
 }
 
 
-int CSemantic::OnNewVcoPow(int val)
+int CSemantic::OnNewVcoPow(int val, int newVal)
 {
-	return (val & 0xfe) | ComboSel();
+	return (val & 0xfe) | newVal;
 }
 
 
-int CSemantic::OnNewModPow(int val)
+int CSemantic::OnNewModPow(int val, int newVal)
 {
-	return (val & 0x7f) | ComboSel() << 7;
+	return (val & 0x7f) | newVal << 7;
 }
 
 
-int CSemantic::OnNewTestBufPow(int val)
+int CSemantic::OnNewTestBufPow(int val, int newVal)
 {
-	return (val & 0x80) | ComboSel() << 6 | (val & 0x3f);
+	return (val & 0x80) | newVal << 6 | (val & 0x3f);
 }
 
 
-int CSemantic::OnNewDataInp(int val)
+int CSemantic::OnNewDataInp(int val, int newVal)
 {
-	return (val & 0xc0) | ComboSel() << 5 | (val & 0x1f);
+	return (val & 0xc0) | newVal << 5 | (val & 0x1f);
 }
 
 
-int CSemantic::OnNewPaPow(int val)
+int CSemantic::OnNewPaPow(int val, int newVal)
 {
-	return (val & 0xe0) | ComboSel() << 4 | (val & 0x0f);
+	return (val & 0xe0) | newVal << 4 | (val & 0x0f);
 }
 
 
-int CSemantic::OnNewBiasBlock(int val)
+int CSemantic::OnNewBiasBlock(int val, int newVal)
 {
-	return (val & 0xfe) | ComboSel();
+	return (val & 0xfe) | newVal;
 }
 
 
-int CSemantic::OnNewLnaGain(int val)
+int CSemantic::OnNewLnaGain(int val, int newVal)
 {
-	return (val & 0xf8) | SliderPos();
+	return (val & 0xf8) | newVal;
 }
 
 
-int CSemantic::OnNewDutyCycle(int val)
+int CSemantic::OnNewDutyCycle(int val, int newVal)
 {
-	return SliderPos();
+	return newVal;
 }
 
 
-int CSemantic::OnNewVcoOscUp(int val)
+int CSemantic::OnNewVcoOscUp(int val, int newVal)
 {
-	return (SliderPos() & 0x7f8) >> 3;
+	return (newVal & 0x7f8) >> 3;
 }
 
 
-int CSemantic::OnNewVcoOscDown(int val)
+int CSemantic::OnNewVcoOscDown(int val, int newVal)
 {
-	return (SliderPos() & 0x7) << 5 | (val & 0x1f);
+	return (newVal & 0x7) << 5 | (val & 0x1f);
 }
 
 
-int CSemantic::OnNewVcoVdd(int val)
+int CSemantic::OnNewVcoVdd(int val, int newVal)
 {
-	return (val & 0xf0) | (SliderPos() & 0x0f);
+	return (val & 0xf0) | (newVal & 0x0f);
 }
 
 
-int CSemantic::OnNewPaGain1(int val)
+int CSemantic::OnNewPaGain1(int val, int newVal)
 {
-	return (SliderPos() & 0x0f)<<4 | (val & 0x0f);
+	return (newVal & 0x0f)<<4 | (val & 0x0f);
 }
 
 
-int CSemantic::OnNewPaGain2(int val)
+int CSemantic::OnNewPaGain2(int val, int newVal)
 {
-	return (val & 0xf0) | (SliderPos() & 0x0f);
+	return (val & 0xf0) | (newVal & 0x0f);
 }
 
 
-int CSemantic::OnNewTestBuffer(int val)
+int CSemantic::OnNewTestBuffer(int val, int newVal)
 {
-	return (val & 0xf0) | (SliderPos() & 0x0f);
+	return (val & 0xf0) | (newVal & 0x0f);
 }
 
 
-int CSemantic::OnNewLna1(int val)
+int CSemantic::OnNewLna1(int val, int newVal)
 {
-	return (val & 0xf0) | (SliderPos() & 0x0f);
+	return (val & 0xf0) | (newVal & 0x0f);
 }
 
 
-int CSemantic::OnNewLna2(int val)
+int CSemantic::OnNewLna2(int val, int newVal)
 {
-	return OnNewLna1(val);
+	return OnNewLna1(val,newVal);
 }
 
 
-int CSemantic::OnNewLna3(int val)
+int CSemantic::OnNewLna3(int val, int newVal)
 {
-	return (SliderPos() & 0x0f) << 4 | (val & 0x0f);
+	return (newVal & 0x0f) << 4 | (val & 0x0f);
 }
 
 
-int CSemantic::OnNewLna4(int val)
+int CSemantic::OnNewLna4(int val, int newVal)
 {
-	return (val & 0xf0) | (SliderPos() & 0x0f);
+	return (val & 0xf0) | (newVal & 0x0f);
 }
 
 
-int CSemantic::OnNewLna5(int val)
+int CSemantic::OnNewLna5(int val, int newVal)
 {
-	return (SliderPos() & 0x0f) << 4 | (val & 0x0f);
+	return (newVal & 0x0f) << 4 | (val & 0x0f);
 }
 
 
-int CSemantic::OnNewRefStage(int val)
+int CSemantic::OnNewRefStage(int val, int newVal)
 {
-	return (SliderPos() & 0x0f) << 4 | (val & 0x0f);
+	return (newVal & 0x0f) << 4 | (val & 0x0f);
 }
 
 
-int CSemantic::OnNewIpStage(int val)
+int CSemantic::OnNewIpStage(int val, int newVal)
 {
-	return (val & 0xf0) | (SliderPos() & 0x0f);
+	return (val & 0xf0) | (newVal & 0x0f);
 }
 
 
-int CSemantic::OnNewFb(int val)
+int CSemantic::OnNewFb(int val, int newVal)
 {
-	return (SliderPos() & 0x0f) << 4 | (val & 0x0f);
+	return (newVal & 0x0f) << 4 | (val & 0x0f);
 }
 
 
-int CSemantic::OnNewCore(int val)
+int CSemantic::OnNewCore(int val, int newVal)
 {
-	return (val & 0xf0) | (SliderPos() & 0x0f);
+	return (val & 0xf0) | (newVal & 0x0f);
 }
 
 
-int CSemantic::OnNewOP(int val)
+int CSemantic::OnNewOP(int val, int newVal)
 {
-	return (SliderPos() & 0x0f) << 4 | (val & 0x0f);
+	return (newVal & 0x0f) << 4 | (val & 0x0f);
 }
 
 
-int CSemantic::OnNewIP(int val)
+int CSemantic::OnNewIP(int val, int newVal)
 {
-	return (val & 0xf0) | (SliderPos() & 0x0f);
+	return (val & 0xf0) | (newVal & 0x0f);
 }
 
 
-int CSemantic::OnNewHL(int val)
+int CSemantic::OnNewHL(int val, int newVal)
 {
-	return (SliderPos() & 0x0f) << 4 | (val & 0x0f);
+	return (newVal & 0x0f) << 4 | (val & 0x0f);
 }
 
 
-int CSemantic::OnNewCMOS(int val)
+int CSemantic::OnNewCMOS(int val, int newVal)
 {
-	return (val & 0xf0) | (SliderPos() & 0x0f);
+	return (val & 0xf0) | (newVal & 0x0f);
 }
 
 
-int CSemantic::OnNewCML(int val)
+int CSemantic::OnNewCML(int val, int newVal)
 {
-	return SliderPos() & 0xff;
+	return newVal & 0xff;
 }
 
 
-BOOL CSemantic::UpdateSemanticValue(int addr, int (CSemantic::*fpNewRegVal)(int), void (CSemantic::*fpUpdateData)(CRegister&))
+BOOL CSemantic::UpdateSemanticValue(int addr, int (CSemantic::* fpNewRegVal)(int, int), int newVal, void (CSemantic::* fpUpdateData)(CRegister&))
 {
 	int oldRegVal;
 	LONG lLastError = Parent()->m_pRaw->ReadResister(addr, &oldRegVal, MAX_LOOP);
@@ -1705,7 +1705,7 @@ BOOL CSemantic::UpdateSemanticValue(int addr, int (CSemantic::*fpNewRegVal)(int)
 		Parent()->ErrorMsg(lLastError, _T("CSemantic::UpdateSemanticValue Error in ReadRegister"));
 	}
 	else {
-		int newRegVal = (this->*fpNewRegVal)(oldRegVal);
+		int newRegVal = (this->*fpNewRegVal)(oldRegVal,newVal);
 		if (Parent()->m_pRaw->WriteRegister(addr, newRegVal) != TRUE) {
 			Parent()->ErrorMsg(lLastError, _T("Error in WriteRegister"));
 		}
@@ -1751,98 +1751,98 @@ BOOL CSemantic::UpdateSelected(SelectStatic selected)
 	switch (selected) {
 		//ControlCombo
 	case SelectStatic::RxData:
-		bRtn = UpdateSemanticValue(2, &CSemantic::OnNewRxData, &CSemantic::UpdateRxData);
+		bRtn = UpdateSemanticValue(2, &CSemantic::OnNewRxData, ComboSel(), &CSemantic::UpdateRxData);
 		break;
 	case SelectStatic::LimAmp:
-		bRtn = UpdateSemanticValue(2, &CSemantic::OnNewLimAmp, &CSemantic::UpdateLimitAmp);
+		bRtn = UpdateSemanticValue(2, &CSemantic::OnNewLimAmp, ComboSel(), &CSemantic::UpdateLimitAmp);
 		break;
 	case SelectStatic::RegRef:
-		bRtn = UpdateSemanticValue(5, &CSemantic::OnNewRegRef, &CSemantic::UpdateRegRefVolt);
+		bRtn = UpdateSemanticValue(5, &CSemantic::OnNewRegRef, ComboSel(), &CSemantic::UpdateRegRefVolt);
 		break;
 	case SelectStatic::VcoPow:
-		bRtn = UpdateSemanticValue(13, &CSemantic::OnNewVcoPow, &CSemantic::UpdateVcoPower);
+		bRtn = UpdateSemanticValue(13, &CSemantic::OnNewVcoPow, ComboSel(), &CSemantic::UpdateVcoPower);
 		break;
 	case SelectStatic::ModPow:
-		bRtn = UpdateSemanticValue(12, &CSemantic::OnNewModPow, &CSemantic::UpdateModPower);
+		bRtn = UpdateSemanticValue(12, &CSemantic::OnNewModPow, ComboSel(), &CSemantic::UpdateModPower);
 		break;
 	case SelectStatic::TestBufPow:
-		bRtn = UpdateSemanticValue(12, &CSemantic::OnNewTestBufPow, &CSemantic::UpdateTestBufferPower);
+		bRtn = UpdateSemanticValue(12, &CSemantic::OnNewTestBufPow, ComboSel(), &CSemantic::UpdateTestBufferPower);
 		break;
 	case SelectStatic::DataInp:
-		bRtn = UpdateSemanticValue(12, &CSemantic::OnNewDataInp, &CSemantic::UpdateDataInputSelect);
+		bRtn = UpdateSemanticValue(12, &CSemantic::OnNewDataInp, ComboSel(), &CSemantic::UpdateDataInputSelect);
 		break;
 	case SelectStatic::PaPow:
-		bRtn = UpdateSemanticValue(12, &CSemantic::OnNewPaPow, &CSemantic::UpdateDataPaPower);
+		bRtn = UpdateSemanticValue(12, &CSemantic::OnNewPaPow, ComboSel(), &CSemantic::UpdateDataPaPower);
 		break;
 	case SelectStatic::BiasBlock:
-		bRtn = UpdateSemanticValue(17, &CSemantic::OnNewBiasBlock, &CSemantic::UpdateBiasBlockEnable);
+		bRtn = UpdateSemanticValue(17, &CSemantic::OnNewBiasBlock, ComboSel(), &CSemantic::UpdateBiasBlockEnable);
 		break;
 
 		//ControlSlide
 	case SelectStatic::LnaGain:
-		bRtn = UpdateSemanticValue(2, &CSemantic::OnNewLnaGain, &CSemantic::UpdateLnaGain);
+		bRtn = UpdateSemanticValue(2, &CSemantic::OnNewLnaGain, SliderPos(), &CSemantic::UpdateLnaGain);
 		break;
 	case SelectStatic::DutyCycle:
-		bRtn = UpdateSemanticValue(7, &CSemantic::OnNewDutyCycle, &CSemantic::UpdateDutyCycle);
+		bRtn = UpdateSemanticValue(7, &CSemantic::OnNewDutyCycle, SliderPos(), &CSemantic::UpdateDutyCycle);
 		break;
 	case SelectStatic::VcoOsc:
-		bRtn = UpdateSemanticValue(6, &CSemantic::OnNewVcoOscUp, NULL);
+		bRtn = UpdateSemanticValue(6, &CSemantic::OnNewVcoOscUp, SliderPos(), NULL);
 		ASSERT(bRtn);
-		bRtn = UpdateSemanticValue(5, &CSemantic::OnNewVcoOscDown, &CSemantic::UpdateVcoOscFreq);
+		bRtn = UpdateSemanticValue(5, &CSemantic::OnNewVcoOscDown, SliderPos(), &CSemantic::UpdateVcoOscFreq);
 		break;
 	case SelectStatic::VcoVdd:
-		bRtn = UpdateSemanticValue(5, &CSemantic::OnNewVcoVdd, &CSemantic::UpdateVcoVdd);
+		bRtn = UpdateSemanticValue(5, &CSemantic::OnNewVcoVdd, SliderPos(), &CSemantic::UpdateVcoVdd);
 		break;
 	case SelectStatic::PaGain1:
-		bRtn = UpdateSemanticValue(11, &CSemantic::OnNewPaGain1, &CSemantic::UpdatePaGainControl1);
+		bRtn = UpdateSemanticValue(11, &CSemantic::OnNewPaGain1, SliderPos(), &CSemantic::UpdatePaGainControl1);
 		break;
 	case SelectStatic::PaGain2:
-		bRtn = UpdateSemanticValue(12, &CSemantic::OnNewPaGain2, &CSemantic::UpdatePaGainControl2);
+		bRtn = UpdateSemanticValue(12, &CSemantic::OnNewPaGain2, SliderPos(), &CSemantic::UpdatePaGainControl2);
 		break;
 	case SelectStatic::TestBuffer:
-		bRtn = UpdateSemanticValue(11, &CSemantic::OnNewTestBuffer, &CSemantic::UpdateTestBufferCurrent);
+		bRtn = UpdateSemanticValue(11, &CSemantic::OnNewTestBuffer, SliderPos(), &CSemantic::UpdateTestBufferCurrent);
 		break;
 	case SelectStatic::Lna1:
-		bRtn = UpdateSemanticValue(18, &CSemantic::OnNewLna1, &CSemantic::UpdateLna1Current);
+		bRtn = UpdateSemanticValue(18, &CSemantic::OnNewLna1, SliderPos(), &CSemantic::UpdateLna1Current);
 		break;
 	case SelectStatic::Lna2:
-		bRtn = UpdateSemanticValue(18, &CSemantic::OnNewLna2, &CSemantic::UpdateLna2Current);
+		bRtn = UpdateSemanticValue(18, &CSemantic::OnNewLna2, SliderPos(), &CSemantic::UpdateLna2Current);
 		break;
 	case SelectStatic::Lna3:
-		bRtn = UpdateSemanticValue(18, &CSemantic::OnNewLna3, &CSemantic::UpdateLna3Current);
+		bRtn = UpdateSemanticValue(18, &CSemantic::OnNewLna3, SliderPos(), &CSemantic::UpdateLna3Current);
 		break;
 	case SelectStatic::Lna4:
-		bRtn = UpdateSemanticValue(19, &CSemantic::OnNewLna4, &CSemantic::UpdateLna4Current);
+		bRtn = UpdateSemanticValue(19, &CSemantic::OnNewLna4, SliderPos(), &CSemantic::UpdateLna4Current);
 		break;
 	case SelectStatic::Lna5:
-		bRtn = UpdateSemanticValue(19, &CSemantic::OnNewLna5, &CSemantic::UpdateLna5Current);
+		bRtn = UpdateSemanticValue(19, &CSemantic::OnNewLna5, SliderPos(), &CSemantic::UpdateLna5Current);
 		break;
 	case SelectStatic::RefStage:
-		bRtn = UpdateSemanticValue(20, &CSemantic::OnNewRefStage, &CSemantic::UpdateDemodRefStageCurrent);
+		bRtn = UpdateSemanticValue(20, &CSemantic::OnNewRefStage, SliderPos(), &CSemantic::UpdateDemodRefStageCurrent);
 		break;
 	case SelectStatic::IpStage:
-		bRtn = UpdateSemanticValue(20, &CSemantic::OnNewIpStage, &CSemantic::UpdateDemodIPStageCurrent);
+		bRtn = UpdateSemanticValue(20, &CSemantic::OnNewIpStage, SliderPos(), &CSemantic::UpdateDemodIPStageCurrent);
 		break;
 	case SelectStatic::Fb:
-		bRtn = UpdateSemanticValue(21, &CSemantic::OnNewFb, &CSemantic::UpdateLaFBCurrent);
+		bRtn = UpdateSemanticValue(21, &CSemantic::OnNewFb, SliderPos(), &CSemantic::UpdateLaFBCurrent);
 		break;
 	case SelectStatic::Core:
-		bRtn = UpdateSemanticValue(21, &CSemantic::OnNewCore, &CSemantic::UpdateLaCoreCurrent);
+		bRtn = UpdateSemanticValue(21, &CSemantic::OnNewCore, SliderPos(), &CSemantic::UpdateLaCoreCurrent);
 		break;
 	case SelectStatic::OP:
-		bRtn = UpdateSemanticValue(22, &CSemantic::OnNewOP, &CSemantic::UpdateLaOPBufferCurrent);
+		bRtn = UpdateSemanticValue(22, &CSemantic::OnNewOP, SliderPos(), &CSemantic::UpdateLaOPBufferCurrent);
 		break;
 	case SelectStatic::IP:
-		bRtn = UpdateSemanticValue(22, &CSemantic::OnNewIP, &CSemantic::UpdateLaIPBufferCurrent);
+		bRtn = UpdateSemanticValue(22, &CSemantic::OnNewIP, SliderPos(), &CSemantic::UpdateLaIPBufferCurrent);
 		break;
 	case SelectStatic::HL:
-		bRtn = UpdateSemanticValue(23, &CSemantic::OnNewHL, &CSemantic::UpdateLaHLDataRateCurrent);
+		bRtn = UpdateSemanticValue(23, &CSemantic::OnNewHL, SliderPos(), &CSemantic::UpdateLaHLDataRateCurrent);
 		break;
 	case SelectStatic::CMOS:
-		bRtn = UpdateSemanticValue(23, &CSemantic::OnNewCMOS, &CSemantic::UpdateCMOSGainStageCurrent);
+		bRtn = UpdateSemanticValue(23, &CSemantic::OnNewCMOS, SliderPos(), &CSemantic::UpdateCMOSGainStageCurrent);
 		break;
 	case SelectStatic::CML:
-		bRtn = UpdateSemanticValue(24, &CSemantic::OnNewCML, &CSemantic::UpdateCMLInterfaceStageCurrent);
+		bRtn = UpdateSemanticValue(24, &CSemantic::OnNewCML, SliderPos(), &CSemantic::UpdateCMLInterfaceStageCurrent);
 		break;
 	default:
 		break;
