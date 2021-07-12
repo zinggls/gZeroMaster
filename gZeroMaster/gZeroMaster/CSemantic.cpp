@@ -1897,6 +1897,9 @@ void CSemantic::OnBnClickedWriteButton()
 void CSemantic::OnBnClickedWriteAllButton()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	for (int i = 1; i <= static_cast<int>(SelectStatic::CML); i++) {
+		UpdateSelected(static_cast<SelectStatic>(i), FALSE);
+	}
 }
 
 
