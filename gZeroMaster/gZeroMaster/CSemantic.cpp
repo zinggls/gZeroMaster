@@ -1881,13 +1881,13 @@ int CSemantic::disableOrEnable(CString str)
 
 int CSemantic::RxData()
 {
-
+	return disableOrEnable(m_strRxDataInterface);
 }
 
 
 int CSemantic::LimAmp()
 {
-
+	return disableOrEnable(m_strLimitingAmplifier);
 }
 
 
@@ -1970,7 +1970,7 @@ int CSemantic::TestBuffer()
 
 int CSemantic::BiasBlock()
 {
-
+	return disableOrEnable(m_strBiasBlockEnable);
 }
 
 
