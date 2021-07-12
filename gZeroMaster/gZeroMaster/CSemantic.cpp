@@ -1935,7 +1935,7 @@ int CSemantic::Read4BitValue(CString str)
 
 int CSemantic::VcoVdd()
 {
-
+	return Read4BitValue(m_strVcoVdd);
 }
 
 
@@ -1971,18 +1971,19 @@ int CSemantic::PaPow()
 
 int CSemantic::PaGain1()
 {
-
+	return Read4BitValue(m_strPaGainControl1);
 }
 
 
 int CSemantic::PaGain2()
 {
-
+	return Read4BitValue(m_strPaGainControl2);
 }
 
 
 int CSemantic::TestBuffer()
 {
+	return Read4BitValue(m_strTestBufferCurrent);
 }
 
 
@@ -1994,83 +1995,83 @@ int CSemantic::BiasBlock()
 
 int CSemantic::Lna1()
 {
-
+	return Read4BitValue(m_strLna1Current);
 }
 
 
 int CSemantic::Lna2()
 {
-
+	return Read4BitValue(m_strLna2Current);
 }
 
 
 int CSemantic::Lna3()
 {
-
+	return Read4BitValue(m_strLna3Current);
 }
 
 
 int CSemantic::Lna4()
 {
-
+	return Read4BitValue(m_strLna4Current);
 }
 
 
 int CSemantic::Lna5()
 {
-
+	return Read4BitValue(m_strLna5Current);
 }
 
 
 int CSemantic::RefStage()
 {
-
+	return Read4BitValue(m_strDemodRefStageCurrent);
 }
 
 
 int CSemantic::IpStage()
 {
-
+	return Read4BitValue(m_strDemodIPStageCurrent);
 }
 
 
 int CSemantic::Fb()
 {
-
+	return Read4BitValue(m_strLaFBCurrent);
 }
 
 
 int CSemantic::Core()
 {
-
+	return Read4BitValue(m_strLaCoreCurrent);
 }
 
 
 int CSemantic::OP()
 {
-
+	return Read4BitValue(m_strLaOPBufferCurrent);
 }
 
 
 int CSemantic::IP()
 {
-
+	return Read4BitValue(m_strLaIPBufferCurrent);
 }
 
 
 int CSemantic::HL()
 {
-
+	return Read4BitValue(m_strLaHLDataRateCurrent);
 }
 
 
 int CSemantic::CMOS()
 {
-
+	return Read4BitValue(m_strCMOSGainStageCurrent);
 }
 
 
 int CSemantic::CML()
 {
-
+	return Read4BitValue(m_strCMLInterfaceStageCurrent);
 }
