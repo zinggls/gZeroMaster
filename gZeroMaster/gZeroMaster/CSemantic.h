@@ -234,6 +234,7 @@ public:
 	afx_msg void OnBnClickedWriteAllButton();
 	BOOL UpdateSelected(SelectStatic selected);
 	int disableOrEnable(CString str);
+	static int strToInt(CString zero, CString one, CString str);
 	int RxData();
 	int LimAmp();
 	int LnaGain();

@@ -1879,6 +1879,16 @@ int CSemantic::disableOrEnable(CString str)
 }
 
 
+int CSemantic::strToInt(CString zero, CString one, CString str)
+{
+	ASSERT(str == zero || str == one);
+
+	if (str == zero) return 0;
+	ASSERT(str == one);
+	return 1;
+}
+
+
 int CSemantic::RxData()
 {
 	return disableOrEnable(m_strRxDataInterface);
