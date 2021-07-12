@@ -1739,14 +1739,11 @@ BOOL CSemantic::UpdateSemanticValue(int addr, int (CSemantic::*fpNewRegVal)(int)
 }
 
 
-void CSemantic::OnBnClickedWriteButton()
+BOOL CSemantic::UpdateSelected(SelectStatic selected)
 {
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	Parent()->L(_T("Writing..."));
-
 	BOOL bRtn = TRUE;
-	switch (m_selected) {
-	//ControlCombo
+	switch (selected) {
+		//ControlCombo
 	case SelectStatic::RxData:
 		bRtn = UpdateSemanticValue(2, &CSemantic::OnNewRxData, &CSemantic::UpdateRxData);
 		break;
@@ -1775,7 +1772,7 @@ void CSemantic::OnBnClickedWriteButton()
 		bRtn = UpdateSemanticValue(17, &CSemantic::OnNewBiasBlock, &CSemantic::UpdateBiasBlockEnable);
 		break;
 
-	//ControlSlide
+		//ControlSlide
 	case SelectStatic::LnaGain:
 		bRtn = UpdateSemanticValue(2, &CSemantic::OnNewLnaGain, &CSemantic::UpdateLnaGain);
 		break;
@@ -1844,6 +1841,16 @@ void CSemantic::OnBnClickedWriteButton()
 	default:
 		break;
 	}
+	return bRtn;
+}
+
+
+void CSemantic::OnBnClickedWriteButton()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	Parent()->L(_T("Writing..."));
+
+	BOOL bRtn = UpdateSelected(m_selected);
 	ASSERT(bRtn);
 	GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE);
 	Parent()->L(_T("Writing done"));
