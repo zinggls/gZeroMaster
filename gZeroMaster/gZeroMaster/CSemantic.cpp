@@ -611,7 +611,7 @@ void CSemantic::OnBnClickedSemanticEditCheck()
 COLORREF CSemantic::SetColor(CDC* pDC, SelectStatic given)
 {
 	if (m_selected == given)
-		return pDC->SetTextColor(RGB(0, 0, 255));
+		return pDC->SetTextColor(RGB(255, 0, 0));
 	else
 		return pDC->SetTextColor(RGB(0, 0, 0));
 }

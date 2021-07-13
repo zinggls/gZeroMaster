@@ -820,7 +820,7 @@ void CRaw::ResetValues()
 COLORREF CRaw::SetColor(CDC* pDC, CString given)
 {
 	if (m_strChosenRegister == given)
-		return pDC->SetTextColor(RGB(0, 0, 255));
+		return pDC->SetTextColor(RGB(255, 0, 0));
 	else
 		return pDC->SetTextColor(RGB(0, 0, 0));
 }
