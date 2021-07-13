@@ -33,6 +33,8 @@ public:
 // 구현입니다.
 protected:
 	DECLARE_MESSAGE_MAP()
+public:
+	afx_msg void OnNMClickSyslink1(NMHDR* pNMHDR, LRESULT* pResult);
 };
 
 CAboutDlg::CAboutDlg() : CDialogEx(IDD_ABOUTBOX)
@@ -45,6 +47,7 @@ void CAboutDlg::DoDataExchange(CDataExchange* pDX)
 }
 
 BEGIN_MESSAGE_MAP(CAboutDlg, CDialogEx)
+	ON_NOTIFY(NM_CLICK, IDC_SYSLINK1, &CAboutDlg::OnNMClickSyslink1)
 END_MESSAGE_MAP()
 
 
@@ -450,4 +453,14 @@ BOOL CgZeroMasterDlg::LoadRegisters(CString fileName)
 	m_pRaw->UpdateData(FALSE);
 	m_pSemantic->UpdateRegisters();
 	return TRUE;
+}
+
+void CAboutDlg::OnNMClickSyslink1(NMHDR* pNMHDR, LRESULT* pResult)
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	CString strUrl;
+	CLinkCtrl* pLinkCtrl = (CLinkCtrl*)GetDlgItem(IDC_SYSLINK1);
+	pLinkCtrl->GetItemUrl(0, strUrl);
+	::ShellExecute(NULL, L"open", strUrl, NULL, NULL, SW_SHOW);
+	*pResult = 0;
 }

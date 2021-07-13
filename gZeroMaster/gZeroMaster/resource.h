@@ -155,6 +155,7 @@
 #define IDC_REG_REF_VOLT_VALUE_STATIC   1141
 #define IDC_CONTROL_COMBO               1142
 #define IDC_WRITE_ALL_BUTTON            1143
+#define IDC_SYSLINK1                    1144
 #define ID_MAINMENU_CLEARLOG            32771
 #define ID_MAINMENU_SAVE                32772
 #define ID_MAINMENU_LOAD                32773
@@ -165,7 +166,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        138
 #define _APS_NEXT_COMMAND_VALUE         32774
-#define _APS_NEXT_CONTROL_VALUE         1144
+#define _APS_NEXT_CONTROL_VALUE         1145
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif
