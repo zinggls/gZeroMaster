@@ -383,21 +383,21 @@ void CgZeroMasterDlg::OnMainmenuSave()
 
 void CgZeroMasterDlg::SaveRegisters(CString fileName)
 {
-	WritePrivateProfileString(_T("RX_REG1_4-0"), _T("Hex"), m_pRaw->m_strRxReg1, fileName);
-	WritePrivateProfileString(_T("TX_REG1_23-16"), _T("Hex"), m_pRaw->m_strTxReg1Top, fileName);
-	WritePrivateProfileString(_T("TX_REG1_15-8"), _T("Hex"), m_pRaw->m_strTxReg1Mid, fileName);
-	WritePrivateProfileString(_T("TX_REG1_7-0"), _T("Hex"), m_pRaw->m_strTxReg1Bot, fileName);
-	WritePrivateProfileString(_T("TX_REG2_16"), _T("Hex"), m_pRaw->m_strTxReg2Top, fileName);
-	WritePrivateProfileString(_T("TX_REG2_15-8"), _T("Hex"), m_pRaw->m_strTxReg2Mid, fileName);
-	WritePrivateProfileString(_T("TX_REG2_7-0"), _T("Hex"), m_pRaw->m_strTxReg2Bot, fileName);
-	WritePrivateProfileString(_T("BIAS_REG1_0"), _T("Hex"), m_pRaw->m_strBiasReg1, fileName);
-	WritePrivateProfileString(_T("BIAS_REG2_7-0"), _T("Hex"), m_pRaw->m_strBiasReg2, fileName);
-	WritePrivateProfileString(_T("BIAS_REG3_7-0"), _T("Hex"), m_pRaw->m_strBiasReg3, fileName);
-	WritePrivateProfileString(_T("BIAS_REG4_7-0"), _T("Hex"), m_pRaw->m_strBiasReg4, fileName);
-	WritePrivateProfileString(_T("BIAS_REG5_7-0"), _T("Hex"), m_pRaw->m_strBiasReg5, fileName);
-	WritePrivateProfileString(_T("BIAS_REG6_7-0"), _T("Hex"), m_pRaw->m_strBiasReg6, fileName);
-	WritePrivateProfileString(_T("BIAS_REG7_7-0"), _T("Hex"), m_pRaw->m_strBiasReg7, fileName);
-	WritePrivateProfileString(_T("BIAS_REG8_7-0"), _T("Hex"), m_pRaw->m_strBiasReg8, fileName);
+	WritePrivateProfileString(_T("B0 Registers"), _T("RX_REG1_4-0"), m_pRaw->m_strRxReg1, fileName);
+	WritePrivateProfileString(_T("B0 Registers"), _T("TX_REG1_23-16"), m_pRaw->m_strTxReg1Top, fileName);
+	WritePrivateProfileString(_T("B0 Registers"), _T("TX_REG1_15-8"), m_pRaw->m_strTxReg1Mid, fileName);
+	WritePrivateProfileString(_T("B0 Registers"), _T("TX_REG1_7-0"), m_pRaw->m_strTxReg1Bot, fileName);
+	WritePrivateProfileString(_T("B0 Registers"), _T("TX_REG2_16"), m_pRaw->m_strTxReg2Top, fileName);
+	WritePrivateProfileString(_T("B0 Registers"), _T("TX_REG2_15-8"), m_pRaw->m_strTxReg2Mid, fileName);
+	WritePrivateProfileString(_T("B0 Registers"), _T("TX_REG2_7-0"), m_pRaw->m_strTxReg2Bot, fileName);
+	WritePrivateProfileString(_T("B0 Registers"), _T("BIAS_REG1_0"), m_pRaw->m_strBiasReg1, fileName);
+	WritePrivateProfileString(_T("B0 Registers"), _T("BIAS_REG2_7-0"), m_pRaw->m_strBiasReg2, fileName);
+	WritePrivateProfileString(_T("B0 Registers"), _T("BIAS_REG3_7-0"), m_pRaw->m_strBiasReg3, fileName);
+	WritePrivateProfileString(_T("B0 Registers"), _T("BIAS_REG4_7-0"), m_pRaw->m_strBiasReg4, fileName);
+	WritePrivateProfileString(_T("B0 Registers"), _T("BIAS_REG5_7-0"), m_pRaw->m_strBiasReg5, fileName);
+	WritePrivateProfileString(_T("B0 Registers"), _T("BIAS_REG6_7-0"), m_pRaw->m_strBiasReg6, fileName);
+	WritePrivateProfileString(_T("B0 Registers"), _T("BIAS_REG7_7-0"), m_pRaw->m_strBiasReg7, fileName);
+	WritePrivateProfileString(_T("B0 Registers"), _T("BIAS_REG8_7-0"), m_pRaw->m_strBiasReg8, fileName);
 }
 
 void CgZeroMasterDlg::OnMainmenuLoad()
@@ -422,7 +422,7 @@ void CgZeroMasterDlg::OnMainmenuLoad()
 BOOL CgZeroMasterDlg::LoadValue(TCHAR *regTagName, CString *pTargetStr, CString fileName)
 {
 	TCHAR strTmp[256];
-	GetPrivateProfileString(regTagName, _T("Hex"), _T(""), strTmp, sizeof(strTmp) / sizeof(TCHAR), fileName);
+	GetPrivateProfileString(_T("B0 Registers"), regTagName, _T(""), strTmp, sizeof(strTmp) / sizeof(TCHAR), fileName);
 	if (CString(strTmp).IsEmpty()) return FALSE;
 	*pTargetStr = CString(strTmp);
 	return TRUE;
