@@ -60,5 +60,8 @@ public:
 	void SaveRegisters(CString fileName);
 	afx_msg void OnMainmenuLoad();
 	BOOL LoadValue(TCHAR *regTagName, CString *pTargetStr, CString fileName);
+	void CheckRxReg1(CString strRxReg1);
+	void CheckTxReg2Top(CString strTxReg2Top);
+	void CheckBiasReg1(CString strBiasReg1);
 	BOOL LoadRegisters(CString fileName);
 };

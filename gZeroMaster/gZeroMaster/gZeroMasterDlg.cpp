@@ -429,19 +429,43 @@ BOOL CgZeroMasterDlg::LoadValue(TCHAR *regTagName, CString *pTargetStr, CString 
 }
 
 
+void CgZeroMasterDlg::CheckRxReg1(CString strRxReg1)
+{
+	int val = _tcstol(strRxReg1.GetBuffer(), NULL, 16);
+	if(val>0x1f) L(_T("Warning: RX_REG1_4-0(")+ strRxReg1+_T(") is out of range."));
+}
+
+
+void CgZeroMasterDlg::CheckTxReg2Top(CString strTxReg2Top)
+{
+	int val = _tcstol(strTxReg2Top.GetBuffer(), NULL, 16);
+	if (val > 0x1) L(_T("Warning: TX_REG2_16(") + strTxReg2Top + _T(") is out of range"));
+}
+
+
+void CgZeroMasterDlg::CheckBiasReg1(CString strBiasReg1)
+{
+	int val = _tcstol(strBiasReg1.GetBuffer(), NULL, 16);
+	if (val > 0x1) L(_T("Warning: BIAS_REG1_0(") + strBiasReg1 + _T(") is out of range"));
+}
+
+
 BOOL CgZeroMasterDlg::LoadRegisters(CString fileName)
 {
 	if (!LoadValue(_T("RX_REG1_4-0"), &m_pRaw->m_strRxReg1, fileName)) return FALSE;
+	CheckRxReg1(m_pRaw->m_strRxReg1);
 
 	if (!LoadValue(_T("TX_REG1_23-16"), &m_pRaw->m_strTxReg1Top, fileName)) return FALSE;
 	if (!LoadValue(_T("TX_REG1_15-8"), &m_pRaw->m_strTxReg1Mid, fileName)) return FALSE;
 	if (!LoadValue(_T("TX_REG1_7-0"), &m_pRaw->m_strTxReg1Bot, fileName)) return FALSE;
 
 	if (!LoadValue(_T("TX_REG2_16"), &m_pRaw->m_strTxReg2Top, fileName)) return FALSE;
+	CheckTxReg2Top(m_pRaw->m_strTxReg2Top);
 	if (!LoadValue(_T("TX_REG2_15-8"), &m_pRaw->m_strTxReg2Mid, fileName)) return FALSE;
 	if (!LoadValue(_T("TX_REG2_7-0"), &m_pRaw->m_strTxReg2Bot, fileName)) return FALSE;
 
 	if (!LoadValue(_T("BIAS_REG1_0"), &m_pRaw->m_strBiasReg1, fileName)) return FALSE;
+	CheckBiasReg1(m_pRaw->m_strBiasReg1);
 	if (!LoadValue(_T("BIAS_REG2_7-0"), &m_pRaw->m_strBiasReg2, fileName)) return FALSE;
 	if (!LoadValue(_T("BIAS_REG3_7-0"), &m_pRaw->m_strBiasReg3, fileName)) return FALSE;
 	if (!LoadValue(_T("BIAS_REG4_7-0"), &m_pRaw->m_strBiasReg4, fileName)) return FALSE;
