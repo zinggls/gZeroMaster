@@ -108,4 +108,6 @@ public:
 	void ShowHexa();
 	void ShowBitWindow(int nCmdShow);
 	void ResetValues();
+	COLORREF SetColor(CDC* pDC, CString given);
+	afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
 };

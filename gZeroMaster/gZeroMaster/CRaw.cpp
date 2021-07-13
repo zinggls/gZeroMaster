@@ -101,6 +101,7 @@ BEGIN_MESSAGE_MAP(CRaw, CDialogEx)
 	ON_BN_CLICKED(IDC_BIT0_BUTTON, &CRaw::OnBnClickedBit0Button)
 	ON_BN_CLICKED(IDC_READ_ALL_BUTTON, &CRaw::OnBnClickedReadAllButton)
 	ON_BN_CLICKED(IDC_WRITE_BUTTON, &CRaw::OnBnClickedWriteButton)
+	ON_WM_CTLCOLOR()
 END_MESSAGE_MAP()
 
 
@@ -332,6 +333,7 @@ void CRaw::OnStnClickedRxReg1Static()
 	GetDlgItem(IDC_RX_REG1_LABEL)->GetWindowText(m_strChosenRegister);
 	RegisterButtons();
 	UpdateData(FALSE);
+	Invalidate();
 }
 
 
@@ -346,6 +348,7 @@ void CRaw::OnStnClickedTxReg1TopStatic()
 	GetDlgItem(IDC_TX_REG1_TOP_LABEL)->GetWindowText(m_strChosenRegister);
 	RegisterButtons();
 	UpdateData(FALSE);
+	Invalidate();
 }
 
 
@@ -360,6 +363,7 @@ void CRaw::OnStnClickedTxReg1MidStatic()
 	GetDlgItem(IDC_TX_REG1_MID_LABEL)->GetWindowText(m_strChosenRegister);
 	RegisterButtons();
 	UpdateData(FALSE);
+	Invalidate();
 }
 
 
@@ -376,6 +380,7 @@ void CRaw::OnStnClickedTxReg1BotStatic()
 	GetDlgItem(IDC_TX_REG1_BOT_LABEL)->GetWindowText(m_strChosenRegister);
 	RegisterButtons();
 	UpdateData(FALSE);
+	Invalidate();
 }
 
 
@@ -390,6 +395,7 @@ void CRaw::OnStnClickedTxReg2TopStatic()
 	GetDlgItem(IDC_TX_REG2_TOP_LABEL)->GetWindowText(m_strChosenRegister);
 	RegisterButtons();
 	UpdateData(FALSE);
+	Invalidate();
 }
 
 
@@ -408,6 +414,7 @@ void CRaw::OnStnClickedTxReg2MidStatic()
 	GetDlgItem(IDC_TX_REG2_MID_LABEL)->GetWindowText(m_strChosenRegister);
 	RegisterButtons();
 	UpdateData(FALSE);
+	Invalidate();
 }
 
 
@@ -423,6 +430,7 @@ void CRaw::OnStnClickedTxReg2BotStatic()
 	GetDlgItem(IDC_TX_REG2_BOT_LABEL)->GetWindowText(m_strChosenRegister);
 	RegisterButtons();
 	UpdateData(FALSE);
+	Invalidate();
 }
 
 
@@ -437,6 +445,7 @@ void CRaw::OnStnClickedBiasReg1Static()
 	GetDlgItem(IDC_BIAS_REG1_LABEL)->GetWindowText(m_strChosenRegister);
 	RegisterButtons();
 	UpdateData(FALSE);
+	Invalidate();
 }
 
 
@@ -452,6 +461,7 @@ void CRaw::OnStnClickedBiasReg2Static()
 	GetDlgItem(IDC_BIAS_REG2_LABEL)->GetWindowText(m_strChosenRegister);
 	RegisterButtons();
 	UpdateData(FALSE);
+	Invalidate();
 }
 
 
@@ -467,6 +477,7 @@ void CRaw::OnStnClickedBiasReg3Static()
 	GetDlgItem(IDC_BIAS_REG3_LABEL)->GetWindowText(m_strChosenRegister);
 	RegisterButtons();
 	UpdateData(FALSE);
+	Invalidate();
 }
 
 
@@ -482,6 +493,7 @@ void CRaw::OnStnClickedBiasReg4Static()
 	GetDlgItem(IDC_BIAS_REG4_LABEL)->GetWindowText(m_strChosenRegister);
 	RegisterButtons();
 	UpdateData(FALSE);
+	Invalidate();
 }
 
 
@@ -497,6 +509,7 @@ void CRaw::OnStnClickedBiasReg5Static()
 	GetDlgItem(IDC_BIAS_REG5_LABEL)->GetWindowText(m_strChosenRegister);
 	RegisterButtons();
 	UpdateData(FALSE);
+	Invalidate();
 }
 
 
@@ -512,6 +525,7 @@ void CRaw::OnStnClickedBiasReg6Static()
 	GetDlgItem(IDC_BIAS_REG6_LABEL)->GetWindowText(m_strChosenRegister);
 	RegisterButtons();
 	UpdateData(FALSE);
+	Invalidate();
 }
 
 
@@ -527,6 +541,7 @@ void CRaw::OnStnClickedBiasReg7Static()
 	GetDlgItem(IDC_BIAS_REG7_LABEL)->GetWindowText(m_strChosenRegister);
 	RegisterButtons();
 	UpdateData(FALSE);
+	Invalidate();
 }
 
 
@@ -541,6 +556,7 @@ void CRaw::OnStnClickedBiasReg8Static()
 	GetDlgItem(IDC_BIAS_REG8_LABEL)->GetWindowText(m_strChosenRegister);
 	RegisterButtons();
 	UpdateData(FALSE);
+	Invalidate();
 }
 
 void CRaw::BitControlEnable(BOOL b)
@@ -798,4 +814,69 @@ void CRaw::ResetValues()
 	m_strBiasReg7.Empty();
 	m_strBiasReg8.Empty();
 	UpdateData(FALSE);
+}
+
+
+COLORREF CRaw::SetColor(CDC* pDC, CString given)
+{
+	if (m_strChosenRegister == given)
+		return pDC->SetTextColor(RGB(0, 0, 255));
+	else
+		return pDC->SetTextColor(RGB(0, 0, 0));
+}
+
+
+HBRUSH CRaw::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
+{
+	HBRUSH hbr = CDialogEx::OnCtlColor(pDC, pWnd, nCtlColor);
+
+	// TODO:  여기서 DC의 특성을 변경합니다.
+	if (pWnd->GetDlgCtrlID() == IDC_RX_REG1_STATIC) {
+		SetColor(pDC, _T("RX_REG1 [4:0]"));
+	}
+	else if (pWnd->GetDlgCtrlID() == IDC_TX_REG1_TOP_STATIC) {
+		SetColor(pDC, _T("TX_REG1 [23:16]"));
+	}
+	else if (pWnd->GetDlgCtrlID() == IDC_TX_REG1_MID_STATIC) {
+		SetColor(pDC, _T("TX_REG1 [15:8]"));
+	}
+	else if (pWnd->GetDlgCtrlID() == IDC_TX_REG1_BOT_STATIC) {
+		SetColor(pDC, _T("TX_REG1 [7:0]"));
+	}
+	else if (pWnd->GetDlgCtrlID() == IDC_TX_REG2_TOP_STATIC) {
+		SetColor(pDC, _T("TX_REG2 [16]"));
+	}
+	else if (pWnd->GetDlgCtrlID() == IDC_TX_REG2_MID_STATIC) {
+		SetColor(pDC, _T("TX_REG2 [15:8]"));
+	}
+	else if (pWnd->GetDlgCtrlID() == IDC_TX_REG2_BOT_STATIC) {
+		SetColor(pDC, _T("TX_REG2 [7:0]"));
+	}
+	else if (pWnd->GetDlgCtrlID() == IDC_BIAS_REG1_STATIC) {
+		SetColor(pDC, _T("BIAS_REG1 [0]"));
+	}
+	else if (pWnd->GetDlgCtrlID() == IDC_BIAS_REG2_STATIC) {
+		SetColor(pDC, _T("BIAS_REG2 [7:0]"));
+	}
+	else if (pWnd->GetDlgCtrlID() == IDC_BIAS_REG3_STATIC) {
+		SetColor(pDC, _T("BIAS_REG3 [7:0]"));
+	}
+	else if (pWnd->GetDlgCtrlID() == IDC_BIAS_REG4_STATIC) {
+		SetColor(pDC, _T("BIAS_REG4 [7:0]"));
+	}
+	else if (pWnd->GetDlgCtrlID() == IDC_BIAS_REG5_STATIC) {
+		SetColor(pDC, _T("BIAS_REG5 [7:0]"));
+	}
+	else if (pWnd->GetDlgCtrlID() == IDC_BIAS_REG6_STATIC) {
+		SetColor(pDC, _T("BIAS_REG6 [7:0]"));
+	}
+	else if (pWnd->GetDlgCtrlID() == IDC_BIAS_REG7_STATIC) {
+		SetColor(pDC, _T("BIAS_REG7 [7:0]"));
+	}
+	else if (pWnd->GetDlgCtrlID() == IDC_BIAS_REG8_STATIC) {
+		SetColor(pDC, _T("BIAS_REG8 [7:0]"));
+	}
+
+	// TODO:  기본값이 적당하지 않으면 다른 브러시를 반환합니다.
+	return hbr;
 }
