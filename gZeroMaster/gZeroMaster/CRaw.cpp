@@ -330,6 +330,7 @@ void CRaw::OnStnClickedRxReg1Static()
 	Parent()->L(_T("    [2:0]:Control the LNA gain"));
 	ShowBits(_tcstol(m_strRxReg1.GetBuffer(), NULL, 16) & 0xff);
 	GetDlgItem(IDC_RX_REG1_LABEL)->GetWindowText(m_strChosenRegister);
+	RegisterButtons();
 	UpdateData(FALSE);
 }
 
@@ -343,6 +344,7 @@ void CRaw::OnStnClickedTxReg1TopStatic()
 	Parent()->L(_T("    [7:0]:Duty cycle control"));
 	ShowBits(_tcstol(m_strTxReg1Top.GetBuffer(), NULL, 16) & 0xff);
 	GetDlgItem(IDC_TX_REG1_TOP_LABEL)->GetWindowText(m_strChosenRegister);
+	RegisterButtons();
 	UpdateData(FALSE);
 }
 
@@ -356,6 +358,7 @@ void CRaw::OnStnClickedTxReg1MidStatic()
 	Parent()->L(_T("    [7:0]:VCO oscillation frequency control(3:10)"));
 	ShowBits(_tcstol(m_strTxReg1Mid.GetBuffer(), NULL, 16) & 0xff);
 	GetDlgItem(IDC_TX_REG1_MID_LABEL)->GetWindowText(m_strChosenRegister);
+	RegisterButtons();
 	UpdateData(FALSE);
 }
 
@@ -371,6 +374,7 @@ void CRaw::OnStnClickedTxReg1BotStatic()
 	Parent()->L(_T("    [3:0]:VCO_VDD Control"));
 	ShowBits(_tcstol(m_strTxReg1Bot.GetBuffer(), NULL, 16) & 0xff);
 	GetDlgItem(IDC_TX_REG1_BOT_LABEL)->GetWindowText(m_strChosenRegister);
+	RegisterButtons();
 	UpdateData(FALSE);
 }
 
@@ -384,6 +388,7 @@ void CRaw::OnStnClickedTxReg2TopStatic()
 	Parent()->L(_T("    [0]:VCO power up/down 0: VCO off, 1: VCO on"));
 	ShowBits(_tcstol(m_strTxReg2Top.GetBuffer(), NULL, 16) & 0xff);
 	GetDlgItem(IDC_TX_REG2_TOP_LABEL)->GetWindowText(m_strChosenRegister);
+	RegisterButtons();
 	UpdateData(FALSE);
 }
 
@@ -401,6 +406,7 @@ void CRaw::OnStnClickedTxReg2MidStatic()
 	Parent()->L(_T("    [3:0]:PA gain control 2"));
 	ShowBits(_tcstol(m_strTxReg2Mid.GetBuffer(), NULL, 16) & 0xff);
 	GetDlgItem(IDC_TX_REG2_MID_LABEL)->GetWindowText(m_strChosenRegister);
+	RegisterButtons();
 	UpdateData(FALSE);
 }
 
@@ -415,6 +421,7 @@ void CRaw::OnStnClickedTxReg2BotStatic()
 	Parent()->L(_T("    [3:0]:Test Buffer Current control"));
 	ShowBits(_tcstol(m_strTxReg2Bot.GetBuffer(), NULL, 16) & 0xff);
 	GetDlgItem(IDC_TX_REG2_BOT_LABEL)->GetWindowText(m_strChosenRegister);
+	RegisterButtons();
 	UpdateData(FALSE);
 }
 
@@ -428,6 +435,7 @@ void CRaw::OnStnClickedBiasReg1Static()
 	Parent()->L(_T("    [0]:BIAS block Enable"));
 	ShowBits(_tcstol(m_strBiasReg1.GetBuffer(), NULL, 16) & 0xff);
 	GetDlgItem(IDC_BIAS_REG1_LABEL)->GetWindowText(m_strChosenRegister);
+	RegisterButtons();
 	UpdateData(FALSE);
 }
 
@@ -442,6 +450,7 @@ void CRaw::OnStnClickedBiasReg2Static()
 	Parent()->L(_T("    [3:0]:Control LNA 1st & 2nd stages biasing current"));
 	ShowBits(_tcstol(m_strBiasReg2.GetBuffer(), NULL, 16) & 0xff);
 	GetDlgItem(IDC_BIAS_REG2_LABEL)->GetWindowText(m_strChosenRegister);
+	RegisterButtons();
 	UpdateData(FALSE);
 }
 
@@ -456,6 +465,7 @@ void CRaw::OnStnClickedBiasReg3Static()
 	Parent()->L(_T("    [3:0]:Control LNA 4th stage biasing current"));
 	ShowBits(_tcstol(m_strBiasReg3.GetBuffer(), NULL, 16) & 0xff);
 	GetDlgItem(IDC_BIAS_REG3_LABEL)->GetWindowText(m_strChosenRegister);
+	RegisterButtons();
 	UpdateData(FALSE);
 }
 
@@ -470,6 +480,7 @@ void CRaw::OnStnClickedBiasReg4Static()
 	Parent()->L(_T("    [3:0]:Control the demodulator's current"));
 	ShowBits(_tcstol(m_strBiasReg4.GetBuffer(), NULL, 16) & 0xff);
 	GetDlgItem(IDC_BIAS_REG4_LABEL)->GetWindowText(m_strChosenRegister);
+	RegisterButtons();
 	UpdateData(FALSE);
 }
 
@@ -484,6 +495,7 @@ void CRaw::OnStnClickedBiasReg5Static()
 	Parent()->L(_T("    [3:0]:Control the biasing current for LA's core"));
 	ShowBits(_tcstol(m_strBiasReg5.GetBuffer(), NULL, 16) & 0xff);
 	GetDlgItem(IDC_BIAS_REG5_LABEL)->GetWindowText(m_strChosenRegister);
+	RegisterButtons();
 	UpdateData(FALSE);
 }
 
@@ -498,6 +510,7 @@ void CRaw::OnStnClickedBiasReg6Static()
 	Parent()->L(_T("    [3:0]:Control the biasing current for LA's I/P buffer"));
 	ShowBits(_tcstol(m_strBiasReg6.GetBuffer(), NULL, 16) & 0xff);
 	GetDlgItem(IDC_BIAS_REG6_LABEL)->GetWindowText(m_strChosenRegister);
+	RegisterButtons();
 	UpdateData(FALSE);
 }
 
@@ -512,6 +525,7 @@ void CRaw::OnStnClickedBiasReg7Static()
 	Parent()->L(_T("    [3:0]:Control the biasing current for CMOS gain stage"));
 	ShowBits(_tcstol(m_strBiasReg7.GetBuffer(), NULL, 16) & 0xff);
 	GetDlgItem(IDC_BIAS_REG7_LABEL)->GetWindowText(m_strChosenRegister);
+	RegisterButtons();
 	UpdateData(FALSE);
 }
 
@@ -525,6 +539,7 @@ void CRaw::OnStnClickedBiasReg8Static()
 	Parent()->L(_T("    [7:0]:Control the biasing current for CML interface stage. It aso controls the duty cycle"));
 	ShowBits(_tcstol(m_strBiasReg8.GetBuffer(), NULL, 16) & 0xff);
 	GetDlgItem(IDC_BIAS_REG8_LABEL)->GetWindowText(m_strChosenRegister);
+	RegisterButtons();
 	UpdateData(FALSE);
 }
 
@@ -540,15 +555,34 @@ void CRaw::BitControlEnable(BOOL b)
 	m_bit0.EnableWindow(b);
 }
 
-void CRaw::OnBnClickedEditCheck()
-{
-	m_bEdit = !m_bEdit;
+void CRaw::RegisterButtons()
+{	
 	if (m_bEdit) {
 		ShowWriteButtons(SW_SHOW);
+		if (m_strChosenRegister == _T("RX_REG1 [4:0]")) {
+			GetDlgItem(IDC_BIT7_BUTTON)->ShowWindow(SW_HIDE);
+			GetDlgItem(IDC_BIT6_BUTTON)->ShowWindow(SW_HIDE);
+			GetDlgItem(IDC_BIT5_BUTTON)->ShowWindow(SW_HIDE);
+		}
+		else if (m_strChosenRegister == _T("TX_REG2 [16]") | m_strChosenRegister == _T("BIAS_REG1 [0]")) {
+			GetDlgItem(IDC_BIT7_BUTTON)->ShowWindow(SW_HIDE);
+			GetDlgItem(IDC_BIT6_BUTTON)->ShowWindow(SW_HIDE);
+			GetDlgItem(IDC_BIT5_BUTTON)->ShowWindow(SW_HIDE);
+			GetDlgItem(IDC_BIT4_BUTTON)->ShowWindow(SW_HIDE);
+			GetDlgItem(IDC_BIT3_BUTTON)->ShowWindow(SW_HIDE);
+			GetDlgItem(IDC_BIT2_BUTTON)->ShowWindow(SW_HIDE);
+			GetDlgItem(IDC_BIT1_BUTTON)->ShowWindow(SW_HIDE);
+		}
 	}
 	else {
 		ShowWriteButtons(SW_HIDE);
 	}
+}
+
+void CRaw::OnBnClickedEditCheck()
+{
+	m_bEdit = !m_bEdit;
+	RegisterButtons();
 	UpdateData(FALSE);
 }
 
