@@ -83,6 +83,7 @@ BEGIN_MESSAGE_MAP(CgZeroMasterDlg, CDialogEx)
 	ON_COMMAND(ID_MAINMENU_CLEARLOG, &CgZeroMasterDlg::OnMainmenuClearlog)
 	ON_COMMAND(ID_MAINMENU_SAVE, &CgZeroMasterDlg::OnMainmenuSave)
 	ON_COMMAND(ID_MAINMENU_LOAD, &CgZeroMasterDlg::OnMainmenuLoad)
+	ON_STN_DBLCLK(IDC_LOGO_STATIC, &CgZeroMasterDlg::OnStnDblclickLogoStatic)
 END_MESSAGE_MAP()
 
 
@@ -487,4 +488,11 @@ void CAboutDlg::OnNMClickSyslink1(NMHDR* pNMHDR, LRESULT* pResult)
 	pLinkCtrl->GetItemUrl(0, strUrl);
 	::ShellExecute(NULL, _T("open"), strUrl, NULL, NULL, SW_SHOW);
 	*pResult = 0;
+}
+
+
+void CgZeroMasterDlg::OnStnDblclickLogoStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	::ShellExecute(NULL, _T("open"), _T("https://www.zinggls.com"), NULL, NULL, SW_SHOW);
 }

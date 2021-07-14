@@ -64,4 +64,5 @@ public:
 	void CheckTxReg2Top(CString strTxReg2Top);
 	void CheckBiasReg1(CString strBiasReg1);
 	BOOL LoadRegisters(CString fileName);
+	afx_msg void OnStnDblclickLogoStatic();
 };
