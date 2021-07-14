@@ -485,6 +485,6 @@ void CAboutDlg::OnNMClickSyslink1(NMHDR* pNMHDR, LRESULT* pResult)
 	CString strUrl;
 	CLinkCtrl* pLinkCtrl = (CLinkCtrl*)GetDlgItem(IDC_SYSLINK1);
 	pLinkCtrl->GetItemUrl(0, strUrl);
-	::ShellExecute(NULL, L"open", strUrl, NULL, NULL, SW_SHOW);
+	::ShellExecute(NULL, _T("open"), strUrl, NULL, NULL, SW_SHOW);
 	*pResult = 0;
 }
