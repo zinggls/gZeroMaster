@@ -11,6 +11,7 @@
 #define IDD_SEMANTIC_DIALOG             133
 #define IDD_RAW_DIALOG                  135
 #define IDR_MAIN_MENU                   137
+#define IDB_GLS_BITMAP                  138
 #define IDC_LOG_LIST                    1000
 #define IDC_COM_COMBO                   1001
 #define IDC_CONNECT_BUTTON              1002
@@ -164,7 +165,7 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        138
+#define _APS_NEXT_RESOURCE_VALUE        139
 #define _APS_NEXT_COMMAND_VALUE         32774
 #define _APS_NEXT_CONTROL_VALUE         1145
 #define _APS_NEXT_SYMED_VALUE           101

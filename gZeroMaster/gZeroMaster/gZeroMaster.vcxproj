@@ -231,6 +231,7 @@
     <None Include="res\gZeroMaster.rc2" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="res\GLS.bmp" />
     <Image Include="res\gls.ico" />
     <Image Include="res\gZeroMaster.ico" />
     <Image Include="res\Oxygen-Icons.org-Oxygen-Categories-applications-system.ico" />
