@@ -1714,31 +1714,23 @@ BOOL CSemantic::UpdateSemanticValue(int addr, int (CSemantic::* fpNewRegVal)(int
 			str.Format(_T("ReadRegister Address:0x%02x..."), addr);
 			Parent()->L(str);
 
-			BOOL bRead = FALSE;
-			do {
-				bRead = Parent()->m_pRaw->ReadResister(addr);
-				bRead ? Parent()->L(_T("ReadRegister=True")) : Parent()->L(_T("ReadRegister=False"));
-			} while (!bRead);
-			Parent()->L(_T("ReadRegister done"));
+			while (Parent()->m_pRaw->ReadResister(addr)==FALSE) {
+				Sleep(10);
+			}
+			str.Format(_T("ReadRegister Address:0x%02x done"), addr);
+			Parent()->L(str);
 
-			if (!bRead) {
+			if (fpUpdateData) {
+				CRegister reg;
+				Parse(Parent()->m_pRaw, reg);
+				(this->*fpUpdateData)(reg);
+				UpdateData(FALSE);
+
 				CString str;
-				str.Format(_T("Error in ReadRegister at addr:0x%02x"), addr);
-				Parent()->ErrorMsg(lLastError, str);
+				str.Format(_T("Address:0x%02x Old Register:0x%02x New Register:0x%02x"), addr, oldRegVal, newRegVal);
+				Parent()->L(str);
 			}
-			else {
-				if (fpUpdateData) {
-					CRegister reg;
-					Parse(Parent()->m_pRaw, reg);
-					(this->*fpUpdateData)(reg);
-					UpdateData(FALSE);
-
-					CString str;
-					str.Format(_T("Address:0x%02x Old Register:0x%02x New Register:0x%02x"), addr, oldRegVal, newRegVal);
-					Parent()->L(str);
-				}
-				return TRUE;
-			}
+			return TRUE;
 		}
 	}
 	return FALSE;
