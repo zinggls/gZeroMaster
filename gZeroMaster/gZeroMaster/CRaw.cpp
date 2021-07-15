@@ -226,6 +226,14 @@ LONG CRaw::ReadResister(int addr, int* value, int maxLoop)
 	24				18				BIAS_REG8[7:0]	: 50
 */
 
+void CRaw::PrintRegister(int addr, CString name, CString* pValueStr)
+{
+	int value;
+	while (ReadResister(addr, &value, MAX_LOOP) != ERROR_SUCCESS) Sleep(10);	//Blocking 함수
+	pValueStr->Format(_T("0x%02x"), value);
+	UpdateData(FALSE);
+}
+
 BOOL CRaw::PrintRegister(int addr, CString name, CString* pValueStr, int maxLoop)
 {
 	int value;
@@ -253,14 +261,13 @@ BOOL CRaw::ReadResisters()
 	return TRUE;
 }
 
-BOOL CRaw::ReadResister(int addr)
+void CRaw::ReadResister(int addr)
 {
 	for (std::map<CString, CReg>::iterator it = m_regMap.begin(); it != m_regMap.end(); it++) {
 		if (addr == it->second.m_nAddr) {
-			if (PrintRegister(it->second.m_nAddr, it->first, it->second.m_pStr, MAX_LOOP) == TRUE) return TRUE;
+			PrintRegister(it->second.m_nAddr, it->first, it->second.m_pStr);
 		}
 	}
-	return FALSE;
 }
 
 void CRaw::ClearResisterValues()

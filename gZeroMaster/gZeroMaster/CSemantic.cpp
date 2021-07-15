@@ -1714,9 +1714,7 @@ BOOL CSemantic::UpdateSemanticValue(int addr, int (CSemantic::* fpNewRegVal)(int
 			str.Format(_T("ReadRegister Address:0x%02x..."), addr);
 			Parent()->L(str);
 
-			while (Parent()->m_pRaw->ReadResister(addr)==FALSE) {
-				Sleep(10);
-			}
+			Parent()->m_pRaw->ReadResister(addr);	//Blocking함수 호출
 			str.Format(_T("ReadRegister Address:0x%02x done"), addr);
 			Parent()->L(str);
 
