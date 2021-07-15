@@ -1900,6 +1900,7 @@ void CSemantic::OnBnClickedWriteAllButton()
 	for (int i = 1; i <= static_cast<int>(SelectStatic::CML); i++) {
 		UpdateSelected(static_cast<SelectStatic>(i), FALSE);
 	}
+	Parent()->L(_T("All registers are updated"));
 }
 
 
