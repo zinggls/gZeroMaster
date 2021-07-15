@@ -293,7 +293,7 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 		}
 		else {
 			GetDlgItem(IDC_COM_COMBO)->EnableWindow(TRUE);
-			L(str + _T(" open failed"));
+			ErrorMsg(m_serial.GetLastError(), _T("Open failed"));
 		}
 	}
 	else {
