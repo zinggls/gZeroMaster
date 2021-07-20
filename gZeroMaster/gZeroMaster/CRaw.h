@@ -111,4 +111,5 @@ public:
 	void ResetValues();
 	COLORREF SetColor(CDC* pDC, CString given);
 	afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
+	LONG ReadChip(int maxLoop, CString& strChipInfo);
 };

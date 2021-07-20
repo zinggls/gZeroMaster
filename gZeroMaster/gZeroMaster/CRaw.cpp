@@ -207,6 +207,49 @@ LONG CRaw::ReadResister(int addr, int* value, int maxLoop)
 	return ERROR_SUCCESS;
 }
 
+LONG CRaw::ReadChip(int maxLoop, CString& strChipInfo)
+{
+	char buffer[4] = { 0, };
+	sprintf_s(buffer, "%x", 0xff);	//0xff to read Chip model and FW version
+
+	size_t index = strlen(buffer);
+	buffer[index] = 0xd;		//Enter
+
+	ASSERT(Parent());
+	ASSERT(Parent()->m_serial.IsOpen());
+
+	DWORD dwBytesWrite = 0;
+	LONG lLastError = Parent()->m_serial.Write(buffer, index + 1, &dwBytesWrite);
+	if (lLastError != ERROR_SUCCESS) {
+		Parent()->ErrorMsg(Parent()->m_serial.GetLastError(), _T("Unable to send data"));
+		return lLastError;
+	}
+
+	DWORD dwBytesReadSum, dwBytesRead;
+	dwBytesReadSum = dwBytesRead = 0;
+
+	CString str;
+	int loop = 0;
+	char buf[7+1];	//ex. "CHIP:B0"		Must be 7 bytes long
+	do {
+		lLastError = Parent()->m_serial.Read(buf, sizeof(buf)-1, &dwBytesRead);
+		if (lLastError != ERROR_SUCCESS) {
+			Parent()->ErrorMsg(Parent()->m_serial.GetLastError(), _T("Unable to receive data"));
+			return lLastError;
+		}
+		if (dwBytesRead > 0) {
+			buf[dwBytesRead] = 0;
+			str += CString(buf);
+			dwBytesReadSum += dwBytesRead;
+		}
+		loop++;
+	} while ((dwBytesReadSum < (sizeof(buf) - 1)) && (loop < maxLoop));
+	if (dwBytesReadSum != (sizeof(buf) - 1)) return ERROR_TIMEOUT;	//데이터를 Limited기한내에 못찾았음
+
+	strChipInfo = str;
+	return ERROR_SUCCESS;
+}
+
 /*
 *   address(Dec)	address(Hex)	Register		: DefaultValue
 	2				2				RX_REG1[4:0]	: 18
