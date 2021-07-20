@@ -1,5 +1,7 @@
 ﻿#include <atmel_start.h>
 #include <string.h>
+#define CHIP		"CHIP:B0\n"			//Chip model name
+#define VERSION		"VERSION:0.0.1\n"		//spiProxy Firmware version
 
 /*
  * UART Initiallize
@@ -156,6 +158,16 @@ void B0_reg_show(void)
 	UART_TX_CH(0x0a);
 }
 
+void chip_show()
+{
+	UART_TX_STR(CHIP);		//Chip model name
+}
+
+void version_show()
+{
+	UART_TX_STR(VERSION);	//Firmware version
+}
+
 int main(void)
 {
 	uint8_t rw = 0;
@@ -174,6 +186,12 @@ int main(void)
 		UART_RX_STR(t_rx_addr);
 		data[0] = (uint8_t)(strtol(t_rx_addr, NULL, 16));
 		//UART_TX_STR(t_rx_addr);
+		
+		if(data[0] == 0xff) {
+			chip_show();
+			version_show();
+			continue;
+		}
 		
 		if(data[0] > 0x7f)
 		{
