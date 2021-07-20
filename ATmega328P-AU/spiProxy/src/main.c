@@ -1,7 +1,6 @@
 ﻿#include <atmel_start.h>
 #include <string.h>
-#define CHIP		"CHIP:B0\n"			//Chip model name
-#define VERSION		"VERSION:0.0.1\n"		//spiProxy Firmware version
+#define CHIP		"CHIP:B0"			//Chip model name	(MUST BE 7Bytes long)
 
 /*
  * UART Initiallize
@@ -163,11 +162,6 @@ void chip_show()
 	UART_TX_STR(CHIP);		//Chip model name
 }
 
-void version_show()
-{
-	UART_TX_STR(VERSION);	//Firmware version
-}
-
 int main(void)
 {
 	uint8_t rw = 0;
@@ -189,7 +183,6 @@ int main(void)
 		
 		if(data[0] == 0xff) {
 			chip_show();
-			version_show();
 			continue;
 		}
 		
