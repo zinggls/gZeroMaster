@@ -362,7 +362,17 @@ void CRaw::OnStnClickedTxReg1MidStatic()
 
 	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_SHOW);
 	Parent()->L(_T("TX_REG1[15:8]"));
-	Parent()->L(_T("    [7:0]:VCO oscillation frequency control(3:10)"));
+	ASSERT(Parent()->m_chip == _T("A0") || Parent()->m_chip == _T("B0"));
+	if (Parent()->m_chip == _T("A0")) {
+		Parent()->L(_T("    [7]:Modulator power down --0: MOD off, 1: MOD on"));
+		Parent()->L(_T("    [6]:Test buffer power down--0: test buff off, 1: test buff on"));
+		Parent()->L(_T("    [5]:DATA Input Select --0: SER (Inside), 1: Test buff(Outside)"));
+		Parent()->L(_T("    [4]:PA power down 0: PA off, 1: PA on"));
+		Parent()->L(_T("    [3:0]:PA gain control 2"));
+	}
+	else {
+		Parent()->L(_T("    [7:0]:VCO oscillation frequency control(3:10)"));
+	}
 	ShowBits(_tcstol(m_strTxReg1Mid.GetBuffer(), NULL, 16) & 0xff);
 	GetDlgItem(IDC_TX_REG1_MID_LABEL)->GetWindowText(m_strChosenRegister);
 	RegisterButtons();
@@ -377,9 +387,16 @@ void CRaw::OnStnClickedTxReg1BotStatic()
 
 	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_SHOW);
 	Parent()->L(_T("TX_REG1[7:0]"));
-	Parent()->L(_T("    [7:5]:VCO oscillation frequency control(0:2)"));
-	Parent()->L(_T("    [4]:Regulator Reference Voltage  Control"));
-	Parent()->L(_T("    [3:0]:VCO_VDD Control"));
+	ASSERT(Parent()->m_chip == _T("A0") || Parent()->m_chip == _T("B0"));
+	if (Parent()->m_chip == _T("A0")) {
+		Parent()->L(_T("    [7:4]:PA gain control 1"));
+		Parent()->L(_T("    [3:0]:Test Buffer Current control"));
+	}
+	else {
+		Parent()->L(_T("    [7:5]:VCO oscillation frequency control(0:2)"));
+		Parent()->L(_T("    [4]:Regulator Reference Voltage  Control"));
+		Parent()->L(_T("    [3:0]:VCO_VDD Control"));
+	}
 	ShowBits(_tcstol(m_strTxReg1Bot.GetBuffer(), NULL, 16) & 0xff);
 	GetDlgItem(IDC_TX_REG1_BOT_LABEL)->GetWindowText(m_strChosenRegister);
 	RegisterButtons();
