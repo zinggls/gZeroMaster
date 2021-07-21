@@ -364,9 +364,9 @@ void CRaw::OnStnClickedTxReg1MidStatic()
 	Parent()->L(_T("TX_REG1[15:8]"));
 	ASSERT(Parent()->m_chip == _T("A0") || Parent()->m_chip == _T("B0"));
 	if (Parent()->m_chip == _T("A0")) {
-		Parent()->L(_T("    [7]:Modulator power down --0: MOD off, 1: MOD on"));
-		Parent()->L(_T("    [6]:Test buffer power down--0: test buff off, 1: test buff on"));
-		Parent()->L(_T("    [5]:DATA Input Select --0: SER (Inside), 1: Test buff(Outside)"));
+		Parent()->L(_T("    [7]:Modulator power down 0: MOD off, 1: MOD on"));
+		Parent()->L(_T("    [6]:Test buffer power down 0: test buff off, 1: test buff on"));
+		Parent()->L(_T("    [5]:DATA Input Select 0: SER (Inside), 1: Test buff(Outside)"));
 		Parent()->L(_T("    [4]:PA power down 0: PA off, 1: PA on"));
 		Parent()->L(_T("    [3:0]:PA gain control 2"));
 	}
@@ -426,9 +426,9 @@ void CRaw::OnStnClickedTxReg2MidStatic()
 
 	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_SHOW);
 	Parent()->L(_T("TX_REG2[15:8]"));
-	Parent()->L(_T("    [7]:Modulator power down --0: MOD off, 1: MOD on"));
-	Parent()->L(_T("    [6]:Test buffer power down--0: test buff off, 1: test buff on"));
-	Parent()->L(_T("    [5]:DATA Input Select --0: SER (Inside), 1: Test buff(Outside)"));
+	Parent()->L(_T("    [7]:Modulator power down 0: MOD off, 1: MOD on"));
+	Parent()->L(_T("    [6]:Test buffer power down 0: test buff off, 1: test buff on"));
+	Parent()->L(_T("    [5]:DATA Input Select 0: SER (Inside), 1: Test buff(Outside)"));
 	Parent()->L(_T("    [4]:PA power down 0: PA off, 1: PA on"));
 	Parent()->L(_T("    [3:0]:PA gain control 2"));
 	ShowBits(_tcstol(m_strTxReg2Mid.GetBuffer(), NULL, 16) & 0xff);
