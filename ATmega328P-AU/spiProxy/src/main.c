@@ -182,6 +182,7 @@ int main(void)
 		//UART_TX_STR(t_rx_addr);
 		
 		if(data[0] == 0xff) {
+			UART_RX_CH();	//Don't care input character, just to be consistent with the read/write
 			chip_show();
 			continue;
 		}
