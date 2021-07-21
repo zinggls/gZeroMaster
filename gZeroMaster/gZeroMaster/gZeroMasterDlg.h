@@ -45,6 +45,7 @@ public:
 	CTabCtrl m_tab;
 	CSemantic *m_pSemantic;
 	CRaw *m_pRaw;
+	CString m_chip;
 
 	void L(const TCHAR* str, ...);
 	void Reset();

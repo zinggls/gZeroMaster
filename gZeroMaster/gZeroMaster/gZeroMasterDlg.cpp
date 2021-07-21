@@ -59,6 +59,7 @@ CgZeroMasterDlg::CgZeroMasterDlg(CWnd* pParent /*=nullptr*/)
 	: CDialogEx(IDD_GZEROMASTER_DIALOG, pParent)
 	, m_pSemantic(NULL)
 	, m_pRaw(NULL)
+	, m_chip(_T(""))
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
@@ -279,7 +280,8 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 
 			char buffer[7+1];
 			if ((lLastError = m_pRaw->ReadRegister(CHIP_MODEL_ADDRESS, CHIP_MODEL_INFO_SIZE, buffer, MAX_LOOP)) == ERROR_SUCCESS) {
-				L(CString(buffer));
+				m_chip = CString(buffer).Right(2);
+				L(_T("Chip Model:") + m_chip);
 				if (m_pRaw->ReadResisters()) {
 					m_pSemantic->UpdateRegisters();
 					m_pSemantic->ControlLabelEnable(TRUE);
