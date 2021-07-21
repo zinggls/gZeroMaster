@@ -1700,11 +1700,13 @@ int CSemantic::OnNewCML(int val, int newVal)
 BOOL CSemantic::UpdateSemanticValue(int addr, int (CSemantic::* fpNewRegVal)(int, int), int newVal, void (CSemantic::* fpUpdateData)(CRegister&))
 {
 	int oldRegVal;
-	LONG lLastError = Parent()->m_pRaw->ReadResister(addr, &oldRegVal, MAX_LOOP);
+	char buffer[3];
+	LONG lLastError = Parent()->m_pRaw->ReadResister(addr, 2, buffer, MAX_LOOP);
 	if (lLastError != ERROR_SUCCESS) {
 		Parent()->ErrorMsg(lLastError, _T("CSemantic::UpdateSemanticValue Error in ReadRegister"));
 	}
 	else {
+		oldRegVal = (int)strtol(buffer, NULL, 16);
 		int newRegVal = (this->*fpNewRegVal)(oldRegVal,newVal);
 		if (Parent()->m_pRaw->WriteRegister(addr, newRegVal) != TRUE) {
 			Parent()->ErrorMsg(lLastError, _T("Error in WriteRegister"));

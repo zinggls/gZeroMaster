@@ -66,7 +66,7 @@ public:
 public:
 	virtual BOOL OnInitDialog();
 	CgZeroMasterDlg* Parent();
-	LONG ReadResister(int addr, int* value, int maxLoop);
+	LONG ReadResister(int addr, DWORD sizeToRead, char* pBuffer, int maxLoop);
 	BOOL ReadResisters();
 	void ReadResister(int addr);
 	void PrintRegister(int addr, CString name, CString* pValueStr);
