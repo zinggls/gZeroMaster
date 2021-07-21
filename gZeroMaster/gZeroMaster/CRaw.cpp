@@ -851,6 +851,7 @@ void CRaw::ResetValues()
 	m_strBiasReg6.Empty();
 	m_strBiasReg7.Empty();
 	m_strBiasReg8.Empty();
+	m_strBiasReg9.Empty();
 	UpdateData(FALSE);
 }
 
