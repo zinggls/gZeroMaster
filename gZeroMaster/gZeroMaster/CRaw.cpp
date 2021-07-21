@@ -144,7 +144,7 @@ CgZeroMasterDlg* CRaw::Parent()
 	return dynamic_cast<CgZeroMasterDlg*>(m_pParent);
 }
 
-LONG CRaw::ReadRegister(int addr, DWORD sizeToRead, char *pBuffer, int maxLoop)
+LONG CRaw::SendReadCommand(int addr)
 {
 	char buffer[4] = { 0, };
 	sprintf_s(buffer, "%x", addr);
@@ -157,7 +157,12 @@ LONG CRaw::ReadRegister(int addr, DWORD sizeToRead, char *pBuffer, int maxLoop)
 	ASSERT(Parent()->m_serial.IsOpen());
 
 	DWORD dwBytesWrite = 0;
-	LONG lLastError = Parent()->m_serial.Write(buffer, index + 2, &dwBytesWrite);
+	return Parent()->m_serial.Write(buffer, index + 2, &dwBytesWrite);
+}
+
+LONG CRaw::ReadRegister(int addr, DWORD sizeToRead, char *pBuffer, int maxLoop)
+{
+	LONG lLastError = SendReadCommand(addr);
 	if (lLastError != ERROR_SUCCESS) {
 		Parent()->ErrorMsg(Parent()->m_serial.GetLastError(), _T("Unable to send data"));
 		return lLastError;
