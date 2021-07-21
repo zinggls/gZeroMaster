@@ -1701,7 +1701,7 @@ BOOL CSemantic::UpdateSemanticValue(int addr, int (CSemantic::* fpNewRegVal)(int
 {
 	int oldRegVal;
 	char buffer[3];
-	LONG lLastError = Parent()->m_pRaw->ReadResister(addr, 2, buffer, MAX_LOOP);
+	LONG lLastError = Parent()->m_pRaw->ReadRegister(addr, 2, buffer, MAX_LOOP);
 	if (lLastError != ERROR_SUCCESS) {
 		Parent()->ErrorMsg(lLastError, _T("CSemantic::UpdateSemanticValue Error in ReadRegister"));
 	}

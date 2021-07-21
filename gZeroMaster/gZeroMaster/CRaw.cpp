@@ -144,7 +144,7 @@ CgZeroMasterDlg* CRaw::Parent()
 	return dynamic_cast<CgZeroMasterDlg*>(m_pParent);
 }
 
-LONG CRaw::ReadResister(int addr, DWORD sizeToRead, char *pBuffer, int maxLoop)
+LONG CRaw::ReadRegister(int addr, DWORD sizeToRead, char *pBuffer, int maxLoop)
 {
 	char buffer[4] = { 0, };
 	sprintf_s(buffer, "%x", addr);
@@ -274,7 +274,7 @@ void CRaw::PrintRegister(int addr, CString name, CString* pValueStr)
 {
 	int value;
 	char buffer[3];
-	while (ReadResister(addr, 2, buffer, MAX_LOOP) != ERROR_SUCCESS) Sleep(10);	//Blocking 함수
+	while (ReadRegister(addr, 2, buffer, MAX_LOOP) != ERROR_SUCCESS) Sleep(10);	//Blocking 함수
 	value = (int)strtol(buffer, NULL, 16);
 	pValueStr->Format(_T("0x%02x"), value);
 	UpdateData(FALSE);
@@ -284,7 +284,7 @@ BOOL CRaw::PrintRegister(int addr, CString name, CString* pValueStr, int maxLoop
 {
 	int value;
 	char buffer[3];
-	LONG lLastError = ReadResister(addr, 2, buffer, maxLoop);
+	LONG lLastError = ReadRegister(addr, 2, buffer, maxLoop);
 	if (lLastError != ERROR_SUCCESS) {
 		Parent()->ErrorMsg(lLastError, _T("CRaw::PrintRegister Error in ReadRegister"));
 		return FALSE;

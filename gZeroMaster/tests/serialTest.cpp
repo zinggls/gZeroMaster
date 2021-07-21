@@ -36,7 +36,7 @@ TEST(Serial, nonBlocking) {
 	EXPECT_EQ(lLastError, ERROR_SUCCESS);
 }
 
-void ReadResister(CSerial &serial, int addr, int* value)
+void ReadRegister(CSerial &serial, int addr, int* value)
 {
 	char buffer[4] = { 0, };
 	sprintf_s(buffer, "%x", addr);
@@ -93,7 +93,7 @@ TEST(Serial, NonBlockingRegisterRead) {
 
 	int value;
 	for(int i=0;i<sizeof(addr)/sizeof(int);i++) {
-		ReadResister(serial, addr[i], &value);
+		ReadRegister(serial, addr[i], &value);
 		printf("Address:0x%02x Register:0x%02x\n", addr[i], value);
 	}
 
@@ -101,7 +101,7 @@ TEST(Serial, NonBlockingRegisterRead) {
 	EXPECT_EQ(lLastError, ERROR_SUCCESS);
 }
 
-bool LimitedReadResister(CSerial& serial, int addr, int* value, int maxLoop)
+bool LimitedReadRegister(CSerial& serial, int addr, int* value, int maxLoop)
 {
 	char buffer[4] = { 0, };
 	sprintf_s(buffer, "%x", addr);
@@ -161,7 +161,7 @@ void regReadTest(const TCHAR *comPort,int maxLoop)
 
 	int value;
 	for (int i = 0; i < sizeof(addr) / sizeof(int); i++) {
-		if (LimitedReadResister(serial, addr[i], &value, maxLoop)) {
+		if (LimitedReadRegister(serial, addr[i], &value, maxLoop)) {
 			printf("Address:0x%02x Register:0x%02x\n", addr[i], value);
 		}
 	}
