@@ -121,22 +121,6 @@ BOOL CRaw::OnInitDialog()
 	ShowWriteButtons(SW_HIDE);
 	GetDlgItem(IDC_READ_ALL_BUTTON)->ShowWindow(SW_HIDE);
 
-	m_regMap.insert(std::pair<CString, CReg>(_T("RX_REG1 [4:0]"), CReg(2, &m_strRxReg1)));
-	m_regMap.insert(std::pair<CString, CReg>(_T("TX_REG1 [23:16]"), CReg(7, &m_strTxReg1Top)));
-	m_regMap.insert(std::pair<CString, CReg>(_T("TX_REG1 [15:8]"), CReg(6, &m_strTxReg1Mid)));
-	m_regMap.insert(std::pair<CString, CReg>(_T("TX_REG1 [7:0]"), CReg(5, &m_strTxReg1Bot)));
-	m_regMap.insert(std::pair<CString, CReg>(_T("TX_REG2 [16]"), CReg(13, &m_strTxReg2Top)));
-	m_regMap.insert(std::pair<CString, CReg>(_T("TX_REG2 [15:8]"), CReg(12, &m_strTxReg2Mid)));
-	m_regMap.insert(std::pair<CString, CReg>(_T("TX_REG2 [7:0]"), CReg(11, &m_strTxReg2Bot)));
-	m_regMap.insert(std::pair<CString, CReg>(_T("BIAS_REG1 [0]"), CReg(17, &m_strBiasReg1)));
-	m_regMap.insert(std::pair<CString, CReg>(_T("BIAS_REG2 [7:0]"), CReg(18, &m_strBiasReg2)));
-	m_regMap.insert(std::pair<CString, CReg>(_T("BIAS_REG3 [7:0]"), CReg(19, &m_strBiasReg3)));
-	m_regMap.insert(std::pair<CString, CReg>(_T("BIAS_REG4 [7:0]"), CReg(20, &m_strBiasReg4)));
-	m_regMap.insert(std::pair<CString, CReg>(_T("BIAS_REG5 [7:0]"), CReg(21, &m_strBiasReg5)));
-	m_regMap.insert(std::pair<CString, CReg>(_T("BIAS_REG6 [7:0]"), CReg(22, &m_strBiasReg6)));
-	m_regMap.insert(std::pair<CString, CReg>(_T("BIAS_REG7 [7:0]"), CReg(23, &m_strBiasReg7)));
-	m_regMap.insert(std::pair<CString, CReg>(_T("BIAS_REG8 [7:0]"), CReg(24, &m_strBiasReg8)));
-
 	ShowBitWindow(SW_HIDE);
 	return TRUE;  // return TRUE unless you set the focus to a control
 				  // 예외: OCX 속성 페이지는 FALSE를 반환해야 합니다.
@@ -925,7 +909,26 @@ HBRUSH CRaw::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 void CRaw::OnChipConnect(CString chipModel)
 {
 	ASSERT(chipModel == _T("A0") || chipModel == _T("B0"));
+
+	m_regMap.clear();
+	m_regMap.insert(std::pair<CString, CReg>(_T("RX_REG1 [4:0]"), CReg(2, &m_strRxReg1)));
+	m_regMap.insert(std::pair<CString, CReg>(_T("TX_REG1 [23:16]"), CReg(7, &m_strTxReg1Top)));
+	m_regMap.insert(std::pair<CString, CReg>(_T("TX_REG1 [15:8]"), CReg(6, &m_strTxReg1Mid)));
+	m_regMap.insert(std::pair<CString, CReg>(_T("TX_REG1 [7:0]"), CReg(5, &m_strTxReg1Bot)));
+	m_regMap.insert(std::pair<CString, CReg>(_T("BIAS_REG1 [0]"), CReg(17, &m_strBiasReg1)));
+	m_regMap.insert(std::pair<CString, CReg>(_T("BIAS_REG2 [7:0]"), CReg(18, &m_strBiasReg2)));
+	m_regMap.insert(std::pair<CString, CReg>(_T("BIAS_REG3 [7:0]"), CReg(19, &m_strBiasReg3)));
+	m_regMap.insert(std::pair<CString, CReg>(_T("BIAS_REG4 [7:0]"), CReg(20, &m_strBiasReg4)));
+	m_regMap.insert(std::pair<CString, CReg>(_T("BIAS_REG5 [7:0]"), CReg(21, &m_strBiasReg5)));
+	m_regMap.insert(std::pair<CString, CReg>(_T("BIAS_REG6 [7:0]"), CReg(22, &m_strBiasReg6)));
+	m_regMap.insert(std::pair<CString, CReg>(_T("BIAS_REG7 [7:0]"), CReg(23, &m_strBiasReg7)));
+	m_regMap.insert(std::pair<CString, CReg>(_T("BIAS_REG8 [7:0]"), CReg(24, &m_strBiasReg8)));
+
 	if (chipModel == _T("B0")) {
+		m_regMap.insert(std::pair<CString, CReg>(_T("TX_REG2 [16]"), CReg(13, &m_strTxReg2Top)));
+		m_regMap.insert(std::pair<CString, CReg>(_T("TX_REG2 [15:8]"), CReg(12, &m_strTxReg2Mid)));
+		m_regMap.insert(std::pair<CString, CReg>(_T("TX_REG2 [7:0]"), CReg(11, &m_strTxReg2Bot)));
+
 		GetDlgItem(IDC_TX_REG2_TOP_LABEL)->ShowWindow(SW_SHOW);
 		GetDlgItem(IDC_TX_REG2_MID_LABEL)->ShowWindow(SW_SHOW);
 		GetDlgItem(IDC_TX_REG2_BOT_LABEL)->ShowWindow(SW_SHOW);
@@ -937,6 +940,8 @@ void CRaw::OnChipConnect(CString chipModel)
 		GetDlgItem(IDC_BIAS_REG9_STATIC)->ShowWindow(SW_HIDE);
 	}
 	else if (chipModel == _T("A0")) {
+		m_regMap.insert(std::pair<CString, CReg>(_T("BIAS_REG9 [7:0]"), CReg(25, &m_strBiasReg9)));
+
 		GetDlgItem(IDC_TX_REG2_TOP_LABEL)->ShowWindow(SW_HIDE);
 		GetDlgItem(IDC_TX_REG2_MID_LABEL)->ShowWindow(SW_HIDE);
 		GetDlgItem(IDC_TX_REG2_BOT_LABEL)->ShowWindow(SW_HIDE);
