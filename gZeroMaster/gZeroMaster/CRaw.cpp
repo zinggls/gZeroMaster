@@ -899,3 +899,9 @@ HBRUSH CRaw::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 	// TODO:  기본값이 적당하지 않으면 다른 브러시를 반환합니다.
 	return hbr;
 }
+
+
+void CRaw::OnChipConnect(CString chipModel)
+{
+
+}

@@ -115,4 +115,5 @@ public:
 	void ResetValues();
 	COLORREF SetColor(CDC* pDC, CString given);
 	afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
+	void OnChipConnect(CString chipModel);
 };
