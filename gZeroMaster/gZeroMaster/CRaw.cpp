@@ -903,5 +903,27 @@ HBRUSH CRaw::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 
 void CRaw::OnChipConnect(CString chipModel)
 {
+	ASSERT(chipModel == _T("A0") || chipModel == _T("B0"));
+	if (chipModel == _T("B0")) {
+		GetDlgItem(IDC_TX_REG2_TOP_LABEL)->ShowWindow(SW_SHOW);
+		GetDlgItem(IDC_TX_REG2_MID_LABEL)->ShowWindow(SW_SHOW);
+		GetDlgItem(IDC_TX_REG2_BOT_LABEL)->ShowWindow(SW_SHOW);
+		GetDlgItem(IDC_TX_REG2_TOP_STATIC)->ShowWindow(SW_SHOW);
+		GetDlgItem(IDC_TX_REG2_MID_STATIC)->ShowWindow(SW_SHOW);
+		GetDlgItem(IDC_TX_REG2_BOT_STATIC)->ShowWindow(SW_SHOW);
 
+		GetDlgItem(IDC_BIAS_REG9_LABEL)->ShowWindow(SW_HIDE);
+		GetDlgItem(IDC_BIAS_REG9_STATIC)->ShowWindow(SW_HIDE);
+	}
+	else if (chipModel == _T("A0")) {
+		GetDlgItem(IDC_TX_REG2_TOP_LABEL)->ShowWindow(SW_HIDE);
+		GetDlgItem(IDC_TX_REG2_MID_LABEL)->ShowWindow(SW_HIDE);
+		GetDlgItem(IDC_TX_REG2_BOT_LABEL)->ShowWindow(SW_HIDE);
+		GetDlgItem(IDC_TX_REG2_TOP_STATIC)->ShowWindow(SW_HIDE);
+		GetDlgItem(IDC_TX_REG2_MID_STATIC)->ShowWindow(SW_HIDE);
+		GetDlgItem(IDC_TX_REG2_BOT_STATIC)->ShowWindow(SW_HIDE);
+
+		GetDlgItem(IDC_BIAS_REG9_LABEL)->ShowWindow(SW_SHOW);
+		GetDlgItem(IDC_BIAS_REG9_STATIC)->ShowWindow(SW_SHOW);
+	}
 }
