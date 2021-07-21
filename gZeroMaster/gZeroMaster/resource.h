@@ -30,6 +30,7 @@
 #define IDC_BIAS_REG6_STATIC            1015
 #define IDC_BIAS_REG7_STATIC            1016
 #define IDC_BIAS_REG8_STATIC            1017
+#define IDC_BIAS_REG9_STATIC            1018
 #define IDC_BIT_EDIT7                   1019
 #define IDC_BIT_EDIT6                   1020
 #define IDC_BIT_EDIT5                   1021
@@ -56,6 +57,7 @@
 #define IDC_BIAS_REG7_LABEL             1041
 #define IDC_BIAS_REG8_LABEL             1042
 #define IDC_LOG_CLEAR_BUTTON            1043
+#define IDC_BIAS_REG9_LABEL             1043
 #define IDC_EDIT_CHECK                  1044
 #define IDC_BUTTON1                     1045
 #define IDC_WRITE_BUTTON                1045

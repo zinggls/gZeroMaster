@@ -31,6 +31,7 @@ CRaw::CRaw(CWnd* pParent /*=nullptr*/)
 	, m_strBiasReg6(_T(""))
 	, m_strBiasReg7(_T(""))
 	, m_strBiasReg8(_T(""))
+	, m_strBiasReg9(_T(""))
 	, m_strChosenRegister(_T(""))
 	, m_bEdit(FALSE)
 	, m_strHex(_T(""))
@@ -60,6 +61,7 @@ void CRaw::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_BIAS_REG6_STATIC, m_strBiasReg6);
 	DDX_Text(pDX, IDC_BIAS_REG7_STATIC, m_strBiasReg7);
 	DDX_Text(pDX, IDC_BIAS_REG8_STATIC, m_strBiasReg8);
+	DDX_Text(pDX, IDC_BIAS_REG9_STATIC, m_strBiasReg9);
 	DDX_Control(pDX, IDC_BIT_EDIT7, m_bit7);
 	DDX_Control(pDX, IDC_BIT_EDIT6, m_bit6);
 	DDX_Control(pDX, IDC_BIT_EDIT5, m_bit5);

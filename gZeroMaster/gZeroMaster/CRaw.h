@@ -52,6 +52,7 @@ public:
 	CString m_strBiasReg6;
 	CString m_strBiasReg7;
 	CString m_strBiasReg8;
+	CString m_strBiasReg9;
 	CEdit m_bit7;
 	CEdit m_bit6;
 	CEdit m_bit5;
