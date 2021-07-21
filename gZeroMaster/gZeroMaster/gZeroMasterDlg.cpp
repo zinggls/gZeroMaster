@@ -278,7 +278,7 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 			if (lLastError != ERROR_SUCCESS) return ErrorMsg(m_serial.GetLastError(), _T("Unable to set COM-port read timeout"));
 
 			char buffer[7+1];
-			if ((lLastError = m_pRaw->ReadRegister(0xff, 7, buffer, MAX_LOOP)) == ERROR_SUCCESS) {
+			if ((lLastError = m_pRaw->ReadRegister(CHIP_MODEL_ADDRESS, CHIP_MODEL_INFO_SIZE, buffer, MAX_LOOP)) == ERROR_SUCCESS) {
 				L(CString(buffer));
 				if (m_pRaw->ReadResisters()) {
 					m_pSemantic->UpdateRegisters();

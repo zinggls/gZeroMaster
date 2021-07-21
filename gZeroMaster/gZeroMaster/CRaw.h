@@ -2,6 +2,8 @@
 
 #include <map>
 #define MAX_LOOP	100000
+#define CHIP_MODEL_ADDRESS		0xff
+#define CHIP_MODEL_INFO_SIZE	7
 
 class CgZeroMasterDlg;
 
