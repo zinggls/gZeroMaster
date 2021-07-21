@@ -92,6 +92,7 @@ BEGIN_MESSAGE_MAP(CRaw, CDialogEx)
 	ON_STN_CLICKED(IDC_BIAS_REG6_STATIC, &CRaw::OnStnClickedBiasReg6Static)
 	ON_STN_CLICKED(IDC_BIAS_REG7_STATIC, &CRaw::OnStnClickedBiasReg7Static)
 	ON_STN_CLICKED(IDC_BIAS_REG8_STATIC, &CRaw::OnStnClickedBiasReg8Static)
+	ON_STN_CLICKED(IDC_BIAS_REG9_STATIC, &CRaw::OnStnClickedBiasReg9Static)
 	ON_BN_CLICKED(IDC_EDIT_CHECK, &CRaw::OnBnClickedEditCheck)
 	ON_BN_CLICKED(IDC_BIT7_BUTTON, &CRaw::OnBnClickedBit7Button)
 	ON_BN_CLICKED(IDC_BIT6_BUTTON, &CRaw::OnBnClickedBit6Button)
@@ -578,6 +579,23 @@ void CRaw::OnStnClickedBiasReg8Static()
 	Invalidate();
 }
 
+
+void CRaw::OnStnClickedBiasReg9Static()
+{
+	if (!Parent()->m_serial.IsOpen()) return;
+
+	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_SHOW);
+	Parent()->L(_T("BIAS_REG9[7:0]"));
+	Parent()->L(_T("    [7:4]:Control FD cores of stg1 & stg2 biasing current"));
+	Parent()->L(_T("    [3:0]:Control FD buffers of stg1 & stg2 biasing current"));
+	ShowBits(_tcstol(m_strBiasReg9.GetBuffer(), NULL, 16) & 0xff);
+	GetDlgItem(IDC_BIAS_REG9_LABEL)->GetWindowText(m_strChosenRegister);
+	RegisterButtons();
+	UpdateData(FALSE);
+	Invalidate();
+}
+
+
 void CRaw::BitControlEnable(BOOL b)
 {
 	m_bit7.EnableWindow(b);
@@ -894,6 +912,9 @@ HBRUSH CRaw::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 	}
 	else if (pWnd->GetDlgCtrlID() == IDC_BIAS_REG8_STATIC) {
 		SetColor(pDC, _T("BIAS_REG8 [7:0]"));
+	}
+	else if (pWnd->GetDlgCtrlID() == IDC_BIAS_REG9_STATIC) {
+		SetColor(pDC, _T("BIAS_REG9 [7:0]"));
 	}
 
 	// TODO:  기본값이 적당하지 않으면 다른 브러시를 반환합니다.
