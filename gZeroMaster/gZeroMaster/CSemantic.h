@@ -270,4 +270,5 @@ public:
 	int HL();
 	int CMOS();
 	int CML();
+	void OnChipConnect(CString chipModel);
 };

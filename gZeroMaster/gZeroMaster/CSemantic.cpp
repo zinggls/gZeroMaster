@@ -2136,3 +2136,32 @@ int CSemantic::CML()
 {
 	return Read8BitValue(m_strCMLInterfaceStageCurrent);
 }
+
+
+void CSemantic::OnChipConnect(CString chipModel)
+{
+	ASSERT(chipModel == _T("A0") || chipModel == _T("B0"));
+
+	if (chipModel == _T("A0")) {
+		GetDlgItem(IDC_VCO_OSC_FREQ_STATIC)->ShowWindow(SW_HIDE);
+		GetDlgItem(IDC_REG_REF_VOLT_STATIC)->ShowWindow(SW_HIDE);
+		GetDlgItem(IDC_VCO_VDD_STATIC)->ShowWindow(SW_HIDE);
+		GetDlgItem(IDC_VCO_POWER_STATIC)->ShowWindow(SW_HIDE);
+
+		GetDlgItem(IDC_VCO_OSC_FREQ_VALUE_STATIC)->ShowWindow(SW_HIDE);
+		GetDlgItem(IDC_REG_REF_VOLT_VALUE_STATIC)->ShowWindow(SW_HIDE);
+		GetDlgItem(IDC_VCO_VDD_VALUE_STATIC)->ShowWindow(SW_HIDE);
+		GetDlgItem(IDC_VCO_POWER_VALUE_STATIC)->ShowWindow(SW_HIDE);
+	}
+	else if (chipModel == _T("B0")) {
+		GetDlgItem(IDC_VCO_OSC_FREQ_STATIC)->ShowWindow(SW_SHOW);
+		GetDlgItem(IDC_REG_REF_VOLT_STATIC)->ShowWindow(SW_SHOW);
+		GetDlgItem(IDC_VCO_VDD_STATIC)->ShowWindow(SW_SHOW);
+		GetDlgItem(IDC_VCO_POWER_STATIC)->ShowWindow(SW_SHOW);
+
+		GetDlgItem(IDC_VCO_OSC_FREQ_VALUE_STATIC)->ShowWindow(SW_SHOW);
+		GetDlgItem(IDC_REG_REF_VOLT_VALUE_STATIC)->ShowWindow(SW_SHOW);
+		GetDlgItem(IDC_VCO_VDD_VALUE_STATIC)->ShowWindow(SW_SHOW);
+		GetDlgItem(IDC_VCO_POWER_VALUE_STATIC)->ShowWindow(SW_SHOW);
+	}
+}
