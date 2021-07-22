@@ -281,6 +281,7 @@ void CRaw::ClearResisterValues()
 	m_strBiasReg6.Empty();
 	m_strBiasReg7.Empty();
 	m_strBiasReg8.Empty();
+	m_strBiasReg9.Empty();
 	UpdateData(FALSE);
 
 	m_bit7.SetWindowText(_T(""));
