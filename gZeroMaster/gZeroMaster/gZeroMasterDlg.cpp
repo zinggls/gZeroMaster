@@ -463,8 +463,12 @@ void CgZeroMasterDlg::OnMainmenuLoad()
 
 BOOL CgZeroMasterDlg::LoadValue(TCHAR *regTagName, CString *pTargetStr, CString fileName)
 {
+	ASSERT(m_chip == _T("A0") || m_chip == _T("B0"));
+
 	TCHAR strTmp[256];
-	GetPrivateProfileString(_T("B0 Registers"), regTagName, _T(""), strTmp, sizeof(strTmp) / sizeof(TCHAR), fileName);
+	CString strSec(m_chip);
+	strSec += _T(" Registers");
+	GetPrivateProfileString(strSec.GetBuffer(), regTagName, _T(""), strTmp, sizeof(strTmp) / sizeof(TCHAR), fileName);
 	if (CString(strTmp).IsEmpty()) return FALSE;
 	*pTargetStr = CString(strTmp);
 	return TRUE;
@@ -494,6 +498,8 @@ void CgZeroMasterDlg::CheckBiasReg1(CString strBiasReg1)
 
 BOOL CgZeroMasterDlg::LoadRegisters(CString fileName)
 {
+	ASSERT(m_chip == _T("A0") || m_chip == _T("B0"));
+
 	if (!LoadValue(_T("RX_REG1_4-0"), &m_pRaw->m_strRxReg1, fileName)) return FALSE;
 	CheckRxReg1(m_pRaw->m_strRxReg1);
 
@@ -501,10 +507,12 @@ BOOL CgZeroMasterDlg::LoadRegisters(CString fileName)
 	if (!LoadValue(_T("TX_REG1_15-8"), &m_pRaw->m_strTxReg1Mid, fileName)) return FALSE;
 	if (!LoadValue(_T("TX_REG1_7-0"), &m_pRaw->m_strTxReg1Bot, fileName)) return FALSE;
 
-	if (!LoadValue(_T("TX_REG2_16"), &m_pRaw->m_strTxReg2Top, fileName)) return FALSE;
-	CheckTxReg2Top(m_pRaw->m_strTxReg2Top);
-	if (!LoadValue(_T("TX_REG2_15-8"), &m_pRaw->m_strTxReg2Mid, fileName)) return FALSE;
-	if (!LoadValue(_T("TX_REG2_7-0"), &m_pRaw->m_strTxReg2Bot, fileName)) return FALSE;
+	if (m_chip == _T("B0")) {
+		if (!LoadValue(_T("TX_REG2_16"), &m_pRaw->m_strTxReg2Top, fileName)) return FALSE;
+		CheckTxReg2Top(m_pRaw->m_strTxReg2Top);
+		if (!LoadValue(_T("TX_REG2_15-8"), &m_pRaw->m_strTxReg2Mid, fileName)) return FALSE;
+		if (!LoadValue(_T("TX_REG2_7-0"), &m_pRaw->m_strTxReg2Bot, fileName)) return FALSE;
+	}
 
 	if (!LoadValue(_T("BIAS_REG1_0"), &m_pRaw->m_strBiasReg1, fileName)) return FALSE;
 	CheckBiasReg1(m_pRaw->m_strBiasReg1);
@@ -515,6 +523,9 @@ BOOL CgZeroMasterDlg::LoadRegisters(CString fileName)
 	if (!LoadValue(_T("BIAS_REG6_7-0"), &m_pRaw->m_strBiasReg6, fileName)) return FALSE;
 	if (!LoadValue(_T("BIAS_REG7_7-0"), &m_pRaw->m_strBiasReg7, fileName)) return FALSE;
 	if (!LoadValue(_T("BIAS_REG8_7-0"), &m_pRaw->m_strBiasReg8, fileName)) return FALSE;
+	if (m_chip == _T("A0")) {
+		if (!LoadValue(_T("BIAS_REG9_7-0"), &m_pRaw->m_strBiasReg9, fileName)) return FALSE;
+	}
 
 	m_pRaw->UpdateData(FALSE);
 	m_pSemantic->UpdateRegisters();
