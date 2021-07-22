@@ -242,6 +242,7 @@ void CgZeroMasterDlg::SerialClose(CString& str)
 	Reset();
 	LONG lLastError = m_serial.Close();
 	if (lLastError == ERROR_SUCCESS) {
+		GetDlgItem(IDC_CHIP_COMBO)->EnableWindow(TRUE);
 		GetDlgItem(IDC_COM_COMBO)->EnableWindow(TRUE);
 		GetDlgItem(IDC_CONNECT_BUTTON)->SetWindowTextW(_T("connect"));
 		L(str + _T(" closed"));
@@ -249,6 +250,7 @@ void CgZeroMasterDlg::SerialClose(CString& str)
 	else {
 		L(str + _T(" close failed"));
 	}
+	GetDlgItem(IDC_CHIP_COMBO)->EnableWindow(TRUE);
 	GetDlgItem(IDC_COM_COMBO)->EnableWindow(TRUE);
 	m_pSemantic->ControlLabelEnable(FALSE);
 	m_pSemantic->ControlValueEnable(FALSE);
@@ -265,6 +267,7 @@ void CgZeroMasterDlg::SerialClose(CString& str)
 void CgZeroMasterDlg::OnBnClickedConnectButton()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	GetDlgItem(IDC_CHIP_COMBO)->EnableWindow(FALSE);
 	GetDlgItem(IDC_COM_COMBO)->EnableWindow(FALSE);
 
 	CString str;
@@ -304,6 +307,7 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 			}
 		}
 		else {
+			GetDlgItem(IDC_CHIP_COMBO)->EnableWindow(TRUE);
 			GetDlgItem(IDC_COM_COMBO)->EnableWindow(TRUE);
 			ErrorMsg(m_serial.GetLastError(), _T("Open failed"));
 		}
