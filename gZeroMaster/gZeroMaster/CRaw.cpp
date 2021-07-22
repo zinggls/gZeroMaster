@@ -221,11 +221,9 @@ LONG CRaw::ReadRegister(int addr, DWORD sizeToRead, char *pBuffer, int maxLoop)
 
 void CRaw::PrintRegister(int addr, CString name, CString* pValueStr)
 {
-	int value;
 	char buffer[3];
 	while (ReadRegister(addr, 2, buffer, MAX_LOOP) != ERROR_SUCCESS) Sleep(10);	//Blocking 함수
-	value = (int)strtol(buffer, NULL, 16);
-	pValueStr->Format(_T("0x%02x"), value);
+	pValueStr->Format(_T("0x%02x"), (int)strtol(buffer, NULL, 16));
 	UpdateData(FALSE);
 }
 
