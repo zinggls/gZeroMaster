@@ -394,8 +394,28 @@ void CgZeroMasterDlg::OnMainmenuSave()
 }
 
 
-void CgZeroMasterDlg::SaveRegisters(CString fileName)
+void CgZeroMasterDlg::SaveRegisterA0(CString fileName)
 {
+	ASSERT(m_chip == _T("A0"));
+	WritePrivateProfileString(_T("A0 Registers"), _T("RX_REG1_4-0"), m_pRaw->m_strRxReg1, fileName);
+	WritePrivateProfileString(_T("A0 Registers"), _T("TX_REG1_23-16"), m_pRaw->m_strTxReg1Top, fileName);
+	WritePrivateProfileString(_T("A0 Registers"), _T("TX_REG1_15-8"), m_pRaw->m_strTxReg1Mid, fileName);
+	WritePrivateProfileString(_T("A0 Registers"), _T("TX_REG1_7-0"), m_pRaw->m_strTxReg1Bot, fileName);
+	WritePrivateProfileString(_T("A0 Registers"), _T("BIAS_REG1_0"), m_pRaw->m_strBiasReg1, fileName);
+	WritePrivateProfileString(_T("A0 Registers"), _T("BIAS_REG2_7-0"), m_pRaw->m_strBiasReg2, fileName);
+	WritePrivateProfileString(_T("A0 Registers"), _T("BIAS_REG3_7-0"), m_pRaw->m_strBiasReg3, fileName);
+	WritePrivateProfileString(_T("A0 Registers"), _T("BIAS_REG4_7-0"), m_pRaw->m_strBiasReg4, fileName);
+	WritePrivateProfileString(_T("A0 Registers"), _T("BIAS_REG5_7-0"), m_pRaw->m_strBiasReg5, fileName);
+	WritePrivateProfileString(_T("A0 Registers"), _T("BIAS_REG6_7-0"), m_pRaw->m_strBiasReg6, fileName);
+	WritePrivateProfileString(_T("A0 Registers"), _T("BIAS_REG7_7-0"), m_pRaw->m_strBiasReg7, fileName);
+	WritePrivateProfileString(_T("A0 Registers"), _T("BIAS_REG8_7-0"), m_pRaw->m_strBiasReg8, fileName);
+	WritePrivateProfileString(_T("A0 Registers"), _T("BIAS_REG9_7-0"), m_pRaw->m_strBiasReg9, fileName);
+}
+
+
+void CgZeroMasterDlg::SaveRegisterB0(CString fileName)
+{
+	ASSERT(m_chip == _T("B0"));
 	WritePrivateProfileString(_T("B0 Registers"), _T("RX_REG1_4-0"), m_pRaw->m_strRxReg1, fileName);
 	WritePrivateProfileString(_T("B0 Registers"), _T("TX_REG1_23-16"), m_pRaw->m_strTxReg1Top, fileName);
 	WritePrivateProfileString(_T("B0 Registers"), _T("TX_REG1_15-8"), m_pRaw->m_strTxReg1Mid, fileName);
@@ -411,6 +431,15 @@ void CgZeroMasterDlg::SaveRegisters(CString fileName)
 	WritePrivateProfileString(_T("B0 Registers"), _T("BIAS_REG6_7-0"), m_pRaw->m_strBiasReg6, fileName);
 	WritePrivateProfileString(_T("B0 Registers"), _T("BIAS_REG7_7-0"), m_pRaw->m_strBiasReg7, fileName);
 	WritePrivateProfileString(_T("B0 Registers"), _T("BIAS_REG8_7-0"), m_pRaw->m_strBiasReg8, fileName);
+}
+
+
+void CgZeroMasterDlg::SaveRegisters(CString fileName)
+{
+	ASSERT(m_chip == _T("A0") || m_chip == _T("B0"));
+
+	if (m_chip == _T("A0")) SaveRegisterA0(fileName);
+	if (m_chip == _T("B0")) SaveRegisterB0(fileName);
 }
 
 void CgZeroMasterDlg::OnMainmenuLoad()

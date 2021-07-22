@@ -58,6 +58,8 @@ public:
 	afx_msg void OnContextMenu(CWnd* /*pWnd*/, CPoint /*point*/);
 	afx_msg void OnMainmenuClearlog();
 	afx_msg void OnMainmenuSave();
+	void SaveRegisterA0(CString fileName);
+	void SaveRegisterB0(CString fileName);
 	void SaveRegisters(CString fileName);
 	afx_msg void OnMainmenuLoad();
 	BOOL LoadValue(TCHAR *regTagName, CString *pTargetStr, CString fileName);
