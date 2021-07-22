@@ -143,8 +143,8 @@ public:
 	void UpdateCMLInterfaceStageCurrent(CRegister& reg);
 	void UpdateRegisters();
 	static void UpdateRxReg1(CString strRxReg1, CRegister& reg);
-	static void UpdateTxReg1(CString strTxReg1Top, CString strTxReg1Mid, CString strTxReg1Bot, CRegister& reg);
-	static void UpdateTxReg2(CString strTxReg2Top, CString strTxReg2Mid, CString strTxReg2Bot, CRegister& reg);
+	static void UpdateTxReg1(CString strTxRegTop, CString strTxRegMid, CString strTxRegBot, CRegister& reg);
+	static void UpdateTxReg2(CString strTxRegTop, CString strTxRegMid, CString strTxRegBot, CRegister& reg);
 	static void UpdateBiasReg1(CString strBiasReg1, CRegister& reg);
 	static void UpdateBiasReg2(CString strBiasReg2, CRegister& reg);
 	static void UpdateBiasReg3(CString strBiasReg3, CRegister& reg);

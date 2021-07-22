@@ -430,22 +430,22 @@ void CSemantic::UpdateRxReg1(CString strRxReg1, CRegister &reg)
 	reg.m_nLnaGain = val & 0x07;
 }
 
-void CSemantic::UpdateTxReg1(CString strTxReg1Top, CString strTxReg1Mid, CString strTxReg1Bot, CRegister& reg)
+void CSemantic::UpdateTxReg1(CString strTxRegTop, CString strTxRegMid, CString strTxRegBot, CRegister& reg)
 {
-	int mid = _tcstol(strTxReg1Mid.GetBuffer(), NULL, 16) & 0xff;
-	int bot = _tcstol(strTxReg1Bot.GetBuffer(), NULL, 16) & 0xff;
+	int mid = _tcstol(strTxRegMid.GetBuffer(), NULL, 16) & 0xff;
+	int bot = _tcstol(strTxRegBot.GetBuffer(), NULL, 16) & 0xff;
 
-	reg.m_nDutyCycle = _tcstol(strTxReg1Top.GetBuffer(), NULL, 16) & 0xff;
+	reg.m_nDutyCycle = _tcstol(strTxRegTop.GetBuffer(), NULL, 16) & 0xff;
 	reg.m_nVcoOsc = (bot & 0xe0) >> 5 | (mid << 3);
 	reg.m_nRegRef = (bot & 0x10) >> 4;
 	reg.m_nVcoVdd = bot & 0x0f;
 }
 
-void CSemantic::UpdateTxReg2(CString strTxReg2Top, CString strTxReg2Mid, CString strTxReg2Bot, CRegister& reg)
+void CSemantic::UpdateTxReg2(CString strTxRegTop, CString strTxRegMid, CString strTxRegBot, CRegister& reg)
 {
-	int top = _tcstol(strTxReg2Top.GetBuffer(), NULL, 16) & 0x01;
-	int mid = _tcstol(strTxReg2Mid.GetBuffer(), NULL, 16) & 0xff;
-	int bot = _tcstol(strTxReg2Bot.GetBuffer(), NULL, 16) & 0xff;
+	int top = _tcstol(strTxRegTop.GetBuffer(), NULL, 16) & 0x01;
+	int mid = _tcstol(strTxRegMid.GetBuffer(), NULL, 16) & 0xff;
+	int bot = _tcstol(strTxRegBot.GetBuffer(), NULL, 16) & 0xff;
 
 	reg.m_nVcoPower = top;
 	reg.m_nModPower = (mid & 0x80) >> 7;
