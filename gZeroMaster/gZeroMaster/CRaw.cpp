@@ -710,7 +710,7 @@ void CRaw::OnBnClickedBit0Button()
 void CRaw::OnBnClickedReadAllButton()
 {
 	ResetValues();
-	ReadResisters();
+	if (!ReadResisters()) Parent()->L(_T("Error occured in reading registers"));
 	Parent()->m_pSemantic->UpdateRegisters();
 }
 
