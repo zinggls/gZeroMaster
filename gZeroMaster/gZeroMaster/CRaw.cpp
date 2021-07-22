@@ -229,7 +229,6 @@ void CRaw::PrintRegister(int addr, CString name, CString* pValueStr)
 
 BOOL CRaw::PrintRegister(int addr, CString name, CString* pValueStr, int maxLoop)
 {
-	int value;
 	char buffer[3];
 	LONG lLastError = ReadRegister(addr, 2, buffer, maxLoop);
 	if (lLastError != ERROR_SUCCESS) {
@@ -237,7 +236,7 @@ BOOL CRaw::PrintRegister(int addr, CString name, CString* pValueStr, int maxLoop
 		return FALSE;
 	}
 
-	value = (int)strtol(buffer, NULL, 16);
+	int value = (int)strtol(buffer, NULL, 16);
 	pValueStr->Format(_T("0x%02x"), value);
 
 	CString str;
