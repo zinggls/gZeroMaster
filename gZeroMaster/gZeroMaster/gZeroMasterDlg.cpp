@@ -151,6 +151,8 @@ BOOL CgZeroMasterDlg::OnInitDialog()
 	m_pRaw->Create(IDD_RAW_DIALOG, &m_tab);
 	m_pRaw->MoveWindow(0, 20, rect.Width(), rect.Height());
 	m_pRaw->ShowWindow(SW_HIDE);
+
+	OnCbnSelchangeChipCombo();
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
 
