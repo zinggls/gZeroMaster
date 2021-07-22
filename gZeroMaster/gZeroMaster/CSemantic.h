@@ -42,6 +42,8 @@ public:
 	int m_nLaHLDataRateCur;
 	int m_nCMOSGainStageCur;
 	int m_nCMLInterfaceStageCur;
+	int m_nFdCoreCur;
+	int m_nFdBufCur;
 };
 
 class CSemantic : public CDialogEx
@@ -143,7 +145,7 @@ public:
 	void UpdateCMLInterfaceStageCurrent(CRegister& reg);
 	void UpdateRegisters();
 	static void UpdateRxReg1(CString strRxReg1, CRegister& reg);
-	static void UpdateTxReg1(CString strTxRegTop, CString strTxRegMid, CString strTxRegBot, CRegister& reg);
+	static void UpdateTxReg1(CString strTxRegTop, CString strTxRegMid, CString strTxRegBot, CRegister& reg, CString chip);
 	static void UpdateTxReg2(CString strTxRegTop, CString strTxRegMid, CString strTxRegBot, CRegister& reg);
 	static void UpdateBiasReg1(CString strBiasReg1, CRegister& reg);
 	static void UpdateBiasReg2(CString strBiasReg2, CRegister& reg);
@@ -153,6 +155,7 @@ public:
 	static void UpdateBiasReg6(CString strBiasReg6, CRegister& reg);
 	static void UpdateBiasReg7(CString strBiasReg7, CRegister& reg);
 	static void UpdateBiasReg8(CString strBiasReg8, CRegister& reg);
+	static void UpdateBiasReg9(CString strBiasReg9, CRegister& reg);
 	void ControlLabelEnable(BOOL b);
 	void ControlValueEnable(BOOL b);
 	afx_msg void OnBnClickedSemanticEditCheck();

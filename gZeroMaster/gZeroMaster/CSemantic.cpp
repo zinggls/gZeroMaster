@@ -176,9 +176,13 @@ BOOL CSemantic::OnInitDialog()
 
 void CSemantic::Parse(CRaw* pRaw, CRegister& reg)
 {
+	ASSERT(pRaw->Parent()->m_chip == _T("A0") || pRaw->Parent()->m_chip == _T("B0"));
+
 	UpdateRxReg1(pRaw->m_strRxReg1, reg);
-	UpdateTxReg1(pRaw->m_strTxReg1Top, pRaw->m_strTxReg1Mid, pRaw->m_strTxReg1Bot, reg);
-	UpdateTxReg2(pRaw->m_strTxReg2Top, pRaw->m_strTxReg2Mid, pRaw->m_strTxReg2Bot, reg);
+	UpdateTxReg1(pRaw->m_strTxReg1Top, pRaw->m_strTxReg1Mid, pRaw->m_strTxReg1Bot, reg, pRaw->Parent()->m_chip);
+	if (pRaw->Parent()->m_chip == _T("B0"))
+		UpdateTxReg2(pRaw->m_strTxReg2Top, pRaw->m_strTxReg2Mid, pRaw->m_strTxReg2Bot, reg);
+
 	UpdateBiasReg1(pRaw->m_strBiasReg1, reg);
 	UpdateBiasReg2(pRaw->m_strBiasReg2, reg);
 	UpdateBiasReg3(pRaw->m_strBiasReg3, reg);
@@ -187,6 +191,8 @@ void CSemantic::Parse(CRaw* pRaw, CRegister& reg)
 	UpdateBiasReg6(pRaw->m_strBiasReg6, reg);
 	UpdateBiasReg7(pRaw->m_strBiasReg7, reg);
 	UpdateBiasReg8(pRaw->m_strBiasReg8, reg);
+	if (pRaw->Parent()->m_chip == _T("A0"))
+		UpdateBiasReg9(pRaw->m_strBiasReg9, reg);
 }
 
 
@@ -430,15 +436,27 @@ void CSemantic::UpdateRxReg1(CString strRxReg1, CRegister &reg)
 	reg.m_nLnaGain = val & 0x07;
 }
 
-void CSemantic::UpdateTxReg1(CString strTxRegTop, CString strTxRegMid, CString strTxRegBot, CRegister& reg)
+void CSemantic::UpdateTxReg1(CString strTxRegTop, CString strTxRegMid, CString strTxRegBot, CRegister& reg, CString chip)
 {
+	ASSERT(chip == _T("A0") || chip == _T("B0"));
 	int mid = _tcstol(strTxRegMid.GetBuffer(), NULL, 16) & 0xff;
 	int bot = _tcstol(strTxRegBot.GetBuffer(), NULL, 16) & 0xff;
 
 	reg.m_nDutyCycle = _tcstol(strTxRegTop.GetBuffer(), NULL, 16) & 0xff;
-	reg.m_nVcoOsc = (bot & 0xe0) >> 5 | (mid << 3);
-	reg.m_nRegRef = (bot & 0x10) >> 4;
-	reg.m_nVcoVdd = bot & 0x0f;
+	if (chip == _T("A0")) {
+		reg.m_nModPower = (mid & 0x80) >> 7;
+		reg.m_nTestBufPower = (mid & 0x40) >> 6;
+		reg.m_nDataInpSel = (mid & 0x20) >> 5;
+		reg.m_nPaPower = (mid & 0x10) >> 4;
+		reg.m_nPaGainCon2 = mid & 0x0f;
+		reg.m_nPaGainCon1 = (bot & 0xf0) >> 4;
+		reg.m_nTestBufCur = bot & 0x0f;
+	}
+	else if (chip == _T("B0")) {
+		reg.m_nVcoOsc = (bot & 0xe0) >> 5 | (mid << 3);
+		reg.m_nRegRef = (bot & 0x10) >> 4;
+		reg.m_nVcoVdd = bot & 0x0f;
+	}
 }
 
 void CSemantic::UpdateTxReg2(CString strTxRegTop, CString strTxRegMid, CString strTxRegBot, CRegister& reg)
@@ -514,6 +532,14 @@ void CSemantic::UpdateBiasReg7(CString strBiasReg7, CRegister& reg)
 void CSemantic::UpdateBiasReg8(CString strBiasReg8, CRegister& reg)
 {
 	reg.m_nCMLInterfaceStageCur = _tcstol(strBiasReg8.GetBuffer(), NULL, 16) & 0xff;
+}
+
+void CSemantic::UpdateBiasReg9(CString strBiasReg9, CRegister& reg)
+{
+	int reg9 = _tcstol(strBiasReg9.GetBuffer(), NULL, 16) & 0xff;
+
+	reg.m_nFdCoreCur = (reg9 & 0xf0) >> 4;
+	reg.m_nFdBufCur = reg9 & 0x0f;
 }
 
 void CSemantic::ControlLabelEnable(BOOL b)
