@@ -145,6 +145,8 @@ public:
 	void UpdateLaHLDataRateCurrent(CRegister& reg);
 	void UpdateCMOSGainStageCurrent(CRegister& reg);
 	void UpdateCMLInterfaceStageCurrent(CRegister& reg);
+	void UpdateFdCoreCurrent(CRegister& reg);
+	void UpdateFdBufferCurrent(CRegister& reg);
 	void UpdateRegisters();
 	static void UpdateRxReg1(CString strRxReg1, CRegister& reg);
 	static void UpdateTxReg1(CString strTxRegTop, CString strTxRegMid, CString strTxRegBot, CRegister& reg, CString chip);

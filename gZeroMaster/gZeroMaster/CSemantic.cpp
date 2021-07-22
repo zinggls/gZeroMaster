@@ -382,6 +382,18 @@ void CSemantic::UpdateCMLInterfaceStageCurrent(CRegister& reg)
 }
 
 
+void CSemantic::UpdateFdCoreCurrent(CRegister& reg)
+{
+	m_strFdCoreCur.Format(_T("0x%02x"), reg.m_nFdCoreCur);
+}
+
+
+void CSemantic::UpdateFdBufferCurrent(CRegister& reg)
+{
+	m_strFdBufCur.Format(_T("0x%02x"), reg.m_nFdBufCur);
+}
+
+
 void CSemantic::UpdateRegisters()
 {
 	ASSERT(Parent());
@@ -428,6 +440,9 @@ void CSemantic::UpdateRegisters()
 	UpdateCMOSGainStageCurrent(reg);
 
 	UpdateCMLInterfaceStageCurrent(reg);
+
+	UpdateFdCoreCurrent(reg);
+	UpdateFdBufferCurrent(reg);
 	UpdateData(FALSE);
 }
 
