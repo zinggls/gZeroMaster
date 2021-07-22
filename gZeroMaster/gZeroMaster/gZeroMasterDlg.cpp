@@ -284,28 +284,22 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 			lLastError = m_serial.SetupReadTimeouts(CSerial::EReadTimeoutNonblocking);
 			if (lLastError != ERROR_SUCCESS) return ErrorMsg(m_serial.GetLastError(), _T("Unable to set COM-port read timeout"));
 
-			char buffer[7+1];
-			if ((lLastError = m_pRaw->ReadRegister(CHIP_MODEL_ADDRESS, CHIP_MODEL_INFO_SIZE, buffer, MAX_LOOP)) == ERROR_SUCCESS) {
-				m_chip = CString(buffer).Right(2);
-				m_pRaw->OnChipConnect(m_chip);
-				m_pSemantic->OnChipConnect(m_chip);
-				L(_T("Chip Model:") + m_chip);
-				if (m_pRaw->ReadResisters()) {
-					m_pSemantic->UpdateRegisters();
-					m_pSemantic->ControlLabelEnable(TRUE);
-					m_pSemantic->ControlValueEnable(FALSE);
-					m_pSemantic->GetDlgItem(IDC_SEMANTIC_EDIT_CHECK)->EnableWindow(TRUE);
-					m_pRaw->GetDlgItem(IDC_READ_ALL_BUTTON)->ShowWindow(SW_SHOW);
-					m_pSemantic->GetDlgItem(IDC_READ_ALL_BUTTON)->ShowWindow(SW_SHOW);
-					m_pSemantic->GetDlgItem(IDC_WRITE_ALL_BUTTON)->ShowWindow(SW_SHOW);
-				}
-				else {
-					L(_T("Can't read resgisters"));
-					SerialClose(str);
-				}
+			OnCbnSelchangeChipCombo();
+			ASSERT(m_chip == _T("A0") || m_chip == _T("B0"));
+			m_pRaw->OnChipConnect(m_chip);
+			m_pSemantic->OnChipConnect(m_chip);
+			L(_T("Chip Model:") + m_chip);
+			if (m_pRaw->ReadResisters()) {
+				m_pSemantic->UpdateRegisters();
+				m_pSemantic->ControlLabelEnable(TRUE);
+				m_pSemantic->ControlValueEnable(FALSE);
+				m_pSemantic->GetDlgItem(IDC_SEMANTIC_EDIT_CHECK)->EnableWindow(TRUE);
+				m_pRaw->GetDlgItem(IDC_READ_ALL_BUTTON)->ShowWindow(SW_SHOW);
+				m_pSemantic->GetDlgItem(IDC_READ_ALL_BUTTON)->ShowWindow(SW_SHOW);
+				m_pSemantic->GetDlgItem(IDC_WRITE_ALL_BUTTON)->ShowWindow(SW_SHOW);
 			}
 			else {
-				ErrorMsg(lLastError, _T("Can't read Chip Information"));
+				L(_T("Can't read resgisters"));
 				SerialClose(str);
 			}
 		}
