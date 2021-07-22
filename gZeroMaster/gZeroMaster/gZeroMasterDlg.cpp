@@ -86,6 +86,7 @@ BEGIN_MESSAGE_MAP(CgZeroMasterDlg, CDialogEx)
 	ON_COMMAND(ID_MAINMENU_SAVE, &CgZeroMasterDlg::OnMainmenuSave)
 	ON_COMMAND(ID_MAINMENU_LOAD, &CgZeroMasterDlg::OnMainmenuLoad)
 	ON_STN_DBLCLK(IDC_LOGO_STATIC, &CgZeroMasterDlg::OnStnDblclickLogoStatic)
+	ON_CBN_SELCHANGE(IDC_CHIP_COMBO, &CgZeroMasterDlg::OnCbnSelchangeChipCombo)
 END_MESSAGE_MAP()
 
 
@@ -552,4 +553,11 @@ void CgZeroMasterDlg::OnStnDblclickLogoStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	::ShellExecute(NULL, _T("open"), _T("https://www.zinggls.com"), NULL, NULL, SW_SHOW);
+}
+
+
+void CgZeroMasterDlg::OnCbnSelchangeChipCombo()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	m_chipSelect.GetLBText(m_chipSelect.GetCurSel(), m_chip);
 }

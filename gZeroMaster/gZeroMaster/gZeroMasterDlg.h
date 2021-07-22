@@ -69,4 +69,5 @@ public:
 	void CheckBiasReg1(CString strBiasReg1);
 	BOOL LoadRegisters(CString fileName);
 	afx_msg void OnStnDblclickLogoStatic();
+	afx_msg void OnCbnSelchangeChipCombo();
 };
