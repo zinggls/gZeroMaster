@@ -146,6 +146,8 @@ BEGIN_MESSAGE_MAP(CSemantic, CDialogEx)
 	ON_CBN_SELCHANGE(IDC_CONTROL_COMBO, &CSemantic::OnCbnSelchangeControlCombo)
 	ON_BN_CLICKED(IDC_WRITE_BUTTON, &CSemantic::OnBnClickedWriteButton)
 	ON_BN_CLICKED(IDC_WRITE_ALL_BUTTON, &CSemantic::OnBnClickedWriteAllButton)
+	ON_STN_CLICKED(IDC_FD_CORE_CURRENT_VALUE_STATIC, &CSemantic::OnStnClickedFdCoreCurrentValueStatic)
+	ON_STN_CLICKED(IDC_FD_BUFFER_CURRENT_VALUE_STATIC, &CSemantic::OnStnClickedFdBufferCurrentValueStatic)
 END_MESSAGE_MAP()
 
 
@@ -1108,6 +1110,18 @@ void CSemantic::OnStnClickedCmlInterfaceStageCurrentValueStatic()
 	GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_SHOW);
 	GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE);
 	UpdateData(FALSE);
+}
+
+
+void CSemantic::OnStnClickedFdCoreCurrentValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+}
+
+
+void CSemantic::OnStnClickedFdBufferCurrentValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 }
 
 

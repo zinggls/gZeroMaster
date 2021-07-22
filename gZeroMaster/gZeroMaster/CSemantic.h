@@ -187,6 +187,8 @@ public:
 	afx_msg void OnStnClickedLaHlDataRateCurrentValueStatic();
 	afx_msg void OnStnClickedCmosGainStageCurrentValueStatic();
 	afx_msg void OnStnClickedCmlInterfaceStageCurrentValueStatic();
+	afx_msg void OnStnClickedFdCoreCurrentValueStatic();
+	afx_msg void OnStnClickedFdBufferCurrentValueStatic();
 	afx_msg void OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar);
 	int SliderPos();
 	int SliderValueUpdate();
