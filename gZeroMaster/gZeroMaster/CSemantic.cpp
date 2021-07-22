@@ -2199,6 +2199,18 @@ int CSemantic::CML()
 }
 
 
+int CSemantic::FdCore()
+{
+	return Read4BitValue(m_strFdCoreCur);
+}
+
+
+int CSemantic::FdBuf()
+{
+	return Read4BitValue(m_strFdBufCur);
+}
+
+
 void CSemantic::OnChipConnect(CString chipModel)
 {
 	ASSERT(chipModel == _T("A0") || chipModel == _T("B0"));

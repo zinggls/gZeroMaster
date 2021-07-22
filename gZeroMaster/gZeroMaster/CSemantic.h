@@ -277,5 +277,7 @@ public:
 	int HL();
 	int CMOS();
 	int CML();
+	int FdCore();
+	int FdBuf();
 	void OnChipConnect(CString chipModel);
 };
