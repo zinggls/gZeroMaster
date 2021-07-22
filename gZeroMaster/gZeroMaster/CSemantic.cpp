@@ -1549,6 +1549,8 @@ void CSemantic::ResetValues()
 	m_strLaHLDataRateCurrent.Empty();
 	m_strCMOSGainStageCurrent.Empty();
 	m_strCMLInterfaceStageCurrent.Empty();
+	m_strFdCoreCur.Empty();
+	m_strFdBufCur.Empty();
 	UpdateData(FALSE);
 }
 
