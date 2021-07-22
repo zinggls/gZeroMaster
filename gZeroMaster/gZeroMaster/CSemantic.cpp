@@ -1784,6 +1784,18 @@ int CSemantic::OnNewCML(int val, int newVal)
 }
 
 
+int CSemantic::OnNewFdCore(int val, int newVal)
+{
+	return (newVal & 0x0f) << 4 | (val & 0x0f);
+}
+
+
+int CSemantic::OnNewFdBuf(int val, int newVal)
+{
+	return (val & 0xf0) | (newVal & 0x0f);
+}
+
+
 BOOL CSemantic::UpdateSemanticValue(int addr, int (CSemantic::* fpNewRegVal)(int, int), int newVal, void (CSemantic::* fpUpdateData)(CRegister&))
 {
 	int oldRegVal;
@@ -1953,6 +1965,14 @@ BOOL CSemantic::UpdateSelected(SelectStatic selected,BOOL bCommonControl)
 	case SelectStatic::CML:
 		bCommonControl ? updateValue = SliderPos() : updateValue = CML();
 		bRtn = UpdateSemanticValue(24, &CSemantic::OnNewCML, updateValue, &CSemantic::UpdateCMLInterfaceStageCurrent);
+		break;
+	case SelectStatic::FdCore:
+		bCommonControl ? updateValue = SliderPos() : updateValue = FdCore();
+		bRtn = UpdateSemanticValue(25, &CSemantic::OnNewFdCore, updateValue, &CSemantic::UpdateFdCoreCurrent);
+		break;
+	case SelectStatic::FdBuf:
+		bCommonControl ? updateValue = SliderPos() : updateValue = FdBuf();
+		bRtn = UpdateSemanticValue(25, &CSemantic::OnNewFdBuf, updateValue, &CSemantic::UpdateFdBufferCurrent);
 		break;
 	default:
 		break;

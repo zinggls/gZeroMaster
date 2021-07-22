@@ -239,6 +239,8 @@ public:
 	int OnNewHL(int val, int newVal);
 	int OnNewCMOS(int val, int newVal);
 	int OnNewCML(int val, int newVal);
+	int OnNewFdCore(int val, int newVal);
+	int OnNewFdBuf(int val, int newVal);
 	BOOL UpdateSemanticValue(int addr, int (CSemantic::* fpNewRegVal)(int, int), int newVal, void (CSemantic::* fpUpdateData)(CRegister&));
 	afx_msg void OnBnClickedWriteButton();
 	afx_msg void OnBnClickedWriteAllButton();
