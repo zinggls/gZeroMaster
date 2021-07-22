@@ -1846,6 +1846,8 @@ BOOL CSemantic::UpdateSemanticValue(int addr, int (CSemantic::* fpNewRegVal)(int
 
 BOOL CSemantic::UpdateSelected(SelectStatic selected,BOOL bCommonControl)
 {
+	ASSERT(Parent()->m_chip == _T("A0") || Parent()->m_chip == _T("B0"));
+
 	BOOL bRtn = TRUE;
 	int updateValue;
 	switch (selected) {
@@ -1859,12 +1861,16 @@ BOOL CSemantic::UpdateSelected(SelectStatic selected,BOOL bCommonControl)
 		bRtn = UpdateSemanticValue(2, &CSemantic::OnNewLimAmp, updateValue, &CSemantic::UpdateLimitAmp);
 		break;
 	case SelectStatic::RegRef:
-		bCommonControl ? updateValue = ComboSel() : updateValue = RegRef();
-		bRtn = UpdateSemanticValue(5, &CSemantic::OnNewRegRef, updateValue, &CSemantic::UpdateRegRefVolt);
+		if (Parent()->m_chip == _T("B0")) {
+			bCommonControl ? updateValue = ComboSel() : updateValue = RegRef();
+			bRtn = UpdateSemanticValue(5, &CSemantic::OnNewRegRef, updateValue, &CSemantic::UpdateRegRefVolt);
+		}
 		break;
 	case SelectStatic::VcoPow:
-		bCommonControl ? updateValue = ComboSel() : updateValue = VcoPow();
-		bRtn = UpdateSemanticValue(13, &CSemantic::OnNewVcoPow, updateValue, &CSemantic::UpdateVcoPower);
+		if (Parent()->m_chip == _T("B0")) {
+			bCommonControl ? updateValue = ComboSel() : updateValue = VcoPow();
+			bRtn = UpdateSemanticValue(13, &CSemantic::OnNewVcoPow, updateValue, &CSemantic::UpdateVcoPower);
+		}
 		break;
 	case SelectStatic::ModPow:
 		bCommonControl ? updateValue = ComboSel() : updateValue = ModPow();
@@ -1897,14 +1903,18 @@ BOOL CSemantic::UpdateSelected(SelectStatic selected,BOOL bCommonControl)
 		bRtn = UpdateSemanticValue(7, &CSemantic::OnNewDutyCycle, updateValue, &CSemantic::UpdateDutyCycle);
 		break;
 	case SelectStatic::VcoOsc:
-		bCommonControl ? updateValue = SliderPos() : updateValue = VcoOsc();
-		bRtn = UpdateSemanticValue(6, &CSemantic::OnNewVcoOscUp, updateValue, NULL);
-		ASSERT(bRtn);
-		bRtn = UpdateSemanticValue(5, &CSemantic::OnNewVcoOscDown, updateValue, &CSemantic::UpdateVcoOscFreq);
+		if (Parent()->m_chip == _T("B0")) {
+			bCommonControl ? updateValue = SliderPos() : updateValue = VcoOsc();
+			bRtn = UpdateSemanticValue(6, &CSemantic::OnNewVcoOscUp, updateValue, NULL);
+			ASSERT(bRtn);
+			bRtn = UpdateSemanticValue(5, &CSemantic::OnNewVcoOscDown, updateValue, &CSemantic::UpdateVcoOscFreq);
+		}
 		break;
 	case SelectStatic::VcoVdd:
-		bCommonControl ? updateValue = SliderPos() : updateValue = VcoVdd();
-		bRtn = UpdateSemanticValue(5, &CSemantic::OnNewVcoVdd, updateValue, &CSemantic::UpdateVcoVdd);
+		if (Parent()->m_chip == _T("B0")) {
+			bCommonControl ? updateValue = SliderPos() : updateValue = VcoVdd();
+			bRtn = UpdateSemanticValue(5, &CSemantic::OnNewVcoVdd, updateValue, &CSemantic::UpdateVcoVdd);
+		}
 		break;
 	case SelectStatic::PaGain1:
 		bCommonControl ? updateValue = SliderPos() : updateValue = PaGain1();
@@ -1975,12 +1985,16 @@ BOOL CSemantic::UpdateSelected(SelectStatic selected,BOOL bCommonControl)
 		bRtn = UpdateSemanticValue(24, &CSemantic::OnNewCML, updateValue, &CSemantic::UpdateCMLInterfaceStageCurrent);
 		break;
 	case SelectStatic::FdCore:
-		bCommonControl ? updateValue = SliderPos() : updateValue = FdCore();
-		bRtn = UpdateSemanticValue(25, &CSemantic::OnNewFdCore, updateValue, &CSemantic::UpdateFdCoreCurrent);
+		if (Parent()->m_chip == _T("A0")) {
+			bCommonControl ? updateValue = SliderPos() : updateValue = FdCore();
+			bRtn = UpdateSemanticValue(25, &CSemantic::OnNewFdCore, updateValue, &CSemantic::UpdateFdCoreCurrent);
+		}
 		break;
 	case SelectStatic::FdBuf:
-		bCommonControl ? updateValue = SliderPos() : updateValue = FdBuf();
-		bRtn = UpdateSemanticValue(25, &CSemantic::OnNewFdBuf, updateValue, &CSemantic::UpdateFdBufferCurrent);
+		if (Parent()->m_chip == _T("A0")) {
+			bCommonControl ? updateValue = SliderPos() : updateValue = FdBuf();
+			bRtn = UpdateSemanticValue(25, &CSemantic::OnNewFdBuf, updateValue, &CSemantic::UpdateFdBufferCurrent);
+		}
 		break;
 	default:
 		break;
@@ -2004,7 +2018,7 @@ void CSemantic::OnBnClickedWriteButton()
 void CSemantic::OnBnClickedWriteAllButton()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	for (int i = 1; i <= static_cast<int>(SelectStatic::CML); i++) {
+	for (int i = 1; i <= static_cast<int>(SelectStatic::FdBuf); i++) {
 		UpdateSelected(static_cast<SelectStatic>(i), FALSE);
 	}
 	Parent()->L(_T("All registers are updated"));
