@@ -577,6 +577,8 @@ void CSemantic::ControlLabelEnable(BOOL b)
 	GetDlgItem(IDC_LA_HL_DATA_RATE_CURRENT_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_CMOS_GAIN_STAGE_CURRENT_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_CML_INTERFACE_STAGE_CURRENT_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_FD_CORE_CURRENT_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_FD_BUFFER_CURRENT_STATIC)->EnableWindow(b);
 }
 
 void CSemantic::ControlValueEnable(BOOL b)
@@ -614,6 +616,8 @@ void CSemantic::ControlValueEnable(BOOL b)
 	GetDlgItem(IDC_LA_HL_DATA_RATE_CURRENT_VALUE_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_CMOS_GAIN_STAGE_CURRENT_VALUE_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_CML_INTERFACE_STAGE_CURRENT_VALUE_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_FD_CORE_CURRENT_VALUE_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_FD_BUFFER_CURRENT_VALUE_STATIC)->EnableWindow(b);
 }
 
 void CSemantic::OnBnClickedSemanticEditCheck()
