@@ -1215,6 +1215,12 @@ void CSemantic::OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
 		case SelectStatic::CML:
 			(strCur == m_strCMLInterfaceStageCurrent) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
 			break;
+		case SelectStatic::FdCore:
+			(strCur == m_strFdCoreCur) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
+			break;
+		case SelectStatic::FdBuf:
+			(strCur == m_strFdBufCur) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
+			break;
 		default:
 			break;
 		}
