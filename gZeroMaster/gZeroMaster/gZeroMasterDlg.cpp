@@ -70,6 +70,7 @@ void CgZeroMasterDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_LOG_LIST, m_log);
 	DDX_Control(pDX, IDC_COM_COMBO, m_comPort);
 	DDX_Control(pDX, IDC_TAB, m_tab);
+	DDX_Control(pDX, IDC_CHIP_COMBO, m_chipSelect);
 }
 
 BEGIN_MESSAGE_MAP(CgZeroMasterDlg, CDialogEx)

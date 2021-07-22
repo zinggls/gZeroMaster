@@ -163,6 +163,7 @@
 #define IDC_LOGO_STATIC                 1145
 #define IDC_FD_BUFFER_CURRENT_STATIC    1145
 #define IDC_FD_CORE_CURRENT_VALUE_STATIC 1146
+#define IDC_CHIP_COMBO                  1146
 #define IDC_FD_BUFFER_CURRENT_VALUE_STATIC 1147
 #define ID_MAINMENU_CLEARLOG            32771
 #define ID_MAINMENU_SAVE                32772
@@ -174,7 +175,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        139
 #define _APS_NEXT_COMMAND_VALUE         32774
-#define _APS_NEXT_CONTROL_VALUE         1146
+#define _APS_NEXT_CONTROL_VALUE         1147
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

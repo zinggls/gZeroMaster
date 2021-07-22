@@ -46,6 +46,7 @@ public:
 	CSemantic *m_pSemantic;
 	CRaw *m_pRaw;
 	CString m_chip;
+	CComboBox m_chipSelect;
 
 	void L(const TCHAR* str, ...);
 	void Reset();
