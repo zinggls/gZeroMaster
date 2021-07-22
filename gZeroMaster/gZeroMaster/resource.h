@@ -159,7 +159,11 @@
 #define IDC_CONTROL_COMBO               1142
 #define IDC_WRITE_ALL_BUTTON            1143
 #define IDC_SYSLINK1                    1144
+#define IDC_FD_CORE_CURRENT_STATIC      1144
 #define IDC_LOGO_STATIC                 1145
+#define IDC_FD_BUFFER_CURRENT_STATIC    1145
+#define IDC_FD_CORE_CURRENT_VALUE_STATIC 1146
+#define IDC_FD_BUFFER_CURRENT_VALUE_STATIC 1147
 #define ID_MAINMENU_CLEARLOG            32771
 #define ID_MAINMENU_SAVE                32772
 #define ID_MAINMENU_LOAD                32773
