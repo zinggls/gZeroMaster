@@ -1116,12 +1116,30 @@ void CSemantic::OnStnClickedCmlInterfaceStageCurrentValueStatic()
 void CSemantic::OnStnClickedFdCoreCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	m_selected = SelectStatic::FdCore;
+	ShowSlider(SW_SHOW);
+	Invalidate();
+
+	SetControlSlider(0, 15, m_strFdCoreCur, 1, 1, 10);
+	GetDlgItem(IDC_FD_CORE_CURRENT_STATIC)->GetWindowText(m_strSelectedStatic);
+	GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_SHOW);
+	GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE);
+	UpdateData(FALSE);
 }
 
 
 void CSemantic::OnStnClickedFdBufferCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	m_selected = SelectStatic::FdBuf;
+	ShowSlider(SW_SHOW);
+	Invalidate();
+
+	SetControlSlider(0, 15, m_strFdBufCur, 1, 1, 10);
+	GetDlgItem(IDC_FD_BUFFER_CURRENT_STATIC)->GetWindowText(m_strSelectedStatic);
+	GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_SHOW);
+	GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE);
+	UpdateData(FALSE);
 }
 
 
