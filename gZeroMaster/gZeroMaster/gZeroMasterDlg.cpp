@@ -121,6 +121,10 @@ BOOL CgZeroMasterDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// 작은 아이콘을 설정합니다.
 
 	// TODO: 여기에 추가 초기화 작업을 추가합니다.
+	m_chipSelect.AddString(_T("A0"));
+	m_chipSelect.AddString(_T("B0"));
+	m_chipSelect.SetCurSel(1);	//디폴트 선택은 B0
+
 	for (int i = 1; i <= MAX_COMPORT; i++) {
 		CString strVal;
 		strVal.Format(_T("COM%d"), i);
