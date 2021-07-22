@@ -763,6 +763,12 @@ HBRUSH CSemantic::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 	else if (pWnd->GetDlgCtrlID() == IDC_BIAS_BLOCK_ENABLE_VALUE_STATIC) {
 		SetColor(pDC, SelectStatic::BiasBlock);
 	}
+	else if (pWnd->GetDlgCtrlID() == IDC_FD_CORE_CURRENT_VALUE_STATIC) {
+		SetColor(pDC, SelectStatic::FdCore);
+	}
+	else if (pWnd->GetDlgCtrlID() == IDC_FD_BUFFER_CURRENT_VALUE_STATIC) {
+		SetColor(pDC, SelectStatic::FdBuf);
+	}
 
 	// TODO:  기본값이 적당하지 않으면 다른 브러시를 반환합니다.
 	return hbr;
