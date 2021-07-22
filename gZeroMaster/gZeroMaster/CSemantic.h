@@ -95,6 +95,8 @@ public:
 	CString m_strLaHLDataRateCurrent;
 	CString m_strCMOSGainStageCurrent;
 	CString m_strCMLInterfaceStageCurrent;
+	CString m_strFdCoreCur;
+	CString m_strFdBufCur;
 	CSliderCtrl m_controlSlider;
 	BOOL m_bSemanticEdit;
 

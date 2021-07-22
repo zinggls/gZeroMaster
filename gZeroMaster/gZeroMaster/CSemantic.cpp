@@ -42,6 +42,8 @@ CSemantic::CSemantic(CWnd* pParent /*=nullptr*/)
 	, m_strLaHLDataRateCurrent(_T(""))
 	, m_strCMOSGainStageCurrent(_T(""))
 	, m_strCMLInterfaceStageCurrent(_T(""))
+	, m_strFdCoreCur(_T(""))
+	, m_strFdBufCur(_T(""))
 	, m_bSemanticEdit(FALSE)
 	, m_selected(SelectStatic::None)
 	, m_strSelectedStatic(_T(""))
@@ -92,6 +94,8 @@ void CSemantic::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_LA_HL_DATA_RATE_CURRENT_VALUE_STATIC, m_strLaHLDataRateCurrent);
 	DDX_Text(pDX, IDC_CMOS_GAIN_STAGE_CURRENT_VALUE_STATIC, m_strCMOSGainStageCurrent);
 	DDX_Text(pDX, IDC_CML_INTERFACE_STAGE_CURRENT_VALUE_STATIC, m_strCMLInterfaceStageCurrent);
+	DDX_Text(pDX, IDC_FD_CORE_CURRENT_VALUE_STATIC, m_strFdCoreCur);
+	DDX_Text(pDX, IDC_FD_BUFFER_CURRENT_VALUE_STATIC, m_strFdBufCur);
 	DDX_Control(pDX, IDC_CONTROL_SLIDER, m_controlSlider);
 	DDX_Check(pDX, IDC_SEMANTIC_EDIT_CHECK, m_bSemanticEdit);
 	DDX_Text(pDX, IDC_SELECTED_STATIC, m_strSelectedStatic);
