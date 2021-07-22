@@ -2018,10 +2018,21 @@ void CSemantic::OnBnClickedWriteButton()
 void CSemantic::OnBnClickedWriteAllButton()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	int errCnt = 0;
+	CString str;
 	for (int i = 1; i <= static_cast<int>(SelectStatic::FdBuf); i++) {
-		UpdateSelected(static_cast<SelectStatic>(i), FALSE);
+		if (!UpdateSelected(static_cast<SelectStatic>(i), FALSE)) {
+			str.Format(_T("Update failed at SelectStatic:%d"),i);
+			Parent()->L(str);
+			errCnt++;
+		}
 	}
-	Parent()->L(_T("All registers are updated"));
+	if (errCnt == 0)
+		Parent()->L(_T("All registers are updated"));
+	else {
+		str.Format(_T("%d Update failures"), errCnt);
+		Parent()->L(str);
+	}
 }
 
 
