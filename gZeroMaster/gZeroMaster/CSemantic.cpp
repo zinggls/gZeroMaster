@@ -1816,13 +1816,17 @@ BOOL CSemantic::UpdateSemanticValue(int addr, int (CSemantic::* fpNewRegVal)(int
 		Parent()->L(_T("Error in WriteRegister"));
 	}
 	else {
+#ifdef DEBUG_READ
 		CString str;
 		str.Format(_T("ReadRegister Address:0x%02x..."), addr);
 		Parent()->L(str);
+#endif
 
-		Parent()->m_pRaw->ReadResister(addr);	//Blocking함수 호출
+		Parent()->m_pRaw->ReadRegister(addr);	//Blocking함수 호출
+#ifdef DEBUG_READ
 		str.Format(_T("ReadRegister Address:0x%02x done"), addr);
 		Parent()->L(str);
+#endif
 
 		if (fpUpdateData) {
 			CRegister reg;

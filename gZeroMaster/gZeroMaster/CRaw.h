@@ -72,7 +72,7 @@ public:
 	LONG SendReadCommand(int addr);
 	LONG ReadRegister(int addr, DWORD sizeToRead, char* pBuffer, int maxLoop);
 	BOOL ReadResisters();
-	void ReadResister(int addr);
+	void ReadRegister(int addr);
 	void ReadRegister(int addr, CString name, CString* pValueStr);
 	BOOL ReadRegister(int addr, CString name, CString* pValueStr, int maxLoop);
 	void ClearResisterValues();

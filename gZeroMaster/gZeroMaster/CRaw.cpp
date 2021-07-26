@@ -251,7 +251,7 @@ BOOL CRaw::ReadResisters()
 	return TRUE;
 }
 
-void CRaw::ReadResister(int addr)
+void CRaw::ReadRegister(int addr)
 {
 	for (std::map<CString, CReg>::iterator it = m_regMap.begin(); it != m_regMap.end(); it++) {
 		if (addr == it->second.m_nAddr) {
