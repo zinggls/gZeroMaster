@@ -260,6 +260,7 @@ void CRaw::ReadResister(int addr)
 	for (std::map<CString, CReg>::iterator it = m_regMap.begin(); it != m_regMap.end(); it++) {
 		if (addr == it->second.m_nAddr) {
 			ReadRegister(it->second.m_nAddr, it->first, it->second.m_pStr);
+			return;
 		}
 	}
 }
