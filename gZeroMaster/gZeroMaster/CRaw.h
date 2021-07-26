@@ -74,7 +74,7 @@ public:
 	BOOL ReadResisters();
 	void ReadResister(int addr);
 	void ReadRegister(int addr, CString name, CString* pValueStr);
-	BOOL PrintRegister(int addr, CString name, CString* pValueStr, int maxLoop);
+	BOOL ReadRegister(int addr, CString name, CString* pValueStr, int maxLoop);
 	void ClearResisterValues();
 	CString Bits(unsigned char byte);
 	void ShowBits(unsigned char byte);

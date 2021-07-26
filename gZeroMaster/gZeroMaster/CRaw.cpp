@@ -227,7 +227,7 @@ void CRaw::ReadRegister(int addr, CString name, CString* pValueStr)
 	UpdateData(FALSE);
 }
 
-BOOL CRaw::PrintRegister(int addr, CString name, CString* pValueStr, int maxLoop)
+BOOL CRaw::ReadRegister(int addr, CString name, CString* pValueStr, int maxLoop)
 {
 	char buffer[3];
 	LONG lLastError = ReadRegister(addr, 2, buffer, maxLoop);
@@ -250,7 +250,7 @@ BOOL CRaw::PrintRegister(int addr, CString name, CString* pValueStr, int maxLoop
 BOOL CRaw::ReadResisters()
 {
 	for (std::map<CString, CReg>::iterator it = m_regMap.begin(); it != m_regMap.end(); it++)
-		if(PrintRegister(it->second.m_nAddr, it->first, it->second.m_pStr, MAX_LOOP)!=TRUE) return FALSE;
+		if(ReadRegister(it->second.m_nAddr, it->first, it->second.m_pStr, MAX_LOOP)!=TRUE) return FALSE;
 
 	return TRUE;
 }
@@ -799,7 +799,7 @@ void CRaw::OnBnClickedWriteButton()
 	}
 
 	Sleep(100);	//주의! 여기서 Sleep이 없으면 PrintRegister과정의 Serial Read에서 Blocking된다.
-	PrintRegister(it->second.m_nAddr, it->first, it->second.m_pStr, MAX_LOOP);
+	ReadRegister(it->second.m_nAddr, it->first, it->second.m_pStr, MAX_LOOP);
 	Parent()->m_pSemantic->UpdateRegisters();
 }
 
