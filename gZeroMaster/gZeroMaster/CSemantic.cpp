@@ -652,12 +652,14 @@ void CSemantic::OnBnClickedSemanticEditCheck()
 	if (m_bSemanticEdit) {
 		m_selected = SelectStatic::None;
 		ControlValueEnable(TRUE);
+		GetDlgItem(IDC_AUTO_WRITE_CHECK)->ShowWindow(SW_SHOW);
 	}
 	else {
 		ControlValueEnable(FALSE);
 		ShowSlider(SW_HIDE);
 		GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_HIDE);
 		GetDlgItem(IDC_CONTROL_COMBO)->ShowWindow(SW_HIDE);
+		GetDlgItem(IDC_AUTO_WRITE_CHECK)->ShowWindow(SW_HIDE);
 	}
 	UpdateData(FALSE);
 }
