@@ -1808,16 +1808,12 @@ BOOL CSemantic::UpdateSemanticValue(int addr, int (CSemantic::* fpNewRegVal)(int
 {
 	int oldRegVal;
 	char buffer[3];
-	LONG lLastError = -1;
-	do {
-		lLastError = Parent()->m_pRaw->ReadRegister(addr, 2, buffer, MAX_LOOP);
-		Sleep(10);
-	} while (lLastError != ERROR_SUCCESS);	//읽을때까지 무한반복
+	while (Parent()->m_pRaw->ReadRegister(addr, 2, buffer, MAX_LOOP) != ERROR_SUCCESS) Sleep(10);	//Blocking 함수
 
 	oldRegVal = (int)strtol(buffer, NULL, 16);
 	int newRegVal = (this->*fpNewRegVal)(oldRegVal, newVal);
 	if (Parent()->m_pRaw->WriteRegister(addr, newRegVal) != TRUE) {
-		Parent()->ErrorMsg(lLastError, _T("Error in WriteRegister"));
+		Parent()->L(_T("Error in WriteRegister"));
 	}
 	else {
 		CString str;
