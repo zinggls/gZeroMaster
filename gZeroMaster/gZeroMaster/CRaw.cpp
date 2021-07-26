@@ -261,6 +261,17 @@ void CRaw::ReadRegister(int addr)
 	}
 }
 
+
+CString CRaw::RegisterName(int addr)
+{
+	for (std::map<CString, CReg>::iterator it = m_regMap.begin(); it != m_regMap.end(); it++) {
+		if (addr == it->second.m_nAddr) {
+			return it->first;
+		}
+	}
+	return _T("");
+}
+
 CString CRaw::Bits(unsigned char byte)
 {
 	CString strBit;

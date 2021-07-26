@@ -1835,7 +1835,7 @@ BOOL CSemantic::UpdateSemanticValue(int addr, int (CSemantic::* fpNewRegVal)(int
 			UpdateData(FALSE);
 
 			CString str;
-			str.Format(_T("Address:0x%02x Old Register:0x%02x New Register:0x%02x"), addr, oldRegVal, newRegVal);
+			str.Format(_T("Address:0x%02x %s 0x%02x -> 0x%02x"), addr, Parent()->m_pRaw->RegisterName(addr), oldRegVal, newRegVal);
 			Parent()->L(str);
 		}
 		return TRUE;

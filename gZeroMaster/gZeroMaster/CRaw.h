@@ -75,6 +75,7 @@ public:
 	void ReadRegister(int addr);
 	void ReadRegister(int addr, CString name, CString* pValueStr);
 	BOOL ReadRegister(int addr, CString name, CString* pValueStr, int maxLoop);
+	CString RegisterName(int addr);
 	CString Bits(unsigned char byte);
 	void ShowBits(unsigned char byte);
 	afx_msg void OnStnClickedRxReg1Static();
