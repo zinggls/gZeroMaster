@@ -235,23 +235,19 @@ BOOL CRaw::ReadRegister(int addr, CString name, CString* pValueStr, int maxLoop)
 		Parent()->ErrorMsg(lLastError, _T("CRaw::PrintRegister Error in ReadRegister"));
 		return FALSE;
 	}
-
-	int value = (int)strtol(buffer, NULL, 16);
-	pValueStr->Format(_T("0x%02x"), value);
-
-	CString str;
-	str.Format(_T("Address:0x%02x %s 0x%02x"), addr, name.GetBuffer(), value);
-	Parent()->L(str);
-
+	pValueStr->Format(_T("0x%02x"), (int)strtol(buffer, NULL, 16));
 	UpdateData(FALSE);
 	return TRUE;
 }
 
 BOOL CRaw::ReadResisters()
 {
-	for (std::map<CString, CReg>::iterator it = m_regMap.begin(); it != m_regMap.end(); it++)
-		if(ReadRegister(it->second.m_nAddr, it->first, it->second.m_pStr, MAX_LOOP)!=TRUE) return FALSE;
-
+	for (std::map<CString, CReg>::iterator it = m_regMap.begin(); it != m_regMap.end(); it++) {
+		if (ReadRegister(it->second.m_nAddr, it->first, it->second.m_pStr, MAX_LOOP) != TRUE) return FALSE;
+		CString str;
+		str.Format(_T("Address:0x%02x %s %s"), it->second.m_nAddr, it->first, it->second.m_pStr->GetBuffer());
+		Parent()->L(str);
+	}
 	return TRUE;
 }
 
