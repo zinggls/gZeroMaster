@@ -240,7 +240,7 @@ BOOL CRaw::ReadRegister(int addr, CString name, CString* pValueStr, int maxLoop)
 	return TRUE;
 }
 
-BOOL CRaw::ReadResisters()
+BOOL CRaw::ReadRegisters()
 {
 	for (std::map<CString, CReg>::iterator it = m_regMap.begin(); it != m_regMap.end(); it++) {
 		if (ReadRegister(it->second.m_nAddr, it->first, it->second.m_pStr, MAX_LOOP) != TRUE) return FALSE;
@@ -707,7 +707,7 @@ void CRaw::OnBnClickedBit0Button()
 void CRaw::OnBnClickedReadAllButton()
 {
 	ResetValues();
-	if (!ReadResisters()) Parent()->L(_T("Error occured in reading registers"));
+	if (!ReadRegisters()) Parent()->L(_T("Error occured in reading registers"));
 	Parent()->m_pSemantic->UpdateRegisters();
 }
 

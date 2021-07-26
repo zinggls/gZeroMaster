@@ -294,7 +294,7 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 			m_pRaw->OnChipConnect(m_chip);
 			m_pSemantic->OnChipConnect(m_chip);
 			L(_T("Chip Model:") + m_chip);
-			if (m_pRaw->ReadResisters()) {
+			if (m_pRaw->ReadRegisters()) {
 				m_pSemantic->UpdateRegisters();
 				m_pSemantic->ControlLabelEnable(TRUE);
 				m_pSemantic->ControlValueEnable(FALSE);
