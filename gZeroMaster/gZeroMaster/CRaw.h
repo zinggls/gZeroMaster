@@ -73,7 +73,7 @@ public:
 	LONG ReadRegister(int addr, DWORD sizeToRead, char* pBuffer, int maxLoop);
 	BOOL ReadResisters();
 	void ReadResister(int addr);
-	void PrintRegister(int addr, CString name, CString* pValueStr);
+	void ReadRegister(int addr, CString name, CString* pValueStr);
 	BOOL PrintRegister(int addr, CString name, CString* pValueStr, int maxLoop);
 	void ClearResisterValues();
 	CString Bits(unsigned char byte);

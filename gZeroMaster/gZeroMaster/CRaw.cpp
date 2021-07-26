@@ -219,7 +219,7 @@ LONG CRaw::ReadRegister(int addr, DWORD sizeToRead, char *pBuffer, int maxLoop)
 	24				18				BIAS_REG8[7:0]	: 50
 */
 
-void CRaw::PrintRegister(int addr, CString name, CString* pValueStr)
+void CRaw::ReadRegister(int addr, CString name, CString* pValueStr)
 {
 	char buffer[3];
 	while (ReadRegister(addr, 2, buffer, MAX_LOOP) != ERROR_SUCCESS) Sleep(10);	//Blocking 함수
@@ -259,7 +259,7 @@ void CRaw::ReadResister(int addr)
 {
 	for (std::map<CString, CReg>::iterator it = m_regMap.begin(); it != m_regMap.end(); it++) {
 		if (addr == it->second.m_nAddr) {
-			PrintRegister(it->second.m_nAddr, it->first, it->second.m_pStr);
+			ReadRegister(it->second.m_nAddr, it->first, it->second.m_pStr);
 		}
 	}
 }
