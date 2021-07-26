@@ -2038,6 +2038,7 @@ void CSemantic::OnBnClickedWriteAllButton()
 		str.Format(_T("%d Update failures"), errCnt);
 		Parent()->L(str);
 	}
+	OnBnClickedReadAllButton();
 }
 
 
