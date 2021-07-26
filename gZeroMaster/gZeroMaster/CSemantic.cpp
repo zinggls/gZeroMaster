@@ -2006,12 +2006,17 @@ BOOL CSemantic::UpdateSelected(SelectStatic selected,BOOL bCommonControl)
 void CSemantic::OnBnClickedWriteButton()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+#ifdef DEBUG_WRITE
 	Parent()->L(_T("Writing..."));
+#endif
 
 	BOOL bRtn = UpdateSelected(m_selected,TRUE);
 	ASSERT(bRtn);
 	GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE);
+
+#ifdef DEBUG_WRITE
 	Parent()->L(_T("Writing done"));
+#endif
 }
 
 
