@@ -261,36 +261,6 @@ void CRaw::ReadRegister(int addr)
 	}
 }
 
-void CRaw::ClearResisterValues()
-{
-	m_strRxReg1.Empty();
-	m_strTxReg1Top.Empty();
-	m_strTxReg1Mid.Empty();
-	m_strTxReg1Bot.Empty();
-	m_strTxReg2Top.Empty();
-	m_strTxReg2Mid.Empty();
-	m_strTxReg2Bot.Empty();
-	m_strBiasReg1.Empty();
-	m_strBiasReg2.Empty();
-	m_strBiasReg3.Empty();
-	m_strBiasReg4.Empty();
-	m_strBiasReg5.Empty();
-	m_strBiasReg6.Empty();
-	m_strBiasReg7.Empty();
-	m_strBiasReg8.Empty();
-	m_strBiasReg9.Empty();
-	UpdateData(FALSE);
-
-	m_bit7.SetWindowText(_T(""));
-	m_bit6.SetWindowText(_T(""));
-	m_bit5.SetWindowText(_T(""));
-	m_bit4.SetWindowText(_T(""));
-	m_bit3.SetWindowText(_T(""));
-	m_bit2.SetWindowText(_T(""));
-	m_bit1.SetWindowText(_T(""));
-	m_bit0.SetWindowText(_T(""));
-}
-
 CString CRaw::Bits(unsigned char byte)
 {
 	CString strBit;
