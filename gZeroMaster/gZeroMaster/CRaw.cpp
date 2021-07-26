@@ -770,9 +770,11 @@ BOOL CRaw::WriteRegister(int addr, int value)
 		Parent()->ErrorMsg(Parent()->m_serial.GetLastError(), _T("Unable to send data"));
 		return FALSE;
 	}
+#ifdef DEBUG_WRITE
 	CString str;
 	str.Format(_T("%d bytes sent"), dwBytesWrite);
 	Parent()->L(str);
+#endif
 	return TRUE;
 }
 
