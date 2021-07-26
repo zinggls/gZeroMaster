@@ -283,4 +283,5 @@ public:
 	int FdCore();
 	int FdBuf();
 	void OnChipConnect(CString chipModel);
+	afx_msg void OnBnClickedAutoWriteCheck();
 };
