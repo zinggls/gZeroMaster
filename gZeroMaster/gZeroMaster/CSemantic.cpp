@@ -151,6 +151,7 @@ BEGIN_MESSAGE_MAP(CSemantic, CDialogEx)
 	ON_STN_CLICKED(IDC_FD_CORE_CURRENT_VALUE_STATIC, &CSemantic::OnStnClickedFdCoreCurrentValueStatic)
 	ON_STN_CLICKED(IDC_FD_BUFFER_CURRENT_VALUE_STATIC, &CSemantic::OnStnClickedFdBufferCurrentValueStatic)
 	ON_BN_CLICKED(IDC_AUTO_WRITE_CHECK, &CSemantic::OnBnClickedAutoWriteCheck)
+	ON_BN_CLICKED(IDC_DEFAULT_VALUE_BUTTON, &CSemantic::OnBnClickedDefaultValueButton)
 END_MESSAGE_MAP()
 
 
@@ -2323,4 +2324,45 @@ void CSemantic::OnBnClickedAutoWriteCheck()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_bAutoWrite = !m_bAutoWrite;
+}
+
+
+void CSemantic::OnBnClickedDefaultValueButton()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	CString chipModel = Parent()->m_chip;
+
+	ASSERT(chipModel == _T("A0") || chipModel == _T("B0"));
+
+	Parent()->m_pRaw->m_strRxReg1 = _T("0x18");
+	Parent()->m_pRaw->m_strTxReg1Top = _T("0x00");
+	Parent()->m_pRaw->m_strBiasReg1 = _T("0x01");
+	Parent()->m_pRaw->m_strBiasReg2 = _T("0x99");
+	Parent()->m_pRaw->m_strBiasReg3 = _T("0x99");
+	Parent()->m_pRaw->m_strBiasReg4 = _T("0x96");
+	Parent()->m_pRaw->m_strBiasReg5 = _T("0x66");
+	Parent()->m_pRaw->m_strBiasReg6 = _T("0x66");
+	Parent()->m_pRaw->m_strBiasReg7 = _T("0x06");
+
+	if (chipModel == _T("A0")) {
+		Parent()->m_pRaw->m_strTxReg1Mid = _T("0xf7");
+		Parent()->m_pRaw->m_strTxReg1Bot = _T("0xb7");
+		Parent()->m_pRaw->m_strBiasReg8 = _T("0x06");
+		Parent()->m_pRaw->m_strBiasReg9 = _T("0x99");
+	}
+	else if (chipModel == _T("B0")) {
+		Parent()->m_pRaw->m_strTxReg1Mid = _T("0x10");
+		Parent()->m_pRaw->m_strTxReg1Bot = _T("0x10");
+		Parent()->m_pRaw->m_strTxReg2Top = _T("0x01");
+		Parent()->m_pRaw->m_strTxReg2Mid = _T("0xf7");
+		Parent()->m_pRaw->m_strTxReg2Bot = _T("0xb7");
+
+		Parent()->m_pRaw->m_strBiasReg8 = _T("0x50");
+	}
+	Parent()->m_pRaw->UpdateData(FALSE);
+	UpdateRegisters();
+	
+	CString str;
+	str.Format(_T("Default values for %s loaded"), chipModel);
+	Parent()->L(str);
 }

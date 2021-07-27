@@ -284,4 +284,5 @@ public:
 	int FdBuf();
 	void OnChipConnect(CString chipModel);
 	afx_msg void OnBnClickedAutoWriteCheck();
+	afx_msg void OnBnClickedDefaultValueButton();
 };
