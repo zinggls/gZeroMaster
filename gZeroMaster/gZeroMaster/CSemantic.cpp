@@ -2364,6 +2364,7 @@ void CSemantic::OnBnClickedDefaultValueButton()
 	UpdateRegisters();
 	
 	CString str;
-	str.Format(_T("Default values for %s loaded"), chipModel);
+	str.Format(_T("%s Default values have been loaded into memory"), chipModel);
 	Parent()->L(str);
+	Parent()->L(_T("Make sure to click 'Write All' if you want to save them to registers"));
 }
