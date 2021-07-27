@@ -273,12 +273,13 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 	GetDlgItem(IDC_CHIP_COMBO)->EnableWindow(FALSE);
 	GetDlgItem(IDC_COM_COMBO)->EnableWindow(FALSE);
 
-	CString str;
+	CString str,strComPort;
 	m_comPort.GetLBText(m_comPort.GetCurSel(), str);
+	strComPort.Format(_T("\\\\.\\%s"),str);
 	if (!m_serial.IsOpen()) {
 		L(_T("Connecting to ") + str+_T("..."));
 
-		LONG lLastError = m_serial.Open(str, 0, 0, false);
+		LONG lLastError = m_serial.Open(strComPort, 0, 0, false);
 		if (lLastError == ERROR_SUCCESS) {
 			GetDlgItem(IDC_CONNECT_BUTTON)->SetWindowTextW(_T("Disconnect"));
 			L(str + _T(" opened"));
