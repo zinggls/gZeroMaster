@@ -365,20 +365,6 @@ void CgZeroMasterDlg::OnDestroy()
 void CgZeroMasterDlg::OnContextMenu(CWnd* /*pWnd*/, CPoint point)
 {
 	// TODO: 여기에 메시지 처리기 코드를 추가합니다.
-	CMenu popup;
-	popup.LoadMenu(IDR_MAIN_MENU);
-
-	CMenu* pMenu = popup.GetSubMenu(0);
-	pMenu->EnableMenuItem(ID_MAINMENU_CLEARLOG, MF_ENABLED);
-	if (m_serial.IsOpen()) {
-		pMenu->EnableMenuItem(ID_MAINMENU_LOAD, MF_ENABLED);
-		pMenu->EnableMenuItem(ID_MAINMENU_SAVE, MF_ENABLED);
-	}
-	else {
-		pMenu->EnableMenuItem(ID_MAINMENU_LOAD, MF_GRAYED);
-		pMenu->EnableMenuItem(ID_MAINMENU_SAVE, MF_GRAYED);
-	}
-	pMenu->TrackPopupMenu(TPM_LEFTALIGN || TPM_RIGHTBUTTON, point.x, point.y, this);
 }
 
 
@@ -574,16 +560,19 @@ void CgZeroMasterDlg::OnCbnSelchangeChipCombo()
 void CgZeroMasterDlg::OnFileLoad()
 {
 	// TODO: 여기에 명령 처리기 코드를 추가합니다.
+	OnMainmenuLoad();
 }
 
 
 void CgZeroMasterDlg::OnFileSavetofile()
 {
 	// TODO: 여기에 명령 처리기 코드를 추가합니다.
+	OnMainmenuSave();
 }
 
 
 void CgZeroMasterDlg::OnLogClear()
 {
 	// TODO: 여기에 명령 처리기 코드를 추가합니다.
+	OnMainmenuClearlog();
 }
