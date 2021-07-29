@@ -70,4 +70,7 @@ public:
 	BOOL LoadRegisters(CString fileName);
 	afx_msg void OnStnDblclickLogoStatic();
 	afx_msg void OnCbnSelchangeChipCombo();
+	afx_msg void OnFileLoad();
+	afx_msg void OnFileSavetofile();
+	afx_msg void OnLogClear();
 };

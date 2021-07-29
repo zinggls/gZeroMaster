@@ -87,6 +87,9 @@ BEGIN_MESSAGE_MAP(CgZeroMasterDlg, CDialogEx)
 	ON_COMMAND(ID_MAINMENU_LOAD, &CgZeroMasterDlg::OnMainmenuLoad)
 	ON_STN_DBLCLK(IDC_LOGO_STATIC, &CgZeroMasterDlg::OnStnDblclickLogoStatic)
 	ON_CBN_SELCHANGE(IDC_CHIP_COMBO, &CgZeroMasterDlg::OnCbnSelchangeChipCombo)
+	ON_COMMAND(ID_FILE_LOAD, &CgZeroMasterDlg::OnFileLoad)
+	ON_COMMAND(ID_FILE_SAVETOFILE, &CgZeroMasterDlg::OnFileSavetofile)
+	ON_COMMAND(ID_LOG_CLEAR, &CgZeroMasterDlg::OnLogClear)
 END_MESSAGE_MAP()
 
 
@@ -565,4 +568,22 @@ void CgZeroMasterDlg::OnCbnSelchangeChipCombo()
 	m_chipSelect.GetLBText(m_chipSelect.GetCurSel(), m_chip);
 	m_pRaw->OnChipConnect(m_chip);
 	m_pSemantic->OnChipConnect(m_chip);
+}
+
+
+void CgZeroMasterDlg::OnFileLoad()
+{
+	// TODO: 여기에 명령 처리기 코드를 추가합니다.
+}
+
+
+void CgZeroMasterDlg::OnFileSavetofile()
+{
+	// TODO: 여기에 명령 처리기 코드를 추가합니다.
+}
+
+
+void CgZeroMasterDlg::OnLogClear()
+{
+	// TODO: 여기에 명령 처리기 코드를 추가합니다.
 }
