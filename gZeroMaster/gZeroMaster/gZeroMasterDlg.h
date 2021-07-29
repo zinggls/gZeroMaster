@@ -73,4 +73,7 @@ public:
 	afx_msg void OnFileLoad();
 	afx_msg void OnFileSavetofile();
 	afx_msg void OnLogClear();
+	afx_msg void OnUpdateFileLoad(CCmdUI* pCmdUI);
+	afx_msg void OnUpdateFileSavetofile(CCmdUI* pCmdUI);
+	afx_msg void OnInitMenuPopup(CMenu* pPopupMenu, UINT nIndex, BOOL bSysMenu);
 };
