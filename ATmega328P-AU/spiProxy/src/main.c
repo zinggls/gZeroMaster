@@ -77,6 +77,16 @@ void B0_Init(void)
 	SPI_0_write_reg(0x18, 0x50); //BIAS_REG8 INIT
 }
 
+void SaveData()
+{
+	
+}
+
+void LoadData()
+{
+	
+}
+
 int main(void)
 {
 	uint8_t rw = 0;
@@ -102,10 +112,12 @@ int main(void)
 			continue;
 		}else if(data[0] == 0xf1) {
 			/* Save to EEPROM */
+			SaveData();
 			UART_TX_STR(SAVED);
 			continue;			
 		}else if(data[0] == 0xf2) {
 			/* Load from EEPROM */
+			LoadData();
 			UART_TX_STR(LOADED);
 			continue;			
 		}
