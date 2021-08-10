@@ -94,24 +94,22 @@ int main(void)
 		UART_RX_STR(t_rx_addr);		//Get Address
 		data[0] = (uint8_t)(strtol(t_rx_addr, NULL, 16));
 		
+		rw = UART_RX_CH();	//Write or Read? "Write : 0, Read : 1"
+		
 		if(data[0] == 0xff) {
 			/* Get Chip model name */
-			UART_RX_CH();	//Don't care input character, just to be consistent with the read/write
 			UART_TX_STR(CHIP);		//Chip model name
 			continue;
 		}else if(data[0] == 0xf1) {
 			/* Save to EEPROM */
-			UART_RX_CH();	//Don't care input character, just to be consistent with the read/write
 			UART_TX_STR(SAVED);
 			continue;			
 		}else if(data[0] == 0xf2) {
 			/* Load from EEPROM */
-			UART_RX_CH();	//Don't care input character, just to be consistent with the read/write
 			UART_TX_STR(LOADED);
 			continue;			
 		}
 
-		rw = UART_RX_CH();	//Write or Read? "Write : 0, Read : 1"
 		rw = rw & 1;
 		if(!rw) {
 			/* Write */
