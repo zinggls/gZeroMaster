@@ -179,7 +179,6 @@ int main(void)
 		//Address
 		UART_RX_STR(t_rx_addr);
 		data[0] = (uint8_t)(strtol(t_rx_addr, NULL, 16));
-		//UART_TX_STR(t_rx_addr);
 		
 		if(data[0] == 0xff) {
 			UART_RX_CH();	//Don't care input character, just to be consistent with the read/write
@@ -195,18 +194,15 @@ int main(void)
 
 		//"Write : 0, Read : 1"
 		rw = UART_RX_CH();
-		//UART_TX_CH(rw);
 		rw = rw & 1;
 		if(!rw) {
 			//Write
 			
 			//Data(hex)
 			UART_RX_STR(t_rx_data);
-			//UART_TX_STR(t_rx_data);
 
 		    data[1] = (uint8_t)(strtol(t_rx_data, NULL, 16));						
 			SPI_0_write_reg(data[0], data[1]);			
-			//UART_TX_CH('W');
 		}else{
 			//Read
 			
@@ -215,7 +211,6 @@ int main(void)
 			
 			hextostr(data[1], t_tx);
 			UART_TX_STR(t_tx);
-			//UART_TX_CH('R');
 		}
 	}
 }
