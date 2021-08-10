@@ -157,11 +157,6 @@ void B0_reg_show(void)
 	UART_TX_CH(0x0a);
 }
 
-void chip_show()
-{
-	UART_TX_STR(CHIP);		//Chip model name
-}
-
 int main(void)
 {
 	uint8_t rw = 0;
@@ -181,7 +176,7 @@ int main(void)
 		
 		if(data[0] == 0xff) {
 			UART_RX_CH();	//Don't care input character, just to be consistent with the read/write
-			chip_show();
+			UART_TX_STR(CHIP);		//Chip model name
 			continue;
 		}
 		
