@@ -1,6 +1,8 @@
 ﻿#include <atmel_start.h>
 #include <string.h>
 #define CHIP		"CHIP:B0"			//Chip model name	(MUST BE 7Bytes long)
+#define SAVED		"Saved  "			//Saved message		(MUST BE 7Bytes long)
+#define LOADED		"Loaded "			//Loaded message	(MUST BE 7Bytes long)
 
 /*
  * UART Initiallize
@@ -93,9 +95,20 @@ int main(void)
 		data[0] = (uint8_t)(strtol(t_rx_addr, NULL, 16));
 		
 		if(data[0] == 0xff) {
+			/* Get Chip model name */
 			UART_RX_CH();	//Don't care input character, just to be consistent with the read/write
 			UART_TX_STR(CHIP);		//Chip model name
 			continue;
+		}else if(data[0] == 0xf1) {
+			/* Save to EEPROM */
+			UART_RX_CH();	//Don't care input character, just to be consistent with the read/write
+			UART_TX_STR(SAVED);
+			continue;			
+		}else if(data[0] == 0xf2) {
+			/* Load from EEPROM */
+			UART_RX_CH();	//Don't care input character, just to be consistent with the read/write
+			UART_TX_STR(LOADED);
+			continue;			
 		}
 
 		rw = UART_RX_CH();	//Write or Read? "Write : 0, Read : 1"
