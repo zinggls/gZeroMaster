@@ -93,6 +93,8 @@ BEGIN_MESSAGE_MAP(CgZeroMasterDlg, CDialogEx)
 	ON_UPDATE_COMMAND_UI(ID_FILE_LOAD, &CgZeroMasterDlg::OnUpdateFileLoad)
 	ON_UPDATE_COMMAND_UI(ID_FILE_SAVETOFILE, &CgZeroMasterDlg::OnUpdateFileSavetofile)
 	ON_WM_INITMENUPOPUP()
+	ON_COMMAND(ID_EEPROM_LOAD, &CgZeroMasterDlg::OnEepromLoad)
+	ON_COMMAND(ID_EEPROM_SAVE, &CgZeroMasterDlg::OnEepromSave)
 END_MESSAGE_MAP()
 
 
@@ -679,5 +681,29 @@ void CgZeroMasterDlg::OnInitMenuPopup(CMenu* pPopupMenu, UINT nIndex, BOOL bSysM
 			}
 		}
 		state.m_nIndexMax = nCount;
+	}
+}
+
+void CgZeroMasterDlg::OnEepromLoad()
+{
+	// TODO: 여기에 명령 처리기 코드를 추가합니다.
+	if (!m_pRaw->WriteRegister(0xf2, 0 /*dummy value*/)) {
+		L(_T("Error in WriteRegister"));
+	}
+	else {
+		m_pSemantic->OnBnClickedReadAllButton();
+		L(_T("Loaded from EEPROM"));
+	}
+}
+
+
+void CgZeroMasterDlg::OnEepromSave()
+{
+	// TODO: 여기에 명령 처리기 코드를 추가합니다.
+	if (!m_pRaw->WriteRegister(0xf1, 0 /*dummy value*/)) {
+		L(_T("Error in WriteRegister"));
+	}
+	else {
+		L(_T("Saved in EEPROM"));
 	}
 }

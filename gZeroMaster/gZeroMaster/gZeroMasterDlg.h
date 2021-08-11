@@ -76,4 +76,6 @@ public:
 	afx_msg void OnUpdateFileLoad(CCmdUI* pCmdUI);
 	afx_msg void OnUpdateFileSavetofile(CCmdUI* pCmdUI);
 	afx_msg void OnInitMenuPopup(CMenu* pPopupMenu, UINT nIndex, BOOL bSysMenu);
+	afx_msg void OnEepromLoad();
+	afx_msg void OnEepromSave();
 };
