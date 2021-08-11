@@ -166,13 +166,13 @@ int main(void)
 			continue;
 		}else if(data[0] == 0xf1) {
 			/* Save to EEPROM */
+			UART_RX_STR(t_rx_data);	//Data(hex), dummy data to be neglected
 			SaveData();
-			UART_TX_STR(SAVED);
 			continue;			
 		}else if(data[0] == 0xf2) {
 			/* Load from EEPROM */
+			UART_RX_STR(t_rx_data);	//Data(hex), dummy data to be neglected
 			LoadData();
-			UART_TX_STR(LOADED);
 			continue;			
 		}
 
