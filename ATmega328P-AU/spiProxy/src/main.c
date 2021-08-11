@@ -1,8 +1,11 @@
 ﻿#include <atmel_start.h>
 #include <string.h>
+#include <avr/eeprom.h>
+
 #define CHIP		"CHIP:B0"			//Chip model name	(MUST BE 7Bytes long)
 #define SAVED		"Saved  "			//Saved message		(MUST BE 7Bytes long)
 #define LOADED		"Loaded "			//Loaded message	(MUST BE 7Bytes long)
+#define BASE_ADDR	((uint8_t*)0x0)
 
 /*
  * UART Initiallize
@@ -77,14 +80,65 @@ void B0_Init(void)
 	SPI_0_write_reg(0x18, 0x50); //BIAS_REG8 INIT
 }
 
+void eeprom_update_byte_from_SPI_0_read_reg(uint8_t addr)
+{
+	uint8_t readData;
+	SPI_0_read_reg(addr, &readData);
+	eeprom_update_byte(BASE_ADDR+addr,readData);
+}
+
 void SaveData()
 {
+	//RX
+	eeprom_update_byte_from_SPI_0_read_reg(0x02);
 	
+	//TX
+	eeprom_update_byte_from_SPI_0_read_reg(0x07);
+	eeprom_update_byte_from_SPI_0_read_reg(0x06);
+	eeprom_update_byte_from_SPI_0_read_reg(0x05);
+	eeprom_update_byte_from_SPI_0_read_reg(0x0d);
+	eeprom_update_byte_from_SPI_0_read_reg(0x0c);
+	eeprom_update_byte_from_SPI_0_read_reg(0x0b);
+	
+	//BIAS
+	eeprom_update_byte_from_SPI_0_read_reg(0x11);
+	eeprom_update_byte_from_SPI_0_read_reg(0x12);
+	eeprom_update_byte_from_SPI_0_read_reg(0x13);
+	eeprom_update_byte_from_SPI_0_read_reg(0x14);
+	eeprom_update_byte_from_SPI_0_read_reg(0x15);
+	eeprom_update_byte_from_SPI_0_read_reg(0x16);
+	eeprom_update_byte_from_SPI_0_read_reg(0x17);
+	eeprom_update_byte_from_SPI_0_read_reg(0x18);
+}
+
+void SPI_0_write_reg_from_eeprom_read_byte(uint8_t addr)
+{
+	uint8_t readData = eeprom_read_byte(BASE_ADDR+addr);
+	SPI_0_write_reg(addr, readData);
 }
 
 void LoadData()
 {
+	//RX
+	SPI_0_write_reg_from_eeprom_read_byte(0x02);
 	
+	//TX
+	SPI_0_write_reg_from_eeprom_read_byte(0x07);
+	SPI_0_write_reg_from_eeprom_read_byte(0x06);
+	SPI_0_write_reg_from_eeprom_read_byte(0x05);
+	SPI_0_write_reg_from_eeprom_read_byte(0x0d);
+	SPI_0_write_reg_from_eeprom_read_byte(0x0c);
+	SPI_0_write_reg_from_eeprom_read_byte(0x0b);
+	
+	//BIAS
+	SPI_0_write_reg_from_eeprom_read_byte(0x11);
+	SPI_0_write_reg_from_eeprom_read_byte(0x12);
+	SPI_0_write_reg_from_eeprom_read_byte(0x13);
+	SPI_0_write_reg_from_eeprom_read_byte(0x14);
+	SPI_0_write_reg_from_eeprom_read_byte(0x15);
+	SPI_0_write_reg_from_eeprom_read_byte(0x16);
+	SPI_0_write_reg_from_eeprom_read_byte(0x17);
+	SPI_0_write_reg_from_eeprom_read_byte(0x18);
 }
 
 int main(void)
