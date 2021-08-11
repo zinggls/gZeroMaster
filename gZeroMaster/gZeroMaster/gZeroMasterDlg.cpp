@@ -687,10 +687,23 @@ void CgZeroMasterDlg::OnInitMenuPopup(CMenu* pPopupMenu, UINT nIndex, BOOL bSysM
 void CgZeroMasterDlg::OnEepromLoad()
 {
 	// TODO: 여기에 명령 처리기 코드를 추가합니다.
+	if (!m_pRaw->WriteRegister(0xf2, 0 /*dummy value*/)) {
+		L(_T("Error in WriteRegister"));
+	}
+	else {
+		m_pSemantic->OnBnClickedReadAllButton();
+		L(_T("Loaded from EEPROM"));
+	}
 }
 
 
 void CgZeroMasterDlg::OnEepromSave()
 {
 	// TODO: 여기에 명령 처리기 코드를 추가합니다.
+	if (!m_pRaw->WriteRegister(0xf1, 0 /*dummy value*/)) {
+		L(_T("Error in WriteRegister"));
+	}
+	else {
+		L(_T("Saved in EEPROM"));
+	}
 }
