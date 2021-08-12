@@ -95,6 +95,8 @@ BEGIN_MESSAGE_MAP(CgZeroMasterDlg, CDialogEx)
 	ON_WM_INITMENUPOPUP()
 	ON_COMMAND(ID_EEPROM_LOAD, &CgZeroMasterDlg::OnEepromLoad)
 	ON_COMMAND(ID_EEPROM_SAVE, &CgZeroMasterDlg::OnEepromSave)
+	ON_UPDATE_COMMAND_UI(ID_EEPROM_LOAD, &CgZeroMasterDlg::OnUpdateEepromLoad)
+	ON_UPDATE_COMMAND_UI(ID_EEPROM_SAVE, &CgZeroMasterDlg::OnUpdateEepromSave)
 END_MESSAGE_MAP()
 
 
@@ -706,4 +708,18 @@ void CgZeroMasterDlg::OnEepromSave()
 	else {
 		L(_T("Saved in EEPROM"));
 	}
+}
+
+
+void CgZeroMasterDlg::OnUpdateEepromLoad(CCmdUI* pCmdUI)
+{
+	// TODO: 여기에 명령 업데이트 UI 처리기 코드를 추가합니다.
+	pCmdUI->Enable(m_serial.IsOpen());
+}
+
+
+void CgZeroMasterDlg::OnUpdateEepromSave(CCmdUI* pCmdUI)
+{
+	// TODO: 여기에 명령 업데이트 UI 처리기 코드를 추가합니다.
+	pCmdUI->Enable(m_serial.IsOpen());
 }
