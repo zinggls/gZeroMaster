@@ -456,7 +456,8 @@ void CgZeroMasterDlg::OnMainmenuLoad()
 		CString fileName = dlg.GetPathName();
 		L(_T("Filename:") + fileName);
 		if (LoadRegisters(fileName)) {
-			L(_T("Registers are loaded from ") + fileName);
+			m_pSemantic->OnBnClickedWriteAllButton();
+			L(_T("Loaded from ") + fileName);
 		}
 		else {
 			L(_T("Error in loading registers from ") + fileName);
