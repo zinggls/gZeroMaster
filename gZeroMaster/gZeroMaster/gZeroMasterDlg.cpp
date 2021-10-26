@@ -734,6 +734,8 @@ void CgZeroMasterDlg::OnBnClickedMessageTestButton()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_pSemantic->SendMessage(UDM_SEM_EDIT_CLICK);
+
+	//1. RX Data Interface 테스트
 	m_pSemantic->SendMessage(UDM_SEM_RX_DATA_INTERFACE_CLICK);
 
 	int nCurSel = m_pSemantic->m_controlCombo.GetCurSel();
@@ -744,6 +746,18 @@ void CgZeroMasterDlg::OnBnClickedMessageTestButton()
 	(nCurSel == 0) ? m_pSemantic->m_controlCombo.SetCurSel(1) : m_pSemantic->m_controlCombo.SetCurSel(0);
 
 	m_pSemantic->OnBnClickedWriteButton();
+
+	//2. LNA Gain 테스트
+	m_pSemantic->SendMessage(UDM_SEM_LNA_GAIN_CLICK);
+
+	int nMax = -1*m_pSemantic->m_controlSlider.GetRangeMin();
+	int nMin = -1*m_pSemantic->m_controlSlider.GetRangeMax();
+	int nRandom = (rand() % (nMax - nMin + 1)) + nMin;
+
+	m_pSemantic->m_controlSlider.SetPos(-1 * nRandom);
+
+	m_pSemantic->OnBnClickedWriteButton();
+
 	m_pSemantic->SendMessage(UDM_SEM_EDIT_CLICK);
 	L(_T("MessageTest Button clicked"));
 }
