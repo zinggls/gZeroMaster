@@ -153,6 +153,7 @@ BEGIN_MESSAGE_MAP(CSemantic, CDialogEx)
 	ON_BN_CLICKED(IDC_AUTO_WRITE_CHECK, &CSemantic::OnBnClickedAutoWriteCheck)
 	ON_BN_CLICKED(IDC_DEFAULT_VALUE_BUTTON, &CSemantic::OnBnClickedDefaultValueButton)
 	ON_MESSAGE(UDM_SEM_EDIT_CLICK, OnSemEditClick)
+	ON_MESSAGE(UDM_SEM_RX_DATA_INTERFACE_CLICK, OnSemRxDataInterfaceClick)
 END_MESSAGE_MAP()
 
 
@@ -2380,5 +2381,11 @@ void CSemantic::OnBnClickedDefaultValueButton()
 LRESULT CSemantic::OnSemEditClick(WPARAM w, LPARAM l)
 {
 	OnBnClickedSemanticEditCheck();
+	return 0;
+}
+
+LRESULT CSemantic::OnSemRxDataInterfaceClick(WPARAM w, LPARAM l)
+{
+	OnStnClickedRxDataIfEnableValueStatic();
 	return 0;
 }
