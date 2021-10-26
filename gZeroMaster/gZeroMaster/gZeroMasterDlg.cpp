@@ -744,5 +744,6 @@ void CgZeroMasterDlg::OnBnClickedMessageTestButton()
 	(nCurSel == 0) ? m_pSemantic->m_controlCombo.SetCurSel(1) : m_pSemantic->m_controlCombo.SetCurSel(0);
 
 	m_pSemantic->OnBnClickedWriteButton();
+	m_pSemantic->SendMessage(UDM_SEM_EDIT_CLICK);
 	L(_T("MessageTest Button clicked"));
 }
