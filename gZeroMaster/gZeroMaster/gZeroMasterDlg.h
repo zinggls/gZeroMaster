@@ -80,4 +80,5 @@ public:
 	afx_msg void OnEepromSave();
 	afx_msg void OnUpdateEepromLoad(CCmdUI* pCmdUI);
 	afx_msg void OnUpdateEepromSave(CCmdUI* pCmdUI);
+	afx_msg void OnBnClickedMessageTestButton();
 };

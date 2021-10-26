@@ -97,6 +97,7 @@ BEGIN_MESSAGE_MAP(CgZeroMasterDlg, CDialogEx)
 	ON_COMMAND(ID_EEPROM_SAVE, &CgZeroMasterDlg::OnEepromSave)
 	ON_UPDATE_COMMAND_UI(ID_EEPROM_LOAD, &CgZeroMasterDlg::OnUpdateEepromLoad)
 	ON_UPDATE_COMMAND_UI(ID_EEPROM_SAVE, &CgZeroMasterDlg::OnUpdateEepromSave)
+	ON_BN_CLICKED(IDC_MESSAGE_TEST_BUTTON, &CgZeroMasterDlg::OnBnClickedMessageTestButton)
 END_MESSAGE_MAP()
 
 
@@ -723,4 +724,11 @@ void CgZeroMasterDlg::OnUpdateEepromSave(CCmdUI* pCmdUI)
 {
 	// TODO: 여기에 명령 업데이트 UI 처리기 코드를 추가합니다.
 	pCmdUI->Enable(m_serial.IsOpen());
+}
+
+
+void CgZeroMasterDlg::OnBnClickedMessageTestButton()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	L(_T("MessageTest Button clicked"));
 }
