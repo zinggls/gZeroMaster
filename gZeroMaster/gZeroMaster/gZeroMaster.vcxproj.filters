@@ -39,6 +39,9 @@
     <ClInclude Include="CSemantic.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="SemanticUserDefinedMessage.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="gZeroMaster.cpp">

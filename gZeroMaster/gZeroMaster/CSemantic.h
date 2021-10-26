@@ -1,5 +1,7 @@
 ﻿#pragma once
 
+#include "SemanticUserDefinedMessage.h"
+
 class CgZeroMasterDlg;
 class CRaw;
 
@@ -285,4 +287,5 @@ public:
 	void OnChipConnect(CString chipModel);
 	afx_msg void OnBnClickedAutoWriteCheck();
 	afx_msg void OnBnClickedDefaultValueButton();
+	afx_msg LRESULT OnSemEditCheckClicked(WPARAM w, LPARAM l);
 };
