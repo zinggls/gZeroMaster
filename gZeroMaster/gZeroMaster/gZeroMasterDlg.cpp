@@ -733,6 +733,6 @@ void CgZeroMasterDlg::OnUpdateEepromSave(CCmdUI* pCmdUI)
 void CgZeroMasterDlg::OnBnClickedMessageTestButton()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_pSemantic->PostMessage(UDM_SEM_EDIT_CHECK_CLICKED);
+	m_pSemantic->PostMessage(UDM_SEM_EDIT_CLICK);
 	L(_T("MessageTest Button clicked"));
 }

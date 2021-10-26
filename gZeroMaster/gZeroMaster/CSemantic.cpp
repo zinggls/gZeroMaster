@@ -152,7 +152,7 @@ BEGIN_MESSAGE_MAP(CSemantic, CDialogEx)
 	ON_STN_CLICKED(IDC_FD_BUFFER_CURRENT_VALUE_STATIC, &CSemantic::OnStnClickedFdBufferCurrentValueStatic)
 	ON_BN_CLICKED(IDC_AUTO_WRITE_CHECK, &CSemantic::OnBnClickedAutoWriteCheck)
 	ON_BN_CLICKED(IDC_DEFAULT_VALUE_BUTTON, &CSemantic::OnBnClickedDefaultValueButton)
-	ON_MESSAGE(UDM_SEM_EDIT_CHECK_CLICKED, OnSemEditCheckClicked)
+	ON_MESSAGE(UDM_SEM_EDIT_CLICK, OnSemEditClick)
 END_MESSAGE_MAP()
 
 
@@ -2377,7 +2377,7 @@ void CSemantic::OnBnClickedDefaultValueButton()
 	Parent()->L(_T("Make sure to click 'Write All' if you want to save them to registers"));
 }
 
-LRESULT CSemantic::OnSemEditCheckClicked(WPARAM w, LPARAM l)
+LRESULT CSemantic::OnSemEditClick(WPARAM w, LPARAM l)
 {
 	OnBnClickedSemanticEditCheck();
 	return 0;
