@@ -735,5 +735,14 @@ void CgZeroMasterDlg::OnBnClickedMessageTestButton()
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_pSemantic->SendMessage(UDM_SEM_EDIT_CLICK);
 	m_pSemantic->SendMessage(UDM_SEM_RX_DATA_INTERFACE_CLICK);
+
+	int nCurSel = m_pSemantic->m_controlCombo.GetCurSel();
+	ASSERT(nCurSel != CB_ERR);
+	ASSERT(nCurSel == 0 || nCurSel == 1);
+
+	//OnBnClickedMessageTestButton 누를때마다 값을 변경
+	(nCurSel == 0) ? m_pSemantic->m_controlCombo.SetCurSel(1) : m_pSemantic->m_controlCombo.SetCurSel(0);
+
+	m_pSemantic->OnBnClickedWriteButton();
 	L(_T("MessageTest Button clicked"));
 }
