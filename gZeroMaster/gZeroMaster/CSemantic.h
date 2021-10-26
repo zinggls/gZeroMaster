@@ -289,4 +289,5 @@ public:
 	afx_msg void OnBnClickedDefaultValueButton();
 	afx_msg LRESULT OnSemEditClick(WPARAM w, LPARAM l);
 	afx_msg LRESULT OnSemRxDataInterfaceClick(WPARAM w, LPARAM l);
+	afx_msg LRESULT OnSemLnaGainClick(WPARAM w, LPARAM l);
 };

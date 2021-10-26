@@ -154,6 +154,7 @@ BEGIN_MESSAGE_MAP(CSemantic, CDialogEx)
 	ON_BN_CLICKED(IDC_DEFAULT_VALUE_BUTTON, &CSemantic::OnBnClickedDefaultValueButton)
 	ON_MESSAGE(UDM_SEM_EDIT_CLICK, OnSemEditClick)
 	ON_MESSAGE(UDM_SEM_RX_DATA_INTERFACE_CLICK, OnSemRxDataInterfaceClick)
+	ON_MESSAGE(UDM_SEM_LNA_GAIN_CLICK, OnSemLnaGainClick)
 END_MESSAGE_MAP()
 
 
@@ -2387,5 +2388,11 @@ LRESULT CSemantic::OnSemEditClick(WPARAM w, LPARAM l)
 LRESULT CSemantic::OnSemRxDataInterfaceClick(WPARAM w, LPARAM l)
 {
 	OnStnClickedRxDataIfEnableValueStatic();
+	return 0;
+}
+
+LRESULT CSemantic::OnSemLnaGainClick(WPARAM w, LPARAM l)
+{
+	OnStnClickedLnaGainValueStatic();
 	return 0;
 }
