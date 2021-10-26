@@ -164,6 +164,7 @@ BOOL CgZeroMasterDlg::OnInitDialog()
 	m_pRaw->ShowWindow(SW_HIDE);
 
 	OnCbnSelchangeChipCombo();
+	GetDlgItem(IDC_MESSAGE_TEST_BUTTON)->ShowWindow(FALSE);
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
 
@@ -283,6 +284,7 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	GetDlgItem(IDC_CHIP_COMBO)->EnableWindow(FALSE);
 	GetDlgItem(IDC_COM_COMBO)->EnableWindow(FALSE);
+	GetDlgItem(IDC_MESSAGE_TEST_BUTTON)->ShowWindow(FALSE);
 
 	CString str,strComPort;
 	m_comPort.GetLBText(m_comPort.GetCurSel(), str);
@@ -316,6 +318,7 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 				m_pSemantic->GetDlgItem(IDC_READ_ALL_BUTTON)->ShowWindow(SW_SHOW);
 				m_pSemantic->GetDlgItem(IDC_WRITE_ALL_BUTTON)->ShowWindow(SW_SHOW);
 				m_pSemantic->GetDlgItem(IDC_DEFAULT_VALUE_BUTTON)->ShowWindow(SW_SHOW);
+				GetDlgItem(IDC_MESSAGE_TEST_BUTTON)->ShowWindow(TRUE);
 			}
 			else {
 				L(_T("Can't read resgisters"));
