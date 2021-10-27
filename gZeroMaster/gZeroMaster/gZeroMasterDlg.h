@@ -5,6 +5,7 @@
 #pragma once
 
 #include <Serial.h>
+#include <nlohmann/json.hpp>
 
 #define MAX_LOG					1000
 #define MAX_COMPORT				25
@@ -81,4 +82,5 @@ public:
 	afx_msg void OnUpdateEepromLoad(CCmdUI* pCmdUI);
 	afx_msg void OnUpdateEepromSave(CCmdUI* pCmdUI);
 	afx_msg void OnBnClickedMessageTestButton();
+	void iterateJson(nlohmann::json j);
 };

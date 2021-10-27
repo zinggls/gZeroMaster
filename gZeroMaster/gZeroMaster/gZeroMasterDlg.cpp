@@ -9,7 +9,6 @@
 #include "afxdialogex.h"
 #include "CSemantic.h"
 #include "CRaw.h"
-#include <nlohmann/json.hpp>
 #include <fstream>
 
 using json = nlohmann::json;
@@ -736,6 +735,16 @@ void CgZeroMasterDlg::OnUpdateEepromSave(CCmdUI* pCmdUI)
 }
 
 
+void CgZeroMasterDlg::iterateJson(nlohmann::json j)
+{
+	for (json::iterator it = j.begin(); it != j.end(); ++it) {
+		std::string key = it.key();
+		std::string value = it->dump();
+		L(CString::CStringT(CA2CT(key.c_str())) + _T("=") + CString::CStringT(CA2CT(value.c_str())));
+	}
+}
+
+
 void CgZeroMasterDlg::OnBnClickedMessageTestButton()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
@@ -747,8 +756,10 @@ void CgZeroMasterDlg::OnBnClickedMessageTestButton()
 	L(CString::CStringT(CA2CT(s.c_str())));
 
 	for (json::iterator it = j.begin(); it != j.end(); ++it) {
-		std::string sIt = it->dump();
-		L(CString::CStringT(CA2CT(it.key().c_str())) + _T("=") + CString::CStringT(CA2CT(sIt.c_str())));
+		std::string key = it.key();
+		std::string value = it->dump();
+		L(CString::CStringT(CA2CT(key.c_str())) + _T("=") + CString::CStringT(CA2CT(value.c_str())));
+		iterateJson(*it);
 	}
 
 	m_pSemantic->SendMessage(UDM_SEM_EDIT_CLICK);
