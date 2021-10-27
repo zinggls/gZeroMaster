@@ -746,6 +746,11 @@ void CgZeroMasterDlg::OnBnClickedMessageTestButton()
 	std::string s = j.dump();
 	L(CString::CStringT(CA2CT(s.c_str())));
 
+	for (json::iterator it = j.begin(); it != j.end(); ++it) {
+		std::string sIt = it->dump();
+		L(CString::CStringT(CA2CT(sIt.c_str())));
+	}
+
 	m_pSemantic->SendMessage(UDM_SEM_EDIT_CLICK);
 
 	//1. RX Data Interface 테스트
