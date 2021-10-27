@@ -17,3 +17,13 @@ TEST(nlohmann, Rx1) {
 	j["RX"]["LNA Gain"] = 4;
 	std::cout << j << std::endl;
 }
+
+TEST(nlohmann, Rx2) {
+	json j = {
+		{"RX",
+			{"RX Data Interface",true},
+			{"LNA Gain",4}
+		}
+	};
+	std::cout << j << std::endl;
+}
