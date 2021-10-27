@@ -10,3 +10,9 @@ TEST(nlohmann, hello) {
 
 	std::cout << j << std::endl;
 }
+
+TEST(nlohmann, RxDataInterface) {
+	json j;
+	j["RX"]["RX Data Interface"] = true;
+	std::cout << j << std::endl;
+}
