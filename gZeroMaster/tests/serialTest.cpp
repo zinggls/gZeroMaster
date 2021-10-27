@@ -17,7 +17,10 @@ TEST(Serial, open) {
 TEST(Serial, nonBlocking) {
 	CSerial serial;
 
-	LONG lLastError = serial.Open(_T("COM5"), 0, 0, false);
+	std::wstring strComPort(_T("\\\\.\\COM"));
+	strComPort += std::to_wstring(15);
+
+	LONG lLastError = serial.Open(strComPort.c_str(), 0, 0, false);
 	ASSERT_EQ(lLastError, ERROR_SUCCESS);
 
 	lLastError = serial.Setup(CSerial::EBaud4800, CSerial::EData8, CSerial::EParNone, CSerial::EStop1);
@@ -79,7 +82,10 @@ void ReadRegister(CSerial &serial, int addr, int* value)
 TEST(Serial, NonBlockingRegisterRead) {
 	CSerial serial;
 
-	LONG lLastError = serial.Open(_T("COM5"), 0, 0, false);
+	std::wstring strComPort(_T("\\\\.\\COM"));
+	strComPort += std::to_wstring(15);
+
+	LONG lLastError = serial.Open(strComPort.c_str(), 0, 0, false);
 	ASSERT_EQ(lLastError, ERROR_SUCCESS);
 
 	lLastError = serial.Setup(CSerial::EBaud4800, CSerial::EData8, CSerial::EParNone, CSerial::EStop1);
@@ -172,9 +178,9 @@ void regReadTest(const TCHAR *comPort,int maxLoop)
 }
 
 TEST(Serial, NonBlockingLimitedRegisterRead_NoRespondingComPort) {
-	regReadTest(_T("COM1"), 50000);	//COM1은 존재하는 포트이나 아래의 프로토콜을 지원하지 않는 포트임 따라서 데이터를 수신할 수 없는 포트임
+	regReadTest(_T("\\\\.\\COM1"), 50000);	//COM1은 존재하는 포트이나 아래의 프로토콜을 지원하지 않는 포트임 따라서 데이터를 수신할 수 없는 포트임
 }
 
 TEST(Serial, NonBlockingLimitedRegisterRead_RespondingComPort) {
-	regReadTest(_T("COM5"),50000);	//COM5는 B0 SPI와 통신하며 요청한 주소의 레지스터값을 반환하는 포트임
+	regReadTest(_T("\\\\.\\COM15"),50000);	//COM15는 B0 SPI와 통신하며 요청한 주소의 레지스터값을 반환하는 포트임
 }
