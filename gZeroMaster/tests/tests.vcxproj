@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="nlohmann_json.cpp" />
+    <ClCompile Include="rapidjson.cpp" />
     <ClCompile Include="serialTest.cpp" />
     <ClCompile Include="test.cpp" />
     <ClCompile Include="pch.cpp">
