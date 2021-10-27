@@ -748,7 +748,7 @@ void CgZeroMasterDlg::OnBnClickedMessageTestButton()
 
 	for (json::iterator it = j.begin(); it != j.end(); ++it) {
 		std::string sIt = it->dump();
-		L(CString::CStringT(CA2CT(sIt.c_str())));
+		L(CString::CStringT(CA2CT(it.key().c_str())) + _T("=") + CString::CStringT(CA2CT(sIt.c_str())));
 	}
 
 	m_pSemantic->SendMessage(UDM_SEM_EDIT_CLICK);
