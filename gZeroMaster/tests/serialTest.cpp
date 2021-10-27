@@ -5,6 +5,9 @@
 #include <stdio.h>
 #include <list>
 
+extern int gB0ComPort;
+extern int gNonB0ComPort;
+
 TEST(Serial, open) {
 	CSerial serial;
 
@@ -18,7 +21,7 @@ TEST(Serial, nonBlocking) {
 	CSerial serial;
 
 	std::wstring strComPort(_T("\\\\.\\COM"));
-	strComPort += std::to_wstring(15);
+	strComPort += std::to_wstring(gB0ComPort);
 
 	LONG lLastError = serial.Open(strComPort.c_str(), 0, 0, false);
 	ASSERT_EQ(lLastError, ERROR_SUCCESS);
@@ -83,7 +86,7 @@ TEST(Serial, NonBlockingRegisterRead) {
 	CSerial serial;
 
 	std::wstring strComPort(_T("\\\\.\\COM"));
-	strComPort += std::to_wstring(15);
+	strComPort += std::to_wstring(gB0ComPort);
 
 	LONG lLastError = serial.Open(strComPort.c_str(), 0, 0, false);
 	ASSERT_EQ(lLastError, ERROR_SUCCESS);
@@ -178,9 +181,13 @@ void regReadTest(const TCHAR *comPort,int maxLoop)
 }
 
 TEST(Serial, NonBlockingLimitedRegisterRead_NoRespondingComPort) {
-	regReadTest(_T("\\\\.\\COM1"), 50000);	//COM1은 존재하는 포트이나 아래의 프로토콜을 지원하지 않는 포트임 따라서 데이터를 수신할 수 없는 포트임
+	std::wstring strComPort(_T("\\\\.\\COM"));
+	strComPort += std::to_wstring(gNonB0ComPort);
+	regReadTest(strComPort.c_str(), 50000);	//gNonB0ComPort은 존재하는 포트이나 아래의 프로토콜을 지원하지 않는 포트임 따라서 데이터를 수신할 수 없는 포트임(B0가 연결되지 않은 포트)
 }
 
 TEST(Serial, NonBlockingLimitedRegisterRead_RespondingComPort) {
-	regReadTest(_T("\\\\.\\COM15"),50000);	//COM15는 B0 SPI와 통신하며 요청한 주소의 레지스터값을 반환하는 포트임
+	std::wstring strComPort(_T("\\\\.\\COM"));
+	strComPort += std::to_wstring(gB0ComPort);
+	regReadTest(strComPort.c_str(),50000);	//gB0ComPort는 B0 SPI와 통신하며 요청한 주소의 레지스터값을 반환하는 포트임
 }
