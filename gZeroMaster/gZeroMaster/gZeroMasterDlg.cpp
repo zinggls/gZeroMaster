@@ -9,6 +9,10 @@
 #include "afxdialogex.h"
 #include "CSemantic.h"
 #include "CRaw.h"
+#include <nlohmann/json.hpp>
+#include <fstream>
+
+using json = nlohmann::json;
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -735,6 +739,13 @@ void CgZeroMasterDlg::OnUpdateEepromSave(CCmdUI* pCmdUI)
 void CgZeroMasterDlg::OnBnClickedMessageTestButton()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	std::ifstream i("..\\tests\\rx.json");
+	json j;
+	i >> j;
+
+	std::string s = j.dump();
+	L(CString::CStringT(CA2CT(s.c_str())));
+
 	m_pSemantic->SendMessage(UDM_SEM_EDIT_CLICK);
 
 	//1. RX Data Interface 테스트
