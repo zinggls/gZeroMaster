@@ -1,6 +1,7 @@
 #include "pch.h"
 
 #include <nlohmann/json.hpp>
+#include <fstream>
 
 using json = nlohmann::json;
 
@@ -29,4 +30,14 @@ TEST(nlohmann, Rx2) {
 		}
 	};
 	std::cout << j << std::endl;
+}
+
+TEST(nlohmann, Rx3) {
+	std::ifstream i("rx.json");
+	json j;
+	i >> j;
+
+	// write prettified JSON to another file
+	std::ofstream o("pretty.json");
+	o << std::setw(4) << j << std::endl;
 }
