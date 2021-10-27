@@ -8,7 +8,7 @@
 TEST(Serial, open) {
 	CSerial serial;
 
-	LONG lLastError = serial.Open(_T("COM1"), 0, 0, false);
+	LONG lLastError = serial.Open(_T("\\\\.\\COM1"), 0, 0, false);
 	ASSERT_EQ(lLastError, ERROR_SUCCESS);
 	lLastError = serial.Close();
 	ASSERT_EQ(lLastError, ERROR_SUCCESS);
