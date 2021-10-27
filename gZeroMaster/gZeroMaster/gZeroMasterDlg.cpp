@@ -318,7 +318,9 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 				m_pSemantic->GetDlgItem(IDC_READ_ALL_BUTTON)->ShowWindow(SW_SHOW);
 				m_pSemantic->GetDlgItem(IDC_WRITE_ALL_BUTTON)->ShowWindow(SW_SHOW);
 				m_pSemantic->GetDlgItem(IDC_DEFAULT_VALUE_BUTTON)->ShowWindow(SW_SHOW);
+#ifdef DEBUG
 				GetDlgItem(IDC_MESSAGE_TEST_BUTTON)->ShowWindow(TRUE);
+#endif // DEBUG
 			}
 			else {
 				L(_T("Can't read resgisters"));
