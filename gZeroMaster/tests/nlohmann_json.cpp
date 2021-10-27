@@ -16,6 +16,9 @@ TEST(nlohmann, Rx1) {
 	j["RX"]["RX Data Interface"] = true;
 	j["RX"]["LNA Gain"] = 4;
 	std::cout << j << std::endl;
+
+	std::string s = j.dump();
+	std::cout << s << std::endl;
 }
 
 TEST(nlohmann, Rx2) {
