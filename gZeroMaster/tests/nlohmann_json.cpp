@@ -41,3 +41,27 @@ TEST(nlohmann, Rx3) {
 	std::ofstream o("pretty.json");
 	o << std::setw(4) << j << std::endl;
 }
+
+void iterate(json j)
+{
+	int index = 0;
+	for (json::iterator it = j.begin(); it != j.end(); ++it) {
+		std::cout << it.key() << " = " << *it << std::endl;
+	}
+}
+
+TEST(nlohmann, Rx4) {
+	std::ifstream i("rx.json");
+	json j;
+	i >> j;
+
+	std::string s = j.dump();
+	std::cout << s << std::endl;
+
+	int index = 0;
+	for (json::iterator it = j.begin(); it != j.end(); ++it) {
+		std::cout << it.key() << " = " << *it << std::endl;
+		json j1 = *it;
+		iterate(j1);
+	}
+}
