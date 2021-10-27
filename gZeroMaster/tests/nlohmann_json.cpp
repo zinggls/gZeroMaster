@@ -11,7 +11,7 @@ TEST(nlohmann, hello) {
 	std::cout << j << std::endl;
 }
 
-TEST(nlohmann, RxDataInterface) {
+TEST(nlohmann, Rx1) {
 	json j;
 	j["RX"]["RX Data Interface"] = true;
 	j["RX"]["LNA Gain"] = 4;
