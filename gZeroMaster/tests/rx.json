@@ -1,6 +1,7 @@
 {
 	"RX":{
 		"RX Data Interface":true,
+		"Limiting Amplifier Enable":true,
 		"LNA Gain":4
 	}
 }
