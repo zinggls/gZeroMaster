@@ -170,7 +170,6 @@ BEGIN_MESSAGE_MAP(CSemantic, CDialogEx)
 	ON_MESSAGE(UDM_SEM_TEST_BUFFER_CURRENT_CLICK, OnSemTestBufferCurrentClick)
 	ON_MESSAGE(UDM_SEM_BIAS_BLOCK_ENABLE_CLICK, OnSemBiasBlockEnableClick)
 	ON_MESSAGE(UDM_SEM_1ST_STAGE_BIAS_CURRENT_CLICK, OnSem1stStageBiasCurrentClick)
-	ON_MESSAGE(UDM_SEM_2ND_STAGE_BIAS_CURRENT_CLICK, OnSem2ndStageBiasCurrentClick)
 	ON_MESSAGE(UDM_SEM_3RD_STAGE_BIAS_CURRENT_CLICK, OnSem3rdStageBiasCurrentClick)
 	ON_MESSAGE(UDM_SEM_4TH_STAGE_BIAS_CURRENT_CLICK, OnSem4thStageBiasCurrentClick)
 	ON_MESSAGE(UDM_SEM_5TH_STAGE_BIAS_CURRENT_CLICK, OnSem5thStageBiasCurrentClick)
@@ -2512,12 +2511,6 @@ LRESULT CSemantic::OnSemBiasBlockEnableClick(WPARAM w, LPARAM l)
 LRESULT CSemantic::OnSem1stStageBiasCurrentClick(WPARAM w, LPARAM l)
 {
 	OnStnClickedLna1BiasCurrentValueStatic();
-	return 0;
-}
-
-LRESULT CSemantic::OnSem2ndStageBiasCurrentClick(WPARAM w, LPARAM l)
-{
-	//TODO
 	return 0;
 }
 

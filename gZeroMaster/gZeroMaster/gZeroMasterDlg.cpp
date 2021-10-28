@@ -764,8 +764,12 @@ void CgZeroMasterDlg::iterateJson(nlohmann::json j)
 
 		ASSERT(nUdmCombo == -1);
 		int nUdmSlider = findSliders(key);
-		ASSERT(nUdmSlider != -1);
-		handleSlider(nUdmSlider, key, std::stoi(value));
+		if (nUdmSlider != -1) {
+			handleSlider(nUdmSlider, key, std::stoi(value));
+		}
+		else {
+			L(_T("json warning: unhandled key found,") + str2CStr(key) + _T("=") + str2CStr(value));
+		}
 	}
 }
 
@@ -820,7 +824,7 @@ void CgZeroMasterDlg::setSliders()
 	m_sliders.emplace_back("Test Buffer Current", UDM_SEM_TEST_BUFFER_CURRENT_CLICK);
 
 	m_sliders.emplace_back("1st Stage Bias Current", UDM_SEM_1ST_STAGE_BIAS_CURRENT_CLICK);
-	m_sliders.emplace_back("2nd Stage Bias Current", UDM_SEM_2ND_STAGE_BIAS_CURRENT_CLICK);
+	//m_sliders.emplace_back("2nd Stage Bias Current", UDM_SEM_2ND_STAGE_BIAS_CURRENT_CLICK);	//1st로 대체
 	m_sliders.emplace_back("3rd Stage Bias Current", UDM_SEM_3RD_STAGE_BIAS_CURRENT_CLICK);
 	m_sliders.emplace_back("4th Stage Bias Current", UDM_SEM_4TH_STAGE_BIAS_CURRENT_CLICK);
 	m_sliders.emplace_back("5th Stage Bias Current", UDM_SEM_5TH_STAGE_BIAS_CURRENT_CLICK);

@@ -305,7 +305,6 @@ public:
 	afx_msg LRESULT OnSemTestBufferCurrentClick(WPARAM w, LPARAM l);
 	afx_msg LRESULT OnSemBiasBlockEnableClick(WPARAM w, LPARAM l);
 	afx_msg LRESULT OnSem1stStageBiasCurrentClick(WPARAM w, LPARAM l);
-	afx_msg LRESULT OnSem2ndStageBiasCurrentClick(WPARAM w, LPARAM l);
 	afx_msg LRESULT OnSem3rdStageBiasCurrentClick(WPARAM w, LPARAM l);
 	afx_msg LRESULT OnSem4thStageBiasCurrentClick(WPARAM w, LPARAM l);
 	afx_msg LRESULT OnSem5thStageBiasCurrentClick(WPARAM w, LPARAM l);
