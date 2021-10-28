@@ -168,6 +168,8 @@ BOOL CgZeroMasterDlg::OnInitDialog()
 
 	OnCbnSelchangeChipCombo();
 	GetDlgItem(IDC_MESSAGE_TEST_BUTTON)->ShowWindow(FALSE);
+	setCombos();
+	setSliders();
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
 
@@ -801,4 +803,48 @@ void CgZeroMasterDlg::OnBnClickedMessageTestButton()
 	}
 	m_pSemantic->SendMessage(UDM_SEM_EDIT_CLICK);
 	L(_T("MessageTest Button clicked"));
+}
+
+
+void CgZeroMasterDlg::setCombos()
+{
+	m_combos.emplace_back("RX Data Interface", UDM_SEM_RX_DATA_INTERFACE_CLICK);
+	m_combos.emplace_back("Limiting Amplifier Enable", UDM_SEM_LIMIT_AMP_ENABLE_CLICK);
+
+	m_combos.emplace_back("Regulator Ref Voltage", UDM_SEM_REG_REF_VOLT_CLICK);
+	m_combos.emplace_back("VCO Power", UDM_SEM_VCO_POWER_CLICK);
+	m_combos.emplace_back("Modulator Power", UDM_SEM_MODULATOR_POWER_CLICK);
+	m_combos.emplace_back("Test Buffer Power", UDM_SEM_TEST_BUFFER_POWER_CLICK);
+	m_combos.emplace_back("Data Input Select", UDM_SEM_DATA_INPUT_SELECT_CLICK);
+	m_combos.emplace_back("PA Power", UDM_SEM_PA_POWER_CLICK);
+
+	m_combos.emplace_back("BIAS Block Enable", UDM_SEM_BIAS_BLOCK_ENABLE_CLICK);
+}
+
+
+void CgZeroMasterDlg::setSliders()
+{
+	m_sliders.emplace_back("LNA Gain", UDM_SEM_LNA_GAIN_CLICK);
+
+	m_sliders.emplace_back("Duty Cycle", UDM_SEM_DUTY_CYCLE_CLICK);
+	m_sliders.emplace_back("VCO Oscillation Freq", UDM_SEM_VCO_OSC_FREQ_CLICK);
+	m_sliders.emplace_back("VCO VDD", UDM_SEM_VCO_VDD_CLICK);
+	m_sliders.emplace_back("PA Gain Control1", UDM_SEM_PA_GAIN_CONTROL1);
+	m_sliders.emplace_back("PA Gain Control2", UDM_SEM_PA_GAIN_CONTROL2);
+	m_sliders.emplace_back("Test Buffer Current", UDM_SEM_TEST_BUFFER_CURRENT_CLICK);
+
+	m_sliders.emplace_back("1st Stage Bias Current", UDM_SEM_1ST_STAGE_BIAS_CURRENT_CLICK);
+	m_sliders.emplace_back("2nd Stage Bias Current", UDM_SEM_2ND_STAGE_BIAS_CURRENT_CLICK);
+	m_sliders.emplace_back("3rd Stage Bias Current", UDM_SEM_3RD_STAGE_BIAS_CURRENT_CLICK);
+	m_sliders.emplace_back("4th Stage Bias Current", UDM_SEM_4TH_STAGE_BIAS_CURRENT_CLICK);
+	m_sliders.emplace_back("5th Stage Bias Current", UDM_SEM_5TH_STAGE_BIAS_CURRENT_CLICK);
+	m_sliders.emplace_back("Ref Stage Current", UDM_SEM_REF_STAGE_CURRENT_CLICK);
+	m_sliders.emplace_back("I/P Stage Current", UDM_SEM_IP_STAGE_CURRENT_CLICK);
+	m_sliders.emplace_back("FB Current", UDM_SEM_FB_CURRENT_CLICK);
+	m_sliders.emplace_back("Core Current", UDM_SEM_CORE_CURRENT_CLICK);
+	m_sliders.emplace_back("O/P Buffer Current", UDM_SEM_OP_BUFFER_CURRENT_CLICK);
+	m_sliders.emplace_back("I/P Buffer Current", UDM_SEM_IP_BUFFER_CURRENT_CLICK);
+	m_sliders.emplace_back("High/Low Data Rate Current", UDM_SEM_HIGHLOW_DATA_RATE_CURRENT_CLICK);
+	m_sliders.emplace_back("CMOS Gain Stage Current", UDM_SEM_CMOS_GAIN_STAGE_CURRENT_CLICK);
+	m_sliders.emplace_back("CML Interface Stage Current", UDM_SEM_CML_INTERFACE_STAGE_CURRENT_CLICK);
 }

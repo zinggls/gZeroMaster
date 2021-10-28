@@ -48,6 +48,8 @@ public:
 	CRaw *m_pRaw;
 	CString m_chip;
 	CComboBox m_chipSelect;
+	std::list<std::pair<std::string, int>> m_combos;
+	std::list<std::pair<std::string, int>> m_sliders;
 
 	void L(const TCHAR* str, ...);
 	void Reset();
@@ -85,4 +87,6 @@ public:
 	void iterateJson(nlohmann::json j);
 	static int strBool2int(std::string strBool);
 	static CString str2CStr(std::string str);
+	void setCombos();
+	void setSliders();
 };
