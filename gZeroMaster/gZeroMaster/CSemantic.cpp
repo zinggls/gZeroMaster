@@ -2546,7 +2546,7 @@ LRESULT CSemantic::OnSemIpStageCurrentClick(WPARAM w, LPARAM l)
 
 LRESULT CSemantic::OnSemFbCurrentClick(WPARAM w, LPARAM l)
 {
-	//TODO
+	OnStnClickedLaFbCurrentValueStatic();
 	return 0;
 }
 
