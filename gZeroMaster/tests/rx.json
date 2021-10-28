@@ -5,6 +5,7 @@
 		"LNA Gain":4
 	},
 	"TX":{
-		"Duty Cycle":5
+		"Duty Cycle":5,
+		"VCO Oscillation Freq":6
 	}
 }

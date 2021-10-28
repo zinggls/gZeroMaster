@@ -2439,7 +2439,7 @@ LRESULT CSemantic::OnSemDutyCycleClick(WPARAM w, LPARAM l)
 
 LRESULT CSemantic::OnSemVcoOscFreqClick(WPARAM w, LPARAM l)
 {
-	//TODO
+	OnStnClickedVcoOscFreqValueStatic();
 	return 0;
 }
 
