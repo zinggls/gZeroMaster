@@ -2445,7 +2445,7 @@ LRESULT CSemantic::OnSemVcoOscFreqClick(WPARAM w, LPARAM l)
 
 LRESULT CSemantic::OnSemRegRefVoltClick(WPARAM w, LPARAM l)
 {
-	//TODO
+	OnStnClickedRegRefVoltValueStatic();
 	return 0;
 }
 
