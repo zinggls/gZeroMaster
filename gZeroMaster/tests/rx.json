@@ -28,6 +28,7 @@
 		"I/P Stage Current":7,
 		"FB Current":1,
 		"Core Current":2,
-		"O/P Buffer Current":3
+		"O/P Buffer Current":3,
+		"I/P Buffer Current":4
 	}
 }
