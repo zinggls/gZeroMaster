@@ -2457,7 +2457,7 @@ LRESULT CSemantic::OnSemVcoVddClick(WPARAM w, LPARAM l)
 
 LRESULT CSemantic::OnSemVcoPowerClick(WPARAM w, LPARAM l)
 {
-	//TODO
+	OnStnClickedVcoPowerValueStatic();
 	return 0;
 }
 
