@@ -9,6 +9,7 @@
 		"VCO Oscillation Freq":6,
 		"Regulator Ref Voltage":false,
 		"VCO VDD":7,
-		"VCO Power":false
+		"VCO Power":false,
+		"Modulator Power":false
 	}
 }

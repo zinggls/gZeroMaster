@@ -2463,7 +2463,7 @@ LRESULT CSemantic::OnSemVcoPowerClick(WPARAM w, LPARAM l)
 
 LRESULT CSemantic::OnSemModulatorPowerClick(WPARAM w, LPARAM l)
 {
-	//TODO
+	OnStnClickedModulatorPowerValueStatic();
 	return 0;
 }
 
