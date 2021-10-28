@@ -2534,7 +2534,7 @@ LRESULT CSemantic::OnSem5thStageBiasCurrentClick(WPARAM w, LPARAM l)
 
 LRESULT CSemantic::OnSemRefStageCurrentClick(WPARAM w, LPARAM l)
 {
-	//TODO
+	OnStnClickedDemodRefStageCurrentValueStatic();
 	return 0;
 }
 
