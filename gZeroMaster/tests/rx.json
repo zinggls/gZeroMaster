@@ -12,6 +12,7 @@
 		"VCO Power":false,
 		"Modulator Power":false,
 		"Test Buffer Power":false,
-		"Data Input Select":false
+		"Data Input Select":false,
+		"PA Power":false
 	}
 }
