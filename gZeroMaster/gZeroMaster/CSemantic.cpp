@@ -2493,7 +2493,7 @@ LRESULT CSemantic::OnSemPaGainControl1Click(WPARAM w, LPARAM l)
 
 LRESULT CSemantic::OnSemPaGainControl2Click(WPARAM w, LPARAM l)
 {
-	//TODO
+	OnStnClickedPaGainControl2ValueStatic();
 	return 0;
 }
 
