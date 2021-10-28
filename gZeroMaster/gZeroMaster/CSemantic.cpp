@@ -2558,7 +2558,7 @@ LRESULT CSemantic::OnSemCoreCurrentClick(WPARAM w, LPARAM l)
 
 LRESULT CSemantic::OnSemOpBufferCurrentClick(WPARAM w, LPARAM l)
 {
-	//TODO
+	OnStnClickedLaOpBufferCurrentValueStatic();
 	return 0;
 }
 
