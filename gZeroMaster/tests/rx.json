@@ -26,6 +26,7 @@
 		"5th Stage Bias Current":5,
 		"Ref Stage Current":6,
 		"I/P Stage Current":7,
-		"FB Current":1
+		"FB Current":1,
+		"Core Current":2
 	}
 }

@@ -2552,7 +2552,7 @@ LRESULT CSemantic::OnSemFbCurrentClick(WPARAM w, LPARAM l)
 
 LRESULT CSemantic::OnSemCoreCurrentClick(WPARAM w, LPARAM l)
 {
-	//TODO
+	OnStnClickedLaCoreCurrentValueStatic();
 	return 0;
 }
 
