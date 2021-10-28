@@ -154,7 +154,35 @@ BEGIN_MESSAGE_MAP(CSemantic, CDialogEx)
 	ON_BN_CLICKED(IDC_DEFAULT_VALUE_BUTTON, &CSemantic::OnBnClickedDefaultValueButton)
 	ON_MESSAGE(UDM_SEM_EDIT_CLICK, OnSemEditClick)
 	ON_MESSAGE(UDM_SEM_RX_DATA_INTERFACE_CLICK, OnSemRxDataInterfaceClick)
+	ON_MESSAGE(UDM_SEM_LIMIT_AMP_ENABLE_CLICK, OnSemLimitAmpEnableClick)
 	ON_MESSAGE(UDM_SEM_LNA_GAIN_CLICK, OnSemLnaGainClick)
+	ON_MESSAGE(UDM_SEM_DUTY_CYCLE_CLICK, OnSemDutyCycleClick)
+	ON_MESSAGE(UDM_SEM_VCO_OSC_FREQ_CLICK, OnSemVcoOscFreqClick)
+	ON_MESSAGE(UDM_SEM_REG_REF_VOLT_CLICK, OnSemRegRefVoltClick)
+	ON_MESSAGE(UDM_SEM_VCO_VDD_CLICK, OnSemVcoVddClick)
+	ON_MESSAGE(UDM_SEM_VCO_POWER_CLICK, OnSemVcoPowerClick)
+	ON_MESSAGE(UDM_SEM_MODULATOR_POWER_CLICK, OnSemModulatorPowerClick)
+	ON_MESSAGE(UDM_SEM_TEST_BUFFER_POWER_CLICK, OnSemTestBufferPowerClick)
+	ON_MESSAGE(UDM_SEM_DATA_INPUT_SELECT_CLICK, OnSemDataInputSelectClick)
+	ON_MESSAGE(UDM_SEM_PA_POWER_CLICK, OnSemPaPowerClick)
+	ON_MESSAGE(UDM_SEM_PA_GAIN_CONTROL1, OnSemPaGainControl1Click)
+	ON_MESSAGE(UDM_SEM_PA_GAIN_CONTROL2, OnSemPaGainControl2Click)
+	ON_MESSAGE(UDM_SEM_TEST_BUFFER_CURRENT_CLICK, OnSemTestBufferCurrentClick)
+	ON_MESSAGE(UDM_SEM_BIAS_BLOCK_ENABLE_CLICK, OnSemBiasBlockEnableClick)
+	ON_MESSAGE(UDM_SEM_1ST_STAGE_BIAS_CURRENT_CLICK, OnSem1stStageBiasCurrentClick)
+	ON_MESSAGE(UDM_SEM_2ND_STAGE_BIAS_CURRENT_CLICK, OnSem2ndStageBiasCurrentClick)
+	ON_MESSAGE(UDM_SEM_3RD_STAGE_BIAS_CURRENT_CLICK, OnSem3rdStageBiasCurrentClick)
+	ON_MESSAGE(UDM_SEM_4TH_STAGE_BIAS_CURRENT_CLICK, OnSem4thStageBiasCurrentClick)
+	ON_MESSAGE(UDM_SEM_5TH_STAGE_BIAS_CURRENT_CLICK, OnSem5thStageBiasCurrentClick)
+	ON_MESSAGE(UDM_SEM_REF_STAGE_CURRENT_CLICK, OnSemRefStageCurrentClick)
+	ON_MESSAGE(UDM_SEM_IP_STAGE_CURRENT_CLICK, OnSemIpStageCurrentClick)
+	ON_MESSAGE(UDM_SEM_FB_CURRENT_CLICK, OnSemFbCurrentClick)
+	ON_MESSAGE(UDM_SEM_CORE_CURRENT_CLICK, OnSemCoreCurrentClick)
+	ON_MESSAGE(UDM_SEM_OP_BUFFER_CURRENT_CLICK, OnSemOpBufferCurrentClick)
+	ON_MESSAGE(UDM_SEM_IP_BUFFER_CURRENT_CLICK, OnSemIpBufferCurrentClick)
+	ON_MESSAGE(UDM_SEM_HIGHLOW_DATA_RATE_CURRENT_CLICK, OnSemHighlowDataRateCurrentClick)
+	ON_MESSAGE(UDM_SEM_CMOS_GAIN_STAGE_CURRENT_CLICK, OnSemCmosGainStageCurrentClick)
+	ON_MESSAGE(UDM_SEM_CML_INTERFACE_STAGE_CURRENT_CLICK, OnSemCmlInterfaceStageCurrentClick)
 END_MESSAGE_MAP()
 
 
@@ -2391,8 +2419,176 @@ LRESULT CSemantic::OnSemRxDataInterfaceClick(WPARAM w, LPARAM l)
 	return 0;
 }
 
+LRESULT CSemantic::OnSemLimitAmpEnableClick(WPARAM w, LPARAM l)
+{
+	//TODO
+	return 0;
+}
+
 LRESULT CSemantic::OnSemLnaGainClick(WPARAM w, LPARAM l)
 {
 	OnStnClickedLnaGainValueStatic();
+	return 0;
+}
+
+LRESULT CSemantic::OnSemDutyCycleClick(WPARAM w, LPARAM l)
+{
+	//TODO
+	return 0;
+}
+
+LRESULT CSemantic::OnSemVcoOscFreqClick(WPARAM w, LPARAM l)
+{
+	//TODO
+	return 0;
+}
+
+LRESULT CSemantic::OnSemRegRefVoltClick(WPARAM w, LPARAM l)
+{
+	//TODO
+	return 0;
+}
+
+LRESULT CSemantic::OnSemVcoVddClick(WPARAM w, LPARAM l)
+{
+	//TODO
+	return 0;
+}
+
+LRESULT CSemantic::OnSemVcoPowerClick(WPARAM w, LPARAM l)
+{
+	//TODO
+	return 0;
+}
+
+LRESULT CSemantic::OnSemModulatorPowerClick(WPARAM w, LPARAM l)
+{
+	//TODO
+	return 0;
+}
+
+LRESULT CSemantic::OnSemTestBufferPowerClick(WPARAM w, LPARAM l)
+{
+	//TODO
+	return 0;
+}
+
+LRESULT CSemantic::OnSemDataInputSelectClick(WPARAM w, LPARAM l)
+{
+	//TODO
+	return 0;
+}
+
+LRESULT CSemantic::OnSemPaPowerClick(WPARAM w, LPARAM l)
+{
+	//TODO
+	return 0;
+}
+
+LRESULT CSemantic::OnSemPaGainControl1Click(WPARAM w, LPARAM l)
+{
+	//TODO
+	return 0;
+}
+
+LRESULT CSemantic::OnSemPaGainControl2Click(WPARAM w, LPARAM l)
+{
+	//TODO
+	return 0;
+}
+
+LRESULT CSemantic::OnSemTestBufferCurrentClick(WPARAM w, LPARAM l)
+{
+	//TODO
+	return 0;
+}
+
+LRESULT CSemantic::OnSemBiasBlockEnableClick(WPARAM w, LPARAM l)
+{
+	//TODO
+	return 0;
+}
+
+LRESULT CSemantic::OnSem1stStageBiasCurrentClick(WPARAM w, LPARAM l)
+{
+	//TODO
+	return 0;
+}
+
+LRESULT CSemantic::OnSem2ndStageBiasCurrentClick(WPARAM w, LPARAM l)
+{
+	//TODO
+	return 0;
+}
+
+LRESULT CSemantic::OnSem3rdStageBiasCurrentClick(WPARAM w, LPARAM l)
+{
+	//TODO
+	return 0;
+}
+
+LRESULT CSemantic::OnSem4thStageBiasCurrentClick(WPARAM w, LPARAM l)
+{
+	//TODO
+	return 0;
+}
+
+LRESULT CSemantic::OnSem5thStageBiasCurrentClick(WPARAM w, LPARAM l)
+{
+	//TODO
+	return 0;
+}
+
+LRESULT CSemantic::OnSemRefStageCurrentClick(WPARAM w, LPARAM l)
+{
+	//TODO
+	return 0;
+}
+
+LRESULT CSemantic::OnSemIpStageCurrentClick(WPARAM w, LPARAM l)
+{
+	//TODO
+	return 0;
+}
+
+LRESULT CSemantic::OnSemFbCurrentClick(WPARAM w, LPARAM l)
+{
+	//TODO
+	return 0;
+}
+
+LRESULT CSemantic::OnSemCoreCurrentClick(WPARAM w, LPARAM l)
+{
+	//TODO
+	return 0;
+}
+
+LRESULT CSemantic::OnSemOpBufferCurrentClick(WPARAM w, LPARAM l)
+{
+	//TODO
+	return 0;
+}
+
+LRESULT CSemantic::OnSemIpBufferCurrentClick(WPARAM w, LPARAM l)
+{
+	//TODO
+	return 0;
+}
+
+LRESULT CSemantic::OnSemHighlowDataRateCurrentClick(WPARAM w, LPARAM l)
+{
+	//TODO
+	return 0;
+}
+
+LRESULT CSemantic::OnSemCmosGainStageCurrentClick(WPARAM w, LPARAM l)
+{
+	//TODO
+	return 0;
+}
+
+LRESULT CSemantic::OnSemCmlInterfaceStageCurrentClick(WPARAM w, LPARAM l)
+{
+	//TODO
 	return 0;
 }
