@@ -741,12 +741,18 @@ int CgZeroMasterDlg::strBool2int(std::string strBool)
 }
 
 
+CString CgZeroMasterDlg::str2CStr(std::string str)
+{
+	return CString::CStringT(CA2CT(str.c_str()));
+}
+
+
 void CgZeroMasterDlg::iterateJson(nlohmann::json j)
 {
 	for (json::iterator it = j.begin(); it != j.end(); ++it) {
 		std::string key = it.key();
 		std::string value = it->dump();
-		L(CString::CStringT(CA2CT(key.c_str())) + _T("=") + CString::CStringT(CA2CT(value.c_str())));
+		L(str2CStr(key) + _T("=") + str2CStr(value));
 
 		if (key == "Rx Data Interface") {
 			TRACE("Rx Data Interface\n");
@@ -761,7 +767,7 @@ void CgZeroMasterDlg::iterateJson(nlohmann::json j)
 			int nMin = -1 * m_pSemantic->m_controlSlider.GetRangeMax();
 			int nVal = std::stoi(value);
 			if (nVal<nMin || nVal>nMax) {
-				L(CString::CStringT(CA2CT(value.c_str())) + _T(" is out of range"));
+				L(str2CStr(value) + _T(" is out of range"));
 			}
 			else {
 				m_pSemantic->m_controlSlider.SetPos(-1 * nVal);
@@ -780,13 +786,13 @@ void CgZeroMasterDlg::OnBnClickedMessageTestButton()
 	i >> j;
 
 	std::string s = j.dump();
-	L(CString::CStringT(CA2CT(s.c_str())));
+	L(str2CStr(s));
 
 	m_pSemantic->SendMessage(UDM_SEM_EDIT_CLICK);
 	for (json::iterator it = j.begin(); it != j.end(); ++it) {
 		std::string key = it.key();
 		std::string value = it->dump();
-		L(CString::CStringT(CA2CT(key.c_str())) + _T("=") + CString::CStringT(CA2CT(value.c_str())));
+		L(str2CStr(key) + _T("=") + str2CStr(value));
 		iterateJson(*it);
 	}
 	m_pSemantic->SendMessage(UDM_SEM_EDIT_CLICK);

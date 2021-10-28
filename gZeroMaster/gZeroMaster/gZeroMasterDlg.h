@@ -84,4 +84,5 @@ public:
 	afx_msg void OnBnClickedMessageTestButton();
 	void iterateJson(nlohmann::json j);
 	static int strBool2int(std::string strBool);
+	static CString str2CStr(std::string str);
 };
