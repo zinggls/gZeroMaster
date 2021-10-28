@@ -22,6 +22,7 @@
 		"BIAS Block Enable":false,
 		"1st Stage Bias Current":1,
 		"3rd Stage Bias Current":3,
-		"4th Stage Bias Current":4
+		"4th Stage Bias Current":4,
+		"5th Stage Bias Current":5
 	}
 }
