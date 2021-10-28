@@ -735,12 +735,39 @@ void CgZeroMasterDlg::OnUpdateEepromSave(CCmdUI* pCmdUI)
 }
 
 
+int CgZeroMasterDlg::strBool2int(std::string strBool)
+{
+	return (strBool == "true") ? 1 : 0;
+}
+
+
 void CgZeroMasterDlg::iterateJson(nlohmann::json j)
 {
 	for (json::iterator it = j.begin(); it != j.end(); ++it) {
 		std::string key = it.key();
 		std::string value = it->dump();
 		L(CString::CStringT(CA2CT(key.c_str())) + _T("=") + CString::CStringT(CA2CT(value.c_str())));
+
+		if (key == "Rx Data Interface") {
+			TRACE("Rx Data Interface\n");
+			m_pSemantic->SendMessage(UDM_SEM_RX_DATA_INTERFACE_CLICK);
+			m_pSemantic->m_controlCombo.SetCurSel(strBool2int(value));
+		}
+		else if (key == "LNA Gain") {
+			TRACE("LNA Gain\n");
+			m_pSemantic->SendMessage(UDM_SEM_LNA_GAIN_CLICK);
+
+			int nMax = -1 * m_pSemantic->m_controlSlider.GetRangeMin();
+			int nMin = -1 * m_pSemantic->m_controlSlider.GetRangeMax();
+			int nVal = std::stoi(value);
+			if (nVal<nMin || nVal>nMax) {
+				L(CString::CStringT(CA2CT(value.c_str())) + _T(" is out of range"));
+			}
+			else {
+				m_pSemantic->m_controlSlider.SetPos(-1 * nVal);
+			}
+		}
+		m_pSemantic->OnBnClickedWriteButton();
 	}
 }
 
@@ -755,38 +782,13 @@ void CgZeroMasterDlg::OnBnClickedMessageTestButton()
 	std::string s = j.dump();
 	L(CString::CStringT(CA2CT(s.c_str())));
 
+	m_pSemantic->SendMessage(UDM_SEM_EDIT_CLICK);
 	for (json::iterator it = j.begin(); it != j.end(); ++it) {
 		std::string key = it.key();
 		std::string value = it->dump();
 		L(CString::CStringT(CA2CT(key.c_str())) + _T("=") + CString::CStringT(CA2CT(value.c_str())));
 		iterateJson(*it);
 	}
-
-	m_pSemantic->SendMessage(UDM_SEM_EDIT_CLICK);
-
-	//1. RX Data Interface 테스트
-	m_pSemantic->SendMessage(UDM_SEM_RX_DATA_INTERFACE_CLICK);
-
-	int nCurSel = m_pSemantic->m_controlCombo.GetCurSel();
-	ASSERT(nCurSel != CB_ERR);
-	ASSERT(nCurSel == 0 || nCurSel == 1);
-
-	//OnBnClickedMessageTestButton 누를때마다 값을 변경
-	(nCurSel == 0) ? m_pSemantic->m_controlCombo.SetCurSel(1) : m_pSemantic->m_controlCombo.SetCurSel(0);
-
-	m_pSemantic->OnBnClickedWriteButton();
-
-	//2. LNA Gain 테스트
-	m_pSemantic->SendMessage(UDM_SEM_LNA_GAIN_CLICK);
-
-	int nMax = -1*m_pSemantic->m_controlSlider.GetRangeMin();
-	int nMin = -1*m_pSemantic->m_controlSlider.GetRangeMax();
-	int nRandom = (rand() % (nMax - nMin + 1)) + nMin;
-
-	m_pSemantic->m_controlSlider.SetPos(-1 * nRandom);
-
-	m_pSemantic->OnBnClickedWriteButton();
-
 	m_pSemantic->SendMessage(UDM_SEM_EDIT_CLICK);
 	L(_T("MessageTest Button clicked"));
 }
