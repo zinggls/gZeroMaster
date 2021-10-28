@@ -754,11 +754,12 @@ void CgZeroMasterDlg::iterateJson(nlohmann::json j)
 		std::string value = it->dump();
 		L(str2CStr(key) + _T("=") + str2CStr(value));
 
-		BOOL bError = FALSE;
+		BOOL bOK = FALSE;
 		if (key == "Rx Data Interface") {
 			TRACE("Rx Data Interface\n");
 			m_pSemantic->SendMessage(UDM_SEM_RX_DATA_INTERFACE_CLICK);
 			m_pSemantic->m_controlCombo.SetCurSel(strBool2int(value));
+			bOK = TRUE;
 		}
 		else if (key == "LNA Gain") {
 			TRACE("LNA Gain\n");
@@ -768,15 +769,15 @@ void CgZeroMasterDlg::iterateJson(nlohmann::json j)
 			int nMin = -1 * m_pSemantic->m_controlSlider.GetRangeMax();
 			int nVal = std::stoi(value);
 			if (nVal<nMin || nVal>nMax) {
-				bError = TRUE;
 				L(_T("json error:") + str2CStr(key) + _T(" value(") + str2CStr(value)
 					+ _T(") is out of range. Min=") + str2CStr(std::to_string(nMin)) + _T(",Max=") + str2CStr(std::to_string(nMax)));
 			}
 			else {
 				m_pSemantic->m_controlSlider.SetPos(-1 * nVal);
+				bOK = TRUE;
 			}
 		}
-		if(!bError) m_pSemantic->OnBnClickedWriteButton();	//에러가 없는 경우에만 쓰도록 한다
+		if(bOK) m_pSemantic->OnBnClickedWriteButton();	//에러가 없는 경우에만 쓰도록 한다
 	}
 }
 
