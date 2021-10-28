@@ -754,6 +754,7 @@ void CgZeroMasterDlg::iterateJson(nlohmann::json j)
 		std::string value = it->dump();
 		L(str2CStr(key) + _T("=") + str2CStr(value));
 
+		BOOL bError = FALSE;
 		if (key == "Rx Data Interface") {
 			TRACE("Rx Data Interface\n");
 			m_pSemantic->SendMessage(UDM_SEM_RX_DATA_INTERFACE_CLICK);
@@ -767,13 +768,15 @@ void CgZeroMasterDlg::iterateJson(nlohmann::json j)
 			int nMin = -1 * m_pSemantic->m_controlSlider.GetRangeMax();
 			int nVal = std::stoi(value);
 			if (nVal<nMin || nVal>nMax) {
-				L(str2CStr(value) + _T(" is out of range"));
+				bError = TRUE;
+				L(_T("json error:") + str2CStr(key) + _T(" value(") + str2CStr(value)
+					+ _T(") is out of range. Min=") + str2CStr(std::to_string(nMin)) + _T(",Max=") + str2CStr(std::to_string(nMax)));
 			}
 			else {
 				m_pSemantic->m_controlSlider.SetPos(-1 * nVal);
 			}
 		}
-		m_pSemantic->OnBnClickedWriteButton();
+		if(!bError) m_pSemantic->OnBnClickedWriteButton();	//에러가 없는 경우에만 쓰도록 한다
 	}
 }
 
