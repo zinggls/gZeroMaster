@@ -2576,7 +2576,7 @@ LRESULT CSemantic::OnSemHighlowDataRateCurrentClick(WPARAM w, LPARAM l)
 
 LRESULT CSemantic::OnSemCmosGainStageCurrentClick(WPARAM w, LPARAM l)
 {
-	//TODO
+	OnStnClickedCmosGainStageCurrentValueStatic();
 	return 0;
 }
 
