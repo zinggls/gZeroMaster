@@ -2522,7 +2522,7 @@ LRESULT CSemantic::OnSem3rdStageBiasCurrentClick(WPARAM w, LPARAM l)
 
 LRESULT CSemantic::OnSem4thStageBiasCurrentClick(WPARAM w, LPARAM l)
 {
-	//TODO
+	OnStnClickedLna4BiasCurrentValueStatic();
 	return 0;
 }
 
