@@ -2421,7 +2421,7 @@ LRESULT CSemantic::OnSemRxDataInterfaceClick(WPARAM w, LPARAM l)
 
 LRESULT CSemantic::OnSemLimitAmpEnableClick(WPARAM w, LPARAM l)
 {
-	//TODO
+	OnStnClickedLimitingAmpEnableValueStatic();
 	return 0;
 }
 
