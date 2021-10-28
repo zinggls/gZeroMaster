@@ -19,6 +19,7 @@
 		"Test Buffer Current":2
 	},
 	"BIAS":{
-		"BIAS Block Enable":false
+		"BIAS Block Enable":false,
+		"1st Stage Bias Current":1
 	}
 }
