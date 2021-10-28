@@ -89,4 +89,8 @@ public:
 	static CString str2CStr(std::string str);
 	void setCombos();
 	void setSliders();
+	int findCombos(std::string key);
+	int findSliders(std::string key);
+	void handleCombo(int nUserDefinedMessage, std::string key, int nCurSel);
+	void handleSlider(int nUserDefinedMessage, std::string key, int nVal);
 };

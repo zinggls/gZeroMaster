@@ -756,30 +756,16 @@ void CgZeroMasterDlg::iterateJson(nlohmann::json j)
 		std::string value = it->dump();
 		L(str2CStr(key) + _T("=") + str2CStr(value));
 
-		BOOL bOK = FALSE;
-		if (key == "RX Data Interface") {
-			TRACE("RX Data Interface\n");
-			m_pSemantic->SendMessage(UDM_SEM_RX_DATA_INTERFACE_CLICK);
-			m_pSemantic->m_controlCombo.SetCurSel(strBool2int(value));
-			bOK = TRUE;
+		int nUdmCombo = findCombos(key);
+		if (nUdmCombo != -1) {
+			handleCombo(nUdmCombo, key, strBool2int(value));
+			continue;
 		}
-		else if (key == "LNA Gain") {
-			TRACE("LNA Gain\n");
-			m_pSemantic->SendMessage(UDM_SEM_LNA_GAIN_CLICK);
 
-			int nMax = -1 * m_pSemantic->m_controlSlider.GetRangeMin();
-			int nMin = -1 * m_pSemantic->m_controlSlider.GetRangeMax();
-			int nVal = std::stoi(value);
-			if (nVal<nMin || nVal>nMax) {
-				L(_T("json error:") + str2CStr(key) + _T(" value(") + str2CStr(value)
-					+ _T(") is out of range. Min=") + str2CStr(std::to_string(nMin)) + _T(",Max=") + str2CStr(std::to_string(nMax)));
-			}
-			else {
-				m_pSemantic->m_controlSlider.SetPos(-1 * nVal);
-				bOK = TRUE;
-			}
-		}
-		if(bOK) m_pSemantic->OnBnClickedWriteButton();	//에러가 없는 경우에만 쓰도록 한다
+		ASSERT(nUdmCombo == -1);
+		int nUdmSlider = findSliders(key);
+		ASSERT(nUdmSlider != -1);
+		handleSlider(nUdmSlider, key, std::stoi(value));
 	}
 }
 
@@ -847,4 +833,49 @@ void CgZeroMasterDlg::setSliders()
 	m_sliders.emplace_back("High/Low Data Rate Current", UDM_SEM_HIGHLOW_DATA_RATE_CURRENT_CLICK);
 	m_sliders.emplace_back("CMOS Gain Stage Current", UDM_SEM_CMOS_GAIN_STAGE_CURRENT_CLICK);
 	m_sliders.emplace_back("CML Interface Stage Current", UDM_SEM_CML_INTERFACE_STAGE_CURRENT_CLICK);
+}
+
+
+int CgZeroMasterDlg::findCombos(std::string key)
+{
+	for (auto& i : m_combos) if (i.first == key) return i.second;
+	return -1;
+}
+
+
+int CgZeroMasterDlg::findSliders(std::string key)
+{
+	for (auto& i : m_sliders) if (i.first == key) return i.second;
+	return -1;
+}
+
+
+void CgZeroMasterDlg::handleCombo(int nUserDefinedMessage, std::string key, int nCurSel)
+{
+	ASSERT(nUserDefinedMessage != -1);
+	TRACE("%s=%d\n", key.c_str(), nCurSel);
+
+	m_pSemantic->SendMessage(nUserDefinedMessage);
+	m_pSemantic->m_controlCombo.SetCurSel(nCurSel);
+	m_pSemantic->OnBnClickedWriteButton();
+}
+
+
+void CgZeroMasterDlg::handleSlider(int nUserDefinedMessage, std::string key, int nVal)
+{
+	ASSERT(nUserDefinedMessage != -1);
+	TRACE("%s=%d\n", key.c_str(),nVal);
+
+	m_pSemantic->SendMessage(nUserDefinedMessage);
+
+	int nMax = -1 * m_pSemantic->m_controlSlider.GetRangeMin();
+	int nMin = -1 * m_pSemantic->m_controlSlider.GetRangeMax();
+	if (nVal<nMin || nVal>nMax) {
+		L(_T("json error:") + str2CStr(key) + _T(" value(") + str2CStr(std::to_string(nVal))
+			+ _T(") is out of range. Min=") + str2CStr(std::to_string(nMin)) + _T(",Max=") + str2CStr(std::to_string(nMax)));
+	}
+	else {
+		m_pSemantic->m_controlSlider.SetPos(-1 * nVal);
+		m_pSemantic->OnBnClickedWriteButton();
+	}
 }
