@@ -13,6 +13,7 @@
 		"Modulator Power":false,
 		"Test Buffer Power":false,
 		"Data Input Select":false,
-		"PA Power":false
+		"PA Power":false,
+		"PA Gain Control1":10
 	}
 }
