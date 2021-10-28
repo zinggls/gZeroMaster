@@ -11,6 +11,7 @@
 		"VCO VDD":7,
 		"VCO Power":false,
 		"Modulator Power":false,
-		"Test Buffer Power":false
+		"Test Buffer Power":false,
+		"Data Input Select":false
 	}
 }

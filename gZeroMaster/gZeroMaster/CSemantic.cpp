@@ -2475,7 +2475,7 @@ LRESULT CSemantic::OnSemTestBufferPowerClick(WPARAM w, LPARAM l)
 
 LRESULT CSemantic::OnSemDataInputSelectClick(WPARAM w, LPARAM l)
 {
-	//TODO
+	OnStnClickedDataInputSelectValueStatic();
 	return 0;
 }
 
