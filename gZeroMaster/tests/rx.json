@@ -1,6 +1,6 @@
 {
 	"RX":{
-		"Rx Data Interface":true,
+		"RX Data Interface":true,
 		"LNA Gain":4
 	}
 }

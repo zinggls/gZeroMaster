@@ -755,8 +755,8 @@ void CgZeroMasterDlg::iterateJson(nlohmann::json j)
 		L(str2CStr(key) + _T("=") + str2CStr(value));
 
 		BOOL bOK = FALSE;
-		if (key == "Rx Data Interface") {
-			TRACE("Rx Data Interface\n");
+		if (key == "RX Data Interface") {
+			TRACE("RX Data Interface\n");
 			m_pSemantic->SendMessage(UDM_SEM_RX_DATA_INTERFACE_CLICK);
 			m_pSemantic->m_controlCombo.SetCurSel(strBool2int(value));
 			bOK = TRUE;
