@@ -2433,7 +2433,7 @@ LRESULT CSemantic::OnSemLnaGainClick(WPARAM w, LPARAM l)
 
 LRESULT CSemantic::OnSemDutyCycleClick(WPARAM w, LPARAM l)
 {
-	//TODO
+	OnStnClickedDutyCycleValueStatic();
 	return 0;
 }
 
