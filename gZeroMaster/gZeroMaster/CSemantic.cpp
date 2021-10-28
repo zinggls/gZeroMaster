@@ -2582,6 +2582,6 @@ LRESULT CSemantic::OnSemCmosGainStageCurrentClick(WPARAM w, LPARAM l)
 
 LRESULT CSemantic::OnSemCmlInterfaceStageCurrentClick(WPARAM w, LPARAM l)
 {
-	//TODO
+	OnStnClickedCmlInterfaceStageCurrentValueStatic();
 	return 0;
 }

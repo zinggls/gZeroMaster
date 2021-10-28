@@ -31,6 +31,7 @@
 		"O/P Buffer Current":3,
 		"I/P Buffer Current":4,
 		"High/Low Data Rate Current":5,
-		"CMOS Gain Stage Current":6
+		"CMOS Gain Stage Current":6,
+		"CML Interface Stage Current":7
 	}
 }
