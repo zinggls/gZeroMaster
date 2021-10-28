@@ -15,6 +15,7 @@
 		"Data Input Select":false,
 		"PA Power":false,
 		"PA Gain Control1":10,
-		"PA Gain Control2":11
+		"PA Gain Control2":11,
+		"Test Buffer Current":2
 	}
 }

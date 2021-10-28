@@ -2499,7 +2499,7 @@ LRESULT CSemantic::OnSemPaGainControl2Click(WPARAM w, LPARAM l)
 
 LRESULT CSemantic::OnSemTestBufferCurrentClick(WPARAM w, LPARAM l)
 {
-	//TODO
+	OnStnClickedTestBufferCurrentValueStatic();
 	return 0;
 }
 
