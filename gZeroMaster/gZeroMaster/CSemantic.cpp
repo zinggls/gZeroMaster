@@ -2505,7 +2505,7 @@ LRESULT CSemantic::OnSemTestBufferCurrentClick(WPARAM w, LPARAM l)
 
 LRESULT CSemantic::OnSemBiasBlockEnableClick(WPARAM w, LPARAM l)
 {
-	//TODO
+	OnStnClickedBiasBlockEnableValueStatic();
 	return 0;
 }
 

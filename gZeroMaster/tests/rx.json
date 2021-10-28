@@ -17,5 +17,8 @@
 		"PA Gain Control1":10,
 		"PA Gain Control2":11,
 		"Test Buffer Current":2
+	},
+	"BIAS":{
+		"BIAS Block Enable":false
 	}
 }
