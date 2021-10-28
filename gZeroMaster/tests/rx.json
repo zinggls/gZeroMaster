@@ -7,6 +7,7 @@
 	"TX":{
 		"Duty Cycle":5,
 		"VCO Oscillation Freq":6,
-		"Regulator Ref Voltage":false
+		"Regulator Ref Voltage":false,
+		"VCO VDD":7
 	}
 }
