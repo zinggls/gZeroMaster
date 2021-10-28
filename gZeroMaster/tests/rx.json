@@ -24,6 +24,7 @@
 		"3rd Stage Bias Current":3,
 		"4th Stage Bias Current":4,
 		"5th Stage Bias Current":5,
-		"Ref Stage Current":6
+		"Ref Stage Current":6,
+		"I/P Stage Current":7
 	}
 }

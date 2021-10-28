@@ -2540,7 +2540,7 @@ LRESULT CSemantic::OnSemRefStageCurrentClick(WPARAM w, LPARAM l)
 
 LRESULT CSemantic::OnSemIpStageCurrentClick(WPARAM w, LPARAM l)
 {
-	//TODO
+	OnStnClickedDemodIpStageCurrentValueStatic();
 	return 0;
 }
 
