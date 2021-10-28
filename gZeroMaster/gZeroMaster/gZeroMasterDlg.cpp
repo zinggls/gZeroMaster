@@ -779,7 +779,14 @@ void CgZeroMasterDlg::OnBnClickedMessageTestButton()
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	std::ifstream i("..\\tests\\rx.json");
 	json j;
-	i >> j;
+
+	try {
+		i >> j;
+	}
+	catch (json::parse_error& e) {
+		L(str2CStr(e.what()));
+		return;
+	}
 
 	std::string s = j.dump();
 	L(str2CStr(s));
