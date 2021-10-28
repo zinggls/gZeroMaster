@@ -2570,7 +2570,7 @@ LRESULT CSemantic::OnSemIpBufferCurrentClick(WPARAM w, LPARAM l)
 
 LRESULT CSemantic::OnSemHighlowDataRateCurrentClick(WPARAM w, LPARAM l)
 {
-	//TODO
+	OnStnClickedLaHlDataRateCurrentValueStatic();
 	return 0;
 }
 
