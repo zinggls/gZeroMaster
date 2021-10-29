@@ -896,8 +896,8 @@ void CgZeroMasterDlg::handleSlider(int nUserDefinedMessage, std::string key, int
 
 void CgZeroMasterDlg::OnFileLoadjson()
 {
-	TCHAR szFilter[] = _T("ini (*.ini) | All Files(*.*) |*.*||");
-	CFileDialog dlg(TRUE, NULL, _T("*"), OFN_HIDEREADONLY, szFilter);
+	TCHAR szFilter[] = _T("json (*.json)");
+	CFileDialog dlg(TRUE, NULL, _T("*.json"), OFN_HIDEREADONLY, szFilter);
 	if (IDOK == dlg.DoModal()) {
 		CString fileName = dlg.GetPathName();
 		L(_T("Filename:") + fileName);
