@@ -93,4 +93,6 @@ public:
 	int findSliders(std::string key);
 	void handleCombo(int nUserDefinedMessage, std::string key, int nCurSel);
 	void handleSlider(int nUserDefinedMessage, std::string key, int nVal);
+	afx_msg void OnFileLoadjson();
+	afx_msg void OnUpdateFileLoadjson(CCmdUI* pCmdUI);
 };

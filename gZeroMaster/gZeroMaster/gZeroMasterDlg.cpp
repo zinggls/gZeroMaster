@@ -101,6 +101,8 @@ BEGIN_MESSAGE_MAP(CgZeroMasterDlg, CDialogEx)
 	ON_UPDATE_COMMAND_UI(ID_EEPROM_LOAD, &CgZeroMasterDlg::OnUpdateEepromLoad)
 	ON_UPDATE_COMMAND_UI(ID_EEPROM_SAVE, &CgZeroMasterDlg::OnUpdateEepromSave)
 	ON_BN_CLICKED(IDC_MESSAGE_TEST_BUTTON, &CgZeroMasterDlg::OnBnClickedMessageTestButton)
+	ON_COMMAND(ID_FILE_LOADJSON, &CgZeroMasterDlg::OnFileLoadjson)
+	ON_UPDATE_COMMAND_UI(ID_FILE_LOADJSON, &CgZeroMasterDlg::OnUpdateFileLoadjson)
 END_MESSAGE_MAP()
 
 
@@ -889,4 +891,36 @@ void CgZeroMasterDlg::handleSlider(int nUserDefinedMessage, std::string key, int
 		m_pSemantic->m_controlSlider.SetPos(-1 * nVal);
 		m_pSemantic->OnBnClickedWriteButton();
 	}
+}
+
+
+void CgZeroMasterDlg::OnFileLoadjson()
+{
+	TCHAR szFilter[] = _T("ini (*.ini) | All Files(*.*) |*.*||");
+	CFileDialog dlg(TRUE, NULL, _T("*"), OFN_HIDEREADONLY, szFilter);
+	if (IDOK == dlg.DoModal()) {
+		CString fileName = dlg.GetPathName();
+		L(_T("Filename:") + fileName);
+
+		std::ifstream i(fileName.GetBuffer());
+		json j;
+
+		try {
+			i >> j;
+		}
+		catch (json::parse_error& e) {
+			L(str2CStr(e.what()));
+			return;
+		}
+
+		m_pSemantic->SendMessage(UDM_SEM_EDIT_CLICK);
+		for (json::iterator it = j.begin(); it != j.end(); ++it) iterateJson(*it);
+		m_pSemantic->SendMessage(UDM_SEM_EDIT_CLICK);
+	}
+}
+
+
+void CgZeroMasterDlg::OnUpdateFileLoadjson(CCmdUI* pCmdUI)
+{
+	pCmdUI->Enable(m_serial.IsOpen());
 }
