@@ -62,7 +62,6 @@
 #define IDC_EDIT_CHECK                  1044
 #define IDC_BUTTON1                     1045
 #define IDC_WRITE_BUTTON                1045
-#define IDC_MESSAGE_TEST_BUTTON         1045
 #define IDC_BIT7_BUTTON                 1046
 #define IDC_READ_ALL_BUTTON             1047
 #define IDC_BIT6_BUTTON                 1048

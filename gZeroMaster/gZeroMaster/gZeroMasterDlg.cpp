@@ -100,7 +100,6 @@ BEGIN_MESSAGE_MAP(CgZeroMasterDlg, CDialogEx)
 	ON_COMMAND(ID_EEPROM_SAVE, &CgZeroMasterDlg::OnEepromSave)
 	ON_UPDATE_COMMAND_UI(ID_EEPROM_LOAD, &CgZeroMasterDlg::OnUpdateEepromLoad)
 	ON_UPDATE_COMMAND_UI(ID_EEPROM_SAVE, &CgZeroMasterDlg::OnUpdateEepromSave)
-	ON_BN_CLICKED(IDC_MESSAGE_TEST_BUTTON, &CgZeroMasterDlg::OnBnClickedMessageTestButton)
 	ON_COMMAND(ID_FILE_LOADJSON, &CgZeroMasterDlg::OnFileLoadjson)
 	ON_UPDATE_COMMAND_UI(ID_FILE_LOADJSON, &CgZeroMasterDlg::OnUpdateFileLoadjson)
 END_MESSAGE_MAP()
@@ -169,7 +168,6 @@ BOOL CgZeroMasterDlg::OnInitDialog()
 	m_pRaw->ShowWindow(SW_HIDE);
 
 	OnCbnSelchangeChipCombo();
-	GetDlgItem(IDC_MESSAGE_TEST_BUTTON)->ShowWindow(FALSE);
 	setCombos();
 	setSliders();
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
@@ -291,7 +289,6 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	GetDlgItem(IDC_CHIP_COMBO)->EnableWindow(FALSE);
 	GetDlgItem(IDC_COM_COMBO)->EnableWindow(FALSE);
-	GetDlgItem(IDC_MESSAGE_TEST_BUTTON)->ShowWindow(FALSE);
 
 	CString str,strComPort;
 	m_comPort.GetLBText(m_comPort.GetCurSel(), str);
@@ -325,9 +322,6 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 				m_pSemantic->GetDlgItem(IDC_READ_ALL_BUTTON)->ShowWindow(SW_SHOW);
 				m_pSemantic->GetDlgItem(IDC_WRITE_ALL_BUTTON)->ShowWindow(SW_SHOW);
 				m_pSemantic->GetDlgItem(IDC_DEFAULT_VALUE_BUTTON)->ShowWindow(SW_SHOW);
-#ifdef DEBUG
-				GetDlgItem(IDC_MESSAGE_TEST_BUTTON)->ShowWindow(TRUE);
-#endif // DEBUG
 			}
 			else {
 				L(_T("Can't read resgisters"));
@@ -773,35 +767,6 @@ void CgZeroMasterDlg::iterateJson(nlohmann::json j)
 			L(_T("json warning: unhandled key found,") + str2CStr(key) + _T("=") + str2CStr(value));
 		}
 	}
-}
-
-
-void CgZeroMasterDlg::OnBnClickedMessageTestButton()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	std::ifstream i("..\\tests\\rx.json");
-	json j;
-
-	try {
-		i >> j;
-	}
-	catch (json::parse_error& e) {
-		L(str2CStr(e.what()));
-		return;
-	}
-
-	//std::string s = j.dump();
-	//L(str2CStr(s));
-
-	m_pSemantic->SendMessage(UDM_SEM_EDIT_CLICK);
-	for (json::iterator it = j.begin(); it != j.end(); ++it) {
-		std::string key = it.key();
-		std::string value = it->dump();
-		//L(str2CStr(key) + _T("=") + str2CStr(value));
-		iterateJson(*it);
-	}
-	m_pSemantic->SendMessage(UDM_SEM_EDIT_CLICK);
-	L(_T("MessageTest Button clicked"));
 }
 
 

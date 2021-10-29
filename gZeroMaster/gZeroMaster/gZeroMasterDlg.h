@@ -83,7 +83,6 @@ public:
 	afx_msg void OnEepromSave();
 	afx_msg void OnUpdateEepromLoad(CCmdUI* pCmdUI);
 	afx_msg void OnUpdateEepromSave(CCmdUI* pCmdUI);
-	afx_msg void OnBnClickedMessageTestButton();
 	void iterateJson(nlohmann::json j);
 	static int strBool2int(std::string strBool);
 	static CString str2CStr(std::string str);
