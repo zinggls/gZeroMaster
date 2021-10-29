@@ -879,7 +879,12 @@ void CgZeroMasterDlg::OnFileLoadjson()
 		}
 
 		m_pSemantic->SendMessage(UDM_SEM_EDIT_CLICK);
-		for (json::iterator it = j.begin(); it != j.end(); ++it) iterateJson(*it);
+		for (json::iterator it = j.begin(); it != j.end(); ++it) {
+			//std::string key = it.key();
+			//std::string value = it->dump();
+			//L(str2CStr(key) + _T("=") + str2CStr(value));
+			iterateJson(*it);
+		}
 		m_pSemantic->SendMessage(UDM_SEM_EDIT_CLICK);
 	}
 }
