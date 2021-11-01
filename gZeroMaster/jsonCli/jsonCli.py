@@ -12,10 +12,11 @@ for request in range(3):
     print("Sending request %s …" % request)
 
     # Define a string of json data
-    raw = '''{  "LNA Gain": 4,
-                "Limiting Amplifier Enable": true,
-                "RX Data Interface": true
-    }'''
+    raw = '''{ "RX": {  "LNA Gain": 4,
+                        "Limiting Amplifier Enable": true,
+                        "RX Data Interface": true
+                     }
+          }'''
 
     info = json.loads(raw)              # Convert string into a python object
     info_as_jason = json.dumps(info)    # convert python objects to json
