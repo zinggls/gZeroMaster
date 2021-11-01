@@ -102,6 +102,7 @@ BEGIN_MESSAGE_MAP(CgZeroMasterDlg, CDialogEx)
 	ON_UPDATE_COMMAND_UI(ID_EEPROM_SAVE, &CgZeroMasterDlg::OnUpdateEepromSave)
 	ON_COMMAND(ID_FILE_LOADJSON, &CgZeroMasterDlg::OnFileLoadjson)
 	ON_UPDATE_COMMAND_UI(ID_FILE_LOADJSON, &CgZeroMasterDlg::OnUpdateFileLoadjson)
+	ON_WM_TIMER()
 END_MESSAGE_MAP()
 
 
@@ -322,6 +323,7 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 				m_pSemantic->GetDlgItem(IDC_READ_ALL_BUTTON)->ShowWindow(SW_SHOW);
 				m_pSemantic->GetDlgItem(IDC_WRITE_ALL_BUTTON)->ShowWindow(SW_SHOW);
 				m_pSemantic->GetDlgItem(IDC_DEFAULT_VALUE_BUTTON)->ShowWindow(SW_SHOW);
+				SetTimer(ZMQ_TIMER, 100, NULL);
 			}
 			else {
 				L(_T("Can't read resgisters"));
@@ -335,6 +337,7 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 		}
 	}
 	else {
+		KillTimer(ZMQ_TIMER);
 		SerialClose(str);
 	}
 }
@@ -893,4 +896,16 @@ void CgZeroMasterDlg::OnFileLoadjson()
 void CgZeroMasterDlg::OnUpdateFileLoadjson(CCmdUI* pCmdUI)
 {
 	pCmdUI->Enable(m_serial.IsOpen());
+}
+
+
+void CgZeroMasterDlg::OnTimer(UINT_PTR nIDEvent)
+{
+	// TODO: 여기에 메시지 처리기 코드를 추가 및/또는 기본값을 호출합니다.
+
+	CDialogEx::OnTimer(nIDEvent);
+
+	if (nIDEvent == ZMQ_TIMER) {
+		TRACE("ZMQ_TIMER\n");
+	}
 }

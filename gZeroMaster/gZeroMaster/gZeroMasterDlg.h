@@ -9,6 +9,7 @@
 
 #define MAX_LOG					1000
 #define MAX_COMPORT				25
+#define ZMQ_TIMER				1
 
 class CSemantic;
 class CRaw;
@@ -94,4 +95,5 @@ public:
 	void handleSlider(int nUserDefinedMessage, std::string key, int nVal);
 	afx_msg void OnFileLoadjson();
 	afx_msg void OnUpdateFileLoadjson(CCmdUI* pCmdUI);
+	afx_msg void OnTimer(UINT_PTR nIDEvent);
 };
