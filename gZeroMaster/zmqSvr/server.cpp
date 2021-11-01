@@ -12,12 +12,13 @@ int main(void)
     int rc = zmq_bind(responder, "tcp://*:5555");
     assert(rc == 0);
 
+    char buffer[1024];
+    printf("server waiting¡¦\n");
     while (1) {
-        char buffer[10];
-        zmq_recv(responder, buffer, 10, 0);
-        printf("Received Hello\n");
+        int nSize = zmq_recv(responder, buffer, sizeof(buffer), 0);
+        printf("message received: %dbytes\n",nSize);
         Sleep(1000);          //  Do some 'work'
-        zmq_send(responder, "World", 5, 0);
+        zmq_send(responder, buffer, nSize, 0);
     }
     return 0;
 }
