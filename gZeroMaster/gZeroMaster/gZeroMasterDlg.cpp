@@ -174,6 +174,8 @@ BOOL CgZeroMasterDlg::OnInitDialog()
 	setSliders();
 	m_context = zmq_ctx_new();
 	m_responder = zmq_socket(m_context, ZMQ_REP);
+	int rc = zmq_bind(m_responder, "tcp://*:5555");
+	ASSERT(rc == 0);
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
 
@@ -911,6 +913,11 @@ void CgZeroMasterDlg::OnTimer(UINT_PTR nIDEvent)
 	CDialogEx::OnTimer(nIDEvent);
 
 	if (nIDEvent == ZMQ_TIMER) {
-		TRACE("ZMQ_TIMER\n");
+		char buffer[1024*8];
+		int nSize = zmq_recv(m_responder, buffer, sizeof(buffer), ZMQ_DONTWAIT);
+		if (nSize > 0) {
+			int nSent = zmq_send(m_responder, buffer, nSize, 0);
+			TRACE("ZMQ_TIMER, message received: %dbytes, sent: %dbytes\n", nSize, nSent);
+		}
 	}
 }
