@@ -174,8 +174,6 @@ BOOL CgZeroMasterDlg::OnInitDialog()
 	setSliders();
 	m_context = zmq_ctx_new();
 	m_responder = zmq_socket(m_context, ZMQ_REP);
-	int rc = zmq_bind(m_responder, "tcp://*:5555");
-	ASSERT(rc == 0);
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
 
@@ -328,6 +326,10 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 				m_pSemantic->GetDlgItem(IDC_READ_ALL_BUTTON)->ShowWindow(SW_SHOW);
 				m_pSemantic->GetDlgItem(IDC_WRITE_ALL_BUTTON)->ShowWindow(SW_SHOW);
 				m_pSemantic->GetDlgItem(IDC_DEFAULT_VALUE_BUTTON)->ShowWindow(SW_SHOW);
+
+				const char* bindAddr = "tcp://*:5555";
+				int rc = zmq_bind(m_responder, bindAddr);
+				if (rc != 0) MessageBox(_T("zeromq bind error: ") + CString(bindAddr),_T("Error"), MB_ICONERROR);
 				SetTimer(ZMQ_TIMER, 100, NULL);
 			}
 			else {
