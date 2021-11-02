@@ -10,6 +10,7 @@
 #include "CSemantic.h"
 #include "CRaw.h"
 #include <fstream>
+#include <zmq.h>
 
 using json = nlohmann::json;
 
@@ -171,6 +172,8 @@ BOOL CgZeroMasterDlg::OnInitDialog()
 	OnCbnSelchangeChipCombo();
 	setCombos();
 	setSliders();
+	m_context = zmq_ctx_new();
+	m_responder = zmq_socket(m_context, ZMQ_REP);
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
 
@@ -374,6 +377,8 @@ void CgZeroMasterDlg::OnDestroy()
 	CDialogEx::OnDestroy();
 
 	// TODO: 여기에 메시지 처리기 코드를 추가합니다.
+	zmq_close(m_responder);
+	zmq_ctx_destroy(m_context);
 	delete m_pSemantic;
 	delete m_pRaw;
 }

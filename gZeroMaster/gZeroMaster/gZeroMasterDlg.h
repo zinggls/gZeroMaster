@@ -51,6 +51,8 @@ public:
 	CComboBox m_chipSelect;
 	std::list<std::pair<std::string, int>> m_combos;
 	std::list<std::pair<std::string, int>> m_sliders;
+	void* m_context;
+	void* m_responder;
 
 	void L(const TCHAR* str, ...);
 	void Reset();
