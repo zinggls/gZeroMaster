@@ -27,6 +27,8 @@ Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "jsonSvr", "jsonSvr\jsonSvr.
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "jsonCli", "jsonCli\jsonCli.pyproj", "{4C9F7B60-5398-46E9-B09D-25F1F821887A}"
 EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "gCommander", "gCommander\gCommander.pyproj", "{B0ADF8FC-F91A-470A-86D1-48498188C524}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -105,6 +107,12 @@ Global
 		{4C9F7B60-5398-46E9-B09D-25F1F821887A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C9F7B60-5398-46E9-B09D-25F1F821887A}.Release|x64.ActiveCfg = Release|Any CPU
 		{4C9F7B60-5398-46E9-B09D-25F1F821887A}.Release|x86.ActiveCfg = Release|Any CPU
+		{B0ADF8FC-F91A-470A-86D1-48498188C524}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0ADF8FC-F91A-470A-86D1-48498188C524}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B0ADF8FC-F91A-470A-86D1-48498188C524}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B0ADF8FC-F91A-470A-86D1-48498188C524}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0ADF8FC-F91A-470A-86D1-48498188C524}.Release|x64.ActiveCfg = Release|Any CPU
+		{B0ADF8FC-F91A-470A-86D1-48498188C524}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
