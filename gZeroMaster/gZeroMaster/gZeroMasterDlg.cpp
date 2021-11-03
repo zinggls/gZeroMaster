@@ -328,7 +328,11 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 				m_pSemantic->GetDlgItem(IDC_DEFAULT_VALUE_BUTTON)->ShowWindow(SW_SHOW);
 
 				int rc = zmq_bind(m_responder, TCP_BIND_ADDR);
-				if (rc != 0) MessageBox(_T("zeromq bind error: ") + CString(_T(TCP_BIND_ADDR)),_T("Error"), MB_ICONERROR);
+				if (rc != 0)
+					MessageBox(_T("zeromq bind error: ") + CString(_T(TCP_BIND_ADDR)), _T("Error"), MB_ICONERROR);
+				else
+					L(_T("zeromq bind address: ") + CString(_T(TCP_BIND_ADDR)));
+
 				SetTimer(ZMQ_TIMER, 100, NULL);
 			}
 			else {
