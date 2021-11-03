@@ -26,12 +26,13 @@ for i in range(10):
         raw += str(i)
         raw += '} }'
 
+        print("I=%s %s" %(i,raw))
         socket.send_string(raw)
         rtn = socket.recv_string()
-        print("Response:%s" %rtn)
+        print("\tResponse:%s" %rtn)
 
         if rtn=="OK":   #성공하는 경우에만 json객체의 값을 업데이트 한다
             json_data["RX"]["LNA Gain"]=i
-            print("json_data updated")
+            print("\tjson_data updated")
 
         time.sleep(1)
