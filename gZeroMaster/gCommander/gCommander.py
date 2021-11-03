@@ -8,12 +8,14 @@ def readData(path):
     f.close()
     return data
 
-
-context = zmq.Context()
+def connect(addr):
+    context = zmq.Context()
+    socket = context.socket(zmq.REQ)
+    socket.connect(addr)
+    return socket
 
 print("Connecting to gZeroMaster…")
-socket = context.socket(zmq.REQ)
-socket.connect("tcp://localhost:5555")
+socket = connect("tcp://localhost:5555")
 
 with open("..\\tests\\rx.json") as json_file:
     json_data = json.load(json_file)
