@@ -1,6 +1,5 @@
 
 import zmq
-import json
 
 context = zmq.Context()
 
