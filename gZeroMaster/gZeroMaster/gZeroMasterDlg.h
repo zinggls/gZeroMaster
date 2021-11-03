@@ -10,6 +10,7 @@
 #define MAX_LOG					1000
 #define MAX_COMPORT				25
 #define ZMQ_TIMER				1
+#define TCP_BIND_ADDR			"tcp://*:5555"
 
 class CSemantic;
 class CRaw;
