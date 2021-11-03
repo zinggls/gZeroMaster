@@ -86,7 +86,7 @@ public:
 	afx_msg void OnEepromSave();
 	afx_msg void OnUpdateEepromLoad(CCmdUI* pCmdUI);
 	afx_msg void OnUpdateEepromSave(CCmdUI* pCmdUI);
-	void iterateJson(nlohmann::json j);
+	BOOL iterateJson(nlohmann::json j, CString& strErr);
 	static int strBool2int(std::string strBool);
 	static CString str2CStr(std::string str);
 	void setCombos();
@@ -94,7 +94,7 @@ public:
 	int findCombos(std::string key);
 	int findSliders(std::string key);
 	void handleCombo(int nUserDefinedMessage, std::string key, int nCurSel);
-	void handleSlider(int nUserDefinedMessage, std::string key, int nVal);
+	CString handleSlider(int nUserDefinedMessage, std::string key, int nVal);
 	afx_msg void OnFileLoadjson();
 	afx_msg void OnUpdateFileLoadjson(CCmdUI* pCmdUI);
 	afx_msg void OnTimer(UINT_PTR nIDEvent);

@@ -757,7 +757,7 @@ CString CgZeroMasterDlg::str2CStr(std::string str)
 }
 
 
-void CgZeroMasterDlg::iterateJson(nlohmann::json j)
+BOOL CgZeroMasterDlg::iterateJson(nlohmann::json j,CString &strErr)
 {
 	for (json::iterator it = j.begin(); it != j.end(); ++it) {
 		std::string key = it.key();
@@ -773,12 +773,14 @@ void CgZeroMasterDlg::iterateJson(nlohmann::json j)
 		ASSERT(nUdmCombo == -1);
 		int nUdmSlider = findSliders(key);
 		if (nUdmSlider != -1) {
-			handleSlider(nUdmSlider, key, std::stoi(value));
+			strErr = handleSlider(nUdmSlider, key, std::stoi(value));
+			if (!strErr.IsEmpty()) return FALSE;
 		}
 		else {
 			L(_T("json warning: unhandled key found,") + str2CStr(key) + _T("=") + str2CStr(value));
 		}
 	}
+	return TRUE;
 }
 
 
@@ -851,7 +853,7 @@ void CgZeroMasterDlg::handleCombo(int nUserDefinedMessage, std::string key, int 
 }
 
 
-void CgZeroMasterDlg::handleSlider(int nUserDefinedMessage, std::string key, int nVal)
+CString CgZeroMasterDlg::handleSlider(int nUserDefinedMessage, std::string key, int nVal)
 {
 	ASSERT(nUserDefinedMessage != -1);
 	TRACE("%s=%d\n", key.c_str(),nVal);
@@ -861,13 +863,15 @@ void CgZeroMasterDlg::handleSlider(int nUserDefinedMessage, std::string key, int
 	int nMax = -1 * m_pSemantic->m_controlSlider.GetRangeMin();
 	int nMin = -1 * m_pSemantic->m_controlSlider.GetRangeMax();
 	if (nVal<nMin || nVal>nMax) {
-		L(_T("json error:") + str2CStr(key) + _T(" value(") + str2CStr(std::to_string(nVal))
-			+ _T(") is out of range. Min=") + str2CStr(std::to_string(nMin)) + _T(",Max=") + str2CStr(std::to_string(nMax)));
+		CString strErr = _T("json error:") + str2CStr(key) + _T(" value(") + str2CStr(std::to_string(nVal))
+				+ _T(") is out of range. Min=") + str2CStr(std::to_string(nMin)) + _T(",Max=") + str2CStr(std::to_string(nMax));
+		return strErr;
 	}
 	else {
 		m_pSemantic->m_controlSlider.SetPos(-1 * nVal);
 		m_pSemantic->OnBnClickedWriteButton();
 	}
+	return _T("");
 }
 
 
@@ -895,7 +899,11 @@ void CgZeroMasterDlg::OnFileLoadjson()
 			//std::string key = it.key();
 			//std::string value = it->dump();
 			//L(str2CStr(key) + _T("=") + str2CStr(value));
-			iterateJson(*it);
+			CString strErr;
+			if (iterateJson(*it, strErr) != TRUE) {
+				L(strErr);
+				break;
+			}
 		}
 		m_pSemantic->SendMessage(UDM_SEM_EDIT_CLICK);
 	}
@@ -928,14 +936,25 @@ void CgZeroMasterDlg::OnTimer(UINT_PTR nIDEvent)
 				return;
 			}
 
+			CString strErr;
 			for (json::iterator it = j.begin(); it != j.end(); ++it) {
 				//std::string key = it.key();
 				//std::string value = it->dump();
 				//L(str2CStr(key) + _T("=") + str2CStr(value));
-				iterateJson(*it);
+				if (iterateJson(*it, strErr) != TRUE) {
+					L(strErr);
+					break;
+				}
 			}
 
-			int nSent = zmq_send(m_responder, buffer, nSize, 0);
+			int nSent;
+			if (strErr.IsEmpty()) {
+				nSent = zmq_send(m_responder, "OK", 2, 0);
+			}
+			else {
+				std::string str = std::string(CT2CA(strErr));
+				nSent = zmq_send(m_responder, str.c_str(), str.length(), 0);
+			}
 			TRACE("ZMQ_TIMER, message received: %dbytes, sent: %dbytes\n", nSize, nSent);
 		}
 	}
