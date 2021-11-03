@@ -919,12 +919,20 @@ void CgZeroMasterDlg::OnTimer(UINT_PTR nIDEvent)
 		memset(buffer, 0, sizeof(buffer));
 		int nSize = zmq_recv(m_responder, buffer, sizeof(buffer), ZMQ_DONTWAIT);
 		if (nSize > 0) {
+			json j;
 			try {
-				json j = json::parse(buffer);
+				j = json::parse(buffer);
 			}
 			catch (json::parse_error& e) {
 				TRACE(e.what());
 				return;
+			}
+
+			for (json::iterator it = j.begin(); it != j.end(); ++it) {
+				std::string key = it.key();
+				std::string value = it->dump();
+				L(str2CStr(key) + _T("=") + str2CStr(value));
+				iterateJson(*it);
 			}
 
 			int nSent = zmq_send(m_responder, buffer, nSize, 0);
