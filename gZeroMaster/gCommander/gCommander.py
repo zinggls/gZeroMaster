@@ -10,6 +10,7 @@ socket.connect("tcp://localhost:5555")
 
 with open("..\\tests\\rx.json") as json_file:
     json_data = json.load(json_file)
+    print("json load OK")
 
 f = open("..\\tests\\rx.json",'r')
 data = f.read()
