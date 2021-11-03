@@ -1,11 +1,15 @@
 import zmq
 import time
+import json
 
 context = zmq.Context()
 
 print("Connecting to gZeroMaster…")
 socket = context.socket(zmq.REQ)
 socket.connect("tcp://localhost:5555")
+
+with open("..\\tests\\rx.json") as json_file:
+    json_data = json.load(json_file)
 
 f = open("..\\tests\\rx.json",'r')
 data = f.read()
@@ -22,5 +26,6 @@ for i in range(10):
         raw += '} }'
 
         socket.send_string(raw)
+        json_data["RX"]["LNA Gain"]=i
         print("Response:%s" %socket.recv_string())
         time.sleep(1)
