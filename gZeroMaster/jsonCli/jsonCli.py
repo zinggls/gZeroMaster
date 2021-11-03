@@ -14,9 +14,6 @@ for request in range(3):
     # Define a string of json data
     raw = r'{ "RX": {  "LNA Gain": 4, "Limiting Amplifier Enable": true, "RX Data Interface": true } }'
 
-    info = json.loads(raw)              # Convert string into a python object
-    info_as_jason = json.dumps(info)    # convert python objects to json
-    socket.send_json(info_as_jason)
-
-    message = socket.recv_json()
+    socket.send_string(raw);
+    message = socket.recv_string()
     print("Received reply %s [ %s ]" % (request, message))
