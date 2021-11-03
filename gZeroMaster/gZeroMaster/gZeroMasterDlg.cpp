@@ -929,9 +929,9 @@ void CgZeroMasterDlg::OnTimer(UINT_PTR nIDEvent)
 			}
 
 			for (json::iterator it = j.begin(); it != j.end(); ++it) {
-				std::string key = it.key();
-				std::string value = it->dump();
-				L(str2CStr(key) + _T("=") + str2CStr(value));
+				//std::string key = it.key();
+				//std::string value = it->dump();
+				//L(str2CStr(key) + _T("=") + str2CStr(value));
 				iterateJson(*it);
 			}
 
