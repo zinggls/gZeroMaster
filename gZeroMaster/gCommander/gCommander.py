@@ -17,12 +17,15 @@ def connect(addr):
 print("Connecting to gZeroMaster…")
 socket = connect("tcp://localhost:5555")
 
-with open("..\\tests\\rx.json") as json_file:
+jsonFilePath = "..\\tests\\rx.json"
+print("Input json file=%s" %jsonFilePath)
+
+with open(jsonFilePath) as json_file:
     json_data = json.load(json_file)
     print("json load OK")
     print(json_data)
 
-data = readData("..\\tests\\rx.json")
+data = readData(jsonFilePath)
 print(data)
 
 socket.send_string(data);
