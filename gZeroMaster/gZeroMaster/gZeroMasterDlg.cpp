@@ -916,8 +916,17 @@ void CgZeroMasterDlg::OnTimer(UINT_PTR nIDEvent)
 
 	if (nIDEvent == ZMQ_TIMER) {
 		char buffer[1024*8];
+		memset(buffer, 0, sizeof(buffer));
 		int nSize = zmq_recv(m_responder, buffer, sizeof(buffer), ZMQ_DONTWAIT);
 		if (nSize > 0) {
+			try {
+				json j = json::parse(buffer);
+			}
+			catch (json::parse_error& e) {
+				TRACE(e.what());
+				return;
+			}
+
 			int nSent = zmq_send(m_responder, buffer, nSize, 0);
 			TRACE("ZMQ_TIMER, message received: %dbytes, sent: %dbytes\n", nSize, nSent);
 		}
