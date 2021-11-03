@@ -2,6 +2,13 @@ import zmq
 import time
 import json
 
+def readData(path):
+    f = open(path,'r')
+    data = f.read()
+    f.close()
+    return data
+
+
 context = zmq.Context()
 
 print("Connecting to gZeroMaster…")
@@ -13,11 +20,9 @@ with open("..\\tests\\rx.json") as json_file:
     print("json load OK")
     print(json_data)
 
-f = open("..\\tests\\rx.json",'r')
-data = f.read()
-f.close()
-
+data = readData("..\\tests\\rx.json")
 print(data)
+
 socket.send_string(data);
 print("Response:%s" %socket.recv_string())
 
