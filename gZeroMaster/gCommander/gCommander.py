@@ -62,17 +62,29 @@ for i in json_data["RX"]:
 
 """
 { "RX": {  "RX Data Interface":false} }
+        Response:OK
 { "RX": {  "RX Data Interface":true} }
+        Response:OK
 { "RX": {  "Limiting Amplifier Enable":false} }
+        Response:OK
 { "RX": {  "Limiting Amplifier Enable":true} }
+        Response:OK
 { "RX": {  "LNA Gain":0} }
+        Response:OK
 { "RX": {  "LNA Gain":1} }
+        Response:OK
 { "RX": {  "LNA Gain":2} }
+        Response:OK
 { "RX": {  "LNA Gain":3} }
+        Response:OK
 { "RX": {  "LNA Gain":4} }
+        Response:OK
 { "RX": {  "LNA Gain":5} }
+        Response:OK
 { "RX": {  "LNA Gain":6} }
+        Response:OK
 { "RX": {  "LNA Gain":7} }
+        Response:OK
 """
 
 raw0 = r'{ "RX": {  "'
@@ -84,9 +96,13 @@ for i in json_data["RX"]:
             raw2 = raw1 + str(bool(v)).lower()
             raw2 += '} }'
             print(raw2)
+            socket.send_string(raw2)
+            print("\tResponse:%s" %socket.recv_string())
 
     if i=="LNA Gain":
         for v in range(8):
             raw2 = raw1 + str(v)
             raw2 += '} }'
             print(raw2)
+            socket.send_string(raw2)
+            print("\tResponse:%s" %socket.recv_string())
