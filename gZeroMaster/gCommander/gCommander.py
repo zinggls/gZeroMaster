@@ -1,5 +1,4 @@
 import time
-import json
 import util
 
 print("Connecting to gZeroMaster…")
@@ -8,10 +7,9 @@ socket = util.connect("tcp://localhost:5555")
 jsonFilePath = "..\\tests\\rx.json"
 print("Input json file=%s" %jsonFilePath)
 
-with open(jsonFilePath) as json_file:
-    json_data = json.load(json_file)
-    print("json load OK")
-    print(json_data)
+json_data = util.jsonLoad(jsonFilePath)
+print("json load OK")
+print(json_data)
 
 data = util.readData(jsonFilePath)
 print(data)

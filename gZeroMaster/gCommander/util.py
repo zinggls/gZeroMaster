@@ -1,4 +1,5 @@
 import zmq
+import json
 
 def readData(path):
     f = open(path,'r')
@@ -11,3 +12,8 @@ def connect(addr):
     socket = context.socket(zmq.REQ)
     socket.connect(addr)
     return socket
+
+def jsonLoad(path):
+    with open(path) as json_file:
+        json_data = json.load(json_file)
+        return json_data
