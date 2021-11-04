@@ -174,6 +174,10 @@ BOOL CgZeroMasterDlg::OnInitDialog()
 	setSliders();
 	m_context = zmq_ctx_new();
 	m_responder = zmq_socket(m_context, ZMQ_REP);
+	if (zmq_bind(m_responder, TCP_BIND_ADDR) != 0)
+		MessageBox(_T("zeromq bind error: ") + CString(_T(TCP_BIND_ADDR)), _T("Error"), MB_ICONERROR);
+	else
+		L(_T("zeromq bind address: ") + CString(_T(TCP_BIND_ADDR)));
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
 
@@ -326,13 +330,6 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 				m_pSemantic->GetDlgItem(IDC_READ_ALL_BUTTON)->ShowWindow(SW_SHOW);
 				m_pSemantic->GetDlgItem(IDC_WRITE_ALL_BUTTON)->ShowWindow(SW_SHOW);
 				m_pSemantic->GetDlgItem(IDC_DEFAULT_VALUE_BUTTON)->ShowWindow(SW_SHOW);
-
-				int rc = zmq_bind(m_responder, TCP_BIND_ADDR);
-				if (rc != 0)
-					MessageBox(_T("zeromq bind error: ") + CString(_T(TCP_BIND_ADDR)), _T("Error"), MB_ICONERROR);
-				else
-					L(_T("zeromq bind address: ") + CString(_T(TCP_BIND_ADDR)));
-
 				SetTimer(ZMQ_TIMER, 100, NULL);
 			}
 			else {
