@@ -866,9 +866,8 @@ CString CgZeroMasterDlg::handleSlider(int nUserDefinedMessage, std::string key, 
 	int nMax = -1 * m_pSemantic->m_controlSlider.GetRangeMin();
 	int nMin = -1 * m_pSemantic->m_controlSlider.GetRangeMax();
 	if (nVal<nMin || nVal>nMax) {
-		CString strErr = _T("json error:") + str2CStr(key) + _T(" value(") + str2CStr(std::to_string(nVal))
+		return _T("json error:") + str2CStr(key) + _T(" value(") + str2CStr(std::to_string(nVal))
 				+ _T(") is out of range. Min=") + str2CStr(std::to_string(nMin)) + _T(",Max=") + str2CStr(std::to_string(nMax));
-		return strErr;
 	}
 	else {
 		m_pSemantic->m_controlSlider.SetPos(-1 * nVal);
