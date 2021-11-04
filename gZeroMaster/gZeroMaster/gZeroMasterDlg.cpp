@@ -948,6 +948,8 @@ void CgZeroMasterDlg::OnTimer(UINT_PTR nIDEvent)
 					break;
 				}
 			}
+			m_pSemantic->m_bSemanticEdit = TRUE;
+			m_pSemantic->OnBnClickedSemanticEditCheck();
 
 			int nSent;
 			if (strErr.IsEmpty()) {
