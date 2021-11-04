@@ -861,8 +861,6 @@ CString CgZeroMasterDlg::handleSlider(int nUserDefinedMessage, std::string key, 
 	ASSERT(nUserDefinedMessage != -1);
 	TRACE("%s=%d\n", key.c_str(),nVal);
 
-	m_pSemantic->SendMessage(nUserDefinedMessage);
-
 	int nMax = -1 * m_pSemantic->m_controlSlider.GetRangeMin();
 	int nMin = -1 * m_pSemantic->m_controlSlider.GetRangeMax();
 	if (nVal<nMin || nVal>nMax) {
@@ -870,6 +868,7 @@ CString CgZeroMasterDlg::handleSlider(int nUserDefinedMessage, std::string key, 
 				+ _T(") is out of range. Min=") + str2CStr(std::to_string(nMin)) + _T(",Max=") + str2CStr(std::to_string(nMax));
 	}
 	else {
+		m_pSemantic->SendMessage(nUserDefinedMessage);
 		m_pSemantic->m_controlSlider.SetPos(-1 * nVal);
 		m_pSemantic->OnBnClickedWriteButton();
 	}
