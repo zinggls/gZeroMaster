@@ -34,3 +34,6 @@ for i in range(10):
         print("\tjson_data updated")
 
     time.sleep(1)
+
+for key in json_data["RX"]:
+    print("key="+key,",value="+str(json_data["RX"][key]))
