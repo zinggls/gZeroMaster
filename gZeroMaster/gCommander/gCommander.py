@@ -33,4 +33,4 @@ for i in range(10):
         json_data["RX"]["LNA Gain"]=i
         print("\tjson_data updated")
 
-    #time.sleep(1)
+    time.sleep(1)
