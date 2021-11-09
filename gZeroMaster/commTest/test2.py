@@ -71,9 +71,11 @@ print(inst.query("sense1:gate:period:time?"))                       #Accumultati
 inst.write("sense1:gate:state 1")                                   #Accumultation 수행
 print("Accumultation 수행")
 
-print(inst.query("sense1:gate:state?"))                             #Accumultation 동작 중인 지 확인
-                                                                    #(0: Accumulation 종료, 1: Accumulation 수행 중)
-
-print(inst.query("fetch:sense2:bcount?"))                           #전송 비트 수 확인
-print(inst.query("fetch:sense1:ecount:all:full:total?"))            #에러 수 확인
-print(inst.query("fetch:sense1:eratio:all:full:total?"))            #BER 확인
+state = inst.query("sense1:gate:state?")                            #Accumultation 동작 중인 지 확인
+print(state)                                                        #(0: Accumulation 종료, 1: Accumulation 수행 중)
+                                                                    
+while state.startswith('1'):
+    print(inst.query("fetch:sense2:bcount?"))                           #전송 비트 수 확인
+    print(inst.query("fetch:sense1:ecount:all:full:total?"))            #에러 수 확인
+    print(inst.query("fetch:sense1:eratio:all:full:total?"))            #BER 확인
+    time.sleep (1)
