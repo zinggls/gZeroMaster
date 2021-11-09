@@ -1,3 +1,7 @@
+"""
+BERT(N4903B) SCPI 명령어 가이드   v0.8
+2.4.	PyVISA를 통한 SCPI 명령어 동작 예제
+"""
 import pyvisa
 import time
 
