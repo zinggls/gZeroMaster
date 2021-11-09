@@ -19,6 +19,7 @@ def volt(inst):
     inst.write("source1:voltage:level:immediate:offset 5e-1")       #Offset 전압 500mV 설정
     print("Offset 전압 500mV 설정")
     
+    print("전압 읽기전 대기...")
     time.sleep (5)                                                  #전압을 읽어오기 전에 sleep, 5초 미만인 경우는 timeout됨
     
     print(inst.query("source1:voltage:level:immediate:high?"))      #High 전압 확인
