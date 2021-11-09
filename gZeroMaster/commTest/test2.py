@@ -83,3 +83,4 @@ while state.startswith('1'):
     print(inst.query("fetch:sense1:ecount:all:full:total?"))            #에러 수 확인
     print(inst.query("fetch:sense1:eratio:all:full:total?"))            #BER 확인
     time.sleep (1)
+    state = inst.query("sense1:gate:state?")
