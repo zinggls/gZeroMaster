@@ -29,3 +29,9 @@ print("Low 전압 확인")
 
 print(inst.query("source1:voltage:level:immediate:offset?"))    #Offset 전압 확인
 print("Offset 전압 확인")
+
+print(inst.write("source9:frequency 3e9"))                      #Data Rate 3GHz 설정
+print("Data Rate 3GHz 설정")
+
+print(inst.query("source9:frequency?"))                         #Data Rate 확인
+print("Data Rate 확인")
