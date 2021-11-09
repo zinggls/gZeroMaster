@@ -40,6 +40,10 @@ def prbs7(inst):
     print("Data Pattern PRBS7 설정")
     print(inst.query("source1:pattern:select?"))                    #Data Pattern 확인
 
+def autoAlign(inst):
+    inst.write("sense1:eye:align:auto 1")                           #Auto Align 수행
+    print("Auto Align 수행")
+
 rm=pyvisa.ResourceManager()
 resources(rm)
 inst = rm.open_resource(rm.list_resources()[0])
@@ -49,3 +53,5 @@ reset()
 volt(inst)
 dataRate(inst)
 prbs7(inst)
+
+autoAlign(inst)
