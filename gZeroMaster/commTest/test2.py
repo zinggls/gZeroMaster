@@ -1,6 +1,9 @@
 import pyvisa
 import time
 
+def resources(rm):
+    print("resources = %s"%rm.list_resources())
+
 def idn(inst):
     print(inst.query("*IDN?"))                                      #N4903B 기기 정보 확인
 
@@ -32,7 +35,7 @@ def dataRate(inst):
     print("Data Rate 확인")
 
 rm=pyvisa.ResourceManager()
-print("resources = %s"%rm.list_resources())
+resources(rm)
 inst = rm.open_resource(rm.list_resources()[0])
 
 idn(inst)
