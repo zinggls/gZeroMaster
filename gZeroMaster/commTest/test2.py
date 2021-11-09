@@ -1,4 +1,5 @@
 import pyvisa
+import time
 
 rm=pyvisa.ResourceManager()
 print("resources = %s"%rm.list_resources())
@@ -17,6 +18,8 @@ print("Low 전압 400mV 설정")
 
 inst.write("source1:voltage:level:immediate:offset 5e-1")       #Offset 전압 500mV 설정
 print("Offset 전압 500mV 설정")
+
+time.sleep (5)                                                  #전압을 읽어오기 전에 sleep, 5초 미만인 경우는 timeout됨
 
 print(inst.query("source1:voltage:level:immediate:high?"))      #High 전압 확인
 print("High 전압 확인")
