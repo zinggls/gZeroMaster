@@ -55,3 +55,25 @@ dataRate(inst)
 prbs7(inst)
 
 autoAlign(inst)
+
+print(inst.query("fetch:sense1:eratio:all:full:delta?"))            #Actual BER 확인
+                                                                    #Return 값이 (9.91e+37일 경우 BER: Not Available)
+
+inst.write("sense:gate:mode SING")                                  #Accumulation 단일 수행
+print(inst.query("sense:gate:mode?"))                               #Accumultation 단일 수행 확인
+
+inst.write("sense1:gate:manner TIME")                               #Accumulation 종료 조건 시간 설정
+print(inst.query("sense1:gate:manner?"))                            #Accumultation 종료 조건 확인
+
+inst.write("sense1:gate:period:time 100")                           #Accumulation 수행 시간 설정
+print(inst.query("sense1:gate:period:time?"))                       #Accumultation 수행 시간 확인
+
+inst.write("sense1:gate:state 1")                                   #Accumultation 수행
+print("Accumultation 수행")
+
+print(inst.query("sense1:gate:state?"))                             #Accumultation 동작 중인 지 확인
+                                                                    #(0: Accumulation 종료, 1: Accumulation 수행 중)
+
+print(inst.query("fetch:sense2:bcount?"))                           #전송 비트 수 확인
+print(inst.query("fetch:sense1:ecount:all:full:total?"))            #에러 수 확인
+print(inst.query("fetch:sense1:eratio:all:full:total?"))            #BER 확인
