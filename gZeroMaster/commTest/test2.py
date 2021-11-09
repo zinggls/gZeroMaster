@@ -35,6 +35,11 @@ def dataRate(inst):
     print(inst.query("source9:frequency?"))                         #Data Rate 확인
     print("Data Rate 확인")
 
+def prbs7(inst):
+    inst.write("source1:pattern:select PRBS7")                      #Data Pattern PRBS7 설정
+    print("Data Pattern PRBS7 설정")
+    print(inst.query("source1:pattern:select?"))                    #Data Pattern 확인
+
 rm=pyvisa.ResourceManager()
 resources(rm)
 inst = rm.open_resource(rm.list_resources()[0])
@@ -43,3 +48,4 @@ idn(inst)
 reset()
 volt(inst)
 dataRate(inst)
+prbs7(inst)
