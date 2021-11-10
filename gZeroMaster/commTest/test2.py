@@ -69,7 +69,7 @@ print(inst.query("sense:gate:mode?"))                               #Accumultati
 inst.write("sense1:gate:manner TIME")                               #Accumulation 종료 조건 시간 설정
 print(inst.query("sense1:gate:manner?"))                            #Accumultation 종료 조건 확인
 
-inst.write("sense1:gate:period:time 100")                           #Accumulation 수행 시간 설정
+inst.write("sense1:gate:period:time 10")                            #Accumulation 수행 시간 설정
 print(inst.query("sense1:gate:period:time?"))                       #Accumultation 수행 시간 확인
 
 inst.write("sense1:gate:state 1")                                   #Accumultation 수행
