@@ -151,6 +151,8 @@ int main(void)
 	atmel_start_init();	
 	B0_Init();
 	/* Replace with your application code */
+	
+	LoadData();
 	while (1) {
 		char t_rx_addr[4] = {0, };
 		char t_rx_data[4] = {0, };
