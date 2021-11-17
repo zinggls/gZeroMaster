@@ -11,6 +11,7 @@
 #include "CRaw.h"
 #include <fstream>
 #include <zmq.h>
+#include <Dbt.h>
 
 using json = nlohmann::json;
 
@@ -104,6 +105,7 @@ BEGIN_MESSAGE_MAP(CgZeroMasterDlg, CDialogEx)
 	ON_COMMAND(ID_FILE_LOADJSON, &CgZeroMasterDlg::OnFileLoadjson)
 	ON_UPDATE_COMMAND_UI(ID_FILE_LOADJSON, &CgZeroMasterDlg::OnUpdateFileLoadjson)
 	ON_WM_TIMER()
+	ON_MESSAGE(WM_DEVICECHANGE, OnDeviceChange)
 END_MESSAGE_MAP()
 
 
@@ -320,6 +322,15 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 			ASSERT(m_chip == _T("A0") || m_chip == _T("B0"));
 			m_pRaw->OnChipConnect(m_chip);
 			m_pSemantic->OnChipConnect(m_chip);
+
+			BOOL b = m_pRaw->WriteRegister(0xf3, 0 /*dummy value*/);
+			ASSERT(b);
+
+			char buffer[8];
+			ZeroMemory(buffer, sizeof(buffer));
+			while (m_pRaw->ReadRegister(0xf3, sizeof(buffer)-1, buffer, MAX_LOOP) != ERROR_SUCCESS) Sleep(10);	//Blocking 함수
+			L(_T("Firmware ver:") + CString(buffer));
+
 			L(_T("Chip Model:") + m_chip);
 			if (m_pRaw->ReadRegisters()) {
 				m_pSemantic->UpdateRegisters();
@@ -959,4 +970,24 @@ void CgZeroMasterDlg::OnTimer(UINT_PTR nIDEvent)
 			TRACE("ZMQ_TIMER, message received: %dbytes, sent: %dbytes\n", nSize, nSent);
 		}
 	}
+}
+
+
+LRESULT CgZeroMasterDlg::OnDeviceChange(WPARAM wParam, LPARAM lParam)
+{
+	if (DBT_DEVICEARRIVAL == wParam || DBT_DEVICEREMOVECOMPLETE == wParam) {
+		PDEV_BROADCAST_HDR pHdr = (PDEV_BROADCAST_HDR)lParam;
+		switch (pHdr->dbch_devicetype) {
+		case DBT_DEVTYP_PORT:
+			TRACE("DBT_DEVTYP_PORT\n");
+			{
+				PDEV_BROADCAST_PORT pDevPort = (PDEV_BROADCAST_PORT)pHdr;
+				if (DBT_DEVICEREMOVECOMPLETE == wParam) {
+					if (m_serial.IsOpen()) OnBnClickedConnectButton();
+				}
+			}
+			break;
+		}
+	}
+	return 0;
 }
