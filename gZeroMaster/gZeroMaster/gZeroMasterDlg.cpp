@@ -322,6 +322,15 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 			ASSERT(m_chip == _T("A0") || m_chip == _T("B0"));
 			m_pRaw->OnChipConnect(m_chip);
 			m_pSemantic->OnChipConnect(m_chip);
+
+			BOOL b = m_pRaw->WriteRegister(0xf3, 0 /*dummy value*/);
+			ASSERT(b);
+
+			char buffer[8];
+			ZeroMemory(buffer, sizeof(buffer));
+			while (m_pRaw->ReadRegister(0xf3, sizeof(buffer)-1, buffer, MAX_LOOP) != ERROR_SUCCESS) Sleep(10);	//Blocking 함수
+			L(_T("Firmware ver:") + CString(buffer));
+
 			L(_T("Chip Model:") + m_chip);
 			if (m_pRaw->ReadRegisters()) {
 				m_pSemantic->UpdateRegisters();
