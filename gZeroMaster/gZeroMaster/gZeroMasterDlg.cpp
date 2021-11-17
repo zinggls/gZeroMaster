@@ -969,34 +969,14 @@ LRESULT CgZeroMasterDlg::OnDeviceChange(WPARAM wParam, LPARAM lParam)
 	if (DBT_DEVICEARRIVAL == wParam || DBT_DEVICEREMOVECOMPLETE == wParam) {
 		PDEV_BROADCAST_HDR pHdr = (PDEV_BROADCAST_HDR)lParam;
 		switch (pHdr->dbch_devicetype) {
-		case DBT_DEVTYP_DEVICEINTERFACE:
-			TRACE("DBT_DEVTYP_DEVICEINTERFACE\n");
-			//PDEV_BROADCAST_DEVICEINTERFACE pDevInf = (PDEV_BROADCAST_DEVICEINTERFACE)pHdr;
-			// do something...
-			break;
-
-		case DBT_DEVTYP_HANDLE:
-			TRACE("DBT_DEVTYP_HANDLE\n");
-			//PDEV_BROADCAST_HANDLE pDevHnd = (PDEV_BROADCAST_HANDLE)pHdr;
-			// do something...
-			break;
-
-		case DBT_DEVTYP_OEM:
-			TRACE("DBT_DEVTYP_OEM\n");
-			//PDEV_BROADCAST_OEM pDevOem = (PDEV_BROADCAST_OEM)pHdr;
-			// do something...
-			break;
-
 		case DBT_DEVTYP_PORT:
 			TRACE("DBT_DEVTYP_PORT\n");
-			//PDEV_BROADCAST_PORT pDevPort = (PDEV_BROADCAST_PORT)pHdr;
-			// do something...
-			break;
-
-		case DBT_DEVTYP_VOLUME:
-			TRACE("DBT_DEVTYP_VOLUME\n");
-			//PDEV_BROADCAST_VOLUME pDevVolume = (PDEV_BROADCAST_VOLUME)pHdr;
-			// do something...
+			{
+				PDEV_BROADCAST_PORT pDevPort = (PDEV_BROADCAST_PORT)pHdr;
+				if (DBT_DEVICEREMOVECOMPLETE == wParam) {
+					if (m_serial.IsOpen()) OnBnClickedConnectButton();
+				}
+			}
 			break;
 		}
 	}
