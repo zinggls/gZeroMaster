@@ -104,6 +104,7 @@ BEGIN_MESSAGE_MAP(CgZeroMasterDlg, CDialogEx)
 	ON_COMMAND(ID_FILE_LOADJSON, &CgZeroMasterDlg::OnFileLoadjson)
 	ON_UPDATE_COMMAND_UI(ID_FILE_LOADJSON, &CgZeroMasterDlg::OnUpdateFileLoadjson)
 	ON_WM_TIMER()
+	ON_MESSAGE(WM_DEVICECHANGE, OnDeviceChange)
 END_MESSAGE_MAP()
 
 
@@ -959,4 +960,10 @@ void CgZeroMasterDlg::OnTimer(UINT_PTR nIDEvent)
 			TRACE("ZMQ_TIMER, message received: %dbytes, sent: %dbytes\n", nSize, nSent);
 		}
 	}
+}
+
+
+LRESULT CgZeroMasterDlg::OnDeviceChange(WPARAM wParam, LPARAM lParam)
+{
+	return 0;
 }

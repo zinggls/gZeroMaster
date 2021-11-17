@@ -99,4 +99,5 @@ public:
 	afx_msg void OnFileLoadjson();
 	afx_msg void OnUpdateFileLoadjson(CCmdUI* pCmdUI);
 	afx_msg void OnTimer(UINT_PTR nIDEvent);
+	LRESULT OnDeviceChange(WPARAM wParam, LPARAM lParam);
 };
