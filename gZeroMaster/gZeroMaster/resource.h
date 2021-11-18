@@ -62,6 +62,7 @@
 #define IDC_EDIT_CHECK                  1044
 #define IDC_BUTTON1                     1045
 #define IDC_WRITE_BUTTON                1045
+#define IDC_TCP_BIND_PORT_BUTTON        1045
 #define IDC_BIT7_BUTTON                 1046
 #define IDC_READ_ALL_BUTTON             1047
 #define IDC_BIT6_BUTTON                 1048
@@ -168,6 +169,7 @@
 #define IDC_FD_BUFFER_CURRENT_VALUE_STATIC 1147
 #define IDC_AUTO_WRITE_CHECK            1148
 #define IDC_DEFAULT_VALUE_BUTTON        1149
+#define IDC_TCP_BIND_PORT_EDIT          1150
 #define ID_MAINMENU_CLEARLOG            32771
 #define ID_MAINMENU_SAVE                32772
 #define ID_MAINMENU_LOAD                32773
@@ -184,7 +186,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        142
 #define _APS_NEXT_COMMAND_VALUE         32780
-#define _APS_NEXT_CONTROL_VALUE         1150
+#define _APS_NEXT_CONTROL_VALUE         1151
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

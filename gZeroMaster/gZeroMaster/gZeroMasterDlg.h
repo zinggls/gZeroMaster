@@ -10,7 +10,6 @@
 #define MAX_LOG					1000
 #define MAX_COMPORT				25
 #define ZMQ_TIMER				1
-#define TCP_BIND_ADDR			"tcp://*:5555"
 
 class CSemantic;
 class CRaw;
@@ -54,6 +53,7 @@ public:
 	std::list<std::pair<std::string, int>> m_sliders;
 	void* m_context;
 	void* m_responder;
+	CString m_strTcpBindPort;
 
 	void L(const TCHAR* str, ...);
 	void Reset();
@@ -100,4 +100,5 @@ public:
 	afx_msg void OnUpdateFileLoadjson(CCmdUI* pCmdUI);
 	afx_msg void OnTimer(UINT_PTR nIDEvent);
 	LRESULT OnDeviceChange(WPARAM wParam, LPARAM lParam);
+	afx_msg void OnBnClickedTcpBindPortButton();
 };

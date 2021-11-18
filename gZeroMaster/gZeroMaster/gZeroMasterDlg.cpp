@@ -65,6 +65,7 @@ CgZeroMasterDlg::CgZeroMasterDlg(CWnd* pParent /*=nullptr*/)
 	, m_pSemantic(NULL)
 	, m_pRaw(NULL)
 	, m_chip(_T(""))
+	, m_strTcpBindPort(_T("5555"))
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
@@ -76,6 +77,8 @@ void CgZeroMasterDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_COM_COMBO, m_comPort);
 	DDX_Control(pDX, IDC_TAB, m_tab);
 	DDX_Control(pDX, IDC_CHIP_COMBO, m_chipSelect);
+	DDX_Text(pDX, IDC_TCP_BIND_PORT_EDIT, m_strTcpBindPort);
+	DDV_MaxChars(pDX, m_strTcpBindPort, 5);
 }
 
 BEGIN_MESSAGE_MAP(CgZeroMasterDlg, CDialogEx)
@@ -106,6 +109,7 @@ BEGIN_MESSAGE_MAP(CgZeroMasterDlg, CDialogEx)
 	ON_UPDATE_COMMAND_UI(ID_FILE_LOADJSON, &CgZeroMasterDlg::OnUpdateFileLoadjson)
 	ON_WM_TIMER()
 	ON_MESSAGE(WM_DEVICECHANGE, OnDeviceChange)
+	ON_BN_CLICKED(IDC_TCP_BIND_PORT_BUTTON, &CgZeroMasterDlg::OnBnClickedTcpBindPortButton)
 END_MESSAGE_MAP()
 
 
@@ -176,10 +180,6 @@ BOOL CgZeroMasterDlg::OnInitDialog()
 	setSliders();
 	m_context = zmq_ctx_new();
 	m_responder = zmq_socket(m_context, ZMQ_REP);
-	if (zmq_bind(m_responder, TCP_BIND_ADDR) != 0)
-		MessageBox(_T("zeromq bind error: ") + CString(_T(TCP_BIND_ADDR)), _T("Error"), MB_ICONERROR);
-	else
-		L(_T("zeromq bind address: ") + CString(_T(TCP_BIND_ADDR)));
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
 
@@ -995,4 +995,18 @@ LRESULT CgZeroMasterDlg::OnDeviceChange(WPARAM wParam, LPARAM lParam)
 		}
 	}
 	return 0;
+}
+
+void CgZeroMasterDlg::OnBnClickedTcpBindPortButton()
+{
+	UpdateData(TRUE);
+
+	char buffer[128];
+	ZeroMemory(buffer, sizeof(buffer));
+	sprintf_s(buffer, sizeof(buffer), "tcp://*:%d", _ttoi(m_strTcpBindPort));
+
+	if (zmq_bind(m_responder, buffer) != 0)
+		MessageBox(_T("zeromq bind error: ") + CString(buffer), _T("Error"), MB_ICONERROR);
+	else
+		L(_T("zeromq bind address: ") + CString(buffer));
 }
