@@ -5,7 +5,6 @@
 #define CHIP		"CHIP:B0"			//Chip model name	(MUST BE 7Bytes long)
 #define SAVED		"Saved  "			//Saved message		(MUST BE 7Bytes long)
 #define LOADED		"Loaded "			//Loaded message	(MUST BE 7Bytes long)
-#define VERSION		"0.0.4  "			//Version			(MUST BE 7Bytes long)
 #define BASE_ADDR	((uint8_t*)0x0)
 
 /*
@@ -177,10 +176,6 @@ int main(void)
 			UART_RX_STR(t_rx_data);	//Data(hex), dummy data to be neglected
 			LoadData();
 			continue;			
-		}else if(data[0] == 0xf3) {
-			/* Get FW Version */
-			UART_TX_STR(VERSION);	//FW Version
-			continue;
 		}
 
 		rw = rw & 1;
