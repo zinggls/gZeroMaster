@@ -1010,9 +1010,10 @@ void CgZeroMasterDlg::OnBnClickedTcpBindPortButton()
 
 	if (zmq_bind(m_responder, buffer) != 0)
 		MessageBox(_T("zeromq bind error: ") + CString(buffer), _T("Error"), MB_ICONERROR);
-	else
+	else {
 		L(_T("zeromq bind address: ") + CString(buffer));
-	
-	GetDlgItem(IDC_TCP_BIND_PORT_EDIT)->EnableWindow(FALSE);
-	GetDlgItem(IDC_TCP_BIND_PORT_BUTTON)->EnableWindow(FALSE);
+
+		GetDlgItem(IDC_TCP_BIND_PORT_EDIT)->EnableWindow(FALSE);
+		GetDlgItem(IDC_TCP_BIND_PORT_BUTTON)->EnableWindow(FALSE);
+	}
 }
