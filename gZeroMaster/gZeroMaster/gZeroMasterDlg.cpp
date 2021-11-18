@@ -180,6 +180,7 @@ BOOL CgZeroMasterDlg::OnInitDialog()
 	setSliders();
 	m_context = zmq_ctx_new();
 	m_responder = zmq_socket(m_context, ZMQ_REP);
+	m_bTcpBind = FALSE;
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
 
@@ -999,6 +1000,8 @@ LRESULT CgZeroMasterDlg::OnDeviceChange(WPARAM wParam, LPARAM lParam)
 
 void CgZeroMasterDlg::OnBnClickedTcpBindPortButton()
 {
+	if (m_bTcpBind) return;
+
 	UpdateData(TRUE);
 
 	char buffer[128];
@@ -1009,4 +1012,7 @@ void CgZeroMasterDlg::OnBnClickedTcpBindPortButton()
 		MessageBox(_T("zeromq bind error: ") + CString(buffer), _T("Error"), MB_ICONERROR);
 	else
 		L(_T("zeromq bind address: ") + CString(buffer));
+	
+	GetDlgItem(IDC_TCP_BIND_PORT_EDIT)->EnableWindow(FALSE);
+	GetDlgItem(IDC_TCP_BIND_PORT_BUTTON)->EnableWindow(FALSE);
 }

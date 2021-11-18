@@ -54,6 +54,7 @@ public:
 	void* m_context;
 	void* m_responder;
 	CString m_strTcpBindPort;
+	BOOL m_bTcpBind;
 
 	void L(const TCHAR* str, ...);
 	void Reset();
