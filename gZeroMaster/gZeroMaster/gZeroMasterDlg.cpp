@@ -327,16 +327,6 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 			BOOL b = m_pRaw->WriteRegister(0xf3, 0 /*dummy value*/);
 			ASSERT(b);
 
-			char buffer[8];
-			ZeroMemory(buffer, sizeof(buffer));
-			for (int i = 0; i < 3; i++) {
-				if (m_pRaw->ReadRegister(0xf3, sizeof(buffer) - 1, buffer, MAX_LOOP) != ERROR_SUCCESS)
-					Sleep(500);
-				else
-					break;
-			}
-			L(_T("Firmware ver:") + CString(buffer));
-
 			L(_T("Chip Model:") + m_chip);
 			if (m_pRaw->ReadRegisters()) {
 				m_pSemantic->UpdateRegisters();
