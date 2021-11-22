@@ -324,9 +324,6 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 			m_pRaw->OnChipConnect(m_chip);
 			m_pSemantic->OnChipConnect(m_chip);
 
-			BOOL b = m_pRaw->WriteRegister(0xf3, 0 /*dummy value*/);
-			ASSERT(b);
-
 			L(_T("Chip Model:") + m_chip);
 			if (m_pRaw->ReadRegisters()) {
 				m_pSemantic->UpdateRegisters();
