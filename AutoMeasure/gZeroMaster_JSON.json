@@ -1,0 +1,37 @@
+{
+	"RX":{
+		"RX Data Interface":true,
+		"Limiting Amplifier Enable":true,
+		"LNA Gain":0
+	},
+	"TX":{
+		"Duty Cycle":0,
+		"VCO Oscillation Freq":128,
+		"Regulator Ref Voltage":true,
+		"VCO VDD":0,
+		"VCO Power":true,
+		"Modulator Power":true,
+		"Test Buffer Power":true,
+		"Data Input Select":true,
+		"PA Power":true,
+		"PA Gain Control1":7,
+		"PA Gain Control2":11,
+		"Test Buffer Current":7
+	},
+	"BIAS":{
+		"BIAS Block Enable":true,
+		"3rd Stage Bias Current":9,
+		"1st Stage Bias Current":1,
+		"5th Stage Bias Current":9,
+		"4th Stage Bias Current":9,
+		"Ref Stage Current":9,
+		"I/P Stage Current":6,
+		"FB Current":6,
+		"Core Current":6,
+		"O/P Buffer Current":6,
+		"I/P Buffer Current":6,
+		"High/Low Data Rate Current":0,
+		"CMOS Gain Stage Current":6,
+		"CML Interface Stage Current":6
+	}
+}
