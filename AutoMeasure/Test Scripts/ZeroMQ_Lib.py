@@ -2,21 +2,51 @@ import zmq
 import json
 
 class gZeroMaster_Lib:
+    value_idx = 0
+    modify_idx = 1
     def __init__(self, port):
         context = zmq.Context()
         self.gZero_socket = context.socket(zmq.REQ)
         self.gZero_socket.connect("tcp://127.0.0.1:{}".format(port))
-        
-    def json_file_load(self, path):
-        with open(path) as json_file:
-            self.gZero_obj = json.load(json_file)
+        with open("gZeroMaster_JSON.json") as json_file:
+            gZero_obj = json.load(json_file)
+
+        self.gZero_reg = dict()
+        for mod in gZero_obj:
+            self.gZero_reg[mod] = dict()
+            for reg in gZero_obj[mod]:
+                self.gZero_reg[mod][reg] = [gZero_obj[mod][reg], False]
+
+    def set_register(self, mod, reg, value):
+        if ((mod in self.gZero_reg) == True):
+            if ((reg in self.gZero_reg[mod]) == True):
+                self.gZero_reg[mod][reg] = [value, True]
+                return True
+        print("Not found register {} in {}".format(reg, mod))
+        return False
+
+    def send_command(self):
+        gZero_obj = dict()
+        for mod in self.gZero_reg:
+            gZero_obj[mod] = dict()
+            for reg in self.gZero_reg[mod]:
+                value, modify = self.gZero_reg[mod][reg]
+                if (modify == True):
+                    gZero_obj[mod][reg] = value
+        gZero_obj = json.dumps(gZero_obj, indent = 4)
+        self.gZero_socket.send(gZero_obj.encode())
+        self.gZero_socket.recv()
 
     def send_all_command(self):
-        json_str = json.dumps(self.gZero_obj)
-        self.gZero_socket.send(json_str.encode())
-        recv_msg = self.gZero_socket.recv()
-        print(recv_msg)
-
+        gZero_obj = dict()
+        for mod in self.gZero_reg:
+            gZero_obj[mod] = dict()
+            for reg in self.gZero_reg[mod]:
+                gZero_obj[mod][reg] = self.gZero_reg[mod][reg][self.value_idx]
+        gZero_obj = json.dumps(gZero_obj, indent = 4)
+        self.gZero_socket.send(gZero_obj.encode())
+        self.gZero_socket.recv()
+    
 class Attenuator_Lib:
     def __init__(self, port):
         context = zmq.Context()
@@ -24,6 +54,6 @@ class Attenuator_Lib:
         self.Atten_socket.connect("tcp://127.0.0.1:{}".format(port))
 
     def set_atten(self, dB):
-        Atten_obj = { "ATTEN":{} }
+        Atten_obj = { "ATTEN":0 }
         Atten_obj["ATTEN"] = dB
         json.dumps(Atten_obj)

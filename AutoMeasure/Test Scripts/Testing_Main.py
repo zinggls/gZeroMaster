@@ -5,8 +5,13 @@ import time
 gZero_TX = ZeroMQ_Lib.gZeroMaster_Lib(5555)
 gZero_RX = ZeroMQ_Lib.gZeroMaster_Lib(5556)
 
-gZero_TX.json_file_load("gZeroMaster_JSON.json")
-gZero_RX.json_file_load("gZeroMaster_JSON.json")
+"""
+gZero_TX.set_register("BIAS", "Core Current", 11)
+gZero_RX.set_register("BIAS", "Core Current", 11)
+
+gZero_TX.send_command()
+gZero_RX.send_command()
+"""
 
 gZero_TX.send_all_command()
 gZero_RX.send_all_command()
