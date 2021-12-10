@@ -54,6 +54,9 @@ class Attenuator_Lib:
         self.Atten_socket.connect("tcp://127.0.0.1:{}".format(port))
 
     def set_atten(self, dB):
-        Atten_obj = { "ATTEN":0 }
-        Atten_obj["ATTEN"] = dB
-        json.dumps(Atten_obj)
+        Atten_obj = dict()
+        Atten_obj["ATTEN"] = dict()
+        Atten_obj["ATTEN"]["value"] = dB
+        Atten_obj = json.dumps(Atten_obj)
+        self.Atten_socket.send(Atten_obj.encode())
+        self.Atten_socket.recv()
