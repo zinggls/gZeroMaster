@@ -46,7 +46,23 @@ class gZeroMaster_Lib:
         gZero_obj = json.dumps(gZero_obj, indent = 4)
         self.gZero_socket.send(gZero_obj.encode())
         self.gZero_socket.recv()
-    
+
+    def save_in_csv(self, csv, port):
+        for mod in self.gZero_reg:
+            for reg in self.gZero_reg[mod]:
+                value, modify = self.gZero_reg[mod][reg]
+                if (modify == True):
+                    csv_data = "{},{},{},0x{:X}\n".format(port, mod, reg, value)
+                    csv.write(csv_data)
+
+    def save_all_in_csv(self, csv, port):
+        for mod in self.gZero_reg:
+            for reg in self.gZero_reg[mod]:
+                value, modify = self.gZero_reg[mod][reg]
+                #if (modify == True):
+                csv_data = "{},{},{},0x{:X}\n".format(port, mod, reg, value)
+                csv.write(csv_data)
+
 class Attenuator_Lib:
     def __init__(self, port):
         context = zmq.Context()
