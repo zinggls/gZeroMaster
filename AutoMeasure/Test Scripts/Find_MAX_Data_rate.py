@@ -14,6 +14,7 @@ RX_Mod = gZeroMaster.gZero_RX
 TX_Mod.set_register("TX", "VCO Oscillation Freq", 0x1)
 TX_Mod.set_register("TX", "PA Gain Control2", 0)
 
+max_data_rate = 0
 for value in range(0x0, 0xF):
     TX_Mod.set_register("TX", "PA Gain Control1", value)
 
@@ -23,7 +24,6 @@ for value in range(0x0, 0xF):
     #atten_list = [22, 20, 18, 14, 12, 10]
     atten_list = [22]
 
-    max_data_rate = 0
     csv = open("result_0x{:x}.csv".format(value), "w")
     for Atten_dB in atten_list:
 
