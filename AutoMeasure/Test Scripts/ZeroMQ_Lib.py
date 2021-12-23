@@ -48,14 +48,18 @@ class gZeroMaster_Lib:
         self.gZero_socket.recv()
 
     def save_in_csv(self, csv, port):
+        csv_data = "Port,Module,Register,Value\n"
+        csv.write(csv_data)
         for mod in self.gZero_reg:
             for reg in self.gZero_reg[mod]:
                 value, modify = self.gZero_reg[mod][reg]
                 if (modify == True):
-                    csv_data = "{},{},{},0x{:X}\n".format(port, mod, reg, value)
+                    csv_data = "{},{},{},{}\n".format(port, mod, reg, value)
                     csv.write(csv_data)
 
     def save_all_in_csv(self, csv, port):
+        csv_data = "Port,Module,Register,Value\n"
+        csv.write(csv_data)
         for mod in self.gZero_reg:
             for reg in self.gZero_reg[mod]:
                 value, modify = self.gZero_reg[mod][reg]
@@ -76,3 +80,36 @@ class Attenuator_Lib:
         Atten_obj = json.dumps(Atten_obj)
         self.Atten_socket.send(Atten_obj.encode())
         self.Atten_socket.recv()
+
+class gZeroMaster:
+    def __init__(self, tx_port, rx_port):
+        self.tx_port = tx_port
+        self.rx_port = rx_port
+        self.gZero_TX = gZeroMaster_Lib(tx_port)
+        self.gZero_TX_csv = open("reg_TX.csv", "w")
+        self.gZero_RX = gZeroMaster_Lib(rx_port)
+        self.gZero_RX_csv = open("reg_RX.csv", "w")
+
+    def open_csv(self):
+        self.gZero_TX_csv = open("reg_TX.csv", "w")
+        self.gZero_RX_csv = open("reg_RX.csv", "w")
+
+    def send_all(self):
+        self.gZero_TX.send_all_command()
+        self.gZero_RX.send_all_command()
+        
+    def send(self):
+        self.gZero_TX.send_command()
+        self.gZero_RX.send_command()
+
+    def save(self):
+        self.gZero_TX.save_in_csv(self.gZero_TX_csv, self.tx_port)
+        self.gZero_RX.save_in_csv(self.gZero_RX_csv, self.rx_port)
+
+    def save_all(self):
+        self.gZero_TX.save_all_in_csv(self.gZero_TX_csv, self.tx_port)
+        self.gZero_RX.save_all_in_csv(self.gZero_RX_csv, self.rx_port)
+
+    def close_csv(self):
+        self.gZero_TX_csv.close()
+        self.gZero_RX_csv.close()
