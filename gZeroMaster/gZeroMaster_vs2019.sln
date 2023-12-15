@@ -1,0 +1,79 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31410.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Serial", "Serial\Serial_vs2019.vcxproj", "{BDCD0825-F7AC-4B44-B9D0-B013E7BF64CF}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gZeroMaster", "gZeroMaster\gZeroMaster_vs2019.vcxproj", "{AC9542F7-7AAA-4130-926C-B08A12F52C20}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BDCD0825-F7AC-4B44-B9D0-B013E7BF64CF} = {BDCD0825-F7AC-4B44-B9D0-B013E7BF64CF}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tests", "tests\tests_vs2019.vcxproj", "{34BE7B74-9AD8-40CD-8A51-CA368470FF3F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BDCD0825-F7AC-4B44-B9D0-B013E7BF64CF} = {BDCD0825-F7AC-4B44-B9D0-B013E7BF64CF}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "zmqSvr", "zmqSvr\zmqSvr_vs2019.vcxproj", "{CBFE5137-2E91-485B-93B0-312ABCE52083}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "zmqCli", "zmqCli\zmqCli_vs2019.vcxproj", "{DD7211FF-CC59-41D0-AEC2-FD08AA937FC1}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "pyZmgCli", "pyZmgCli\pyZmgCli.pyproj", "{798A947F-5623-4F49-B4B7-1A8CDF68CECB}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "pyZmqSvr", "pyZmqSvr\pyZmqSvr.pyproj", "{1CED9CCB-6498-4D74-8B7E-C0796D90864C}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "jsonSvr", "jsonSvr\jsonSvr.pyproj", "{9211692E-6A37-4363-BEF6-0CE1AE2BF25E}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "jsonCli", "jsonCli\jsonCli.pyproj", "{4C9F7B60-5398-46E9-B09D-25F1F821887A}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "gCommander", "gCommander\gCommander.pyproj", "{B0ADF8FC-F91A-470A-86D1-48498188C524}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "commTest", "commTest\commTest.pyproj", "{E036F744-86A2-42BF-A3B4-EE63DB0B6450}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BDCD0825-F7AC-4B44-B9D0-B013E7BF64CF}.Debug|x64.ActiveCfg = Debug|x64
+		{BDCD0825-F7AC-4B44-B9D0-B013E7BF64CF}.Debug|x64.Build.0 = Debug|x64
+		{BDCD0825-F7AC-4B44-B9D0-B013E7BF64CF}.Release|x64.ActiveCfg = Release|x64
+		{BDCD0825-F7AC-4B44-B9D0-B013E7BF64CF}.Release|x64.Build.0 = Release|x64
+		{AC9542F7-7AAA-4130-926C-B08A12F52C20}.Debug|x64.ActiveCfg = Release|x64
+		{AC9542F7-7AAA-4130-926C-B08A12F52C20}.Debug|x64.Build.0 = Release|x64
+		{AC9542F7-7AAA-4130-926C-B08A12F52C20}.Release|x64.ActiveCfg = Release|x64
+		{AC9542F7-7AAA-4130-926C-B08A12F52C20}.Release|x64.Build.0 = Release|x64
+		{34BE7B74-9AD8-40CD-8A51-CA368470FF3F}.Debug|x64.ActiveCfg = Debug|x64
+		{34BE7B74-9AD8-40CD-8A51-CA368470FF3F}.Debug|x64.Build.0 = Debug|x64
+		{34BE7B74-9AD8-40CD-8A51-CA368470FF3F}.Release|x64.ActiveCfg = Release|x64
+		{34BE7B74-9AD8-40CD-8A51-CA368470FF3F}.Release|x64.Build.0 = Release|x64
+		{CBFE5137-2E91-485B-93B0-312ABCE52083}.Debug|x64.ActiveCfg = Debug|x64
+		{CBFE5137-2E91-485B-93B0-312ABCE52083}.Debug|x64.Build.0 = Debug|x64
+		{CBFE5137-2E91-485B-93B0-312ABCE52083}.Release|x64.ActiveCfg = Release|x64
+		{CBFE5137-2E91-485B-93B0-312ABCE52083}.Release|x64.Build.0 = Release|x64
+		{DD7211FF-CC59-41D0-AEC2-FD08AA937FC1}.Debug|x64.ActiveCfg = Debug|x64
+		{DD7211FF-CC59-41D0-AEC2-FD08AA937FC1}.Debug|x64.Build.0 = Debug|x64
+		{DD7211FF-CC59-41D0-AEC2-FD08AA937FC1}.Release|x64.ActiveCfg = Release|x64
+		{DD7211FF-CC59-41D0-AEC2-FD08AA937FC1}.Release|x64.Build.0 = Release|x64
+		{798A947F-5623-4F49-B4B7-1A8CDF68CECB}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{798A947F-5623-4F49-B4B7-1A8CDF68CECB}.Release|x64.ActiveCfg = Release|Any CPU
+		{1CED9CCB-6498-4D74-8B7E-C0796D90864C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{1CED9CCB-6498-4D74-8B7E-C0796D90864C}.Release|x64.ActiveCfg = Release|Any CPU
+		{9211692E-6A37-4363-BEF6-0CE1AE2BF25E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{9211692E-6A37-4363-BEF6-0CE1AE2BF25E}.Release|x64.ActiveCfg = Release|Any CPU
+		{4C9F7B60-5398-46E9-B09D-25F1F821887A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{4C9F7B60-5398-46E9-B09D-25F1F821887A}.Release|x64.ActiveCfg = Release|Any CPU
+		{B0ADF8FC-F91A-470A-86D1-48498188C524}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B0ADF8FC-F91A-470A-86D1-48498188C524}.Release|x64.ActiveCfg = Release|Any CPU
+		{E036F744-86A2-42BF-A3B4-EE63DB0B6450}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E036F744-86A2-42BF-A3B4-EE63DB0B6450}.Release|x64.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D9FF4593-EAFB-4EC5-A498-89E4815ED61B}
+	EndGlobalSection
+EndGlobal
