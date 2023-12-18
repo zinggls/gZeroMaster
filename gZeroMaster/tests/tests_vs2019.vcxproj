@@ -75,6 +75,9 @@
       <AdditionalDependencies>Serial.lib;libzmq-v142-mt-gd-4_3_4.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\Output\Serial\$(Platform)\$(Configuration);..\zeromq-4.3.4\lib</AdditionalLibraryDirectories>
     </Link>
+    <PostBuildEvent>
+      <Command>copy ..\zeromq-4.3.4\lib\libzmq-v142-mt-gd-4_3_4.dll $(OutputPath)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -94,6 +97,9 @@
       <AdditionalDependencies>Serial.lib;libzmq-v142-mt-4_3_4.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\Output\Serial\$(Platform)\$(Configuration);..\zeromq-4.3.4\lib</AdditionalLibraryDirectories>
     </Link>
+    <PostBuildEvent>
+      <Command>copy ..\zeromq-4.3.4\lib\libzmq-v142-mt-4_3_4.dll $(OutputPath)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
