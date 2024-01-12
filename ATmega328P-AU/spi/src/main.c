@@ -48,7 +48,7 @@ void hextostr(uint8_t h, char* str)
 	
 	for(i = 0; i < 2; i++)
 	{
-		if ( changeData[0] >= 10 )
+		if ( changeData[i] >= 10 )
 			str[i] = changeData[i] - 10 + 'A';
 		else
 			str[i] = changeData[i] + '0';
