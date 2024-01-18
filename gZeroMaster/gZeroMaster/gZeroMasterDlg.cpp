@@ -149,11 +149,34 @@ BOOL CgZeroMasterDlg::OnInitDialog()
 	m_chipSelect.AddString(_T("B0"));
 	m_chipSelect.SetCurSel(1);	//디폴트 선택은 B0
 
+	HKEY hKey;
+	TCHAR RegData[20];
+	TCHAR RegName[100];
+	DWORD index = 0;
+	DWORD RegNameSize = 100;
+	DWORD RegDataSize = 20;
+	DWORD dwType = REG_SZ;
+
+	RegOpenKey(HKEY_LOCAL_MACHINE, TEXT("HARDWARE\\DEVICEMAP\\SERIALCOMM"), &hKey);
+	while (RegEnumValue(hKey, index, RegName, &RegNameSize, NULL, NULL, NULL, NULL) == ERROR_SUCCESS)
+	{
+		RegQueryValueEx(hKey, RegName, NULL, &dwType, (LPBYTE)RegData, &RegDataSize);
+		m_comPort.AddString(CString(RegData));
+		memset(RegData, 0x00, sizeof(RegData));
+		memset(RegName, 0x00, sizeof(RegName));
+		RegNameSize = 100;
+		RegDataSize = 20;
+		index = index + 1;
+	}
+	RegCloseKey(hKey);
+
+	/*
 	for (int i = 1; i <= MAX_COMPORT; i++) {
 		CString strVal;
 		strVal.Format(_T("COM%d"), i);
 		m_comPort.AddString(strVal);
 	}
+	*/
 	m_comPort.SetCurSel(0);
 
 	m_tab.InsertItem(0, _T("Semantic"));
