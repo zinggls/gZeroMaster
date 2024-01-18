@@ -93,6 +93,25 @@ void Zing400Rx_Init(void)
 	SPI_0_write_reg(0x2c, 0x10); //RegOut2C[7:0] INIT
 }
 
+void Zing400Tx_Init(void)
+{
+	SPI_0_write_reg(0x07, 0x0); //TX_REG1[23:16] INIT
+	SPI_0_write_reg(0x06, 0x10); //TX_REG1[15:8] INIT
+	SPI_0_write_reg(0x05, 0x10); //TX_REG1[7:0] INIT
+	SPI_0_write_reg(0x0d, 0x01); //TX_REG2[16] INIT
+	SPI_0_write_reg(0x0c, 0xe0); //TX_REG2[15:13] INIT
+	SPI_0_write_reg(0x0b, 0x07); //TX_REG2[3:0] INIT
+
+	SPI_0_write_reg(0x24, 0x01); //RegOut24[0] INIT
+	SPI_0_write_reg(0x25, 0x78); //RegOut25[7:0] INIT
+	SPI_0_write_reg(0x26, 0x80); //RegOut26[7:0] INIT
+	SPI_0_write_reg(0x27, 0x00); //RegOut27[7:0] INIT
+	SPI_0_write_reg(0x28, 0x00); //RegOut28[7:0] INIT
+	SPI_0_write_reg(0x29, 0x00); //RegOut29[7:0] INIT
+	SPI_0_write_reg(0x2a, 0x00); //RegOut2a[7:0] INIT
+	SPI_0_write_reg(0x2b, 0x00); //RegOut2b[7:0] INIT
+}
+
 void reg_show(char *name,uint8_t addr)
 {
 	uint8_t rx_data = 0;
@@ -144,6 +163,25 @@ void Zing400Rx_reg_show(void)
 	reg_show("RegOut2c[7:0] : ",0x2c);
 }
 
+void Zing400Tx_reg_show(void)
+{
+	reg_show("TX_REG1[23:16] : ",0x07);
+	reg_show("TX_REG1[15:8] : ",0x06);
+	reg_show("TX_REG1[7:0] : ",0x05);
+	reg_show("TX_REG2[16] : ",0x0d);
+	reg_show("TX_REG2[15:13] : ",0x0c);
+	reg_show("TX_REG2[3:0] : ",0x0b);
+
+	reg_show("RegOut24[0] : ",0x24);
+	reg_show("RegOut25[7:0] : ",0x25);
+	reg_show("RegOut26[7:0] : ",0x26);
+	reg_show("RegOut27[7:0] : ",0x27);
+	reg_show("RegOut28[7:0] : ",0x28);
+	reg_show("RegOut29[7:0] : ",0x29);
+	reg_show("RegOut2a[7:0] : ",0x2a);
+	reg_show("RegOut2b[7:0] : ",0x2b);
+}
+
 int Init()
 {
 #ifdef CHIP_B0
@@ -153,6 +191,11 @@ int Init()
 
 #ifdef CHIP_400RX
 	Zing400Rx_Init();
+	return 0;
+#endif
+
+#ifdef CHIP_400TX
+	Zing400Tx_Init();
 	return 0;
 #endif
 
@@ -168,6 +211,10 @@ void show()
 #ifdef CHIP_400RX
 	Zing400Rx_reg_show();
 #endif
+
+#ifdef CHIP_400TX
+	Zing400Tx_reg_show();
+#endif
 }
 
 void show_chip()
@@ -178,6 +225,10 @@ void show_chip()
 
 #ifdef CHIP_400RX
 	UART_TX_STR("[400RX] ");
+#endif
+
+#ifdef CHIP_400TX
+	UART_TX_STR("[400TX] ");
 #endif
 }
 
@@ -190,7 +241,7 @@ int main(void)
 	/* Initializes MCU, drivers and middleware */
 	atmel_start_init();	
 	if(Init()==-1) {
-		UART_TX_STR("Error, CHIP_B0 or CHIP_400RX must be defined\n");
+		UART_TX_STR("Error, CHIP_B0 or CHIP_400RX or CHIP_400TX must be defined\n");
 		return -1;
 	}
 	
