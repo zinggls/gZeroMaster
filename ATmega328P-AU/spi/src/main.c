@@ -74,86 +74,36 @@ void B0_Init(void)
 	SPI_0_write_reg(0x18, 0x50); //BIAS_REG8 INIT
 }
 
-void B0_reg_show(void)
+void reg_show(char *name,uint8_t addr)
 {
 	uint8_t rx_data = 0;
 	char t_tx[3] = {0, };
 	
-	UART_TX_STR("RX_REG1[4:0] : ");
-	SPI_0_read_reg(0x02, &rx_data);
-	hextostr((rx_data & 0x1f), t_tx);
-	UART_TX_STR(t_tx);
-	UART_TX_CH(0x0a);
-	UART_TX_STR("TX_REG1[23:16] : ");
-	SPI_0_read_reg(0x07, &rx_data);
+	UART_TX_STR(name);
+	SPI_0_read_reg(addr, &rx_data);
 	hextostr((rx_data), t_tx);
 	UART_TX_STR(t_tx);
 	UART_TX_CH(0x0a);
-	UART_TX_STR("TX_REG1[15:8] : ");
-	SPI_0_read_reg(0x06, &rx_data);
-	hextostr((rx_data), t_tx);
-	UART_TX_STR(t_tx);
-	UART_TX_CH(0x0a);
-	UART_TX_STR("TX_REG1[7:0] : ");
-	SPI_0_read_reg(0x05, &rx_data);
-	hextostr((rx_data), t_tx);
-	UART_TX_STR(t_tx);
-	UART_TX_CH(0x0a);
-	UART_TX_STR("TX_REG2[16] : ");
-	SPI_0_read_reg(0x0d, &rx_data);
-	hextostr((rx_data & 1), t_tx);
-	UART_TX_STR(t_tx);
-	UART_TX_CH(0x0a);
-	UART_TX_STR("TX_REG2[15:8] : ");
-	SPI_0_read_reg(0x0c, &rx_data);
-	hextostr((rx_data), t_tx);
-	UART_TX_STR(t_tx);
-	UART_TX_CH(0x0a);
-	UART_TX_STR("TX_REG2[7:0] : ");
-	SPI_0_read_reg(0x0b, &rx_data);
-	hextostr((rx_data), t_tx);
-	UART_TX_STR(t_tx);
-	UART_TX_CH(0x0a);
-	UART_TX_STR("BIAS_REG1[0] : ");
-	SPI_0_read_reg(0x11, &rx_data);
-	hextostr((rx_data & 0x1), t_tx);
-	UART_TX_STR(t_tx);
-	UART_TX_CH(0x0a);
-	UART_TX_STR("BIAS_REG2[7:0] : ");
-	SPI_0_read_reg(0x12, &rx_data);
-	hextostr((rx_data), t_tx);
-	UART_TX_STR(t_tx);
-	UART_TX_CH(0x0a);
-	UART_TX_STR("BIAS_REG3[7:0] : ");
-	SPI_0_read_reg(0x13, &rx_data);
-	hextostr((rx_data), t_tx);
-	UART_TX_STR(t_tx);
-	UART_TX_CH(0x0a);
-	UART_TX_STR("BIAS_REG4[7:0] : ");
-	SPI_0_read_reg(0x14, &rx_data);
-	hextostr((rx_data), t_tx);
-	UART_TX_STR(t_tx);
-	UART_TX_CH(0x0a);
-	UART_TX_STR("BIAS_REG5[7:0] : ");
-	SPI_0_read_reg(0x15, &rx_data);
-	hextostr((rx_data), t_tx);
-	UART_TX_STR(t_tx);
-	UART_TX_CH(0x0a);
-	UART_TX_STR("BIAS_REG6[7:0] : ");
-	SPI_0_read_reg(0x16, &rx_data);
-	hextostr((rx_data), t_tx);
-	UART_TX_STR(t_tx);
-	UART_TX_CH(0x0a);
-	UART_TX_STR("BIAS_REG7[7:0] : ");
-	SPI_0_read_reg(0x17, &rx_data);
-	hextostr((rx_data), t_tx);
-	UART_TX_STR(t_tx);
-	UART_TX_CH(0x0a);
-	UART_TX_STR("BIAS_REG8[7:0] : ");
-	SPI_0_read_reg(0x18, &rx_data);
-	hextostr((rx_data), t_tx);
-	UART_TX_STR(t_tx);
-	UART_TX_CH(0x0a);
+}
+
+void B0_reg_show(void)
+{
+	reg_show("RX_REG1[4:0] : ",0x02);
+	reg_show("TX_REG1[23:16] : ",0x07);
+	reg_show("TX_REG1[15:8] : ",0x06);
+	reg_show("TX_REG1[7:0] : ",0x05);
+	reg_show("TX_REG2[16] : ",0x0d);
+	reg_show("TX_REG2[15:8] : ",0x0c);
+	reg_show("TX_REG2[7:0] : ",0x0b);
+	
+	reg_show("BIAS_REG1[0] : ",0x11);
+	reg_show("BIAS_REG2[7:0] : ",0x12);
+	reg_show("BIAS_REG3[7:0] : ",0x13);
+	reg_show("BIAS_REG4[7:0] : ",0x14);
+	reg_show("BIAS_REG5[7:0] : ",0x15);
+	reg_show("BIAS_REG6[7:0] : ",0x16);
+	reg_show("BIAS_REG7[7:0] : ",0x17);
+	reg_show("BIAS_REG8[7:0] : ",0x18);
 }
 
 int main(void)
