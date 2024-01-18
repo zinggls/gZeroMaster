@@ -74,6 +74,25 @@ void B0_Init(void)
 	SPI_0_write_reg(0x18, 0x50); //BIAS_REG8 INIT
 }
 
+void Zing400Rx_Init(void)
+{
+	SPI_0_write_reg(0x02, 0x18); //RX_REG1[4:3] INIT
+	SPI_0_write_reg(0x11, 0x01); //BIAS_REG1[0] INIT
+	SPI_0_write_reg(0x14, 0x96); //BIAS_REG4[7:0] INIT
+	SPI_0_write_reg(0x15, 0x66); //BIAS_REG5[7:0] INIT
+	SPI_0_write_reg(0x16, 0x66); //BIAS_REG6[7:0] INIT
+	SPI_0_write_reg(0x17, 0x06); //BIAS_REG7[7:0] INIT
+	SPI_0_write_reg(0x18, 0x06); //BIAS_REG8[7:0] INIT
+
+	SPI_0_write_reg(0x26, 0x00); //RegOut26[3:0] INIT
+	SPI_0_write_reg(0x27, 0x00); //RegOut27[7:0] INIT
+	SPI_0_write_reg(0x28, 0x00); //RegOut28[7:0] INIT
+	SPI_0_write_reg(0x29, 0x00); //RegOut29[7:0] INIT
+	SPI_0_write_reg(0x2a, 0x00); //RegOut2A[7:0] INIT
+	SPI_0_write_reg(0x2b, 0x00); //RegOut2B[7:0] INIT
+	SPI_0_write_reg(0x2c, 0x10); //RegOut2C[7:0] INIT
+}
+
 void reg_show(char *name,uint8_t addr)
 {
 	uint8_t rx_data = 0;
@@ -106,6 +125,62 @@ void B0_reg_show(void)
 	reg_show("BIAS_REG8[7:0] : ",0x18);
 }
 
+void Zing400Rx_reg_show(void)
+{
+	reg_show("RX_REG1[4:3] : ",0x02);
+	reg_show("BIAS_REG1[0] : ",0x11);
+	reg_show("BIAS_REG4[7:0] : ",0x14);
+	reg_show("BIAS_REG5[7:0] : ",0x15);
+	reg_show("BIAS_REG6[7:0] : ",0x16);
+	reg_show("BIAS_REG7[7:0] : ",0x17);
+	reg_show("BIAS_REG8[7:0] : ",0x18);
+
+	reg_show("RegOut26[3:0] : ",0x26);
+	reg_show("RegOut27[7:0] : ",0x27);
+	reg_show("RegOut28[7:0] : ",0x28);
+	reg_show("RegOut29[7:0] : ",0x29);
+	reg_show("RegOut2a[7:0] : ",0x2a);
+	reg_show("RegOut2b[7:0] : ",0x2b);
+	reg_show("RegOut2c[7:0] : ",0x2c);
+}
+
+int Init()
+{
+#ifdef CHIP_B0
+	B0_Init();
+	return 0;
+#endif
+
+#ifdef CHIP_400RX
+	Zing400Rx_Init();
+	return 0;
+#endif
+
+	return -1;
+}
+
+void show()
+{
+#ifdef CHIP_B0
+	B0_reg_show();
+#endif
+
+#ifdef CHIP_400RX
+	Zing400Rx_reg_show();
+#endif
+}
+
+void show_chip()
+{
+#ifdef CHIP_B0
+	UART_TX_STR("[B0] ");
+#endif
+
+#ifdef CHIP_400RX
+	UART_TX_STR("[400RX] ");
+#endif
+}
+
 int main(void)
 {
 	uint8_t rw = 0;
@@ -114,11 +189,16 @@ int main(void)
 		
 	/* Initializes MCU, drivers and middleware */
 	atmel_start_init();	
-	B0_Init();
+	if(Init()==-1) {
+		UART_TX_STR("Error, CHIP_B0 or CHIP_400RX must be defined\n");
+		return -1;
+	}
+	
 	/* Replace with your application code */
 	while (1) {
 	  char t_rx_addr[4] = {0, };
 	  char t_rx_data[4] = {0, };
+	  show_chip();
 	  UART_TX_STR("If input address bigger than 0x80, all register value is displayed\n");
 	  UART_TX_STR("Please Input Address(hex) : ");
 	  UART_RX_STR(t_rx_addr);
@@ -130,7 +210,7 @@ int main(void)
 	  UART_TX_CH(0x0a);
 	  if(data[0] > 0x7f)
 	  {
-		  B0_reg_show();
+		  show();
 		  continue;
 	  }
 	  UART_TX_STR("Write : 0, Read : 1");
