@@ -13,6 +13,8 @@ Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "spiProxy_400rx", "spiProxy\
 EndProject
 Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "spi_400tx", "spi\spi_400tx.cproj", "{CEE8DFB3-AFCA-4C3A-9831-68669A5E1CB9}"
 EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "spiProxy_400tx", "spiProxy\spiProxy_400tx.cproj", "{FDDC794C-388C-4C99-A57E-B57909DCF9C3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|AVR = Debug|AVR
@@ -39,6 +41,10 @@ Global
 		{CEE8DFB3-AFCA-4C3A-9831-68669A5E1CB9}.Debug|AVR.Build.0 = Debug|AVR
 		{CEE8DFB3-AFCA-4C3A-9831-68669A5E1CB9}.Release|AVR.ActiveCfg = Release|AVR
 		{CEE8DFB3-AFCA-4C3A-9831-68669A5E1CB9}.Release|AVR.Build.0 = Release|AVR
+		{FDDC794C-388C-4C99-A57E-B57909DCF9C3}.Debug|AVR.ActiveCfg = Debug|AVR
+		{FDDC794C-388C-4C99-A57E-B57909DCF9C3}.Debug|AVR.Build.0 = Debug|AVR
+		{FDDC794C-388C-4C99-A57E-B57909DCF9C3}.Release|AVR.ActiveCfg = Release|AVR
+		{FDDC794C-388C-4C99-A57E-B57909DCF9C3}.Release|AVR.Build.0 = Release|AVR
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
