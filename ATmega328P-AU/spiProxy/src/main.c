@@ -2,11 +2,18 @@
 #include <string.h>
 #include <avr/eeprom.h>
 
-#define CHIP		"CHIP:B0"			//Chip model name	(MUST BE 7Bytes long)
 #define SAVED		"Saved  "			//Saved message		(MUST BE 7Bytes long)
 #define LOADED		"Loaded "			//Loaded message	(MUST BE 7Bytes long)
-#define VERSION		"04"				//Version			(MUST BE 2Bytes long)
+#define VERSION		"01"				//Version			(MUST BE 2Bytes long)
 #define BASE_ADDR	((uint8_t*)0x0)
+
+#ifdef CHIP_B0
+#define CHIP		"CHIP:B0"			//Chip model name	(MUST BE 7Bytes long)
+#endif
+
+#ifdef CHIP_400RX
+#define CHIP		"CHIP:BR"			//Chip model name	(MUST BE 7Bytes long)
+#endif
 
 /*
  * UART Initiallize
@@ -81,6 +88,25 @@ void B0_Init(void)
 	SPI_0_write_reg(0x18, 0x50); //BIAS_REG8 INIT
 }
 
+void Zing400Rx_Init(void)
+{
+	SPI_0_write_reg(0x02, 0x18); //RX_REG1[4:3] INIT
+	SPI_0_write_reg(0x11, 0x01); //BIAS_REG1[0] INIT
+	SPI_0_write_reg(0x14, 0x96); //BIAS_REG4[7:0] INIT
+	SPI_0_write_reg(0x15, 0x66); //BIAS_REG5[7:0] INIT
+	SPI_0_write_reg(0x16, 0x66); //BIAS_REG6[7:0] INIT
+	SPI_0_write_reg(0x17, 0x06); //BIAS_REG7[7:0] INIT
+	SPI_0_write_reg(0x18, 0x06); //BIAS_REG8[7:0] INIT
+
+	SPI_0_write_reg(0x26, 0x00); //RegOut26[3:0] INIT
+	SPI_0_write_reg(0x27, 0x00); //RegOut27[7:0] INIT
+	SPI_0_write_reg(0x28, 0x00); //RegOut28[7:0] INIT
+	SPI_0_write_reg(0x29, 0x00); //RegOut29[7:0] INIT
+	SPI_0_write_reg(0x2a, 0x00); //RegOut2A[7:0] INIT
+	SPI_0_write_reg(0x2b, 0x00); //RegOut2B[7:0] INIT
+	SPI_0_write_reg(0x2c, 0x10); //RegOut2C[7:0] INIT
+}
+
 void eeprom_update_byte_from_SPI_0_read_reg(uint8_t addr)
 {
 	uint8_t readData;
@@ -88,7 +114,7 @@ void eeprom_update_byte_from_SPI_0_read_reg(uint8_t addr)
 	eeprom_update_byte(BASE_ADDR+addr,readData);
 }
 
-void SaveData()
+void B0_SaveData()
 {
 	//RX
 	eeprom_update_byte_from_SPI_0_read_reg(0x02);
@@ -112,13 +138,43 @@ void SaveData()
 	eeprom_update_byte_from_SPI_0_read_reg(0x18);
 }
 
+void Zing400Rx_SaveData()
+{
+	eeprom_update_byte_from_SPI_0_read_reg(0x02);
+	eeprom_update_byte_from_SPI_0_read_reg(0x11);
+	eeprom_update_byte_from_SPI_0_read_reg(0x14);
+	eeprom_update_byte_from_SPI_0_read_reg(0x15);
+	eeprom_update_byte_from_SPI_0_read_reg(0x16);
+	eeprom_update_byte_from_SPI_0_read_reg(0x17);
+	eeprom_update_byte_from_SPI_0_read_reg(0x18);
+
+	eeprom_update_byte_from_SPI_0_read_reg(0x26);
+	eeprom_update_byte_from_SPI_0_read_reg(0x27);
+	eeprom_update_byte_from_SPI_0_read_reg(0x28);
+	eeprom_update_byte_from_SPI_0_read_reg(0x29);
+	eeprom_update_byte_from_SPI_0_read_reg(0x2a);
+	eeprom_update_byte_from_SPI_0_read_reg(0x2b);
+	eeprom_update_byte_from_SPI_0_read_reg(0x2c);
+}
+
+void SaveData()
+{
+#ifdef CHIP_B0
+	B0_SaveData();
+#endif
+
+#ifdef CHIP_400RX
+	Zing400Rx_SaveData();
+#endif
+}
+
 void SPI_0_write_reg_from_eeprom_read_byte(uint8_t addr)
 {
 	uint8_t readData = eeprom_read_byte(BASE_ADDR+addr);
 	SPI_0_write_reg(addr, readData);
 }
 
-void LoadData()
+void B0_LoadData()
 {
 	//RX
 	SPI_0_write_reg_from_eeprom_read_byte(0x02);
@@ -142,6 +198,51 @@ void LoadData()
 	SPI_0_write_reg_from_eeprom_read_byte(0x18);
 }
 
+void Zing400Rx_LoadData()
+{
+	SPI_0_write_reg_from_eeprom_read_byte(0x02);
+	SPI_0_write_reg_from_eeprom_read_byte(0x11);
+	SPI_0_write_reg_from_eeprom_read_byte(0x14);
+	SPI_0_write_reg_from_eeprom_read_byte(0x15);
+	SPI_0_write_reg_from_eeprom_read_byte(0x16);
+	SPI_0_write_reg_from_eeprom_read_byte(0x17);
+	SPI_0_write_reg_from_eeprom_read_byte(0x18);
+
+	SPI_0_write_reg_from_eeprom_read_byte(0x26);
+	SPI_0_write_reg_from_eeprom_read_byte(0x27);
+	SPI_0_write_reg_from_eeprom_read_byte(0x28);
+	SPI_0_write_reg_from_eeprom_read_byte(0x29);
+	SPI_0_write_reg_from_eeprom_read_byte(0x2a);
+	SPI_0_write_reg_from_eeprom_read_byte(0x2b);
+	SPI_0_write_reg_from_eeprom_read_byte(0x2c);	
+}
+
+void LoadData()
+{
+#ifdef CHIP_B0
+	B0_LoadData();
+#endif
+
+#ifdef CHIP_400RX
+	Zing400Rx_LoadData();
+#endif
+}
+
+int Init()
+{
+#ifdef CHIP_B0
+	B0_Init();
+	return 0;
+#endif
+
+#ifdef CHIP_400RX
+	Zing400Rx_Init();
+	return 0;
+#endif
+
+	return -1;
+}
+
 int main(void)
 {
 	uint8_t rw = 0;
@@ -150,7 +251,11 @@ int main(void)
 		
 	/* Initializes MCU, drivers and middleware */
 	atmel_start_init();	
-	B0_Init();
+	if(Init()==-1) {
+		UART_TX_STR("Error, CHIP_B0 or CHIP_400RX must be defined\n");
+		return -1;
+	}
+	
 	/* Replace with your application code */
 	
 	LoadData();

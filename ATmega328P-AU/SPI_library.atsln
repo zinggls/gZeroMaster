@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Atmel Studio Solution File, Format Version 11.00
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "spiProxy", "spiProxy\spiProxy.cproj", "{C8EDE0DB-DA51-4C67-BAF7-F918F8686294}"
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "spiProxy_b0", "spiProxy\spiProxy_b0.cproj", "{C8EDE0DB-DA51-4C67-BAF7-F918F8686294}"
 EndProject
 Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "spi_b0", "spi\spi_b0.cproj", "{F772ABB5-D765-44B3-BAA8-E53769440224}"
 EndProject
 Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "spi_400rx", "spi\spi_400rx.cproj", "{FDDCCEAC-D930-487F-A701-4AD10705C670}"
+EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "spiProxy_400rx", "spiProxy\spiProxy_400rx.cproj", "{93AB6221-7DD8-46D1-9C34-9ABB4E193538}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{FDDCCEAC-D930-487F-A701-4AD10705C670}.Debug|AVR.Build.0 = Debug|AVR
 		{FDDCCEAC-D930-487F-A701-4AD10705C670}.Release|AVR.ActiveCfg = Release|AVR
 		{FDDCCEAC-D930-487F-A701-4AD10705C670}.Release|AVR.Build.0 = Release|AVR
+		{93AB6221-7DD8-46D1-9C34-9ABB4E193538}.Debug|AVR.ActiveCfg = Debug|AVR
+		{93AB6221-7DD8-46D1-9C34-9ABB4E193538}.Debug|AVR.Build.0 = Debug|AVR
+		{93AB6221-7DD8-46D1-9C34-9ABB4E193538}.Release|AVR.ActiveCfg = Release|AVR
+		{93AB6221-7DD8-46D1-9C34-9ABB4E193538}.Release|AVR.Build.0 = Release|AVR
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
