@@ -71,4 +71,5 @@ public:
 	afx_msg void OnBnClickedEditCheck();
 
 	virtual void RegisterButtons()=0;
+	virtual void ResetValues()=0;
 };

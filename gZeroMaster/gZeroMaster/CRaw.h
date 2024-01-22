@@ -62,6 +62,6 @@ public:
 	afx_msg void OnBnClickedWriteButton();
 	afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
 	virtual void RegisterButtons();
-	void ResetValues();
+	virtual void ResetValues();
 	void OnChipConnect(CString chipModel);
 };
