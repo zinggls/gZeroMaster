@@ -42,7 +42,6 @@ public:
 	CString m_strBiasReg7;
 	CString m_strBiasReg8;
 	CString m_strBiasReg9;
-	CString m_strChosenRegister;
 	BOOL m_bEdit;
 
 public:

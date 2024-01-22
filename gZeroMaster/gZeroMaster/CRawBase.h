@@ -39,6 +39,7 @@ public:
 	CEdit m_bit1;
 	CEdit m_bit0;
 	CString m_strHex;
+	CString m_strChosenRegister;
 
 public:
 	CgZeroMasterDlg* Parent();

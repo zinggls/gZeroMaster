@@ -30,7 +30,6 @@ CRaw::CRaw(CWnd* pParent /*=nullptr*/)
 	, m_strBiasReg7(_T(""))
 	, m_strBiasReg8(_T(""))
 	, m_strBiasReg9(_T(""))
-	, m_strChosenRegister(_T(""))
 	, m_bEdit(FALSE)
 {
 	m_pParentWnd = pParent;
