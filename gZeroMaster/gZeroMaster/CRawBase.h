@@ -55,4 +55,5 @@ public:
 	void ShowBitWindow(int nCmdShow);
 	void ShowHexa();
 	int GetValueFromBits();
+	void BitControlEnable(BOOL b);
 };

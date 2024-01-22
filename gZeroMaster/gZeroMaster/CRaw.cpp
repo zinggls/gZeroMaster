@@ -412,19 +412,6 @@ void CRaw::OnStnClickedBiasReg9Static()
 	Invalidate();
 }
 
-
-void CRaw::BitControlEnable(BOOL b)
-{
-	m_bit7.EnableWindow(b);
-	m_bit6.EnableWindow(b);
-	m_bit5.EnableWindow(b);
-	m_bit4.EnableWindow(b);
-	m_bit3.EnableWindow(b);
-	m_bit2.EnableWindow(b);
-	m_bit1.EnableWindow(b);
-	m_bit0.EnableWindow(b);
-}
-
 void CRaw::RegisterButtons()
 {	
 	if (m_bEdit) {

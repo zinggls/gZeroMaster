@@ -237,3 +237,15 @@ int CRawBase::GetValueFromBits()
 	Parent()->L(_T("Value read from the Bits:") + str);
 	return value;
 }
+
+void CRawBase::BitControlEnable(BOOL b)
+{
+	m_bit7.EnableWindow(b);
+	m_bit6.EnableWindow(b);
+	m_bit5.EnableWindow(b);
+	m_bit4.EnableWindow(b);
+	m_bit3.EnableWindow(b);
+	m_bit2.EnableWindow(b);
+	m_bit1.EnableWindow(b);
+	m_bit0.EnableWindow(b);
+}

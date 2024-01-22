@@ -63,7 +63,6 @@ public:
 	afx_msg void OnStnClickedBiasReg9Static();
 	void RegisterButtons();
 	afx_msg void OnBnClickedEditCheck();
-	void BitControlEnable(BOOL b);
 	void ShowWriteButtons(int nCmdShow);
 	void ToggleBit(CEdit& bit);
 	afx_msg void OnBnClickedBit7Button();
