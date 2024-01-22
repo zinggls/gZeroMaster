@@ -3,6 +3,7 @@
 
 #include "pch.h"
 #include "CRawBase.h"
+#include "gZeroMasterDlg.h"
 
 // CRaw 대화 상자
 
@@ -31,3 +32,7 @@ END_MESSAGE_MAP()
 // CRawBase 메시지 처리기
 
 
+CgZeroMasterDlg* CRawBase::Parent()
+{
+	return dynamic_cast<CgZeroMasterDlg*>(m_pParentWnd);
+}

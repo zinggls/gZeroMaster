@@ -1,5 +1,7 @@
 #pragma once
 
+class CgZeroMasterDlg;
+
 // CRaw 대화 상자
 
 class CRawBase : public CDialogEx
@@ -14,4 +16,7 @@ protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV 지원입니다.
 
 	DECLARE_MESSAGE_MAP()
+
+public:
+	CgZeroMasterDlg* Parent();
 };

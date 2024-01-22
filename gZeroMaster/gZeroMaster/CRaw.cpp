@@ -124,11 +124,6 @@ BOOL CRaw::OnInitDialog()
 				  // 예외: OCX 속성 페이지는 FALSE를 반환해야 합니다.
 }
 
-CgZeroMasterDlg* CRaw::Parent()
-{
-	return dynamic_cast<CgZeroMasterDlg*>(m_pParentWnd);
-}
-
 LONG CRaw::SendReadCommand(int addr)
 {
 	char buffer[4] = { 0, };

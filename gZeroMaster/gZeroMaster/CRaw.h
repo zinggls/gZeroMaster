@@ -68,7 +68,6 @@ public:
 
 public:
 	virtual BOOL OnInitDialog();
-	CgZeroMasterDlg* Parent();
 	LONG SendReadCommand(int addr);
 	LONG ReadRegister(int addr, DWORD sizeToRead, char* pBuffer, int maxLoop);
 	BOOL ReadRegisters();
