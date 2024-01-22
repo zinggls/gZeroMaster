@@ -30,6 +30,15 @@ protected:
 
 public:
 	std::map<CString, CReg> m_regMap;
+	CEdit m_bit7;
+	CEdit m_bit6;
+	CEdit m_bit5;
+	CEdit m_bit4;
+	CEdit m_bit3;
+	CEdit m_bit2;
+	CEdit m_bit1;
+	CEdit m_bit0;
+	CString m_strHex;
 
 public:
 	CgZeroMasterDlg* Parent();
@@ -40,4 +49,8 @@ public:
 	void ReadRegister(int addr, CString name, CString* pValueStr);
 	BOOL ReadRegister(int addr, CString name, CString* pValueStr, int maxLoop);
 	CString RegisterName(int addr);
+	void ShowBits(unsigned char byte);
+	void ShowBitWindow(int nCmdShow);
+	void ShowHexa();
+	int GetValueFromBits();
 };

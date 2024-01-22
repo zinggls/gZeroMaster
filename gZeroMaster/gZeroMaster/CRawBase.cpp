@@ -4,12 +4,14 @@
 #include "pch.h"
 #include "CRawBase.h"
 #include "gZeroMasterDlg.h"
+#include "gZeroMaster.h"
 
 // CRaw 대화 상자
 
 IMPLEMENT_DYNAMIC(CRawBase, CDialogEx)
 
 CRawBase::CRawBase(CWnd* pParent /*=nullptr*/)
+	: m_strHex(_T(""))
 {
 	m_pParentWnd = pParent;
 }
@@ -156,4 +158,80 @@ CString CRawBase::RegisterName(int addr)
 		}
 	}
 	return _T("");
+}
+
+void CRawBase::ShowBits(unsigned char byte)
+{
+	ShowBitWindow(SW_SHOW);
+	(byte & 0x80) ? m_bit7.SetWindowText(_T("1")) : m_bit7.SetWindowText(_T("0"));
+	(byte & 0x40) ? m_bit6.SetWindowText(_T("1")) : m_bit6.SetWindowText(_T("0"));
+	(byte & 0x20) ? m_bit5.SetWindowText(_T("1")) : m_bit5.SetWindowText(_T("0"));
+	(byte & 0x10) ? m_bit4.SetWindowText(_T("1")) : m_bit4.SetWindowText(_T("0"));
+	(byte & 0x08) ? m_bit3.SetWindowText(_T("1")) : m_bit3.SetWindowText(_T("0"));
+	(byte & 0x04) ? m_bit2.SetWindowText(_T("1")) : m_bit2.SetWindowText(_T("0"));
+	(byte & 0x02) ? m_bit1.SetWindowText(_T("1")) : m_bit1.SetWindowText(_T("0"));
+	(byte & 0x01) ? m_bit0.SetWindowText(_T("1")) : m_bit0.SetWindowText(_T("0"));
+	ShowHexa();
+}
+
+void CRawBase::ShowBitWindow(int nCmdShow)
+{
+	GetDlgItem(IDC_STATIC)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_BIT_EDIT7)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_BIT_EDIT6)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_BIT_EDIT5)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_BIT_EDIT4)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_BIT_EDIT3)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_BIT_EDIT2)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_BIT_EDIT1)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_BIT_EDIT0)->ShowWindow(nCmdShow);
+
+	GetDlgItem(IDC_STATIC7)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_STATIC6)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_STATIC5)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_STATIC4)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_STATIC3)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_STATIC2)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_STATIC1)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_STATIC0)->ShowWindow(nCmdShow);
+}
+
+void CRawBase::ShowHexa()
+{
+	m_strHex.Format(_T("0x%02x"), GetValueFromBits());
+	UpdateData(FALSE);
+}
+
+int CRawBase::GetValueFromBits()
+{
+	int value = 0;
+
+	CString str;
+	m_bit7.GetWindowText(str);
+	if (str == _T("1")) value = 0x80;
+
+	m_bit6.GetWindowText(str);
+	if (str == _T("1")) value |= 0x40;
+
+	m_bit5.GetWindowText(str);
+	if (str == _T("1")) value |= 0x20;
+
+	m_bit4.GetWindowText(str);
+	if (str == _T("1")) value |= 0x10;
+
+	m_bit3.GetWindowText(str);
+	if (str == _T("1")) value |= 0x08;
+
+	m_bit2.GetWindowText(str);
+	if (str == _T("1")) value |= 0x04;
+
+	m_bit1.GetWindowText(str);
+	if (str == _T("1")) value |= 0x02;
+
+	m_bit0.GetWindowText(str);
+	if (str == _T("1")) value |= 0x01;
+
+	str.Format(_T("0x%02x"), value);
+	Parent()->L(_T("Value read from the Bits:") + str);
+	return value;
 }

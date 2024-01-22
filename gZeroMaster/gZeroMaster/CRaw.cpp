@@ -32,7 +32,6 @@ CRaw::CRaw(CWnd* pParent /*=nullptr*/)
 	, m_strBiasReg9(_T(""))
 	, m_strChosenRegister(_T(""))
 	, m_bEdit(FALSE)
-	, m_strHex(_T(""))
 {
 	m_pParentWnd = pParent;
 }
@@ -142,20 +141,6 @@ BOOL CRaw::OnInitDialog()
 	23				17				BIAS_REG7[7:0]	: 06
 	24				18				BIAS_REG8[7:0]	: 50
 */
-
-void CRaw::ShowBits(unsigned char byte)
-{
-	ShowBitWindow(SW_SHOW);
-	(byte & 0x80) ? m_bit7.SetWindowText(_T("1")) : m_bit7.SetWindowText(_T("0"));
-	(byte & 0x40) ? m_bit6.SetWindowText(_T("1")) : m_bit6.SetWindowText(_T("0"));
-	(byte & 0x20) ? m_bit5.SetWindowText(_T("1")) : m_bit5.SetWindowText(_T("0"));
-	(byte & 0x10) ? m_bit4.SetWindowText(_T("1")) : m_bit4.SetWindowText(_T("0"));
-	(byte & 0x08) ? m_bit3.SetWindowText(_T("1")) : m_bit3.SetWindowText(_T("0"));
-	(byte & 0x04) ? m_bit2.SetWindowText(_T("1")) : m_bit2.SetWindowText(_T("0"));
-	(byte & 0x02) ? m_bit1.SetWindowText(_T("1")) : m_bit1.SetWindowText(_T("0"));
-	(byte & 0x01) ? m_bit0.SetWindowText(_T("1")) : m_bit0.SetWindowText(_T("0"));
-	ShowHexa();
-}
 
 void CRaw::OnStnClickedRxReg1Static()
 {
@@ -491,7 +476,7 @@ void CRaw::ToggleBit(CEdit& bit)
 	CString strCurVal;
 	bit.GetWindowText(strCurVal);
 	(strCurVal == _T("0")) ? bit.SetWindowText(_T("1")) : bit.SetWindowText(_T("0"));
-	ShowHexa();
+	CRawBase::ShowHexa();
 }
 
 void CRaw::OnBnClickedBit7Button()
@@ -549,42 +534,6 @@ void CRaw::OnBnClickedReadAllButton()
 	Parent()->m_pSemantic->UpdateRegisters();
 }
 
-
-int CRaw::GetValueFromBits()
-{
-	int value = 0;
-
-	CString str;
-	m_bit7.GetWindowText(str);
-	if (str == _T("1")) value = 0x80;
-
-	m_bit6.GetWindowText(str);
-	if (str == _T("1")) value |= 0x40;
-
-	m_bit5.GetWindowText(str);
-	if (str == _T("1")) value |= 0x20;
-
-	m_bit4.GetWindowText(str);
-	if (str == _T("1")) value |= 0x10;
-
-	m_bit3.GetWindowText(str);
-	if (str == _T("1")) value |= 0x08;
-
-	m_bit2.GetWindowText(str);
-	if (str == _T("1")) value |= 0x04;
-
-	m_bit1.GetWindowText(str);
-	if (str == _T("1")) value |= 0x02;
-
-	m_bit0.GetWindowText(str);
-	if (str == _T("1")) value |= 0x01;
-
-	str.Format(_T("0x%02x"), value);
-	Parent()->L(_T("Value read from the Bits:") + str);
-	return value;
-}
-
-
 BOOL CRaw::WriteRegister(int addr, int value)
 {
 	char buffer[12] = { 0, };
@@ -626,7 +575,7 @@ void CRaw::OnBnClickedWriteButton()
 	it = m_regMap.find(m_strChosenRegister);
 	ASSERT(it != m_regMap.end());
 
-	BOOL b = WriteRegister(it->second.m_nAddr, GetValueFromBits());
+	BOOL b = WriteRegister(it->second.m_nAddr, CRawBase::GetValueFromBits());
 	if (b) {
 		Parent()->L(m_strChosenRegister + _T(" updated"));
 	}
@@ -638,35 +587,6 @@ void CRaw::OnBnClickedWriteButton()
 	ReadRegister(it->second.m_nAddr, it->first, it->second.m_pStr);
 	Parent()->m_pSemantic->UpdateRegisters();
 }
-
-void CRaw::ShowHexa()
-{
-	m_strHex.Format(_T("0x%02x"), GetValueFromBits());
-	UpdateData(FALSE);
-}
-
-void CRaw::ShowBitWindow(int nCmdShow)
-{
-	GetDlgItem(IDC_STATIC)->ShowWindow(nCmdShow);
-	GetDlgItem(IDC_BIT_EDIT7)->ShowWindow(nCmdShow);
-	GetDlgItem(IDC_BIT_EDIT6)->ShowWindow(nCmdShow);
-	GetDlgItem(IDC_BIT_EDIT5)->ShowWindow(nCmdShow);
-	GetDlgItem(IDC_BIT_EDIT4)->ShowWindow(nCmdShow);
-	GetDlgItem(IDC_BIT_EDIT3)->ShowWindow(nCmdShow);
-	GetDlgItem(IDC_BIT_EDIT2)->ShowWindow(nCmdShow);
-	GetDlgItem(IDC_BIT_EDIT1)->ShowWindow(nCmdShow);
-	GetDlgItem(IDC_BIT_EDIT0)->ShowWindow(nCmdShow);
-
-	GetDlgItem(IDC_STATIC7)->ShowWindow(nCmdShow);
-	GetDlgItem(IDC_STATIC6)->ShowWindow(nCmdShow);
-	GetDlgItem(IDC_STATIC5)->ShowWindow(nCmdShow);
-	GetDlgItem(IDC_STATIC4)->ShowWindow(nCmdShow);
-	GetDlgItem(IDC_STATIC3)->ShowWindow(nCmdShow);
-	GetDlgItem(IDC_STATIC2)->ShowWindow(nCmdShow);
-	GetDlgItem(IDC_STATIC1)->ShowWindow(nCmdShow);
-	GetDlgItem(IDC_STATIC0)->ShowWindow(nCmdShow);
-}
-
 
 void CRaw::ResetValues()
 {

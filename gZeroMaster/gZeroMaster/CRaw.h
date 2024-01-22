@@ -42,21 +42,11 @@ public:
 	CString m_strBiasReg7;
 	CString m_strBiasReg8;
 	CString m_strBiasReg9;
-	CEdit m_bit7;
-	CEdit m_bit6;
-	CEdit m_bit5;
-	CEdit m_bit4;
-	CEdit m_bit3;
-	CEdit m_bit2;
-	CEdit m_bit1;
-	CEdit m_bit0;
 	CString m_strChosenRegister;
 	BOOL m_bEdit;
-	CString m_strHex;
 
 public:
 	virtual BOOL OnInitDialog();
-	void ShowBits(unsigned char byte);
 	afx_msg void OnStnClickedRxReg1Static();
 	afx_msg void OnStnClickedTxReg1TopStatic();
 	afx_msg void OnStnClickedTxReg1MidStatic();
@@ -87,11 +77,8 @@ public:
 	afx_msg void OnBnClickedBit1Button();
 	afx_msg void OnBnClickedBit0Button();
 	afx_msg void OnBnClickedReadAllButton();
-	int GetValueFromBits();
 	BOOL WriteRegister(int addr, int value);
 	afx_msg void OnBnClickedWriteButton();
-	void ShowHexa();
-	void ShowBitWindow(int nCmdShow);
 	void ResetValues();
 	COLORREF SetColor(CDC* pDC, CString given);
 	afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
