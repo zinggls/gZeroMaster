@@ -15,8 +15,7 @@
 IMPLEMENT_DYNAMIC(CRaw, CDialogEx)
 
 CRaw::CRaw(CWnd* pParent /*=nullptr*/)
-	: CDialogEx(IDD_RAW_DIALOG, pParent)
-	, m_strRxReg1(_T(""))
+	: m_strRxReg1(_T(""))
 	, m_strTxReg1Top(_T(""))
 	, m_strTxReg1Mid(_T(""))
 	, m_strTxReg2Top(_T(""))
@@ -35,7 +34,7 @@ CRaw::CRaw(CWnd* pParent /*=nullptr*/)
 	, m_bEdit(FALSE)
 	, m_strHex(_T(""))
 {
-
+	m_pParentWnd = pParent;
 }
 
 CRaw::~CRaw()

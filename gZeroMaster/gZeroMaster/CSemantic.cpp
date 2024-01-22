@@ -14,8 +14,7 @@
 IMPLEMENT_DYNAMIC(CSemantic, CDialogEx)
 
 CSemantic::CSemantic(CWnd* pParent /*=nullptr*/)
-	: CDialogEx(IDD_SEMANTIC_DIALOG, pParent)
-	, m_strRxDataInterface(_T(""))
+	: m_strRxDataInterface(_T(""))
 	, m_strLimitingAmplifier(_T(""))
 	, m_strLnaGain(_T(""))
 	, m_strRegRefVolt(_T(""))
@@ -53,7 +52,7 @@ CSemantic::CSemantic(CWnd* pParent /*=nullptr*/)
 	, m_strSliderValueHex(_T(""))
 	, m_strSliderValueBin(_T(""))
 {
-
+	m_pParentWnd = pParent;
 }
 
 CSemantic::~CSemantic()
