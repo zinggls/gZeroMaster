@@ -2,9 +2,6 @@
 
 #include "CRawBase.h"
 
-#define CHIP_MODEL_ADDRESS		0xff
-#define CHIP_MODEL_INFO_SIZE	7
-
 // CRaw 대화 상자
 
 class CRaw : public CRawBase
