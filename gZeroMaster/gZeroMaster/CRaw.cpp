@@ -443,14 +443,6 @@ void CRaw::OnBnClickedEditCheck()
 	UpdateData(FALSE);
 }
 
-void CRaw::ToggleBit(CEdit& bit)
-{
-	CString strCurVal;
-	bit.GetWindowText(strCurVal);
-	(strCurVal == _T("0")) ? bit.SetWindowText(_T("1")) : bit.SetWindowText(_T("0"));
-	CRawBase::ShowHexa();
-}
-
 void CRaw::OnBnClickedBit7Button()
 {
 	ToggleBit(m_bit7);

@@ -58,4 +58,5 @@ public:
 	void BitControlEnable(BOOL b);
 	void ShowWriteButtons(int nCmdShow);
 	BOOL WriteRegister(int addr, int value);
+	void ToggleBit(CEdit& bit);
 };

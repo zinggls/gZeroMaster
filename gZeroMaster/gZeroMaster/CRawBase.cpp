@@ -293,3 +293,11 @@ BOOL CRawBase::WriteRegister(int addr, int value)
 #endif
 	return TRUE;
 }
+
+void CRawBase::ToggleBit(CEdit& bit)
+{
+	CString strCurVal;
+	bit.GetWindowText(strCurVal);
+	(strCurVal == _T("0")) ? bit.SetWindowText(_T("1")) : bit.SetWindowText(_T("0"));
+	ShowHexa();
+}
