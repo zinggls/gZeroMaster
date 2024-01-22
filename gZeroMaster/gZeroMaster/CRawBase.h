@@ -69,6 +69,7 @@ public:
 	afx_msg void OnBnClickedBit1Button();
 	afx_msg void OnBnClickedBit0Button();
 	afx_msg void OnBnClickedEditCheck();
+	virtual afx_msg void OnBnClickedReadAllButton();
 
 	virtual void RegisterButtons()=0;
 	virtual void ResetValues()=0;

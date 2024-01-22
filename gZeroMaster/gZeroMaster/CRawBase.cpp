@@ -363,3 +363,9 @@ void CRawBase::OnBnClickedEditCheck()
 	RegisterButtons();
 	UpdateData(FALSE);
 }
+
+void CRawBase::OnBnClickedReadAllButton()
+{
+	ResetValues();
+	if (!ReadRegisters()) Parent()->L(_T("Error occured in reading registers"));
+}

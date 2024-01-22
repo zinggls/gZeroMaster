@@ -58,7 +58,7 @@ public:
 	afx_msg void OnStnClickedBiasReg7Static();
 	afx_msg void OnStnClickedBiasReg8Static();
 	afx_msg void OnStnClickedBiasReg9Static();
-	afx_msg void OnBnClickedReadAllButton();
+	virtual afx_msg void OnBnClickedReadAllButton();
 	afx_msg void OnBnClickedWriteButton();
 	afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
 	virtual void RegisterButtons();
