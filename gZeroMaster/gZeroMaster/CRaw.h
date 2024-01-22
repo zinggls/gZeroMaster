@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include <map>
+#include "CRawBase.h"
 #define MAX_LOOP	100000
 #define CHIP_MODEL_ADDRESS		0xff
 #define CHIP_MODEL_INFO_SIZE	7
@@ -17,7 +18,7 @@ public:
 
 // CRaw 대화 상자
 
-class CRaw : public CDialogEx
+class CRaw : public CRawBase
 {
 	DECLARE_DYNAMIC(CRaw)
 

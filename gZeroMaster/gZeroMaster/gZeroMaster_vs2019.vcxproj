@@ -118,6 +118,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="CRaw.h" />
+    <ClInclude Include="CRawBase.h" />
     <ClInclude Include="CSemantic.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="gZeroMaster.h" />
@@ -129,6 +130,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CRaw.cpp" />
+    <ClCompile Include="CRawBase.cpp" />
     <ClCompile Include="CSemantic.cpp" />
     <ClCompile Include="gZeroMaster.cpp" />
     <ClCompile Include="gZeroMasterDlg.cpp" />
