@@ -443,19 +443,6 @@ void CRaw::OnBnClickedEditCheck()
 	UpdateData(FALSE);
 }
 
-void CRaw::ShowWriteButtons(int nCmdShow)
-{
-	GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(nCmdShow);
-	GetDlgItem(IDC_BIT7_BUTTON)->ShowWindow(nCmdShow);
-	GetDlgItem(IDC_BIT6_BUTTON)->ShowWindow(nCmdShow);
-	GetDlgItem(IDC_BIT5_BUTTON)->ShowWindow(nCmdShow);
-	GetDlgItem(IDC_BIT4_BUTTON)->ShowWindow(nCmdShow);
-	GetDlgItem(IDC_BIT3_BUTTON)->ShowWindow(nCmdShow);
-	GetDlgItem(IDC_BIT2_BUTTON)->ShowWindow(nCmdShow);
-	GetDlgItem(IDC_BIT1_BUTTON)->ShowWindow(nCmdShow);
-	GetDlgItem(IDC_BIT0_BUTTON)->ShowWindow(nCmdShow);
-}
-
 void CRaw::ToggleBit(CEdit& bit)
 {
 	CString strCurVal;
