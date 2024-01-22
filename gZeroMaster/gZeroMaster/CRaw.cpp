@@ -16,7 +16,6 @@ IMPLEMENT_DYNAMIC(CRaw, CDialogEx)
 
 CRaw::CRaw(CWnd* pParent /*=nullptr*/)
 	: CDialogEx(IDD_RAW_DIALOG, pParent)
-	, m_pParent(pParent)
 	, m_strRxReg1(_T(""))
 	, m_strTxReg1Top(_T(""))
 	, m_strTxReg1Mid(_T(""))
@@ -128,7 +127,7 @@ BOOL CRaw::OnInitDialog()
 
 CgZeroMasterDlg* CRaw::Parent()
 {
-	return dynamic_cast<CgZeroMasterDlg*>(m_pParent);
+	return dynamic_cast<CgZeroMasterDlg*>(m_pParentWnd);
 }
 
 LONG CRaw::SendReadCommand(int addr)

@@ -69,7 +69,6 @@ public:
 	CString m_strRxDataInterface;
 	CString m_strLimitingAmplifier;
 	CString m_strLnaGain;
-	CWnd* m_pParent;
 	CString m_strDutyCycle;
 	CString m_strVcoOscFreq;
 	CString m_strRegRefVolt;

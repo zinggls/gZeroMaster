@@ -18,7 +18,6 @@ CSemantic::CSemantic(CWnd* pParent /*=nullptr*/)
 	, m_strRxDataInterface(_T(""))
 	, m_strLimitingAmplifier(_T(""))
 	, m_strLnaGain(_T(""))
-	, m_pParent(pParent)
 	, m_strRegRefVolt(_T(""))
 	, m_strVcoPower(_T(""))
 	, m_strModPower(_T(""))
@@ -187,7 +186,7 @@ END_MESSAGE_MAP()
 
 CgZeroMasterDlg* CSemantic::Parent()
 {
-	return dynamic_cast<CgZeroMasterDlg*>(m_pParent);
+	return dynamic_cast<CgZeroMasterDlg*>(m_pParentWnd);
 }
 
 

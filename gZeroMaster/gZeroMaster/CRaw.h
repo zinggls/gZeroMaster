@@ -36,7 +36,6 @@ protected:
 	DECLARE_MESSAGE_MAP()
 
 public:
-	CWnd *m_pParent;
 	CString m_strRxReg1;
 	CString m_strTxReg1Top;
 	CString m_strTxReg1Mid;
