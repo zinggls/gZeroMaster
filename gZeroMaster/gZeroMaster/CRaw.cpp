@@ -143,20 +143,6 @@ BOOL CRaw::OnInitDialog()
 	24				18				BIAS_REG8[7:0]	: 50
 */
 
-CString CRaw::Bits(unsigned char byte)
-{
-	CString strBit;
-	(byte & 0x80) ? strBit += "1" : strBit += "0";
-	(byte & 0x40) ? strBit += "1" : strBit += "0";
-	(byte & 0x20) ? strBit += "1" : strBit += "0";
-	(byte & 0x10) ? strBit += "1" : strBit += "0";
-	(byte & 0x08) ? strBit += "1" : strBit += "0";
-	(byte & 0x04) ? strBit += "1" : strBit += "0";
-	(byte & 0x02) ? strBit += "1" : strBit += "0";
-	(byte & 0x01) ? strBit += "1" : strBit += "0";
-	return strBit;
-}
-
 void CRaw::ShowBits(unsigned char byte)
 {
 	ShowBitWindow(SW_SHOW);
