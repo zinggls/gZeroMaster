@@ -36,3 +36,19 @@ CgZeroMasterDlg* CRawBase::Parent()
 {
 	return dynamic_cast<CgZeroMasterDlg*>(m_pParentWnd);
 }
+
+LONG CRawBase::SendReadCommand(int addr)
+{
+	char buffer[4] = { 0, };
+	sprintf_s(buffer, "%x", addr);
+
+	size_t index = strlen(buffer);
+	buffer[index] = 0xd;		//Enter
+	buffer[index + 1] = 0x1;	//Read	0x1
+
+	ASSERT(Parent());
+	ASSERT(Parent()->m_serial.IsOpen());
+
+	DWORD dwBytesWrite = 0;
+	return Parent()->m_serial.Write(buffer, index + 2, &dwBytesWrite);
+}

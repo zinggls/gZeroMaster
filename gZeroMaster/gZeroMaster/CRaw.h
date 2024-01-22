@@ -66,7 +66,6 @@ public:
 
 public:
 	virtual BOOL OnInitDialog();
-	LONG SendReadCommand(int addr);
 	LONG ReadRegister(int addr, DWORD sizeToRead, char* pBuffer, int maxLoop);
 	BOOL ReadRegisters();
 	void ReadRegister(int addr);

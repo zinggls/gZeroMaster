@@ -19,4 +19,5 @@ protected:
 
 public:
 	CgZeroMasterDlg* Parent();
+	LONG SendReadCommand(int addr);
 };
