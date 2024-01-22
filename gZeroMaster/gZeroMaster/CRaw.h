@@ -58,11 +58,11 @@ public:
 	afx_msg void OnStnClickedBiasReg7Static();
 	afx_msg void OnStnClickedBiasReg8Static();
 	afx_msg void OnStnClickedBiasReg9Static();
-	void RegisterButtons();
 	afx_msg void OnBnClickedEditCheck();
 	afx_msg void OnBnClickedReadAllButton();
 	afx_msg void OnBnClickedWriteButton();
-	void ResetValues();
 	afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
+	void RegisterButtons();
+	void ResetValues();
 	void OnChipConnect(CString chipModel);
 };
