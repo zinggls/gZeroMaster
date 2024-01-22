@@ -13,6 +13,7 @@ IMPLEMENT_DYNAMIC(CRawBase, CDialogEx)
 CRawBase::CRawBase(CWnd* pParent /*=nullptr*/)
 	: m_strHex(_T(""))
 	, m_strChosenRegister(_T(""))
+	, m_bEdit(FALSE)
 {
 	m_pParentWnd = pParent;
 }

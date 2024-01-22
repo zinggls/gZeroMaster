@@ -42,7 +42,6 @@ public:
 	CString m_strBiasReg7;
 	CString m_strBiasReg8;
 	CString m_strBiasReg9;
-	BOOL m_bEdit;
 
 public:
 	virtual BOOL OnInitDialog();
