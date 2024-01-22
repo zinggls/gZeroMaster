@@ -443,54 +443,6 @@ void CRaw::OnBnClickedEditCheck()
 	UpdateData(FALSE);
 }
 
-void CRaw::OnBnClickedBit7Button()
-{
-	ToggleBit(m_bit7);
-}
-
-
-void CRaw::OnBnClickedBit6Button()
-{
-	ToggleBit(m_bit6);
-}
-
-
-void CRaw::OnBnClickedBit5Button()
-{
-	ToggleBit(m_bit5);
-}
-
-
-void CRaw::OnBnClickedBit4Button()
-{
-	ToggleBit(m_bit4);
-}
-
-
-void CRaw::OnBnClickedBit3Button()
-{
-	ToggleBit(m_bit3);
-}
-
-
-void CRaw::OnBnClickedBit2Button()
-{
-	ToggleBit(m_bit2);
-}
-
-
-void CRaw::OnBnClickedBit1Button()
-{
-	ToggleBit(m_bit1);
-}
-
-
-void CRaw::OnBnClickedBit0Button()
-{
-	ToggleBit(m_bit0);
-}
-
-
 void CRaw::OnBnClickedReadAllButton()
 {
 	ResetValues();

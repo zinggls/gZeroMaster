@@ -60,4 +60,12 @@ public:
 	BOOL WriteRegister(int addr, int value);
 	void ToggleBit(CEdit& bit);
 	COLORREF SetColor(CDC* pDC, CString given);
+	afx_msg void OnBnClickedBit7Button();
+	afx_msg void OnBnClickedBit6Button();
+	afx_msg void OnBnClickedBit5Button();
+	afx_msg void OnBnClickedBit4Button();
+	afx_msg void OnBnClickedBit3Button();
+	afx_msg void OnBnClickedBit2Button();
+	afx_msg void OnBnClickedBit1Button();
+	afx_msg void OnBnClickedBit0Button();
 };

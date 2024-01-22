@@ -309,3 +309,50 @@ COLORREF CRawBase::SetColor(CDC* pDC, CString given)
 	else
 		return pDC->SetTextColor(RGB(0, 0, 0));
 }
+
+void CRawBase::OnBnClickedBit7Button()
+{
+	ToggleBit(m_bit7);
+}
+
+
+void CRawBase::OnBnClickedBit6Button()
+{
+	ToggleBit(m_bit6);
+}
+
+
+void CRawBase::OnBnClickedBit5Button()
+{
+	ToggleBit(m_bit5);
+}
+
+
+void CRawBase::OnBnClickedBit4Button()
+{
+	ToggleBit(m_bit4);
+}
+
+
+void CRawBase::OnBnClickedBit3Button()
+{
+	ToggleBit(m_bit3);
+}
+
+
+void CRawBase::OnBnClickedBit2Button()
+{
+	ToggleBit(m_bit2);
+}
+
+
+void CRawBase::OnBnClickedBit1Button()
+{
+	ToggleBit(m_bit1);
+}
+
+
+void CRawBase::OnBnClickedBit0Button()
+{
+	ToggleBit(m_bit0);
+}
