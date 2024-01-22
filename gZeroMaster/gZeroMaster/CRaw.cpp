@@ -444,23 +444,7 @@ void CRaw::OnBnClickedReadAllButton()
 
 void CRaw::OnBnClickedWriteButton()
 {
-	ASSERT(m_strChosenRegister.IsEmpty() == FALSE);
-
-	std::map<CString, CReg>::iterator it;
-
-	it = m_regMap.find(m_strChosenRegister);
-	ASSERT(it != m_regMap.end());
-
-	BOOL b = WriteRegister(it->second.m_nAddr, CRawBase::GetValueFromBits());
-	if (b) {
-		Parent()->L(m_strChosenRegister + _T(" updated"));
-	}
-	else {
-		Parent()->L(m_strChosenRegister + _T(" update failed"));
-		return;
-	}
-
-	ReadRegister(it->second.m_nAddr, it->first, it->second.m_pStr);
+	CRawBase::OnBnClickedWriteButton();
 	Parent()->m_pSemantic->UpdateRegisters();
 }
 
