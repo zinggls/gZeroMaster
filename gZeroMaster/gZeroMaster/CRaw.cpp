@@ -124,59 +124,6 @@ BOOL CRaw::OnInitDialog()
 				  // 예외: OCX 속성 페이지는 FALSE를 반환해야 합니다.
 }
 
-LONG CRaw::ReadRegister(int addr, DWORD sizeToRead, char *pBuffer, int maxLoop)
-{
-	LONG lLastError = SendReadCommand(addr);
-	if (lLastError != ERROR_SUCCESS) {
-		Parent()->ErrorMsg(Parent()->m_serial.GetLastError(), _T("Unable to send data"));
-		return lLastError;
-	}
-
-#ifdef DEBUG_READ
-	CString str;
-	str.Format(_T("%d bytes written"), dwBytesWrite);
-	L(str);
-#endif // DEBUG_READ
-
-	DWORD dwBytesReadSum, dwBytesRead;
-	dwBytesReadSum = dwBytesRead = 0;
-
-	int loop = 0;
-	std::list<char> charList;
-	do {
-		char *tmp = new char[sizeToRead];
-		lLastError = Parent()->m_serial.Read(tmp, sizeToRead, &dwBytesRead);
-		if (lLastError != ERROR_SUCCESS) {
-			Parent()->ErrorMsg(Parent()->m_serial.GetLastError(), _T("Unable to receive data"));
-			delete [] tmp;
-			return lLastError;
-		}
-		if (dwBytesRead > 0) {
-			dwBytesReadSum += dwBytesRead;
-			for (DWORD i = 0; i < dwBytesRead; i++) charList.push_back(tmp[i]);
-		}
-		delete [] tmp;
-		loop++;
-	} while ((dwBytesReadSum < sizeToRead) && (loop < maxLoop));
-	if (dwBytesReadSum != sizeToRead) return ERROR_TIMEOUT;	//데이터를 Limited기한내에 못찾았음
-
-	int i = 0;
-	for (std::list<char>::iterator it = charList.begin(); it != charList.end(); ++it) pBuffer[i++] = *it;
-
-#ifdef DEBUG_READ
-	str.Format(_T("%d bytes received"), dwBytesRead);
-	L(str);
-#endif // DEBUG_READ
-
-	pBuffer[sizeToRead] = 0;	//문자열 끝을 나타내기 위해서
-
-#ifdef DEBUG_READ
-	str.Format(_T("Address:0x%02x Register:0x%02x"), addr, *value);
-	L(str);
-#endif // DEBUG_READ
-	return ERROR_SUCCESS;
-}
-
 /*
 *   address(Dec)	address(Hex)	Register		: DefaultValue
 	2				2				RX_REG1[4:0]	: 18
@@ -199,7 +146,7 @@ LONG CRaw::ReadRegister(int addr, DWORD sizeToRead, char *pBuffer, int maxLoop)
 void CRaw::ReadRegister(int addr, CString name, CString* pValueStr)
 {
 	char buffer[3];
-	while (ReadRegister(addr, 2, buffer, MAX_LOOP) != ERROR_SUCCESS) Sleep(10);	//Blocking 함수
+	while (CRawBase::ReadRegister(addr, 2, buffer, MAX_LOOP) != ERROR_SUCCESS) Sleep(10);	//Blocking 함수
 	pValueStr->Format(_T("0x%02x"), (int)strtol(buffer, NULL, 16));
 	UpdateData(FALSE);
 }
@@ -207,7 +154,7 @@ void CRaw::ReadRegister(int addr, CString name, CString* pValueStr)
 BOOL CRaw::ReadRegister(int addr, CString name, CString* pValueStr, int maxLoop)
 {
 	char buffer[3];
-	LONG lLastError = ReadRegister(addr, 2, buffer, maxLoop);
+	LONG lLastError = CRawBase::ReadRegister(addr, 2, buffer, maxLoop);
 	if (lLastError != ERROR_SUCCESS) {
 		Parent()->ErrorMsg(lLastError, _T("CRaw::PrintRegister Error in ReadRegister"));
 		return FALSE;

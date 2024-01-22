@@ -1851,7 +1851,7 @@ BOOL CSemantic::UpdateSemanticValue(int addr, int (CSemantic::* fpNewRegVal)(int
 {
 	int oldRegVal;
 	char buffer[3];
-	while (Parent()->m_pRaw->ReadRegister(addr, 2, buffer, MAX_LOOP) != ERROR_SUCCESS) Sleep(10);	//Blocking 함수
+	while (Parent()->m_pRaw->CRawBase::ReadRegister(addr, 2, buffer, MAX_LOOP) != ERROR_SUCCESS) Sleep(10);	//Blocking 함수
 
 	oldRegVal = (int)strtol(buffer, NULL, 16);
 	int newRegVal = (this->*fpNewRegVal)(oldRegVal, newVal);

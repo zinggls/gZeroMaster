@@ -20,4 +20,5 @@ protected:
 public:
 	CgZeroMasterDlg* Parent();
 	LONG SendReadCommand(int addr);
+	LONG ReadRegister(int addr, DWORD sizeToRead, char* pBuffer, int maxLoop);
 };
