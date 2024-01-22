@@ -170,13 +170,6 @@ BOOL CgZeroMasterDlg::OnInitDialog()
 	}
 	RegCloseKey(hKey);
 
-	/*
-	for (int i = 1; i <= MAX_COMPORT; i++) {
-		CString strVal;
-		strVal.Format(_T("COM%d"), i);
-		m_comPort.AddString(strVal);
-	}
-	*/
 	m_comPort.SetCurSel(0);
 
 	m_tab.InsertItem(0, _T("Semantic"));
