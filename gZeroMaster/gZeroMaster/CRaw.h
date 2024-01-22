@@ -6,8 +6,6 @@
 #define CHIP_MODEL_ADDRESS		0xff
 #define CHIP_MODEL_INFO_SIZE	7
 
-class CgZeroMasterDlg;
-
 class CReg {
 	CReg();
 public:
