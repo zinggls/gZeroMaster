@@ -73,7 +73,6 @@ public:
 	afx_msg void OnBnClickedBit1Button();
 	afx_msg void OnBnClickedBit0Button();
 	afx_msg void OnBnClickedReadAllButton();
-	BOOL WriteRegister(int addr, int value);
 	afx_msg void OnBnClickedWriteButton();
 	void ResetValues();
 	COLORREF SetColor(CDC* pDC, CString given);

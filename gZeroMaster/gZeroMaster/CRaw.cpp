@@ -506,38 +506,6 @@ void CRaw::OnBnClickedReadAllButton()
 	Parent()->m_pSemantic->UpdateRegisters();
 }
 
-BOOL CRaw::WriteRegister(int addr, int value)
-{
-	char buffer[12] = { 0, };
-	sprintf_s(buffer, sizeof(buffer), "%x", addr);
-
-	size_t index = strlen(buffer);
-	buffer[index] = 0xd;            //Enter
-	buffer[index + 1] = 0x0;        //Write    0x0
-
-	sprintf_s(buffer + index + 2, sizeof(buffer) - index - 2, "%x", value);
-	size_t valLen = strlen(buffer + index + 2);
-
-	buffer[index + 2 + valLen] = 0xd;
-
-	ASSERT(Parent());
-	ASSERT(Parent()->m_serial.IsOpen());
-
-	DWORD dwBytesWrite = 0;
-	LONG lLastError = Parent()->m_serial.Write(buffer, index + valLen + 3, &dwBytesWrite);
-	if (lLastError != ERROR_SUCCESS) {
-		Parent()->ErrorMsg(Parent()->m_serial.GetLastError(), _T("Unable to send data"));
-		return FALSE;
-	}
-#ifdef DEBUG_WRITE
-	CString str;
-	str.Format(_T("%d bytes sent"), dwBytesWrite);
-	Parent()->L(str);
-#endif
-	return TRUE;
-}
-
-
 void CRaw::OnBnClickedWriteButton()
 {
 	ASSERT(m_strChosenRegister.IsEmpty() == FALSE);

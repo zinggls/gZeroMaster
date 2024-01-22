@@ -57,4 +57,5 @@ public:
 	int GetValueFromBits();
 	void BitControlEnable(BOOL b);
 	void ShowWriteButtons(int nCmdShow);
+	BOOL WriteRegister(int addr, int value);
 };
