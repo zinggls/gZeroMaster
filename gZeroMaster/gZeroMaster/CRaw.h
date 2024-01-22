@@ -71,7 +71,6 @@ public:
 	afx_msg void OnBnClickedReadAllButton();
 	afx_msg void OnBnClickedWriteButton();
 	void ResetValues();
-	COLORREF SetColor(CDC* pDC, CString given);
 	afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
 	void OnChipConnect(CString chipModel);
 };

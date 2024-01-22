@@ -541,16 +541,6 @@ void CRaw::ResetValues()
 	UpdateData(FALSE);
 }
 
-
-COLORREF CRaw::SetColor(CDC* pDC, CString given)
-{
-	if (m_strChosenRegister == given)
-		return pDC->SetTextColor(RGB(255, 0, 0));
-	else
-		return pDC->SetTextColor(RGB(0, 0, 0));
-}
-
-
 HBRUSH CRaw::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 {
 	HBRUSH hbr = CDialogEx::OnCtlColor(pDC, pWnd, nCtlColor);

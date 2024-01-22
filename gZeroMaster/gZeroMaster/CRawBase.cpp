@@ -301,3 +301,11 @@ void CRawBase::ToggleBit(CEdit& bit)
 	(strCurVal == _T("0")) ? bit.SetWindowText(_T("1")) : bit.SetWindowText(_T("0"));
 	ShowHexa();
 }
+
+COLORREF CRawBase::SetColor(CDC* pDC, CString given)
+{
+	if (m_strChosenRegister == given)
+		return pDC->SetTextColor(RGB(255, 0, 0));
+	else
+		return pDC->SetTextColor(RGB(0, 0, 0));
+}
