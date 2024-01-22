@@ -56,7 +56,6 @@ public:
 
 public:
 	virtual BOOL OnInitDialog();
-	CString RegisterName(int addr);
 	CString Bits(unsigned char byte);
 	void ShowBits(unsigned char byte);
 	afx_msg void OnStnClickedRxReg1Static();

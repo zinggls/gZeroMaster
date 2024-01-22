@@ -147,3 +147,13 @@ void CRawBase::ReadRegister(int addr)
 		}
 	}
 }
+
+CString CRawBase::RegisterName(int addr)
+{
+	for (std::map<CString, CReg>::iterator it = m_regMap.begin(); it != m_regMap.end(); it++) {
+		if (addr == it->second.m_nAddr) {
+			return it->first;
+		}
+	}
+	return _T("");
+}

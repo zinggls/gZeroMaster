@@ -143,16 +143,6 @@ BOOL CRaw::OnInitDialog()
 	24				18				BIAS_REG8[7:0]	: 50
 */
 
-CString CRaw::RegisterName(int addr)
-{
-	for (std::map<CString, CReg>::iterator it = m_regMap.begin(); it != m_regMap.end(); it++) {
-		if (addr == it->second.m_nAddr) {
-			return it->first;
-		}
-	}
-	return _T("");
-}
-
 CString CRaw::Bits(unsigned char byte)
 {
 	CString strBit;
