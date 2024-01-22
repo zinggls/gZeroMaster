@@ -356,3 +356,10 @@ void CRawBase::OnBnClickedBit0Button()
 {
 	ToggleBit(m_bit0);
 }
+
+void CRawBase::OnBnClickedEditCheck()
+{
+	m_bEdit = !m_bEdit;
+	RegisterButtons();
+	UpdateData(FALSE);
+}

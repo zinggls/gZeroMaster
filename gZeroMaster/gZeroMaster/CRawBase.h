@@ -68,4 +68,7 @@ public:
 	afx_msg void OnBnClickedBit2Button();
 	afx_msg void OnBnClickedBit1Button();
 	afx_msg void OnBnClickedBit0Button();
+	afx_msg void OnBnClickedEditCheck();
+
+	virtual void RegisterButtons()=0;
 };

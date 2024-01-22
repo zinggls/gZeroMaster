@@ -436,13 +436,6 @@ void CRaw::RegisterButtons()
 	}
 }
 
-void CRaw::OnBnClickedEditCheck()
-{
-	m_bEdit = !m_bEdit;
-	RegisterButtons();
-	UpdateData(FALSE);
-}
-
 void CRaw::OnBnClickedReadAllButton()
 {
 	ResetValues();
