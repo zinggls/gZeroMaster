@@ -105,3 +105,45 @@ LONG CRawBase::ReadRegister(int addr, DWORD sizeToRead, char* pBuffer, int maxLo
 #endif // DEBUG_READ
 	return ERROR_SUCCESS;
 }
+
+BOOL CRawBase::ReadRegisters()
+{
+	for (std::map<CString, CReg>::iterator it = m_regMap.begin(); it != m_regMap.end(); it++) {
+		if (ReadRegister(it->second.m_nAddr, it->first, it->second.m_pStr, MAX_LOOP) != TRUE) return FALSE;
+		CString str;
+		str.Format(_T("Address:0x%02x %s %s"), it->second.m_nAddr, it->first, it->second.m_pStr->GetBuffer());
+		Parent()->L(str);
+	}
+	return TRUE;
+}
+
+void CRawBase::ReadRegister(int addr, CString name, CString* pValueStr)
+{
+	char buffer[3];
+	while (ReadRegister(addr, 2, buffer, MAX_LOOP) != ERROR_SUCCESS) Sleep(10);	//Blocking ÇÔ¼ö
+	pValueStr->Format(_T("0x%02x"), (int)strtol(buffer, NULL, 16));
+	UpdateData(FALSE);
+}
+
+BOOL CRawBase::ReadRegister(int addr, CString name, CString* pValueStr, int maxLoop)
+{
+	char buffer[3];
+	LONG lLastError = ReadRegister(addr, 2, buffer, maxLoop);
+	if (lLastError != ERROR_SUCCESS) {
+		Parent()->ErrorMsg(lLastError, _T("CRawBase::PrintRegister Error in ReadRegister"));
+		return FALSE;
+	}
+	pValueStr->Format(_T("0x%02x"), (int)strtol(buffer, NULL, 16));
+	UpdateData(FALSE);
+	return TRUE;
+}
+
+void CRawBase::ReadRegister(int addr)
+{
+	for (std::map<CString, CReg>::iterator it = m_regMap.begin(); it != m_regMap.end(); it++) {
+		if (addr == it->second.m_nAddr) {
+			ReadRegister(it->second.m_nAddr, it->first, it->second.m_pStr);
+			return;
+		}
+	}
+}

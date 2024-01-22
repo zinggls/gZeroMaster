@@ -1,18 +1,9 @@
 ﻿#pragma once
 
-#include <map>
 #include "CRawBase.h"
-#define MAX_LOOP	100000
+
 #define CHIP_MODEL_ADDRESS		0xff
 #define CHIP_MODEL_INFO_SIZE	7
-
-class CReg {
-	CReg();
-public:
-	CReg(int addr, CString* pStr) :m_nAddr(addr), m_pStr(pStr) {}
-	int m_nAddr;
-	CString* m_pStr;
-};
 
 // CRaw 대화 상자
 
@@ -61,15 +52,10 @@ public:
 	CEdit m_bit0;
 	CString m_strChosenRegister;
 	BOOL m_bEdit;
-	std::map<CString, CReg> m_regMap;
 	CString m_strHex;
 
 public:
 	virtual BOOL OnInitDialog();
-	BOOL ReadRegisters();
-	void ReadRegister(int addr);
-	void ReadRegister(int addr, CString name, CString* pValueStr);
-	BOOL ReadRegister(int addr, CString name, CString* pValueStr, int maxLoop);
 	CString RegisterName(int addr);
 	CString Bits(unsigned char byte);
 	void ShowBits(unsigned char byte);
