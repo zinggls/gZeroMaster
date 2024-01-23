@@ -468,7 +468,7 @@ void CRaw::OnBnClickedWriteButton()
 
 void CRaw::ResetValues()
 {
-	for (std::list<CString*>::iterator it = m_strList.begin(); it != m_strList.end(); ++it) (*it)->Empty();
+	CRawBase::ResetValues();
 	UpdateData(FALSE);
 }
 

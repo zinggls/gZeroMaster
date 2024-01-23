@@ -75,5 +75,5 @@ public:
 	virtual afx_msg void OnBnClickedWriteButton();
 
 	virtual void RegisterButtons()=0;
-	virtual void ResetValues()=0;
+	virtual void ResetValues();
 };
