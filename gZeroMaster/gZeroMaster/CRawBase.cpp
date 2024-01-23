@@ -391,6 +391,21 @@ void CRawBase::OnBnClickedWriteButton()
 	ReadRegister(it->second.m_nAddr, it->first, it->second.m_pStr);
 }
 
+HBRUSH CRawBase::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
+{
+	HBRUSH hbr = CDialogEx::OnCtlColor(pDC, pWnd, nCtlColor);
+
+	// TODO:  여기서 DC의 특성을 변경합니다.
+
+	for (std::map<CString, CReg>::iterator it = m_regMap.begin(); it != m_regMap.end(); ++it) {
+		if (pWnd->GetDlgCtrlID() == it->second.m_uIdcStatic)
+			SetColor(pDC, it->first);
+	}
+
+	// TODO:  기본값이 적당하지 않으면 다른 브러시를 반환합니다.
+	return hbr;
+}
+
 void CRawBase::RegisterButtons()
 {
 	if (m_bEdit) {

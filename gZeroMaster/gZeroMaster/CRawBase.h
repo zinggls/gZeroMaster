@@ -74,6 +74,7 @@ public:
 	afx_msg void OnBnClickedEditCheck();
 	virtual afx_msg void OnBnClickedReadAllButton();
 	virtual afx_msg void OnBnClickedWriteButton();
+	afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
 
 	void RegisterButtons();
 	virtual void OnHideRegisterButtons(CString strChosenRegister)=0;
