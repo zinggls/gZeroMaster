@@ -430,27 +430,21 @@ void CRaw::OnStnClickedBiasReg9Static()
 	Invalidate();
 }
 
-void CRaw::RegisterButtons()
-{	
-	if (m_bEdit) {
-		ShowWriteButtons(SW_SHOW);
-		if (m_strChosenRegister == _T("RX_REG1 [4:0]")) {
-			GetDlgItem(IDC_BIT7_BUTTON)->ShowWindow(SW_HIDE);
-			GetDlgItem(IDC_BIT6_BUTTON)->ShowWindow(SW_HIDE);
-			GetDlgItem(IDC_BIT5_BUTTON)->ShowWindow(SW_HIDE);
-		}
-		else if (m_strChosenRegister == _T("TX_REG2 [16]") | m_strChosenRegister == _T("BIAS_REG1 [0]")) {
-			GetDlgItem(IDC_BIT7_BUTTON)->ShowWindow(SW_HIDE);
-			GetDlgItem(IDC_BIT6_BUTTON)->ShowWindow(SW_HIDE);
-			GetDlgItem(IDC_BIT5_BUTTON)->ShowWindow(SW_HIDE);
-			GetDlgItem(IDC_BIT4_BUTTON)->ShowWindow(SW_HIDE);
-			GetDlgItem(IDC_BIT3_BUTTON)->ShowWindow(SW_HIDE);
-			GetDlgItem(IDC_BIT2_BUTTON)->ShowWindow(SW_HIDE);
-			GetDlgItem(IDC_BIT1_BUTTON)->ShowWindow(SW_HIDE);
-		}
+void CRaw::OnHideRegisterButtons(CString strChosenRegister)
+{
+	if (strChosenRegister == _T("RX_REG1 [4:0]")) {
+		GetDlgItem(IDC_BIT7_BUTTON)->ShowWindow(SW_HIDE);
+		GetDlgItem(IDC_BIT6_BUTTON)->ShowWindow(SW_HIDE);
+		GetDlgItem(IDC_BIT5_BUTTON)->ShowWindow(SW_HIDE);
 	}
-	else {
-		ShowWriteButtons(SW_HIDE);
+	else if (strChosenRegister == _T("TX_REG2 [16]") | strChosenRegister == _T("BIAS_REG1 [0]")) {
+		GetDlgItem(IDC_BIT7_BUTTON)->ShowWindow(SW_HIDE);
+		GetDlgItem(IDC_BIT6_BUTTON)->ShowWindow(SW_HIDE);
+		GetDlgItem(IDC_BIT5_BUTTON)->ShowWindow(SW_HIDE);
+		GetDlgItem(IDC_BIT4_BUTTON)->ShowWindow(SW_HIDE);
+		GetDlgItem(IDC_BIT3_BUTTON)->ShowWindow(SW_HIDE);
+		GetDlgItem(IDC_BIT2_BUTTON)->ShowWindow(SW_HIDE);
+		GetDlgItem(IDC_BIT1_BUTTON)->ShowWindow(SW_HIDE);
 	}
 }
 

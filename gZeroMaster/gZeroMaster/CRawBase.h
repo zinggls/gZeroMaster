@@ -74,6 +74,7 @@ public:
 	virtual afx_msg void OnBnClickedReadAllButton();
 	virtual afx_msg void OnBnClickedWriteButton();
 
-	virtual void RegisterButtons()=0;
+	virtual void RegisterButtons();
+	virtual void OnHideRegisterButtons(CString strChosenRegister)=0;
 	virtual void ResetValues();
 };

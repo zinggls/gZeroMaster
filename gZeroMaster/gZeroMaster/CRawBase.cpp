@@ -391,6 +391,18 @@ void CRawBase::OnBnClickedWriteButton()
 	ReadRegister(it->second.m_nAddr, it->first, it->second.m_pStr);
 }
 
+void CRawBase::RegisterButtons()
+{
+	if (m_bEdit) {
+		ShowWriteButtons(SW_SHOW);
+
+		OnHideRegisterButtons(m_strChosenRegister);
+	}
+	else {
+		ShowWriteButtons(SW_HIDE);
+	}
+}
+
 void CRawBase::ResetValues()
 {
 	for (std::list<CString*>::iterator it = m_strList.begin(); it != m_strList.end(); ++it) (*it)->Empty();
