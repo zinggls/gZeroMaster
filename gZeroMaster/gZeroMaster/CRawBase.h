@@ -9,9 +9,10 @@ class CgZeroMasterDlg;
 class CReg {
 	CReg();
 public:
-	CReg(int addr, CString* pStr) :m_nAddr(addr), m_pStr(pStr) {}
+	CReg(int addr, CString* pStr, UINT idc) :m_nAddr(addr), m_pStr(pStr), m_uIdcStatic(idc) {}
 	int m_nAddr;
 	CString* m_pStr;
+	UINT m_uIdcStatic;
 };
 
 // CRaw 대화 상자
