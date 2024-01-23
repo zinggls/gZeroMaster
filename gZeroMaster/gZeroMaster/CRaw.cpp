@@ -471,53 +471,10 @@ HBRUSH CRaw::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 	HBRUSH hbr = CDialogEx::OnCtlColor(pDC, pWnd, nCtlColor);
 
 	// TODO:  여기서 DC의 특성을 변경합니다.
-	if (pWnd->GetDlgCtrlID() == IDC_RX_REG1_STATIC) {
-		SetColor(pDC, _T("RX_REG1 [4:0]"));
-	}
-	else if (pWnd->GetDlgCtrlID() == IDC_TX_REG1_TOP_STATIC) {
-		SetColor(pDC, _T("TX_REG1 [23:16]"));
-	}
-	else if (pWnd->GetDlgCtrlID() == IDC_TX_REG1_MID_STATIC) {
-		SetColor(pDC, _T("TX_REG1 [15:8]"));
-	}
-	else if (pWnd->GetDlgCtrlID() == IDC_TX_REG1_BOT_STATIC) {
-		SetColor(pDC, _T("TX_REG1 [7:0]"));
-	}
-	else if (pWnd->GetDlgCtrlID() == IDC_TX_REG2_TOP_STATIC) {
-		SetColor(pDC, _T("TX_REG2 [16]"));
-	}
-	else if (pWnd->GetDlgCtrlID() == IDC_TX_REG2_MID_STATIC) {
-		SetColor(pDC, _T("TX_REG2 [15:8]"));
-	}
-	else if (pWnd->GetDlgCtrlID() == IDC_TX_REG2_BOT_STATIC) {
-		SetColor(pDC, _T("TX_REG2 [7:0]"));
-	}
-	else if (pWnd->GetDlgCtrlID() == IDC_BIAS_REG1_STATIC) {
-		SetColor(pDC, _T("BIAS_REG1 [0]"));
-	}
-	else if (pWnd->GetDlgCtrlID() == IDC_BIAS_REG2_STATIC) {
-		SetColor(pDC, _T("BIAS_REG2 [7:0]"));
-	}
-	else if (pWnd->GetDlgCtrlID() == IDC_BIAS_REG3_STATIC) {
-		SetColor(pDC, _T("BIAS_REG3 [7:0]"));
-	}
-	else if (pWnd->GetDlgCtrlID() == IDC_BIAS_REG4_STATIC) {
-		SetColor(pDC, _T("BIAS_REG4 [7:0]"));
-	}
-	else if (pWnd->GetDlgCtrlID() == IDC_BIAS_REG5_STATIC) {
-		SetColor(pDC, _T("BIAS_REG5 [7:0]"));
-	}
-	else if (pWnd->GetDlgCtrlID() == IDC_BIAS_REG6_STATIC) {
-		SetColor(pDC, _T("BIAS_REG6 [7:0]"));
-	}
-	else if (pWnd->GetDlgCtrlID() == IDC_BIAS_REG7_STATIC) {
-		SetColor(pDC, _T("BIAS_REG7 [7:0]"));
-	}
-	else if (pWnd->GetDlgCtrlID() == IDC_BIAS_REG8_STATIC) {
-		SetColor(pDC, _T("BIAS_REG8 [7:0]"));
-	}
-	else if (pWnd->GetDlgCtrlID() == IDC_BIAS_REG9_STATIC) {
-		SetColor(pDC, _T("BIAS_REG9 [7:0]"));
+
+	for (std::map<CString, CReg>::iterator it = m_regMap.begin(); it != m_regMap.end(); ++it) {
+		if(pWnd->GetDlgCtrlID() == it->second.m_uIdcStatic)
+			SetColor(pDC, it->first);
 	}
 
 	// TODO:  기본값이 적당하지 않으면 다른 브러시를 반환합니다.
