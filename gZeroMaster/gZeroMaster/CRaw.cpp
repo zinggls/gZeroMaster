@@ -117,6 +117,24 @@ BOOL CRaw::OnInitDialog()
 	GetDlgItem(IDC_READ_ALL_BUTTON)->ShowWindow(SW_HIDE);
 
 	ShowBitWindow(SW_HIDE);
+
+	m_strList.push_back(&m_strRxReg1);
+	m_strList.push_back(&m_strTxReg1Top);
+	m_strList.push_back(&m_strTxReg1Mid);
+	m_strList.push_back(&m_strTxReg1Bot);
+	m_strList.push_back(&m_strTxReg2Top);
+	m_strList.push_back(&m_strTxReg2Mid);
+	m_strList.push_back(&m_strTxReg2Bot);
+	m_strList.push_back(&m_strBiasReg1);
+	m_strList.push_back(&m_strBiasReg2);
+	m_strList.push_back(&m_strBiasReg3);
+	m_strList.push_back(&m_strBiasReg4);
+	m_strList.push_back(&m_strBiasReg5);
+	m_strList.push_back(&m_strBiasReg6);
+	m_strList.push_back(&m_strBiasReg7);
+	m_strList.push_back(&m_strBiasReg8);
+	m_strList.push_back(&m_strBiasReg9);
+
 	return TRUE;  // return TRUE unless you set the focus to a control
 				  // 예외: OCX 속성 페이지는 FALSE를 반환해야 합니다.
 }
@@ -450,22 +468,7 @@ void CRaw::OnBnClickedWriteButton()
 
 void CRaw::ResetValues()
 {
-	m_strRxReg1.Empty();
-	m_strTxReg1Top.Empty();
-	m_strTxReg1Mid.Empty();
-	m_strTxReg1Bot.Empty();
-	m_strTxReg2Top.Empty();
-	m_strTxReg2Mid.Empty();
-	m_strTxReg2Bot.Empty();
-	m_strBiasReg1.Empty();
-	m_strBiasReg2.Empty();
-	m_strBiasReg3.Empty();
-	m_strBiasReg4.Empty();
-	m_strBiasReg5.Empty();
-	m_strBiasReg6.Empty();
-	m_strBiasReg7.Empty();
-	m_strBiasReg8.Empty();
-	m_strBiasReg9.Empty();
+	for (std::list<CString*>::iterator it = m_strList.begin(); it != m_strList.end(); ++it) (*it)->Empty();
 	UpdateData(FALSE);
 }
 

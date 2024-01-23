@@ -1,6 +1,7 @@
 #pragma once
 
 #include <map>
+#include <list>
 #define MAX_LOOP	100000
 
 class CgZeroMasterDlg;
@@ -41,6 +42,7 @@ public:
 	CString m_strHex;
 	CString m_strChosenRegister;
 	BOOL m_bEdit;
+	std::list<CString*> m_strList;
 
 public:
 	CgZeroMasterDlg* Parent();
