@@ -169,257 +169,167 @@ void CRaw::OnStnClickedRxReg1Static()
 
 void CRaw::OnStnClickedTxReg1TopStatic()
 {
-	if (!Parent()->m_serial.IsOpen()) return;
-
-	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_SHOW);
-	Parent()->L(_T("TX_REG1[23:16]"));
-	Parent()->L(_T("    [7:0]:Duty cycle control"));
-	ShowBits(_tcstol(m_strTxReg1Top.GetBuffer(), NULL, 16) & 0xff);
-	GetDlgItem(IDC_TX_REG1_TOP_LABEL)->GetWindowText(m_strChosenRegister);
-	RegisterButtons();
-	UpdateData(FALSE);
-	Invalidate();
+	CStringList msgList;
+	msgListAdd(msgList, _T("TX_REG1[23:16]"));
+	msgListAdd(msgList, _T("    [7:0]:Duty cycle control"));
+	OnStnClicked(IDC_EDIT_CHECK, m_strTxReg1Top, IDC_TX_REG1_TOP_LABEL, msgList);
 }
 
 
 void CRaw::OnStnClickedTxReg1MidStatic()
 {
-	if (!Parent()->m_serial.IsOpen()) return;
-
-	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_SHOW);
-	Parent()->L(_T("TX_REG1[15:8]"));
+	CStringList msgList;
+	msgListAdd(msgList, _T("TX_REG1[15:8]"));
 	ASSERT(Parent()->m_chip == _T("A0") || Parent()->m_chip == _T("B0"));
 	if (Parent()->m_chip == _T("A0")) {
-		Parent()->L(_T("    [7]:Modulator power down 0: MOD off, 1: MOD on"));
-		Parent()->L(_T("    [6]:Test buffer power down 0: test buff off, 1: test buff on"));
-		Parent()->L(_T("    [5]:DATA Input Select 0: SER (Inside), 1: Test buff(Outside)"));
-		Parent()->L(_T("    [4]:PA power down 0: PA off, 1: PA on"));
-		Parent()->L(_T("    [3:0]:PA gain control 2"));
+		msgListAdd(msgList, _T("    [7]:Modulator power down 0: MOD off, 1: MOD on"));
+		msgListAdd(msgList, _T("    [6]:Test buffer power down 0: test buff off, 1: test buff on"));
+		msgListAdd(msgList, _T("    [5]:DATA Input Select 0: SER (Inside), 1: Test buff(Outside)"));
+		msgListAdd(msgList, _T("    [4]:PA power down 0: PA off, 1: PA on"));
+		msgListAdd(msgList, _T("    [3:0]:PA gain control 2"));
 	}
 	else {
-		Parent()->L(_T("    [7:0]:VCO oscillation frequency control(3:10)"));
+		msgListAdd(msgList, _T("    [7:0]:VCO oscillation frequency control(3:10)"));
 	}
-	ShowBits(_tcstol(m_strTxReg1Mid.GetBuffer(), NULL, 16) & 0xff);
-	GetDlgItem(IDC_TX_REG1_MID_LABEL)->GetWindowText(m_strChosenRegister);
-	RegisterButtons();
-	UpdateData(FALSE);
-	Invalidate();
+	OnStnClicked(IDC_EDIT_CHECK, m_strTxReg1Mid, IDC_TX_REG1_MID_LABEL, msgList);
 }
 
 
 void CRaw::OnStnClickedTxReg1BotStatic()
 {
-	if (!Parent()->m_serial.IsOpen()) return;
-
-	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_SHOW);
-	Parent()->L(_T("TX_REG1[7:0]"));
+	CStringList msgList;
+	msgListAdd(msgList, _T("TX_REG1[7:0]"));
 	ASSERT(Parent()->m_chip == _T("A0") || Parent()->m_chip == _T("B0"));
 	if (Parent()->m_chip == _T("A0")) {
-		Parent()->L(_T("    [7:4]:PA gain control 1"));
-		Parent()->L(_T("    [3:0]:Test Buffer Current control"));
+		msgListAdd(msgList, _T("    [7:4]:PA gain control 1"));
+		msgListAdd(msgList, _T("    [3:0]:Test Buffer Current control"));
 	}
 	else {
-		Parent()->L(_T("    [7:5]:VCO oscillation frequency control(0:2)"));
-		Parent()->L(_T("    [4]:Regulator Reference Voltage  Control"));
-		Parent()->L(_T("    [3:0]:VCO_VDD Control"));
+		msgListAdd(msgList, _T("    [7:5]:VCO oscillation frequency control(0:2)"));
+		msgListAdd(msgList, _T("    [4]:Regulator Reference Voltage  Control"));
+		msgListAdd(msgList, _T("    [3:0]:VCO_VDD Control"));
 	}
-	ShowBits(_tcstol(m_strTxReg1Bot.GetBuffer(), NULL, 16) & 0xff);
-	GetDlgItem(IDC_TX_REG1_BOT_LABEL)->GetWindowText(m_strChosenRegister);
-	RegisterButtons();
-	UpdateData(FALSE);
-	Invalidate();
+	OnStnClicked(IDC_EDIT_CHECK, m_strTxReg1Bot, IDC_TX_REG1_BOT_LABEL, msgList);
 }
 
 
 void CRaw::OnStnClickedTxReg2TopStatic()
 {
-	if (!Parent()->m_serial.IsOpen()) return;
-
-	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_SHOW);
-	Parent()->L(_T("TX_REG2[16]"));
-	Parent()->L(_T("    [0]:VCO power up/down 0: VCO off, 1: VCO on"));
-	ShowBits(_tcstol(m_strTxReg2Top.GetBuffer(), NULL, 16) & 0xff);
-	GetDlgItem(IDC_TX_REG2_TOP_LABEL)->GetWindowText(m_strChosenRegister);
-	RegisterButtons();
-	UpdateData(FALSE);
-	Invalidate();
+	CStringList msgList;
+	msgListAdd(msgList, _T("TX_REG2[16]"));
+	msgListAdd(msgList, _T("    [0]:VCO power up/down 0: VCO off, 1: VCO on"));
+	OnStnClicked(IDC_EDIT_CHECK, m_strTxReg2Top, IDC_TX_REG2_TOP_LABEL, msgList);
 }
 
 
 void CRaw::OnStnClickedTxReg2MidStatic()
 {
-	if (!Parent()->m_serial.IsOpen()) return;
-
-	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_SHOW);
-	Parent()->L(_T("TX_REG2[15:8]"));
-	Parent()->L(_T("    [7]:Modulator power down 0: MOD off, 1: MOD on"));
-	Parent()->L(_T("    [6]:Test buffer power down 0: test buff off, 1: test buff on"));
-	Parent()->L(_T("    [5]:DATA Input Select 0: SER (Inside), 1: Test buff(Outside)"));
-	Parent()->L(_T("    [4]:PA power down 0: PA off, 1: PA on"));
-	Parent()->L(_T("    [3:0]:PA gain control 2"));
-	ShowBits(_tcstol(m_strTxReg2Mid.GetBuffer(), NULL, 16) & 0xff);
-	GetDlgItem(IDC_TX_REG2_MID_LABEL)->GetWindowText(m_strChosenRegister);
-	RegisterButtons();
-	UpdateData(FALSE);
-	Invalidate();
+	CStringList msgList;
+	msgListAdd(msgList, _T("TX_REG2[15:8]"));
+	msgListAdd(msgList, _T("    [7]:Modulator power down 0: MOD off, 1: MOD on"));
+	msgListAdd(msgList, _T("    [6]:Test buffer power down 0: test buff off, 1: test buff on"));
+	msgListAdd(msgList, _T("    [5]:DATA Input Select 0: SER (Inside), 1: Test buff(Outside)"));
+	msgListAdd(msgList, _T("    [4]:PA power down 0: PA off, 1: PA on"));
+	msgListAdd(msgList, _T("    [3:0]:PA gain control 2"));
+	OnStnClicked(IDC_EDIT_CHECK, m_strTxReg2Mid, IDC_TX_REG2_MID_LABEL, msgList);
 }
 
 
 void CRaw::OnStnClickedTxReg2BotStatic()
 {
-	if (!Parent()->m_serial.IsOpen()) return;
-
-	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_SHOW);
-	Parent()->L(_T("TX_REG2[7:0]"));
-	Parent()->L(_T("    [7:4]:PA gain control 1"));
-	Parent()->L(_T("    [3:0]:Test Buffer Current control"));
-	ShowBits(_tcstol(m_strTxReg2Bot.GetBuffer(), NULL, 16) & 0xff);
-	GetDlgItem(IDC_TX_REG2_BOT_LABEL)->GetWindowText(m_strChosenRegister);
-	RegisterButtons();
-	UpdateData(FALSE);
-	Invalidate();
+	CStringList msgList;
+	msgListAdd(msgList, _T("TX_REG2[7:0]"));
+	msgListAdd(msgList, _T("    [7:4]:PA gain control 1"));
+	msgListAdd(msgList, _T("    [3:0]:Test Buffer Current control"));
+	OnStnClicked(IDC_EDIT_CHECK, m_strTxReg2Bot, IDC_TX_REG2_BOT_LABEL, msgList);
 }
 
 
 void CRaw::OnStnClickedBiasReg1Static()
 {
-	if (!Parent()->m_serial.IsOpen()) return;
-
-	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_SHOW);
-	Parent()->L(_T("BIAS_REG1[0]"));
-	Parent()->L(_T("    [0]:BIAS block Enable"));
-	ShowBits(_tcstol(m_strBiasReg1.GetBuffer(), NULL, 16) & 0xff);
-	GetDlgItem(IDC_BIAS_REG1_LABEL)->GetWindowText(m_strChosenRegister);
-	RegisterButtons();
-	UpdateData(FALSE);
-	Invalidate();
+	CStringList msgList;
+	msgListAdd(msgList, _T("BIAS_REG1[0]"));
+	msgListAdd(msgList, _T("    [0]:BIAS block Enable"));
+	OnStnClicked(IDC_EDIT_CHECK, m_strBiasReg1, IDC_BIAS_REG1_LABEL, msgList);
 }
 
 
 void CRaw::OnStnClickedBiasReg2Static()
 {
-	if (!Parent()->m_serial.IsOpen()) return;
-
-	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_SHOW);
-	Parent()->L(_T("BIAS_REG2[7:0]"));
-	Parent()->L(_T("    [7:4]:Control LNA 3rd stage biasing current"));
-	Parent()->L(_T("    [3:0]:Control LNA 1st & 2nd stages biasing current"));
-	ShowBits(_tcstol(m_strBiasReg2.GetBuffer(), NULL, 16) & 0xff);
-	GetDlgItem(IDC_BIAS_REG2_LABEL)->GetWindowText(m_strChosenRegister);
-	RegisterButtons();
-	UpdateData(FALSE);
-	Invalidate();
+	CStringList msgList;
+	msgListAdd(msgList, _T("BIAS_REG2[7:0]"));
+	msgListAdd(msgList, _T("    [7:4]:Control LNA 3rd stage biasing current"));
+	msgListAdd(msgList, _T("    [3:0]:Control LNA 1st & 2nd stages biasing current"));
+	OnStnClicked(IDC_EDIT_CHECK, m_strBiasReg2, IDC_BIAS_REG2_LABEL, msgList);
 }
 
 
 void CRaw::OnStnClickedBiasReg3Static()
 {
-	if (!Parent()->m_serial.IsOpen()) return;
-
-	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_SHOW);
-	Parent()->L(_T("BIAS_REG3[7:0]"));
-	Parent()->L(_T("    [7:4]:Control LNA 5th stage biasing current"));
-	Parent()->L(_T("    [3:0]:Control LNA 4th stage biasing current"));
-	ShowBits(_tcstol(m_strBiasReg3.GetBuffer(), NULL, 16) & 0xff);
-	GetDlgItem(IDC_BIAS_REG3_LABEL)->GetWindowText(m_strChosenRegister);
-	RegisterButtons();
-	UpdateData(FALSE);
-	Invalidate();
+	CStringList msgList;
+	msgListAdd(msgList, _T("BIAS_REG3[7:0]"));
+	msgListAdd(msgList, _T("    [7:4]:Control LNA 5th stage biasing current"));
+	msgListAdd(msgList, _T("    [3:0]:Control LNA 4th stage biasing current"));
+	OnStnClicked(IDC_EDIT_CHECK, m_strBiasReg3, IDC_BIAS_REG3_LABEL, msgList);
 }
 
 
 void CRaw::OnStnClickedBiasReg4Static()
 {
-	if (!Parent()->m_serial.IsOpen()) return;
-
-	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_SHOW);
-	Parent()->L(_T("BIAS_REG4[7:0]"));
-	Parent()->L(_T("    [7:4]:Control the demodulator's current"));
-	Parent()->L(_T("    [3:0]:Control the demodulator's current"));
-	ShowBits(_tcstol(m_strBiasReg4.GetBuffer(), NULL, 16) & 0xff);
-	GetDlgItem(IDC_BIAS_REG4_LABEL)->GetWindowText(m_strChosenRegister);
-	RegisterButtons();
-	UpdateData(FALSE);
-	Invalidate();
+	CStringList msgList;
+	msgListAdd(msgList, _T("BIAS_REG4[7:0]"));
+	msgListAdd(msgList, _T("    [7:4]:Control the demodulator's current"));
+	msgListAdd(msgList, _T("    [3:0]:Control the demodulator's current"));
+	OnStnClicked(IDC_EDIT_CHECK, m_strBiasReg4, IDC_BIAS_REG4_LABEL, msgList);
 }
 
 
 void CRaw::OnStnClickedBiasReg5Static()
 {
-	if (!Parent()->m_serial.IsOpen()) return;
-
-	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_SHOW);
-	Parent()->L(_T("BIAS_REG5[7:0]"));
-	Parent()->L(_T("    [7:4]:Control the biasing current for LA's FB"));
-	Parent()->L(_T("    [3:0]:Control the biasing current for LA's core"));
-	ShowBits(_tcstol(m_strBiasReg5.GetBuffer(), NULL, 16) & 0xff);
-	GetDlgItem(IDC_BIAS_REG5_LABEL)->GetWindowText(m_strChosenRegister);
-	RegisterButtons();
-	UpdateData(FALSE);
-	Invalidate();
+	CStringList msgList;
+	msgListAdd(msgList, _T("BIAS_REG5[7:0]"));
+	msgListAdd(msgList, _T("    [7:4]:Control the biasing current for LA's FB"));
+	msgListAdd(msgList, _T("    [3:0]:Control the biasing current for LA's core"));
+	OnStnClicked(IDC_EDIT_CHECK, m_strBiasReg5, IDC_BIAS_REG5_LABEL, msgList);
 }
 
 
 void CRaw::OnStnClickedBiasReg6Static()
 {
-	if (!Parent()->m_serial.IsOpen()) return;
-
-	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_SHOW);
-	Parent()->L(_T("BIAS_REG6[7:0]"));
-	Parent()->L(_T("    [7:4]:Control the biasing current for LA's O/P buffer"));
-	Parent()->L(_T("    [3:0]:Control the biasing current for LA's I/P buffer"));
-	ShowBits(_tcstol(m_strBiasReg6.GetBuffer(), NULL, 16) & 0xff);
-	GetDlgItem(IDC_BIAS_REG6_LABEL)->GetWindowText(m_strChosenRegister);
-	RegisterButtons();
-	UpdateData(FALSE);
-	Invalidate();
+	CStringList msgList;
+	msgListAdd(msgList, _T("BIAS_REG6[7:0]"));
+	msgListAdd(msgList, _T("    [7:4]:Control the biasing current for LA's O/P buffer"));
+	msgListAdd(msgList, _T("    [3:0]:Control the biasing current for LA's I/P buffer"));
+	OnStnClicked(IDC_EDIT_CHECK, m_strBiasReg6, IDC_BIAS_REG6_LABEL, msgList);
 }
 
 
 void CRaw::OnStnClickedBiasReg7Static()
 {
-	if (!Parent()->m_serial.IsOpen()) return;
-
-	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_SHOW);
-	Parent()->L(_T("BIAS_REG7[7:0]"));
-	Parent()->L(_T("    [7:4]:Control the biasing current for LA's High/Low data rate"));
-	Parent()->L(_T("    [3:0]:Control the biasing current for CMOS gain stage"));
-	ShowBits(_tcstol(m_strBiasReg7.GetBuffer(), NULL, 16) & 0xff);
-	GetDlgItem(IDC_BIAS_REG7_LABEL)->GetWindowText(m_strChosenRegister);
-	RegisterButtons();
-	UpdateData(FALSE);
-	Invalidate();
+	CStringList msgList;
+	msgListAdd(msgList, _T("BIAS_REG7[7:0]"));
+	msgListAdd(msgList, _T("    [7:4]:Control the biasing current for LA's High/Low data rate"));
+	msgListAdd(msgList, _T("    [3:0]:Control the biasing current for CMOS gain stage"));
+	OnStnClicked(IDC_EDIT_CHECK, m_strBiasReg7, IDC_BIAS_REG7_LABEL, msgList);
 }
 
 
 void CRaw::OnStnClickedBiasReg8Static()
 {
-	if (!Parent()->m_serial.IsOpen()) return;
-
-	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_SHOW);
-	Parent()->L(_T("BIAS_REG8[7:0]"));
-	Parent()->L(_T("    [7:0]:Control the biasing current for CML interface stage. It aso controls the duty cycle"));
-	ShowBits(_tcstol(m_strBiasReg8.GetBuffer(), NULL, 16) & 0xff);
-	GetDlgItem(IDC_BIAS_REG8_LABEL)->GetWindowText(m_strChosenRegister);
-	RegisterButtons();
-	UpdateData(FALSE);
-	Invalidate();
+	CStringList msgList;
+	msgListAdd(msgList, _T("BIAS_REG8[7:0]"));
+	msgListAdd(msgList, _T("    [7:0]:Control the biasing current for CML interface stage. It aso controls the duty cycle"));
+	OnStnClicked(IDC_EDIT_CHECK, m_strBiasReg8, IDC_BIAS_REG8_LABEL, msgList);
 }
 
 
 void CRaw::OnStnClickedBiasReg9Static()
 {
-	if (!Parent()->m_serial.IsOpen()) return;
-
-	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_SHOW);
-	Parent()->L(_T("BIAS_REG9[7:0]"));
-	Parent()->L(_T("    [7:4]:Control FD cores of stg1 & stg2 biasing current"));
-	Parent()->L(_T("    [3:0]:Control FD buffers of stg1 & stg2 biasing current"));
-	ShowBits(_tcstol(m_strBiasReg9.GetBuffer(), NULL, 16) & 0xff);
-	GetDlgItem(IDC_BIAS_REG9_LABEL)->GetWindowText(m_strChosenRegister);
-	RegisterButtons();
-	UpdateData(FALSE);
-	Invalidate();
+	CStringList msgList;
+	msgListAdd(msgList, _T("BIAS_REG9[7:0]"));
+	msgListAdd(msgList, _T("    [7:4]:Control FD cores of stg1 & stg2 biasing current"));
+	msgListAdd(msgList, _T("    [3:0]:Control FD buffers of stg1 & stg2 biasing current"));
+	OnStnClicked(IDC_EDIT_CHECK, m_strBiasReg9, IDC_BIAS_REG9_LABEL, msgList);
 }
 
 void CRaw::OnHideRegisterButtons(CString strChosenRegister)
