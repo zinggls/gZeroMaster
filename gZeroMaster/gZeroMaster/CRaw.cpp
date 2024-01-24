@@ -158,18 +158,12 @@ BOOL CRaw::OnInitDialog()
 
 void CRaw::OnStnClickedRxReg1Static()
 {
-	if (!Parent()->m_serial.IsOpen()) return;
-
-	GetDlgItem(IDC_EDIT_CHECK)->ShowWindow(SW_SHOW);
-	Parent()->L(_T("RX_REG1[4:0]"));
-	Parent()->L(_T("    [4]:RX Data Interface enable"));
-	Parent()->L(_T("    [3]:Limiting Amplifier enable"));
-	Parent()->L(_T("    [2:0]:Control the LNA gain"));
-	ShowBits(_tcstol(m_strRxReg1.GetBuffer(), NULL, 16) & 0xff);
-	GetDlgItem(IDC_RX_REG1_LABEL)->GetWindowText(m_strChosenRegister);
-	RegisterButtons();
-	UpdateData(FALSE);
-	Invalidate();
+	CStringList msgList;
+	msgListAdd(msgList, _T("RX_REG1[4:0]"));
+	msgListAdd(msgList, _T("    [4]:RX Data Interface enable"));
+	msgListAdd(msgList, _T("    [3]:Limiting Amplifier enable"));
+	msgListAdd(msgList, _T("    [2:0]:Control the LNA gain"));
+	OnStnClicked(IDC_EDIT_CHECK, m_strRxReg1, IDC_RX_REG1_LABEL, msgList);
 }
 
 

@@ -79,4 +79,6 @@ public:
 	void RegisterButtons();
 	virtual void OnHideRegisterButtons(CString strChosenRegister)=0;
 	void ResetValues();
+	void msgListAdd(CStringList& msgList, CString msg);
+	void OnStnClicked(UINT idcEdit, CString& strReg, UINT idcReg, CStringList& msgList);
 };

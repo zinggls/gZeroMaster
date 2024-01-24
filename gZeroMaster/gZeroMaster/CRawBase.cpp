@@ -422,3 +422,24 @@ void CRawBase::ResetValues()
 {
 	for (std::list<CString*>::iterator it = m_strList.begin(); it != m_strList.end(); ++it) (*it)->Empty();
 }
+
+void CRawBase::msgListAdd(CStringList& msgList, CString msg)
+{
+	msgList.AddTail(msg);
+}
+
+void CRawBase::OnStnClicked(UINT idcEdit,CString& strReg, UINT idcReg, CStringList& msgList)
+{
+	if (!Parent()->m_serial.IsOpen()) return;
+
+	GetDlgItem(idcEdit)->ShowWindow(SW_SHOW);
+
+	POSITION pos = msgList.GetHeadPosition();
+	while (pos != NULL) Parent()->L(msgList.GetNext(pos));
+
+	ShowBits(_tcstol(strReg.GetBuffer(), NULL, 16) & 0xff);
+	GetDlgItem(idcReg)->GetWindowText(m_strChosenRegister);
+	RegisterButtons();
+	UpdateData(FALSE);
+	Invalidate();
+}
