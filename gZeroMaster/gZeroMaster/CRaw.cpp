@@ -159,10 +159,10 @@ BOOL CRaw::OnInitDialog()
 void CRaw::OnStnClickedRxReg1Static()
 {
 	CStringList msgList;
-	msgListAdd(msgList, _T("RX_REG1[4:0]"));
-	msgListAdd(msgList, _T("    [4]:RX Data Interface enable"));
-	msgListAdd(msgList, _T("    [3]:Limiting Amplifier enable"));
-	msgListAdd(msgList, _T("    [2:0]:Control the LNA gain"));
+	msgList.AddTail(_T("RX_REG1[4:0]"));
+	msgList.AddTail(_T("    [4]:RX Data Interface enable"));
+	msgList.AddTail(_T("    [3]:Limiting Amplifier enable"));
+	msgList.AddTail(_T("    [2:0]:Control the LNA gain"));
 	OnStnClicked(IDC_EDIT_CHECK, m_strRxReg1, IDC_RX_REG1_LABEL, msgList);
 }
 
@@ -170,8 +170,8 @@ void CRaw::OnStnClickedRxReg1Static()
 void CRaw::OnStnClickedTxReg1TopStatic()
 {
 	CStringList msgList;
-	msgListAdd(msgList, _T("TX_REG1[23:16]"));
-	msgListAdd(msgList, _T("    [7:0]:Duty cycle control"));
+	msgList.AddTail(_T("TX_REG1[23:16]"));
+	msgList.AddTail(_T("    [7:0]:Duty cycle control"));
 	OnStnClicked(IDC_EDIT_CHECK, m_strTxReg1Top, IDC_TX_REG1_TOP_LABEL, msgList);
 }
 
@@ -179,17 +179,17 @@ void CRaw::OnStnClickedTxReg1TopStatic()
 void CRaw::OnStnClickedTxReg1MidStatic()
 {
 	CStringList msgList;
-	msgListAdd(msgList, _T("TX_REG1[15:8]"));
+	msgList.AddTail(_T("TX_REG1[15:8]"));
 	ASSERT(Parent()->m_chip == _T("A0") || Parent()->m_chip == _T("B0"));
 	if (Parent()->m_chip == _T("A0")) {
-		msgListAdd(msgList, _T("    [7]:Modulator power down 0: MOD off, 1: MOD on"));
-		msgListAdd(msgList, _T("    [6]:Test buffer power down 0: test buff off, 1: test buff on"));
-		msgListAdd(msgList, _T("    [5]:DATA Input Select 0: SER (Inside), 1: Test buff(Outside)"));
-		msgListAdd(msgList, _T("    [4]:PA power down 0: PA off, 1: PA on"));
-		msgListAdd(msgList, _T("    [3:0]:PA gain control 2"));
+		msgList.AddTail(_T("    [7]:Modulator power down 0: MOD off, 1: MOD on"));
+		msgList.AddTail(_T("    [6]:Test buffer power down 0: test buff off, 1: test buff on"));
+		msgList.AddTail(_T("    [5]:DATA Input Select 0: SER (Inside), 1: Test buff(Outside)"));
+		msgList.AddTail(_T("    [4]:PA power down 0: PA off, 1: PA on"));
+		msgList.AddTail(_T("    [3:0]:PA gain control 2"));
 	}
 	else {
-		msgListAdd(msgList, _T("    [7:0]:VCO oscillation frequency control(3:10)"));
+		msgList.AddTail(_T("    [7:0]:VCO oscillation frequency control(3:10)"));
 	}
 	OnStnClicked(IDC_EDIT_CHECK, m_strTxReg1Mid, IDC_TX_REG1_MID_LABEL, msgList);
 }
@@ -198,16 +198,16 @@ void CRaw::OnStnClickedTxReg1MidStatic()
 void CRaw::OnStnClickedTxReg1BotStatic()
 {
 	CStringList msgList;
-	msgListAdd(msgList, _T("TX_REG1[7:0]"));
+	msgList.AddTail(_T("TX_REG1[7:0]"));
 	ASSERT(Parent()->m_chip == _T("A0") || Parent()->m_chip == _T("B0"));
 	if (Parent()->m_chip == _T("A0")) {
-		msgListAdd(msgList, _T("    [7:4]:PA gain control 1"));
-		msgListAdd(msgList, _T("    [3:0]:Test Buffer Current control"));
+		msgList.AddTail(_T("    [7:4]:PA gain control 1"));
+		msgList.AddTail(_T("    [3:0]:Test Buffer Current control"));
 	}
 	else {
-		msgListAdd(msgList, _T("    [7:5]:VCO oscillation frequency control(0:2)"));
-		msgListAdd(msgList, _T("    [4]:Regulator Reference Voltage  Control"));
-		msgListAdd(msgList, _T("    [3:0]:VCO_VDD Control"));
+		msgList.AddTail(_T("    [7:5]:VCO oscillation frequency control(0:2)"));
+		msgList.AddTail(_T("    [4]:Regulator Reference Voltage  Control"));
+		msgList.AddTail(_T("    [3:0]:VCO_VDD Control"));
 	}
 	OnStnClicked(IDC_EDIT_CHECK, m_strTxReg1Bot, IDC_TX_REG1_BOT_LABEL, msgList);
 }
@@ -216,8 +216,8 @@ void CRaw::OnStnClickedTxReg1BotStatic()
 void CRaw::OnStnClickedTxReg2TopStatic()
 {
 	CStringList msgList;
-	msgListAdd(msgList, _T("TX_REG2[16]"));
-	msgListAdd(msgList, _T("    [0]:VCO power up/down 0: VCO off, 1: VCO on"));
+	msgList.AddTail(_T("TX_REG2[16]"));
+	msgList.AddTail(_T("    [0]:VCO power up/down 0: VCO off, 1: VCO on"));
 	OnStnClicked(IDC_EDIT_CHECK, m_strTxReg2Top, IDC_TX_REG2_TOP_LABEL, msgList);
 }
 
@@ -225,12 +225,12 @@ void CRaw::OnStnClickedTxReg2TopStatic()
 void CRaw::OnStnClickedTxReg2MidStatic()
 {
 	CStringList msgList;
-	msgListAdd(msgList, _T("TX_REG2[15:8]"));
-	msgListAdd(msgList, _T("    [7]:Modulator power down 0: MOD off, 1: MOD on"));
-	msgListAdd(msgList, _T("    [6]:Test buffer power down 0: test buff off, 1: test buff on"));
-	msgListAdd(msgList, _T("    [5]:DATA Input Select 0: SER (Inside), 1: Test buff(Outside)"));
-	msgListAdd(msgList, _T("    [4]:PA power down 0: PA off, 1: PA on"));
-	msgListAdd(msgList, _T("    [3:0]:PA gain control 2"));
+	msgList.AddTail(_T("TX_REG2[15:8]"));
+	msgList.AddTail(_T("    [7]:Modulator power down 0: MOD off, 1: MOD on"));
+	msgList.AddTail(_T("    [6]:Test buffer power down 0: test buff off, 1: test buff on"));
+	msgList.AddTail(_T("    [5]:DATA Input Select 0: SER (Inside), 1: Test buff(Outside)"));
+	msgList.AddTail(_T("    [4]:PA power down 0: PA off, 1: PA on"));
+	msgList.AddTail(_T("    [3:0]:PA gain control 2"));
 	OnStnClicked(IDC_EDIT_CHECK, m_strTxReg2Mid, IDC_TX_REG2_MID_LABEL, msgList);
 }
 
@@ -238,9 +238,9 @@ void CRaw::OnStnClickedTxReg2MidStatic()
 void CRaw::OnStnClickedTxReg2BotStatic()
 {
 	CStringList msgList;
-	msgListAdd(msgList, _T("TX_REG2[7:0]"));
-	msgListAdd(msgList, _T("    [7:4]:PA gain control 1"));
-	msgListAdd(msgList, _T("    [3:0]:Test Buffer Current control"));
+	msgList.AddTail(_T("TX_REG2[7:0]"));
+	msgList.AddTail(_T("    [7:4]:PA gain control 1"));
+	msgList.AddTail(_T("    [3:0]:Test Buffer Current control"));
 	OnStnClicked(IDC_EDIT_CHECK, m_strTxReg2Bot, IDC_TX_REG2_BOT_LABEL, msgList);
 }
 
@@ -248,8 +248,8 @@ void CRaw::OnStnClickedTxReg2BotStatic()
 void CRaw::OnStnClickedBiasReg1Static()
 {
 	CStringList msgList;
-	msgListAdd(msgList, _T("BIAS_REG1[0]"));
-	msgListAdd(msgList, _T("    [0]:BIAS block Enable"));
+	msgList.AddTail(_T("BIAS_REG1[0]"));
+	msgList.AddTail(_T("    [0]:BIAS block Enable"));
 	OnStnClicked(IDC_EDIT_CHECK, m_strBiasReg1, IDC_BIAS_REG1_LABEL, msgList);
 }
 
@@ -257,9 +257,9 @@ void CRaw::OnStnClickedBiasReg1Static()
 void CRaw::OnStnClickedBiasReg2Static()
 {
 	CStringList msgList;
-	msgListAdd(msgList, _T("BIAS_REG2[7:0]"));
-	msgListAdd(msgList, _T("    [7:4]:Control LNA 3rd stage biasing current"));
-	msgListAdd(msgList, _T("    [3:0]:Control LNA 1st & 2nd stages biasing current"));
+	msgList.AddTail(_T("BIAS_REG2[7:0]"));
+	msgList.AddTail(_T("    [7:4]:Control LNA 3rd stage biasing current"));
+	msgList.AddTail(_T("    [3:0]:Control LNA 1st & 2nd stages biasing current"));
 	OnStnClicked(IDC_EDIT_CHECK, m_strBiasReg2, IDC_BIAS_REG2_LABEL, msgList);
 }
 
@@ -267,9 +267,9 @@ void CRaw::OnStnClickedBiasReg2Static()
 void CRaw::OnStnClickedBiasReg3Static()
 {
 	CStringList msgList;
-	msgListAdd(msgList, _T("BIAS_REG3[7:0]"));
-	msgListAdd(msgList, _T("    [7:4]:Control LNA 5th stage biasing current"));
-	msgListAdd(msgList, _T("    [3:0]:Control LNA 4th stage biasing current"));
+	msgList.AddTail(_T("BIAS_REG3[7:0]"));
+	msgList.AddTail(_T("    [7:4]:Control LNA 5th stage biasing current"));
+	msgList.AddTail(_T("    [3:0]:Control LNA 4th stage biasing current"));
 	OnStnClicked(IDC_EDIT_CHECK, m_strBiasReg3, IDC_BIAS_REG3_LABEL, msgList);
 }
 
@@ -277,9 +277,9 @@ void CRaw::OnStnClickedBiasReg3Static()
 void CRaw::OnStnClickedBiasReg4Static()
 {
 	CStringList msgList;
-	msgListAdd(msgList, _T("BIAS_REG4[7:0]"));
-	msgListAdd(msgList, _T("    [7:4]:Control the demodulator's current"));
-	msgListAdd(msgList, _T("    [3:0]:Control the demodulator's current"));
+	msgList.AddTail(_T("BIAS_REG4[7:0]"));
+	msgList.AddTail(_T("    [7:4]:Control the demodulator's current"));
+	msgList.AddTail(_T("    [3:0]:Control the demodulator's current"));
 	OnStnClicked(IDC_EDIT_CHECK, m_strBiasReg4, IDC_BIAS_REG4_LABEL, msgList);
 }
 
@@ -287,9 +287,9 @@ void CRaw::OnStnClickedBiasReg4Static()
 void CRaw::OnStnClickedBiasReg5Static()
 {
 	CStringList msgList;
-	msgListAdd(msgList, _T("BIAS_REG5[7:0]"));
-	msgListAdd(msgList, _T("    [7:4]:Control the biasing current for LA's FB"));
-	msgListAdd(msgList, _T("    [3:0]:Control the biasing current for LA's core"));
+	msgList.AddTail(_T("BIAS_REG5[7:0]"));
+	msgList.AddTail(_T("    [7:4]:Control the biasing current for LA's FB"));
+	msgList.AddTail(_T("    [3:0]:Control the biasing current for LA's core"));
 	OnStnClicked(IDC_EDIT_CHECK, m_strBiasReg5, IDC_BIAS_REG5_LABEL, msgList);
 }
 
@@ -297,9 +297,9 @@ void CRaw::OnStnClickedBiasReg5Static()
 void CRaw::OnStnClickedBiasReg6Static()
 {
 	CStringList msgList;
-	msgListAdd(msgList, _T("BIAS_REG6[7:0]"));
-	msgListAdd(msgList, _T("    [7:4]:Control the biasing current for LA's O/P buffer"));
-	msgListAdd(msgList, _T("    [3:0]:Control the biasing current for LA's I/P buffer"));
+	msgList.AddTail(_T("BIAS_REG6[7:0]"));
+	msgList.AddTail(_T("    [7:4]:Control the biasing current for LA's O/P buffer"));
+	msgList.AddTail(_T("    [3:0]:Control the biasing current for LA's I/P buffer"));
 	OnStnClicked(IDC_EDIT_CHECK, m_strBiasReg6, IDC_BIAS_REG6_LABEL, msgList);
 }
 
@@ -307,9 +307,9 @@ void CRaw::OnStnClickedBiasReg6Static()
 void CRaw::OnStnClickedBiasReg7Static()
 {
 	CStringList msgList;
-	msgListAdd(msgList, _T("BIAS_REG7[7:0]"));
-	msgListAdd(msgList, _T("    [7:4]:Control the biasing current for LA's High/Low data rate"));
-	msgListAdd(msgList, _T("    [3:0]:Control the biasing current for CMOS gain stage"));
+	msgList.AddTail(_T("BIAS_REG7[7:0]"));
+	msgList.AddTail(_T("    [7:4]:Control the biasing current for LA's High/Low data rate"));
+	msgList.AddTail(_T("    [3:0]:Control the biasing current for CMOS gain stage"));
 	OnStnClicked(IDC_EDIT_CHECK, m_strBiasReg7, IDC_BIAS_REG7_LABEL, msgList);
 }
 
@@ -317,8 +317,8 @@ void CRaw::OnStnClickedBiasReg7Static()
 void CRaw::OnStnClickedBiasReg8Static()
 {
 	CStringList msgList;
-	msgListAdd(msgList, _T("BIAS_REG8[7:0]"));
-	msgListAdd(msgList, _T("    [7:0]:Control the biasing current for CML interface stage. It aso controls the duty cycle"));
+	msgList.AddTail(_T("BIAS_REG8[7:0]"));
+	msgList.AddTail(_T("    [7:0]:Control the biasing current for CML interface stage. It aso controls the duty cycle"));
 	OnStnClicked(IDC_EDIT_CHECK, m_strBiasReg8, IDC_BIAS_REG8_LABEL, msgList);
 }
 
@@ -326,9 +326,9 @@ void CRaw::OnStnClickedBiasReg8Static()
 void CRaw::OnStnClickedBiasReg9Static()
 {
 	CStringList msgList;
-	msgListAdd(msgList, _T("BIAS_REG9[7:0]"));
-	msgListAdd(msgList, _T("    [7:4]:Control FD cores of stg1 & stg2 biasing current"));
-	msgListAdd(msgList, _T("    [3:0]:Control FD buffers of stg1 & stg2 biasing current"));
+	msgList.AddTail(_T("BIAS_REG9[7:0]"));
+	msgList.AddTail(_T("    [7:4]:Control FD cores of stg1 & stg2 biasing current"));
+	msgList.AddTail(_T("    [3:0]:Control FD buffers of stg1 & stg2 biasing current"));
 	OnStnClicked(IDC_EDIT_CHECK, m_strBiasReg9, IDC_BIAS_REG9_LABEL, msgList);
 }
 

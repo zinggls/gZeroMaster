@@ -423,11 +423,6 @@ void CRawBase::ResetValues()
 	for (std::list<CString*>::iterator it = m_strList.begin(); it != m_strList.end(); ++it) (*it)->Empty();
 }
 
-void CRawBase::msgListAdd(CStringList& msgList, CString msg)
-{
-	msgList.AddTail(msg);
-}
-
 void CRawBase::OnStnClicked(UINT idcEdit,CString& strReg, UINT idcReg, CStringList& msgList)
 {
 	if (!Parent()->m_serial.IsOpen()) return;
