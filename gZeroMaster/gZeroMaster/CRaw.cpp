@@ -31,6 +31,22 @@ CRaw::CRaw(CWnd* pParent /*=nullptr*/)
 	, m_strBiasReg8(_T(""))
 	, m_strBiasReg9(_T(""))
 {
+	m_strList.push_back(&m_strRxReg1);
+	m_strList.push_back(&m_strTxReg1Top);
+	m_strList.push_back(&m_strTxReg1Mid);
+	m_strList.push_back(&m_strTxReg1Bot);
+	m_strList.push_back(&m_strTxReg2Top);
+	m_strList.push_back(&m_strTxReg2Mid);
+	m_strList.push_back(&m_strTxReg2Bot);
+	m_strList.push_back(&m_strBiasReg1);
+	m_strList.push_back(&m_strBiasReg2);
+	m_strList.push_back(&m_strBiasReg3);
+	m_strList.push_back(&m_strBiasReg4);
+	m_strList.push_back(&m_strBiasReg5);
+	m_strList.push_back(&m_strBiasReg6);
+	m_strList.push_back(&m_strBiasReg7);
+	m_strList.push_back(&m_strBiasReg8);
+	m_strList.push_back(&m_strBiasReg9);
 	m_pParentWnd = pParent;
 }
 
@@ -117,24 +133,6 @@ BOOL CRaw::OnInitDialog()
 	GetDlgItem(IDC_READ_ALL_BUTTON)->ShowWindow(SW_HIDE);
 
 	ShowBitWindow(SW_HIDE);
-
-	m_strList.push_back(&m_strRxReg1);
-	m_strList.push_back(&m_strTxReg1Top);
-	m_strList.push_back(&m_strTxReg1Mid);
-	m_strList.push_back(&m_strTxReg1Bot);
-	m_strList.push_back(&m_strTxReg2Top);
-	m_strList.push_back(&m_strTxReg2Mid);
-	m_strList.push_back(&m_strTxReg2Bot);
-	m_strList.push_back(&m_strBiasReg1);
-	m_strList.push_back(&m_strBiasReg2);
-	m_strList.push_back(&m_strBiasReg3);
-	m_strList.push_back(&m_strBiasReg4);
-	m_strList.push_back(&m_strBiasReg5);
-	m_strList.push_back(&m_strBiasReg6);
-	m_strList.push_back(&m_strBiasReg7);
-	m_strList.push_back(&m_strBiasReg8);
-	m_strList.push_back(&m_strBiasReg9);
-
 	return TRUE;  // return TRUE unless you set the focus to a control
 				  // 예외: OCX 속성 페이지는 FALSE를 반환해야 합니다.
 }
