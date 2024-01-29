@@ -1135,19 +1135,6 @@ int CSemantic::SliderValueUpdate()
 }
 
 
-void CSemantic::ShowSlider(int nCmdShow)
-{
-	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(nCmdShow);
-	GetDlgItem(IDC_SLIDER_MAX_STATIC)->ShowWindow(nCmdShow);
-	GetDlgItem(IDC_SLIDER_MIN_STATIC)->ShowWindow(nCmdShow);
-	GetDlgItem(IDC_SLIDER_VALUE_STATIC)->ShowWindow(nCmdShow);
-	GetDlgItem(IDC_SLIDER_VALUE_HEX_STATIC)->ShowWindow(nCmdShow);
-	GetDlgItem(IDC_SLIDER_VALUE_BIN_STATIC)->ShowWindow(nCmdShow);
-	GetDlgItem(IDC_SELECTED_STATIC)->ShowWindow(nCmdShow);
-	if(nCmdShow==SW_SHOW) GetDlgItem(IDC_CONTROL_COMBO)->ShowWindow(SW_HIDE);
-}
-
-
 CString CSemantic::DecToBin(int dec)
 {
 	ASSERT(dec>=0 && dec <= 0xffff);	//2바이트 까지만 지원

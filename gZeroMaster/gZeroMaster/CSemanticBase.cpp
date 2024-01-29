@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "gZeroMaster.h"
 #include "CSemanticBase.h"
 #include "gZeroMasterDlg.h"
 #include "CRaw.h"
@@ -167,4 +168,16 @@ void CSemanticBase::UpdateBiasReg9(CString strBiasReg9, CRegister& reg)
 int CSemanticBase::SliderPos()
 {
 	return -1 * m_controlSlider.GetPos();
+}
+
+void CSemanticBase::ShowSlider(int nCmdShow)
+{
+	GetDlgItem(IDC_CONTROL_SLIDER)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_SLIDER_MAX_STATIC)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_SLIDER_MIN_STATIC)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_SLIDER_VALUE_STATIC)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_SLIDER_VALUE_HEX_STATIC)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_SLIDER_VALUE_BIN_STATIC)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_SELECTED_STATIC)->ShowWindow(nCmdShow);
+	if (nCmdShow == SW_SHOW) GetDlgItem(IDC_CONTROL_COMBO)->ShowWindow(SW_HIDE);
 }

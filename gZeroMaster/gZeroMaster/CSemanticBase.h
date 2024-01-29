@@ -87,4 +87,5 @@ public:
 	static void UpdateBiasReg8(CString strBiasReg8, CRegister& reg);
 	static void UpdateBiasReg9(CString strBiasReg9, CRegister& reg);
 	int SliderPos();
+	void ShowSlider(int nCmdShow);
 };
