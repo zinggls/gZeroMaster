@@ -91,4 +91,5 @@ public:
 	virtual void ControlValueEnable(BOOL b)=0;
 	afx_msg void OnBnClickedSemanticEditCheck();
 	void OnBnClickedAutoWriteCheck();
+	COLORREF SetColor(CDC* pDC, SelectStatic given);
 };

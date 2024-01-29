@@ -206,3 +206,11 @@ void CSemanticBase::OnBnClickedAutoWriteCheck()
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_bAutoWrite = !m_bAutoWrite;
 }
+
+COLORREF CSemanticBase::SetColor(CDC* pDC, SelectStatic given)
+{
+	if (m_selected == given)
+		return pDC->SetTextColor(RGB(255, 0, 0));
+	else
+		return pDC->SetTextColor(RGB(0, 0, 0));
+}

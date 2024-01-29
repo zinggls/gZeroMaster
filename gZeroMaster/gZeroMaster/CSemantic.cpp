@@ -524,15 +524,6 @@ void CSemantic::ControlValueEnable(BOOL b)
 }
 
 
-COLORREF CSemantic::SetColor(CDC* pDC, SelectStatic given)
-{
-	if (m_selected == given)
-		return pDC->SetTextColor(RGB(255, 0, 0));
-	else
-		return pDC->SetTextColor(RGB(0, 0, 0));
-}
-
-
 HBRUSH CSemantic::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 {
 	HBRUSH hbr = CDialogEx::OnCtlColor(pDC, pWnd, nCtlColor);
