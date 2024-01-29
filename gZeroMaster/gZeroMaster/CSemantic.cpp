@@ -42,15 +42,6 @@ CSemantic::CSemantic(CWnd* pParent /*=nullptr*/)
 	, m_strCMLInterfaceStageCurrent(_T(""))
 	, m_strFdCoreCur(_T(""))
 	, m_strFdBufCur(_T(""))
-	, m_bSemanticEdit(FALSE)
-	, m_bAutoWrite(FALSE)
-	, m_selected(SelectStatic::None)
-	, m_strSelectedStatic(_T(""))
-	, m_strSliderMin(_T(""))
-	, m_strSliderMax(_T(""))
-	, m_strSliderValue(_T(""))
-	, m_strSliderValueHex(_T(""))
-	, m_strSliderValueBin(_T(""))
 {
 	m_pParentWnd = pParent;
 }
