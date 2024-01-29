@@ -86,5 +86,5 @@ public:
 	static void UpdateBiasReg7(CString strBiasReg7, CRegister& reg);
 	static void UpdateBiasReg8(CString strBiasReg8, CRegister& reg);
 	static void UpdateBiasReg9(CString strBiasReg9, CRegister& reg);
-	virtual int SliderPos();
+	int SliderPos();
 };
