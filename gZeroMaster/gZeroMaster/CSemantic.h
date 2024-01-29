@@ -1,5 +1,6 @@
 ﻿#pragma once
 
+#include "CSemanticBase.h"
 #include "SemanticUserDefinedMessage.h"
 
 class CgZeroMasterDlg;
@@ -48,7 +49,7 @@ public:
 	int m_nFdBufCur;
 };
 
-class CSemantic : public CDialogEx
+class CSemantic : public CSemanticBase
 {
 	DECLARE_DYNAMIC(CSemantic)
 
