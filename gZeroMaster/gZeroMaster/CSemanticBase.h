@@ -88,4 +88,5 @@ public:
 	static void UpdateBiasReg9(CString strBiasReg9, CRegister& reg);
 	int SliderPos();
 	void ShowSlider(int nCmdShow);
+	virtual void ControlValueEnable(BOOL b)=0;
 };

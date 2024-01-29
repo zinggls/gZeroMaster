@@ -92,7 +92,7 @@ public:
 	void UpdateFdBufferCurrent(CRegister& reg);
 	void UpdateRegisters();
 	void ControlLabelEnable(BOOL b);
-	void ControlValueEnable(BOOL b);
+	virtual void ControlValueEnable(BOOL b);
 	afx_msg void OnBnClickedSemanticEditCheck();
 	COLORREF SetColor(CDC* pDC, SelectStatic given);
 	afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
