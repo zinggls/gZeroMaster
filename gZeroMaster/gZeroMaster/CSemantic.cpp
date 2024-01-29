@@ -174,12 +174,6 @@ BEGIN_MESSAGE_MAP(CSemantic, CDialogEx)
 END_MESSAGE_MAP()
 
 
-CgZeroMasterDlg* CSemantic::Parent()
-{
-	return dynamic_cast<CgZeroMasterDlg*>(m_pParentWnd);
-}
-
-
 // CSemantic 메시지 처리기
 
 

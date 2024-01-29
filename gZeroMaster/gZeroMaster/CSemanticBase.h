@@ -1,5 +1,7 @@
 #pragma once
 
+class CgZeroMasterDlg;
+
 class CSemanticBase : public CDialogEx
 {
 	DECLARE_DYNAMIC(CSemanticBase)
@@ -26,4 +28,7 @@ public:
 	CString m_strSliderValueHex;
 	CString m_strSliderValueBin;
 	CComboBox m_controlCombo;
+
+public:
+	CgZeroMasterDlg* Parent();
 };

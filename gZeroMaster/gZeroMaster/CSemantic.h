@@ -3,7 +3,6 @@
 #include "CSemanticBase.h"
 #include "SemanticUserDefinedMessage.h"
 
-class CgZeroMasterDlg;
 class CRaw;
 
 // CSemantic 대화 상자
@@ -101,7 +100,6 @@ public:
 	CString m_strFdBufCur;
 
 public:
-	CgZeroMasterDlg* Parent();
 	virtual BOOL OnInitDialog();
 	static void Parse(CRaw* pRaw, CRegister& reg);
 	void UpdateRxData(CRegister& reg);

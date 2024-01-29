@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "CSemanticBase.h"
+#include "gZeroMasterDlg.h"
 
 IMPLEMENT_DYNAMIC(CSemanticBase, CDialogEx)
 
@@ -19,4 +20,9 @@ CSemanticBase::CSemanticBase(CWnd* pParent /*=nullptr*/)
 
 CSemanticBase::~CSemanticBase()
 {
+}
+
+CgZeroMasterDlg* CSemanticBase::Parent()
+{
+	return dynamic_cast<CgZeroMasterDlg*>(m_pParentWnd);
 }
