@@ -1123,12 +1123,6 @@ void CSemantic::OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
 }
 
 
-int CSemantic::SliderPos()
-{
-	return -1 * m_controlSlider.GetPos();
-}
-
-
 int CSemantic::SliderValueUpdate()
 {
 	int curPos = SliderPos();

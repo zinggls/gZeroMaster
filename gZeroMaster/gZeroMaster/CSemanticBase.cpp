@@ -163,3 +163,8 @@ void CSemanticBase::UpdateBiasReg9(CString strBiasReg9, CRegister& reg)
 	reg.m_nFdCoreCur = (reg9 & 0xf0) >> 4;
 	reg.m_nFdBufCur = reg9 & 0x0f;
 }
+
+int CSemanticBase::SliderPos()
+{
+	return -1 * m_controlSlider.GetPos();
+}
