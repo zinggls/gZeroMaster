@@ -14,7 +14,8 @@
 IMPLEMENT_DYNAMIC(CSemantic, CDialogEx)
 
 CSemantic::CSemantic(CWnd* pParent /*=nullptr*/)
-	: m_strRxDataInterface(_T(""))
+	: CSemanticBase(pParent)
+	, m_strRxDataInterface(_T(""))
 	, m_strLimitingAmplifier(_T(""))
 	, m_strLnaGain(_T(""))
 	, m_strRegRefVolt(_T(""))
@@ -43,7 +44,6 @@ CSemantic::CSemantic(CWnd* pParent /*=nullptr*/)
 	, m_strFdCoreCur(_T(""))
 	, m_strFdBufCur(_T(""))
 {
-	m_pParentWnd = pParent;
 }
 
 CSemantic::~CSemantic()

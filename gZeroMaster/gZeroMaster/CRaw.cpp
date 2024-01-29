@@ -15,7 +15,8 @@
 IMPLEMENT_DYNAMIC(CRaw, CDialogEx)
 
 CRaw::CRaw(CWnd* pParent /*=nullptr*/)
-	: m_strRxReg1(_T(""))
+	: CRawBase(pParent)
+	, m_strRxReg1(_T(""))
 	, m_strTxReg1Top(_T(""))
 	, m_strTxReg1Mid(_T(""))
 	, m_strTxReg2Top(_T(""))
@@ -47,7 +48,6 @@ CRaw::CRaw(CWnd* pParent /*=nullptr*/)
 	m_strList.push_back(&m_strBiasReg7);
 	m_strList.push_back(&m_strBiasReg8);
 	m_strList.push_back(&m_strBiasReg9);
-	m_pParentWnd = pParent;
 }
 
 CRaw::~CRaw()
