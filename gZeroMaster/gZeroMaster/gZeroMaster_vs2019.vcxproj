@@ -120,6 +120,7 @@
     <ClInclude Include="CRaw.h" />
     <ClInclude Include="CRawBase.h" />
     <ClInclude Include="CSemantic.h" />
+    <ClInclude Include="CSemanticBase.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="gZeroMaster.h" />
     <ClInclude Include="gZeroMasterDlg.h" />
@@ -132,6 +133,7 @@
     <ClCompile Include="CRaw.cpp" />
     <ClCompile Include="CRawBase.cpp" />
     <ClCompile Include="CSemantic.cpp" />
+    <ClCompile Include="CSemanticBase.cpp" />
     <ClCompile Include="gZeroMaster.cpp" />
     <ClCompile Include="gZeroMasterDlg.cpp" />
     <ClCompile Include="pch.cpp">
