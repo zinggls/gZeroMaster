@@ -89,4 +89,5 @@ public:
 	int SliderPos();
 	void ShowSlider(int nCmdShow);
 	virtual void ControlValueEnable(BOOL b)=0;
+	afx_msg void OnBnClickedSemanticEditCheck();
 };

@@ -523,25 +523,6 @@ void CSemantic::ControlValueEnable(BOOL b)
 	GetDlgItem(IDC_FD_BUFFER_CURRENT_VALUE_STATIC)->EnableWindow(b);
 }
 
-void CSemantic::OnBnClickedSemanticEditCheck()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_bSemanticEdit = !m_bSemanticEdit;
-	if (m_bSemanticEdit) {
-		m_selected = SelectStatic::None;
-		ControlValueEnable(TRUE);
-		GetDlgItem(IDC_AUTO_WRITE_CHECK)->ShowWindow(SW_SHOW);
-	}
-	else {
-		ControlValueEnable(FALSE);
-		ShowSlider(SW_HIDE);
-		GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_HIDE);
-		GetDlgItem(IDC_CONTROL_COMBO)->ShowWindow(SW_HIDE);
-		GetDlgItem(IDC_AUTO_WRITE_CHECK)->ShowWindow(SW_HIDE);
-	}
-	UpdateData(FALSE);
-}
-
 
 COLORREF CSemantic::SetColor(CDC* pDC, SelectStatic given)
 {

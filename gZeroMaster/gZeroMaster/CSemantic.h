@@ -93,7 +93,6 @@ public:
 	void UpdateRegisters();
 	void ControlLabelEnable(BOOL b);
 	virtual void ControlValueEnable(BOOL b);
-	afx_msg void OnBnClickedSemanticEditCheck();
 	COLORREF SetColor(CDC* pDC, SelectStatic given);
 	afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
 	void SetControlSlider(int min, int max, CString strCurVal, int ticFreq, int lineSize, int pageSize);
