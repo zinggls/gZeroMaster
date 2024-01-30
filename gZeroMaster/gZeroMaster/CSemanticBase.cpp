@@ -391,3 +391,18 @@ int CSemanticBase::ComboSel()
 {
 	return m_controlCombo.GetCurSel();
 }
+
+int CSemanticBase::Read4BitValue(CString str)
+{
+	int val = _tcstol(str.GetBuffer(), NULL, 16);
+	ASSERT(val >= 0 && val <= 0xf);
+	return val;
+}
+
+
+int CSemanticBase::Read8BitValue(CString str)
+{
+	int val = _tcstol(str.GetBuffer(), NULL, 16);
+	ASSERT(val >= 0 && val <= 0xff);
+	return val;
+}
