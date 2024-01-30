@@ -275,7 +275,7 @@ void CSemanticBase::SetControlSlider(int min, int max, CString strCurVal, int ti
 	SliderValueUpdate();
 }
 
-void CSemanticBase::SetSliders(SelectStatic ss, int min, int max, CString strCurVal, int ticFreq, int lineSize, int pageSize, UINT idcStatic)
+void CSemanticBase::SetSliderGroup(SelectStatic ss, int min, int max, CString strCurVal, int ticFreq, int lineSize, int pageSize, UINT idcStatic)
 {
 	m_selected = ss;
 	ShowSlider(SW_SHOW);

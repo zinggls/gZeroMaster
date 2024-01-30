@@ -95,5 +95,5 @@ public:
 	static CString DecToBin(int dec);
 	int SliderValueUpdate();
 	void SetControlSlider(int min, int max, CString strCurVal, int ticFreq, int lineSize, int pageSize);
-	void SetSliders(SelectStatic ss, int min, int max, CString strCurVal, int ticFreq, int lineSize, int pageSize, UINT idcStatic);
+	void SetSliderGroup(SelectStatic ss, int min, int max, CString strCurVal, int ticFreq, int lineSize, int pageSize, UINT idcStatic);
 };
