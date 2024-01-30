@@ -406,3 +406,200 @@ int CSemanticBase::Read8BitValue(CString str)
 	ASSERT(val >= 0 && val <= 0xff);
 	return val;
 }
+
+int CSemanticBase::OnNewRxData(int val, int newVal)
+{
+	return (val & 0xe0) | newVal << 4 | (val & 0x0f);
+}
+
+
+int CSemanticBase::OnNewLimAmp(int val, int newVal)
+{
+	return (val & 0xf0) | newVal << 3 | (val & 0x07);
+}
+
+
+int CSemanticBase::OnNewRegRef(int val, int newVal)
+{
+	return (val & 0xe0) | newVal << 4 | (val & 0x0f);
+}
+
+
+int CSemanticBase::OnNewVcoPow(int val, int newVal)
+{
+	return (val & 0xfe) | newVal;
+}
+
+
+int CSemanticBase::OnNewModPow(int val, int newVal)
+{
+	return (val & 0x7f) | newVal << 7;
+}
+
+
+int CSemanticBase::OnNewTestBufPow(int val, int newVal)
+{
+	return (val & 0x80) | newVal << 6 | (val & 0x3f);
+}
+
+
+int CSemanticBase::OnNewDataInp(int val, int newVal)
+{
+	return (val & 0xc0) | newVal << 5 | (val & 0x1f);
+}
+
+
+int CSemanticBase::OnNewPaPow(int val, int newVal)
+{
+	return (val & 0xe0) | newVal << 4 | (val & 0x0f);
+}
+
+
+int CSemanticBase::OnNewBiasBlock(int val, int newVal)
+{
+	return (val & 0xfe) | newVal;
+}
+
+
+int CSemanticBase::OnNewLnaGain(int val, int newVal)
+{
+	return (val & 0xf8) | newVal;
+}
+
+
+int CSemanticBase::OnNewDutyCycle(int val, int newVal)
+{
+	return newVal;
+}
+
+
+int CSemanticBase::OnNewVcoOscUp(int val, int newVal)
+{
+	return (newVal & 0x7f8) >> 3;
+}
+
+
+int CSemanticBase::OnNewVcoOscDown(int val, int newVal)
+{
+	return (newVal & 0x7) << 5 | (val & 0x1f);
+}
+
+
+int CSemanticBase::OnNewVcoVdd(int val, int newVal)
+{
+	return (val & 0xf0) | (newVal & 0x0f);
+}
+
+
+int CSemanticBase::OnNewPaGain1(int val, int newVal)
+{
+	return (newVal & 0x0f) << 4 | (val & 0x0f);
+}
+
+
+int CSemanticBase::OnNewPaGain2(int val, int newVal)
+{
+	return (val & 0xf0) | (newVal & 0x0f);
+}
+
+
+int CSemanticBase::OnNewTestBuffer(int val, int newVal)
+{
+	return (val & 0xf0) | (newVal & 0x0f);
+}
+
+
+int CSemanticBase::OnNewLna1(int val, int newVal)
+{
+	return (val & 0xf0) | (newVal & 0x0f);
+}
+
+
+int CSemanticBase::OnNewLna2(int val, int newVal)
+{
+	return OnNewLna1(val, newVal);
+}
+
+
+int CSemanticBase::OnNewLna3(int val, int newVal)
+{
+	return (newVal & 0x0f) << 4 | (val & 0x0f);
+}
+
+
+int CSemanticBase::OnNewLna4(int val, int newVal)
+{
+	return (val & 0xf0) | (newVal & 0x0f);
+}
+
+
+int CSemanticBase::OnNewLna5(int val, int newVal)
+{
+	return (newVal & 0x0f) << 4 | (val & 0x0f);
+}
+
+
+int CSemanticBase::OnNewRefStage(int val, int newVal)
+{
+	return (newVal & 0x0f) << 4 | (val & 0x0f);
+}
+
+
+int CSemanticBase::OnNewIpStage(int val, int newVal)
+{
+	return (val & 0xf0) | (newVal & 0x0f);
+}
+
+
+int CSemanticBase::OnNewFb(int val, int newVal)
+{
+	return (newVal & 0x0f) << 4 | (val & 0x0f);
+}
+
+
+int CSemanticBase::OnNewCore(int val, int newVal)
+{
+	return (val & 0xf0) | (newVal & 0x0f);
+}
+
+
+int CSemanticBase::OnNewOP(int val, int newVal)
+{
+	return (newVal & 0x0f) << 4 | (val & 0x0f);
+}
+
+
+int CSemanticBase::OnNewIP(int val, int newVal)
+{
+	return (val & 0xf0) | (newVal & 0x0f);
+}
+
+
+int CSemanticBase::OnNewHL(int val, int newVal)
+{
+	return (newVal & 0x0f) << 4 | (val & 0x0f);
+}
+
+
+int CSemanticBase::OnNewCMOS(int val, int newVal)
+{
+	return (val & 0xf0) | (newVal & 0x0f);
+}
+
+
+int CSemanticBase::OnNewCML(int val, int newVal)
+{
+	return newVal & 0xff;
+}
+
+
+int CSemanticBase::OnNewFdCore(int val, int newVal)
+{
+	return (newVal & 0x0f) << 4 | (val & 0x0f);
+}
+
+
+int CSemanticBase::OnNewFdBuf(int val, int newVal)
+{
+	return (val & 0xf0) | (newVal & 0x0f);
+}
