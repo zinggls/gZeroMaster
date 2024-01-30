@@ -12,7 +12,7 @@
 
 // CRaw 대화 상자
 
-IMPLEMENT_DYNAMIC(CRaw, CDialogEx)
+IMPLEMENT_DYNAMIC(CRaw, CRawBase)
 
 CRaw::CRaw(CWnd* pParent /*=nullptr*/)
 	: CRawBase(pParent)

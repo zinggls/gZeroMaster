@@ -11,7 +11,7 @@
 
 // CSemantic 대화 상자
 
-IMPLEMENT_DYNAMIC(CSemantic, CDialogEx)
+IMPLEMENT_DYNAMIC(CSemantic, CSemanticBase)
 
 CSemantic::CSemantic(CWnd* pParent /*=nullptr*/)
 	: CSemanticBase(pParent)
