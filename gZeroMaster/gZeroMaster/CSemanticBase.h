@@ -94,4 +94,5 @@ public:
 	COLORREF SetColor(CDC* pDC, SelectStatic given);
 	static CString DecToBin(int dec);
 	int SliderValueUpdate();
+	void SetControlSlider(int min, int max, CString strCurVal, int ticFreq, int lineSize, int pageSize);
 };

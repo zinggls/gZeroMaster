@@ -631,35 +631,6 @@ HBRUSH CSemantic::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 }
 
 
-void CSemantic::SetControlSlider(int min,int max,CString strCurVal,int ticFreq,int lineSize,int pageSize)
-{
-	int curVal = _tcstol(strCurVal.GetBuffer(), NULL, 16);
-
-	m_strSliderMin.Format(_T("Min:%d"), min);
-	if (min != 0) {
-		m_strSliderMin += _T("(");
-		m_strSliderMin += DecToBin(min).TrimLeft(_T('0')).TrimLeft();
-		m_strSliderMin += _T(")");
-	}
-
-	m_strSliderMax.Format(_T("Max:%d"), max);
-	m_strSliderMax += _T("(");
-	(max > 0xff) ? m_strSliderMax += DecToBin(max).Right(15) : m_strSliderMax += DecToBin(max).Right(10);
-	m_strSliderMax += _T(")");
-
-	//슬라이더 컨트롤이 최대값이 아래로 표시되기때문에 최대값을 -1을 곱하여 최소갑인것 처럼 표시
-	m_controlSlider.SetRange(-1 * max, -1 * min);
-	m_controlSlider.SetRangeMin(-1 * max);
-	m_controlSlider.SetRangeMax(-1 * min);
-	m_controlSlider.SetPos(-1 * curVal);
-	m_controlSlider.SetTicFreq(ticFreq);
-	m_controlSlider.SetLineSize(lineSize);
-	m_controlSlider.SetPageSize(pageSize);
-
-	SliderValueUpdate();
-}
-
-
 void CSemantic::OnStnClickedLnaGainValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.

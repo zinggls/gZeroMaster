@@ -94,7 +94,6 @@ public:
 	void ControlLabelEnable(BOOL b);
 	virtual void ControlValueEnable(BOOL b);
 	afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
-	void SetControlSlider(int min, int max, CString strCurVal, int ticFreq, int lineSize, int pageSize);
 	afx_msg void OnStnClickedLnaGainValueStatic();
 	afx_msg void OnStnClickedDutyCycleValueStatic();
 	afx_msg void OnStnClickedVcoOscFreqValueStatic();
