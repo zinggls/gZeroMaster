@@ -634,345 +634,161 @@ HBRUSH CSemantic::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 void CSemantic::OnStnClickedLnaGainValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = SelectStatic::LnaGain;
-	ShowSlider(SW_SHOW);
-	Invalidate();	//모든것을 다시 그리는 것은 비효율적이지만 제일 간단하다
-
-	SetControlSlider(0, 7, m_strLnaGain, 1, 1, 10);
-	GetDlgItem(IDC_LNA_GAIN_STATIC)->GetWindowText(m_strSelectedStatic);
-	GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_SHOW);
-	GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE);
-	UpdateData(FALSE);
+	SetSliders(SelectStatic::LnaGain, 0, 7, m_strLnaGain, 1, 1, 10, IDC_LNA_GAIN_STATIC);
 }
 
 
 void CSemantic::OnStnClickedDutyCycleValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = SelectStatic::DutyCycle;
-	ShowSlider(SW_SHOW);
-	Invalidate();
-
-	SetControlSlider(0, 255, m_strDutyCycle, 10, 1, 10);
-	GetDlgItem(IDC_DUTY_CYCLE_STATIC)->GetWindowText(m_strSelectedStatic);
-	GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_SHOW);
-	GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE);
-	UpdateData(FALSE);
+	SetSliders(SelectStatic::DutyCycle, 0, 255, m_strDutyCycle, 10, 1, 10, IDC_DUTY_CYCLE_STATIC);
 }
 
 
 void CSemantic::OnStnClickedVcoOscFreqValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = SelectStatic::VcoOsc;
-	ShowSlider(SW_SHOW);
-	Invalidate();
-
-	SetControlSlider(0, 2047, m_strVcoOscFreq, 50, 1, 50);
-	GetDlgItem(IDC_VCO_OSC_FREQ_STATIC)->GetWindowText(m_strSelectedStatic);
-	GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_SHOW);
-	GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE);
-	UpdateData(FALSE);
+	SetSliders(SelectStatic::VcoOsc, 0, 2047, m_strVcoOscFreq, 50, 1, 50, IDC_VCO_OSC_FREQ_STATIC);
 }
 
 
 void CSemantic::OnStnClickedVcoVddValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = SelectStatic::VcoVdd;
-	ShowSlider(SW_SHOW);
-	Invalidate();
-
-	SetControlSlider(0, 15, m_strVcoVdd, 1, 1, 10);
-	GetDlgItem(IDC_VCO_VDD_STATIC)->GetWindowText(m_strSelectedStatic);
-	GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_SHOW);
-	GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE);
-	UpdateData(FALSE);
+	SetSliders(SelectStatic::VcoVdd, 0, 15, m_strVcoVdd, 1, 1, 10, IDC_VCO_VDD_STATIC);
 }
 
 
 void CSemantic::OnStnClickedPaGainControl1ValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = SelectStatic::PaGain1;
-	ShowSlider(SW_SHOW);
-	Invalidate();
-
-	SetControlSlider(0, 15, m_strPaGainControl1, 1, 1, 10);
-	GetDlgItem(IDC_PA_GAIN_CONTROL1_STATIC)->GetWindowText(m_strSelectedStatic);
-	GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_SHOW);
-	GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE);
-	UpdateData(FALSE);
+	SetSliders(SelectStatic::PaGain1, 0, 15, m_strPaGainControl1, 1, 1, 10, IDC_PA_GAIN_CONTROL1_STATIC);
 }
 
 
 void CSemantic::OnStnClickedPaGainControl2ValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = SelectStatic::PaGain2;
-	ShowSlider(SW_SHOW);
-	Invalidate();
-
-	SetControlSlider(0, 15, m_strPaGainControl2, 1, 1, 10);
-	GetDlgItem(IDC_PA_GAIN_CONTROL2_STATIC)->GetWindowText(m_strSelectedStatic);
-	GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_SHOW);
-	GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE);
-	UpdateData(FALSE);
+	SetSliders(SelectStatic::PaGain2, 0, 15, m_strPaGainControl2, 1, 1, 10, IDC_PA_GAIN_CONTROL2_STATIC);
 }
 
 
 void CSemantic::OnStnClickedTestBufferCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = SelectStatic::TestBuffer;
-	ShowSlider(SW_SHOW);
-	Invalidate();
-
-	SetControlSlider(0, 15, m_strTestBufferCurrent, 1, 1, 10);
-	GetDlgItem(IDC_TEST_BUFFER_CURRENT_STATIC)->GetWindowText(m_strSelectedStatic);
-	GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_SHOW);
-	GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE);
-	UpdateData(FALSE);
+	SetSliders(SelectStatic::TestBuffer, 0, 15, m_strTestBufferCurrent, 1, 1, 10, IDC_TEST_BUFFER_CURRENT_STATIC);
 }
 
 
 void CSemantic::OnStnClickedLna1BiasCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = SelectStatic::Lna1;
-	ShowSlider(SW_SHOW);
-	Invalidate();
-;
-	SetControlSlider(0, 15, m_strLna1Current, 1, 1, 10);
-	GetDlgItem(IDC_LNA1_BIAS_CURRENT_STATIC)->GetWindowText(m_strSelectedStatic);
-	GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_SHOW);
-	GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE);
-	UpdateData(FALSE);
+	SetSliders(SelectStatic::Lna1, 0, 15, m_strLna1Current, 1, 1, 10, IDC_LNA1_BIAS_CURRENT_STATIC);
 }
 
 
 void CSemantic::OnStnClickedLna2BiasCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = SelectStatic::Lna2;
-	ShowSlider(SW_SHOW);
-	Invalidate();
-
-	SetControlSlider(0, 15, m_strLna2Current, 1, 1, 10);
-	GetDlgItem(IDC_LNA2_BIAS_CURRENT_STATIC)->GetWindowText(m_strSelectedStatic);
-	GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_SHOW);
-	GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE);
-	UpdateData(FALSE);
+	SetSliders(SelectStatic::Lna2, 0, 15, m_strLna2Current, 1, 1, 10, IDC_LNA2_BIAS_CURRENT_STATIC);
 }
 
 
 void CSemantic::OnStnClickedLna3BiasCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = SelectStatic::Lna3;
-	ShowSlider(SW_SHOW);
-	Invalidate();
-
-	SetControlSlider(0, 15, m_strLna3Current, 1, 1, 10);
-	GetDlgItem(IDC_LNA3_BIAS_CURRENT_STATIC)->GetWindowText(m_strSelectedStatic);
-	GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_SHOW);
-	GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE);
-	UpdateData(FALSE);
+	SetSliders(SelectStatic::Lna3, 0, 15, m_strLna3Current, 1, 1, 10, IDC_LNA3_BIAS_CURRENT_STATIC);
 }
 
 
 void CSemantic::OnStnClickedLna4BiasCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = SelectStatic::Lna4;
-	ShowSlider(SW_SHOW);
-	Invalidate();
-
-	SetControlSlider(0, 15, m_strLna4Current, 1, 1, 10);
-	GetDlgItem(IDC_LNA4_BIAS_CURRENT_STATIC)->GetWindowText(m_strSelectedStatic);
-	GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_SHOW);
-	GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE);
-	UpdateData(FALSE);
+	SetSliders(SelectStatic::Lna4, 0, 15, m_strLna4Current, 1, 1, 10, IDC_LNA4_BIAS_CURRENT_STATIC);
 }
 
 
 void CSemantic::OnStnClickedLna5BiasCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = SelectStatic::Lna5;
-	ShowSlider(SW_SHOW);
-	Invalidate();
-
-	SetControlSlider(0, 15, m_strLna5Current, 1, 1, 10);
-	GetDlgItem(IDC_LNA5_BIAS_CURRENT_STATIC)->GetWindowText(m_strSelectedStatic);
-	GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_SHOW);
-	GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE);
-	UpdateData(FALSE);
+	SetSliders(SelectStatic::Lna5, 0, 15, m_strLna5Current, 1, 1, 10, IDC_LNA5_BIAS_CURRENT_STATIC);
 }
 
 
 void CSemantic::OnStnClickedDemodRefStageCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = SelectStatic::RefStage;
-	ShowSlider(SW_SHOW);
-	Invalidate();
-
-	SetControlSlider(0, 15, m_strDemodRefStageCurrent, 1, 1, 10);
-	GetDlgItem(IDC_DEMOD_REF_STAGE_CURRENT_STATIC)->GetWindowText(m_strSelectedStatic);
-	GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_SHOW);
-	GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE);
-	UpdateData(FALSE);
+	SetSliders(SelectStatic::RefStage, 0, 15, m_strDemodRefStageCurrent, 1, 1, 10, IDC_DEMOD_REF_STAGE_CURRENT_STATIC);
 }
 
 
 void CSemantic::OnStnClickedDemodIpStageCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = SelectStatic::IpStage;
-	ShowSlider(SW_SHOW);
-	Invalidate();
-
-	SetControlSlider(0, 15, m_strDemodIPStageCurrent, 1, 1, 10);
-	GetDlgItem(IDC_DEMOD_IP_STAGE_CURRENT_STATIC)->GetWindowText(m_strSelectedStatic);
-	GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_SHOW);
-	GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE);
-	UpdateData(FALSE);
+	SetSliders(SelectStatic::IpStage, 0, 15, m_strDemodIPStageCurrent, 1, 1, 10, IDC_DEMOD_IP_STAGE_CURRENT_STATIC);
 }
 
 
 void CSemantic::OnStnClickedLaFbCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = SelectStatic::Fb;
-	ShowSlider(SW_SHOW);
-	Invalidate();
-
-	SetControlSlider(0, 15, m_strLaFBCurrent, 1, 1, 10);
-	GetDlgItem(IDC_LA_FB_CURRENT_STATIC)->GetWindowText(m_strSelectedStatic);
-	GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_SHOW);
-	GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE);
-	UpdateData(FALSE);
+	SetSliders(SelectStatic::Fb, 0, 15, m_strLaFBCurrent, 1, 1, 10, IDC_LA_FB_CURRENT_STATIC);
 }
 
 
 void CSemantic::OnStnClickedLaCoreCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = SelectStatic::Core;
-	ShowSlider(SW_SHOW);
-	Invalidate();
-
-	SetControlSlider(0, 15, m_strLaCoreCurrent, 1, 1, 10);
-	GetDlgItem(IDC_LA_CORE_CURRENT_STATIC)->GetWindowText(m_strSelectedStatic);
-	GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_SHOW);
-	GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE);
-	UpdateData(FALSE);
+	SetSliders(SelectStatic::Core, 0, 15, m_strLaCoreCurrent, 1, 1, 10, IDC_LA_CORE_CURRENT_STATIC);
 }
 
 
 void CSemantic::OnStnClickedLaOpBufferCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = SelectStatic::OP;
-	ShowSlider(SW_SHOW);
-	Invalidate();
-
-	SetControlSlider(0, 15, m_strLaOPBufferCurrent, 1, 1, 10);
-	GetDlgItem(IDC_LA_OP_BUFFER_CURRENT_STATIC)->GetWindowText(m_strSelectedStatic);
-	GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_SHOW);
-	GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE);
-	UpdateData(FALSE);
+	SetSliders(SelectStatic::OP, 0, 15, m_strLaOPBufferCurrent, 1, 1, 10, IDC_LA_OP_BUFFER_CURRENT_STATIC);
 }
 
 
 void CSemantic::OnStnClickedLaIpBufferCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = SelectStatic::IP;
-	ShowSlider(SW_SHOW);
-	Invalidate();
-
-	SetControlSlider(0, 15, m_strLaIPBufferCurrent, 1, 1, 10);
-	GetDlgItem(IDC_LA_IP_BUFFER_CURRENT_STATIC)->GetWindowText(m_strSelectedStatic);
-	GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_SHOW);
-	GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE);
-	UpdateData(FALSE);
+	SetSliders(SelectStatic::IP, 0, 15, m_strLaIPBufferCurrent, 1, 1, 10, IDC_LA_IP_BUFFER_CURRENT_STATIC);
 }
 
 
 void CSemantic::OnStnClickedLaHlDataRateCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = SelectStatic::HL;
-	ShowSlider(SW_SHOW);
-	Invalidate();
-
-	SetControlSlider(0, 15, m_strLaHLDataRateCurrent, 1, 1, 10);
-	GetDlgItem(IDC_LA_HL_DATA_RATE_CURRENT_STATIC)->GetWindowText(m_strSelectedStatic);
-	GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_SHOW);
-	GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE);
-	UpdateData(FALSE);
+	SetSliders(SelectStatic::HL, 0, 15, m_strLaHLDataRateCurrent, 1, 1, 10, IDC_LA_HL_DATA_RATE_CURRENT_STATIC);
 }
 
 
 void CSemantic::OnStnClickedCmosGainStageCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = SelectStatic::CMOS;
-	ShowSlider(SW_SHOW);
-	Invalidate();
-
-	SetControlSlider(0, 15, m_strCMOSGainStageCurrent, 1, 1, 10);
-	GetDlgItem(IDC_CMOS_GAIN_STAGE_CURRENT_STATIC)->GetWindowText(m_strSelectedStatic);
-	GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_SHOW);
-	GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE);
-	UpdateData(FALSE);
+	SetSliders(SelectStatic::CMOS, 0, 15, m_strCMOSGainStageCurrent, 1, 1, 10, IDC_CMOS_GAIN_STAGE_CURRENT_STATIC);
 }
 
 
 void CSemantic::OnStnClickedCmlInterfaceStageCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = SelectStatic::CML;
-	ShowSlider(SW_SHOW);
-	Invalidate();
-
-	SetControlSlider(0, 255, m_strCMLInterfaceStageCurrent, 10, 1, 10);
-	GetDlgItem(IDC_CML_INTERFACE_STAGE_CURRENT_STATIC)->GetWindowText(m_strSelectedStatic);
-	GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_SHOW);
-	GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE);
-	UpdateData(FALSE);
+	SetSliders(SelectStatic::CML, 0, 255, m_strCMLInterfaceStageCurrent, 10, 1, 10, IDC_CML_INTERFACE_STAGE_CURRENT_STATIC);
 }
 
 
 void CSemantic::OnStnClickedFdCoreCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = SelectStatic::FdCore;
-	ShowSlider(SW_SHOW);
-	Invalidate();
-
-	SetControlSlider(0, 15, m_strFdCoreCur, 1, 1, 10);
-	GetDlgItem(IDC_FD_CORE_CURRENT_STATIC)->GetWindowText(m_strSelectedStatic);
-	GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_SHOW);
-	GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE);
-	UpdateData(FALSE);
+	SetSliders(SelectStatic::FdCore, 0, 15, m_strFdCoreCur, 1, 1, 10, IDC_FD_CORE_CURRENT_STATIC);
 }
 
 
 void CSemantic::OnStnClickedFdBufferCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = SelectStatic::FdBuf;
-	ShowSlider(SW_SHOW);
-	Invalidate();
-
-	SetControlSlider(0, 15, m_strFdBufCur, 1, 1, 10);
-	GetDlgItem(IDC_FD_BUFFER_CURRENT_STATIC)->GetWindowText(m_strSelectedStatic);
-	GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_SHOW);
-	GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE);
-	UpdateData(FALSE);
+	SetSliders(SelectStatic::FdBuf, 0, 15, m_strFdBufCur, 1, 1, 10, IDC_FD_BUFFER_CURRENT_STATIC);
 }
 
 
