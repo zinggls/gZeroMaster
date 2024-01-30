@@ -274,3 +274,16 @@ void CSemanticBase::SetControlSlider(int min, int max, CString strCurVal, int ti
 
 	SliderValueUpdate();
 }
+
+void CSemanticBase::SetSliders(SelectStatic ss, int min, int max, CString strCurVal, int ticFreq, int lineSize, int pageSize, UINT idcStatic)
+{
+	m_selected = ss;
+	ShowSlider(SW_SHOW);
+	Invalidate();	//모든것을 다시 그리는 것은 비효율적이지만 제일 간단하다
+
+	SetControlSlider(min, max, strCurVal, ticFreq, lineSize, pageSize);
+	GetDlgItem(idcStatic)->GetWindowText(m_strSelectedStatic);
+	GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_SHOW);
+	GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE);
+	UpdateData(FALSE);
+}
