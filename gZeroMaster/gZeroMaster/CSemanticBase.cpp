@@ -235,3 +235,14 @@ CString CSemanticBase::DecToBin(int dec)
 	TRACE(_T("DecToBin:") + strBin + _T("\n"));
 	return strBin;
 }
+
+int CSemanticBase::SliderValueUpdate()
+{
+	int curPos = SliderPos();
+	m_strSliderValue.Format(_T("Dec:%d"), curPos);
+	m_strSliderValueHex.Format(_T("Hex:0x%02x"), curPos);
+	m_strSliderValueBin = _T("Bin:");
+	(curPos > 0xff) ? m_strSliderValueBin += DecToBin(curPos).Right(15) : m_strSliderValueBin += DecToBin(curPos).Right(10);
+	UpdateData(FALSE);
+	return curPos;
+}

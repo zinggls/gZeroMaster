@@ -119,7 +119,6 @@ public:
 	afx_msg void OnStnClickedFdCoreCurrentValueStatic();
 	afx_msg void OnStnClickedFdBufferCurrentValueStatic();
 	afx_msg void OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar);
-	int SliderValueUpdate();
 	afx_msg void OnBnClickedReadAllButton();
 	afx_msg void OnStnClickedRxDataIfEnableValueStatic();
 	afx_msg void OnStnClickedLimitingAmpEnableValueStatic();

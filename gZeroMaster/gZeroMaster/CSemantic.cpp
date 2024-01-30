@@ -1095,18 +1095,6 @@ void CSemantic::OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
 }
 
 
-int CSemantic::SliderValueUpdate()
-{
-	int curPos = SliderPos();
-	m_strSliderValue.Format(_T("Dec:%d"), curPos);
-	m_strSliderValueHex.Format(_T("Hex:0x%02x"), curPos);
-	m_strSliderValueBin = _T("Bin:");
-	(curPos > 0xff) ? m_strSliderValueBin += DecToBin(curPos).Right(15) : m_strSliderValueBin += DecToBin(curPos).Right(10);
-	UpdateData(FALSE);
-	return curPos;
-}
-
-
 void CSemantic::OnBnClickedReadAllButton()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
