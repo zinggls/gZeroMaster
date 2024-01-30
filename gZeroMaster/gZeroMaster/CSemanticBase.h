@@ -92,4 +92,5 @@ public:
 	afx_msg void OnBnClickedSemanticEditCheck();
 	void OnBnClickedAutoWriteCheck();
 	COLORREF SetColor(CDC* pDC, SelectStatic given);
+	static CString DecToBin(int dec);
 };
