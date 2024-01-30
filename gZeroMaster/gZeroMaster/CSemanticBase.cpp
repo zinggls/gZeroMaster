@@ -386,3 +386,8 @@ void CSemanticBase::ControlLabelEnable(BOOL b)
 	GetDlgItem(IDC_FD_CORE_CURRENT_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_FD_BUFFER_CURRENT_STATIC)->EnableWindow(b);
 }
+
+int CSemanticBase::ComboSel()
+{
+	return m_controlCombo.GetCurSel();
+}

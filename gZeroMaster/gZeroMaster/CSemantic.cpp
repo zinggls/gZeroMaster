@@ -985,12 +985,6 @@ void CSemantic::OnCbnSelchangeControlCombo()
 }
 
 
-int CSemantic::ComboSel()
-{
-	return m_controlCombo.GetCurSel();
-}
-
-
 int CSemantic::OnNewRxData(int val, int newVal)
 {
 	return (val & 0xe0) | newVal << 4 | (val & 0x0f);
