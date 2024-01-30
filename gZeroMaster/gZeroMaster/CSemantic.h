@@ -91,7 +91,6 @@ public:
 	void UpdateFdCoreCurrent(CRegister& reg);
 	void UpdateFdBufferCurrent(CRegister& reg);
 	void UpdateRegisters();
-	void ControlLabelEnable(BOOL b);
 	virtual void ControlValueEnable(BOOL b);
 	afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
 	afx_msg void OnStnClickedLnaGainValueStatic();
