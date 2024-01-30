@@ -134,4 +134,6 @@ public:
 	static int OnNewCML(int val, int newVal);
 	static int OnNewFdCore(int val, int newVal);
 	static int OnNewFdBuf(int val, int newVal);
+	static int disableOrEnable(CString str);
+	static int strToInt(CString zero, CString one, CString str);
 };

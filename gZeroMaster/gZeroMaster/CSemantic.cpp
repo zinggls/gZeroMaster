@@ -1230,22 +1230,6 @@ void CSemantic::OnBnClickedWriteAllButton()
 }
 
 
-int CSemantic::disableOrEnable(CString str)
-{
-	return strToInt(_T("disable"), _T("enable"), str);
-}
-
-
-int CSemantic::strToInt(CString zero, CString one, CString str)
-{
-	ASSERT(str == zero || str == one);
-
-	if (str == zero) return 0;
-	ASSERT(str == one);
-	return 1;
-}
-
-
 int CSemantic::RxData()
 {
 	return disableOrEnable(m_strRxDataInterface);

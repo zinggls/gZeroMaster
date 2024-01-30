@@ -603,3 +603,18 @@ int CSemanticBase::OnNewFdBuf(int val, int newVal)
 {
 	return (val & 0xf0) | (newVal & 0x0f);
 }
+
+int CSemanticBase::disableOrEnable(CString str)
+{
+	return strToInt(_T("disable"), _T("enable"), str);
+}
+
+
+int CSemanticBase::strToInt(CString zero, CString one, CString str)
+{
+	ASSERT(str == zero || str == one);
+
+	if (str == zero) return 0;
+	ASSERT(str == one);
+	return 1;
+}
