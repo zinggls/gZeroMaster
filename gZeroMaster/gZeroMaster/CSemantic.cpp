@@ -894,25 +894,10 @@ void CSemantic::OnBnClickedReadAllButton()
 void CSemantic::OnStnClickedRxDataIfEnableValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = SelectStatic::RxData;
-	ShowSlider(SW_HIDE);
-
-	for (int i = m_controlCombo.GetCount() - 1; i >= 0; i--) m_controlCombo.DeleteString(i);
-	m_controlCombo.AddString(_T("disable"));	//0
-	m_controlCombo.AddString(_T("enable"));		//1
 
 	CRegister reg;
 	Parse(Parent()->m_pRaw, reg);
-	m_controlCombo.SetCurSel(reg.m_nRxData);
-
-	GetDlgItem(IDC_CONTROL_COMBO)->ShowWindow(SW_SHOW);
-	GetDlgItem(IDC_SELECTED_STATIC)->ShowWindow(SW_SHOW);
-	Invalidate();
-
-	GetDlgItem(IDC_RX_DATA_IF_ENABLE_STATIC)->GetWindowText(m_strSelectedStatic);
-	GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_SHOW);
-	GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE);
-	UpdateData(FALSE);
+	SetComboGroup(SelectStatic::RxData, _T("disable"), _T("enable"), reg.m_nRxData, IDC_RX_DATA_IF_ENABLE_STATIC);
 }
 
 
@@ -920,200 +905,80 @@ void CSemantic::OnStnClickedRxDataIfEnableValueStatic()
 void CSemantic::OnStnClickedLimitingAmpEnableValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = SelectStatic::LimAmp;
-	ShowSlider(SW_HIDE);
-
-	for (int i = m_controlCombo.GetCount() - 1; i >= 0; i--) m_controlCombo.DeleteString(i);
-	m_controlCombo.AddString(_T("disable"));	//0
-	m_controlCombo.AddString(_T("enable"));		//1
 
 	CRegister reg;
 	Parse(Parent()->m_pRaw, reg);
-	m_controlCombo.SetCurSel(reg.m_nLimitAmp);
-
-	GetDlgItem(IDC_CONTROL_COMBO)->ShowWindow(SW_SHOW);
-	GetDlgItem(IDC_SELECTED_STATIC)->ShowWindow(SW_SHOW);
-	Invalidate();
-
-	GetDlgItem(IDC_LIMITING_AMP_ENABLE_STATIC)->GetWindowText(m_strSelectedStatic);
-	GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_SHOW);
-	GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE);
-	UpdateData(FALSE);
+	SetComboGroup(SelectStatic::LimAmp, _T("disable"), _T("enable"), reg.m_nLimitAmp, IDC_LIMITING_AMP_ENABLE_STATIC);
 }
 
 
 void CSemantic::OnStnClickedRegRefVoltValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = SelectStatic::RegRef;
-	ShowSlider(SW_HIDE);
-
-	for (int i = m_controlCombo.GetCount() - 1; i >= 0; i--) m_controlCombo.DeleteString(i);
-	m_controlCombo.AddString(_T("500mV"));	//0
-	m_controlCombo.AddString(_T("400mV"));	//1
 
 	CRegister reg;
 	Parse(Parent()->m_pRaw, reg);
-	m_controlCombo.SetCurSel(reg.m_nRegRef);
-
-	GetDlgItem(IDC_CONTROL_COMBO)->ShowWindow(SW_SHOW);
-	GetDlgItem(IDC_SELECTED_STATIC)->ShowWindow(SW_SHOW);
-	Invalidate();
-
-	GetDlgItem(IDC_REG_REF_VOLT_STATIC)->GetWindowText(m_strSelectedStatic);
-	GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_SHOW);
-	GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE);
-	UpdateData(FALSE);
+	SetComboGroup(SelectStatic::RegRef, _T("500mV"), _T("400mV"), reg.m_nRegRef, IDC_REG_REF_VOLT_STATIC);
 }
 
 
 void CSemantic::OnStnClickedVcoPowerValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = SelectStatic::VcoPow;
-	ShowSlider(SW_HIDE);
-
-	for (int i = m_controlCombo.GetCount() - 1; i >= 0; i--) m_controlCombo.DeleteString(i);
-	m_controlCombo.AddString(_T("VCO Off"));	//0
-	m_controlCombo.AddString(_T("VCO On"));		//1
 
 	CRegister reg;
 	Parse(Parent()->m_pRaw, reg);
-	m_controlCombo.SetCurSel(reg.m_nVcoPower);
-
-	GetDlgItem(IDC_CONTROL_COMBO)->ShowWindow(SW_SHOW);
-	GetDlgItem(IDC_SELECTED_STATIC)->ShowWindow(SW_SHOW);
-	Invalidate();
-
-	GetDlgItem(IDC_VCO_POWER_STATIC)->GetWindowText(m_strSelectedStatic);
-	GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_SHOW);
-	GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE);
-	UpdateData(FALSE);
+	SetComboGroup(SelectStatic::VcoPow, _T("VCO Off"), _T("VCO On"), reg.m_nVcoPower, IDC_VCO_POWER_STATIC);
 }
 
 
 void CSemantic::OnStnClickedModulatorPowerValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = SelectStatic::ModPow;
-	ShowSlider(SW_HIDE);
-
-	for (int i = m_controlCombo.GetCount() - 1; i >= 0; i--) m_controlCombo.DeleteString(i);
-	m_controlCombo.AddString(_T("Mod Off"));	//0
-	m_controlCombo.AddString(_T("Mod On"));		//1
 
 	CRegister reg;
 	Parse(Parent()->m_pRaw, reg);
-	m_controlCombo.SetCurSel(reg.m_nModPower);
-
-	GetDlgItem(IDC_CONTROL_COMBO)->ShowWindow(SW_SHOW);
-	GetDlgItem(IDC_SELECTED_STATIC)->ShowWindow(SW_SHOW);
-	Invalidate();
-
-	GetDlgItem(IDC_MODULATOR_POWER_STATIC)->GetWindowText(m_strSelectedStatic);
-	GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_SHOW);
-	GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE);
-	UpdateData(FALSE);
+	SetComboGroup(SelectStatic::ModPow, _T("Mod Off"), _T("Mod On"), reg.m_nModPower, IDC_MODULATOR_POWER_STATIC);
 }
 
 
 void CSemantic::OnStnClickedTestBufferPowerValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = SelectStatic::TestBufPow;
-	ShowSlider(SW_HIDE);
-
-	for (int i = m_controlCombo.GetCount() - 1; i >= 0; i--) m_controlCombo.DeleteString(i);
-	m_controlCombo.AddString(_T("Test Buff Off"));	//0
-	m_controlCombo.AddString(_T("Test Buff On"));	//1
 
 	CRegister reg;
 	Parse(Parent()->m_pRaw, reg);
-	m_controlCombo.SetCurSel(reg.m_nTestBufPower);
-
-	GetDlgItem(IDC_CONTROL_COMBO)->ShowWindow(SW_SHOW);
-	GetDlgItem(IDC_SELECTED_STATIC)->ShowWindow(SW_SHOW);
-	Invalidate();
-
-	GetDlgItem(IDC_TEST_BUFFER_POWER_STATIC)->GetWindowText(m_strSelectedStatic);
-	GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_SHOW);
-	GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE);
-	UpdateData(FALSE);
+	SetComboGroup(SelectStatic::TestBufPow, _T("Test Buff Off"), _T("Test Buff On"), reg.m_nTestBufPower, IDC_TEST_BUFFER_POWER_STATIC);
 }
 
 
 void CSemantic::OnStnClickedDataInputSelectValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = SelectStatic::DataInp;
-	ShowSlider(SW_HIDE);
-
-	for (int i = m_controlCombo.GetCount() - 1; i >= 0; i--) m_controlCombo.DeleteString(i);
-	m_controlCombo.AddString(_T("SER(Internal)"));			//0
-	m_controlCombo.AddString(_T("Test Buff(External)"));	//1
 
 	CRegister reg;
 	Parse(Parent()->m_pRaw, reg);
-	m_controlCombo.SetCurSel(reg.m_nDataInpSel);
-
-	GetDlgItem(IDC_CONTROL_COMBO)->ShowWindow(SW_SHOW);
-	GetDlgItem(IDC_SELECTED_STATIC)->ShowWindow(SW_SHOW);
-	Invalidate();
-
-	GetDlgItem(IDC_DATA_INPUT_SELECT_STATIC)->GetWindowText(m_strSelectedStatic);
-	GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_SHOW);
-	GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE);
-	UpdateData(FALSE);
+	SetComboGroup(SelectStatic::DataInp, _T("SER(Internal)"), _T("Test Buff(External)"), reg.m_nDataInpSel, IDC_DATA_INPUT_SELECT_STATIC);
 }
 
 
 void CSemantic::OnStnClickedPaPowerValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = SelectStatic::PaPow;
-	ShowSlider(SW_HIDE);
-
-	for (int i = m_controlCombo.GetCount() - 1; i >= 0; i--) m_controlCombo.DeleteString(i);
-	m_controlCombo.AddString(_T("PA Off"));	//0
-	m_controlCombo.AddString(_T("PA On"));	//1
 
 	CRegister reg;
 	Parse(Parent()->m_pRaw, reg);
-	m_controlCombo.SetCurSel(reg.m_nPaPower);
-
-	GetDlgItem(IDC_CONTROL_COMBO)->ShowWindow(SW_SHOW);
-	GetDlgItem(IDC_SELECTED_STATIC)->ShowWindow(SW_SHOW);
-	Invalidate();
-
-	GetDlgItem(IDC_PA_POWER_STATIC)->GetWindowText(m_strSelectedStatic);
-	GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_SHOW);
-	GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE);
-	UpdateData(FALSE);
+	SetComboGroup(SelectStatic::PaPow, _T("PA Off"), _T("PA On"), reg.m_nPaPower, IDC_PA_POWER_STATIC);
 }
 
 
 void CSemantic::OnStnClickedBiasBlockEnableValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_selected = SelectStatic::BiasBlock;
-	ShowSlider(SW_HIDE);
-
-	for (int i = m_controlCombo.GetCount() - 1; i >= 0; i--) m_controlCombo.DeleteString(i);
-	m_controlCombo.AddString(_T("disable"));	//0
-	m_controlCombo.AddString(_T("enable"));		//1
 
 	CRegister reg;
 	Parse(Parent()->m_pRaw, reg);
-	m_controlCombo.SetCurSel(reg.m_nBiasBlock);
-
-	GetDlgItem(IDC_CONTROL_COMBO)->ShowWindow(SW_SHOW);
-	GetDlgItem(IDC_SELECTED_STATIC)->ShowWindow(SW_SHOW);
-	Invalidate();
-
-	GetDlgItem(IDC_BIAS_BLOCK_ENABLE_STATIC)->GetWindowText(m_strSelectedStatic);
-	GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_SHOW);
-	GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE);
-	UpdateData(FALSE);
+	SetComboGroup(SelectStatic::BiasBlock, _T("disable"), _T("enable"), reg.m_nBiasBlock, IDC_BIAS_BLOCK_ENABLE_STATIC);
 }
 
 

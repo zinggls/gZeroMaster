@@ -287,3 +287,24 @@ void CSemanticBase::SetSliderGroup(SelectStatic ss, int min, int max, CString st
 	GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE);
 	UpdateData(FALSE);
 }
+
+void CSemanticBase::SetComboGroup(SelectStatic ss, CString strVal0,CString strVal1, int nVal, UINT idcStatic)
+{
+	m_selected = ss;
+	ShowSlider(SW_HIDE);
+
+	for (int i = m_controlCombo.GetCount() - 1; i >= 0; i--) m_controlCombo.DeleteString(i);
+	m_controlCombo.AddString(strVal0);	//0
+	m_controlCombo.AddString(strVal1);	//1
+
+	m_controlCombo.SetCurSel(nVal);
+
+	GetDlgItem(IDC_CONTROL_COMBO)->ShowWindow(SW_SHOW);
+	GetDlgItem(IDC_SELECTED_STATIC)->ShowWindow(SW_SHOW);
+	Invalidate();
+
+	GetDlgItem(idcStatic)->GetWindowText(m_strSelectedStatic);
+	GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_SHOW);
+	GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE);
+	UpdateData(FALSE);
+}
