@@ -1,5 +1,7 @@
 #pragma once
 
+#include <map>
+
 class CgZeroMasterDlg;
 class CRaw;
 
@@ -49,6 +51,13 @@ enum class SelectStatic {
 	DataInp, PaPow, PaGain1, PaGain2, TestBuffer, BiasBlock, Lna1, Lna2, Lna3, Lna4, Lna5, RefStage, IpStage, Fb, Core, OP, IP, HL, CMOS, CML, FdCore, FdBuf
 };
 
+class CStaticElem {
+	CStaticElem();
+public:
+	CStaticElem(UINT idc):m_uIdc(idc){}
+	UINT m_uIdc;
+};
+
 class CSemanticBase : public CDialogEx
 {
 	DECLARE_DYNAMIC(CSemanticBase)
@@ -70,6 +79,7 @@ public:
 	CString m_strSliderValueHex;
 	CString m_strSliderValueBin;
 	CComboBox m_controlCombo;
+	std::map<SelectStatic, CStaticElem> m_staticMap;
 
 public:
 	CgZeroMasterDlg* Parent();

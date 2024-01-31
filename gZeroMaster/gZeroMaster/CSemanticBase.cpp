@@ -18,6 +18,40 @@ CSemanticBase::CSemanticBase(CWnd* pParent /*=nullptr*/)
 	, m_strSliderValueBin(_T(""))
 {
 	m_pParentWnd = pParent;
+
+	m_staticMap.clear();
+	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::LnaGain, CStaticElem(IDC_LNA_GAIN_VALUE_STATIC)));
+	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::DutyCycle, CStaticElem(IDC_DUTY_CYCLE_VALUE_STATIC)));
+	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::VcoOsc, CStaticElem(IDC_VCO_OSC_FREQ_VALUE_STATIC)));
+	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::VcoVdd, CStaticElem(IDC_VCO_VDD_VALUE_STATIC)));
+	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::PaGain1, CStaticElem(IDC_PA_GAIN_CONTROL1_VALUE_STATIC)));
+	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::PaGain2, CStaticElem(IDC_PA_GAIN_CONTROL2_VALUE_STATIC)));
+	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::TestBuffer, CStaticElem(IDC_TEST_BUFFER_CURRENT_VALUE_STATIC)));
+	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::Lna1, CStaticElem(IDC_LNA1_BIAS_CURRENT_VALUE_STATIC)));
+	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::Lna2, CStaticElem(IDC_LNA2_BIAS_CURRENT_VALUE_STATIC)));
+	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::Lna3, CStaticElem(IDC_LNA3_BIAS_CURRENT_VALUE_STATIC)));
+	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::Lna4, CStaticElem(IDC_LNA4_BIAS_CURRENT_VALUE_STATIC)));
+	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::Lna5, CStaticElem(IDC_LNA5_BIAS_CURRENT_VALUE_STATIC)));
+	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::RefStage, CStaticElem(IDC_DEMOD_REF_STAGE_CURRENT_VALUE_STATIC)));
+	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::IpStage, CStaticElem(IDC_DEMOD_IP_STAGE_CURRENT_VALUE_STATIC)));
+	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::Fb, CStaticElem(IDC_LA_FB_CURRENT_VALUE_STATIC)));
+	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::Core, CStaticElem(IDC_LA_CORE_CURRENT_VALUE_STATIC)));
+	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::OP, CStaticElem(IDC_LA_OP_BUFFER_CURRENT_VALUE_STATIC)));
+	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::IP, CStaticElem(IDC_LA_IP_BUFFER_CURRENT_VALUE_STATIC)));
+	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::HL, CStaticElem(IDC_LA_HL_DATA_RATE_CURRENT_VALUE_STATIC)));
+	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::CMOS, CStaticElem(IDC_CMOS_GAIN_STAGE_CURRENT_VALUE_STATIC)));
+	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::CML, CStaticElem(IDC_CML_INTERFACE_STAGE_CURRENT_VALUE_STATIC)));
+	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::RxData, CStaticElem(IDC_RX_DATA_IF_ENABLE_VALUE_STATIC)));
+	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::LimAmp, CStaticElem(IDC_LIMITING_AMP_ENABLE_VALUE_STATIC)));
+	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::RegRef, CStaticElem(IDC_REG_REF_VOLT_VALUE_STATIC)));
+	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::VcoPow, CStaticElem(IDC_VCO_POWER_VALUE_STATIC)));
+	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::ModPow, CStaticElem(IDC_MODULATOR_POWER_VALUE_STATIC)));
+	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::TestBufPow, CStaticElem(IDC_TEST_BUFFER_POWER_VALUE_STATIC)));
+	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::DataInp, CStaticElem(IDC_DATA_INPUT_SELECT_VALUE_STATIC)));
+	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::PaPow, CStaticElem(IDC_PA_POWER_VALUE_STATIC)));
+	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::BiasBlock, CStaticElem(IDC_BIAS_BLOCK_ENABLE_VALUE_STATIC)));
+	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::FdCore, CStaticElem(IDC_FD_CORE_CURRENT_VALUE_STATIC)));
+	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::FdBuf, CStaticElem(IDC_FD_BUFFER_CURRENT_VALUE_STATIC)));
 }
 
 CSemanticBase::~CSemanticBase()
