@@ -199,195 +199,195 @@ BOOL CSemantic::OnInitDialog()
 }
 
 
-void CSemantic::UpdateRxData(CRegister &reg)
+void CSemantic::UpdateRxData(const CRegister &reg)
 {
 	(reg.m_nRxData) ? m_strRxDataInterface.Format(_T("enable")) : m_strRxDataInterface.Format(_T("disable"));
 }
 
 
-void CSemantic::UpdateLimitAmp(CRegister& reg)
+void CSemantic::UpdateLimitAmp(const CRegister& reg)
 {
 	(reg.m_nLimitAmp) ? m_strLimitingAmplifier.Format(_T("enable")) : m_strLimitingAmplifier.Format(_T("disable"));
 }
 
 
-void CSemantic::UpdateLnaGain(CRegister& reg)
+void CSemantic::UpdateLnaGain(const CRegister& reg)
 {
 	m_strLnaGain.Format(_T("0x%02x"), reg.m_nLnaGain);
 }
 
 
-void CSemantic::UpdateDutyCycle(CRegister& reg)
+void CSemantic::UpdateDutyCycle(const CRegister& reg)
 {
 	m_strDutyCycle.Format(_T("0x%02x"), reg.m_nDutyCycle);
 }
 
 
-void CSemantic::UpdateVcoOscFreq(CRegister& reg)
+void CSemantic::UpdateVcoOscFreq(const CRegister& reg)
 {
 	m_strVcoOscFreq.Format(_T("0x%02x"), reg.m_nVcoOsc);
 }
 
 
-void CSemantic::UpdateRegRefVolt(CRegister& reg)
+void CSemantic::UpdateRegRefVolt(const CRegister& reg)
 {
 	(reg.m_nRegRef) ? m_strRegRefVolt.Format(_T("400mV")) : m_strRegRefVolt.Format(_T("500mV"));
 }
 
 
-void CSemantic::UpdateVcoVdd(CRegister& reg)
+void CSemantic::UpdateVcoVdd(const CRegister& reg)
 {
 	m_strVcoVdd.Format(_T("0x%02x"), reg.m_nVcoVdd);
 }
 
 
-void CSemantic::UpdateVcoPower(CRegister& reg)
+void CSemantic::UpdateVcoPower(const CRegister& reg)
 {
 	(reg.m_nVcoPower) ? m_strVcoPower.Format(_T("VCO on")) : m_strVcoPower.Format(_T("VCO off"));
 }
 
 
-void CSemantic::UpdateModPower(CRegister& reg)
+void CSemantic::UpdateModPower(const CRegister& reg)
 {
 	(reg.m_nModPower) ? m_strModPower.Format(_T("MOD on")) : m_strModPower.Format(_T("MOD off"));
 }
 
 
-void CSemantic::UpdateTestBufferPower(CRegister& reg)
+void CSemantic::UpdateTestBufferPower(const CRegister& reg)
 {
 	(reg.m_nTestBufPower) ? m_strTestBufferPower.Format(_T("test buff on")) : m_strTestBufferPower.Format(_T("test buff off"));
 }
 
 
-void CSemantic::UpdateDataInputSelect(CRegister& reg)
+void CSemantic::UpdateDataInputSelect(const CRegister& reg)
 {
 	(reg.m_nDataInpSel) ? m_strDataInputSelect.Format(_T("Test buff(External)")) : m_strDataInputSelect.Format(_T("SER(Internal)"));
 }
 
 
-void CSemantic::UpdateDataPaPower(CRegister& reg)
+void CSemantic::UpdateDataPaPower(const CRegister& reg)
 {
 	(reg.m_nPaPower) ? m_strPaPower.Format(_T("PA on")) : m_strPaPower.Format(_T("PA off"));
 }
 
 
-void CSemantic::UpdatePaGainControl2(CRegister& reg)
+void CSemantic::UpdatePaGainControl2(const CRegister& reg)
 {
 	m_strPaGainControl2.Format(_T("0x%02x"), reg.m_nPaGainCon2);
 }
 
 
-void CSemantic::UpdatePaGainControl1(CRegister& reg)
+void CSemantic::UpdatePaGainControl1(const CRegister& reg)
 {
 	m_strPaGainControl1.Format(_T("0x%02x"), reg.m_nPaGainCon1);
 }
 
 
-void CSemantic::UpdateTestBufferCurrent(CRegister& reg)
+void CSemantic::UpdateTestBufferCurrent(const CRegister& reg)
 {
 	m_strTestBufferCurrent.Format(_T("0x%02x"), reg.m_nTestBufCur);
 }
 
 
-void CSemantic::UpdateBiasBlockEnable(CRegister& reg)
+void CSemantic::UpdateBiasBlockEnable(const CRegister& reg)
 {
 	(reg.m_nBiasBlock) ? m_strBiasBlockEnable.Format(_T("enable")) : m_strBiasBlockEnable.Format(_T("disable"));
 }
 
 
-void CSemantic::UpdateLna3Current(CRegister& reg)
+void CSemantic::UpdateLna3Current(const CRegister& reg)
 {
 	m_strLna3Current.Format(_T("0x%02x"), reg.m_nLna3Cur);
 }
 
 
-void CSemantic::UpdateLna1Current(CRegister& reg)
+void CSemantic::UpdateLna1Current(const CRegister& reg)
 {
 	m_strLna1Current.Format(_T("0x%02x"), reg.m_nLna1Cur);
 	m_strLna2Current = m_strLna1Current;
 }
 
 
-void CSemantic::UpdateLna2Current(CRegister& reg)
+void CSemantic::UpdateLna2Current(const CRegister& reg)
 {
 	m_strLna2Current.Format(_T("0x%02x"), reg.m_nLna1Cur);
 	m_strLna1Current = m_strLna2Current;
 }
 
 
-void CSemantic::UpdateLna5Current(CRegister& reg)
+void CSemantic::UpdateLna5Current(const CRegister& reg)
 {
 	m_strLna5Current.Format(_T("0x%02x"), reg.m_nLna5Cur);
 }
 
 
-void CSemantic::UpdateLna4Current(CRegister& reg)
+void CSemantic::UpdateLna4Current(const CRegister& reg)
 {
 	m_strLna4Current.Format(_T("0x%02x"), reg.m_nLna4Cur);
 }
 
 
-void CSemantic::UpdateDemodRefStageCurrent(CRegister& reg)
+void CSemantic::UpdateDemodRefStageCurrent(const CRegister& reg)
 {
 	m_strDemodRefStageCurrent.Format(_T("0x%02x"), reg.m_nDemodRefStageCur);
 }
 
 
-void CSemantic::UpdateDemodIPStageCurrent(CRegister& reg)
+void CSemantic::UpdateDemodIPStageCurrent(const CRegister& reg)
 {
 	m_strDemodIPStageCurrent.Format(_T("0x%02x"), reg.m_nDemodIPStageCur);
 }
 
 
-void CSemantic::UpdateLaFBCurrent(CRegister& reg)
+void CSemantic::UpdateLaFBCurrent(const CRegister& reg)
 {
 	m_strLaFBCurrent.Format(_T("0x%02x"), reg.m_nLaFBCur);
 }
 
 
-void CSemantic::UpdateLaCoreCurrent(CRegister& reg)
+void CSemantic::UpdateLaCoreCurrent(const CRegister& reg)
 {
 	m_strLaCoreCurrent.Format(_T("0x%02x"), reg.m_nLaCoreCur);
 }
 
 
-void CSemantic::UpdateLaOPBufferCurrent(CRegister& reg)
+void CSemantic::UpdateLaOPBufferCurrent(const CRegister& reg)
 {
 	m_strLaOPBufferCurrent.Format(_T("0x%02x"), reg.m_nLaOPBufCur);
 }
 
 
-void CSemantic::UpdateLaIPBufferCurrent(CRegister& reg)
+void CSemantic::UpdateLaIPBufferCurrent(const CRegister& reg)
 {
 	m_strLaIPBufferCurrent.Format(_T("0x%02x"), reg.m_nLaIPBufCur);
 }
 
 
-void CSemantic::UpdateLaHLDataRateCurrent(CRegister& reg)
+void CSemantic::UpdateLaHLDataRateCurrent(const CRegister& reg)
 {
 	m_strLaHLDataRateCurrent.Format(_T("0x%02x"), reg.m_nLaHLDataRateCur);
 }
 
 
-void CSemantic::UpdateCMOSGainStageCurrent(CRegister& reg)
+void CSemantic::UpdateCMOSGainStageCurrent(const CRegister& reg)
 {
 	m_strCMOSGainStageCurrent.Format(_T("0x%02x"), reg.m_nCMOSGainStageCur);
 }
 
 
-void CSemantic::UpdateCMLInterfaceStageCurrent(CRegister& reg)
+void CSemantic::UpdateCMLInterfaceStageCurrent(const CRegister& reg)
 {
 	m_strCMLInterfaceStageCurrent.Format(_T("0x%02x"), reg.m_nCMLInterfaceStageCur);
 }
 
 
-void CSemantic::UpdateFdCoreCurrent(CRegister& reg)
+void CSemantic::UpdateFdCoreCurrent(const CRegister& reg)
 {
 	m_strFdCoreCur.Format(_T("0x%02x"), reg.m_nFdCoreCur);
 }
 
 
-void CSemantic::UpdateFdBufferCurrent(CRegister& reg)
+void CSemantic::UpdateFdBufferCurrent(const CRegister& reg)
 {
 	m_strFdBufCur.Format(_T("0x%02x"), reg.m_nFdBufCur);
 }
@@ -396,7 +396,7 @@ void CSemantic::UpdateFdBufferCurrent(CRegister& reg)
 void CSemantic::UpdateRegisters()
 {
 	ASSERT(Parent());
-	CRegister& reg = getRegister();
+	const CRegister& reg = getRegister();
 
 	UpdateRxData(reg);
 	UpdateLimitAmp(reg);
@@ -709,7 +709,7 @@ void CSemantic::OnStnClickedRxDataIfEnableValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 
-	CRegister& reg = getRegister();
+	const CRegister& reg = getRegister();
 	SetComboGroup(SelectStatic::RxData, _T("disable"), _T("enable"), reg.m_nRxData, IDC_RX_DATA_IF_ENABLE_STATIC);
 }
 
@@ -719,7 +719,7 @@ void CSemantic::OnStnClickedLimitingAmpEnableValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 
-	CRegister& reg = getRegister();
+	const CRegister& reg = getRegister();
 	SetComboGroup(SelectStatic::LimAmp, _T("disable"), _T("enable"), reg.m_nLimitAmp, IDC_LIMITING_AMP_ENABLE_STATIC);
 }
 
@@ -728,7 +728,7 @@ void CSemantic::OnStnClickedRegRefVoltValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 
-	CRegister& reg = getRegister();
+	const CRegister& reg = getRegister();
 	SetComboGroup(SelectStatic::RegRef, _T("500mV"), _T("400mV"), reg.m_nRegRef, IDC_REG_REF_VOLT_STATIC);
 }
 
@@ -737,7 +737,7 @@ void CSemantic::OnStnClickedVcoPowerValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 
-	CRegister& reg = getRegister();
+	const CRegister& reg = getRegister();
 	SetComboGroup(SelectStatic::VcoPow, _T("VCO Off"), _T("VCO On"), reg.m_nVcoPower, IDC_VCO_POWER_STATIC);
 }
 
@@ -746,7 +746,7 @@ void CSemantic::OnStnClickedModulatorPowerValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 
-	CRegister& reg = getRegister();
+	const CRegister& reg = getRegister();
 	SetComboGroup(SelectStatic::ModPow, _T("Mod Off"), _T("Mod On"), reg.m_nModPower, IDC_MODULATOR_POWER_STATIC);
 }
 
@@ -755,7 +755,7 @@ void CSemantic::OnStnClickedTestBufferPowerValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 
-	CRegister& reg = getRegister();
+	const CRegister& reg = getRegister();
 	SetComboGroup(SelectStatic::TestBufPow, _T("Test Buff Off"), _T("Test Buff On"), reg.m_nTestBufPower, IDC_TEST_BUFFER_POWER_STATIC);
 }
 
@@ -764,7 +764,7 @@ void CSemantic::OnStnClickedDataInputSelectValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 
-	CRegister& reg = getRegister();
+	const CRegister& reg = getRegister();
 	SetComboGroup(SelectStatic::DataInp, _T("SER(Internal)"), _T("Test Buff(External)"), reg.m_nDataInpSel, IDC_DATA_INPUT_SELECT_STATIC);
 }
 
@@ -773,7 +773,7 @@ void CSemantic::OnStnClickedPaPowerValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 
-	CRegister& reg = getRegister();
+	const CRegister& reg = getRegister();
 	SetComboGroup(SelectStatic::PaPow, _T("PA Off"), _T("PA On"), reg.m_nPaPower, IDC_PA_POWER_STATIC);
 }
 
@@ -782,7 +782,7 @@ void CSemantic::OnStnClickedBiasBlockEnableValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 
-	CRegister& reg = getRegister();
+	const CRegister& reg = getRegister();
 	SetComboGroup(SelectStatic::BiasBlock, _T("disable"), _T("enable"), reg.m_nBiasBlock, IDC_BIAS_BLOCK_ENABLE_STATIC);
 }
 
@@ -827,7 +827,7 @@ void CSemantic::ResetValues()
 void CSemantic::OnCbnSelchangeControlCombo()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	CRegister& reg = getRegister();
+	const CRegister& reg = getRegister();
 
 	BOOL bProcessed = TRUE;
 	switch (m_selected) {
@@ -867,7 +867,7 @@ void CSemantic::OnCbnSelchangeControlCombo()
 }
 
 
-BOOL CSemantic::UpdateSemanticValue(int addr, int (* fpNewRegVal)(int, int), int newVal, void (CSemantic::* fpUpdateData)(CRegister&))
+BOOL CSemantic::UpdateSemanticValue(int addr, int (* fpNewRegVal)(int, int), int newVal, void (CSemantic::* fpUpdateData)(const CRegister&))
 {
 	int oldRegVal;
 	char buffer[3];
@@ -892,7 +892,7 @@ BOOL CSemantic::UpdateSemanticValue(int addr, int (* fpNewRegVal)(int, int), int
 #endif
 
 		if (fpUpdateData) {
-			CRegister& reg = getRegister();
+			const CRegister& reg = getRegister();
 			(this->*fpUpdateData)(reg);
 			UpdateData(FALSE);
 

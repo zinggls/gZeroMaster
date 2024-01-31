@@ -63,7 +63,7 @@ CgZeroMasterDlg* CSemanticBase::Parent()
 	return dynamic_cast<CgZeroMasterDlg*>(m_pParentWnd);
 }
 
-CRegister& CSemanticBase::getRegister()
+const CRegister& CSemanticBase::getRegister()
 {
 	Parse(Parent()->m_pRaw, m_reg);
 	return m_reg;
