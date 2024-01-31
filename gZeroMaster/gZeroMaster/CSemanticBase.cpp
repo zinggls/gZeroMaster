@@ -652,3 +652,17 @@ int CSemanticBase::strToInt(CString zero, CString one, CString str)
 	ASSERT(str == one);
 	return 1;
 }
+
+HBRUSH CSemanticBase::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
+{
+	HBRUSH hbr = CDialogEx::OnCtlColor(pDC, pWnd, nCtlColor);
+
+	// TODO:  여기서 DC의 특성을 변경합니다.
+	for (std::map<SelectStatic, CStaticElem>::iterator it = m_staticMap.begin(); it != m_staticMap.end(); ++it) {
+		if (pWnd->GetDlgCtrlID() == it->second.m_uIdc)
+			SetColor(pDC, it->first);
+	}
+
+	// TODO:  기본값이 적당하지 않으면 다른 브러시를 반환합니다.
+	return hbr;
+}

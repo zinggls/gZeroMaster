@@ -91,7 +91,6 @@ public:
 	void UpdateFdCoreCurrent(CRegister& reg);
 	void UpdateFdBufferCurrent(CRegister& reg);
 	void UpdateRegisters();
-	afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
 	afx_msg void OnStnClickedLnaGainValueStatic();
 	afx_msg void OnStnClickedDutyCycleValueStatic();
 	afx_msg void OnStnClickedVcoOscFreqValueStatic();

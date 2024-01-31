@@ -446,21 +446,6 @@ void CSemantic::UpdateRegisters()
 }
 
 
-HBRUSH CSemantic::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
-{
-	HBRUSH hbr = CDialogEx::OnCtlColor(pDC, pWnd, nCtlColor);
-
-	// TODO:  여기서 DC의 특성을 변경합니다.
-	for (std::map<SelectStatic, CStaticElem>::iterator it = m_staticMap.begin(); it != m_staticMap.end(); ++it) {
-		if (pWnd->GetDlgCtrlID() == it->second.m_uIdc)
-			SetColor(pDC, it->first);
-	}
-
-	// TODO:  기본값이 적당하지 않으면 다른 브러시를 반환합니다.
-	return hbr;
-}
-
-
 void CSemantic::OnStnClickedLnaGainValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
