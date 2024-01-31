@@ -63,6 +63,12 @@ CgZeroMasterDlg* CSemanticBase::Parent()
 	return dynamic_cast<CgZeroMasterDlg*>(m_pParentWnd);
 }
 
+CRegister& CSemanticBase::getRegister()
+{
+	Parse(Parent()->m_pRaw, m_reg);
+	return m_reg;
+}
+
 void CSemanticBase::Parse(CRaw* pRaw, CRegister& reg)
 {
 	ASSERT(pRaw->Parent()->m_chip == _T("A0") || pRaw->Parent()->m_chip == _T("B0"));

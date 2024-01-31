@@ -81,8 +81,12 @@ public:
 	CComboBox m_controlCombo;
 	std::map<SelectStatic, CStaticElem> m_staticMap;
 
+private:
+	CRegister m_reg;
+
 public:
 	CgZeroMasterDlg* Parent();
+	CRegister& getRegister();
 	static void Parse(CRaw* pRaw, CRegister& reg);
 	static void UpdateRxReg1(CString strRxReg1, CRegister& reg);
 	static void UpdateTxReg1(CString strTxRegTop, CString strTxRegMid, CString strTxRegBot, CRegister& reg, CString chip);

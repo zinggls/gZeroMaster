@@ -396,8 +396,7 @@ void CSemantic::UpdateFdBufferCurrent(CRegister& reg)
 void CSemantic::UpdateRegisters()
 {
 	ASSERT(Parent());
-	CRegister reg;
-	Parse(Parent()->m_pRaw, reg);
+	CRegister& reg = getRegister();
 
 	UpdateRxData(reg);
 	UpdateLimitAmp(reg);
@@ -710,8 +709,7 @@ void CSemantic::OnStnClickedRxDataIfEnableValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 
-	CRegister reg;
-	Parse(Parent()->m_pRaw, reg);
+	CRegister& reg = getRegister();
 	SetComboGroup(SelectStatic::RxData, _T("disable"), _T("enable"), reg.m_nRxData, IDC_RX_DATA_IF_ENABLE_STATIC);
 }
 
@@ -721,8 +719,7 @@ void CSemantic::OnStnClickedLimitingAmpEnableValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 
-	CRegister reg;
-	Parse(Parent()->m_pRaw, reg);
+	CRegister& reg = getRegister();
 	SetComboGroup(SelectStatic::LimAmp, _T("disable"), _T("enable"), reg.m_nLimitAmp, IDC_LIMITING_AMP_ENABLE_STATIC);
 }
 
@@ -731,8 +728,7 @@ void CSemantic::OnStnClickedRegRefVoltValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 
-	CRegister reg;
-	Parse(Parent()->m_pRaw, reg);
+	CRegister& reg = getRegister();
 	SetComboGroup(SelectStatic::RegRef, _T("500mV"), _T("400mV"), reg.m_nRegRef, IDC_REG_REF_VOLT_STATIC);
 }
 
@@ -741,8 +737,7 @@ void CSemantic::OnStnClickedVcoPowerValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 
-	CRegister reg;
-	Parse(Parent()->m_pRaw, reg);
+	CRegister& reg = getRegister();
 	SetComboGroup(SelectStatic::VcoPow, _T("VCO Off"), _T("VCO On"), reg.m_nVcoPower, IDC_VCO_POWER_STATIC);
 }
 
@@ -751,8 +746,7 @@ void CSemantic::OnStnClickedModulatorPowerValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 
-	CRegister reg;
-	Parse(Parent()->m_pRaw, reg);
+	CRegister& reg = getRegister();
 	SetComboGroup(SelectStatic::ModPow, _T("Mod Off"), _T("Mod On"), reg.m_nModPower, IDC_MODULATOR_POWER_STATIC);
 }
 
@@ -761,8 +755,7 @@ void CSemantic::OnStnClickedTestBufferPowerValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 
-	CRegister reg;
-	Parse(Parent()->m_pRaw, reg);
+	CRegister& reg = getRegister();
 	SetComboGroup(SelectStatic::TestBufPow, _T("Test Buff Off"), _T("Test Buff On"), reg.m_nTestBufPower, IDC_TEST_BUFFER_POWER_STATIC);
 }
 
@@ -771,8 +764,7 @@ void CSemantic::OnStnClickedDataInputSelectValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 
-	CRegister reg;
-	Parse(Parent()->m_pRaw, reg);
+	CRegister& reg = getRegister();
 	SetComboGroup(SelectStatic::DataInp, _T("SER(Internal)"), _T("Test Buff(External)"), reg.m_nDataInpSel, IDC_DATA_INPUT_SELECT_STATIC);
 }
 
@@ -781,8 +773,7 @@ void CSemantic::OnStnClickedPaPowerValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 
-	CRegister reg;
-	Parse(Parent()->m_pRaw, reg);
+	CRegister& reg = getRegister();
 	SetComboGroup(SelectStatic::PaPow, _T("PA Off"), _T("PA On"), reg.m_nPaPower, IDC_PA_POWER_STATIC);
 }
 
@@ -791,8 +782,7 @@ void CSemantic::OnStnClickedBiasBlockEnableValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 
-	CRegister reg;
-	Parse(Parent()->m_pRaw, reg);
+	CRegister& reg = getRegister();
 	SetComboGroup(SelectStatic::BiasBlock, _T("disable"), _T("enable"), reg.m_nBiasBlock, IDC_BIAS_BLOCK_ENABLE_STATIC);
 }
 
@@ -837,8 +827,7 @@ void CSemantic::ResetValues()
 void CSemantic::OnCbnSelchangeControlCombo()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	CRegister reg;
-	Parse(Parent()->m_pRaw, reg);
+	CRegister& reg = getRegister();
 
 	BOOL bProcessed = TRUE;
 	switch (m_selected) {
@@ -903,8 +892,7 @@ BOOL CSemantic::UpdateSemanticValue(int addr, int (* fpNewRegVal)(int, int), int
 #endif
 
 		if (fpUpdateData) {
-			CRegister reg;
-			Parse(Parent()->m_pRaw, reg);
+			CRegister& reg = getRegister();
 			(this->*fpUpdateData)(reg);
 			UpdateData(FALSE);
 
