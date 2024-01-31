@@ -54,8 +54,9 @@ enum class SelectStatic {
 class CStaticElem {
 	CStaticElem();
 public:
-	CStaticElem(UINT idc):m_uIdc(idc){}
+	CStaticElem(UINT idc, int* pRegVal) :m_uIdc(idc), m_pRegVal(pRegVal) {}
 	UINT m_uIdc;
+	int* m_pRegVal;
 };
 
 class CSemanticBase : public CDialogEx

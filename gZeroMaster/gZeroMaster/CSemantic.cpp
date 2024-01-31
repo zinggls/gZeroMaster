@@ -820,38 +820,13 @@ void CSemantic::OnCbnSelchangeControlCombo()
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	const CRegister& reg = getRegister();
 
-	BOOL bProcessed = TRUE;
-	switch (m_selected) {
-	case SelectStatic::RxData:
-		(ComboSel() == reg.m_nRxData) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
-		break;
-	case SelectStatic::LimAmp:
-		(ComboSel() == reg.m_nLimitAmp) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
-		break;
-	case SelectStatic::RegRef:
-		(ComboSel() == reg.m_nRegRef) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
-		break;
-	case SelectStatic::VcoPow:
-		(ComboSel() == reg.m_nVcoPower) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
-		break;
-	case SelectStatic::ModPow:
-		(ComboSel() == reg.m_nModPower) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
-		break;
-	case SelectStatic::TestBufPow:
-		(ComboSel() == reg.m_nTestBufPower) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
-		break;
-	case SelectStatic::DataInp:
-		(ComboSel() == reg.m_nDataInpSel) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
-		break;
-	case SelectStatic::PaPow:
-		(ComboSel() == reg.m_nPaPower) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
-		break;
-	case SelectStatic::BiasBlock:
-		(ComboSel() == reg.m_nBiasBlock) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
-		break;
-	default:
-		bProcessed = FALSE;
-		break;
+	BOOL bProcessed = FALSE;
+	for (std::map<SelectStatic, CStaticElem>::iterator it = m_staticMap.begin(); it != m_staticMap.end(); ++it) {
+		if (m_selected == it->first) {
+			(ComboSel() == (*it->second.m_pRegVal)) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
+			bProcessed = TRUE;
+			break;
+		}
 	}
 
 	if (bProcessed && m_bAutoWrite) OnBnClickedWriteButton();
