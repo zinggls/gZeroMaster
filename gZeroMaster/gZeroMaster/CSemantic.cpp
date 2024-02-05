@@ -819,16 +819,7 @@ void CSemantic::OnCbnSelchangeControlCombo()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 
-	BOOL bProcessed = FALSE;
-	for (std::map<SelectStatic, CStaticElem>::iterator it = m_staticMap.begin(); it != m_staticMap.end(); ++it) {
-		if (m_selected == it->first) {
-			(ComboSel() == (*it->second.m_pRegVal)) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
-			bProcessed = TRUE;
-			break;
-		}
-	}
-
-	if (bProcessed && m_bAutoWrite) OnBnClickedWriteButton();
+	if (CSemanticBase::OnCbnSelchangeControlCombo() && m_bAutoWrite) OnBnClickedWriteButton();
 }
 
 

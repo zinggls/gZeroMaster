@@ -152,4 +152,5 @@ public:
 	static int disableOrEnable(CString str);
 	static int strToInt(CString zero, CString one, CString str);
 	afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
+	afx_msg BOOL OnCbnSelchangeControlCombo();
 };
