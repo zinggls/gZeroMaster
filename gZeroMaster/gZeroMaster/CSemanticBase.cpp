@@ -1194,3 +1194,199 @@ void CSemanticBase::OnStnClickedBiasBlockEnableValueStatic()
 
 	SetComboGroup(SelectStatic::BiasBlock, _T("disable"), _T("enable"), getRegister().m_nBiasBlock, IDC_BIAS_BLOCK_ENABLE_STATIC);
 }
+
+
+int CSemanticBase::RxData()
+{
+	return disableOrEnable(m_strRxDataInterface);
+}
+
+
+int CSemanticBase::LimAmp()
+{
+	return disableOrEnable(m_strLimitingAmplifier);
+}
+
+
+int CSemanticBase::LnaGain()
+{
+	int val = _tcstol(m_strLnaGain.GetBuffer(), NULL, 16);
+	ASSERT(val >= 0 && val <= 0x7);
+	return val;
+}
+
+
+int CSemanticBase::DutyCycle()
+{
+	return Read8BitValue(m_strDutyCycle);
+}
+
+
+int CSemanticBase::VcoOsc()
+{
+	int val = _tcstol(m_strVcoOscFreq.GetBuffer(), NULL, 16);
+	ASSERT(val >= 0 && val <= 0x7ff);
+	return val;
+}
+
+
+int CSemanticBase::RegRef()
+{
+	return strToInt(_T("500mV"), _T("400mV"), m_strRegRefVolt);
+}
+
+
+int CSemanticBase::VcoVdd()
+{
+	return Read4BitValue(m_strVcoVdd);
+}
+
+
+int CSemanticBase::VcoPow()
+{
+	return strToInt(_T("VCO off"), _T("VCO on"), m_strVcoPower);
+}
+
+
+int CSemanticBase::ModPow()
+{
+	return strToInt(_T("MOD off"), _T("MOD on"), m_strModPower);
+}
+
+
+int CSemanticBase::TestBufPow()
+{
+	return strToInt(_T("test buff off"), _T("test buff on"), m_strTestBufferPower);
+}
+
+
+int CSemanticBase::DataInp()
+{
+	return strToInt(_T("SER(Internal)"), _T("Test buff(External)"), m_strDataInputSelect);
+}
+
+
+int CSemanticBase::PaPow()
+{
+	return strToInt(_T("PA off"), _T("PA on"), m_strPaPower);
+}
+
+
+int CSemanticBase::PaGain1()
+{
+	return Read4BitValue(m_strPaGainControl1);
+}
+
+
+int CSemanticBase::PaGain2()
+{
+	return Read4BitValue(m_strPaGainControl2);
+}
+
+
+int CSemanticBase::TestBuffer()
+{
+	return Read4BitValue(m_strTestBufferCurrent);
+}
+
+
+int CSemanticBase::BiasBlock()
+{
+	return disableOrEnable(m_strBiasBlockEnable);
+}
+
+
+int CSemanticBase::Lna1()
+{
+	return Read4BitValue(m_strLna1Current);
+}
+
+
+int CSemanticBase::Lna2()
+{
+	return Read4BitValue(m_strLna2Current);
+}
+
+
+int CSemanticBase::Lna3()
+{
+	return Read4BitValue(m_strLna3Current);
+}
+
+
+int CSemanticBase::Lna4()
+{
+	return Read4BitValue(m_strLna4Current);
+}
+
+
+int CSemanticBase::Lna5()
+{
+	return Read4BitValue(m_strLna5Current);
+}
+
+
+int CSemanticBase::RefStage()
+{
+	return Read4BitValue(m_strDemodRefStageCurrent);
+}
+
+
+int CSemanticBase::IpStage()
+{
+	return Read4BitValue(m_strDemodIPStageCurrent);
+}
+
+
+int CSemanticBase::Fb()
+{
+	return Read4BitValue(m_strLaFBCurrent);
+}
+
+
+int CSemanticBase::Core()
+{
+	return Read4BitValue(m_strLaCoreCurrent);
+}
+
+
+int CSemanticBase::OP()
+{
+	return Read4BitValue(m_strLaOPBufferCurrent);
+}
+
+
+int CSemanticBase::IP()
+{
+	return Read4BitValue(m_strLaIPBufferCurrent);
+}
+
+
+int CSemanticBase::HL()
+{
+	return Read4BitValue(m_strLaHLDataRateCurrent);
+}
+
+
+int CSemanticBase::CMOS()
+{
+	return Read4BitValue(m_strCMOSGainStageCurrent);
+}
+
+
+int CSemanticBase::CML()
+{
+	return Read8BitValue(m_strCMLInterfaceStageCurrent);
+}
+
+
+int CSemanticBase::FdCore()
+{
+	return Read4BitValue(m_strFdCoreCur);
+}
+
+
+int CSemanticBase::FdBuf()
+{
+	return Read4BitValue(m_strFdBufCur);
+}
