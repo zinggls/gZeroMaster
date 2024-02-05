@@ -242,4 +242,13 @@ public:
 	afx_msg void OnStnClickedCmlInterfaceStageCurrentValueStatic();
 	afx_msg void OnStnClickedFdCoreCurrentValueStatic();
 	afx_msg void OnStnClickedFdBufferCurrentValueStatic();
+	afx_msg void OnStnClickedRxDataIfEnableValueStatic();
+	afx_msg void OnStnClickedLimitingAmpEnableValueStatic();
+	afx_msg void OnStnClickedRegRefVoltValueStatic();
+	afx_msg void OnStnClickedVcoPowerValueStatic();
+	afx_msg void OnStnClickedModulatorPowerValueStatic();
+	afx_msg void OnStnClickedTestBufferPowerValueStatic();
+	afx_msg void OnStnClickedDataInputSelectValueStatic();
+	afx_msg void OnStnClickedPaPowerValueStatic();
+	afx_msg void OnStnClickedBiasBlockEnableValueStatic();
 };

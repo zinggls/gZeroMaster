@@ -1121,3 +1121,76 @@ void CSemanticBase::OnStnClickedFdBufferCurrentValueStatic()
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	SetSliderGroup(SelectStatic::FdBuf, 0, 15, m_strFdBufCur, 1, 1, 10, IDC_FD_BUFFER_CURRENT_STATIC);
 }
+
+
+void CSemanticBase::OnStnClickedRxDataIfEnableValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+
+	SetComboGroup(SelectStatic::RxData, _T("disable"), _T("enable"), getRegister().m_nRxData, IDC_RX_DATA_IF_ENABLE_STATIC);
+}
+
+
+
+void CSemanticBase::OnStnClickedLimitingAmpEnableValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+
+	SetComboGroup(SelectStatic::LimAmp, _T("disable"), _T("enable"), getRegister().m_nLimitAmp, IDC_LIMITING_AMP_ENABLE_STATIC);
+}
+
+
+void CSemanticBase::OnStnClickedRegRefVoltValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+
+	SetComboGroup(SelectStatic::RegRef, _T("500mV"), _T("400mV"), getRegister().m_nRegRef, IDC_REG_REF_VOLT_STATIC);
+}
+
+
+void CSemanticBase::OnStnClickedVcoPowerValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+
+	SetComboGroup(SelectStatic::VcoPow, _T("VCO Off"), _T("VCO On"), getRegister().m_nVcoPower, IDC_VCO_POWER_STATIC);
+}
+
+
+void CSemanticBase::OnStnClickedModulatorPowerValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+
+	SetComboGroup(SelectStatic::ModPow, _T("Mod Off"), _T("Mod On"), getRegister().m_nModPower, IDC_MODULATOR_POWER_STATIC);
+}
+
+
+void CSemanticBase::OnStnClickedTestBufferPowerValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+
+	SetComboGroup(SelectStatic::TestBufPow, _T("Test Buff Off"), _T("Test Buff On"), getRegister().m_nTestBufPower, IDC_TEST_BUFFER_POWER_STATIC);
+}
+
+
+void CSemanticBase::OnStnClickedDataInputSelectValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+
+	SetComboGroup(SelectStatic::DataInp, _T("SER(Internal)"), _T("Test Buff(External)"), getRegister().m_nDataInpSel, IDC_DATA_INPUT_SELECT_STATIC);
+}
+
+
+void CSemanticBase::OnStnClickedPaPowerValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+
+	SetComboGroup(SelectStatic::PaPow, _T("PA Off"), _T("PA On"), getRegister().m_nPaPower, IDC_PA_POWER_STATIC);
+}
+
+
+void CSemanticBase::OnStnClickedBiasBlockEnableValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+
+	SetComboGroup(SelectStatic::BiasBlock, _T("disable"), _T("enable"), getRegister().m_nBiasBlock, IDC_BIAS_BLOCK_ENABLE_STATIC);
+}

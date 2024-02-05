@@ -27,15 +27,6 @@ public:
 	virtual BOOL OnInitDialog();
 	afx_msg void OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar);
 	afx_msg void OnBnClickedReadAllButton();
-	afx_msg void OnStnClickedRxDataIfEnableValueStatic();
-	afx_msg void OnStnClickedLimitingAmpEnableValueStatic();
-	afx_msg void OnStnClickedRegRefVoltValueStatic();
-	afx_msg void OnStnClickedVcoPowerValueStatic();
-	afx_msg void OnStnClickedModulatorPowerValueStatic();
-	afx_msg void OnStnClickedTestBufferPowerValueStatic();
-	afx_msg void OnStnClickedDataInputSelectValueStatic();
-	afx_msg void OnStnClickedPaPowerValueStatic();
-	afx_msg void OnStnClickedBiasBlockEnableValueStatic();
 	void ResetValues();
 	afx_msg void OnCbnSelchangeControlCombo();
 	BOOL UpdateSemanticValue(int addr, int (* fpNewRegVal)(int, int), int newVal, void (CSemantic::* fpUpdateData)(const CRegister&));

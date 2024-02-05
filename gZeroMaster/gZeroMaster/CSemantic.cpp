@@ -97,17 +97,17 @@ BEGIN_MESSAGE_MAP(CSemantic, CDialogEx)
 	ON_STN_CLICKED(IDC_CML_INTERFACE_STAGE_CURRENT_VALUE_STATIC, &OnStnClickedCmlInterfaceStageCurrentValueStatic)
 	ON_STN_CLICKED(IDC_FD_CORE_CURRENT_VALUE_STATIC, &OnStnClickedFdCoreCurrentValueStatic)
 	ON_STN_CLICKED(IDC_FD_BUFFER_CURRENT_VALUE_STATIC, &OnStnClickedFdBufferCurrentValueStatic)
+	ON_STN_CLICKED(IDC_RX_DATA_IF_ENABLE_VALUE_STATIC, &OnStnClickedRxDataIfEnableValueStatic)
+	ON_STN_CLICKED(IDC_LIMITING_AMP_ENABLE_VALUE_STATIC, &OnStnClickedLimitingAmpEnableValueStatic)
+	ON_STN_CLICKED(IDC_REG_REF_VOLT_VALUE_STATIC, &OnStnClickedRegRefVoltValueStatic)
+	ON_STN_CLICKED(IDC_VCO_POWER_VALUE_STATIC, &OnStnClickedVcoPowerValueStatic)
+	ON_STN_CLICKED(IDC_MODULATOR_POWER_VALUE_STATIC, &OnStnClickedModulatorPowerValueStatic)
+	ON_STN_CLICKED(IDC_TEST_BUFFER_POWER_VALUE_STATIC, &OnStnClickedTestBufferPowerValueStatic)
+	ON_STN_CLICKED(IDC_DATA_INPUT_SELECT_VALUE_STATIC, &OnStnClickedDataInputSelectValueStatic)
+	ON_STN_CLICKED(IDC_PA_POWER_VALUE_STATIC, &OnStnClickedPaPowerValueStatic)
+	ON_STN_CLICKED(IDC_BIAS_BLOCK_ENABLE_VALUE_STATIC, &OnStnClickedBiasBlockEnableValueStatic)
 	ON_WM_VSCROLL()
 	ON_BN_CLICKED(IDC_READ_ALL_BUTTON, &CSemantic::OnBnClickedReadAllButton)
-	ON_STN_CLICKED(IDC_RX_DATA_IF_ENABLE_VALUE_STATIC, &CSemantic::OnStnClickedRxDataIfEnableValueStatic)
-	ON_STN_CLICKED(IDC_LIMITING_AMP_ENABLE_VALUE_STATIC, &CSemantic::OnStnClickedLimitingAmpEnableValueStatic)
-	ON_STN_CLICKED(IDC_REG_REF_VOLT_VALUE_STATIC, &CSemantic::OnStnClickedRegRefVoltValueStatic)
-	ON_STN_CLICKED(IDC_VCO_POWER_VALUE_STATIC, &CSemantic::OnStnClickedVcoPowerValueStatic)
-	ON_STN_CLICKED(IDC_MODULATOR_POWER_VALUE_STATIC, &CSemantic::OnStnClickedModulatorPowerValueStatic)
-	ON_STN_CLICKED(IDC_TEST_BUFFER_POWER_VALUE_STATIC, &CSemantic::OnStnClickedTestBufferPowerValueStatic)
-	ON_STN_CLICKED(IDC_DATA_INPUT_SELECT_VALUE_STATIC, &CSemantic::OnStnClickedDataInputSelectValueStatic)
-	ON_STN_CLICKED(IDC_PA_POWER_VALUE_STATIC, &CSemantic::OnStnClickedPaPowerValueStatic)
-	ON_STN_CLICKED(IDC_BIAS_BLOCK_ENABLE_VALUE_STATIC, &CSemantic::OnStnClickedBiasBlockEnableValueStatic)
 	ON_CBN_SELCHANGE(IDC_CONTROL_COMBO, &CSemantic::OnCbnSelchangeControlCombo)
 	ON_BN_CLICKED(IDC_WRITE_BUTTON, &CSemantic::OnBnClickedWriteButton)
 	ON_BN_CLICKED(IDC_WRITE_ALL_BUTTON, &CSemantic::OnBnClickedWriteAllButton)
@@ -267,79 +267,6 @@ void CSemantic::OnBnClickedReadAllButton()
 	ResetValues();
 	Parent()->m_pRaw->OnBnClickedReadAllButton();
 	UpdateRegisters();
-}
-
-
-void CSemantic::OnStnClickedRxDataIfEnableValueStatic()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-
-	SetComboGroup(SelectStatic::RxData, _T("disable"), _T("enable"), getRegister().m_nRxData, IDC_RX_DATA_IF_ENABLE_STATIC);
-}
-
-
-
-void CSemantic::OnStnClickedLimitingAmpEnableValueStatic()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-
-	SetComboGroup(SelectStatic::LimAmp, _T("disable"), _T("enable"), getRegister().m_nLimitAmp, IDC_LIMITING_AMP_ENABLE_STATIC);
-}
-
-
-void CSemantic::OnStnClickedRegRefVoltValueStatic()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-
-	SetComboGroup(SelectStatic::RegRef, _T("500mV"), _T("400mV"), getRegister().m_nRegRef, IDC_REG_REF_VOLT_STATIC);
-}
-
-
-void CSemantic::OnStnClickedVcoPowerValueStatic()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-
-	SetComboGroup(SelectStatic::VcoPow, _T("VCO Off"), _T("VCO On"), getRegister().m_nVcoPower, IDC_VCO_POWER_STATIC);
-}
-
-
-void CSemantic::OnStnClickedModulatorPowerValueStatic()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-
-	SetComboGroup(SelectStatic::ModPow, _T("Mod Off"), _T("Mod On"), getRegister().m_nModPower, IDC_MODULATOR_POWER_STATIC);
-}
-
-
-void CSemantic::OnStnClickedTestBufferPowerValueStatic()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-
-	SetComboGroup(SelectStatic::TestBufPow, _T("Test Buff Off"), _T("Test Buff On"), getRegister().m_nTestBufPower, IDC_TEST_BUFFER_POWER_STATIC);
-}
-
-
-void CSemantic::OnStnClickedDataInputSelectValueStatic()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-
-	SetComboGroup(SelectStatic::DataInp, _T("SER(Internal)"), _T("Test Buff(External)"), getRegister().m_nDataInpSel, IDC_DATA_INPUT_SELECT_STATIC);
-}
-
-
-void CSemantic::OnStnClickedPaPowerValueStatic()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-
-	SetComboGroup(SelectStatic::PaPow, _T("PA Off"), _T("PA On"), getRegister().m_nPaPower, IDC_PA_POWER_STATIC);
-}
-
-
-void CSemantic::OnStnClickedBiasBlockEnableValueStatic()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-
-	SetComboGroup(SelectStatic::BiasBlock, _T("disable"), _T("enable"), getRegister().m_nBiasBlock, IDC_BIAS_BLOCK_ENABLE_STATIC);
 }
 
 
