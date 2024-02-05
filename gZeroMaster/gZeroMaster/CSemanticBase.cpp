@@ -961,3 +961,163 @@ void CSemanticBase::UpdateRegisters()
 	UpdateFdBufferCurrent(reg);
 	UpdateData(FALSE);
 }
+
+void CSemanticBase::OnStnClickedLnaGainValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	SetSliderGroup(SelectStatic::LnaGain, 0, 7, m_strLnaGain, 1, 1, 10, IDC_LNA_GAIN_STATIC);
+}
+
+
+void CSemanticBase::OnStnClickedDutyCycleValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	SetSliderGroup(SelectStatic::DutyCycle, 0, 255, m_strDutyCycle, 10, 1, 10, IDC_DUTY_CYCLE_STATIC);
+}
+
+
+void CSemanticBase::OnStnClickedVcoOscFreqValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	SetSliderGroup(SelectStatic::VcoOsc, 0, 2047, m_strVcoOscFreq, 50, 1, 50, IDC_VCO_OSC_FREQ_STATIC);
+}
+
+
+void CSemanticBase::OnStnClickedVcoVddValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	SetSliderGroup(SelectStatic::VcoVdd, 0, 15, m_strVcoVdd, 1, 1, 10, IDC_VCO_VDD_STATIC);
+}
+
+
+void CSemanticBase::OnStnClickedPaGainControl1ValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	SetSliderGroup(SelectStatic::PaGain1, 0, 15, m_strPaGainControl1, 1, 1, 10, IDC_PA_GAIN_CONTROL1_STATIC);
+}
+
+
+void CSemanticBase::OnStnClickedPaGainControl2ValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	SetSliderGroup(SelectStatic::PaGain2, 0, 15, m_strPaGainControl2, 1, 1, 10, IDC_PA_GAIN_CONTROL2_STATIC);
+}
+
+
+void CSemanticBase::OnStnClickedTestBufferCurrentValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	SetSliderGroup(SelectStatic::TestBuffer, 0, 15, m_strTestBufferCurrent, 1, 1, 10, IDC_TEST_BUFFER_CURRENT_STATIC);
+}
+
+
+void CSemanticBase::OnStnClickedLna1BiasCurrentValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	SetSliderGroup(SelectStatic::Lna1, 0, 15, m_strLna1Current, 1, 1, 10, IDC_LNA1_BIAS_CURRENT_STATIC);
+}
+
+
+void CSemanticBase::OnStnClickedLna2BiasCurrentValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	SetSliderGroup(SelectStatic::Lna2, 0, 15, m_strLna2Current, 1, 1, 10, IDC_LNA2_BIAS_CURRENT_STATIC);
+}
+
+
+void CSemanticBase::OnStnClickedLna3BiasCurrentValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	SetSliderGroup(SelectStatic::Lna3, 0, 15, m_strLna3Current, 1, 1, 10, IDC_LNA3_BIAS_CURRENT_STATIC);
+}
+
+
+void CSemanticBase::OnStnClickedLna4BiasCurrentValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	SetSliderGroup(SelectStatic::Lna4, 0, 15, m_strLna4Current, 1, 1, 10, IDC_LNA4_BIAS_CURRENT_STATIC);
+}
+
+
+void CSemanticBase::OnStnClickedLna5BiasCurrentValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	SetSliderGroup(SelectStatic::Lna5, 0, 15, m_strLna5Current, 1, 1, 10, IDC_LNA5_BIAS_CURRENT_STATIC);
+}
+
+
+void CSemanticBase::OnStnClickedDemodRefStageCurrentValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	SetSliderGroup(SelectStatic::RefStage, 0, 15, m_strDemodRefStageCurrent, 1, 1, 10, IDC_DEMOD_REF_STAGE_CURRENT_STATIC);
+}
+
+
+void CSemanticBase::OnStnClickedDemodIpStageCurrentValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	SetSliderGroup(SelectStatic::IpStage, 0, 15, m_strDemodIPStageCurrent, 1, 1, 10, IDC_DEMOD_IP_STAGE_CURRENT_STATIC);
+}
+
+
+void CSemanticBase::OnStnClickedLaFbCurrentValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	SetSliderGroup(SelectStatic::Fb, 0, 15, m_strLaFBCurrent, 1, 1, 10, IDC_LA_FB_CURRENT_STATIC);
+}
+
+
+void CSemanticBase::OnStnClickedLaCoreCurrentValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	SetSliderGroup(SelectStatic::Core, 0, 15, m_strLaCoreCurrent, 1, 1, 10, IDC_LA_CORE_CURRENT_STATIC);
+}
+
+
+void CSemanticBase::OnStnClickedLaOpBufferCurrentValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	SetSliderGroup(SelectStatic::OP, 0, 15, m_strLaOPBufferCurrent, 1, 1, 10, IDC_LA_OP_BUFFER_CURRENT_STATIC);
+}
+
+
+void CSemanticBase::OnStnClickedLaIpBufferCurrentValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	SetSliderGroup(SelectStatic::IP, 0, 15, m_strLaIPBufferCurrent, 1, 1, 10, IDC_LA_IP_BUFFER_CURRENT_STATIC);
+}
+
+
+void CSemanticBase::OnStnClickedLaHlDataRateCurrentValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	SetSliderGroup(SelectStatic::HL, 0, 15, m_strLaHLDataRateCurrent, 1, 1, 10, IDC_LA_HL_DATA_RATE_CURRENT_STATIC);
+}
+
+
+void CSemanticBase::OnStnClickedCmosGainStageCurrentValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	SetSliderGroup(SelectStatic::CMOS, 0, 15, m_strCMOSGainStageCurrent, 1, 1, 10, IDC_CMOS_GAIN_STAGE_CURRENT_STATIC);
+}
+
+
+void CSemanticBase::OnStnClickedCmlInterfaceStageCurrentValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	SetSliderGroup(SelectStatic::CML, 0, 255, m_strCMLInterfaceStageCurrent, 10, 1, 10, IDC_CML_INTERFACE_STAGE_CURRENT_STATIC);
+}
+
+
+void CSemanticBase::OnStnClickedFdCoreCurrentValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	SetSliderGroup(SelectStatic::FdCore, 0, 15, m_strFdCoreCur, 1, 1, 10, IDC_FD_CORE_CURRENT_STATIC);
+}
+
+
+void CSemanticBase::OnStnClickedFdBufferCurrentValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	SetSliderGroup(SelectStatic::FdBuf, 0, 15, m_strFdBufCur, 1, 1, 10, IDC_FD_BUFFER_CURRENT_STATIC);
+}

@@ -25,29 +25,6 @@ protected:
 
 public:
 	virtual BOOL OnInitDialog();
-	afx_msg void OnStnClickedLnaGainValueStatic();
-	afx_msg void OnStnClickedDutyCycleValueStatic();
-	afx_msg void OnStnClickedVcoOscFreqValueStatic();
-	afx_msg void OnStnClickedVcoVddValueStatic();
-	afx_msg void OnStnClickedPaGainControl1ValueStatic();
-	afx_msg void OnStnClickedPaGainControl2ValueStatic();
-	afx_msg void OnStnClickedTestBufferCurrentValueStatic();
-	afx_msg void OnStnClickedLna1BiasCurrentValueStatic();
-	afx_msg void OnStnClickedLna2BiasCurrentValueStatic();
-	afx_msg void OnStnClickedLna3BiasCurrentValueStatic();
-	afx_msg void OnStnClickedLna4BiasCurrentValueStatic();
-	afx_msg void OnStnClickedLna5BiasCurrentValueStatic();
-	afx_msg void OnStnClickedDemodRefStageCurrentValueStatic();
-	afx_msg void OnStnClickedDemodIpStageCurrentValueStatic();
-	afx_msg void OnStnClickedLaFbCurrentValueStatic();
-	afx_msg void OnStnClickedLaCoreCurrentValueStatic();
-	afx_msg void OnStnClickedLaOpBufferCurrentValueStatic();
-	afx_msg void OnStnClickedLaIpBufferCurrentValueStatic();
-	afx_msg void OnStnClickedLaHlDataRateCurrentValueStatic();
-	afx_msg void OnStnClickedCmosGainStageCurrentValueStatic();
-	afx_msg void OnStnClickedCmlInterfaceStageCurrentValueStatic();
-	afx_msg void OnStnClickedFdCoreCurrentValueStatic();
-	afx_msg void OnStnClickedFdBufferCurrentValueStatic();
 	afx_msg void OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar);
 	afx_msg void OnBnClickedReadAllButton();
 	afx_msg void OnStnClickedRxDataIfEnableValueStatic();

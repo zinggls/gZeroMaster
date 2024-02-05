@@ -74,27 +74,29 @@ void CSemantic::DoDataExchange(CDataExchange* pDX)
 BEGIN_MESSAGE_MAP(CSemantic, CDialogEx)
 	ON_BN_CLICKED(IDC_SEMANTIC_EDIT_CHECK, &CSemantic::OnBnClickedSemanticEditCheck)
 	ON_WM_CTLCOLOR()
-	ON_STN_CLICKED(IDC_LNA_GAIN_VALUE_STATIC, &CSemantic::OnStnClickedLnaGainValueStatic)
-	ON_STN_CLICKED(IDC_DUTY_CYCLE_VALUE_STATIC, &CSemantic::OnStnClickedDutyCycleValueStatic)
-	ON_STN_CLICKED(IDC_VCO_OSC_FREQ_VALUE_STATIC, &CSemantic::OnStnClickedVcoOscFreqValueStatic)
-	ON_STN_CLICKED(IDC_VCO_VDD_VALUE_STATIC, &CSemantic::OnStnClickedVcoVddValueStatic)
-	ON_STN_CLICKED(IDC_PA_GAIN_CONTROL1_VALUE_STATIC, &CSemantic::OnStnClickedPaGainControl1ValueStatic)
-	ON_STN_CLICKED(IDC_PA_GAIN_CONTROL2_VALUE_STATIC, &CSemantic::OnStnClickedPaGainControl2ValueStatic)
-	ON_STN_CLICKED(IDC_TEST_BUFFER_CURRENT_VALUE_STATIC, &CSemantic::OnStnClickedTestBufferCurrentValueStatic)
-	ON_STN_CLICKED(IDC_LNA1_BIAS_CURRENT_VALUE_STATIC, &CSemantic::OnStnClickedLna1BiasCurrentValueStatic)
-	ON_STN_CLICKED(IDC_LNA2_BIAS_CURRENT_VALUE_STATIC, &CSemantic::OnStnClickedLna2BiasCurrentValueStatic)
-	ON_STN_CLICKED(IDC_LNA3_BIAS_CURRENT_VALUE_STATIC, &CSemantic::OnStnClickedLna3BiasCurrentValueStatic)
-	ON_STN_CLICKED(IDC_LNA4_BIAS_CURRENT_VALUE_STATIC, &CSemantic::OnStnClickedLna4BiasCurrentValueStatic)
-	ON_STN_CLICKED(IDC_LNA5_BIAS_CURRENT_VALUE_STATIC, &CSemantic::OnStnClickedLna5BiasCurrentValueStatic)
-	ON_STN_CLICKED(IDC_DEMOD_REF_STAGE_CURRENT_VALUE_STATIC, &CSemantic::OnStnClickedDemodRefStageCurrentValueStatic)
-	ON_STN_CLICKED(IDC_DEMOD_IP_STAGE_CURRENT_VALUE_STATIC, &CSemantic::OnStnClickedDemodIpStageCurrentValueStatic)
-	ON_STN_CLICKED(IDC_LA_FB_CURRENT_VALUE_STATIC, &CSemantic::OnStnClickedLaFbCurrentValueStatic)
-	ON_STN_CLICKED(IDC_LA_CORE_CURRENT_VALUE_STATIC, &CSemantic::OnStnClickedLaCoreCurrentValueStatic)
-	ON_STN_CLICKED(IDC_LA_OP_BUFFER_CURRENT_VALUE_STATIC, &CSemantic::OnStnClickedLaOpBufferCurrentValueStatic)
-	ON_STN_CLICKED(IDC_LA_IP_BUFFER_CURRENT_VALUE_STATIC, &CSemantic::OnStnClickedLaIpBufferCurrentValueStatic)
-	ON_STN_CLICKED(IDC_LA_HL_DATA_RATE_CURRENT_VALUE_STATIC, &CSemantic::OnStnClickedLaHlDataRateCurrentValueStatic)
-	ON_STN_CLICKED(IDC_CMOS_GAIN_STAGE_CURRENT_VALUE_STATIC, &CSemantic::OnStnClickedCmosGainStageCurrentValueStatic)
-	ON_STN_CLICKED(IDC_CML_INTERFACE_STAGE_CURRENT_VALUE_STATIC, &CSemantic::OnStnClickedCmlInterfaceStageCurrentValueStatic)
+	ON_STN_CLICKED(IDC_LNA_GAIN_VALUE_STATIC, &OnStnClickedLnaGainValueStatic)
+	ON_STN_CLICKED(IDC_DUTY_CYCLE_VALUE_STATIC, &OnStnClickedDutyCycleValueStatic)
+	ON_STN_CLICKED(IDC_VCO_OSC_FREQ_VALUE_STATIC, &OnStnClickedVcoOscFreqValueStatic)
+	ON_STN_CLICKED(IDC_VCO_VDD_VALUE_STATIC, &OnStnClickedVcoVddValueStatic)
+	ON_STN_CLICKED(IDC_PA_GAIN_CONTROL1_VALUE_STATIC, &OnStnClickedPaGainControl1ValueStatic)
+	ON_STN_CLICKED(IDC_PA_GAIN_CONTROL2_VALUE_STATIC, &OnStnClickedPaGainControl2ValueStatic)
+	ON_STN_CLICKED(IDC_TEST_BUFFER_CURRENT_VALUE_STATIC, &OnStnClickedTestBufferCurrentValueStatic)
+	ON_STN_CLICKED(IDC_LNA1_BIAS_CURRENT_VALUE_STATIC, &OnStnClickedLna1BiasCurrentValueStatic)
+	ON_STN_CLICKED(IDC_LNA2_BIAS_CURRENT_VALUE_STATIC, &OnStnClickedLna2BiasCurrentValueStatic)
+	ON_STN_CLICKED(IDC_LNA3_BIAS_CURRENT_VALUE_STATIC, &OnStnClickedLna3BiasCurrentValueStatic)
+	ON_STN_CLICKED(IDC_LNA4_BIAS_CURRENT_VALUE_STATIC, &OnStnClickedLna4BiasCurrentValueStatic)
+	ON_STN_CLICKED(IDC_LNA5_BIAS_CURRENT_VALUE_STATIC, &OnStnClickedLna5BiasCurrentValueStatic)
+	ON_STN_CLICKED(IDC_DEMOD_REF_STAGE_CURRENT_VALUE_STATIC, &OnStnClickedDemodRefStageCurrentValueStatic)
+	ON_STN_CLICKED(IDC_DEMOD_IP_STAGE_CURRENT_VALUE_STATIC, &OnStnClickedDemodIpStageCurrentValueStatic)
+	ON_STN_CLICKED(IDC_LA_FB_CURRENT_VALUE_STATIC, &OnStnClickedLaFbCurrentValueStatic)
+	ON_STN_CLICKED(IDC_LA_CORE_CURRENT_VALUE_STATIC, &OnStnClickedLaCoreCurrentValueStatic)
+	ON_STN_CLICKED(IDC_LA_OP_BUFFER_CURRENT_VALUE_STATIC, &OnStnClickedLaOpBufferCurrentValueStatic)
+	ON_STN_CLICKED(IDC_LA_IP_BUFFER_CURRENT_VALUE_STATIC, &OnStnClickedLaIpBufferCurrentValueStatic)
+	ON_STN_CLICKED(IDC_LA_HL_DATA_RATE_CURRENT_VALUE_STATIC, &OnStnClickedLaHlDataRateCurrentValueStatic)
+	ON_STN_CLICKED(IDC_CMOS_GAIN_STAGE_CURRENT_VALUE_STATIC, &OnStnClickedCmosGainStageCurrentValueStatic)
+	ON_STN_CLICKED(IDC_CML_INTERFACE_STAGE_CURRENT_VALUE_STATIC, &OnStnClickedCmlInterfaceStageCurrentValueStatic)
+	ON_STN_CLICKED(IDC_FD_CORE_CURRENT_VALUE_STATIC, &OnStnClickedFdCoreCurrentValueStatic)
+	ON_STN_CLICKED(IDC_FD_BUFFER_CURRENT_VALUE_STATIC, &OnStnClickedFdBufferCurrentValueStatic)
 	ON_WM_VSCROLL()
 	ON_BN_CLICKED(IDC_READ_ALL_BUTTON, &CSemantic::OnBnClickedReadAllButton)
 	ON_STN_CLICKED(IDC_RX_DATA_IF_ENABLE_VALUE_STATIC, &CSemantic::OnStnClickedRxDataIfEnableValueStatic)
@@ -109,8 +111,6 @@ BEGIN_MESSAGE_MAP(CSemantic, CDialogEx)
 	ON_CBN_SELCHANGE(IDC_CONTROL_COMBO, &CSemantic::OnCbnSelchangeControlCombo)
 	ON_BN_CLICKED(IDC_WRITE_BUTTON, &CSemantic::OnBnClickedWriteButton)
 	ON_BN_CLICKED(IDC_WRITE_ALL_BUTTON, &CSemantic::OnBnClickedWriteAllButton)
-	ON_STN_CLICKED(IDC_FD_CORE_CURRENT_VALUE_STATIC, &CSemantic::OnStnClickedFdCoreCurrentValueStatic)
-	ON_STN_CLICKED(IDC_FD_BUFFER_CURRENT_VALUE_STATIC, &CSemantic::OnStnClickedFdBufferCurrentValueStatic)
 	ON_BN_CLICKED(IDC_AUTO_WRITE_CHECK, &CSemantic::OnBnClickedAutoWriteCheck)
 	ON_BN_CLICKED(IDC_DEFAULT_VALUE_BUTTON, &CSemantic::OnBnClickedDefaultValueButton)
 	ON_MESSAGE(UDM_SEM_EDIT_CLICK, OnSemEditClick)
@@ -168,167 +168,6 @@ BOOL CSemantic::OnInitDialog()
 	GetDlgItem(IDC_DEFAULT_VALUE_BUTTON)->ShowWindow(SW_HIDE);
 	return TRUE;  // return TRUE unless you set the focus to a control
 				  // 예외: OCX 속성 페이지는 FALSE를 반환해야 합니다.
-}
-
-
-void CSemantic::OnStnClickedLnaGainValueStatic()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(SelectStatic::LnaGain, 0, 7, m_strLnaGain, 1, 1, 10, IDC_LNA_GAIN_STATIC);
-}
-
-
-void CSemantic::OnStnClickedDutyCycleValueStatic()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(SelectStatic::DutyCycle, 0, 255, m_strDutyCycle, 10, 1, 10, IDC_DUTY_CYCLE_STATIC);
-}
-
-
-void CSemantic::OnStnClickedVcoOscFreqValueStatic()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(SelectStatic::VcoOsc, 0, 2047, m_strVcoOscFreq, 50, 1, 50, IDC_VCO_OSC_FREQ_STATIC);
-}
-
-
-void CSemantic::OnStnClickedVcoVddValueStatic()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(SelectStatic::VcoVdd, 0, 15, m_strVcoVdd, 1, 1, 10, IDC_VCO_VDD_STATIC);
-}
-
-
-void CSemantic::OnStnClickedPaGainControl1ValueStatic()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(SelectStatic::PaGain1, 0, 15, m_strPaGainControl1, 1, 1, 10, IDC_PA_GAIN_CONTROL1_STATIC);
-}
-
-
-void CSemantic::OnStnClickedPaGainControl2ValueStatic()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(SelectStatic::PaGain2, 0, 15, m_strPaGainControl2, 1, 1, 10, IDC_PA_GAIN_CONTROL2_STATIC);
-}
-
-
-void CSemantic::OnStnClickedTestBufferCurrentValueStatic()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(SelectStatic::TestBuffer, 0, 15, m_strTestBufferCurrent, 1, 1, 10, IDC_TEST_BUFFER_CURRENT_STATIC);
-}
-
-
-void CSemantic::OnStnClickedLna1BiasCurrentValueStatic()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(SelectStatic::Lna1, 0, 15, m_strLna1Current, 1, 1, 10, IDC_LNA1_BIAS_CURRENT_STATIC);
-}
-
-
-void CSemantic::OnStnClickedLna2BiasCurrentValueStatic()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(SelectStatic::Lna2, 0, 15, m_strLna2Current, 1, 1, 10, IDC_LNA2_BIAS_CURRENT_STATIC);
-}
-
-
-void CSemantic::OnStnClickedLna3BiasCurrentValueStatic()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(SelectStatic::Lna3, 0, 15, m_strLna3Current, 1, 1, 10, IDC_LNA3_BIAS_CURRENT_STATIC);
-}
-
-
-void CSemantic::OnStnClickedLna4BiasCurrentValueStatic()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(SelectStatic::Lna4, 0, 15, m_strLna4Current, 1, 1, 10, IDC_LNA4_BIAS_CURRENT_STATIC);
-}
-
-
-void CSemantic::OnStnClickedLna5BiasCurrentValueStatic()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(SelectStatic::Lna5, 0, 15, m_strLna5Current, 1, 1, 10, IDC_LNA5_BIAS_CURRENT_STATIC);
-}
-
-
-void CSemantic::OnStnClickedDemodRefStageCurrentValueStatic()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(SelectStatic::RefStage, 0, 15, m_strDemodRefStageCurrent, 1, 1, 10, IDC_DEMOD_REF_STAGE_CURRENT_STATIC);
-}
-
-
-void CSemantic::OnStnClickedDemodIpStageCurrentValueStatic()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(SelectStatic::IpStage, 0, 15, m_strDemodIPStageCurrent, 1, 1, 10, IDC_DEMOD_IP_STAGE_CURRENT_STATIC);
-}
-
-
-void CSemantic::OnStnClickedLaFbCurrentValueStatic()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(SelectStatic::Fb, 0, 15, m_strLaFBCurrent, 1, 1, 10, IDC_LA_FB_CURRENT_STATIC);
-}
-
-
-void CSemantic::OnStnClickedLaCoreCurrentValueStatic()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(SelectStatic::Core, 0, 15, m_strLaCoreCurrent, 1, 1, 10, IDC_LA_CORE_CURRENT_STATIC);
-}
-
-
-void CSemantic::OnStnClickedLaOpBufferCurrentValueStatic()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(SelectStatic::OP, 0, 15, m_strLaOPBufferCurrent, 1, 1, 10, IDC_LA_OP_BUFFER_CURRENT_STATIC);
-}
-
-
-void CSemantic::OnStnClickedLaIpBufferCurrentValueStatic()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(SelectStatic::IP, 0, 15, m_strLaIPBufferCurrent, 1, 1, 10, IDC_LA_IP_BUFFER_CURRENT_STATIC);
-}
-
-
-void CSemantic::OnStnClickedLaHlDataRateCurrentValueStatic()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(SelectStatic::HL, 0, 15, m_strLaHLDataRateCurrent, 1, 1, 10, IDC_LA_HL_DATA_RATE_CURRENT_STATIC);
-}
-
-
-void CSemantic::OnStnClickedCmosGainStageCurrentValueStatic()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(SelectStatic::CMOS, 0, 15, m_strCMOSGainStageCurrent, 1, 1, 10, IDC_CMOS_GAIN_STAGE_CURRENT_STATIC);
-}
-
-
-void CSemantic::OnStnClickedCmlInterfaceStageCurrentValueStatic()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(SelectStatic::CML, 0, 255, m_strCMLInterfaceStageCurrent, 10, 1, 10, IDC_CML_INTERFACE_STAGE_CURRENT_STATIC);
-}
-
-
-void CSemantic::OnStnClickedFdCoreCurrentValueStatic()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(SelectStatic::FdCore, 0, 15, m_strFdCoreCur, 1, 1, 10, IDC_FD_CORE_CURRENT_STATIC);
-}
-
-
-void CSemantic::OnStnClickedFdBufferCurrentValueStatic()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(SelectStatic::FdBuf, 0, 15, m_strFdBufCur, 1, 1, 10, IDC_FD_BUFFER_CURRENT_STATIC);
 }
 
 
