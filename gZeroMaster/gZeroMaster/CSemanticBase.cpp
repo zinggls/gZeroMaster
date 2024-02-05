@@ -1658,5 +1658,6 @@ BOOL CSemanticBase::OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
 		}
 
 	}
+	CDialogEx::OnVScroll(nSBCode, nPos, pScrollBar);
 	return bProcessed;
 }
