@@ -165,44 +165,6 @@ void CSemantic::OnCbnSelchangeControlCombo()
 }
 
 
-BOOL CSemantic::UpdateSemanticValue(int addr, int (* fpNewRegVal)(int, int), int newVal, void (CSemantic::* fpUpdateData)(const CRegister&))
-{
-	int oldRegVal;
-	char buffer[3];
-	while (Parent()->m_pRaw->ReadRegister(addr, 2, buffer, MAX_LOOP) != ERROR_SUCCESS) Sleep(10);	//Blocking 함수
-
-	oldRegVal = (int)strtol(buffer, NULL, 16);
-	int newRegVal = (*fpNewRegVal)(oldRegVal, newVal);
-	if (Parent()->m_pRaw->WriteRegister(addr, newRegVal) != TRUE) {
-		Parent()->L(_T("Error in WriteRegister"));
-	}
-	else {
-#ifdef DEBUG_READ
-		CString str;
-		str.Format(_T("ReadRegister Address:0x%02x..."), addr);
-		Parent()->L(str);
-#endif
-
-		Parent()->m_pRaw->ReadRegister(addr);	//Blocking함수 호출
-#ifdef DEBUG_READ
-		str.Format(_T("ReadRegister Address:0x%02x done"), addr);
-		Parent()->L(str);
-#endif
-
-		if (fpUpdateData) {
-			(this->*fpUpdateData)(getRegister());
-			UpdateData(FALSE);
-
-			CString str;
-			str.Format(_T("Address:0x%02x %s 0x%02x -> 0x%02x"), addr, Parent()->m_pRaw->RegisterName(addr), oldRegVal, newRegVal);
-			Parent()->L(str);
-		}
-		return TRUE;
-	}
-	return FALSE;
-}
-
-
 BOOL CSemantic::UpdateSelected(SelectStatic selected,BOOL bCommonControl)
 {
 	ASSERT(Parent()->m_chip == _T("A0") || Parent()->m_chip == _T("B0"));

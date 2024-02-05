@@ -320,4 +320,5 @@ public:
 	afx_msg LRESULT OnSemCmlInterfaceStageCurrentClick(WPARAM w, LPARAM l);
 	void ResetValues();
 	afx_msg BOOL OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar);
+	BOOL UpdateSemanticValue(int addr, int (*fpNewRegVal)(int, int), int newVal, void (CSemanticBase::* fpUpdateData)(const CRegister&));
 };
