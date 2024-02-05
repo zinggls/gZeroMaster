@@ -270,43 +270,6 @@ void CSemantic::OnBnClickedReadAllButton()
 }
 
 
-void CSemantic::ResetValues()
-{
-	m_strRxDataInterface.Empty();
-	m_strLimitingAmplifier.Empty();
-	m_strLnaGain.Empty();
-	m_strDutyCycle.Empty();
-	m_strVcoOscFreq.Empty();
-	m_strRegRefVolt.Empty();
-	m_strVcoVdd.Empty();
-	m_strVcoPower.Empty();
-	m_strModPower.Empty();
-	m_strTestBufferPower.Empty();
-	m_strDataInputSelect.Empty();
-	m_strPaPower.Empty();
-	m_strPaGainControl1.Empty();
-	m_strPaGainControl2.Empty();
-	m_strTestBufferCurrent.Empty();
-	m_strBiasBlockEnable.Empty();
-	m_strLna1Current.Empty();
-	m_strLna2Current.Empty();
-	m_strLna3Current.Empty();
-	m_strLna4Current.Empty();
-	m_strLna5Current.Empty();
-	m_strDemodRefStageCurrent.Empty();
-	m_strDemodIPStageCurrent.Empty();
-	m_strLaFBCurrent.Empty();
-	m_strLaCoreCurrent.Empty();
-	m_strLaOPBufferCurrent.Empty();
-	m_strLaIPBufferCurrent.Empty();
-	m_strLaHLDataRateCurrent.Empty();
-	m_strCMOSGainStageCurrent.Empty();
-	m_strCMLInterfaceStageCurrent.Empty();
-	m_strFdCoreCur.Empty();
-	m_strFdBufCur.Empty();
-	UpdateData(FALSE);
-}
-
 void CSemantic::OnCbnSelchangeControlCombo()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.

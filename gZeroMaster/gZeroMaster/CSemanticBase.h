@@ -313,4 +313,5 @@ public:
 	afx_msg LRESULT OnSemHighlowDataRateCurrentClick(WPARAM w, LPARAM l);
 	afx_msg LRESULT OnSemCmosGainStageCurrentClick(WPARAM w, LPARAM l);
 	afx_msg LRESULT OnSemCmlInterfaceStageCurrentClick(WPARAM w, LPARAM l);
+	void ResetValues();
 };
