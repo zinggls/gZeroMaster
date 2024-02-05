@@ -1,7 +1,6 @@
 ﻿#pragma once
 
 #include "CSemanticBase.h"
-#include "SemanticUserDefinedMessage.h"
 
 // CSemantic 대화 상자
 

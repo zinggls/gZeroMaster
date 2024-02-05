@@ -1,6 +1,7 @@
 #pragma once
 
 #include <map>
+#include "SemanticUserDefinedMessage.h"
 
 class CgZeroMasterDlg;
 class CRaw;
@@ -66,6 +67,9 @@ class CSemanticBase : public CDialogEx
 public:
 	CSemanticBase(CWnd* pParent = nullptr);   // 표준 생성자입니다.
 	virtual ~CSemanticBase();
+
+protected:
+	DECLARE_MESSAGE_MAP()
 
 public:
 	CSliderCtrl m_controlSlider;
