@@ -29,7 +29,6 @@ public:
 	afx_msg void OnCbnSelchangeControlCombo();
 	afx_msg void OnBnClickedWriteButton();
 	afx_msg void OnBnClickedWriteAllButton();
-	BOOL UpdateSelected(SelectStatic selected, BOOL bCommonControl);
 	void OnChipConnect(CString chipModel);
 	afx_msg void OnBnClickedDefaultValueButton();
 };

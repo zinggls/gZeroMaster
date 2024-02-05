@@ -1698,3 +1698,161 @@ BOOL CSemanticBase::UpdateSemanticValue(int addr, int (*fpNewRegVal)(int, int), 
 	}
 	return FALSE;
 }
+
+BOOL CSemanticBase::UpdateSelected(SelectStatic selected, BOOL bCommonControl)
+{
+	ASSERT(Parent()->m_chip == _T("A0") || Parent()->m_chip == _T("B0"));
+
+	BOOL bRtn = TRUE;
+	int updateValue;
+	switch (selected) {
+		//ControlCombo
+	case SelectStatic::RxData:
+		bCommonControl ? updateValue = ComboSel() : updateValue = RxData();
+		bRtn = UpdateSemanticValue(2, &OnNewRxData, updateValue, &CSemanticBase::UpdateRxData);
+		break;
+	case SelectStatic::LimAmp:
+		bCommonControl ? updateValue = ComboSel() : updateValue = LimAmp();
+		bRtn = UpdateSemanticValue(2, &OnNewLimAmp, updateValue, &CSemanticBase::UpdateLimitAmp);
+		break;
+	case SelectStatic::RegRef:
+		if (Parent()->m_chip == _T("B0")) {
+			bCommonControl ? updateValue = ComboSel() : updateValue = RegRef();
+			bRtn = UpdateSemanticValue(5, &OnNewRegRef, updateValue, &CSemanticBase::UpdateRegRefVolt);
+		}
+		break;
+	case SelectStatic::VcoPow:
+		if (Parent()->m_chip == _T("B0")) {
+			bCommonControl ? updateValue = ComboSel() : updateValue = VcoPow();
+			bRtn = UpdateSemanticValue(13, &OnNewVcoPow, updateValue, &CSemanticBase::UpdateVcoPower);
+		}
+		break;
+	case SelectStatic::ModPow:
+		bCommonControl ? updateValue = ComboSel() : updateValue = ModPow();
+		bRtn = UpdateSemanticValue(12, &OnNewModPow, updateValue, &CSemanticBase::UpdateModPower);
+		break;
+	case SelectStatic::TestBufPow:
+		bCommonControl ? updateValue = ComboSel() : updateValue = TestBufPow();
+		bRtn = UpdateSemanticValue(12, &OnNewTestBufPow, updateValue, &CSemanticBase::UpdateTestBufferPower);
+		break;
+	case SelectStatic::DataInp:
+		bCommonControl ? updateValue = ComboSel() : updateValue = DataInp();
+		bRtn = UpdateSemanticValue(12, &OnNewDataInp, updateValue, &CSemanticBase::UpdateDataInputSelect);
+		break;
+	case SelectStatic::PaPow:
+		bCommonControl ? updateValue = ComboSel() : updateValue = PaPow();
+		bRtn = UpdateSemanticValue(12, &OnNewPaPow, updateValue, &CSemanticBase::UpdateDataPaPower);
+		break;
+	case SelectStatic::BiasBlock:
+		bCommonControl ? updateValue = ComboSel() : updateValue = BiasBlock();
+		bRtn = UpdateSemanticValue(17, &OnNewBiasBlock, updateValue, &CSemanticBase::UpdateBiasBlockEnable);
+		break;
+
+		//ControlSlide
+	case SelectStatic::LnaGain:
+		bCommonControl ? updateValue = SliderPos() : updateValue = LnaGain();
+		bRtn = UpdateSemanticValue(2, &OnNewLnaGain, updateValue, &CSemanticBase::UpdateLnaGain);
+		break;
+	case SelectStatic::DutyCycle:
+		bCommonControl ? updateValue = SliderPos() : updateValue = DutyCycle();
+		bRtn = UpdateSemanticValue(7, &OnNewDutyCycle, updateValue, &CSemanticBase::UpdateDutyCycle);
+		break;
+	case SelectStatic::VcoOsc:
+		if (Parent()->m_chip == _T("B0")) {
+			bCommonControl ? updateValue = SliderPos() : updateValue = VcoOsc();
+			bRtn = UpdateSemanticValue(6, &OnNewVcoOscUp, updateValue, NULL);
+			ASSERT(bRtn);
+			bRtn = UpdateSemanticValue(5, &OnNewVcoOscDown, updateValue, &CSemanticBase::UpdateVcoOscFreq);
+		}
+		break;
+	case SelectStatic::VcoVdd:
+		if (Parent()->m_chip == _T("B0")) {
+			bCommonControl ? updateValue = SliderPos() : updateValue = VcoVdd();
+			bRtn = UpdateSemanticValue(5, &OnNewVcoVdd, updateValue, &CSemanticBase::UpdateVcoVdd);
+		}
+		break;
+	case SelectStatic::PaGain1:
+		bCommonControl ? updateValue = SliderPos() : updateValue = PaGain1();
+		bRtn = UpdateSemanticValue(11, &OnNewPaGain1, updateValue, &CSemanticBase::UpdatePaGainControl1);
+		break;
+	case SelectStatic::PaGain2:
+		bCommonControl ? updateValue = SliderPos() : updateValue = PaGain2();
+		bRtn = UpdateSemanticValue(12, &OnNewPaGain2, updateValue, &CSemanticBase::UpdatePaGainControl2);
+		break;
+	case SelectStatic::TestBuffer:
+		bCommonControl ? updateValue = SliderPos() : updateValue = TestBuffer();
+		bRtn = UpdateSemanticValue(11, &OnNewTestBuffer, updateValue, &CSemanticBase::UpdateTestBufferCurrent);
+		break;
+	case SelectStatic::Lna1:
+		bCommonControl ? updateValue = SliderPos() : updateValue = Lna1();
+		bRtn = UpdateSemanticValue(18, &OnNewLna1, updateValue, &CSemanticBase::UpdateLna1Current);
+		break;
+	case SelectStatic::Lna2:
+		bCommonControl ? updateValue = SliderPos() : updateValue = Lna2();
+		bRtn = UpdateSemanticValue(18, &OnNewLna2, updateValue, &CSemanticBase::UpdateLna2Current);
+		break;
+	case SelectStatic::Lna3:
+		bCommonControl ? updateValue = SliderPos() : updateValue = Lna3();
+		bRtn = UpdateSemanticValue(18, &OnNewLna3, updateValue, &CSemanticBase::UpdateLna3Current);
+		break;
+	case SelectStatic::Lna4:
+		bCommonControl ? updateValue = SliderPos() : updateValue = Lna4();
+		bRtn = UpdateSemanticValue(19, &OnNewLna4, updateValue, &CSemanticBase::UpdateLna4Current);
+		break;
+	case SelectStatic::Lna5:
+		bCommonControl ? updateValue = SliderPos() : updateValue = Lna5();
+		bRtn = UpdateSemanticValue(19, &OnNewLna5, updateValue, &CSemanticBase::UpdateLna5Current);
+		break;
+	case SelectStatic::RefStage:
+		bCommonControl ? updateValue = SliderPos() : updateValue = RefStage();
+		bRtn = UpdateSemanticValue(20, &OnNewRefStage, updateValue, &CSemanticBase::UpdateDemodRefStageCurrent);
+		break;
+	case SelectStatic::IpStage:
+		bCommonControl ? updateValue = SliderPos() : updateValue = IpStage();
+		bRtn = UpdateSemanticValue(20, &OnNewIpStage, updateValue, &CSemanticBase::UpdateDemodIPStageCurrent);
+		break;
+	case SelectStatic::Fb:
+		bCommonControl ? updateValue = SliderPos() : updateValue = Fb();
+		bRtn = UpdateSemanticValue(21, &OnNewFb, updateValue, &CSemanticBase::UpdateLaFBCurrent);
+		break;
+	case SelectStatic::Core:
+		bCommonControl ? updateValue = SliderPos() : updateValue = Core();
+		bRtn = UpdateSemanticValue(21, &OnNewCore, updateValue, &CSemanticBase::UpdateLaCoreCurrent);
+		break;
+	case SelectStatic::OP:
+		bCommonControl ? updateValue = SliderPos() : updateValue = OP();
+		bRtn = UpdateSemanticValue(22, &OnNewOP, updateValue, &CSemanticBase::UpdateLaOPBufferCurrent);
+		break;
+	case SelectStatic::IP:
+		bCommonControl ? updateValue = SliderPos() : updateValue = IP();
+		bRtn = UpdateSemanticValue(22, &OnNewIP, updateValue, &CSemanticBase::UpdateLaIPBufferCurrent);
+		break;
+	case SelectStatic::HL:
+		bCommonControl ? updateValue = SliderPos() : updateValue = HL();
+		bRtn = UpdateSemanticValue(23, &OnNewHL, updateValue, &CSemanticBase::UpdateLaHLDataRateCurrent);
+		break;
+	case SelectStatic::CMOS:
+		bCommonControl ? updateValue = SliderPos() : updateValue = CMOS();
+		bRtn = UpdateSemanticValue(23, &OnNewCMOS, updateValue, &CSemanticBase::UpdateCMOSGainStageCurrent);
+		break;
+	case SelectStatic::CML:
+		bCommonControl ? updateValue = SliderPos() : updateValue = CML();
+		bRtn = UpdateSemanticValue(24, &OnNewCML, updateValue, &CSemanticBase::UpdateCMLInterfaceStageCurrent);
+		break;
+	case SelectStatic::FdCore:
+		if (Parent()->m_chip == _T("A0")) {
+			bCommonControl ? updateValue = SliderPos() : updateValue = FdCore();
+			bRtn = UpdateSemanticValue(25, &OnNewFdCore, updateValue, &CSemanticBase::UpdateFdCoreCurrent);
+		}
+		break;
+	case SelectStatic::FdBuf:
+		if (Parent()->m_chip == _T("A0")) {
+			bCommonControl ? updateValue = SliderPos() : updateValue = FdBuf();
+			bRtn = UpdateSemanticValue(25, &OnNewFdBuf, updateValue, &CSemanticBase::UpdateFdBufferCurrent);
+		}
+		break;
+	default:
+		break;
+	}
+	return bRtn;
+}
