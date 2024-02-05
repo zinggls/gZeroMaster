@@ -55,9 +55,10 @@ enum class SelectStatic {
 class CStaticElem {
 	CStaticElem();
 public:
-	CStaticElem(UINT idc, int* pRegVal) :m_uIdc(idc), m_pRegVal(pRegVal) {}
+	CStaticElem(UINT idc, int* pRegVal, CString& strVal) :m_uIdc(idc), m_pRegVal(pRegVal), m_strVal(strVal) {}
 	UINT m_uIdc;
 	int* m_pRegVal;
+	CString& m_strVal;
 };
 
 class CSemanticBase : public CDialogEx
@@ -318,4 +319,5 @@ public:
 	afx_msg LRESULT OnSemCmosGainStageCurrentClick(WPARAM w, LPARAM l);
 	afx_msg LRESULT OnSemCmlInterfaceStageCurrentClick(WPARAM w, LPARAM l);
 	void ResetValues();
+	afx_msg BOOL OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar);
 };
