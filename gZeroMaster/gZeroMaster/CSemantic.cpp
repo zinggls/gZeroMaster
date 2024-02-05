@@ -71,7 +71,7 @@ void CSemantic::DoDataExchange(CDataExchange* pDX)
 }
 
 
-BEGIN_MESSAGE_MAP(CSemantic, CDialogEx)
+BEGIN_MESSAGE_MAP(CSemantic, CSemanticBase)
 	ON_BN_CLICKED(IDC_SEMANTIC_EDIT_CHECK, &CSemantic::OnBnClickedSemanticEditCheck)
 	ON_WM_CTLCOLOR()
 	ON_STN_CLICKED(IDC_LNA_GAIN_VALUE_STATIC, &OnStnClickedLnaGainValueStatic)
