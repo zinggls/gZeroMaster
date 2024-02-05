@@ -1390,3 +1390,183 @@ int CSemanticBase::FdBuf()
 {
 	return Read4BitValue(m_strFdBufCur);
 }
+
+LRESULT CSemanticBase::OnSemEditClick(WPARAM w, LPARAM l)
+{
+	OnBnClickedSemanticEditCheck();
+	return 0;
+}
+
+LRESULT CSemanticBase::OnSemRxDataInterfaceClick(WPARAM w, LPARAM l)
+{
+	OnStnClickedRxDataIfEnableValueStatic();
+	return 0;
+}
+
+LRESULT CSemanticBase::OnSemLimitAmpEnableClick(WPARAM w, LPARAM l)
+{
+	OnStnClickedLimitingAmpEnableValueStatic();
+	return 0;
+}
+
+LRESULT CSemanticBase::OnSemLnaGainClick(WPARAM w, LPARAM l)
+{
+	OnStnClickedLnaGainValueStatic();
+	return 0;
+}
+
+LRESULT CSemanticBase::OnSemDutyCycleClick(WPARAM w, LPARAM l)
+{
+	OnStnClickedDutyCycleValueStatic();
+	return 0;
+}
+
+LRESULT CSemanticBase::OnSemVcoOscFreqClick(WPARAM w, LPARAM l)
+{
+	OnStnClickedVcoOscFreqValueStatic();
+	return 0;
+}
+
+LRESULT CSemanticBase::OnSemRegRefVoltClick(WPARAM w, LPARAM l)
+{
+	OnStnClickedRegRefVoltValueStatic();
+	return 0;
+}
+
+LRESULT CSemanticBase::OnSemVcoVddClick(WPARAM w, LPARAM l)
+{
+	OnStnClickedVcoVddValueStatic();
+	return 0;
+}
+
+LRESULT CSemanticBase::OnSemVcoPowerClick(WPARAM w, LPARAM l)
+{
+	OnStnClickedVcoPowerValueStatic();
+	return 0;
+}
+
+LRESULT CSemanticBase::OnSemModulatorPowerClick(WPARAM w, LPARAM l)
+{
+	OnStnClickedModulatorPowerValueStatic();
+	return 0;
+}
+
+LRESULT CSemanticBase::OnSemTestBufferPowerClick(WPARAM w, LPARAM l)
+{
+	OnStnClickedTestBufferPowerValueStatic();
+	return 0;
+}
+
+LRESULT CSemanticBase::OnSemDataInputSelectClick(WPARAM w, LPARAM l)
+{
+	OnStnClickedDataInputSelectValueStatic();
+	return 0;
+}
+
+LRESULT CSemanticBase::OnSemPaPowerClick(WPARAM w, LPARAM l)
+{
+	OnStnClickedPaPowerValueStatic();
+	return 0;
+}
+
+LRESULT CSemanticBase::OnSemPaGainControl1Click(WPARAM w, LPARAM l)
+{
+	OnStnClickedPaGainControl1ValueStatic();
+	return 0;
+}
+
+LRESULT CSemanticBase::OnSemPaGainControl2Click(WPARAM w, LPARAM l)
+{
+	OnStnClickedPaGainControl2ValueStatic();
+	return 0;
+}
+
+LRESULT CSemanticBase::OnSemTestBufferCurrentClick(WPARAM w, LPARAM l)
+{
+	OnStnClickedTestBufferCurrentValueStatic();
+	return 0;
+}
+
+LRESULT CSemanticBase::OnSemBiasBlockEnableClick(WPARAM w, LPARAM l)
+{
+	OnStnClickedBiasBlockEnableValueStatic();
+	return 0;
+}
+
+LRESULT CSemanticBase::OnSem1stStageBiasCurrentClick(WPARAM w, LPARAM l)
+{
+	OnStnClickedLna1BiasCurrentValueStatic();
+	return 0;
+}
+
+LRESULT CSemanticBase::OnSem3rdStageBiasCurrentClick(WPARAM w, LPARAM l)
+{
+	OnStnClickedLna3BiasCurrentValueStatic();
+	return 0;
+}
+
+LRESULT CSemanticBase::OnSem4thStageBiasCurrentClick(WPARAM w, LPARAM l)
+{
+	OnStnClickedLna4BiasCurrentValueStatic();
+	return 0;
+}
+
+LRESULT CSemanticBase::OnSem5thStageBiasCurrentClick(WPARAM w, LPARAM l)
+{
+	OnStnClickedLna5BiasCurrentValueStatic();
+	return 0;
+}
+
+LRESULT CSemanticBase::OnSemRefStageCurrentClick(WPARAM w, LPARAM l)
+{
+	OnStnClickedDemodRefStageCurrentValueStatic();
+	return 0;
+}
+
+LRESULT CSemanticBase::OnSemIpStageCurrentClick(WPARAM w, LPARAM l)
+{
+	OnStnClickedDemodIpStageCurrentValueStatic();
+	return 0;
+}
+
+LRESULT CSemanticBase::OnSemFbCurrentClick(WPARAM w, LPARAM l)
+{
+	OnStnClickedLaFbCurrentValueStatic();
+	return 0;
+}
+
+LRESULT CSemanticBase::OnSemCoreCurrentClick(WPARAM w, LPARAM l)
+{
+	OnStnClickedLaCoreCurrentValueStatic();
+	return 0;
+}
+
+LRESULT CSemanticBase::OnSemOpBufferCurrentClick(WPARAM w, LPARAM l)
+{
+	OnStnClickedLaOpBufferCurrentValueStatic();
+	return 0;
+}
+
+LRESULT CSemanticBase::OnSemIpBufferCurrentClick(WPARAM w, LPARAM l)
+{
+	OnStnClickedLaIpBufferCurrentValueStatic();
+	return 0;
+}
+
+LRESULT CSemanticBase::OnSemHighlowDataRateCurrentClick(WPARAM w, LPARAM l)
+{
+	OnStnClickedLaHlDataRateCurrentValueStatic();
+	return 0;
+}
+
+LRESULT CSemanticBase::OnSemCmosGainStageCurrentClick(WPARAM w, LPARAM l)
+{
+	OnStnClickedCmosGainStageCurrentValueStatic();
+	return 0;
+}
+
+LRESULT CSemanticBase::OnSemCmlInterfaceStageCurrentClick(WPARAM w, LPARAM l)
+{
+	OnStnClickedCmlInterfaceStageCurrentValueStatic();
+	return 0;
+}
