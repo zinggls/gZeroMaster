@@ -22,75 +22,9 @@ protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV 지원입니다.
 
 	DECLARE_MESSAGE_MAP()
-public:
-	CString m_strRxDataInterface;
-	CString m_strLimitingAmplifier;
-	CString m_strLnaGain;
-	CString m_strDutyCycle;
-	CString m_strVcoOscFreq;
-	CString m_strRegRefVolt;
-	CString m_strVcoVdd;
-	CString m_strVcoPower;
-	CString m_strModPower;
-	CString m_strTestBufferPower;
-	CString m_strDataInputSelect;
-	CString m_strPaPower;
-	CString m_strPaGainControl1;
-	CString m_strPaGainControl2;
-	CString m_strTestBufferCurrent;
-	CString m_strBiasBlockEnable;
-	CString m_strLna1Current;
-	CString m_strLna2Current;
-	CString m_strLna3Current;
-	CString m_strLna4Current;
-	CString m_strLna5Current;
-	CString m_strDemodRefStageCurrent;
-	CString m_strDemodIPStageCurrent;
-	CString m_strLaFBCurrent;
-	CString m_strLaCoreCurrent;
-	CString m_strLaOPBufferCurrent;
-	CString m_strLaIPBufferCurrent;
-	CString m_strLaHLDataRateCurrent;
-	CString m_strCMOSGainStageCurrent;
-	CString m_strCMLInterfaceStageCurrent;
-	CString m_strFdCoreCur;
-	CString m_strFdBufCur;
 
 public:
 	virtual BOOL OnInitDialog();
-	void UpdateRxData(const CRegister& reg);
-	void UpdateLimitAmp(const CRegister& reg);
-	void UpdateLnaGain(const CRegister& reg);
-	void UpdateDutyCycle(const CRegister& reg);
-	void UpdateVcoOscFreq(const CRegister& reg);
-	void UpdateRegRefVolt(const CRegister& reg);
-	void UpdateVcoVdd(const CRegister& reg);
-	void UpdateVcoPower(const CRegister& reg);
-	void UpdateModPower(const CRegister& reg);
-	void UpdateTestBufferPower(const CRegister& reg);
-	void UpdateDataInputSelect(const CRegister& reg);
-	void UpdateDataPaPower(const CRegister& reg);
-	void UpdatePaGainControl2(const CRegister& reg);
-	void UpdatePaGainControl1(const CRegister& reg);
-	void UpdateTestBufferCurrent(const CRegister& reg);
-	void UpdateBiasBlockEnable(const CRegister& reg);
-	void UpdateLna3Current(const CRegister& reg);
-	void UpdateLna1Current(const CRegister& reg);
-	void UpdateLna2Current(const CRegister& reg);
-	void UpdateLna5Current(const CRegister& reg);
-	void UpdateLna4Current(const CRegister& reg);
-	void UpdateDemodRefStageCurrent(const CRegister& reg);
-	void UpdateDemodIPStageCurrent(const CRegister& reg);
-	void UpdateLaFBCurrent(const CRegister& reg);
-	void UpdateLaCoreCurrent(const CRegister& reg);
-	void UpdateLaOPBufferCurrent(const CRegister& reg);
-	void UpdateLaIPBufferCurrent(const CRegister& reg);
-	void UpdateLaHLDataRateCurrent(const CRegister& reg);
-	void UpdateCMOSGainStageCurrent(const CRegister& reg);
-	void UpdateCMLInterfaceStageCurrent(const CRegister& reg);
-	void UpdateFdCoreCurrent(const CRegister& reg);
-	void UpdateFdBufferCurrent(const CRegister& reg);
-	void UpdateRegisters();
 	afx_msg void OnStnClickedLnaGainValueStatic();
 	afx_msg void OnStnClickedDutyCycleValueStatic();
 	afx_msg void OnStnClickedVcoOscFreqValueStatic();

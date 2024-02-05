@@ -16,6 +16,34 @@ CSemanticBase::CSemanticBase(CWnd* pParent /*=nullptr*/)
 	, m_strSliderValue(_T(""))
 	, m_strSliderValueHex(_T(""))
 	, m_strSliderValueBin(_T(""))
+	, m_strRxDataInterface(_T(""))
+	, m_strLimitingAmplifier(_T(""))
+	, m_strLnaGain(_T(""))
+	, m_strRegRefVolt(_T(""))
+	, m_strVcoPower(_T(""))
+	, m_strModPower(_T(""))
+	, m_strTestBufferPower(_T(""))
+	, m_strDataInputSelect(_T(""))
+	, m_strPaPower(_T(""))
+	, m_strPaGainControl1(_T(""))
+	, m_strPaGainControl2(_T(""))
+	, m_strTestBufferCurrent(_T(""))
+	, m_strBiasBlockEnable(_T(""))
+	, m_strLna1Current(_T(""))
+	, m_strLna2Current(_T(""))
+	, m_strLna3Current(_T(""))
+	, m_strLna4Current(_T(""))
+	, m_strLna5Current(_T(""))
+	, m_strDemodRefStageCurrent(_T(""))
+	, m_strDemodIPStageCurrent(_T(""))
+	, m_strLaCoreCurrent(_T(""))
+	, m_strLaOPBufferCurrent(_T(""))
+	, m_strLaIPBufferCurrent(_T(""))
+	, m_strLaHLDataRateCurrent(_T(""))
+	, m_strCMOSGainStageCurrent(_T(""))
+	, m_strCMLInterfaceStageCurrent(_T(""))
+	, m_strFdCoreCur(_T(""))
+	, m_strFdBufCur(_T(""))
 {
 	m_pParentWnd = pParent;
 
@@ -687,4 +715,249 @@ BOOL CSemanticBase::OnCbnSelchangeControlCombo()
 	}
 
 	return bProcessed;
+}
+
+void CSemanticBase::UpdateRxData(const CRegister& reg)
+{
+	(reg.m_nRxData) ? m_strRxDataInterface.Format(_T("enable")) : m_strRxDataInterface.Format(_T("disable"));
+}
+
+
+void CSemanticBase::UpdateLimitAmp(const CRegister& reg)
+{
+	(reg.m_nLimitAmp) ? m_strLimitingAmplifier.Format(_T("enable")) : m_strLimitingAmplifier.Format(_T("disable"));
+}
+
+
+void CSemanticBase::UpdateLnaGain(const CRegister& reg)
+{
+	m_strLnaGain.Format(_T("0x%02x"), reg.m_nLnaGain);
+}
+
+
+void CSemanticBase::UpdateDutyCycle(const CRegister& reg)
+{
+	m_strDutyCycle.Format(_T("0x%02x"), reg.m_nDutyCycle);
+}
+
+
+void CSemanticBase::UpdateVcoOscFreq(const CRegister& reg)
+{
+	m_strVcoOscFreq.Format(_T("0x%02x"), reg.m_nVcoOsc);
+}
+
+
+void CSemanticBase::UpdateRegRefVolt(const CRegister& reg)
+{
+	(reg.m_nRegRef) ? m_strRegRefVolt.Format(_T("400mV")) : m_strRegRefVolt.Format(_T("500mV"));
+}
+
+
+void CSemanticBase::UpdateVcoVdd(const CRegister& reg)
+{
+	m_strVcoVdd.Format(_T("0x%02x"), reg.m_nVcoVdd);
+}
+
+
+void CSemanticBase::UpdateVcoPower(const CRegister& reg)
+{
+	(reg.m_nVcoPower) ? m_strVcoPower.Format(_T("VCO on")) : m_strVcoPower.Format(_T("VCO off"));
+}
+
+
+void CSemanticBase::UpdateModPower(const CRegister& reg)
+{
+	(reg.m_nModPower) ? m_strModPower.Format(_T("MOD on")) : m_strModPower.Format(_T("MOD off"));
+}
+
+
+void CSemanticBase::UpdateTestBufferPower(const CRegister& reg)
+{
+	(reg.m_nTestBufPower) ? m_strTestBufferPower.Format(_T("test buff on")) : m_strTestBufferPower.Format(_T("test buff off"));
+}
+
+
+void CSemanticBase::UpdateDataInputSelect(const CRegister& reg)
+{
+	(reg.m_nDataInpSel) ? m_strDataInputSelect.Format(_T("Test buff(External)")) : m_strDataInputSelect.Format(_T("SER(Internal)"));
+}
+
+
+void CSemanticBase::UpdateDataPaPower(const CRegister& reg)
+{
+	(reg.m_nPaPower) ? m_strPaPower.Format(_T("PA on")) : m_strPaPower.Format(_T("PA off"));
+}
+
+
+void CSemanticBase::UpdatePaGainControl2(const CRegister& reg)
+{
+	m_strPaGainControl2.Format(_T("0x%02x"), reg.m_nPaGainCon2);
+}
+
+
+void CSemanticBase::UpdatePaGainControl1(const CRegister& reg)
+{
+	m_strPaGainControl1.Format(_T("0x%02x"), reg.m_nPaGainCon1);
+}
+
+
+void CSemanticBase::UpdateTestBufferCurrent(const CRegister& reg)
+{
+	m_strTestBufferCurrent.Format(_T("0x%02x"), reg.m_nTestBufCur);
+}
+
+
+void CSemanticBase::UpdateBiasBlockEnable(const CRegister& reg)
+{
+	(reg.m_nBiasBlock) ? m_strBiasBlockEnable.Format(_T("enable")) : m_strBiasBlockEnable.Format(_T("disable"));
+}
+
+
+void CSemanticBase::UpdateLna3Current(const CRegister& reg)
+{
+	m_strLna3Current.Format(_T("0x%02x"), reg.m_nLna3Cur);
+}
+
+
+void CSemanticBase::UpdateLna1Current(const CRegister& reg)
+{
+	m_strLna1Current.Format(_T("0x%02x"), reg.m_nLna1Cur);
+	m_strLna2Current = m_strLna1Current;
+}
+
+
+void CSemanticBase::UpdateLna2Current(const CRegister& reg)
+{
+	m_strLna2Current.Format(_T("0x%02x"), reg.m_nLna1Cur);
+	m_strLna1Current = m_strLna2Current;
+}
+
+
+void CSemanticBase::UpdateLna5Current(const CRegister& reg)
+{
+	m_strLna5Current.Format(_T("0x%02x"), reg.m_nLna5Cur);
+}
+
+
+void CSemanticBase::UpdateLna4Current(const CRegister& reg)
+{
+	m_strLna4Current.Format(_T("0x%02x"), reg.m_nLna4Cur);
+}
+
+
+void CSemanticBase::UpdateDemodRefStageCurrent(const CRegister& reg)
+{
+	m_strDemodRefStageCurrent.Format(_T("0x%02x"), reg.m_nDemodRefStageCur);
+}
+
+
+void CSemanticBase::UpdateDemodIPStageCurrent(const CRegister& reg)
+{
+	m_strDemodIPStageCurrent.Format(_T("0x%02x"), reg.m_nDemodIPStageCur);
+}
+
+
+void CSemanticBase::UpdateLaFBCurrent(const CRegister& reg)
+{
+	m_strLaFBCurrent.Format(_T("0x%02x"), reg.m_nLaFBCur);
+}
+
+
+void CSemanticBase::UpdateLaCoreCurrent(const CRegister& reg)
+{
+	m_strLaCoreCurrent.Format(_T("0x%02x"), reg.m_nLaCoreCur);
+}
+
+
+void CSemanticBase::UpdateLaOPBufferCurrent(const CRegister& reg)
+{
+	m_strLaOPBufferCurrent.Format(_T("0x%02x"), reg.m_nLaOPBufCur);
+}
+
+
+void CSemanticBase::UpdateLaIPBufferCurrent(const CRegister& reg)
+{
+	m_strLaIPBufferCurrent.Format(_T("0x%02x"), reg.m_nLaIPBufCur);
+}
+
+
+void CSemanticBase::UpdateLaHLDataRateCurrent(const CRegister& reg)
+{
+	m_strLaHLDataRateCurrent.Format(_T("0x%02x"), reg.m_nLaHLDataRateCur);
+}
+
+
+void CSemanticBase::UpdateCMOSGainStageCurrent(const CRegister& reg)
+{
+	m_strCMOSGainStageCurrent.Format(_T("0x%02x"), reg.m_nCMOSGainStageCur);
+}
+
+
+void CSemanticBase::UpdateCMLInterfaceStageCurrent(const CRegister& reg)
+{
+	m_strCMLInterfaceStageCurrent.Format(_T("0x%02x"), reg.m_nCMLInterfaceStageCur);
+}
+
+
+void CSemanticBase::UpdateFdCoreCurrent(const CRegister& reg)
+{
+	m_strFdCoreCur.Format(_T("0x%02x"), reg.m_nFdCoreCur);
+}
+
+
+void CSemanticBase::UpdateFdBufferCurrent(const CRegister& reg)
+{
+	m_strFdBufCur.Format(_T("0x%02x"), reg.m_nFdBufCur);
+}
+
+
+void CSemanticBase::UpdateRegisters()
+{
+	ASSERT(Parent());
+	const CRegister& reg = getRegister();
+
+	UpdateRxData(reg);
+	UpdateLimitAmp(reg);
+	UpdateLnaGain(reg);
+
+	UpdateDutyCycle(reg);
+	UpdateVcoOscFreq(reg);
+	UpdateRegRefVolt(reg);
+	UpdateVcoVdd(reg);
+
+	UpdateVcoPower(reg);
+	UpdateModPower(reg);
+	UpdateTestBufferPower(reg);
+	UpdateDataInputSelect(reg);
+	UpdateDataPaPower(reg);
+	UpdatePaGainControl2(reg);
+	UpdatePaGainControl1(reg);
+	UpdateTestBufferCurrent(reg);
+
+	UpdateBiasBlockEnable(reg);
+
+	UpdateLna3Current(reg);
+	UpdateLna1Current(reg);
+	UpdateLna2Current(reg);
+
+	UpdateLna5Current(reg);
+	UpdateLna4Current(reg);
+
+	UpdateDemodRefStageCurrent(reg);
+	UpdateDemodIPStageCurrent(reg);
+
+	UpdateLaFBCurrent(reg);
+	UpdateLaCoreCurrent(reg);
+
+	UpdateLaOPBufferCurrent(reg);
+	UpdateLaIPBufferCurrent(reg);
+
+	UpdateLaHLDataRateCurrent(reg);
+	UpdateCMOSGainStageCurrent(reg);
+
+	UpdateCMLInterfaceStageCurrent(reg);
+
+	UpdateFdCoreCurrent(reg);
+	UpdateFdBufferCurrent(reg);
+	UpdateData(FALSE);
 }
