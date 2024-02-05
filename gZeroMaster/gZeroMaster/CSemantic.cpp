@@ -818,7 +818,6 @@ void CSemantic::ResetValues()
 void CSemantic::OnCbnSelchangeControlCombo()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	const CRegister& reg = getRegister();
 
 	BOOL bProcessed = FALSE;
 	for (std::map<SelectStatic, CStaticElem>::iterator it = m_staticMap.begin(); it != m_staticMap.end(); ++it) {
