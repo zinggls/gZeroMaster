@@ -24,8 +24,6 @@ protected:
 
 public:
 	virtual BOOL OnInitDialog();
-	afx_msg void OnBnClickedReadAllButton();
-	afx_msg void OnBnClickedWriteAllButton();
 	void OnChipConnect(CString chipModel);
 	afx_msg void OnBnClickedDefaultValueButton();
 };

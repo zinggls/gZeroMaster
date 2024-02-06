@@ -1873,3 +1873,41 @@ void CSemanticBase::OnBnClickedWriteButton()
 	Parent()->L(_T("Writing done"));
 #endif
 }
+
+
+void CSemanticBase::OnBnClickedReadAllButton()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	ResetValues();
+	Parent()->m_pRaw->OnBnClickedReadAllButton();
+	UpdateRegisters();
+}
+
+
+void CSemanticBase::OnBnClickedWriteAllButton()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+
+	//스펙에 정의되지 않은 범위의 비트값들은 비트값들은 0으로 하기 위해서 0으로 초기화한뒤에 레지스터 값이 쓰여지도록 한다
+	BOOL b = Parent()->m_pRaw->WriteRegister(0x02, 0x0);
+	b = b && Parent()->m_pRaw->WriteRegister(0x0d, 0x0);
+	b = b && Parent()->m_pRaw->WriteRegister(0x11, 0x0);
+	ASSERT(b);
+
+	int errCnt = 0;
+	CString str;
+	for (int i = 1; i <= static_cast<int>(SelectStatic::FdBuf); i++) {
+		if (!UpdateSelected(static_cast<SelectStatic>(i), FALSE)) {
+			str.Format(_T("Update failed at SelectStatic:%d"), i);
+			Parent()->L(str);
+			errCnt++;
+		}
+	}
+	if (errCnt == 0)
+		Parent()->L(_T("All registers are updated"));
+	else {
+		str.Format(_T("%d Update failures"), errCnt);
+		Parent()->L(str);
+	}
+	OnBnClickedReadAllButton();
+}

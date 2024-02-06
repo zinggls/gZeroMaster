@@ -323,4 +323,6 @@ public:
 	BOOL UpdateSemanticValue(int addr, int (*fpNewRegVal)(int, int), int newVal, void (CSemanticBase::* fpUpdateData)(const CRegister&));
 	BOOL UpdateSelected(SelectStatic selected, BOOL bCommonControl);
 	afx_msg void OnBnClickedWriteButton();
+	afx_msg void OnBnClickedReadAllButton();
+	afx_msg void OnBnClickedWriteAllButton();
 };
