@@ -102,4 +102,5 @@ public:
 	afx_msg void OnTimer(UINT_PTR nIDEvent);
 	LRESULT OnDeviceChange(WPARAM wParam, LPARAM lParam);
 	afx_msg void OnBnClickedTcpBindPortButton();
+	void UpdateRegisters();
 };

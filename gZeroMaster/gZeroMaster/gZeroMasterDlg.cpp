@@ -1021,3 +1021,8 @@ void CgZeroMasterDlg::OnBnClickedTcpBindPortButton()
 		GetDlgItem(IDC_TCP_BIND_PORT_BUTTON)->EnableWindow(FALSE);
 	}
 }
+
+void CgZeroMasterDlg::UpdateRegisters()
+{
+	m_pSemantic->UpdateRegisters();
+}

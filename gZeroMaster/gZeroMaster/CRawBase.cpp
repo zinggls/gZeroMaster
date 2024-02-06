@@ -399,6 +399,7 @@ void CRawBase::OnBnClickedReadAllButton()
 {
 	ResetValues();
 	if (!ReadRegisters()) Parent()->L(_T("Error occured in reading registers"));
+	Parent()->UpdateRegisters();
 }
 
 void CRawBase::OnBnClickedWriteButton()
@@ -420,6 +421,7 @@ void CRawBase::OnBnClickedWriteButton()
 	}
 
 	ReadRegister(it->second.m_nAddr, it->first, it->second.m_pStr);
+	Parent()->UpdateRegisters();
 }
 
 HBRUSH CRawBase::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)

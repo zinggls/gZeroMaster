@@ -143,18 +143,6 @@ void CRaw::OnHideRegisterButtons(CString strChosenRegister)
 	}
 }
 
-void CRaw::OnBnClickedReadAllButton()
-{
-	CRawBase::OnBnClickedReadAllButton();
-	Parent()->m_pSemantic->UpdateRegisters();
-}
-
-void CRaw::OnBnClickedWriteButton()
-{
-	CRawBase::OnBnClickedWriteButton();
-	Parent()->m_pSemantic->UpdateRegisters();
-}
-
 void CRaw::OnChipConnect(CString chipModel)
 {
 	ASSERT(chipModel == _T("A0") || chipModel == _T("B0"));
