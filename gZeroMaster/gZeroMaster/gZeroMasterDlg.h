@@ -11,6 +11,7 @@
 #define MAX_LOG					1000
 #define MAX_COMPORT				25
 #define ZMQ_TIMER				1
+#define MAX_LOOP				100000
 
 class CSemantic;
 class CRaw;

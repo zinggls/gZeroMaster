@@ -2,7 +2,6 @@
 
 #include <map>
 #include <list>
-#define MAX_LOOP	100000
 
 class CgZeroMasterDlg;
 
