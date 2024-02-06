@@ -6,6 +6,7 @@
 
 #include <Serial.h>
 #include <nlohmann/json.hpp>
+#include "CRegister.h"
 
 #define MAX_LOG					1000
 #define MAX_COMPORT				25
@@ -103,4 +104,5 @@ public:
 	LRESULT OnDeviceChange(WPARAM wParam, LPARAM lParam);
 	afx_msg void OnBnClickedTcpBindPortButton();
 	void UpdateRegisters();
+	void Parse(CRegister& reg);
 };

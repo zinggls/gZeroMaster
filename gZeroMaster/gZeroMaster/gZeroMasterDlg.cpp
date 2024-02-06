@@ -1026,3 +1026,24 @@ void CgZeroMasterDlg::UpdateRegisters()
 {
 	m_pSemantic->UpdateRegisters();
 }
+
+void CgZeroMasterDlg::Parse(CRegister& reg)
+{
+	ASSERT(m_pRaw->Parent()->m_chip == _T("A0") || m_pRaw->Parent()->m_chip == _T("B0"));
+
+	CSemanticBase::UpdateRxReg1(m_pRaw->m_strRxReg1, reg);
+	CSemanticBase::UpdateTxReg1(m_pRaw->m_strTxReg1Top, m_pRaw->m_strTxReg1Mid, m_pRaw->m_strTxReg1Bot, reg, m_pRaw->Parent()->m_chip);
+	if (m_pRaw->Parent()->m_chip == _T("B0"))
+		m_pSemantic->UpdateTxReg2(m_pRaw->m_strTxReg2Top, m_pRaw->m_strTxReg2Mid, m_pRaw->m_strTxReg2Bot, reg);
+
+	CSemanticBase::UpdateBiasReg1(m_pRaw->m_strBiasReg1, reg);
+	CSemanticBase::UpdateBiasReg2(m_pRaw->m_strBiasReg2, reg);
+	CSemanticBase::UpdateBiasReg3(m_pRaw->m_strBiasReg3, reg);
+	CSemanticBase::UpdateBiasReg4(m_pRaw->m_strBiasReg4, reg);
+	CSemanticBase::UpdateBiasReg5(m_pRaw->m_strBiasReg5, reg);
+	CSemanticBase::UpdateBiasReg6(m_pRaw->m_strBiasReg6, reg);
+	CSemanticBase::UpdateBiasReg7(m_pRaw->m_strBiasReg7, reg);
+	CSemanticBase::UpdateBiasReg8(m_pRaw->m_strBiasReg8, reg);
+	if (m_pRaw->Parent()->m_chip == _T("A0"))
+		CSemanticBase::UpdateBiasReg9(m_pRaw->m_strBiasReg9, reg);
+}
