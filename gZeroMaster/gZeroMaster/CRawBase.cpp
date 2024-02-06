@@ -402,6 +402,11 @@ void CRawBase::OnBnClickedReadAllButton()
 	Parent()->UpdateRegisters();
 }
 
+void CRawBase::OnBnClickedWriteAllButton()
+{
+	//IBase에서 선언된 순수가상함수로 컴파일러 오류를 막기 위해 아무일도 하지 않는 구현부를 제공
+}
+
 void CRawBase::OnBnClickedWriteButton()
 {
 	ASSERT(m_strChosenRegister.IsEmpty() == FALSE);

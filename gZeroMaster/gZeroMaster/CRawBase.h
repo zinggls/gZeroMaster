@@ -90,6 +90,7 @@ public:
 	afx_msg void OnBnClickedBit0Button();
 	afx_msg void OnBnClickedEditCheck();
 	virtual afx_msg void OnBnClickedReadAllButton();
+	virtual afx_msg void OnBnClickedWriteAllButton();
 	virtual afx_msg void OnBnClickedWriteButton();
 	afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
 
