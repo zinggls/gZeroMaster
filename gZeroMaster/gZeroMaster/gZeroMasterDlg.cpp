@@ -1062,3 +1062,8 @@ BOOL CgZeroMasterDlg::WriteRegister(int addr, int value)
 {
 	return m_pRaw->WriteRegister(addr, value);
 }
+
+CString CgZeroMasterDlg::RegisterName(int addr)
+{
+	return m_pRaw->RegisterName(addr);
+}
