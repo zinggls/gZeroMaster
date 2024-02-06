@@ -110,4 +110,5 @@ public:
 	LONG ReadRegister(int addr, DWORD sizeToRead, char* pBuffer, int maxLoop);
 	BOOL WriteRegister(int addr, int value);
 	CString RegisterName(int addr);
+	void RawBnClickedReadAllButton();
 };

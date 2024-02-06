@@ -1067,3 +1067,8 @@ CString CgZeroMasterDlg::RegisterName(int addr)
 {
 	return m_pRaw->RegisterName(addr);
 }
+
+void CgZeroMasterDlg::RawBnClickedReadAllButton()
+{
+	m_pRaw->OnBnClickedReadAllButton();
+}
