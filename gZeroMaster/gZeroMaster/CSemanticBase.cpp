@@ -1641,7 +1641,7 @@ void CSemanticBase::ResetValues()
 	UpdateData(FALSE);
 }
 
-BOOL CSemanticBase::OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
+void CSemanticBase::OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
 {
 	// TODO: 여기에 메시지 처리기 코드를 추가 및/또는 기본값을 호출합니다.
 	BOOL bProcessed = FALSE;
@@ -1658,8 +1658,9 @@ BOOL CSemanticBase::OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
 		}
 
 	}
+
+	if (bProcessed && m_bAutoWrite) OnBnClickedWriteButton();
 	CDialogEx::OnVScroll(nSBCode, nPos, pScrollBar);
-	return bProcessed;
 }
 
 BOOL CSemanticBase::UpdateSemanticValue(int addr, int (*fpNewRegVal)(int, int), int newVal, void (CSemanticBase::* fpUpdateData)(const CRegister&))

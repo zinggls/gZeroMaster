@@ -24,7 +24,6 @@ protected:
 
 public:
 	virtual BOOL OnInitDialog();
-	afx_msg void OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar);
 	afx_msg void OnBnClickedReadAllButton();
 	afx_msg void OnCbnSelchangeControlCombo();
 	afx_msg void OnBnClickedWriteAllButton();
