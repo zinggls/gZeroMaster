@@ -119,6 +119,7 @@
   <ItemGroup>
     <ClInclude Include="CRaw.h" />
     <ClInclude Include="CRawBase.h" />
+    <ClInclude Include="CRawZing400R.h" />
     <ClInclude Include="CRawZing400T.h" />
     <ClInclude Include="CRegister.h" />
     <ClInclude Include="CSemantic.h" />
@@ -135,6 +136,7 @@
   <ItemGroup>
     <ClCompile Include="CRaw.cpp" />
     <ClCompile Include="CRawBase.cpp" />
+    <ClCompile Include="CRawZing400R.cpp" />
     <ClCompile Include="CRawZing400T.cpp" />
     <ClCompile Include="CSemantic.cpp" />
     <ClCompile Include="CSemanticBase.cpp" />
