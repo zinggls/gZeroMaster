@@ -124,6 +124,7 @@
     <ClInclude Include="CRegister.h" />
     <ClInclude Include="CSemantic.h" />
     <ClInclude Include="CSemanticBase.h" />
+    <ClInclude Include="CSemanticZing400R.h" />
     <ClInclude Include="CSemanticZing400T.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="gZeroMaster.h" />
@@ -141,6 +142,7 @@
     <ClCompile Include="CRawZing400T.cpp" />
     <ClCompile Include="CSemantic.cpp" />
     <ClCompile Include="CSemanticBase.cpp" />
+    <ClCompile Include="CSemanticZing400R.cpp" />
     <ClCompile Include="CSemanticZing400T.cpp" />
     <ClCompile Include="gZeroMaster.cpp" />
     <ClCompile Include="gZeroMasterDlg.cpp" />
