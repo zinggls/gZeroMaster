@@ -2,7 +2,6 @@
 #include "gZeroMaster.h"
 #include "CSemanticBase.h"
 #include "gZeroMasterDlg.h"
-#include "CRaw.h"
 
 IMPLEMENT_DYNAMIC(CSemanticBase, CDialogEx)
 
