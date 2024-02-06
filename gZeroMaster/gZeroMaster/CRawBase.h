@@ -2,6 +2,7 @@
 
 #include <map>
 #include <list>
+#include "IBase.h"
 
 class CgZeroMasterDlg;
 
@@ -16,7 +17,7 @@ public:
 
 // CRaw 대화 상자
 
-class CRawBase : public CDialogEx
+class CRawBase : public IBase
 {
 	DECLARE_DYNAMIC(CRawBase)
 

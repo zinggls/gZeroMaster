@@ -3,6 +3,7 @@
 #include <map>
 #include "SemanticUserDefinedMessage.h"
 #include "CRegister.h"
+#include "IBase.h"
 
 class CgZeroMasterDlg;
 class CRaw;
@@ -21,7 +22,7 @@ public:
 	CString& m_strVal;
 };
 
-class CSemanticBase : public CDialogEx
+class CSemanticBase : public IBase
 {
 	DECLARE_DYNAMIC(CSemanticBase)
 
