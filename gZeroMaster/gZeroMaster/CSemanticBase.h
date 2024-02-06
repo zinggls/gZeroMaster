@@ -322,4 +322,5 @@ public:
 	afx_msg BOOL OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar);
 	BOOL UpdateSemanticValue(int addr, int (*fpNewRegVal)(int, int), int newVal, void (CSemanticBase::* fpUpdateData)(const CRegister&));
 	BOOL UpdateSelected(SelectStatic selected, BOOL bCommonControl);
+	afx_msg void OnBnClickedWriteButton();
 };
