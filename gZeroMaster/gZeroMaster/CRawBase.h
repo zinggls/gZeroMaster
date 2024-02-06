@@ -97,4 +97,21 @@ public:
 	virtual void OnHideRegisterButtons(CString strChosenRegister)=0;
 	void ResetValues();
 	void OnStnClicked(UINT idcEdit, CString& strReg, UINT idcReg, CStringList& msgList);
+
+	afx_msg void OnStnClickedRxReg1Static();
+	afx_msg void OnStnClickedTxReg1TopStatic();
+	afx_msg void OnStnClickedTxReg1MidStatic();
+	afx_msg void OnStnClickedTxReg1BotStatic();
+	afx_msg void OnStnClickedTxReg2TopStatic();
+	afx_msg void OnStnClickedTxReg2MidStatic();
+	afx_msg void OnStnClickedTxReg2BotStatic();
+	afx_msg void OnStnClickedBiasReg1Static();
+	afx_msg void OnStnClickedBiasReg2Static();
+	afx_msg void OnStnClickedBiasReg3Static();
+	afx_msg void OnStnClickedBiasReg4Static();
+	afx_msg void OnStnClickedBiasReg5Static();
+	afx_msg void OnStnClickedBiasReg6Static();
+	afx_msg void OnStnClickedBiasReg7Static();
+	afx_msg void OnStnClickedBiasReg8Static();
+	afx_msg void OnStnClickedBiasReg9Static();
 };
