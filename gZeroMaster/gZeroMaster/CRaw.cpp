@@ -17,22 +17,6 @@ IMPLEMENT_DYNAMIC(CRaw, CRawBase)
 CRaw::CRaw(CWnd* pParent /*=nullptr*/)
 	: CRawBase(pParent)
 {
-	m_strList.push_back(&m_strRxReg1);
-	m_strList.push_back(&m_strTxReg1Top);
-	m_strList.push_back(&m_strTxReg1Mid);
-	m_strList.push_back(&m_strTxReg1Bot);
-	m_strList.push_back(&m_strTxReg2Top);
-	m_strList.push_back(&m_strTxReg2Mid);
-	m_strList.push_back(&m_strTxReg2Bot);
-	m_strList.push_back(&m_strBiasReg1);
-	m_strList.push_back(&m_strBiasReg2);
-	m_strList.push_back(&m_strBiasReg3);
-	m_strList.push_back(&m_strBiasReg4);
-	m_strList.push_back(&m_strBiasReg5);
-	m_strList.push_back(&m_strBiasReg6);
-	m_strList.push_back(&m_strBiasReg7);
-	m_strList.push_back(&m_strBiasReg8);
-	m_strList.push_back(&m_strBiasReg9);
 }
 
 CRaw::~CRaw()
