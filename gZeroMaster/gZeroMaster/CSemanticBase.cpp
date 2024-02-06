@@ -1646,11 +1646,11 @@ BOOL CSemanticBase::UpdateSemanticValue(int addr, int (*fpNewRegVal)(int, int), 
 {
 	int oldRegVal;
 	char buffer[3];
-	while (Parent()->m_pRaw->ReadRegister(addr, 2, buffer, MAX_LOOP) != ERROR_SUCCESS) Sleep(10);	//Blocking 함수
+	while (Parent()->ReadRegister(addr, 2, buffer, MAX_LOOP) != ERROR_SUCCESS) Sleep(10);	//Blocking 함수
 
 	oldRegVal = (int)strtol(buffer, NULL, 16);
 	int newRegVal = (*fpNewRegVal)(oldRegVal, newVal);
-	if (Parent()->m_pRaw->WriteRegister(addr, newRegVal) != TRUE) {
+	if (Parent()->WriteRegister(addr, newRegVal) != TRUE) {
 		Parent()->L(_T("Error in WriteRegister"));
 	}
 	else {
@@ -1660,7 +1660,7 @@ BOOL CSemanticBase::UpdateSemanticValue(int addr, int (*fpNewRegVal)(int, int), 
 		Parent()->L(str);
 #endif
 
-		Parent()->m_pRaw->ReadRegister(addr);	//Blocking함수 호출
+		Parent()->ReadRegister(addr);	//Blocking함수 호출
 #ifdef DEBUG_READ
 		str.Format(_T("ReadRegister Address:0x%02x done"), addr);
 		Parent()->L(str);

@@ -1047,3 +1047,18 @@ void CgZeroMasterDlg::Parse(CRegister& reg)
 	if (m_pRaw->Parent()->m_chip == _T("A0"))
 		CSemanticBase::UpdateBiasReg9(m_pRaw->m_strBiasReg9, reg);
 }
+
+void CgZeroMasterDlg::ReadRegister(int addr)
+{
+	m_pRaw->ReadRegister(addr);
+}
+
+LONG CgZeroMasterDlg::ReadRegister(int addr, DWORD sizeToRead, char* pBuffer, int maxLoop)
+{
+	return m_pRaw->ReadRegister(addr, sizeToRead, pBuffer, maxLoop);
+}
+
+BOOL CgZeroMasterDlg::WriteRegister(int addr, int value)
+{
+	return m_pRaw->WriteRegister(addr, value);
+}

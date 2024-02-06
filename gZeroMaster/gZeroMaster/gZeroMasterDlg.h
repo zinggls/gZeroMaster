@@ -105,4 +105,7 @@ public:
 	afx_msg void OnBnClickedTcpBindPortButton();
 	void UpdateRegisters();
 	void Parse(CRegister& reg);
+	void ReadRegister(int addr);
+	LONG ReadRegister(int addr, DWORD sizeToRead, char* pBuffer, int maxLoop);
+	BOOL WriteRegister(int addr, int value);
 };
