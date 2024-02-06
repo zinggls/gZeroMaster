@@ -190,7 +190,7 @@ public:
 	static int disableOrEnable(CString str);
 	static int strToInt(CString zero, CString one, CString str);
 	afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
-	afx_msg BOOL OnCbnSelchangeControlCombo();
+	afx_msg void OnCbnSelchangeControlCombo();
 	void UpdateRxData(const CRegister& reg);
 	void UpdateLimitAmp(const CRegister& reg);
 	void UpdateLnaGain(const CRegister& reg);

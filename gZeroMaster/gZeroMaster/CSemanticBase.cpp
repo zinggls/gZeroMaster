@@ -734,7 +734,7 @@ HBRUSH CSemanticBase::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 	return hbr;
 }
 
-BOOL CSemanticBase::OnCbnSelchangeControlCombo()
+void CSemanticBase::OnCbnSelchangeControlCombo()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 
@@ -747,7 +747,7 @@ BOOL CSemanticBase::OnCbnSelchangeControlCombo()
 		}
 	}
 
-	return bProcessed;
+	if (bProcessed && m_bAutoWrite) OnBnClickedWriteButton();
 }
 
 void CSemanticBase::UpdateRxData(const CRegister& reg)

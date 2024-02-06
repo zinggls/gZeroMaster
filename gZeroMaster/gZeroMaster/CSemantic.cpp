@@ -150,14 +150,6 @@ void CSemantic::OnBnClickedReadAllButton()
 }
 
 
-void CSemantic::OnCbnSelchangeControlCombo()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-
-	if (CSemanticBase::OnCbnSelchangeControlCombo() && m_bAutoWrite) OnBnClickedWriteButton();
-}
-
-
 void CSemantic::OnBnClickedWriteAllButton()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
