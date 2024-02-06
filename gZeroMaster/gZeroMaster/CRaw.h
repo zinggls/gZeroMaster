@@ -26,4 +26,5 @@ public:
 	virtual BOOL OnInitDialog();
 	virtual void OnHideRegisterButtons(CString strChosenRegister);
 	void OnChipConnect(CString chipModel);
+	afx_msg void OnBnClickedDefaultValueButton();
 };
