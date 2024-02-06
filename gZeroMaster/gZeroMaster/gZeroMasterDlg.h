@@ -13,8 +13,8 @@
 #define ZMQ_TIMER				1
 #define MAX_LOOP				100000
 
-class CSemantic;
-class CRaw;
+class CSemanticBase;
+class CRawBase;
 
 // CgZeroMasterDlg 대화 상자
 class CgZeroMasterDlg : public CDialogEx
@@ -47,8 +47,8 @@ public:
 	CListBox m_log;
 	CComboBox m_comPort;
 	CTabCtrl m_tab;
-	CSemantic *m_pSemantic;
-	CRaw *m_pRaw;
+	CSemanticBase *m_pSemantic;
+	CRawBase *m_pRaw;
 	CString m_chip;
 	CComboBox m_chipSelect;
 	std::list<std::pair<std::string, int>> m_combos;
