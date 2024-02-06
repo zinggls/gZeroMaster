@@ -27,6 +27,5 @@ public:
 	virtual afx_msg void OnBnClickedReadAllButton();
 	virtual afx_msg void OnBnClickedWriteButton();
 	virtual void OnHideRegisterButtons(CString strChosenRegister);
-	virtual void ResetValues();
 	void OnChipConnect(CString chipModel);
 };

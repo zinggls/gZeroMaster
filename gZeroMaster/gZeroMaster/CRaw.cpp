@@ -155,12 +155,6 @@ void CRaw::OnBnClickedWriteButton()
 	Parent()->m_pSemantic->UpdateRegisters();
 }
 
-void CRaw::ResetValues()
-{
-	CRawBase::ResetValues();
-	UpdateData(FALSE);
-}
-
 void CRaw::OnChipConnect(CString chipModel)
 {
 	ASSERT(chipModel == _T("A0") || chipModel == _T("B0"));
