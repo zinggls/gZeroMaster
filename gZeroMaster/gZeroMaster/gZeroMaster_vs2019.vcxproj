@@ -119,6 +119,7 @@
   <ItemGroup>
     <ClInclude Include="CRaw.h" />
     <ClInclude Include="CRawBase.h" />
+    <ClInclude Include="CRegister.h" />
     <ClInclude Include="CSemantic.h" />
     <ClInclude Include="CSemanticBase.h" />
     <ClInclude Include="framework.h" />
