@@ -624,7 +624,7 @@ void CgZeroMasterDlg::OnCbnSelchangeChipCombo()
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_chipSelect.GetLBText(m_chipSelect.GetCurSel(), m_chip);
 
-	if (m_chip == _T("B0"))
+	if (m_chip == _T("A0") || m_chip == _T("B0"))
 		OnChipZing200x();
 	else if (m_chip == _T("Zing400T"))
 		OnChipZing400T();
