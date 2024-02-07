@@ -79,6 +79,9 @@ public:
 	void CheckBiasReg1(CString strBiasReg1);
 	BOOL LoadRegisters(CString fileName);
 	afx_msg void OnStnDblclickLogoStatic();
+	void OnChipZing200x();
+	void OnChipZing400T();
+	void OnChipZing400R();
 	afx_msg void OnCbnSelchangeChipCombo();
 	afx_msg void OnFileLoad();
 	afx_msg void OnFileSavetofile();

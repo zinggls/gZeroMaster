@@ -12,6 +12,10 @@
 #include <fstream>
 #include <zmq.h>
 #include <Dbt.h>
+#include "CRawZing400T.h"
+#include "CRawZing400R.h"
+#include "CSemanticZing400T.h"
+#include "CSemanticZing400R.h"
 
 using json = nlohmann::json;
 
@@ -147,6 +151,8 @@ BOOL CgZeroMasterDlg::OnInitDialog()
 	// TODO: 여기에 추가 초기화 작업을 추가합니다.
 	m_chipSelect.AddString(_T("A0"));
 	m_chipSelect.AddString(_T("B0"));
+	m_chipSelect.AddString(_T("Zing400T"));
+	m_chipSelect.AddString(_T("Zing400R"));
 	m_chipSelect.SetCurSel(1);	//디폴트 선택은 B0
 
 	HKEY hKey;
@@ -176,20 +182,6 @@ BOOL CgZeroMasterDlg::OnInitDialog()
 	m_tab.InsertItem(1, _T("Raw"));
 
 	m_tab.SetCurSel(0);
-
-	CRect rect;
-	m_tab.GetWindowRect(rect);
-
-	m_pSemantic = new CSemantic(this);
-	m_pSemantic->Create(IDD_SEMANTIC_DIALOG, &m_tab);
-	m_pSemantic->MoveWindow(0, 20, rect.Width(), rect.Height());
-	m_pSemantic->ShowWindow(SW_SHOW);
-	m_pSemantic->GetDlgItem(IDC_SEMANTIC_EDIT_CHECK)->EnableWindow(FALSE);
-
-	m_pRaw = new CRaw(this);
-	m_pRaw->Create(IDD_RAW_DIALOG, &m_tab);
-	m_pRaw->MoveWindow(0, 20, rect.Width(), rect.Height());
-	m_pRaw->ShowWindow(SW_HIDE);
 
 	OnCbnSelchangeChipCombo();
 	setCombos();
@@ -334,7 +326,7 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 
 			lLastError = m_serial.SetupReadTimeouts(CSerial::EReadTimeoutNonblocking);
 			if (lLastError != ERROR_SUCCESS) return ErrorMsg(m_serial.GetLastError(), _T("Unable to set COM-port read timeout"));
-
+			
 			OnCbnSelchangeChipCombo();
 			ASSERT(m_chip == _T("A0") || m_chip == _T("B0"));
 			m_pRaw->OnChipConnect(m_chip);
@@ -594,11 +586,62 @@ void CgZeroMasterDlg::OnStnDblclickLogoStatic()
 	::ShellExecute(NULL, _T("open"), _T("https://www.zinggls.com"), NULL, NULL, SW_SHOW);
 }
 
+void CgZeroMasterDlg::OnChipZing200x()
+{
+	if (m_pSemantic != NULL) delete m_pSemantic;
+	m_pSemantic = new CSemantic(this);
+	m_pSemantic->Create(IDD_SEMANTIC_DIALOG, &m_tab);
+
+	if (m_pRaw != NULL) delete m_pRaw;
+	m_pRaw = new CRaw(this);
+	m_pRaw->Create(IDD_RAW_DIALOG, &m_tab);
+}
+
+void CgZeroMasterDlg::OnChipZing400T()
+{
+	if (m_pSemantic != NULL) delete m_pSemantic;
+	m_pSemantic = new CSemanticZing400T(this);
+	m_pSemantic->Create(IDD_SEMANTIC_ZING400T_DIALOG, &m_tab);
+
+	if (m_pRaw != NULL) delete m_pRaw;
+	m_pRaw = new CRawZing400T(this);
+	m_pRaw->Create(IDD_RAW_ZING400T_DIALOG, &m_tab);
+}
+
+void CgZeroMasterDlg::OnChipZing400R()
+{
+	if (m_pSemantic != NULL) delete m_pSemantic;
+	m_pSemantic = new CSemanticZing400R(this);
+	m_pSemantic->Create(IDD_SEMANTIC_ZING400R_DIALOG, &m_tab);
+
+	if (m_pRaw != NULL) delete m_pRaw;
+	m_pRaw = new CRawZing400R(this);
+	m_pRaw->Create(IDD_RAW_ZING400R_DIALOG, &m_tab);
+}
 
 void CgZeroMasterDlg::OnCbnSelchangeChipCombo()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_chipSelect.GetLBText(m_chipSelect.GetCurSel(), m_chip);
+
+	if (m_chip == _T("B0"))
+		OnChipZing200x();
+	else if (m_chip == _T("Zing400T"))
+		OnChipZing400T();
+	else if (m_chip == _T("Zing400R"))
+		OnChipZing400R();
+	else
+		ASSERT(FALSE);
+
+	CRect rect;
+	m_tab.GetWindowRect(rect);
+
+	m_pSemantic->MoveWindow(0, 20, rect.Width(), rect.Height());
+	m_pSemantic->ShowWindow(SW_SHOW);
+	m_pSemantic->GetDlgItem(IDC_SEMANTIC_EDIT_CHECK)->EnableWindow(FALSE);
+	m_pRaw->MoveWindow(0, 20, rect.Width(), rect.Height());
+	m_pRaw->ShowWindow(SW_HIDE);
+
 	m_pRaw->OnChipConnect(m_chip);
 	m_pSemantic->OnChipConnect(m_chip);
 }
