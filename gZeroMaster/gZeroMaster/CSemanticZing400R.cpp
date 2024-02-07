@@ -2,6 +2,7 @@
 //
 
 #include "pch.h"
+#include "gZeroMaster.h"
 #include "CSemanticZing400R.h"
 
 
@@ -50,4 +51,21 @@ void CSemanticZing400R::OnChipConnect(CString chipModel)
 
 void CSemanticZing400R::OnBnClickedDefaultValueButton()
 {
+}
+
+void CSemanticZing400R::ControlLabelEnable(BOOL b)
+{
+	GetDlgItem(IDC_RX_DATA_IF_ENABLE_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_LIMITING_AMP_ENABLE_STATIC)->EnableWindow(b);
+
+	GetDlgItem(IDC_BIAS_BLOCK_ENABLE_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_DEMOD_REF_STAGE_CURRENT_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_DEMOD_IP_STAGE_CURRENT_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_LA_FB_CURRENT_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_LA_CORE_CURRENT_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_LA_OP_BUFFER_CURRENT_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_LA_IP_BUFFER_CURRENT_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_LA_HL_DATA_RATE_CURRENT_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_CMOS_GAIN_STAGE_CURRENT_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_CML_INTERFACE_STAGE_CURRENT_STATIC)->EnableWindow(b);
 }
