@@ -101,7 +101,7 @@ public:
 	static void UpdateBiasReg9(CString strBiasReg9, CRegister& reg);
 	int SliderPos();
 	void ShowSlider(int nCmdShow);
-	void ControlValueEnable(BOOL b);
+	virtual void ControlValueEnable(BOOL b);
 	afx_msg void OnBnClickedSemanticEditCheck();
 	void OnBnClickedAutoWriteCheck();
 	COLORREF SetColor(CDC* pDC, SelectStatic given);

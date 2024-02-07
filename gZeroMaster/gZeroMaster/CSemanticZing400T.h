@@ -27,4 +27,5 @@ public:
 	virtual void OnChipConnect(CString chipModel);
 	virtual afx_msg void OnBnClickedDefaultValueButton();
 	virtual void ControlLabelEnable(BOOL b);
+	virtual void ControlValueEnable(BOOL b);
 };

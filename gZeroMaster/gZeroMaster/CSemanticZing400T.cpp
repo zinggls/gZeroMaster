@@ -69,3 +69,20 @@ void CSemanticZing400T::ControlLabelEnable(BOOL b)
 	GetDlgItem(IDC_PA_GAIN_CONTROL2_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_TEST_BUFFER_CURRENT_STATIC)->EnableWindow(b);
 }
+
+void CSemanticZing400T::ControlValueEnable(BOOL b)
+{
+	GetDlgItem(IDC_DUTY_CYCLE_VALUE_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_VCO_OSC_FREQ_VALUE_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_REG_REF_VOLT_VALUE_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_VCO_VDD_VALUE_STATIC)->EnableWindow(b);
+
+	GetDlgItem(IDC_VCO_POWER_VALUE_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_MODULATOR_POWER_VALUE_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_TEST_BUFFER_POWER_VALUE_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_DATA_INPUT_SELECT_VALUE_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_PA_POWER_VALUE_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_PA_GAIN_CONTROL1_VALUE_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_PA_GAIN_CONTROL2_VALUE_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_TEST_BUFFER_CURRENT_VALUE_STATIC)->EnableWindow(b);
+}
