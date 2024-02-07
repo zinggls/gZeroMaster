@@ -2,6 +2,7 @@
 //
 
 #include "pch.h"
+#include "gZeroMaster.h"
 #include "CSemanticZing400T.h"
 
 
@@ -50,4 +51,21 @@ void CSemanticZing400T::OnChipConnect(CString chipModel)
 
 void CSemanticZing400T::OnBnClickedDefaultValueButton()
 {
+}
+
+void CSemanticZing400T::ControlLabelEnable(BOOL b)
+{
+	GetDlgItem(IDC_DUTY_CYCLE_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_VCO_OSC_FREQ_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_REG_REF_VOLT_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_VCO_VDD_STATIC)->EnableWindow(b);
+
+	GetDlgItem(IDC_VCO_POWER_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_MODULATOR_POWER_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_TEST_BUFFER_POWER_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_DATA_INPUT_SELECT_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_PA_POWER_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_PA_GAIN_CONTROL1_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_PA_GAIN_CONTROL2_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_TEST_BUFFER_CURRENT_STATIC)->EnableWindow(b);
 }

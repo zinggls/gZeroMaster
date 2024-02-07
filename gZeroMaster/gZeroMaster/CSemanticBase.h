@@ -110,7 +110,7 @@ public:
 	void SetControlSlider(int min, int max, CString strCurVal, int ticFreq, int lineSize, int pageSize);
 	void SetSliderGroup(SelectStatic ss, int min, int max, CString strCurVal, int ticFreq, int lineSize, int pageSize, UINT idcStatic);
 	void SetComboGroup(SelectStatic ss, CString strVal0, CString strVal1, int nVal, UINT idcStatic);
-	void ControlLabelEnable(BOOL b);
+	virtual void ControlLabelEnable(BOOL b);
 	int ComboSel();
 	static int Read4BitValue(CString str);
 	static int Read8BitValue(CString str);
