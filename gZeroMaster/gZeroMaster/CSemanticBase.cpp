@@ -1888,3 +1888,19 @@ void CSemanticBase::OnBnClickedWriteAllButton()
 	}
 	OnBnClickedReadAllButton();
 }
+
+void CSemanticBase::InitialControlState()
+{
+	ControlLabelEnable(FALSE);
+	ControlValueEnable(FALSE);
+
+	ShowSlider(SW_HIDE);
+	GetDlgItem(IDC_CONTROL_COMBO)->ShowWindow(SW_HIDE);
+	m_selected = SelectStatic::None;
+
+	GetDlgItem(IDC_READ_ALL_BUTTON)->ShowWindow(SW_HIDE);
+	GetDlgItem(IDC_WRITE_ALL_BUTTON)->ShowWindow(SW_HIDE);
+	GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_HIDE);
+	GetDlgItem(IDC_AUTO_WRITE_CHECK)->ShowWindow(SW_HIDE);
+	GetDlgItem(IDC_DEFAULT_VALUE_BUTTON)->ShowWindow(SW_HIDE);
+}

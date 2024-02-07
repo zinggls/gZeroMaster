@@ -123,18 +123,8 @@ BOOL CSemantic::OnInitDialog()
 	CDialogEx::OnInitDialog();
 
 	// TODO:  여기에 추가 초기화 작업을 추가합니다.
-	ControlLabelEnable(FALSE);
-	ControlValueEnable(FALSE);
+	InitialControlState();
 
-	ShowSlider(SW_HIDE);
-	GetDlgItem(IDC_CONTROL_COMBO)->ShowWindow(SW_HIDE);
-	m_selected = SelectStatic::None;
-
-	GetDlgItem(IDC_READ_ALL_BUTTON)->ShowWindow(SW_HIDE);
-	GetDlgItem(IDC_WRITE_ALL_BUTTON)->ShowWindow(SW_HIDE);
-	GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_HIDE);
-	GetDlgItem(IDC_AUTO_WRITE_CHECK)->ShowWindow(SW_HIDE);
-	GetDlgItem(IDC_DEFAULT_VALUE_BUTTON)->ShowWindow(SW_HIDE);
 	return TRUE;  // return TRUE unless you set the focus to a control
 				  // 예외: OCX 속성 페이지는 FALSE를 반환해야 합니다.
 }

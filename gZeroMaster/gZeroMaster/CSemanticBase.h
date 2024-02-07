@@ -285,4 +285,5 @@ public:
 	virtual afx_msg void OnBnClickedWriteButton();
 	virtual afx_msg void OnBnClickedReadAllButton();
 	virtual afx_msg void OnBnClickedWriteAllButton();
+	virtual void InitialControlState();
 };
