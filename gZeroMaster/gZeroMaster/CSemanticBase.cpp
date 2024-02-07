@@ -140,7 +140,6 @@ void CSemanticBase::UpdateRxReg1(CString strRxReg1, CRegister& reg)
 
 void CSemanticBase::UpdateTxReg1(CString strTxRegTop, CString strTxRegMid, CString strTxRegBot, CRegister& reg, CString chip)
 {
-	ASSERT(chip == _T("A0") || chip == _T("B0"));
 	int mid = _tcstol(strTxRegMid.GetBuffer(), NULL, 16) & 0xff;
 	int bot = _tcstol(strTxRegBot.GetBuffer(), NULL, 16) & 0xff;
 

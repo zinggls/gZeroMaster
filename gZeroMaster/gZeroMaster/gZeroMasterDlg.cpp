@@ -328,9 +328,6 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 			if (lLastError != ERROR_SUCCESS) return ErrorMsg(m_serial.GetLastError(), _T("Unable to set COM-port read timeout"));
 			
 			OnCbnSelchangeChipCombo();
-			ASSERT(m_chip == _T("A0") || m_chip == _T("B0"));
-			m_pRaw->OnChipConnect(m_chip);
-			m_pSemantic->OnChipConnect(m_chip);
 
 			L(_T("Chip Model:") + m_chip);
 			if (m_pRaw->ReadRegisters()) {
@@ -1072,8 +1069,6 @@ void CgZeroMasterDlg::UpdateRegisters()
 
 void CgZeroMasterDlg::Parse(CRegister& reg)
 {
-	ASSERT(m_pRaw->Parent()->m_chip == _T("A0") || m_pRaw->Parent()->m_chip == _T("B0"));
-
 	CSemanticBase::UpdateRxReg1(m_pRaw->m_strRxReg1, reg);
 	CSemanticBase::UpdateTxReg1(m_pRaw->m_strTxReg1Top, m_pRaw->m_strTxReg1Mid, m_pRaw->m_strTxReg1Bot, reg, m_pRaw->Parent()->m_chip);
 	if (m_pRaw->Parent()->m_chip == _T("B0"))
