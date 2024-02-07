@@ -14,7 +14,6 @@
 #define IDR_MAIN_MENU                   137
 #define IDD_RAW_ZING400T_DIALOG         137
 #define IDB_GLS_BITMAP                  138
-#define IDD_ZING400T_SEMANTIC_DIALOG    138
 #define IDD_SEMANTIC_ZING400T_DIALOG    138
 #define IDR_MENU1                       139
 #define IDD_SEMANTIC_ZING400R_DIALOG    139
