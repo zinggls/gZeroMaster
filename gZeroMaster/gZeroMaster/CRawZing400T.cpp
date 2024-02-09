@@ -22,6 +22,23 @@ CRawZing400T::~CRawZing400T()
 void CRawZing400T::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
+	DDX_Text(pDX, IDC_TX_REG1_TOP_STATIC, m_strTxReg1Top);
+	DDX_Text(pDX, IDC_TX_REG1_MID_STATIC, m_strTxReg1Mid);
+	DDX_Text(pDX, IDC_TX_REG1_BOT_STATIC, m_strTxReg1Bot);
+	DDX_Text(pDX, IDC_TX_REG2_TOP_STATIC, m_strTxReg2Top);
+	DDX_Text(pDX, IDC_TX_REG2_MID_STATIC, m_strTxReg2Mid);
+	DDX_Text(pDX, IDC_TX_REG2_BOT_STATIC, m_strTxReg2Bot);
+	DDX_Control(pDX, IDC_BIT_EDIT7, m_bit7);
+	DDX_Control(pDX, IDC_BIT_EDIT6, m_bit6);
+	DDX_Control(pDX, IDC_BIT_EDIT5, m_bit5);
+	DDX_Control(pDX, IDC_BIT_EDIT4, m_bit4);
+	DDX_Control(pDX, IDC_BIT_EDIT3, m_bit3);
+	DDX_Control(pDX, IDC_BIT_EDIT2, m_bit2);
+	DDX_Control(pDX, IDC_BIT_EDIT1, m_bit1);
+	DDX_Control(pDX, IDC_BIT_EDIT0, m_bit0);
+	DDX_Text(pDX, IDC_CHOSEN_REGISTER_STATIC, m_strChosenRegister);
+	DDX_Check(pDX, IDC_EDIT_CHECK, m_bEdit);
+	DDX_Text(pDX, IDC_HEX_VALUE_STATIC, m_strHex);
 }
 
 
