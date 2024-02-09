@@ -95,15 +95,17 @@ BOOL CRawZing400T::ReadRegisters()
 	CString str;
 
 	CReg& reg = m_regMap.at(_T("TX_REG2 [15:13]"));
-	int nNewVal = (_tcstoul(*reg.m_pStr, NULL, 16) & 0xe0) >> 5;
+	int nOrgVal = _tcstoul(*reg.m_pStr, NULL, 16);
+	int nNewVal = (nOrgVal & 0xe0) >> 5;
 	reg.m_pStr->Format(_T("0x%02x"), nNewVal);
-	str.Format(_T("Address:0x%02x %s %s modified for Zing400T"), reg.m_nAddr, _T("TX_REG2 [15:13]"), reg.m_pStr->GetBuffer());
+	str.Format(_T("Address:0x%02x %s 0x%02x->%s modified for Zing400T"), reg.m_nAddr, _T("TX_REG2 [15:13]"), nOrgVal, reg.m_pStr->GetBuffer());
 	L(str);
 
 	reg = m_regMap.at(_T("TX_REG2 [3:0]"));
-	nNewVal = _tcstoul(*reg.m_pStr, NULL, 16) & 0x0f;
+	nOrgVal = _tcstoul(*reg.m_pStr, NULL, 16);
+	nNewVal = nOrgVal & 0x0f;
 	reg.m_pStr->Format(_T("0x%02x"), nNewVal);
-	str.Format(_T("Address:0x%02x %s %s modified for Zing400T"), reg.m_nAddr, _T("TX_REG2 [3:0]"), reg.m_pStr->GetBuffer());
+	str.Format(_T("Address:0x%02x %s 0x%02x->%s modified for Zing400T"), reg.m_nAddr, _T("TX_REG2 [3:0]"), nOrgVal, reg.m_pStr->GetBuffer());
 	L(str);
 
 	UpdateData(FALSE);
