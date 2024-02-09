@@ -214,7 +214,6 @@ void CRawBase::ShowBits(unsigned char byte)
 
 void CRawBase::ShowBitWindow(int nCmdShow)
 {
-	GetDlgItem(IDC_STATIC)->ShowWindow(nCmdShow);
 	GetDlgItem(IDC_BIT_EDIT7)->ShowWindow(nCmdShow);
 	GetDlgItem(IDC_BIT_EDIT6)->ShowWindow(nCmdShow);
 	GetDlgItem(IDC_BIT_EDIT5)->ShowWindow(nCmdShow);
