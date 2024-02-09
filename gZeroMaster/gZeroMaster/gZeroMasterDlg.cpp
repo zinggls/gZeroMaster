@@ -1067,7 +1067,7 @@ void CgZeroMasterDlg::Parse(CRegister& reg)
 	CSemanticBase::UpdateRxReg1(m_pRaw->m_strRxReg1, reg);
 	CSemanticBase::UpdateTxReg1(m_pRaw->m_strTxReg1Top, m_pRaw->m_strTxReg1Mid, m_pRaw->m_strTxReg1Bot, reg, m_pRaw->Parent()->m_chip);
 	if (m_pRaw->Parent()->m_chip == _T("B0"))
-		m_pSemantic->UpdateTxReg2(m_pRaw->m_strTxReg2Top, m_pRaw->m_strTxReg2Mid, m_pRaw->m_strTxReg2Bot, reg);
+		CSemanticBase::UpdateTxReg2(m_pRaw->m_strTxReg2Top, m_pRaw->m_strTxReg2Mid, m_pRaw->m_strTxReg2Bot, reg);
 
 	CSemanticBase::UpdateBiasReg1(m_pRaw->m_strBiasReg1, reg);
 	CSemanticBase::UpdateBiasReg2(m_pRaw->m_strBiasReg2, reg);
