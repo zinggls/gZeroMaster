@@ -83,7 +83,8 @@ void CRawZing400T::OnBnClickedDefaultValueButton()
 
 BOOL CRawZing400T::ReadRegisters()
 {
-	CRawBase::ReadRegisters();
+	BOOL bRtn = CRawBase::ReadRegisters();
+	if (!bRtn) return FALSE;
 
 	/*
 	Zing400T에서는 상위클래스에서 정의된 비트들 중에서 일부만 사용한다
