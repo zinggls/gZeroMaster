@@ -66,7 +66,7 @@ public:
 	CgZeroMasterDlg* Parent();
 	LONG SendReadCommand(int addr);
 	LONG ReadRegister(int addr, DWORD sizeToRead, char* pBuffer, int maxLoop);
-	BOOL ReadRegisters();
+	virtual BOOL ReadRegisters();
 	void ReadRegister(int addr);
 	void ReadRegister(int addr, CString name, CString* pValueStr);
 	BOOL ReadRegister(int addr, CString name, CString* pValueStr, int maxLoop);

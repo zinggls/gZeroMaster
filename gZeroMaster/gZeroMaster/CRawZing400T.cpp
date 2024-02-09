@@ -80,3 +80,15 @@ void CRawZing400T::OnBnClickedDefaultValueButton()
 {
 	//IBase에서 선언된 순수가상함수 컴파일 오류를 막기 위해 내용이 없는 구현부를 제공
 }
+
+BOOL CRawZing400T::ReadRegisters()
+{
+	CRawBase::ReadRegisters();
+
+	/*
+	Zing400T에서는 상위클래스에서 정의된 비트들 중에서 일부만 사용한다
+		TX_REG2[15:8] -> TX_REG2[15:13]
+		TX_REG2[7:0] -> TX_REG2[3:0]
+	*/
+	return TRUE;
+}
