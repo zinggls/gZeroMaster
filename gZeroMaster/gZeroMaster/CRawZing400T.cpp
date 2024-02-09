@@ -92,13 +92,19 @@ BOOL CRawZing400T::ReadRegisters()
 		TX_REG2[7:0] -> TX_REG2[3:0]
 	*/
 
+	CString str;
+
 	CReg& reg = m_regMap.at(_T("TX_REG2 [15:13]"));
 	int nNewVal = (_tcstoul(*reg.m_pStr, NULL, 16) & 0xe0) >> 5;
 	reg.m_pStr->Format(_T("0x%02x"), nNewVal);
+	str.Format(_T("Address:0x%02x %s %s modified for Zing400T"), reg.m_nAddr, _T("TX_REG2 [15:13]"), reg.m_pStr->GetBuffer());
+	L(str);
 
 	reg = m_regMap.at(_T("TX_REG2 [3:0]"));
 	nNewVal = _tcstoul(*reg.m_pStr, NULL, 16) & 0x0f;
 	reg.m_pStr->Format(_T("0x%02x"), nNewVal);
+	str.Format(_T("Address:0x%02x %s %s modified for Zing400T"), reg.m_nAddr, _T("TX_REG2 [3:0]"), reg.m_pStr->GetBuffer());
+	L(str);
 
 	UpdateData(FALSE);
 	return TRUE;

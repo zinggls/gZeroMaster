@@ -72,6 +72,11 @@ CgZeroMasterDlg* CRawBase::Parent()
 	return dynamic_cast<CgZeroMasterDlg*>(m_pParentWnd);
 }
 
+void CRawBase::L(const TCHAR* str)
+{
+	Parent()->L(str);
+}
+
 LONG CRawBase::SendReadCommand(int addr)
 {
 	char buffer[4] = { 0, };
