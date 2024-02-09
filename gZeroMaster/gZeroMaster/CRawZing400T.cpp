@@ -90,5 +90,13 @@ BOOL CRawZing400T::ReadRegisters()
 		TX_REG2[15:8] -> TX_REG2[15:13]
 		TX_REG2[7:0] -> TX_REG2[3:0]
 	*/
+
+	int nNewVal = (_tcstoul(*m_regMap.at(_T("TX_REG2 [15:13]")).m_pStr, NULL, 16) & 0xe0) >> 5;
+	m_regMap.at(_T("TX_REG2 [15:13]")).m_pStr->Format(_T("0x%02x"), nNewVal);
+
+	nNewVal = _tcstoul(*m_regMap.at(_T("TX_REG2 [3:0]")).m_pStr, NULL, 16) & 0x0f;
+	m_regMap.at(_T("TX_REG2 [3:0]")).m_pStr->Format(_T("0x%02x"), nNewVal);
+
+	UpdateData(FALSE);
 	return TRUE;
 }
