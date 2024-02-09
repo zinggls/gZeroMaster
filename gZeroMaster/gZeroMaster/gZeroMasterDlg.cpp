@@ -333,6 +333,7 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 				m_pSemantic->GetDlgItem(IDC_READ_ALL_BUTTON)->ShowWindow(SW_SHOW);
 				m_pSemantic->GetDlgItem(IDC_WRITE_ALL_BUTTON)->ShowWindow(SW_SHOW);
 				m_pSemantic->GetDlgItem(IDC_DEFAULT_VALUE_BUTTON)->ShowWindow(SW_SHOW);
+				m_pSemantic->GetDlgItem(IDC_SEMANTIC_EDIT_CHECK)->ShowWindow(SW_SHOW);
 				SetTimer(ZMQ_TIMER, 100, NULL);
 			}
 			else {

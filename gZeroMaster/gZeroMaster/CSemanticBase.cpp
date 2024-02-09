@@ -1903,4 +1903,5 @@ void CSemanticBase::InitialControlState()
 	GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_HIDE);
 	GetDlgItem(IDC_AUTO_WRITE_CHECK)->ShowWindow(SW_HIDE);
 	GetDlgItem(IDC_DEFAULT_VALUE_BUTTON)->ShowWindow(SW_HIDE);
+	GetDlgItem(IDC_SEMANTIC_EDIT_CHECK)->ShowWindow(SW_HIDE);
 }
