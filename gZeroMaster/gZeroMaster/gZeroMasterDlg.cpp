@@ -290,16 +290,10 @@ void CgZeroMasterDlg::SerialClose(CString& str)
 	}
 	GetDlgItem(IDC_CHIP_COMBO)->EnableWindow(TRUE);
 	GetDlgItem(IDC_COM_COMBO)->EnableWindow(TRUE);
-	m_pSemantic->ControlLabelEnable(FALSE);
-	m_pSemantic->ControlValueEnable(FALSE);
 
 	if(m_pSemantic->m_bSemanticEdit) m_pSemantic->OnBnClickedSemanticEditCheck();
 
-	m_pSemantic->GetDlgItem(IDC_SEMANTIC_EDIT_CHECK)->EnableWindow(FALSE);
-	m_pSemantic->GetDlgItem(IDC_READ_ALL_BUTTON)->ShowWindow(SW_HIDE);
-	m_pSemantic->GetDlgItem(IDC_WRITE_ALL_BUTTON)->ShowWindow(SW_HIDE);
-	m_pSemantic->GetDlgItem(IDC_WRITE_BUTTON)->ShowWindow(SW_HIDE);
-	m_pSemantic->GetDlgItem(IDC_DEFAULT_VALUE_BUTTON)->ShowWindow(SW_HIDE);
+	m_pSemantic->InitialControlState();
 	m_pRaw->GetDlgItem(IDC_READ_ALL_BUTTON)->ShowWindow(SW_HIDE);
 }
 
