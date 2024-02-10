@@ -99,7 +99,7 @@ BOOL CRawZing400T::ReadRegisters()
 
 	CString str;
 
-	CReg& reg = m_regMap.at(_T("TX_REG2 [15:13]"));
+	CReg reg = m_regMap.at(_T("TX_REG2 [15:13]"));
 	int nOrgVal = _tcstoul(*reg.m_pStr, NULL, 16);
 	int nNewVal = (nOrgVal & 0xe0) >> 5;
 	reg.m_pStr->Format(_T("0x%02x"), nNewVal);
