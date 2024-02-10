@@ -28,4 +28,5 @@ public:
 	virtual void OnChipConnect(CString chipModel);
 	virtual afx_msg void OnBnClickedDefaultValueButton();
 	virtual BOOL ReadRegisters();
+	afx_msg void OnBnClickedReadAllButton();
 };
