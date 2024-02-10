@@ -84,6 +84,14 @@ BOOL CRawZing400R::OnInitDialog()
 
 void CRawZing400R::OnHideRegisterButtons(CString strChosenRegister)
 {
+	if (strChosenRegister == _T("RX_REG1 [4:3]")) {
+		GetDlgItem(IDC_BIT7_BUTTON)->ShowWindow(SW_HIDE);
+		GetDlgItem(IDC_BIT6_BUTTON)->ShowWindow(SW_HIDE);
+		GetDlgItem(IDC_BIT5_BUTTON)->ShowWindow(SW_HIDE);
+		GetDlgItem(IDC_BIT2_BUTTON)->ShowWindow(SW_HIDE);
+		GetDlgItem(IDC_BIT1_BUTTON)->ShowWindow(SW_HIDE);
+		GetDlgItem(IDC_BIT0_BUTTON)->ShowWindow(SW_HIDE);
+	}
 }
 
 void CRawZing400R::OnChipConnect(CString chipModel)
