@@ -52,6 +52,7 @@ BEGIN_MESSAGE_MAP(CRawZing400R, CDialogEx)
 	ON_STN_CLICKED(IDC_BIAS_REG6_STATIC, &CRawZing400R::OnStnClickedBiasReg6Static)
 	ON_STN_CLICKED(IDC_BIAS_REG7_STATIC, &CRawZing400R::OnStnClickedBiasReg7Static)
 	ON_STN_CLICKED(IDC_BIAS_REG8_STATIC, &CRawZing400R::OnStnClickedBiasReg8Static)
+	ON_BN_CLICKED(IDC_EDIT_CHECK, &CRawZing400R::OnBnClickedEditCheck)
 END_MESSAGE_MAP()
 
 
@@ -177,4 +178,11 @@ void CRawZing400R::OnStnClickedBiasReg8Static()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	CRawBase::OnStnClickedBiasReg8Static();
+}
+
+
+void CRawZing400R::OnBnClickedEditCheck()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	CRawBase::OnBnClickedEditCheck();
 }

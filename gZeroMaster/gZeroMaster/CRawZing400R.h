@@ -36,4 +36,5 @@ public:
 	afx_msg void OnStnClickedBiasReg6Static();
 	afx_msg void OnStnClickedBiasReg7Static();
 	afx_msg void OnStnClickedBiasReg8Static();
+	afx_msg void OnBnClickedEditCheck();
 };
