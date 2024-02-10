@@ -168,10 +168,7 @@ void CRawZing400T::OnBnClickedReadAllButton()
 void CRawZing400T::OnStnClickedTxReg1TopStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	CStringList msgList;
-	msgList.AddTail(_T("TX_REG1[23:16]"));
-	msgList.AddTail(_T("    [7:0]:Duty cycle control"));
-	OnStnClicked(IDC_EDIT_CHECK, m_strTxReg1Top, IDC_TX_REG1_TOP_LABEL, msgList);
+	CRawBase::OnStnClickedTxReg1TopStatic();
 }
 
 
@@ -200,10 +197,7 @@ void CRawZing400T::OnStnClickedTxReg1BotStatic()
 void CRawZing400T::OnStnClickedTxReg2TopStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	CStringList msgList;
-	msgList.AddTail(_T("TX_REG2[16]"));
-	msgList.AddTail(_T("    [0]:VCO power up/down 0: VCO off, 1: VCO on"));
-	OnStnClicked(IDC_EDIT_CHECK, m_strTxReg2Top, IDC_TX_REG2_TOP_LABEL, msgList);
+	CRawBase::OnStnClickedTxReg2TopStatic();
 }
 
 
