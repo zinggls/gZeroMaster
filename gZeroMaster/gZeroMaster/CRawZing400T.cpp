@@ -50,6 +50,7 @@ BEGIN_MESSAGE_MAP(CRawZing400T, CDialogEx)
 	ON_STN_CLICKED(IDC_TX_REG2_TOP_STATIC, &CRawZing400T::OnStnClickedTxReg2TopStatic)
 	ON_STN_CLICKED(IDC_TX_REG2_MID_STATIC, &CRawZing400T::OnStnClickedTxReg2MidStatic)
 	ON_STN_CLICKED(IDC_TX_REG2_BOT_STATIC, &CRawZing400T::OnStnClickedTxReg2BotStatic)
+	ON_BN_CLICKED(IDC_EDIT_CHECK, &CRawZing400T::OnBnClickedEditCheck)
 END_MESSAGE_MAP()
 
 
@@ -193,4 +194,11 @@ void CRawZing400T::OnStnClickedTxReg2BotStatic()
 	msgList.AddTail(_T("TX_REG2[3:0]"));
 	msgList.AddTail(_T("    [3:0]:Test Buffer Current control"));
 	OnStnClicked(IDC_EDIT_CHECK, m_strTxReg2Bot, IDC_TX_REG2_BOT_LABEL, msgList);
+}
+
+
+void CRawZing400T::OnBnClickedEditCheck()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	CRawBase::OnBnClickedEditCheck();
 }

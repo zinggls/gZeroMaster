@@ -35,4 +35,5 @@ public:
 	afx_msg void OnStnClickedTxReg2TopStatic();
 	afx_msg void OnStnClickedTxReg2MidStatic();
 	afx_msg void OnStnClickedTxReg2BotStatic();
+	afx_msg void OnBnClickedEditCheck();
 };
