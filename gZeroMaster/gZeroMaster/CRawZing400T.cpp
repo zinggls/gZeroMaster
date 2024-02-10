@@ -44,6 +44,12 @@ void CRawZing400T::DoDataExchange(CDataExchange* pDX)
 
 BEGIN_MESSAGE_MAP(CRawZing400T, CDialogEx)
 	ON_BN_CLICKED(IDC_READ_ALL_BUTTON, &CRawZing400T::OnBnClickedReadAllButton)
+	ON_STN_CLICKED(IDC_TX_REG1_TOP_STATIC, &CRawZing400T::OnStnClickedTxReg1TopStatic)
+	ON_STN_CLICKED(IDC_TX_REG1_MID_STATIC, &CRawZing400T::OnStnClickedTxReg1MidStatic)
+	ON_STN_CLICKED(IDC_TX_REG1_BOT_STATIC, &CRawZing400T::OnStnClickedTxReg1BotStatic)
+	ON_STN_CLICKED(IDC_TX_REG2_TOP_STATIC, &CRawZing400T::OnStnClickedTxReg2TopStatic)
+	ON_STN_CLICKED(IDC_TX_REG2_MID_STATIC, &CRawZing400T::OnStnClickedTxReg2MidStatic)
+	ON_STN_CLICKED(IDC_TX_REG2_BOT_STATIC, &CRawZing400T::OnStnClickedTxReg2BotStatic)
 END_MESSAGE_MAP()
 
 
@@ -123,4 +129,68 @@ void CRawZing400T::OnBnClickedReadAllButton()
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	ResetValues();
 	if (!ReadRegisters()) L(_T("Error occured in reading registers"));
+}
+
+
+void CRawZing400T::OnStnClickedTxReg1TopStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	CStringList msgList;
+	msgList.AddTail(_T("TX_REG1[23:16]"));
+	msgList.AddTail(_T("    [7:0]:Duty cycle control"));
+	OnStnClicked(IDC_EDIT_CHECK, m_strTxReg1Top, IDC_TX_REG1_TOP_LABEL, msgList);
+}
+
+
+void CRawZing400T::OnStnClickedTxReg1MidStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	CStringList msgList;
+	msgList.AddTail(_T("TX_REG1[15:8]"));
+	msgList.AddTail(_T("    [7:0]:VCO oscillation frequency control(3:10)"));
+	OnStnClicked(IDC_EDIT_CHECK, m_strTxReg1Mid, IDC_TX_REG1_MID_LABEL, msgList);
+}
+
+
+void CRawZing400T::OnStnClickedTxReg1BotStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	CStringList msgList;
+	msgList.AddTail(_T("TX_REG1[7:0]"));
+	msgList.AddTail(_T("    [7:5]:VCO oscillation frequency control(0:2)"));
+	msgList.AddTail(_T("    [4]:Regulator Reference Voltage  Control"));
+	msgList.AddTail(_T("    [3:0]:VCO_VDD Control"));
+	OnStnClicked(IDC_EDIT_CHECK, m_strTxReg1Bot, IDC_TX_REG1_BOT_LABEL, msgList);
+}
+
+
+void CRawZing400T::OnStnClickedTxReg2TopStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	CStringList msgList;
+	msgList.AddTail(_T("TX_REG2[16]"));
+	msgList.AddTail(_T("    [0]:VCO power up/down 0: VCO off, 1: VCO on"));
+	OnStnClicked(IDC_EDIT_CHECK, m_strTxReg2Top, IDC_TX_REG2_TOP_LABEL, msgList);
+}
+
+
+void CRawZing400T::OnStnClickedTxReg2MidStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	CStringList msgList;
+	msgList.AddTail(_T("TX_REG2[15:13]"));
+	msgList.AddTail(_T("    [7]:Modulator power down 0: MOD off, 1: MOD on"));
+	msgList.AddTail(_T("    [6]:Test buffer power down 0: test buff off, 1: test buff on"));
+	msgList.AddTail(_T("    [5]:DATA Input Select 0: SER (Inside), 1: Test buff(Outside)"));
+	OnStnClicked(IDC_EDIT_CHECK, m_strTxReg2Mid, IDC_TX_REG2_MID_LABEL, msgList);
+}
+
+
+void CRawZing400T::OnStnClickedTxReg2BotStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	CStringList msgList;
+	msgList.AddTail(_T("TX_REG2[3:0]"));
+	msgList.AddTail(_T("    [3:0]:Test Buffer Current control"));
+	OnStnClicked(IDC_EDIT_CHECK, m_strTxReg2Bot, IDC_TX_REG2_BOT_LABEL, msgList);
 }

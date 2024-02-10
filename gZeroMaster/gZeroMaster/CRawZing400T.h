@@ -29,4 +29,10 @@ public:
 	virtual afx_msg void OnBnClickedDefaultValueButton();
 	virtual BOOL ReadRegisters();
 	afx_msg void OnBnClickedReadAllButton();
+	afx_msg void OnStnClickedTxReg1TopStatic();
+	afx_msg void OnStnClickedTxReg1MidStatic();
+	afx_msg void OnStnClickedTxReg1BotStatic();
+	afx_msg void OnStnClickedTxReg2TopStatic();
+	afx_msg void OnStnClickedTxReg2MidStatic();
+	afx_msg void OnStnClickedTxReg2BotStatic();
 };
