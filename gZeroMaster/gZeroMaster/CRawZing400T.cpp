@@ -82,6 +82,28 @@ BOOL CRawZing400T::OnInitDialog()
 
 void CRawZing400T::OnHideRegisterButtons(CString strChosenRegister)
 {
+	if (strChosenRegister == _T("TX_REG2 [16]")) {
+		GetDlgItem(IDC_BIT7_BUTTON)->ShowWindow(SW_HIDE);
+		GetDlgItem(IDC_BIT6_BUTTON)->ShowWindow(SW_HIDE);
+		GetDlgItem(IDC_BIT5_BUTTON)->ShowWindow(SW_HIDE);
+		GetDlgItem(IDC_BIT4_BUTTON)->ShowWindow(SW_HIDE);
+		GetDlgItem(IDC_BIT3_BUTTON)->ShowWindow(SW_HIDE);
+		GetDlgItem(IDC_BIT2_BUTTON)->ShowWindow(SW_HIDE);
+		GetDlgItem(IDC_BIT1_BUTTON)->ShowWindow(SW_HIDE);
+	}
+	else if (strChosenRegister == _T("TX_REG2 [15:13]")) {
+		GetDlgItem(IDC_BIT4_BUTTON)->ShowWindow(SW_HIDE);
+		GetDlgItem(IDC_BIT3_BUTTON)->ShowWindow(SW_HIDE);
+		GetDlgItem(IDC_BIT2_BUTTON)->ShowWindow(SW_HIDE);
+		GetDlgItem(IDC_BIT1_BUTTON)->ShowWindow(SW_HIDE);
+		GetDlgItem(IDC_BIT0_BUTTON)->ShowWindow(SW_HIDE);
+	}
+	else if (strChosenRegister == _T("TX_REG2 [3:0]")) {
+		GetDlgItem(IDC_BIT7_BUTTON)->ShowWindow(SW_HIDE);
+		GetDlgItem(IDC_BIT6_BUTTON)->ShowWindow(SW_HIDE);
+		GetDlgItem(IDC_BIT5_BUTTON)->ShowWindow(SW_HIDE);
+		GetDlgItem(IDC_BIT4_BUTTON)->ShowWindow(SW_HIDE);
+	}
 }
 
 void CRawZing400T::OnChipConnect(CString chipModel)
