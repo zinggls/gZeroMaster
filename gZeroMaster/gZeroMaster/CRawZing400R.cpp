@@ -44,6 +44,7 @@ void CRawZing400R::DoDataExchange(CDataExchange* pDX)
 
 
 BEGIN_MESSAGE_MAP(CRawZing400R, CDialogEx)
+	ON_BN_CLICKED(IDC_READ_ALL_BUTTON, &CRawZing400R::OnBnClickedReadAllButton)
 END_MESSAGE_MAP()
 
 
@@ -109,4 +110,11 @@ BOOL CRawZing400R::ReadRegisters()
 
 	UpdateData(FALSE);
 	return TRUE;
+}
+
+void CRawZing400R::OnBnClickedReadAllButton()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	ResetValues();
+	if (!ReadRegisters()) L(_T("Error occured in reading registers"));
 }
