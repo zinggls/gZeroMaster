@@ -59,6 +59,7 @@ BEGIN_MESSAGE_MAP(CRawZing400T, CDialogEx)
 	ON_BN_CLICKED(IDC_BIT2_BUTTON, &CRawZing400T::OnBnClickedBit2Button)
 	ON_BN_CLICKED(IDC_BIT1_BUTTON, &CRawZing400T::OnBnClickedBit1Button)
 	ON_BN_CLICKED(IDC_BIT0_BUTTON, &CRawZing400T::OnBnClickedBit0Button)
+	ON_BN_CLICKED(IDC_WRITE_BUTTON, &CRawZing400T::OnBnClickedWriteButton)
 END_MESSAGE_MAP()
 
 
@@ -287,4 +288,11 @@ void CRawZing400T::OnBnClickedBit0Button()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	CRawBase::OnBnClickedBit0Button();
+}
+
+
+void CRawZing400T::OnBnClickedWriteButton()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	CRawBase::OnBnClickedWriteButton();
 }
