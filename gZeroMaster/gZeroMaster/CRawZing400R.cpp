@@ -53,6 +53,14 @@ BEGIN_MESSAGE_MAP(CRawZing400R, CDialogEx)
 	ON_STN_CLICKED(IDC_BIAS_REG7_STATIC, &CRawZing400R::OnStnClickedBiasReg7Static)
 	ON_STN_CLICKED(IDC_BIAS_REG8_STATIC, &CRawZing400R::OnStnClickedBiasReg8Static)
 	ON_BN_CLICKED(IDC_EDIT_CHECK, &CRawZing400R::OnBnClickedEditCheck)
+	ON_BN_CLICKED(IDC_BIT7_BUTTON, &CRawZing400R::OnBnClickedBit7Button)
+	ON_BN_CLICKED(IDC_BIT6_BUTTON, &CRawZing400R::OnBnClickedBit6Button)
+	ON_BN_CLICKED(IDC_BIT5_BUTTON, &CRawZing400R::OnBnClickedBit5Button)
+	ON_BN_CLICKED(IDC_BIT4_BUTTON, &CRawZing400R::OnBnClickedBit4Button)
+	ON_BN_CLICKED(IDC_BIT3_BUTTON, &CRawZing400R::OnBnClickedBit3Button)
+	ON_BN_CLICKED(IDC_BIT2_BUTTON, &CRawZing400R::OnBnClickedBit2Button)
+	ON_BN_CLICKED(IDC_BIT1_BUTTON, &CRawZing400R::OnBnClickedBit1Button)
+	ON_BN_CLICKED(IDC_BIT0_BUTTON, &CRawZing400R::OnBnClickedBit0Button)
 END_MESSAGE_MAP()
 
 
@@ -185,4 +193,60 @@ void CRawZing400R::OnBnClickedEditCheck()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	CRawBase::OnBnClickedEditCheck();
+}
+
+
+void CRawZing400R::OnBnClickedBit7Button()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	CRawBase::OnBnClickedBit7Button();
+}
+
+
+void CRawZing400R::OnBnClickedBit6Button()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	CRawBase::OnBnClickedBit6Button();
+}
+
+
+void CRawZing400R::OnBnClickedBit5Button()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	CRawBase::OnBnClickedBit5Button();
+}
+
+
+void CRawZing400R::OnBnClickedBit4Button()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	CRawBase::OnBnClickedBit4Button();
+}
+
+
+void CRawZing400R::OnBnClickedBit3Button()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	CRawBase::OnBnClickedBit3Button();
+}
+
+
+void CRawZing400R::OnBnClickedBit2Button()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	CRawBase::OnBnClickedBit2Button();
+}
+
+
+void CRawZing400R::OnBnClickedBit1Button()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	CRawBase::OnBnClickedBit1Button();
+}
+
+
+void CRawZing400R::OnBnClickedBit0Button()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	CRawBase::OnBnClickedBit0Button();
 }
