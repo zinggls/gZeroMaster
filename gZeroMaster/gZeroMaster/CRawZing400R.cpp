@@ -87,3 +87,26 @@ void CRawZing400R::OnBnClickedDefaultValueButton()
 {
 	//IBase에서 선언된 순수가상함수 컴파일 오류를 막기 위해 내용이 없는 구현부를 제공
 }
+
+BOOL CRawZing400R::ReadRegisters()
+{
+	BOOL bRtn = CRawBase::ReadRegisters();
+	if (!bRtn) return FALSE;
+
+	/*
+	Zing400R에서는 상위클래스에서 정의된 비트들 중에서 일부만 사용한다
+		RX_REG1 [4:0] -> RX_REG1 [4:3]
+	*/
+
+	CString str;
+
+	CReg reg = m_regMap.at(_T("RX_REG1 [4:3]"));
+	int nOrgVal = _tcstoul(*reg.m_pStr, NULL, 16);
+	int nNewVal = (nOrgVal & 0x18) >> 3;
+	reg.m_pStr->Format(_T("0x%02x"), nNewVal);
+	str.Format(_T("Address:0x%02x %s 0x%02x->%s modified for Zing400T"), reg.m_nAddr, _T("RX_REG1 [4:3]"), nOrgVal, reg.m_pStr->GetBuffer());
+	L(str);
+
+	UpdateData(FALSE);
+	return TRUE;
+}
