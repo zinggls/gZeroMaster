@@ -29,4 +29,11 @@ public:
 	virtual afx_msg void OnBnClickedDefaultValueButton();
 	virtual BOOL ReadRegisters();
 	afx_msg void OnBnClickedReadAllButton();
+	afx_msg void OnStnClickedRxReg1Static();
+	afx_msg void OnStnClickedBiasReg1Static();
+	afx_msg void OnStnClickedBiasReg4Static();
+	afx_msg void OnStnClickedBiasReg5Static();
+	afx_msg void OnStnClickedBiasReg6Static();
+	afx_msg void OnStnClickedBiasReg7Static();
+	afx_msg void OnStnClickedBiasReg8Static();
 };

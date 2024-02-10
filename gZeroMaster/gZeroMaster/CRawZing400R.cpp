@@ -45,6 +45,13 @@ void CRawZing400R::DoDataExchange(CDataExchange* pDX)
 
 BEGIN_MESSAGE_MAP(CRawZing400R, CDialogEx)
 	ON_BN_CLICKED(IDC_READ_ALL_BUTTON, &CRawZing400R::OnBnClickedReadAllButton)
+	ON_STN_CLICKED(IDC_RX_REG1_STATIC, &CRawZing400R::OnStnClickedRxReg1Static)
+	ON_STN_CLICKED(IDC_BIAS_REG1_STATIC, &CRawZing400R::OnStnClickedBiasReg1Static)
+	ON_STN_CLICKED(IDC_BIAS_REG4_STATIC, &CRawZing400R::OnStnClickedBiasReg4Static)
+	ON_STN_CLICKED(IDC_BIAS_REG5_STATIC, &CRawZing400R::OnStnClickedBiasReg5Static)
+	ON_STN_CLICKED(IDC_BIAS_REG6_STATIC, &CRawZing400R::OnStnClickedBiasReg6Static)
+	ON_STN_CLICKED(IDC_BIAS_REG7_STATIC, &CRawZing400R::OnStnClickedBiasReg7Static)
+	ON_STN_CLICKED(IDC_BIAS_REG8_STATIC, &CRawZing400R::OnStnClickedBiasReg8Static)
 END_MESSAGE_MAP()
 
 
@@ -117,4 +124,57 @@ void CRawZing400R::OnBnClickedReadAllButton()
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	ResetValues();
 	if (!ReadRegisters()) L(_T("Error occured in reading registers"));
+}
+
+
+void CRawZing400R::OnStnClickedRxReg1Static()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	CStringList msgList;
+	msgList.AddTail(_T("RX_REG1[4:3]"));
+	msgList.AddTail(_T("    [4]:RX Data Interface enable"));
+	msgList.AddTail(_T("    [3]:Limiting Amplifier enable"));
+	OnStnClicked(IDC_EDIT_CHECK, m_strRxReg1, IDC_RX_REG1_LABEL, msgList);
+}
+
+
+void CRawZing400R::OnStnClickedBiasReg1Static()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	CRawBase::OnStnClickedBiasReg1Static();
+}
+
+
+void CRawZing400R::OnStnClickedBiasReg4Static()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	CRawBase::OnStnClickedBiasReg4Static();
+}
+
+
+void CRawZing400R::OnStnClickedBiasReg5Static()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	CRawBase::OnStnClickedBiasReg5Static();
+}
+
+
+void CRawZing400R::OnStnClickedBiasReg6Static()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	CRawBase::OnStnClickedBiasReg6Static();
+}
+
+
+void CRawZing400R::OnStnClickedBiasReg7Static()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	CRawBase::OnStnClickedBiasReg7Static();
+}
+
+
+void CRawZing400R::OnStnClickedBiasReg8Static()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	CRawBase::OnStnClickedBiasReg8Static();
 }
