@@ -51,6 +51,14 @@ BEGIN_MESSAGE_MAP(CRawZing400T, CDialogEx)
 	ON_STN_CLICKED(IDC_TX_REG2_MID_STATIC, &CRawZing400T::OnStnClickedTxReg2MidStatic)
 	ON_STN_CLICKED(IDC_TX_REG2_BOT_STATIC, &CRawZing400T::OnStnClickedTxReg2BotStatic)
 	ON_BN_CLICKED(IDC_EDIT_CHECK, &CRawZing400T::OnBnClickedEditCheck)
+	ON_BN_CLICKED(IDC_BIT7_BUTTON, &CRawZing400T::OnBnClickedBit7Button)
+	ON_BN_CLICKED(IDC_BIT6_BUTTON, &CRawZing400T::OnBnClickedBit6Button)
+	ON_BN_CLICKED(IDC_BIT5_BUTTON, &CRawZing400T::OnBnClickedBit5Button)
+	ON_BN_CLICKED(IDC_BIT4_BUTTON, &CRawZing400T::OnBnClickedBit4Button)
+	ON_BN_CLICKED(IDC_BIT3_BUTTON, &CRawZing400T::OnBnClickedBit3Button)
+	ON_BN_CLICKED(IDC_BIT2_BUTTON, &CRawZing400T::OnBnClickedBit2Button)
+	ON_BN_CLICKED(IDC_BIT1_BUTTON, &CRawZing400T::OnBnClickedBit1Button)
+	ON_BN_CLICKED(IDC_BIT0_BUTTON, &CRawZing400T::OnBnClickedBit0Button)
 END_MESSAGE_MAP()
 
 
@@ -201,4 +209,60 @@ void CRawZing400T::OnBnClickedEditCheck()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	CRawBase::OnBnClickedEditCheck();
+}
+
+
+void CRawZing400T::OnBnClickedBit7Button()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	CRawBase::OnBnClickedBit7Button();
+}
+
+
+void CRawZing400T::OnBnClickedBit6Button()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	CRawBase::OnBnClickedBit6Button();
+}
+
+
+void CRawZing400T::OnBnClickedBit5Button()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	CRawBase::OnBnClickedBit5Button();
+}
+
+
+void CRawZing400T::OnBnClickedBit4Button()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	CRawBase::OnBnClickedBit4Button();
+}
+
+
+void CRawZing400T::OnBnClickedBit3Button()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	CRawBase::OnBnClickedBit3Button();
+}
+
+
+void CRawZing400T::OnBnClickedBit2Button()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	CRawBase::OnBnClickedBit2Button();
+}
+
+
+void CRawZing400T::OnBnClickedBit1Button()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	CRawBase::OnBnClickedBit1Button();
+}
+
+
+void CRawZing400T::OnBnClickedBit0Button()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	CRawBase::OnBnClickedBit0Button();
 }
