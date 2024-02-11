@@ -184,7 +184,7 @@ public:
 	void UpdateCMLInterfaceStageCurrent(const CRegister& reg);
 	void UpdateFdCoreCurrent(const CRegister& reg);
 	void UpdateFdBufferCurrent(const CRegister& reg);
-	void UpdateRegisters();
+	virtual void UpdateRegisters();
 	afx_msg void OnStnClickedLnaGainValueStatic();
 	afx_msg void OnStnClickedDutyCycleValueStatic();
 	afx_msg void OnStnClickedVcoOscFreqValueStatic();

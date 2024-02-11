@@ -29,4 +29,5 @@ public:
 	virtual void ControlLabelEnable(BOOL b);
 	virtual void ControlValueEnable(BOOL b);
 	virtual const CRegister& Parse();
+	virtual void UpdateRegisters();
 };

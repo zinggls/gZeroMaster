@@ -92,3 +92,8 @@ const CRegister& CSemanticZing400R::Parse()
 {
 	return m_reg;
 }
+
+void CSemanticZing400R::UpdateRegisters()
+{
+	CSemanticBase::UpdateRegisters();
+}

@@ -27,4 +27,5 @@ public:
 	virtual void OnChipConnect(CString chipModel);
 	virtual afx_msg void OnBnClickedDefaultValueButton();
 	virtual const CRegister& Parse();
+	virtual void UpdateRegisters();
 };

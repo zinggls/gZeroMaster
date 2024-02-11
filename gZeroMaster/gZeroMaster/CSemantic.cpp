@@ -199,3 +199,8 @@ const CRegister& CSemantic::Parse()
 		CSemanticBase::UpdateBiasReg9(m_pRawBase->m_strBiasReg9, m_reg);
 	return m_reg;
 }
+
+void CSemantic::UpdateRegisters()
+{
+	CSemanticBase::UpdateRegisters();
+}
