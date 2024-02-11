@@ -288,4 +288,5 @@ public:
 	virtual afx_msg void OnBnClickedWriteAllButton();
 	virtual void InitialControlState();
 	virtual const CRegister& Parse() = 0;
+	virtual afx_msg void OnBnClickedDefaultValueButton();
 };

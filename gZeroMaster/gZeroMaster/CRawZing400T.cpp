@@ -121,11 +121,6 @@ void CRawZing400T::OnChipConnect(CString chipModel)
 	m_regMap.insert(std::pair<CString, CReg>(_T("TX_REG2 [3:0]"), CReg(11, &m_strTxReg2Bot, IDC_TX_REG2_BOT_STATIC)));
 }
 
-void CRawZing400T::OnBnClickedDefaultValueButton()
-{
-	//IBase에서 선언된 순수가상함수 컴파일 오류를 막기 위해 내용이 없는 구현부를 제공
-}
-
 BOOL CRawZing400T::ReadRegisters()
 {
 	BOOL bRtn = CRawBase::ReadRegisters();

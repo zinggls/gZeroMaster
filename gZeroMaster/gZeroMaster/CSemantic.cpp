@@ -167,19 +167,6 @@ void CSemantic::OnChipConnect(CString chipModel)
 	}
 }
 
-
-void CSemantic::OnBnClickedDefaultValueButton()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_pRawBase->DefaultValues(Parent()->m_chip);
-	UpdateRegisters();
-	
-	CString str;
-	str.Format(_T("%s Default values have been loaded into memory"), Parent()->m_chip);
-	Parent()->L(str);
-	Parent()->L(_T("Make sure to click 'Write All' if you want to save them to registers"));
-}
-
 const CRegister& CSemantic::Parse()
 {
 	CSemanticBase::UpdateRxReg1(m_pRawBase->m_strRxReg1, m_reg);

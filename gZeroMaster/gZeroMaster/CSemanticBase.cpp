@@ -2,6 +2,7 @@
 #include "gZeroMaster.h"
 #include "CSemanticBase.h"
 #include "gZeroMasterDlg.h"
+#include "CRawBase.h"
 
 IMPLEMENT_DYNAMIC(CSemanticBase, CDialogEx)
 
@@ -1904,4 +1905,16 @@ void CSemanticBase::InitialControlState()
 	GetDlgItem(IDC_AUTO_WRITE_CHECK)->ShowWindow(SW_HIDE);
 	GetDlgItem(IDC_DEFAULT_VALUE_BUTTON)->ShowWindow(SW_HIDE);
 	GetDlgItem(IDC_SEMANTIC_EDIT_CHECK)->ShowWindow(SW_HIDE);
+}
+
+void CSemanticBase::OnBnClickedDefaultValueButton()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	m_pRawBase->DefaultValues(Parent()->m_chip);
+	UpdateRegisters();
+
+	CString str;
+	str.Format(_T("%s Default values have been loaded into memory"), Parent()->m_chip);
+	Parent()->L(str);
+	Parent()->L(_T("Make sure to click 'Write All' if you want to save them to registers"));
 }

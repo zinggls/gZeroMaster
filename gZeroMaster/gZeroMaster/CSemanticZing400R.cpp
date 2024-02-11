@@ -75,10 +75,6 @@ void CSemanticZing400R::OnChipConnect(CString chipModel)
 }
 
 
-void CSemanticZing400R::OnBnClickedDefaultValueButton()
-{
-}
-
 void CSemanticZing400R::ControlLabelEnable(BOOL b)
 {
 	GetDlgItem(IDC_RX_DATA_IF_ENABLE_STATIC)->EnableWindow(b);

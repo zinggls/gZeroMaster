@@ -658,3 +658,9 @@ void CRawBase::OnStnClickedBiasReg9Static()
 	msgList.AddTail(_T("    [3:0]:Control FD buffers of stg1 & stg2 biasing current"));
 	OnStnClicked(IDC_EDIT_CHECK, m_strBiasReg9, IDC_BIAS_REG9_LABEL, msgList);
 }
+
+void CRawBase::OnBnClickedDefaultValueButton()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	ASSERT(FALSE);	//구현전까지 이 함수를 호출하는 경우 오류 발생
+}

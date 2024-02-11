@@ -110,11 +110,6 @@ void CRawZing400R::OnChipConnect(CString chipModel)
 	m_regMap.insert(std::pair<CString, CReg>(_T("BIAS_REG8 [7:0]"), CReg(24, &m_strBiasReg8, IDC_BIAS_REG8_STATIC)));
 }
 
-void CRawZing400R::OnBnClickedDefaultValueButton()
-{
-	//IBase에서 선언된 순수가상함수 컴파일 오류를 막기 위해 내용이 없는 구현부를 제공
-}
-
 BOOL CRawZing400R::ReadRegisters()
 {
 	BOOL bRtn = CRawBase::ReadRegisters();
