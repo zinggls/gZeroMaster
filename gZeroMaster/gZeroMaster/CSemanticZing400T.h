@@ -30,6 +30,5 @@ public:
 	virtual void ControlValueEnable(BOOL b);
 	virtual const CRegister& Parse();
 	virtual void UpdateRegisters();
-
 	static void UpdateTxReg1(CString strTxRegTop, CString strTxRegMid, CString strTxRegBot, CRegister& reg);
 };
