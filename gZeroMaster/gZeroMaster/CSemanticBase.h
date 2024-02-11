@@ -82,7 +82,7 @@ public:
 	CString m_strFdCoreCur;
 	CString m_strFdBufCur;
 
-private:
+protected:
 	CRegister m_reg;
 
 public:
@@ -287,4 +287,5 @@ public:
 	virtual afx_msg void OnBnClickedReadAllButton();
 	virtual afx_msg void OnBnClickedWriteAllButton();
 	virtual void InitialControlState();
+	virtual const CRegister& Parse() = 0;
 };

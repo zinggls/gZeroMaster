@@ -87,3 +87,8 @@ void CSemanticZing400R::ControlValueEnable(BOOL b)
 	GetDlgItem(IDC_CMOS_GAIN_STAGE_CURRENT_VALUE_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_CML_INTERFACE_STAGE_CURRENT_VALUE_STATIC)->EnableWindow(b);
 }
+
+const CRegister& CSemanticZing400R::Parse()
+{
+	return m_reg;
+}

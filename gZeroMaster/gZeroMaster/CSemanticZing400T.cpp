@@ -110,3 +110,8 @@ void CSemanticZing400T::ControlValueEnable(BOOL b)
 	GetDlgItem(IDC_PA_GAIN_CONTROL2_VALUE_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_TEST_BUFFER_CURRENT_VALUE_STATIC)->EnableWindow(b);
 }
+
+const CRegister& CSemanticZing400T::Parse()
+{
+	return m_reg;
+}
