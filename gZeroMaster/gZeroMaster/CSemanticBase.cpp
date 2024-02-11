@@ -925,7 +925,7 @@ void CSemanticBase::UpdateFdBufferCurrent(const CRegister& reg)
 void CSemanticBase::UpdateRegisters()
 {
 	ASSERT(Parent());
-	const CRegister& reg = getRegister();
+	const CRegister& reg = Parse();
 
 	UpdateRxData(reg);
 	UpdateLimitAmp(reg);
