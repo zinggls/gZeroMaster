@@ -12,8 +12,8 @@
 
 IMPLEMENT_DYNAMIC(CSemantic, CSemanticBase)
 
-CSemantic::CSemantic(CWnd* pParent /*=nullptr*/)
-	: CSemanticBase(pParent)
+CSemantic::CSemantic(CWnd* pParent, CRawBase* pRawBase)
+	: CSemanticBase(pParent, pRawBase)
 {
 }
 

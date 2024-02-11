@@ -9,7 +9,7 @@ class CSemantic : public CSemanticBase
 	DECLARE_DYNAMIC(CSemantic)
 
 public:
-	CSemantic(CWnd* pParent = nullptr);   // 표준 생성자입니다.
+	CSemantic(CWnd* pParent, CRawBase* pRawBase);   // 표준 생성자입니다.
 	virtual ~CSemantic();
 
 // 대화 상자 데이터입니다.

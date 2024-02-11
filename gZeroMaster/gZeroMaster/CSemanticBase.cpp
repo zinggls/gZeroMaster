@@ -5,8 +5,9 @@
 
 IMPLEMENT_DYNAMIC(CSemanticBase, CDialogEx)
 
-CSemanticBase::CSemanticBase(CWnd* pParent /*=nullptr*/)
-	: m_bSemanticEdit(FALSE)
+CSemanticBase::CSemanticBase(CWnd* pParent, CRawBase* pRawBase)
+	: m_pRawBase(pRawBase)
+	, m_bSemanticEdit(FALSE)
 	, m_bAutoWrite(FALSE)
 	, m_selected(SelectStatic::None)
 	, m_strSelectedStatic(_T(""))

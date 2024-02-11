@@ -10,8 +10,8 @@
 
 IMPLEMENT_DYNAMIC(CSemanticZing400R, CSemanticBase)
 
-CSemanticZing400R::CSemanticZing400R(CWnd* pParent /*=nullptr*/)
-	: CSemanticBase(pParent)
+CSemanticZing400R::CSemanticZing400R(CWnd* pParent, CRawBase* pRawBase)
+	: CSemanticBase(pParent, pRawBase)
 {
 }
 

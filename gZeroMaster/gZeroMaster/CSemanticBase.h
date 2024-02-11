@@ -6,7 +6,7 @@
 #include "IBase.h"
 
 class CgZeroMasterDlg;
-class CRaw;
+class CRawBase;
 
 enum class SelectStatic {
 	None = 0, RxData, LimAmp, LnaGain, DutyCycle, VcoOsc, RegRef, VcoVdd, VcoPow, ModPow, TestBufPow,
@@ -27,13 +27,14 @@ class CSemanticBase : public IBase
 	DECLARE_DYNAMIC(CSemanticBase)
 
 public:
-	CSemanticBase(CWnd* pParent = nullptr);   // 표준 생성자입니다.
+	CSemanticBase(CWnd* pParent, CRawBase* pRawBase);   // 표준 생성자입니다.
 	virtual ~CSemanticBase();
 
 protected:
 	DECLARE_MESSAGE_MAP()
 
 public:
+	CRawBase* m_pRawBase;
 	CSliderCtrl m_controlSlider;
 	BOOL m_bSemanticEdit;
 	BOOL m_bAutoWrite;

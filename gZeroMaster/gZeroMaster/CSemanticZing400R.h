@@ -9,7 +9,7 @@ class CSemanticZing400R : public CSemanticBase
 	DECLARE_DYNAMIC(CSemanticZing400R)
 
 public:
-	CSemanticZing400R(CWnd* pParent = nullptr);   // 표준 생성자입니다.
+	CSemanticZing400R(CWnd* pParent, CRawBase* pRawBase);   // 표준 생성자입니다.
 	virtual ~CSemanticZing400R();
 
 	// 대화 상자 데이터입니다.
