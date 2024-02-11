@@ -195,3 +195,8 @@ void CRaw::OnBnClickedDefaultValueButton()
 {
 	//IBase에서 선언된 순수가상함수 컴파일 오류를 막기 위해 내용이 없는 구현부를 제공
 }
+
+void CRaw::DefaultValues()
+{
+
+}
