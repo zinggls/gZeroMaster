@@ -30,4 +30,5 @@ public:
 	virtual void ControlValueEnable(BOOL b);
 	virtual const CRegister& Parse();
 	virtual void UpdateRegisters();
+	void UpdateRxReg1(CString strRxReg1, CRegister& reg);
 };
