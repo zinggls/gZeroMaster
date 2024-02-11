@@ -580,35 +580,35 @@ void CgZeroMasterDlg::OnStnDblclickLogoStatic()
 
 void CgZeroMasterDlg::OnChipZing200x()
 {
-	if (m_pSemantic != NULL) delete m_pSemantic;
-	m_pSemantic = new CSemantic(this);
-	m_pSemantic->Create(IDD_SEMANTIC_DIALOG, &m_tab);
-
 	if (m_pRaw != NULL) delete m_pRaw;
 	m_pRaw = new CRaw(this);
 	m_pRaw->Create(IDD_RAW_DIALOG, &m_tab);
+
+	if (m_pSemantic != NULL) delete m_pSemantic;
+	m_pSemantic = new CSemantic(this);
+	m_pSemantic->Create(IDD_SEMANTIC_DIALOG, &m_tab);
 }
 
 void CgZeroMasterDlg::OnChipZing400T()
 {
-	if (m_pSemantic != NULL) delete m_pSemantic;
-	m_pSemantic = new CSemanticZing400T(this);
-	m_pSemantic->Create(IDD_SEMANTIC_ZING400T_DIALOG, &m_tab);
-
 	if (m_pRaw != NULL) delete m_pRaw;
 	m_pRaw = new CRawZing400T(this);
 	m_pRaw->Create(IDD_RAW_ZING400T_DIALOG, &m_tab);
+
+	if (m_pSemantic != NULL) delete m_pSemantic;
+	m_pSemantic = new CSemanticZing400T(this);
+	m_pSemantic->Create(IDD_SEMANTIC_ZING400T_DIALOG, &m_tab);
 }
 
 void CgZeroMasterDlg::OnChipZing400R()
 {
-	if (m_pSemantic != NULL) delete m_pSemantic;
-	m_pSemantic = new CSemanticZing400R(this);
-	m_pSemantic->Create(IDD_SEMANTIC_ZING400R_DIALOG, &m_tab);
-
 	if (m_pRaw != NULL) delete m_pRaw;
 	m_pRaw = new CRawZing400R(this);
 	m_pRaw->Create(IDD_RAW_ZING400R_DIALOG, &m_tab);
+
+	if (m_pSemantic != NULL) delete m_pSemantic;
+	m_pSemantic = new CSemanticZing400R(this);
+	m_pSemantic->Create(IDD_SEMANTIC_ZING400R_DIALOG, &m_tab);
 }
 
 void CgZeroMasterDlg::OnCbnSelchangeChipCombo()
