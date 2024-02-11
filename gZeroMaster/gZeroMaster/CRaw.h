@@ -27,5 +27,5 @@ public:
 	virtual void OnHideRegisterButtons(CString strChosenRegister);
 	virtual void OnChipConnect(CString chipModel);
 	virtual afx_msg void OnBnClickedDefaultValueButton();
-	virtual void DefaultValues();
+	virtual void DefaultValues(CString strChip);
 };

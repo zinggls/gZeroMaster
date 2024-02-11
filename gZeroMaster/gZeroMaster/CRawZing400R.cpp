@@ -258,7 +258,7 @@ void CRawZing400R::OnBnClickedWriteButton()
 	CRawBase::OnBnClickedWriteButton();
 }
 
-void CRawZing400R::DefaultValues()
+void CRawZing400R::DefaultValues(CString strChip)
 {
 
 }

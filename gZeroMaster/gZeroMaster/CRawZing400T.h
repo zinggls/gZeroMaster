@@ -45,5 +45,5 @@ public:
 	afx_msg void OnBnClickedBit1Button();
 	afx_msg void OnBnClickedBit0Button();
 	afx_msg void OnBnClickedWriteButton();
-	virtual void DefaultValues();
+	virtual void DefaultValues(CString strChip);
 };
