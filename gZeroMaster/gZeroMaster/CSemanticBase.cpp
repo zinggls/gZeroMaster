@@ -1680,8 +1680,6 @@ BOOL CSemanticBase::UpdateSemanticValue(int addr, int (*fpNewRegVal)(int, int), 
 
 BOOL CSemanticBase::UpdateSelected(SelectStatic selected, BOOL bCommonControl)
 {
-	ASSERT(Parent()->m_chip == _T("A0") || Parent()->m_chip == _T("B0"));
-
 	BOOL bRtn = TRUE;
 	int updateValue;
 	switch (selected) {
@@ -1874,9 +1872,9 @@ void CSemanticBase::OnBnClickedWriteAllButton()
 
 	int errCnt = 0;
 	CString str;
-	for (int i = 1; i <= static_cast<int>(SelectStatic::FdBuf); i++) {
-		if (!UpdateSelected(static_cast<SelectStatic>(i), FALSE)) {
-			str.Format(_T("Update failed at SelectStatic:%d"), i);
+	for (std::map<SelectStatic, CStaticElem>::iterator it = m_staticMap.begin(); it != m_staticMap.end(); ++it) {
+		if (!UpdateSelected(it->first, FALSE)) {
+			str.Format(_T("Update failed at SelectStatic:%d"), it->first);
 			Parent()->L(str);
 			errCnt++;
 		}
