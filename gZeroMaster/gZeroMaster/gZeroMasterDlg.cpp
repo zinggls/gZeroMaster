@@ -1105,35 +1105,3 @@ void CgZeroMasterDlg::RawBnClickedReadAllButton()
 {
 	m_pRaw->OnBnClickedReadAllButton();
 }
-
-void CgZeroMasterDlg::DefaultRawValues()
-{
-	ASSERT(m_chip == _T("A0") || m_chip == _T("B0"));
-
-	m_pRaw->m_strRxReg1 = _T("0x18");
-	m_pRaw->m_strTxReg1Top = _T("0x00");
-	m_pRaw->m_strBiasReg1 = _T("0x01");
-	m_pRaw->m_strBiasReg2 = _T("0x99");
-	m_pRaw->m_strBiasReg3 = _T("0x99");
-	m_pRaw->m_strBiasReg4 = _T("0x96");
-	m_pRaw->m_strBiasReg5 = _T("0x66");
-	m_pRaw->m_strBiasReg6 = _T("0x66");
-	m_pRaw->m_strBiasReg7 = _T("0x06");
-
-	if (m_chip == _T("A0")) {
-		m_pRaw->m_strTxReg1Mid = _T("0xf7");
-		m_pRaw->m_strTxReg1Bot = _T("0xb7");
-		m_pRaw->m_strBiasReg8 = _T("0x06");
-		m_pRaw->m_strBiasReg9 = _T("0x99");
-	}
-	else if (m_chip == _T("B0")) {
-		m_pRaw->m_strTxReg1Mid = _T("0x10");
-		m_pRaw->m_strTxReg1Bot = _T("0x10");
-		m_pRaw->m_strTxReg2Top = _T("0x01");
-		m_pRaw->m_strTxReg2Mid = _T("0xf7");
-		m_pRaw->m_strTxReg2Bot = _T("0xb7");
-
-		m_pRaw->m_strBiasReg8 = _T("0x50");
-	}
-	m_pRaw->UpdateData(FALSE);
-}

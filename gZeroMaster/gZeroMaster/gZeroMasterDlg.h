@@ -114,5 +114,4 @@ public:
 	BOOL WriteRegister(int addr, int value);
 	CString RegisterName(int addr);
 	void RawBnClickedReadAllButton();
-	void DefaultRawValues();
 };
