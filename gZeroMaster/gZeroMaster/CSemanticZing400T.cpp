@@ -4,6 +4,7 @@
 #include "pch.h"
 #include "gZeroMaster.h"
 #include "CSemanticZing400T.h"
+#include "CRawBase.h"
 
 
 // CSemanticZing400T 대화 상자
@@ -113,10 +114,24 @@ void CSemanticZing400T::ControlValueEnable(BOOL b)
 
 const CRegister& CSemanticZing400T::Parse()
 {
+	UpdateTxReg1(m_pRawBase->m_strTxReg1Top, m_pRawBase->m_strTxReg1Mid, m_pRawBase->m_strTxReg1Bot, m_reg);
+	UpdateTxReg2(m_pRawBase->m_strTxReg2Top, m_pRawBase->m_strTxReg2Mid, m_pRawBase->m_strTxReg2Bot, m_reg);
 	return m_reg;
 }
 
 void CSemanticZing400T::UpdateRegisters()
 {
 	CSemanticBase::UpdateRegisters();
+}
+
+void CSemanticZing400T::UpdateTxReg1(CString strTxRegTop, CString strTxRegMid, CString strTxRegBot, CRegister& reg)
+{
+	int mid = _tcstol(strTxRegMid.GetBuffer(), NULL, 16) & 0xff;
+	int bot = _tcstol(strTxRegBot.GetBuffer(), NULL, 16) & 0xff;
+
+	reg.m_nDutyCycle = _tcstol(strTxRegTop.GetBuffer(), NULL, 16) & 0xff;
+
+	reg.m_nVcoOsc = (bot & 0xe0) >> 5 | (mid << 3);
+	reg.m_nRegRef = (bot & 0x10) >> 4;
+	reg.m_nVcoVdd = bot & 0x0f;
 }
