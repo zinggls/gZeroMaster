@@ -255,5 +255,14 @@ void CRawZing400R::OnBnClickedWriteButton()
 
 void CRawZing400R::DefaultValues(CString strChip)
 {
+	ASSERT(strChip == _T("Zing400R"));
 
+	m_strRxReg1 = _T("0x18");
+	m_strBiasReg1 = _T("0x01");
+	m_strBiasReg4 = _T("0x96");
+	m_strBiasReg5 = _T("0x66");
+	m_strBiasReg6 = _T("0x66");
+	m_strBiasReg7 = _T("0x06");
+	m_strBiasReg8 = _T("0x06");
+	UpdateData(FALSE);
 }

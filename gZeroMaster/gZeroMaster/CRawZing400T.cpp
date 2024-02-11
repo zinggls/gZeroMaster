@@ -272,5 +272,13 @@ void CRawZing400T::OnBnClickedWriteButton()
 
 void CRawZing400T::DefaultValues(CString strChip)
 {
+	ASSERT(strChip == _T("Zing400T"));
 
+	m_strTxReg1Top = _T("0x00");
+	m_strTxReg1Mid = _T("0x10");
+	m_strTxReg1Bot = _T("0x10");
+	m_strTxReg2Top = _T("0x01");
+	m_strTxReg2Mid = _T("0xE0");
+	m_strTxReg2Bot = _T("0x07");
+	UpdateData(FALSE);
 }
