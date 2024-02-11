@@ -6,6 +6,7 @@
 #include "CSemantic.h"
 #include "afxdialogex.h"
 #include "gZeroMasterDlg.h"
+#include "CRawBase.h"
 
 
 // CSemantic 대화 상자
@@ -181,5 +182,20 @@ void CSemantic::OnBnClickedDefaultValueButton()
 
 const CRegister& CSemantic::Parse()
 {
+	CSemanticBase::UpdateRxReg1(m_pRawBase->m_strRxReg1, m_reg);
+	CSemanticBase::UpdateTxReg1(m_pRawBase->m_strTxReg1Top, m_pRawBase->m_strTxReg1Mid, m_pRawBase->m_strTxReg1Bot, m_reg, m_pRawBase->Parent()->m_chip);
+	if (m_pRawBase->Parent()->m_chip == _T("B0"))
+		CSemanticBase::UpdateTxReg2(m_pRawBase->m_strTxReg2Top, m_pRawBase->m_strTxReg2Mid, m_pRawBase->m_strTxReg2Bot, m_reg);
+
+	CSemanticBase::UpdateBiasReg1(m_pRawBase->m_strBiasReg1, m_reg);
+	CSemanticBase::UpdateBiasReg2(m_pRawBase->m_strBiasReg2, m_reg);
+	CSemanticBase::UpdateBiasReg3(m_pRawBase->m_strBiasReg3, m_reg);
+	CSemanticBase::UpdateBiasReg4(m_pRawBase->m_strBiasReg4, m_reg);
+	CSemanticBase::UpdateBiasReg5(m_pRawBase->m_strBiasReg5, m_reg);
+	CSemanticBase::UpdateBiasReg6(m_pRawBase->m_strBiasReg6, m_reg);
+	CSemanticBase::UpdateBiasReg7(m_pRawBase->m_strBiasReg7, m_reg);
+	CSemanticBase::UpdateBiasReg8(m_pRawBase->m_strBiasReg8, m_reg);
+	if (m_pRawBase->Parent()->m_chip == _T("A0"))
+		CSemanticBase::UpdateBiasReg9(m_pRawBase->m_strBiasReg9, m_reg);
 	return m_reg;
 }
