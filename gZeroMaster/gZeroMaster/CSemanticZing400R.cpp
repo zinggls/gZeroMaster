@@ -50,6 +50,7 @@ void CSemanticZing400R::DoDataExchange(CDataExchange* pDX)
 
 BEGIN_MESSAGE_MAP(CSemanticZing400R, CSemanticBase)
 	ON_BN_CLICKED(IDC_SEMANTIC_EDIT_CHECK, &OnBnClickedSemanticEditCheck)
+	ON_BN_CLICKED(IDC_READ_ALL_BUTTON, &OnBnClickedReadAllButton)
 END_MESSAGE_MAP()
 
 
