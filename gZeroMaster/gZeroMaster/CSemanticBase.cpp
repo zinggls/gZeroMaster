@@ -126,8 +126,7 @@ CgZeroMasterDlg* CSemanticBase::Parent()
 
 const CRegister& CSemanticBase::getRegister()
 {
-	Parent()->Parse(m_reg);
-	return m_reg;
+	return Parse();
 }
 
 void CSemanticBase::UpdateRxReg1(CString strRxReg1, CRegister& reg)
