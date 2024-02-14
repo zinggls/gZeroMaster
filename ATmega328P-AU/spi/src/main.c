@@ -182,54 +182,79 @@ void Zing400Tx_reg_show(void)
 	reg_show("RegOut2b[7:0] : ",0x2b);
 }
 
-int Init()
+void Init(uint8_t n)
 {
-#ifdef CHIP_B0
-	B0_Init();
-	return 0;
-#endif
-
-#ifdef CHIP_400RX
-	Zing400Rx_Init();
-	return 0;
-#endif
-
-#ifdef CHIP_400TX
-	Zing400Tx_Init();
-	return 0;
-#endif
-
-	return -1;
+	switch(n){
+	case 1:
+		B0_Init();
+		break;
+	case 2:
+		Zing400Rx_Init();
+		break;
+	case 3:
+		Zing400Tx_Init();
+		break;
+	default:
+		break;
+	}
 }
 
-void show()
+void show(uint8_t n)
 {
-#ifdef CHIP_B0
-	B0_reg_show();
-#endif
-
-#ifdef CHIP_400RX
-	Zing400Rx_reg_show();
-#endif
-
-#ifdef CHIP_400TX
-	Zing400Tx_reg_show();
-#endif
+	switch(n){
+	case 1:
+		B0_reg_show();
+		break;
+	case 2:
+		Zing400Rx_reg_show();
+		break;
+	case 3:
+		Zing400Tx_reg_show();
+		break;
+	default:
+		break;
+	}
 }
 
-void show_chip()
+void show_chip(uint8_t n)
 {
-#ifdef CHIP_B0
-	UART_TX_STR("[B0] ");
-#endif
+	switch(n){
+	case 1:
+		UART_TX_STR("[Zing200x] ");
+		break;
+	case 2:
+		UART_TX_STR("[Zing400R] ");
+		break;
+	case 3:
+		UART_TX_STR("[Zing400T] ");
+		break;
+	default:
+		break;
+	}
+}
 
-#ifdef CHIP_400RX
-	UART_TX_STR("[400RX] ");
-#endif
-
-#ifdef CHIP_400TX
-	UART_TX_STR("[400TX] ");
-#endif
+uint8_t choose()
+{
+	char buffer[4] = {0, };
+	
+	while(1) {
+		UART_TX_STR("Choose chipset model number to use, Zing200x(1), Zing400R(2) Zing400T(3) : ");
+		UART_RX_STR(buffer);
+		UART_TX_STR(buffer);
+		UART_TX_CH(0x0A);
+		UART_TX_CH(0x0D);
+	
+		uint8_t number = (uint8_t)(strtol(buffer, NULL, 10));
+		if(number>=1 && number<=3) {
+			show_chip(number);
+			UART_TX_STR("selected\n");
+			return number;
+		}else{
+			UART_TX_STR("Wrong number selected\n");
+		}
+		UART_TX_CH(0x0A);
+		UART_TX_CH(0x0D);
+	}
 }
 
 int main(void)
@@ -237,19 +262,19 @@ int main(void)
 	uint8_t rw = 0;
 	uint8_t data[2] = {0, };
 	char t_tx[3] = {0, };
+	uint8_t chip = 0;
 		
 	/* Initializes MCU, drivers and middleware */
 	atmel_start_init();	
-	if(Init()==-1) {
-		UART_TX_STR("Error, CHIP_B0 or CHIP_400RX or CHIP_400TX must be defined\n");
-		return -1;
-	}
+	
+	chip = choose();
+	Init(chip);
 	
 	/* Replace with your application code */
 	while (1) {
 	  char t_rx_addr[4] = {0, };
 	  char t_rx_data[4] = {0, };
-	  show_chip();
+	  show_chip(chip);
 	  UART_TX_STR("If the input address is greater than 0x80, all register values are displayed\n");
 	  UART_TX_STR("Please Input Address(hex) : ");
 	  UART_RX_STR(t_rx_addr);
@@ -261,7 +286,7 @@ int main(void)
 	  UART_TX_CH(0x0a);
 	  if(data[0] > 0x7f)
 	  {
-		  show();
+		  show(chip);
 		  continue;
 	  }
 	  UART_TX_STR("Write : 0, Read : 1");
