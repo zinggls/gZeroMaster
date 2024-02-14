@@ -250,7 +250,7 @@ int main(void)
 	  char t_rx_addr[4] = {0, };
 	  char t_rx_data[4] = {0, };
 	  show_chip();
-	  UART_TX_STR("If input address bigger than 0x80, all register value is displayed\n");
+	  UART_TX_STR("If the input address is greater than 0x80, all register values are displayed\n");
 	  UART_TX_STR("Please Input Address(hex) : ");
 	  UART_RX_STR(t_rx_addr);
 	  UART_TX_CH(0x0A);
