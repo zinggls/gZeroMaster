@@ -7,18 +7,6 @@
 #define VERSION		"01"				//Version			(MUST BE 2Bytes long)
 #define BASE_ADDR	((uint8_t*)0x0)
 
-#ifdef CHIP_B0
-#define CHIP		"CHIP:B0"			//Chip model name	(MUST BE 7Bytes long)
-#endif
-
-#ifdef CHIP_400RX
-#define CHIP		"CHIP:BR"			//Chip model name	(MUST BE 7Bytes long)
-#endif
-
-#ifdef CHIP_400TX
-#define CHIP		"CHIP:BT"			//Chip model name	(MUST BE 7Bytes long)
-#endif
-
 /*
  * UART Initiallize
  */
@@ -199,19 +187,21 @@ void Zing400Tx_SaveData()
 	eeprom_update_byte_from_SPI_0_read_reg(0x2b);
 }
 
-void SaveData()
+void SaveData(uint8_t n)
 {
-#ifdef CHIP_B0
-	B0_SaveData();
-#endif
-
-#ifdef CHIP_400RX
-	Zing400Rx_SaveData();
-#endif
-
-#ifdef CHIP_400TX
-	Zing400Tx_SaveData();
-#endif
+	switch(n){
+	case 1:
+		B0_SaveData();
+		break;
+	case 2:
+		Zing400Rx_SaveData();
+		break;
+	case 3:
+		Zing400Tx_SaveData();
+		break;
+	default:
+		break;
+	}
 }
 
 void SPI_0_write_reg_from_eeprom_read_byte(uint8_t addr)
@@ -282,39 +272,68 @@ void Zing400Tx_LoadData()
 	SPI_0_write_reg_from_eeprom_read_byte(0x2b);
 }
 
-void LoadData()
+void LoadData(uint8_t n)
 {
-#ifdef CHIP_B0
-	B0_LoadData();
-#endif
-
-#ifdef CHIP_400RX
-	Zing400Rx_LoadData();
-#endif
-
-#ifdef CHIP_400TX
-	Zing400Tx_LoadData();
-#endif
+	switch(n){
+	case 1:
+		B0_LoadData();
+		break;
+	case 2:
+		Zing400Rx_LoadData();
+		break;
+	case 3:
+		Zing400Tx_LoadData();
+		break;
+	default:
+		break;
+	}
 }
 
-int Init()
+void Init(uint8_t n)
+{	
+	switch(n){
+	case 1:
+		B0_Init();
+		UART_TX_STR("B0_Init");
+		break;
+	case 2:
+		Zing400Rx_Init();
+		UART_TX_STR("Zing400Rx_Init");
+		break;
+	case 3:
+		Zing400Tx_Init();
+		UART_TX_STR("Zing400Tx_Init");
+		break;
+	default:
+		UART_TX_STR("Init Error");
+		break;
+	}
+	UART_TX_CH(0x0A);
+	UART_TX_CH(0x0D);
+}
+
+uint8_t choose()
 {
-#ifdef CHIP_B0
-	B0_Init();
-	return 0;
-#endif
+	char buffer[4] = {0, };
+	UART_RX_STR(buffer);
+	return (uint8_t)(strtol(buffer, NULL, 16));
+}
 
-#ifdef CHIP_400RX
-	Zing400Rx_Init();
-	return 0;
-#endif
-
-#ifdef CHIP_400TX
-	Zing400Tx_Init();
-	return 0;
-#endif
-
-	return -1;
+void SendChipName(uint8_t n)
+{
+	switch(n){
+	case 1:
+		UART_TX_STR("CHIP:B0");		//Chip model name	(MUST BE 7Bytes long)
+		break;
+	case 2:
+		UART_TX_STR("CHIP:BR");		//Chip model name	(MUST BE 7Bytes long)
+		break;
+	case 3:
+		UART_TX_STR("CHIP:BT");		//Chip model name	(MUST BE 7Bytes long)
+		break;
+	default:
+		break;
+	}
 }
 
 int main(void)
@@ -322,17 +341,17 @@ int main(void)
 	uint8_t rw = 0;
 	uint8_t data[2] = {0, };
 	char t_tx[3] = {0, };
+	uint8_t chip = 0;
 		
 	/* Initializes MCU, drivers and middleware */
 	atmel_start_init();	
-	if(Init()==-1) {
-		UART_TX_STR("Error, CHIP_B0 or CHIP_400RX or CHIP_400TX must be defined\n");
-		return -1;
-	}
+	
+	chip = choose();
+	Init(chip);
 	
 	/* Replace with your application code */
 	
-	LoadData();
+	LoadData(chip);
 	while (1) {
 		char t_rx_addr[4] = {0, };
 		char t_rx_data[4] = {0, };
@@ -344,17 +363,17 @@ int main(void)
 		
 		if(data[0] == 0xff) {
 			/* Get Chip model name */
-			UART_TX_STR(CHIP);		//Chip model name
+			SendChipName(chip);
 			continue;
 		}else if(data[0] == 0xf1) {
 			/* Save to EEPROM */
 			UART_RX_STR(t_rx_data);	//Data(hex), dummy data to be neglected
-			SaveData();
+			SaveData(chip);
 			continue;			
 		}else if(data[0] == 0xf2) {
 			/* Load from EEPROM */
 			UART_RX_STR(t_rx_data);	//Data(hex), dummy data to be neglected
-			LoadData();
+			LoadData(chip);
 			continue;			
 		}else if(data[0] == 0xf3) {
 			/* Get FW Version */

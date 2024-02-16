@@ -297,6 +297,44 @@ void CgZeroMasterDlg::SerialClose(CString& str)
 	m_pRaw->GetDlgItem(IDC_READ_ALL_BUTTON)->ShowWindow(SW_HIDE);
 }
 
+char CgZeroMasterDlg::ModelToAscii(CString strModel)
+{
+	if (strModel == _T("B0")) {
+		return '1';
+	}
+	else if (strModel == _T("Zing400R")) {
+		return '2';
+	}
+	else if (strModel == _T("Zing400T")) {
+		return '3';
+	}
+	else {
+		return '?';
+	}
+}
+
+void CgZeroMasterDlg::SendChipInfo()
+{
+	char InitMsg[] = { 0x0,0xd};
+	InitMsg[0] = ModelToAscii(m_chip);
+
+	ASSERT(m_serial.IsOpen());
+
+	DWORD dwBytesWrite = 0;
+	LONG lLastError = m_serial.Write(InitMsg, sizeof(InitMsg), &dwBytesWrite);
+	ASSERT(lLastError == ERROR_SUCCESS);
+
+	Sleep(100);	//Sleep이 없으면 시리얼에서 제대로 읽어오지 못한다
+
+	char buffer[128] = { 0, };
+	DWORD dwBytesRead;
+	lLastError = m_serial.Read(buffer, sizeof(buffer), &dwBytesRead);
+	buffer[dwBytesRead] = 0;
+	ASSERT(lLastError == ERROR_SUCCESS);
+
+	L(CString(buffer));
+}
+
 void CgZeroMasterDlg::OnBnClickedConnectButton()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
@@ -322,6 +360,7 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 			if (lLastError != ERROR_SUCCESS) return ErrorMsg(m_serial.GetLastError(), _T("Unable to set COM-port read timeout"));
 			
 			OnCbnSelchangeChipCombo();
+			SendChipInfo();
 
 			L(_T("Chip Model:") + m_chip);
 			if (m_pRaw->ReadRegisters()) {
