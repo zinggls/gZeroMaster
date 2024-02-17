@@ -346,6 +346,7 @@ int main(void)
 	/* Initializes MCU, drivers and middleware */
 	atmel_start_init();	
 	
+Init:
 	chip = choose();
 	Init(chip);
 	
@@ -378,7 +379,10 @@ int main(void)
 		}else if(data[0] == 0xf3) {
 			/* Get FW Version */
 			UART_TX_STR(VERSION);	//FW Version
-			continue;			
+			continue;
+		}else if(data[0] == 0xf4) {
+			chip = 0;
+			goto Init;
 		}
 
 		rw = rw & 1;

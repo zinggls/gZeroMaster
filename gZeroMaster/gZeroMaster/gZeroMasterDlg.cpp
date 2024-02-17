@@ -388,6 +388,13 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 	}
 	else {
 		KillTimer(ZMQ_TIMER);
+
+		char msg[4] = { 'f','4', 0xd, 0x0 };
+		DWORD dwBytesWrite = 0;
+		LONG lLastError = m_serial.Write(msg, sizeof(msg), &dwBytesWrite);
+		ASSERT(lLastError == ERROR_SUCCESS);
+		ASSERT(dwBytesWrite == sizeof(msg));
+
 		SerialClose(str);
 	}
 }
