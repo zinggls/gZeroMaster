@@ -117,4 +117,5 @@ public:
 	char ModelToAscii(CString strModel);
 	void SendChipInfo();
 	void SendFwInitMsg();
+	void SetInitTab();
 };

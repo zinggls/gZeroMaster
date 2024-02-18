@@ -383,6 +383,7 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 				m_pSemantic->GetDlgItem(IDC_DEFAULT_VALUE_BUTTON)->ShowWindow(SW_SHOW);
 				m_pSemantic->GetDlgItem(IDC_SEMANTIC_EDIT_CHECK)->ShowWindow(SW_SHOW);
 				SetTimer(ZMQ_TIMER, 100, NULL);
+				SetInitTab();
 			}
 			else {
 				L(_T("Can't read resgisters"));
@@ -399,6 +400,7 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 		KillTimer(ZMQ_TIMER);
 		SendFwInitMsg();
 		SerialClose(str);
+		SetInitTab();
 	}
 }
 
@@ -1154,4 +1156,11 @@ CString CgZeroMasterDlg::RegisterName(int addr)
 void CgZeroMasterDlg::RawBnClickedReadAllButton()
 {
 	m_pRaw->OnBnClickedReadAllButton();
+}
+
+void CgZeroMasterDlg::SetInitTab()
+{
+	m_tab.SetCurSel(0);
+	m_pSemantic->ShowWindow(SW_SHOW);
+	m_pRaw->ShowWindow(SW_HIDE);
 }
