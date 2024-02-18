@@ -335,6 +335,15 @@ void CgZeroMasterDlg::SendChipInfo()
 	L(CString(buffer));
 }
 
+void CgZeroMasterDlg::SendFwInitMsg()
+{
+	char msg[4] = { 'f','4', 0xd, 0x0 };
+	DWORD dwBytesWrite = 0;
+	LONG lLastError = m_serial.Write(msg, sizeof(msg), &dwBytesWrite);
+	ASSERT(lLastError == ERROR_SUCCESS);
+	ASSERT(dwBytesWrite == sizeof(msg));
+}
+
 void CgZeroMasterDlg::OnBnClickedConnectButton()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
@@ -388,13 +397,7 @@ void CgZeroMasterDlg::OnBnClickedConnectButton()
 	}
 	else {
 		KillTimer(ZMQ_TIMER);
-
-		char msg[4] = { 'f','4', 0xd, 0x0 };
-		DWORD dwBytesWrite = 0;
-		LONG lLastError = m_serial.Write(msg, sizeof(msg), &dwBytesWrite);
-		ASSERT(lLastError == ERROR_SUCCESS);
-		ASSERT(dwBytesWrite == sizeof(msg));
-
+		SendFwInitMsg();
 		SerialClose(str);
 	}
 }

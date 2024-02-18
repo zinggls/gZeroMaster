@@ -116,4 +116,5 @@ public:
 	void RawBnClickedReadAllButton();
 	char ModelToAscii(CString strModel);
 	void SendChipInfo();
+	void SendFwInitMsg();
 };
