@@ -436,6 +436,7 @@ void CgZeroMasterDlg::OnDestroy()
 	// TODO: 여기에 메시지 처리기 코드를 추가합니다.
 	zmq_close(m_responder);
 	zmq_ctx_destroy(m_context);
+	if(m_serial.IsOpen()) OnBnClickedConnectButton();
 	delete m_pSemantic;
 	delete m_pRaw;
 }
