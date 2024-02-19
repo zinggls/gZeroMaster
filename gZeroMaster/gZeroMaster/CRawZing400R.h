@@ -43,6 +43,13 @@ public:
 	afx_msg void OnStnClickedBiasReg6Static();
 	afx_msg void OnStnClickedBiasReg7Static();
 	afx_msg void OnStnClickedBiasReg8Static();
+	afx_msg void OnStnClickedRxRegOut26Static();
+	afx_msg void OnStnClickedRxRegOut27Static();
+	afx_msg void OnStnClickedRxRegOut28Static();
+	afx_msg void OnStnClickedRxRegOut29Static();
+	afx_msg void OnStnClickedRxRegOut2AStatic();
+	afx_msg void OnStnClickedRxRegOut2BStatic();
+	afx_msg void OnStnClickedRxRegOut2CStatic();
 	afx_msg void OnBnClickedEditCheck();
 	afx_msg void OnBnClickedBit7Button();
 	afx_msg void OnBnClickedBit6Button();

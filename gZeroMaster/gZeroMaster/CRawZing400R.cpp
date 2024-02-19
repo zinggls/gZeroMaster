@@ -59,6 +59,13 @@ BEGIN_MESSAGE_MAP(CRawZing400R, CDialogEx)
 	ON_STN_CLICKED(IDC_BIAS_REG6_STATIC, &CRawZing400R::OnStnClickedBiasReg6Static)
 	ON_STN_CLICKED(IDC_BIAS_REG7_STATIC, &CRawZing400R::OnStnClickedBiasReg7Static)
 	ON_STN_CLICKED(IDC_BIAS_REG8_STATIC, &CRawZing400R::OnStnClickedBiasReg8Static)
+	ON_STN_CLICKED(IDC_RX_REG_OUT26_STATIC, &CRawZing400R::OnStnClickedRxRegOut26Static)
+	ON_STN_CLICKED(IDC_RX_REG_OUT27_STATIC, &CRawZing400R::OnStnClickedRxRegOut27Static)
+	ON_STN_CLICKED(IDC_RX_REG_OUT28_STATIC, &CRawZing400R::OnStnClickedRxRegOut28Static)
+	ON_STN_CLICKED(IDC_RX_REG_OUT29_STATIC, &CRawZing400R::OnStnClickedRxRegOut29Static)
+	ON_STN_CLICKED(IDC_RX_REG_OUT2A_STATIC, &CRawZing400R::OnStnClickedRxRegOut2AStatic)
+	ON_STN_CLICKED(IDC_RX_REG_OUT2B_STATIC, &CRawZing400R::OnStnClickedRxRegOut2BStatic)
+	ON_STN_CLICKED(IDC_RX_REG_OUT2C_STATIC, &CRawZing400R::OnStnClickedRxRegOut2CStatic)
 	ON_BN_CLICKED(IDC_EDIT_CHECK, &CRawZing400R::OnBnClickedEditCheck)
 	ON_BN_CLICKED(IDC_BIT7_BUTTON, &CRawZing400R::OnBnClickedBit7Button)
 	ON_BN_CLICKED(IDC_BIT6_BUTTON, &CRawZing400R::OnBnClickedBit6Button)
@@ -195,6 +202,79 @@ void CRawZing400R::OnStnClickedBiasReg8Static()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	CRawBase::OnStnClickedBiasReg8Static();
+}
+
+
+void CRawZing400R::OnStnClickedRxRegOut26Static()
+{
+	CStringList msgList;
+	msgList.AddTail(_T("RegOut26[3:0]"));
+	msgList.AddTail(_T("    [3]:CH.3 VSPS Block Enable"));
+	msgList.AddTail(_T("    [2:0]:Q-CH.3 VSPS Phase Control Bit (Ref.Phase Table)"));
+	OnStnClicked(IDC_EDIT_CHECK, m_strRegOut26, IDC_REG_OUT26_LABEL, msgList);
+}
+
+
+void CRawZing400R::OnStnClickedRxRegOut27Static()
+{
+	CStringList msgList;
+	msgList.AddTail(_T("RegOut27[7:0]"));
+	msgList.AddTail(_T("    [7:6]:Q-CH.3 VSPS Phase Control Bit (Ref.Phase Table)"));
+	msgList.AddTail(_T("    [5:1]:I-CH.3 VSPS Phase Control Bit (Ref.Phase Table)"));
+	msgList.AddTail(_T("    [0]:CH.2 VSPS Block Enable"));
+	OnStnClicked(IDC_EDIT_CHECK, m_strRegOut27, IDC_REG_OUT27_LABEL, msgList);
+}
+
+
+void CRawZing400R::OnStnClickedRxRegOut28Static()
+{
+	CStringList msgList;
+	msgList.AddTail(_T("RegOut28[7:0]"));
+	msgList.AddTail(_T("    [7:3]:Q-CH.2 VSPS Phase Control Bit (Ref.Phase Table)"));
+	msgList.AddTail(_T("    [2:0]:I-CH.2 VSPS Phase Control Bit (Ref.Phase Table)"));
+	OnStnClicked(IDC_EDIT_CHECK, m_strRegOut28, IDC_REG_OUT28_LABEL, msgList);
+}
+
+
+void CRawZing400R::OnStnClickedRxRegOut29Static()
+{
+	CStringList msgList;
+	msgList.AddTail(_T("RegOut29[7:0]"));
+	msgList.AddTail(_T("    [7:6]:I-CH.2 VSPS Phase Control Bit (Ref.Phase Table)"));
+	msgList.AddTail(_T("    [5]:CH.1 VSPS Block Enable"));
+	msgList.AddTail(_T("    [4:0]:Q-CH.1 VSPS Phase Control Bit (Ref.Phase Table)"));
+	OnStnClicked(IDC_EDIT_CHECK, m_strRegOut29, IDC_REG_OUT29_LABEL, msgList);
+}
+
+
+void CRawZing400R::OnStnClickedRxRegOut2AStatic()
+{
+	CStringList msgList;
+	msgList.AddTail(_T("RegOut2A[7:0]"));
+	msgList.AddTail(_T("    [7:3]:I-CH.1 VSPS Phase Control Bit (Ref.Phase Table)"));
+	msgList.AddTail(_T("    [2]:CH.0 VSPS Block Enable"));
+	msgList.AddTail(_T("    [1:0]:Q-CH.0 VSPS Phase Control Bit (Ref.Phase Table)"));
+	OnStnClicked(IDC_EDIT_CHECK, m_strRegOut2A, IDC_REG_OUT2A_LABEL, msgList);
+}
+
+
+void CRawZing400R::OnStnClickedRxRegOut2BStatic()
+{
+	CStringList msgList;
+	msgList.AddTail(_T("RegOut2B[7:0]"));
+	msgList.AddTail(_T("    [7:5]:Q-CH.0 VSPS Phase Control Bit (Ref.Phase Table)"));
+	msgList.AddTail(_T("    [4:0]:I-CH.0 VSPS Phase Control Bit (Ref.Phase Table)"));
+	OnStnClicked(IDC_EDIT_CHECK, m_strRegOut2B, IDC_REG_OUT2B_LABEL, msgList);
+}
+
+
+void CRawZing400R::OnStnClickedRxRegOut2CStatic()
+{
+	CStringList msgList;
+	msgList.AddTail(_T("RegOut2C[7:0]"));
+	msgList.AddTail(_T("    [7:4]:VSPS Bias Control Bit (0001: 0.5104V)"));
+	msgList.AddTail(_T("    [3:0]:LNA Bias Control Bit (0000: 0.5342V)"));
+	OnStnClicked(IDC_EDIT_CHECK, m_strRegOut2C, IDC_REG_OUT2C_LABEL, msgList);
 }
 
 
