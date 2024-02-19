@@ -286,62 +286,6 @@ void CRawZing400R::OnBnClickedEditCheck()
 }
 
 
-void CRawZing400R::OnBnClickedBit7Button()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	CRawBase::OnBnClickedBit7Button();
-}
-
-
-void CRawZing400R::OnBnClickedBit6Button()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	CRawBase::OnBnClickedBit6Button();
-}
-
-
-void CRawZing400R::OnBnClickedBit5Button()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	CRawBase::OnBnClickedBit5Button();
-}
-
-
-void CRawZing400R::OnBnClickedBit4Button()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	CRawBase::OnBnClickedBit4Button();
-}
-
-
-void CRawZing400R::OnBnClickedBit3Button()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	CRawBase::OnBnClickedBit3Button();
-}
-
-
-void CRawZing400R::OnBnClickedBit2Button()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	CRawBase::OnBnClickedBit2Button();
-}
-
-
-void CRawZing400R::OnBnClickedBit1Button()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	CRawBase::OnBnClickedBit1Button();
-}
-
-
-void CRawZing400R::OnBnClickedBit0Button()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	CRawBase::OnBnClickedBit0Button();
-}
-
-
 void CRawZing400R::OnBnClickedWriteButton()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
