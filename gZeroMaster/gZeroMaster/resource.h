@@ -28,13 +28,22 @@
 #define IDC_TX_REG2_MID_STATIC          1008
 #define IDC_TX_REG2_BOT_STATIC          1009
 #define IDC_BIAS_REG1_STATIC            1010
+#define IDC_TX_REG_OUT24_STATIC         1010
 #define IDC_BIAS_REG2_STATIC            1011
+#define IDC_TX_REG_OUT25_STATIC         1011
 #define IDC_BIAS_REG3_STATIC            1012
+#define IDC_TX_REG_OUT27_STATIC         1012
 #define IDC_BIAS_REG4_STATIC            1013
+#define IDC_TX_REG_OUT26_STATIC         1013
 #define IDC_BIAS_REG5_STATIC            1014
+#define IDC_TX_REG_OUT28_STATIC         1014
 #define IDC_BIAS_REG6_STATIC            1015
+#define IDC_TX_REG_OUT29_STATIC         1015
 #define IDC_BIAS_REG7_STATIC            1016
+#define IDC_TX_REG_OUT2A_STATIC         1016
 #define IDC_BIAS_REG8_STATIC            1017
+#define IDC_TX_REG_OUT24_STATIC8        1017
+#define IDC_TX_REG_OUT2B_STATIC         1017
 #define IDC_BIAS_REG9_STATIC            1018
 #define IDC_BIT_EDIT7                   1019
 #define IDC_BIT_EDIT6                   1020
@@ -174,6 +183,14 @@
 #define IDC_AUTO_WRITE_CHECK            1148
 #define IDC_DEFAULT_VALUE_BUTTON        1149
 #define IDC_TCP_BIND_PORT_EDIT          1150
+#define IDC_REG_OUT24_LABEL             1151
+#define IDC_REG_OUT25_LABEL             1152
+#define IDC_REG_OUT26_LABEL             1153
+#define IDC_REG_OUT27_LABEL             1154
+#define IDC_REG_OUT28_LABEL             1155
+#define IDC_REG_OUT29_LABEL             1156
+#define IDC_REG_OUT2A_LABEL             1157
+#define IDC_REG_OUT2B_LABEL             1158
 #define ID_MAINMENU_CLEARLOG            32771
 #define ID_MAINMENU_SAVE                32772
 #define ID_MAINMENU_LOAD                32773
@@ -190,7 +207,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        142
 #define _APS_NEXT_COMMAND_VALUE         32780
-#define _APS_NEXT_CONTROL_VALUE         1151
+#define _APS_NEXT_CONTROL_VALUE         1152
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif
