@@ -28,6 +28,14 @@ void CRawZing400T::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_TX_REG2_TOP_STATIC, m_strTxReg2Top);
 	DDX_Text(pDX, IDC_TX_REG2_MID_STATIC, m_strTxReg2Mid);
 	DDX_Text(pDX, IDC_TX_REG2_BOT_STATIC, m_strTxReg2Bot);
+	DDX_Text(pDX, IDC_TX_REG_OUT24_STATIC, m_strRegOut24);
+	DDX_Text(pDX, IDC_TX_REG_OUT25_STATIC, m_strRegOut25);
+	DDX_Text(pDX, IDC_TX_REG_OUT26_STATIC, m_strRegOut26);
+	DDX_Text(pDX, IDC_TX_REG_OUT27_STATIC, m_strRegOut27);
+	DDX_Text(pDX, IDC_TX_REG_OUT28_STATIC, m_strRegOut28);
+	DDX_Text(pDX, IDC_TX_REG_OUT29_STATIC, m_strRegOut29);
+	DDX_Text(pDX, IDC_TX_REG_OUT2A_STATIC, m_strRegOut2A);
+	DDX_Text(pDX, IDC_TX_REG_OUT2B_STATIC, m_strRegOut2B);
 	DDX_Control(pDX, IDC_BIT_EDIT7, m_bit7);
 	DDX_Control(pDX, IDC_BIT_EDIT6, m_bit6);
 	DDX_Control(pDX, IDC_BIT_EDIT5, m_bit5);
