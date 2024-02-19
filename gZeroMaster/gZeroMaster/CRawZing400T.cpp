@@ -84,6 +84,7 @@ BEGIN_MESSAGE_MAP(CRawZing400T, CDialogEx)
 	ON_BN_CLICKED(IDC_BIT1_BUTTON, &CRawZing400T::OnBnClickedBit1Button)
 	ON_BN_CLICKED(IDC_BIT0_BUTTON, &CRawZing400T::OnBnClickedBit0Button)
 	ON_BN_CLICKED(IDC_WRITE_BUTTON, &CRawZing400T::OnBnClickedWriteButton)
+	ON_BN_CLICKED(IDC_DEFAULT_VALUE_BUTTON, &CRawZing400T::OnBnClickedDefaultValueButton)
 	ON_WM_CTLCOLOR()
 END_MESSAGE_MAP()
 
@@ -291,4 +292,9 @@ void CRawZing400T::DefaultValues(CString strChip)
 	m_strRegOut2A = _T("0x00");
 	m_strRegOut2B = _T("0x00");
 	UpdateData(FALSE);
+}
+
+void CRawZing400T::OnBnClickedDefaultValueButton()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 }

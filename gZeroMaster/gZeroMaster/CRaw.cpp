@@ -84,6 +84,7 @@ BEGIN_MESSAGE_MAP(CRaw, CDialogEx)
 	ON_BN_CLICKED(IDC_BIT0_BUTTON, &OnBnClickedBit0Button)
 	ON_BN_CLICKED(IDC_READ_ALL_BUTTON, &OnBnClickedReadAllButton)
 	ON_BN_CLICKED(IDC_WRITE_BUTTON, &OnBnClickedWriteButton)
+	ON_BN_CLICKED(IDC_DEFAULT_VALUE_BUTTON, &CRaw::OnBnClickedDefaultValueButton)
 	ON_WM_CTLCOLOR()
 END_MESSAGE_MAP()
 
@@ -221,4 +222,9 @@ void CRaw::DefaultValues(CString strChip)
 		m_strBiasReg8 = _T("0x50");
 	}
 	UpdateData(FALSE);
+}
+
+void CRaw::OnBnClickedDefaultValueButton()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 }
