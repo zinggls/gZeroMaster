@@ -103,6 +103,7 @@ BOOL CRawZing400T::OnInitDialog()
 	ShowWriteButtons(SW_HIDE);
 	GetDlgItem(IDC_READ_ALL_BUTTON)->ShowWindow(SW_HIDE);
 	GetDlgItem(IDC_WRITE_ALL_BUTTON)->ShowWindow(SW_HIDE);
+	GetDlgItem(IDC_DEFAULT_VALUE_BUTTON)->ShowWindow(SW_HIDE);
 
 	ShowBitWindow(SW_HIDE);
 	return TRUE;  // return TRUE unless you set the focus to a control
