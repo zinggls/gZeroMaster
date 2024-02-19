@@ -662,4 +662,10 @@ void CRawBase::OnStnClickedBiasReg9Static()
 void CRawBase::OnBnClickedDefaultValueButton()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	DefaultValues(Parent()->m_chip);
+	Parent()->UpdateRegisters();
+
+	CString str;
+	str.Format(_T("%s Default values have been loaded into memory"), Parent()->m_chip);
+	Parent()->L(str);
 }
