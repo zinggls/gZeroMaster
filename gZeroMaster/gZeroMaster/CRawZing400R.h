@@ -22,6 +22,14 @@ protected:
 
 	DECLARE_MESSAGE_MAP()
 
+	CString m_strRegOut26;
+	CString m_strRegOut27;
+	CString m_strRegOut28;
+	CString m_strRegOut29;
+	CString m_strRegOut2A;
+	CString m_strRegOut2B;
+	CString m_strRegOut2C;
+
 public:
 	virtual BOOL OnInitDialog();
 	virtual void OnHideRegisterButtons(CString strChosenRegister);
