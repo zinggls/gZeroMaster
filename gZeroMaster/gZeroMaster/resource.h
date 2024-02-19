@@ -45,6 +45,7 @@
 #define IDC_TX_REG_OUT24_STATIC8        1017
 #define IDC_TX_REG_OUT2B_STATIC         1017
 #define IDC_BIAS_REG9_STATIC            1018
+#define IDC_RX_REG_OUT26_STATIC         1018
 #define IDC_BIT_EDIT7                   1019
 #define IDC_BIT_EDIT6                   1020
 #define IDC_BIT_EDIT5                   1021
@@ -57,10 +58,16 @@
 #define IDC_CHOSEN_REGISTER_STATIC      1027
 #define IDC_RX_REG1_LABEL               1028
 #define IDC_TX_REG1_TOP_LABEL           1029
+#define IDC_RX_REG_OUT28_STATIC         1029
 #define IDC_TX_REG1_MID_LABEL           1030
+#define IDC_RX_REG_OUT29_STATIC         1030
 #define IDC_TX_REG1_BOT_LABEL           1031
+#define IDC_RX_REG_OUT2A_STATIC         1031
 #define IDC_TX_REG2_TOP_LABEL           1032
+#define IDC_RX_REG_OUT2B_STATIC         1032
 #define IDC_TX_REG2_MID_LABEL           1033
+#define IDC_TX_REG_OUT2B_STATIC3        1033
+#define IDC_RX_REG_OUT2C_STATIC         1033
 #define IDC_TX_REG2_BOT_LABEL           1034
 #define IDC_BIAS_REG1_LABEL             1035
 #define IDC_BIAS_REG2_LABEL             1036
@@ -185,12 +192,14 @@
 #define IDC_TCP_BIND_PORT_EDIT          1150
 #define IDC_REG_OUT24_LABEL             1151
 #define IDC_REG_OUT25_LABEL             1152
+#define IDC_RX_REG_OUT27_STATIC         1152
 #define IDC_REG_OUT26_LABEL             1153
 #define IDC_REG_OUT27_LABEL             1154
 #define IDC_REG_OUT28_LABEL             1155
 #define IDC_REG_OUT29_LABEL             1156
 #define IDC_REG_OUT2A_LABEL             1157
 #define IDC_REG_OUT2B_LABEL             1158
+#define IDC_REG_OUT2C_LABEL             1159
 #define ID_MAINMENU_CLEARLOG            32771
 #define ID_MAINMENU_SAVE                32772
 #define ID_MAINMENU_LOAD                32773
@@ -207,7 +216,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        142
 #define _APS_NEXT_COMMAND_VALUE         32780
-#define _APS_NEXT_CONTROL_VALUE         1152
+#define _APS_NEXT_CONTROL_VALUE         1153
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif
