@@ -50,7 +50,5 @@ public:
 	afx_msg void OnStnClickedTxRegOut29Static();
 	afx_msg void OnStnClickedTxRegOut2AStatic();
 	afx_msg void OnStnClickedTxRegOut2BStatic();
-	afx_msg void OnBnClickedEditCheck();
-	afx_msg void OnBnClickedWriteButton();
 	virtual void DefaultValues(CString strChip);
 };

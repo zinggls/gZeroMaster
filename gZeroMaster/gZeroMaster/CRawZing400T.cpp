@@ -301,18 +301,6 @@ void CRawZing400T::OnStnClickedTxRegOut2BStatic()
 	OnStnClicked(IDC_EDIT_CHECK, m_strRegOut2B, IDC_REG_OUT2B_LABEL, msgList);
 }
 
-void CRawZing400T::OnBnClickedEditCheck()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	CRawBase::OnBnClickedEditCheck();
-}
-
-void CRawZing400T::OnBnClickedWriteButton()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	CRawBase::OnBnClickedWriteButton();
-}
-
 void CRawZing400T::DefaultValues(CString strChip)
 {
 	ASSERT(strChip == _T("Zing400T"));
