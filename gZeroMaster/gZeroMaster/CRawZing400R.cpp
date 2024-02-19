@@ -115,6 +115,21 @@ void CRawZing400R::OnHideRegisterButtons(CString strChosenRegister)
 		GetDlgItem(IDC_BIT1_BUTTON)->ShowWindow(SW_HIDE);
 		GetDlgItem(IDC_BIT0_BUTTON)->ShowWindow(SW_HIDE);
 	}
+	else if (strChosenRegister == _T("BIAS_REG1 [0]")) {
+		GetDlgItem(IDC_BIT7_BUTTON)->ShowWindow(SW_HIDE);
+		GetDlgItem(IDC_BIT6_BUTTON)->ShowWindow(SW_HIDE);
+		GetDlgItem(IDC_BIT5_BUTTON)->ShowWindow(SW_HIDE);
+		GetDlgItem(IDC_BIT4_BUTTON)->ShowWindow(SW_HIDE);
+		GetDlgItem(IDC_BIT3_BUTTON)->ShowWindow(SW_HIDE);
+		GetDlgItem(IDC_BIT2_BUTTON)->ShowWindow(SW_HIDE);
+		GetDlgItem(IDC_BIT1_BUTTON)->ShowWindow(SW_HIDE);
+	}
+	else if (strChosenRegister == _T("RegOut26 [3:0]")) {
+		GetDlgItem(IDC_BIT7_BUTTON)->ShowWindow(SW_HIDE);
+		GetDlgItem(IDC_BIT6_BUTTON)->ShowWindow(SW_HIDE);
+		GetDlgItem(IDC_BIT5_BUTTON)->ShowWindow(SW_HIDE);
+		GetDlgItem(IDC_BIT4_BUTTON)->ShowWindow(SW_HIDE);
+	}
 }
 
 void CRawZing400R::OnChipConnect(CString chipModel)
