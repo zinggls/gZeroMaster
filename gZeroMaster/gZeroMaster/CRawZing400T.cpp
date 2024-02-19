@@ -13,6 +13,14 @@ IMPLEMENT_DYNAMIC(CRawZing400T, CRawBase)
 CRawZing400T::CRawZing400T(CWnd* pParent /*=nullptr*/)
 	: CRawBase(pParent)
 {
+	m_strList.push_back(&m_strRegOut24);
+	m_strList.push_back(&m_strRegOut25);
+	m_strList.push_back(&m_strRegOut26);
+	m_strList.push_back(&m_strRegOut27);
+	m_strList.push_back(&m_strRegOut28);
+	m_strList.push_back(&m_strRegOut29);
+	m_strList.push_back(&m_strRegOut2A);
+	m_strList.push_back(&m_strRegOut2B);
 }
 
 CRawZing400T::~CRawZing400T()
