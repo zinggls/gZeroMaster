@@ -35,7 +35,6 @@ public:
 	virtual BOOL OnInitDialog();
 	virtual void OnHideRegisterButtons(CString strChosenRegister);
 	virtual void OnChipConnect(CString chipModel);
-	virtual BOOL ReadRegisters();
 	afx_msg void OnStnClickedTxReg1MidStatic();
 	afx_msg void OnStnClickedTxReg1BotStatic();
 	afx_msg void OnStnClickedTxReg2MidStatic();

@@ -153,21 +153,6 @@ void CRawZing400T::OnChipConnect(CString chipModel)
 	m_regMap.insert(std::pair<CString, CReg>(_T("RegOut2B [7:0]"), CReg(43, &m_strRegOut2B, IDC_TX_REG_OUT2B_STATIC)));
 }
 
-BOOL CRawZing400T::ReadRegisters()
-{
-	BOOL bRtn = CRawBase::ReadRegisters();
-	if (!bRtn) return FALSE;
-
-	/*
-	Zing400T에서는 상위클래스에서 정의된 비트들 중에서 일부만 사용한다
-		TX_REG2[15:8] -> TX_REG2[15:13]
-		TX_REG2[7:0] -> TX_REG2[3:0]
-	*/
-
-	UpdateData(FALSE);
-	return TRUE;
-}
-
 
 void CRawZing400T::OnStnClickedTxReg1MidStatic()
 {
