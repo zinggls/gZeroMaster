@@ -293,8 +293,3 @@ void CRawZing400T::DefaultValues(CString strChip)
 	m_strRegOut2B = _T("0x00");
 	UpdateData(FALSE);
 }
-
-void CRawZing400T::OnBnClickedDefaultValueButton()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-}

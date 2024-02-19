@@ -662,5 +662,4 @@ void CRawBase::OnStnClickedBiasReg9Static()
 void CRawBase::OnBnClickedDefaultValueButton()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	ASSERT(FALSE);	//구현전까지 이 함수를 호출하는 경우 오류 발생
 }

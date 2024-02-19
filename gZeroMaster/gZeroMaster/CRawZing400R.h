@@ -43,5 +43,4 @@ public:
 	afx_msg void OnStnClickedRxRegOut2BStatic();
 	afx_msg void OnStnClickedRxRegOut2CStatic();
 	virtual void DefaultValues(CString strChip);
-	afx_msg void OnBnClickedDefaultValueButton();
 };
