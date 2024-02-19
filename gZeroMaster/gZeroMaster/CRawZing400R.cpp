@@ -164,41 +164,6 @@ void CRawZing400R::OnStnClickedRxReg1Static()
 }
 
 
-void CRawZing400R::OnStnClickedBiasReg1Static()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	CRawBase::OnStnClickedBiasReg1Static();
-}
-
-
-void CRawZing400R::OnStnClickedBiasReg4Static()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	CRawBase::OnStnClickedBiasReg4Static();
-}
-
-
-void CRawZing400R::OnStnClickedBiasReg5Static()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	CRawBase::OnStnClickedBiasReg5Static();
-}
-
-
-void CRawZing400R::OnStnClickedBiasReg6Static()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	CRawBase::OnStnClickedBiasReg6Static();
-}
-
-
-void CRawZing400R::OnStnClickedBiasReg7Static()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	CRawBase::OnStnClickedBiasReg7Static();
-}
-
-
 void CRawZing400R::OnStnClickedBiasReg8Static()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.

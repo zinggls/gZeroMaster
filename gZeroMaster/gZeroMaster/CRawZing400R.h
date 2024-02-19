@@ -36,11 +36,6 @@ public:
 	virtual void OnChipConnect(CString chipModel);
 	virtual BOOL ReadRegisters();
 	afx_msg void OnStnClickedRxReg1Static();
-	afx_msg void OnStnClickedBiasReg1Static();
-	afx_msg void OnStnClickedBiasReg4Static();
-	afx_msg void OnStnClickedBiasReg5Static();
-	afx_msg void OnStnClickedBiasReg6Static();
-	afx_msg void OnStnClickedBiasReg7Static();
 	afx_msg void OnStnClickedBiasReg8Static();
 	afx_msg void OnStnClickedRxRegOut26Static();
 	afx_msg void OnStnClickedRxRegOut27Static();
