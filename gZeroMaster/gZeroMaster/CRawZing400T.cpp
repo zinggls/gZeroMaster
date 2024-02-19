@@ -127,6 +127,14 @@ void CRawZing400T::OnChipConnect(CString chipModel)
 	m_regMap.insert(std::pair<CString, CReg>(_T("TX_REG2 [16]"), CReg(13, &m_strTxReg2Top, IDC_TX_REG2_TOP_STATIC)));
 	m_regMap.insert(std::pair<CString, CReg>(_T("TX_REG2 [15:13]"), CReg(12, &m_strTxReg2Mid, IDC_TX_REG2_MID_STATIC)));
 	m_regMap.insert(std::pair<CString, CReg>(_T("TX_REG2 [3:0]"), CReg(11, &m_strTxReg2Bot, IDC_TX_REG2_BOT_STATIC)));
+	m_regMap.insert(std::pair<CString, CReg>(_T("RegOut24 [7:0]"), CReg(36, &m_strRegOut24, IDC_TX_REG_OUT24_STATIC)));
+	m_regMap.insert(std::pair<CString, CReg>(_T("RegOut25 [7:0]"), CReg(37, &m_strRegOut25, IDC_TX_REG_OUT25_STATIC)));
+	m_regMap.insert(std::pair<CString, CReg>(_T("RegOut26 [7:0]"), CReg(38, &m_strRegOut26, IDC_TX_REG_OUT26_STATIC)));
+	m_regMap.insert(std::pair<CString, CReg>(_T("RegOut27 [7:0]"), CReg(39, &m_strRegOut27, IDC_TX_REG_OUT27_STATIC)));
+	m_regMap.insert(std::pair<CString, CReg>(_T("RegOut28 [7:0]"), CReg(40, &m_strRegOut28, IDC_TX_REG_OUT28_STATIC)));
+	m_regMap.insert(std::pair<CString, CReg>(_T("RegOut29 [7:0]"), CReg(41, &m_strRegOut29, IDC_TX_REG_OUT29_STATIC)));
+	m_regMap.insert(std::pair<CString, CReg>(_T("RegOut2A [7:0]"), CReg(42, &m_strRegOut2A, IDC_TX_REG_OUT2A_STATIC)));
+	m_regMap.insert(std::pair<CString, CReg>(_T("RegOut2B [7:0]"), CReg(43, &m_strRegOut2B, IDC_TX_REG_OUT2B_STATIC)));
 }
 
 BOOL CRawZing400T::ReadRegisters()
