@@ -100,7 +100,7 @@ BOOL CRawZing400T::OnInitDialog()
 
 void CRawZing400T::OnHideRegisterButtons(CString strChosenRegister)
 {
-	if (strChosenRegister == _T("TX_REG2 [16]")) {
+	if (strChosenRegister == _T("TX_REG2 [16]") || strChosenRegister == _T("RegOut24 [0]")) {
 		GetDlgItem(IDC_BIT7_BUTTON)->ShowWindow(SW_HIDE);
 		GetDlgItem(IDC_BIT6_BUTTON)->ShowWindow(SW_HIDE);
 		GetDlgItem(IDC_BIT5_BUTTON)->ShowWindow(SW_HIDE);
