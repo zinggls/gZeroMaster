@@ -164,13 +164,6 @@ void CRawZing400R::OnStnClickedRxReg1Static()
 }
 
 
-void CRawZing400R::OnStnClickedBiasReg8Static()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	CRawBase::OnStnClickedBiasReg8Static();
-}
-
-
 void CRawZing400R::OnStnClickedRxRegOut26Static()
 {
 	CStringList msgList;
