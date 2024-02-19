@@ -43,6 +43,14 @@ public:
 	afx_msg void OnStnClickedTxReg2TopStatic();
 	afx_msg void OnStnClickedTxReg2MidStatic();
 	afx_msg void OnStnClickedTxReg2BotStatic();
+	afx_msg void OnStnClickedTxRegOut24Static();
+	afx_msg void OnStnClickedTxRegOut25Static();
+	afx_msg void OnStnClickedTxRegOut26Static();
+	afx_msg void OnStnClickedTxRegOut27Static();
+	afx_msg void OnStnClickedTxRegOut28Static();
+	afx_msg void OnStnClickedTxRegOut29Static();
+	afx_msg void OnStnClickedTxRegOut2AStatic();
+	afx_msg void OnStnClickedTxRegOut2BStatic();
 	afx_msg void OnBnClickedEditCheck();
 	afx_msg void OnBnClickedBit7Button();
 	afx_msg void OnBnClickedBit6Button();

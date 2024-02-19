@@ -58,6 +58,14 @@ BEGIN_MESSAGE_MAP(CRawZing400T, CDialogEx)
 	ON_STN_CLICKED(IDC_TX_REG2_TOP_STATIC, &CRawZing400T::OnStnClickedTxReg2TopStatic)
 	ON_STN_CLICKED(IDC_TX_REG2_MID_STATIC, &CRawZing400T::OnStnClickedTxReg2MidStatic)
 	ON_STN_CLICKED(IDC_TX_REG2_BOT_STATIC, &CRawZing400T::OnStnClickedTxReg2BotStatic)
+	ON_STN_CLICKED(IDC_TX_REG_OUT24_STATIC, &CRawZing400T::OnStnClickedTxRegOut24Static)
+	ON_STN_CLICKED(IDC_TX_REG_OUT25_STATIC, &CRawZing400T::OnStnClickedTxRegOut25Static)
+	ON_STN_CLICKED(IDC_TX_REG_OUT26_STATIC, &CRawZing400T::OnStnClickedTxRegOut26Static)
+	ON_STN_CLICKED(IDC_TX_REG_OUT27_STATIC, &CRawZing400T::OnStnClickedTxRegOut27Static)
+	ON_STN_CLICKED(IDC_TX_REG_OUT28_STATIC, &CRawZing400T::OnStnClickedTxRegOut28Static)
+	ON_STN_CLICKED(IDC_TX_REG_OUT29_STATIC, &CRawZing400T::OnStnClickedTxRegOut29Static)
+	ON_STN_CLICKED(IDC_TX_REG_OUT2A_STATIC, &CRawZing400T::OnStnClickedTxRegOut2AStatic)
+	ON_STN_CLICKED(IDC_TX_REG_OUT2B_STATIC, &CRawZing400T::OnStnClickedTxRegOut2BStatic)
 	ON_BN_CLICKED(IDC_EDIT_CHECK, &CRawZing400T::OnBnClickedEditCheck)
 	ON_BN_CLICKED(IDC_BIT7_BUTTON, &CRawZing400T::OnBnClickedBit7Button)
 	ON_BN_CLICKED(IDC_BIT6_BUTTON, &CRawZing400T::OnBnClickedBit6Button)
@@ -216,6 +224,80 @@ void CRawZing400T::OnStnClickedTxReg2BotStatic()
 	OnStnClicked(IDC_EDIT_CHECK, m_strTxReg2Bot, IDC_TX_REG2_BOT_LABEL, msgList);
 }
 
+void CRawZing400T::OnStnClickedTxRegOut24Static()
+{
+	CStringList msgList;
+	msgList.AddTail(_T("RegOut24[0]"));
+	msgList.AddTail(_T("    [0]:BIAS Block Enable"));
+	OnStnClicked(IDC_EDIT_CHECK, m_strRegOut24, IDC_REG_OUT24_LABEL, msgList);
+}
+
+void CRawZing400T::OnStnClickedTxRegOut25Static()
+{
+	CStringList msgList;
+	msgList.AddTail(_T("RegOut25[7:0]"));
+	msgList.AddTail(_T("    [7:4]:VSPS PA Bias Voltage (0111: 0.55V)"));
+	msgList.AddTail(_T("    [3:0]:VSPS VGA Bias Voltage (1000: 0.56V)"));
+	OnStnClicked(IDC_EDIT_CHECK, m_strRegOut25, IDC_REG_OUT25_LABEL, msgList);
+}
+
+void CRawZing400T::OnStnClickedTxRegOut26Static()
+{
+	CStringList msgList;
+	msgList.AddTail(_T("RegOut26[7:0]"));
+	msgList.AddTail(_T("    [7:4]:VSPS CS Bias Voltage (1000: 0.5V)"));
+	msgList.AddTail(_T("    [3]:CH.3 VSPS Block Enable"));
+	msgList.AddTail(_T("    [2:0]:Q-CH.3 VSPS Phase Control Bit (Ref.Phase Table)"));
+	OnStnClicked(IDC_EDIT_CHECK, m_strRegOut26, IDC_REG_OUT26_LABEL, msgList);
+}
+
+void CRawZing400T::OnStnClickedTxRegOut27Static()
+{
+	CStringList msgList;
+	msgList.AddTail(_T("RegOut27[7:0]"));
+	msgList.AddTail(_T("    [7:6]:Q-CH.3 VSPS Phase Control Bit (Ref.Phase Table)"));
+	msgList.AddTail(_T("    [5:1]:I-CH.3 VSPS Phase Control Bit (Ref.Phase Table)"));
+	msgList.AddTail(_T("    [0]:CH.2 VSPS Block Enable"));
+	OnStnClicked(IDC_EDIT_CHECK, m_strRegOut27, IDC_REG_OUT27_LABEL, msgList);
+}
+
+void CRawZing400T::OnStnClickedTxRegOut28Static()
+{
+	CStringList msgList;
+	msgList.AddTail(_T("RegOut28[7:0]"));
+	msgList.AddTail(_T("    [7:3]:Q-CH.2 VSPS Phase Control Bit (Ref.Phase Table)"));
+	msgList.AddTail(_T("    [2:0]:I-CH.2 VSPS Phase Control Bit (Ref.Phase Table)"));
+	OnStnClicked(IDC_EDIT_CHECK, m_strRegOut28, IDC_REG_OUT28_LABEL, msgList);
+}
+
+void CRawZing400T::OnStnClickedTxRegOut29Static()
+{
+	CStringList msgList;
+	msgList.AddTail(_T("RegOut29[7:0]"));
+	msgList.AddTail(_T("    [7:6]:I-CH.2 VSPS Phase Control Bit (Ref.Phase Table)"));
+	msgList.AddTail(_T("    [5]:CH.1 VSPS Block Enable"));
+	msgList.AddTail(_T("    [4:0]:Q-CH.1 VSPS Phase Control Bit (Ref.Phase Table)"));
+	OnStnClicked(IDC_EDIT_CHECK, m_strRegOut29, IDC_REG_OUT29_LABEL, msgList);
+}
+
+void CRawZing400T::OnStnClickedTxRegOut2AStatic()
+{
+	CStringList msgList;
+	msgList.AddTail(_T("RegOut2A[7:0]"));
+	msgList.AddTail(_T("    [7:3]:I-CH.1 VSPS Phase Control Bit (Ref.Phase Table)"));
+	msgList.AddTail(_T("    [2]:CH.0 VSPS Block Enable"));
+	msgList.AddTail(_T("    [1:0]:Q-CH.0 VSPS Phase Control Bit (Ref.Phase Table)"));
+	OnStnClicked(IDC_EDIT_CHECK, m_strRegOut2A, IDC_REG_OUT2A_LABEL, msgList);
+}
+
+void CRawZing400T::OnStnClickedTxRegOut2BStatic()
+{
+	CStringList msgList;
+	msgList.AddTail(_T("RegOut2B[7:0]"));
+	msgList.AddTail(_T("    [7:5]:Q-CH.0 VSPS Phase Control Bit (Ref.Phase Table)"));
+	msgList.AddTail(_T("    [4:0]:I-CH.0 VSPS Phase Control Bit (Ref.Phase Table)"));
+	OnStnClicked(IDC_EDIT_CHECK, m_strRegOut2B, IDC_REG_OUT2B_LABEL, msgList);
+}
 
 void CRawZing400T::OnBnClickedEditCheck()
 {
