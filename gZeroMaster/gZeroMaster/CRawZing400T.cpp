@@ -169,13 +169,6 @@ BOOL CRawZing400T::ReadRegisters()
 }
 
 
-void CRawZing400T::OnStnClickedTxReg1TopStatic()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	CRawBase::OnStnClickedTxReg1TopStatic();
-}
-
-
 void CRawZing400T::OnStnClickedTxReg1MidStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
@@ -195,13 +188,6 @@ void CRawZing400T::OnStnClickedTxReg1BotStatic()
 	msgList.AddTail(_T("    [4]:Regulator Reference Voltage  Control"));
 	msgList.AddTail(_T("    [3:0]:VCO_VDD Control"));
 	OnStnClicked(IDC_EDIT_CHECK, m_strTxReg1Bot, IDC_TX_REG1_BOT_LABEL, msgList);
-}
-
-
-void CRawZing400T::OnStnClickedTxReg2TopStatic()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	CRawBase::OnStnClickedTxReg2TopStatic();
 }
 
 
