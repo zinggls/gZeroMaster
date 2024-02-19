@@ -408,7 +408,18 @@ void CRawBase::OnBnClickedReadAllButton()
 
 void CRawBase::OnBnClickedWriteAllButton()
 {
-	//IBase에서 선언된 순수가상함수로 컴파일러 오류를 막기 위해 아무일도 하지 않는 구현부를 제공
+	for (std::map<CString, CReg>::iterator it = m_regMap.begin(); it != m_regMap.end(); it++) {
+		CString str = *it->second.m_pStr;
+		str.Delete(0, 2);
+
+		if (WriteRegister(it->second.m_nAddr, _tcstol(str, NULL, 16))) {
+			Parent()->L(it->first + _T(" updated"));
+		}
+		else {
+			Parent()->L(it->first + _T(" update failed"));
+		}
+	}
+	OnBnClickedReadAllButton();
 }
 
 void CRawBase::OnBnClickedWriteButton()
