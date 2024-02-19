@@ -29,6 +29,13 @@ void CRawZing400R::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_BIAS_REG6_STATIC, m_strBiasReg6);
 	DDX_Text(pDX, IDC_BIAS_REG7_STATIC, m_strBiasReg7);
 	DDX_Text(pDX, IDC_BIAS_REG8_STATIC, m_strBiasReg8);
+	DDX_Text(pDX, IDC_RX_REG_OUT26_STATIC, m_strRegOut26);
+	DDX_Text(pDX, IDC_RX_REG_OUT27_STATIC, m_strRegOut27);
+	DDX_Text(pDX, IDC_RX_REG_OUT28_STATIC, m_strRegOut28);
+	DDX_Text(pDX, IDC_RX_REG_OUT29_STATIC, m_strRegOut29);
+	DDX_Text(pDX, IDC_RX_REG_OUT2A_STATIC, m_strRegOut2A);
+	DDX_Text(pDX, IDC_RX_REG_OUT2B_STATIC, m_strRegOut2B);
+	DDX_Text(pDX, IDC_RX_REG_OUT2C_STATIC, m_strRegOut2C);
 	DDX_Control(pDX, IDC_BIT_EDIT7, m_bit7);
 	DDX_Control(pDX, IDC_BIT_EDIT6, m_bit6);
 	DDX_Control(pDX, IDC_BIT_EDIT5, m_bit5);
