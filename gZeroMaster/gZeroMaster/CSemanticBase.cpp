@@ -10,7 +10,7 @@ CSemanticBase::CSemanticBase(CWnd* pParent, CRawBase* pRawBase)
 	: m_pRawBase(pRawBase)
 	, m_bSemanticEdit(FALSE)
 	, m_bAutoWrite(FALSE)
-	, m_selected(SelectStatic::None)
+	, m_selected(CSelect::None)
 	, m_strSelectedStatic(_T(""))
 	, m_strSliderMin(_T(""))
 	, m_strSliderMax(_T(""))
@@ -49,38 +49,38 @@ CSemanticBase::CSemanticBase(CWnd* pParent, CRawBase* pRawBase)
 	m_pParentWnd = pParent;
 
 	m_staticMap.clear();
-	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::LnaGain, CStaticElem(IDC_LNA_GAIN_VALUE_STATIC, &m_reg.m_nLnaGain, m_strLnaGain)));
-	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::DutyCycle, CStaticElem(IDC_DUTY_CYCLE_VALUE_STATIC, &m_reg.m_nDutyCycle, m_strDutyCycle)));
-	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::VcoOsc, CStaticElem(IDC_VCO_OSC_FREQ_VALUE_STATIC, &m_reg.m_nVcoOsc, m_strVcoOscFreq)));
-	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::VcoVdd, CStaticElem(IDC_VCO_VDD_VALUE_STATIC, &m_reg.m_nVcoVdd, m_strVcoVdd)));
-	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::PaGain1, CStaticElem(IDC_PA_GAIN_CONTROL1_VALUE_STATIC, &m_reg.m_nPaGainCon1, m_strPaGainControl1)));
-	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::PaGain2, CStaticElem(IDC_PA_GAIN_CONTROL2_VALUE_STATIC, &m_reg.m_nPaGainCon2, m_strPaGainControl2)));
-	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::TestBuffer, CStaticElem(IDC_TEST_BUFFER_CURRENT_VALUE_STATIC, &m_reg.m_nTestBufCur, m_strTestBufferCurrent)));
-	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::Lna1, CStaticElem(IDC_LNA1_BIAS_CURRENT_VALUE_STATIC, &m_reg.m_nLna1Cur, m_strLna1Current)));
-	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::Lna2, CStaticElem(IDC_LNA2_BIAS_CURRENT_VALUE_STATIC, &m_reg.m_nLna2Cur, m_strLna2Current)));
-	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::Lna3, CStaticElem(IDC_LNA3_BIAS_CURRENT_VALUE_STATIC, &m_reg.m_nLna3Cur, m_strLna3Current)));
-	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::Lna4, CStaticElem(IDC_LNA4_BIAS_CURRENT_VALUE_STATIC, &m_reg.m_nLna4Cur, m_strLna4Current)));
-	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::Lna5, CStaticElem(IDC_LNA5_BIAS_CURRENT_VALUE_STATIC, &m_reg.m_nLna5Cur, m_strLna5Current)));
-	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::RefStage, CStaticElem(IDC_DEMOD_REF_STAGE_CURRENT_VALUE_STATIC, &m_reg.m_nDemodRefStageCur, m_strDemodRefStageCurrent)));
-	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::IpStage, CStaticElem(IDC_DEMOD_IP_STAGE_CURRENT_VALUE_STATIC, &m_reg.m_nDemodIPStageCur, m_strDemodIPStageCurrent)));
-	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::Fb, CStaticElem(IDC_LA_FB_CURRENT_VALUE_STATIC, &m_reg.m_nLaFBCur, m_strLaFBCurrent)));
-	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::Core, CStaticElem(IDC_LA_CORE_CURRENT_VALUE_STATIC, &m_reg.m_nLaCoreCur, m_strLaCoreCurrent)));
-	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::OP, CStaticElem(IDC_LA_OP_BUFFER_CURRENT_VALUE_STATIC, &m_reg.m_nLaOPBufCur, m_strLaOPBufferCurrent)));
-	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::IP, CStaticElem(IDC_LA_IP_BUFFER_CURRENT_VALUE_STATIC, &m_reg.m_nLaIPBufCur, m_strLaIPBufferCurrent)));
-	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::HL, CStaticElem(IDC_LA_HL_DATA_RATE_CURRENT_VALUE_STATIC, &m_reg.m_nLaHLDataRateCur, m_strLaHLDataRateCurrent)));
-	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::CMOS, CStaticElem(IDC_CMOS_GAIN_STAGE_CURRENT_VALUE_STATIC, &m_reg.m_nCMOSGainStageCur, m_strCMOSGainStageCurrent)));
-	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::CML, CStaticElem(IDC_CML_INTERFACE_STAGE_CURRENT_VALUE_STATIC, &m_reg.m_nCMLInterfaceStageCur, m_strCMLInterfaceStageCurrent)));
-	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::RxData, CStaticElem(IDC_RX_DATA_IF_ENABLE_VALUE_STATIC, &m_reg.m_nRxData, m_strRxDataInterface)));
-	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::LimAmp, CStaticElem(IDC_LIMITING_AMP_ENABLE_VALUE_STATIC, &m_reg.m_nLimitAmp, m_strLimitingAmplifier)));
-	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::RegRef, CStaticElem(IDC_REG_REF_VOLT_VALUE_STATIC, &m_reg.m_nRegRef, m_strRegRefVolt)));
-	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::VcoPow, CStaticElem(IDC_VCO_POWER_VALUE_STATIC, &m_reg.m_nVcoPower, m_strVcoPower)));
-	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::ModPow, CStaticElem(IDC_MODULATOR_POWER_VALUE_STATIC, &m_reg.m_nModPower, m_strModPower)));
-	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::TestBufPow, CStaticElem(IDC_TEST_BUFFER_POWER_VALUE_STATIC, &m_reg.m_nTestBufPower, m_strTestBufferPower)));
-	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::DataInp, CStaticElem(IDC_DATA_INPUT_SELECT_VALUE_STATIC, &m_reg.m_nDataInpSel, m_strDataInputSelect)));
-	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::PaPow, CStaticElem(IDC_PA_POWER_VALUE_STATIC, &m_reg.m_nPaPower, m_strPaPower)));
-	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::BiasBlock, CStaticElem(IDC_BIAS_BLOCK_ENABLE_VALUE_STATIC, &m_reg.m_nBiasBlock, m_strBiasBlockEnable)));
-	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::FdCore, CStaticElem(IDC_FD_CORE_CURRENT_VALUE_STATIC, &m_reg.m_nFdCoreCur, m_strFdCoreCur)));
-	m_staticMap.insert(std::pair<SelectStatic, CStaticElem>(SelectStatic::FdBuf, CStaticElem(IDC_FD_BUFFER_CURRENT_VALUE_STATIC, &m_reg.m_nFdBufCur, m_strFdBufCur)));
+	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::LnaGain, CStaticElem(IDC_LNA_GAIN_VALUE_STATIC, &m_reg.m_nLnaGain, m_strLnaGain)));
+	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::DutyCycle, CStaticElem(IDC_DUTY_CYCLE_VALUE_STATIC, &m_reg.m_nDutyCycle, m_strDutyCycle)));
+	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::VcoOsc, CStaticElem(IDC_VCO_OSC_FREQ_VALUE_STATIC, &m_reg.m_nVcoOsc, m_strVcoOscFreq)));
+	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::VcoVdd, CStaticElem(IDC_VCO_VDD_VALUE_STATIC, &m_reg.m_nVcoVdd, m_strVcoVdd)));
+	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::PaGain1, CStaticElem(IDC_PA_GAIN_CONTROL1_VALUE_STATIC, &m_reg.m_nPaGainCon1, m_strPaGainControl1)));
+	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::PaGain2, CStaticElem(IDC_PA_GAIN_CONTROL2_VALUE_STATIC, &m_reg.m_nPaGainCon2, m_strPaGainControl2)));
+	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::TestBuffer, CStaticElem(IDC_TEST_BUFFER_CURRENT_VALUE_STATIC, &m_reg.m_nTestBufCur, m_strTestBufferCurrent)));
+	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::Lna1, CStaticElem(IDC_LNA1_BIAS_CURRENT_VALUE_STATIC, &m_reg.m_nLna1Cur, m_strLna1Current)));
+	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::Lna2, CStaticElem(IDC_LNA2_BIAS_CURRENT_VALUE_STATIC, &m_reg.m_nLna2Cur, m_strLna2Current)));
+	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::Lna3, CStaticElem(IDC_LNA3_BIAS_CURRENT_VALUE_STATIC, &m_reg.m_nLna3Cur, m_strLna3Current)));
+	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::Lna4, CStaticElem(IDC_LNA4_BIAS_CURRENT_VALUE_STATIC, &m_reg.m_nLna4Cur, m_strLna4Current)));
+	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::Lna5, CStaticElem(IDC_LNA5_BIAS_CURRENT_VALUE_STATIC, &m_reg.m_nLna5Cur, m_strLna5Current)));
+	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::RefStage, CStaticElem(IDC_DEMOD_REF_STAGE_CURRENT_VALUE_STATIC, &m_reg.m_nDemodRefStageCur, m_strDemodRefStageCurrent)));
+	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::IpStage, CStaticElem(IDC_DEMOD_IP_STAGE_CURRENT_VALUE_STATIC, &m_reg.m_nDemodIPStageCur, m_strDemodIPStageCurrent)));
+	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::Fb, CStaticElem(IDC_LA_FB_CURRENT_VALUE_STATIC, &m_reg.m_nLaFBCur, m_strLaFBCurrent)));
+	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::Core, CStaticElem(IDC_LA_CORE_CURRENT_VALUE_STATIC, &m_reg.m_nLaCoreCur, m_strLaCoreCurrent)));
+	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::OP, CStaticElem(IDC_LA_OP_BUFFER_CURRENT_VALUE_STATIC, &m_reg.m_nLaOPBufCur, m_strLaOPBufferCurrent)));
+	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::IP, CStaticElem(IDC_LA_IP_BUFFER_CURRENT_VALUE_STATIC, &m_reg.m_nLaIPBufCur, m_strLaIPBufferCurrent)));
+	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::HL, CStaticElem(IDC_LA_HL_DATA_RATE_CURRENT_VALUE_STATIC, &m_reg.m_nLaHLDataRateCur, m_strLaHLDataRateCurrent)));
+	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::CMOS, CStaticElem(IDC_CMOS_GAIN_STAGE_CURRENT_VALUE_STATIC, &m_reg.m_nCMOSGainStageCur, m_strCMOSGainStageCurrent)));
+	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::CML, CStaticElem(IDC_CML_INTERFACE_STAGE_CURRENT_VALUE_STATIC, &m_reg.m_nCMLInterfaceStageCur, m_strCMLInterfaceStageCurrent)));
+	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::RxData, CStaticElem(IDC_RX_DATA_IF_ENABLE_VALUE_STATIC, &m_reg.m_nRxData, m_strRxDataInterface)));
+	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::LimAmp, CStaticElem(IDC_LIMITING_AMP_ENABLE_VALUE_STATIC, &m_reg.m_nLimitAmp, m_strLimitingAmplifier)));
+	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::RegRef, CStaticElem(IDC_REG_REF_VOLT_VALUE_STATIC, &m_reg.m_nRegRef, m_strRegRefVolt)));
+	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::VcoPow, CStaticElem(IDC_VCO_POWER_VALUE_STATIC, &m_reg.m_nVcoPower, m_strVcoPower)));
+	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::ModPow, CStaticElem(IDC_MODULATOR_POWER_VALUE_STATIC, &m_reg.m_nModPower, m_strModPower)));
+	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::TestBufPow, CStaticElem(IDC_TEST_BUFFER_POWER_VALUE_STATIC, &m_reg.m_nTestBufPower, m_strTestBufferPower)));
+	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::DataInp, CStaticElem(IDC_DATA_INPUT_SELECT_VALUE_STATIC, &m_reg.m_nDataInpSel, m_strDataInputSelect)));
+	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::PaPow, CStaticElem(IDC_PA_POWER_VALUE_STATIC, &m_reg.m_nPaPower, m_strPaPower)));
+	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::BiasBlock, CStaticElem(IDC_BIAS_BLOCK_ENABLE_VALUE_STATIC, &m_reg.m_nBiasBlock, m_strBiasBlockEnable)));
+	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::FdCore, CStaticElem(IDC_FD_CORE_CURRENT_VALUE_STATIC, &m_reg.m_nFdCoreCur, m_strFdCoreCur)));
+	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::FdBuf, CStaticElem(IDC_FD_BUFFER_CURRENT_VALUE_STATIC, &m_reg.m_nFdBufCur, m_strFdBufCur)));
 }
 
 CSemanticBase::~CSemanticBase()
@@ -305,7 +305,7 @@ void CSemanticBase::OnBnClickedSemanticEditCheck()
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_bSemanticEdit = !m_bSemanticEdit;
 	if (m_bSemanticEdit) {
-		m_selected = SelectStatic::None;
+		m_selected = CSelect::None;
 		ControlValueEnable(TRUE);
 		GetDlgItem(IDC_AUTO_WRITE_CHECK)->ShowWindow(SW_SHOW);
 	}
@@ -325,7 +325,7 @@ void CSemanticBase::OnBnClickedAutoWriteCheck()
 	m_bAutoWrite = !m_bAutoWrite;
 }
 
-COLORREF CSemanticBase::SetColor(CDC* pDC, SelectStatic given)
+COLORREF CSemanticBase::SetColor(CDC* pDC, UINT given)
 {
 	if (m_selected == given)
 		return pDC->SetTextColor(RGB(255, 0, 0));
@@ -393,7 +393,7 @@ void CSemanticBase::SetControlSlider(int min, int max, CString strCurVal, int ti
 	SliderValueUpdate();
 }
 
-void CSemanticBase::SetSliderGroup(SelectStatic ss, int min, int max, CString strCurVal, int ticFreq, int lineSize, int pageSize, UINT idcStatic)
+void CSemanticBase::SetSliderGroup(UINT ss, int min, int max, CString strCurVal, int ticFreq, int lineSize, int pageSize, UINT idcStatic)
 {
 	m_selected = ss;
 	ShowSlider(SW_SHOW);
@@ -406,7 +406,7 @@ void CSemanticBase::SetSliderGroup(SelectStatic ss, int min, int max, CString st
 	UpdateData(FALSE);
 }
 
-void CSemanticBase::SetComboGroup(SelectStatic ss, CString strVal0,CString strVal1, int nVal, UINT idcStatic)
+void CSemanticBase::SetComboGroup(UINT ss, CString strVal0,CString strVal1, int nVal, UINT idcStatic)
 {
 	m_selected = ss;
 	ShowSlider(SW_HIDE);
@@ -703,7 +703,7 @@ HBRUSH CSemanticBase::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 	HBRUSH hbr = CDialogEx::OnCtlColor(pDC, pWnd, nCtlColor);
 
 	// TODO:  여기서 DC의 특성을 변경합니다.
-	for (std::map<SelectStatic, CStaticElem>::iterator it = m_staticMap.begin(); it != m_staticMap.end(); ++it) {
+	for (std::map<UINT, CStaticElem>::iterator it = m_staticMap.begin(); it != m_staticMap.end(); ++it) {
 		if (pWnd->GetDlgCtrlID() == it->second.m_uIdc)
 			SetColor(pDC, it->first);
 	}
@@ -717,7 +717,7 @@ void CSemanticBase::OnCbnSelchangeControlCombo()
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 
 	BOOL bProcessed = FALSE;
-	for (std::map<SelectStatic, CStaticElem>::iterator it = m_staticMap.begin(); it != m_staticMap.end(); ++it) {
+	for (std::map<UINT, CStaticElem>::iterator it = m_staticMap.begin(); it != m_staticMap.end(); ++it) {
 		if (m_selected == it->first) {
 			(ComboSel() == (*it->second.m_pRegVal)) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
 			bProcessed = TRUE;
@@ -976,161 +976,161 @@ void CSemanticBase::UpdateRegisters()
 void CSemanticBase::OnStnClickedLnaGainValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(SelectStatic::LnaGain, 0, 7, m_strLnaGain, 1, 1, 10, IDC_LNA_GAIN_STATIC);
+	SetSliderGroup(CSelect::LnaGain, 0, 7, m_strLnaGain, 1, 1, 10, IDC_LNA_GAIN_STATIC);
 }
 
 
 void CSemanticBase::OnStnClickedDutyCycleValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(SelectStatic::DutyCycle, 0, 255, m_strDutyCycle, 10, 1, 10, IDC_DUTY_CYCLE_STATIC);
+	SetSliderGroup(CSelect::DutyCycle, 0, 255, m_strDutyCycle, 10, 1, 10, IDC_DUTY_CYCLE_STATIC);
 }
 
 
 void CSemanticBase::OnStnClickedVcoOscFreqValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(SelectStatic::VcoOsc, 0, 2047, m_strVcoOscFreq, 50, 1, 50, IDC_VCO_OSC_FREQ_STATIC);
+	SetSliderGroup(CSelect::VcoOsc, 0, 2047, m_strVcoOscFreq, 50, 1, 50, IDC_VCO_OSC_FREQ_STATIC);
 }
 
 
 void CSemanticBase::OnStnClickedVcoVddValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(SelectStatic::VcoVdd, 0, 15, m_strVcoVdd, 1, 1, 10, IDC_VCO_VDD_STATIC);
+	SetSliderGroup(CSelect::VcoVdd, 0, 15, m_strVcoVdd, 1, 1, 10, IDC_VCO_VDD_STATIC);
 }
 
 
 void CSemanticBase::OnStnClickedPaGainControl1ValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(SelectStatic::PaGain1, 0, 15, m_strPaGainControl1, 1, 1, 10, IDC_PA_GAIN_CONTROL1_STATIC);
+	SetSliderGroup(CSelect::PaGain1, 0, 15, m_strPaGainControl1, 1, 1, 10, IDC_PA_GAIN_CONTROL1_STATIC);
 }
 
 
 void CSemanticBase::OnStnClickedPaGainControl2ValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(SelectStatic::PaGain2, 0, 15, m_strPaGainControl2, 1, 1, 10, IDC_PA_GAIN_CONTROL2_STATIC);
+	SetSliderGroup(CSelect::PaGain2, 0, 15, m_strPaGainControl2, 1, 1, 10, IDC_PA_GAIN_CONTROL2_STATIC);
 }
 
 
 void CSemanticBase::OnStnClickedTestBufferCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(SelectStatic::TestBuffer, 0, 15, m_strTestBufferCurrent, 1, 1, 10, IDC_TEST_BUFFER_CURRENT_STATIC);
+	SetSliderGroup(CSelect::TestBuffer, 0, 15, m_strTestBufferCurrent, 1, 1, 10, IDC_TEST_BUFFER_CURRENT_STATIC);
 }
 
 
 void CSemanticBase::OnStnClickedLna1BiasCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(SelectStatic::Lna1, 0, 15, m_strLna1Current, 1, 1, 10, IDC_LNA1_BIAS_CURRENT_STATIC);
+	SetSliderGroup(CSelect::Lna1, 0, 15, m_strLna1Current, 1, 1, 10, IDC_LNA1_BIAS_CURRENT_STATIC);
 }
 
 
 void CSemanticBase::OnStnClickedLna2BiasCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(SelectStatic::Lna2, 0, 15, m_strLna2Current, 1, 1, 10, IDC_LNA2_BIAS_CURRENT_STATIC);
+	SetSliderGroup(CSelect::Lna2, 0, 15, m_strLna2Current, 1, 1, 10, IDC_LNA2_BIAS_CURRENT_STATIC);
 }
 
 
 void CSemanticBase::OnStnClickedLna3BiasCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(SelectStatic::Lna3, 0, 15, m_strLna3Current, 1, 1, 10, IDC_LNA3_BIAS_CURRENT_STATIC);
+	SetSliderGroup(CSelect::Lna3, 0, 15, m_strLna3Current, 1, 1, 10, IDC_LNA3_BIAS_CURRENT_STATIC);
 }
 
 
 void CSemanticBase::OnStnClickedLna4BiasCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(SelectStatic::Lna4, 0, 15, m_strLna4Current, 1, 1, 10, IDC_LNA4_BIAS_CURRENT_STATIC);
+	SetSliderGroup(CSelect::Lna4, 0, 15, m_strLna4Current, 1, 1, 10, IDC_LNA4_BIAS_CURRENT_STATIC);
 }
 
 
 void CSemanticBase::OnStnClickedLna5BiasCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(SelectStatic::Lna5, 0, 15, m_strLna5Current, 1, 1, 10, IDC_LNA5_BIAS_CURRENT_STATIC);
+	SetSliderGroup(CSelect::Lna5, 0, 15, m_strLna5Current, 1, 1, 10, IDC_LNA5_BIAS_CURRENT_STATIC);
 }
 
 
 void CSemanticBase::OnStnClickedDemodRefStageCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(SelectStatic::RefStage, 0, 15, m_strDemodRefStageCurrent, 1, 1, 10, IDC_DEMOD_REF_STAGE_CURRENT_STATIC);
+	SetSliderGroup(CSelect::RefStage, 0, 15, m_strDemodRefStageCurrent, 1, 1, 10, IDC_DEMOD_REF_STAGE_CURRENT_STATIC);
 }
 
 
 void CSemanticBase::OnStnClickedDemodIpStageCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(SelectStatic::IpStage, 0, 15, m_strDemodIPStageCurrent, 1, 1, 10, IDC_DEMOD_IP_STAGE_CURRENT_STATIC);
+	SetSliderGroup(CSelect::IpStage, 0, 15, m_strDemodIPStageCurrent, 1, 1, 10, IDC_DEMOD_IP_STAGE_CURRENT_STATIC);
 }
 
 
 void CSemanticBase::OnStnClickedLaFbCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(SelectStatic::Fb, 0, 15, m_strLaFBCurrent, 1, 1, 10, IDC_LA_FB_CURRENT_STATIC);
+	SetSliderGroup(CSelect::Fb, 0, 15, m_strLaFBCurrent, 1, 1, 10, IDC_LA_FB_CURRENT_STATIC);
 }
 
 
 void CSemanticBase::OnStnClickedLaCoreCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(SelectStatic::Core, 0, 15, m_strLaCoreCurrent, 1, 1, 10, IDC_LA_CORE_CURRENT_STATIC);
+	SetSliderGroup(CSelect::Core, 0, 15, m_strLaCoreCurrent, 1, 1, 10, IDC_LA_CORE_CURRENT_STATIC);
 }
 
 
 void CSemanticBase::OnStnClickedLaOpBufferCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(SelectStatic::OP, 0, 15, m_strLaOPBufferCurrent, 1, 1, 10, IDC_LA_OP_BUFFER_CURRENT_STATIC);
+	SetSliderGroup(CSelect::OP, 0, 15, m_strLaOPBufferCurrent, 1, 1, 10, IDC_LA_OP_BUFFER_CURRENT_STATIC);
 }
 
 
 void CSemanticBase::OnStnClickedLaIpBufferCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(SelectStatic::IP, 0, 15, m_strLaIPBufferCurrent, 1, 1, 10, IDC_LA_IP_BUFFER_CURRENT_STATIC);
+	SetSliderGroup(CSelect::IP, 0, 15, m_strLaIPBufferCurrent, 1, 1, 10, IDC_LA_IP_BUFFER_CURRENT_STATIC);
 }
 
 
 void CSemanticBase::OnStnClickedLaHlDataRateCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(SelectStatic::HL, 0, 15, m_strLaHLDataRateCurrent, 1, 1, 10, IDC_LA_HL_DATA_RATE_CURRENT_STATIC);
+	SetSliderGroup(CSelect::HL, 0, 15, m_strLaHLDataRateCurrent, 1, 1, 10, IDC_LA_HL_DATA_RATE_CURRENT_STATIC);
 }
 
 
 void CSemanticBase::OnStnClickedCmosGainStageCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(SelectStatic::CMOS, 0, 15, m_strCMOSGainStageCurrent, 1, 1, 10, IDC_CMOS_GAIN_STAGE_CURRENT_STATIC);
+	SetSliderGroup(CSelect::CMOS, 0, 15, m_strCMOSGainStageCurrent, 1, 1, 10, IDC_CMOS_GAIN_STAGE_CURRENT_STATIC);
 }
 
 
 void CSemanticBase::OnStnClickedCmlInterfaceStageCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(SelectStatic::CML, 0, 255, m_strCMLInterfaceStageCurrent, 10, 1, 10, IDC_CML_INTERFACE_STAGE_CURRENT_STATIC);
+	SetSliderGroup(CSelect::CML, 0, 255, m_strCMLInterfaceStageCurrent, 10, 1, 10, IDC_CML_INTERFACE_STAGE_CURRENT_STATIC);
 }
 
 
 void CSemanticBase::OnStnClickedFdCoreCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(SelectStatic::FdCore, 0, 15, m_strFdCoreCur, 1, 1, 10, IDC_FD_CORE_CURRENT_STATIC);
+	SetSliderGroup(CSelect::FdCore, 0, 15, m_strFdCoreCur, 1, 1, 10, IDC_FD_CORE_CURRENT_STATIC);
 }
 
 
 void CSemanticBase::OnStnClickedFdBufferCurrentValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(SelectStatic::FdBuf, 0, 15, m_strFdBufCur, 1, 1, 10, IDC_FD_BUFFER_CURRENT_STATIC);
+	SetSliderGroup(CSelect::FdBuf, 0, 15, m_strFdBufCur, 1, 1, 10, IDC_FD_BUFFER_CURRENT_STATIC);
 }
 
 
@@ -1138,7 +1138,7 @@ void CSemanticBase::OnStnClickedRxDataIfEnableValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 
-	SetComboGroup(SelectStatic::RxData, _T("disable"), _T("enable"), getRegister().m_nRxData, IDC_RX_DATA_IF_ENABLE_STATIC);
+	SetComboGroup(CSelect::RxData, _T("disable"), _T("enable"), getRegister().m_nRxData, IDC_RX_DATA_IF_ENABLE_STATIC);
 }
 
 
@@ -1147,7 +1147,7 @@ void CSemanticBase::OnStnClickedLimitingAmpEnableValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 
-	SetComboGroup(SelectStatic::LimAmp, _T("disable"), _T("enable"), getRegister().m_nLimitAmp, IDC_LIMITING_AMP_ENABLE_STATIC);
+	SetComboGroup(CSelect::LimAmp, _T("disable"), _T("enable"), getRegister().m_nLimitAmp, IDC_LIMITING_AMP_ENABLE_STATIC);
 }
 
 
@@ -1155,7 +1155,7 @@ void CSemanticBase::OnStnClickedRegRefVoltValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 
-	SetComboGroup(SelectStatic::RegRef, _T("500mV"), _T("400mV"), getRegister().m_nRegRef, IDC_REG_REF_VOLT_STATIC);
+	SetComboGroup(CSelect::RegRef, _T("500mV"), _T("400mV"), getRegister().m_nRegRef, IDC_REG_REF_VOLT_STATIC);
 }
 
 
@@ -1163,7 +1163,7 @@ void CSemanticBase::OnStnClickedVcoPowerValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 
-	SetComboGroup(SelectStatic::VcoPow, _T("VCO Off"), _T("VCO On"), getRegister().m_nVcoPower, IDC_VCO_POWER_STATIC);
+	SetComboGroup(CSelect::VcoPow, _T("VCO Off"), _T("VCO On"), getRegister().m_nVcoPower, IDC_VCO_POWER_STATIC);
 }
 
 
@@ -1171,7 +1171,7 @@ void CSemanticBase::OnStnClickedModulatorPowerValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 
-	SetComboGroup(SelectStatic::ModPow, _T("Mod Off"), _T("Mod On"), getRegister().m_nModPower, IDC_MODULATOR_POWER_STATIC);
+	SetComboGroup(CSelect::ModPow, _T("Mod Off"), _T("Mod On"), getRegister().m_nModPower, IDC_MODULATOR_POWER_STATIC);
 }
 
 
@@ -1179,7 +1179,7 @@ void CSemanticBase::OnStnClickedTestBufferPowerValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 
-	SetComboGroup(SelectStatic::TestBufPow, _T("Test Buff Off"), _T("Test Buff On"), getRegister().m_nTestBufPower, IDC_TEST_BUFFER_POWER_STATIC);
+	SetComboGroup(CSelect::TestBufPow, _T("Test Buff Off"), _T("Test Buff On"), getRegister().m_nTestBufPower, IDC_TEST_BUFFER_POWER_STATIC);
 }
 
 
@@ -1187,7 +1187,7 @@ void CSemanticBase::OnStnClickedDataInputSelectValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 
-	SetComboGroup(SelectStatic::DataInp, _T("SER(Internal)"), _T("Test Buff(External)"), getRegister().m_nDataInpSel, IDC_DATA_INPUT_SELECT_STATIC);
+	SetComboGroup(CSelect::DataInp, _T("SER(Internal)"), _T("Test Buff(External)"), getRegister().m_nDataInpSel, IDC_DATA_INPUT_SELECT_STATIC);
 }
 
 
@@ -1195,7 +1195,7 @@ void CSemanticBase::OnStnClickedPaPowerValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 
-	SetComboGroup(SelectStatic::PaPow, _T("PA Off"), _T("PA On"), getRegister().m_nPaPower, IDC_PA_POWER_STATIC);
+	SetComboGroup(CSelect::PaPow, _T("PA Off"), _T("PA On"), getRegister().m_nPaPower, IDC_PA_POWER_STATIC);
 }
 
 
@@ -1203,7 +1203,7 @@ void CSemanticBase::OnStnClickedBiasBlockEnableValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 
-	SetComboGroup(SelectStatic::BiasBlock, _T("disable"), _T("enable"), getRegister().m_nBiasBlock, IDC_BIAS_BLOCK_ENABLE_STATIC);
+	SetComboGroup(CSelect::BiasBlock, _T("disable"), _T("enable"), getRegister().m_nBiasBlock, IDC_BIAS_BLOCK_ENABLE_STATIC);
 }
 
 
@@ -1627,7 +1627,7 @@ void CSemanticBase::OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
 		CString strCur;
 		strCur.Format(_T("0x%02x"), SliderValueUpdate());
 
-		for (std::map<SelectStatic, CStaticElem>::iterator it = m_staticMap.begin(); it != m_staticMap.end(); ++it) {
+		for (std::map<UINT, CStaticElem>::iterator it = m_staticMap.begin(); it != m_staticMap.end(); ++it) {
 			if (m_selected == it->first) {
 				(strCur == it->second.m_strVal) ? GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(FALSE) : GetDlgItem(IDC_WRITE_BUTTON)->EnableWindow(TRUE);
 				bProcessed = TRUE;
@@ -1678,63 +1678,63 @@ BOOL CSemanticBase::UpdateSemanticValue(int addr, int (*fpNewRegVal)(int, int), 
 	return FALSE;
 }
 
-BOOL CSemanticBase::UpdateSelected(SelectStatic selected, BOOL bCommonControl)
+BOOL CSemanticBase::UpdateSelected(UINT selected, BOOL bCommonControl)
 {
 	BOOL bRtn = TRUE;
 	int updateValue;
 	switch (selected) {
 		//ControlCombo
-	case SelectStatic::RxData:
+	case CSelect::RxData:
 		bCommonControl ? updateValue = ComboSel() : updateValue = RxData();
 		bRtn = UpdateSemanticValue(2, &OnNewRxData, updateValue, &CSemanticBase::UpdateRxData);
 		break;
-	case SelectStatic::LimAmp:
+	case CSelect::LimAmp:
 		bCommonControl ? updateValue = ComboSel() : updateValue = LimAmp();
 		bRtn = UpdateSemanticValue(2, &OnNewLimAmp, updateValue, &CSemanticBase::UpdateLimitAmp);
 		break;
-	case SelectStatic::RegRef:
+	case CSelect::RegRef:
 		if (Parent()->m_chip == _T("B0")) {
 			bCommonControl ? updateValue = ComboSel() : updateValue = RegRef();
 			bRtn = UpdateSemanticValue(5, &OnNewRegRef, updateValue, &CSemanticBase::UpdateRegRefVolt);
 		}
 		break;
-	case SelectStatic::VcoPow:
+	case CSelect::VcoPow:
 		if (Parent()->m_chip == _T("B0")) {
 			bCommonControl ? updateValue = ComboSel() : updateValue = VcoPow();
 			bRtn = UpdateSemanticValue(13, &OnNewVcoPow, updateValue, &CSemanticBase::UpdateVcoPower);
 		}
 		break;
-	case SelectStatic::ModPow:
+	case CSelect::ModPow:
 		bCommonControl ? updateValue = ComboSel() : updateValue = ModPow();
 		bRtn = UpdateSemanticValue(12, &OnNewModPow, updateValue, &CSemanticBase::UpdateModPower);
 		break;
-	case SelectStatic::TestBufPow:
+	case CSelect::TestBufPow:
 		bCommonControl ? updateValue = ComboSel() : updateValue = TestBufPow();
 		bRtn = UpdateSemanticValue(12, &OnNewTestBufPow, updateValue, &CSemanticBase::UpdateTestBufferPower);
 		break;
-	case SelectStatic::DataInp:
+	case CSelect::DataInp:
 		bCommonControl ? updateValue = ComboSel() : updateValue = DataInp();
 		bRtn = UpdateSemanticValue(12, &OnNewDataInp, updateValue, &CSemanticBase::UpdateDataInputSelect);
 		break;
-	case SelectStatic::PaPow:
+	case CSelect::PaPow:
 		bCommonControl ? updateValue = ComboSel() : updateValue = PaPow();
 		bRtn = UpdateSemanticValue(12, &OnNewPaPow, updateValue, &CSemanticBase::UpdateDataPaPower);
 		break;
-	case SelectStatic::BiasBlock:
+	case CSelect::BiasBlock:
 		bCommonControl ? updateValue = ComboSel() : updateValue = BiasBlock();
 		bRtn = UpdateSemanticValue(17, &OnNewBiasBlock, updateValue, &CSemanticBase::UpdateBiasBlockEnable);
 		break;
 
 		//ControlSlide
-	case SelectStatic::LnaGain:
+	case CSelect::LnaGain:
 		bCommonControl ? updateValue = SliderPos() : updateValue = LnaGain();
 		bRtn = UpdateSemanticValue(2, &OnNewLnaGain, updateValue, &CSemanticBase::UpdateLnaGain);
 		break;
-	case SelectStatic::DutyCycle:
+	case CSelect::DutyCycle:
 		bCommonControl ? updateValue = SliderPos() : updateValue = DutyCycle();
 		bRtn = UpdateSemanticValue(7, &OnNewDutyCycle, updateValue, &CSemanticBase::UpdateDutyCycle);
 		break;
-	case SelectStatic::VcoOsc:
+	case CSelect::VcoOsc:
 		if (Parent()->m_chip == _T("B0")) {
 			bCommonControl ? updateValue = SliderPos() : updateValue = VcoOsc();
 			bRtn = UpdateSemanticValue(6, &OnNewVcoOscUp, updateValue, NULL);
@@ -1742,87 +1742,87 @@ BOOL CSemanticBase::UpdateSelected(SelectStatic selected, BOOL bCommonControl)
 			bRtn = UpdateSemanticValue(5, &OnNewVcoOscDown, updateValue, &CSemanticBase::UpdateVcoOscFreq);
 		}
 		break;
-	case SelectStatic::VcoVdd:
+	case CSelect::VcoVdd:
 		if (Parent()->m_chip == _T("B0")) {
 			bCommonControl ? updateValue = SliderPos() : updateValue = VcoVdd();
 			bRtn = UpdateSemanticValue(5, &OnNewVcoVdd, updateValue, &CSemanticBase::UpdateVcoVdd);
 		}
 		break;
-	case SelectStatic::PaGain1:
+	case CSelect::PaGain1:
 		bCommonControl ? updateValue = SliderPos() : updateValue = PaGain1();
 		bRtn = UpdateSemanticValue(11, &OnNewPaGain1, updateValue, &CSemanticBase::UpdatePaGainControl1);
 		break;
-	case SelectStatic::PaGain2:
+	case CSelect::PaGain2:
 		bCommonControl ? updateValue = SliderPos() : updateValue = PaGain2();
 		bRtn = UpdateSemanticValue(12, &OnNewPaGain2, updateValue, &CSemanticBase::UpdatePaGainControl2);
 		break;
-	case SelectStatic::TestBuffer:
+	case CSelect::TestBuffer:
 		bCommonControl ? updateValue = SliderPos() : updateValue = TestBuffer();
 		bRtn = UpdateSemanticValue(11, &OnNewTestBuffer, updateValue, &CSemanticBase::UpdateTestBufferCurrent);
 		break;
-	case SelectStatic::Lna1:
+	case CSelect::Lna1:
 		bCommonControl ? updateValue = SliderPos() : updateValue = Lna1();
 		bRtn = UpdateSemanticValue(18, &OnNewLna1, updateValue, &CSemanticBase::UpdateLna1Current);
 		break;
-	case SelectStatic::Lna2:
+	case CSelect::Lna2:
 		bCommonControl ? updateValue = SliderPos() : updateValue = Lna2();
 		bRtn = UpdateSemanticValue(18, &OnNewLna2, updateValue, &CSemanticBase::UpdateLna2Current);
 		break;
-	case SelectStatic::Lna3:
+	case CSelect::Lna3:
 		bCommonControl ? updateValue = SliderPos() : updateValue = Lna3();
 		bRtn = UpdateSemanticValue(18, &OnNewLna3, updateValue, &CSemanticBase::UpdateLna3Current);
 		break;
-	case SelectStatic::Lna4:
+	case CSelect::Lna4:
 		bCommonControl ? updateValue = SliderPos() : updateValue = Lna4();
 		bRtn = UpdateSemanticValue(19, &OnNewLna4, updateValue, &CSemanticBase::UpdateLna4Current);
 		break;
-	case SelectStatic::Lna5:
+	case CSelect::Lna5:
 		bCommonControl ? updateValue = SliderPos() : updateValue = Lna5();
 		bRtn = UpdateSemanticValue(19, &OnNewLna5, updateValue, &CSemanticBase::UpdateLna5Current);
 		break;
-	case SelectStatic::RefStage:
+	case CSelect::RefStage:
 		bCommonControl ? updateValue = SliderPos() : updateValue = RefStage();
 		bRtn = UpdateSemanticValue(20, &OnNewRefStage, updateValue, &CSemanticBase::UpdateDemodRefStageCurrent);
 		break;
-	case SelectStatic::IpStage:
+	case CSelect::IpStage:
 		bCommonControl ? updateValue = SliderPos() : updateValue = IpStage();
 		bRtn = UpdateSemanticValue(20, &OnNewIpStage, updateValue, &CSemanticBase::UpdateDemodIPStageCurrent);
 		break;
-	case SelectStatic::Fb:
+	case CSelect::Fb:
 		bCommonControl ? updateValue = SliderPos() : updateValue = Fb();
 		bRtn = UpdateSemanticValue(21, &OnNewFb, updateValue, &CSemanticBase::UpdateLaFBCurrent);
 		break;
-	case SelectStatic::Core:
+	case CSelect::Core:
 		bCommonControl ? updateValue = SliderPos() : updateValue = Core();
 		bRtn = UpdateSemanticValue(21, &OnNewCore, updateValue, &CSemanticBase::UpdateLaCoreCurrent);
 		break;
-	case SelectStatic::OP:
+	case CSelect::OP:
 		bCommonControl ? updateValue = SliderPos() : updateValue = OP();
 		bRtn = UpdateSemanticValue(22, &OnNewOP, updateValue, &CSemanticBase::UpdateLaOPBufferCurrent);
 		break;
-	case SelectStatic::IP:
+	case CSelect::IP:
 		bCommonControl ? updateValue = SliderPos() : updateValue = IP();
 		bRtn = UpdateSemanticValue(22, &OnNewIP, updateValue, &CSemanticBase::UpdateLaIPBufferCurrent);
 		break;
-	case SelectStatic::HL:
+	case CSelect::HL:
 		bCommonControl ? updateValue = SliderPos() : updateValue = HL();
 		bRtn = UpdateSemanticValue(23, &OnNewHL, updateValue, &CSemanticBase::UpdateLaHLDataRateCurrent);
 		break;
-	case SelectStatic::CMOS:
+	case CSelect::CMOS:
 		bCommonControl ? updateValue = SliderPos() : updateValue = CMOS();
 		bRtn = UpdateSemanticValue(23, &OnNewCMOS, updateValue, &CSemanticBase::UpdateCMOSGainStageCurrent);
 		break;
-	case SelectStatic::CML:
+	case CSelect::CML:
 		bCommonControl ? updateValue = SliderPos() : updateValue = CML();
 		bRtn = UpdateSemanticValue(24, &OnNewCML, updateValue, &CSemanticBase::UpdateCMLInterfaceStageCurrent);
 		break;
-	case SelectStatic::FdCore:
+	case CSelect::FdCore:
 		if (Parent()->m_chip == _T("A0")) {
 			bCommonControl ? updateValue = SliderPos() : updateValue = FdCore();
 			bRtn = UpdateSemanticValue(25, &OnNewFdCore, updateValue, &CSemanticBase::UpdateFdCoreCurrent);
 		}
 		break;
-	case SelectStatic::FdBuf:
+	case CSelect::FdBuf:
 		if (Parent()->m_chip == _T("A0")) {
 			bCommonControl ? updateValue = SliderPos() : updateValue = FdBuf();
 			bRtn = UpdateSemanticValue(25, &OnNewFdBuf, updateValue, &CSemanticBase::UpdateFdBufferCurrent);
@@ -1872,7 +1872,7 @@ void CSemanticBase::OnBnClickedWriteAllButton()
 
 	int errCnt = 0;
 	CString str;
-	for (std::map<SelectStatic, CStaticElem>::iterator it = m_staticMap.begin(); it != m_staticMap.end(); ++it) {
+	for (std::map<UINT, CStaticElem>::iterator it = m_staticMap.begin(); it != m_staticMap.end(); ++it) {
 		if (!UpdateSelected(it->first, FALSE)) {
 			str.Format(_T("Update failed at SelectStatic:%d"), it->first);
 			Parent()->L(str);
@@ -1895,7 +1895,7 @@ void CSemanticBase::InitialControlState()
 
 	ShowSlider(SW_HIDE);
 	GetDlgItem(IDC_CONTROL_COMBO)->ShowWindow(SW_HIDE);
-	m_selected = SelectStatic::None;
+	m_selected = CSelect::None;
 
 	GetDlgItem(IDC_READ_ALL_BUTTON)->ShowWindow(SW_HIDE);
 	GetDlgItem(IDC_WRITE_ALL_BUTTON)->ShowWindow(SW_HIDE);

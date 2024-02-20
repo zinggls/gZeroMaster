@@ -8,11 +8,6 @@
 class CgZeroMasterDlg;
 class CRawBase;
 
-enum class SelectStatic {
-	None = 0, RxData, LimAmp, LnaGain, DutyCycle, VcoOsc, RegRef, VcoVdd, VcoPow, ModPow, TestBufPow,
-	DataInp, PaPow, PaGain1, PaGain2, TestBuffer, BiasBlock, Lna1, Lna2, Lna3, Lna4, Lna5, RefStage, IpStage, Fb, Core, OP, IP, HL, CMOS, CML, FdCore, FdBuf
-};
-
 class CStaticElem {
 	CStaticElem();
 public:
@@ -30,6 +25,43 @@ public:
 	CSemanticBase(CWnd* pParent, CRawBase* pRawBase);   // 표준 생성자입니다.
 	virtual ~CSemanticBase();
 
+	class CSelect {
+	public:
+		static const UINT None = 0;
+		static const UINT RxData = 1;
+		static const UINT LimAmp = 2;
+		static const UINT LnaGain = 3;
+		static const UINT DutyCycle = 4;
+		static const UINT VcoOsc = 5;
+		static const UINT RegRef = 6;
+		static const UINT VcoVdd = 7;
+		static const UINT VcoPow = 8;
+		static const UINT ModPow = 9;
+		static const UINT TestBufPow = 10;
+		static const UINT DataInp = 11;
+		static const UINT PaPow = 12;
+		static const UINT PaGain1 = 13;
+		static const UINT PaGain2 = 14;
+		static const UINT TestBuffer = 15;
+		static const UINT BiasBlock = 16;
+		static const UINT Lna1 = 17;
+		static const UINT Lna2 = 18;
+		static const UINT Lna3 = 19;
+		static const UINT Lna4 = 20;
+		static const UINT Lna5 = 21;
+		static const UINT RefStage = 22;
+		static const UINT IpStage = 23;
+		static const UINT Fb = 24;
+		static const UINT Core = 25;
+		static const UINT OP = 26;
+		static const UINT IP = 27;
+		static const UINT HL = 28;
+		static const UINT CMOS = 29;
+		static const UINT CML = 30;
+		static const UINT FdCore = 31;
+		static const UINT FdBuf = 32;
+	};
+
 protected:
 	DECLARE_MESSAGE_MAP()
 
@@ -38,7 +70,7 @@ public:
 	CSliderCtrl m_controlSlider;
 	BOOL m_bSemanticEdit;
 	BOOL m_bAutoWrite;
-	SelectStatic m_selected;
+	UINT m_selected;
 
 	CString m_strSelectedStatic;
 	CString m_strSliderMin;
@@ -47,7 +79,7 @@ public:
 	CString m_strSliderValueHex;
 	CString m_strSliderValueBin;
 	CComboBox m_controlCombo;
-	std::map<SelectStatic, CStaticElem> m_staticMap;
+	std::map<UINT, CStaticElem> m_staticMap;
 
 	CString m_strRxDataInterface;
 	CString m_strLimitingAmplifier;
@@ -105,12 +137,12 @@ public:
 	virtual void ControlValueEnable(BOOL b);
 	afx_msg void OnBnClickedSemanticEditCheck();
 	void OnBnClickedAutoWriteCheck();
-	COLORREF SetColor(CDC* pDC, SelectStatic given);
+	COLORREF SetColor(CDC* pDC, UINT given);
 	static CString DecToBin(int dec);
 	int SliderValueUpdate();
 	void SetControlSlider(int min, int max, CString strCurVal, int ticFreq, int lineSize, int pageSize);
-	void SetSliderGroup(SelectStatic ss, int min, int max, CString strCurVal, int ticFreq, int lineSize, int pageSize, UINT idcStatic);
-	void SetComboGroup(SelectStatic ss, CString strVal0, CString strVal1, int nVal, UINT idcStatic);
+	void SetSliderGroup(UINT ss, int min, int max, CString strCurVal, int ticFreq, int lineSize, int pageSize, UINT idcStatic);
+	void SetComboGroup(UINT ss, CString strVal0, CString strVal1, int nVal, UINT idcStatic);
 	virtual void ControlLabelEnable(BOOL b);
 	int ComboSel();
 	static int Read4BitValue(CString str);
@@ -282,7 +314,7 @@ public:
 	void ResetValues();
 	afx_msg void OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar);
 	BOOL UpdateSemanticValue(int addr, int (*fpNewRegVal)(int, int), int newVal, void (CSemanticBase::* fpUpdateData)(const CRegister&));
-	BOOL UpdateSelected(SelectStatic selected, BOOL bCommonControl);
+	BOOL UpdateSelected(UINT selected, BOOL bCommonControl);
 	virtual afx_msg void OnBnClickedWriteButton();
 	virtual afx_msg void OnBnClickedReadAllButton();
 	virtual afx_msg void OnBnClickedWriteAllButton();
