@@ -126,6 +126,7 @@
     <ClInclude Include="CSemanticBase.h" />
     <ClInclude Include="CSemanticZing400R.h" />
     <ClInclude Include="CSemanticZing400T.h" />
+    <ClInclude Include="CVspsBlock.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="gZeroMaster.h" />
     <ClInclude Include="gZeroMasterDlg.h" />
