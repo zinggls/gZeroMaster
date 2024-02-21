@@ -122,6 +122,7 @@
     <ClInclude Include="CRawZing400R.h" />
     <ClInclude Include="CRawZing400T.h" />
     <ClInclude Include="CRegister.h" />
+    <ClInclude Include="CRegisterZing400R.h" />
     <ClInclude Include="CRegisterZing400T.h" />
     <ClInclude Include="CSemantic.h" />
     <ClInclude Include="CSemanticBase.h" />

@@ -16,6 +16,9 @@
 #include "CRawZing400R.h"
 #include "CSemanticZing400T.h"
 #include "CSemanticZing400R.h"
+#include "CRegister.h"
+#include "CRegisterZing400T.h"
+#include "CRegisterZing400R.h"
 
 using json = nlohmann::json;
 
@@ -641,7 +644,7 @@ void CgZeroMasterDlg::OnChipZing200x()
 	m_pRaw->Create(IDD_RAW_DIALOG, &m_tab);
 
 	if (m_pSemantic != NULL) delete m_pSemantic;
-	m_pSemantic = new CSemantic(this, m_pRaw);
+	m_pSemantic = new CSemantic(this, m_pRaw, new CRegister());
 	m_pSemantic->Create(IDD_SEMANTIC_DIALOG, &m_tab);
 }
 
@@ -652,7 +655,7 @@ void CgZeroMasterDlg::OnChipZing400T()
 	m_pRaw->Create(IDD_RAW_ZING400T_DIALOG, &m_tab);
 
 	if (m_pSemantic != NULL) delete m_pSemantic;
-	m_pSemantic = new CSemanticZing400T(this, m_pRaw);
+	m_pSemantic = new CSemanticZing400T(this, m_pRaw, new CRegisterZing400T());
 	m_pSemantic->Create(IDD_SEMANTIC_ZING400T_DIALOG, &m_tab);
 }
 
@@ -663,7 +666,7 @@ void CgZeroMasterDlg::OnChipZing400R()
 	m_pRaw->Create(IDD_RAW_ZING400R_DIALOG, &m_tab);
 
 	if (m_pSemantic != NULL) delete m_pSemantic;
-	m_pSemantic = new CSemanticZing400R(this, m_pRaw);
+	m_pSemantic = new CSemanticZing400R(this, m_pRaw, new CRegisterZing400R());
 	m_pSemantic->Create(IDD_SEMANTIC_ZING400R_DIALOG, &m_tab);
 }
 

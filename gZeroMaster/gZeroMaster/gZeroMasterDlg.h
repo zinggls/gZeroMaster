@@ -6,7 +6,6 @@
 
 #include <Serial.h>
 #include <nlohmann/json.hpp>
-#include "CRegister.h"
 
 #define MAX_LOG					1000
 #define MAX_COMPORT				25
@@ -15,6 +14,7 @@
 
 class CSemanticBase;
 class CRawBase;
+class CRegister;
 
 // CgZeroMasterDlg 대화 상자
 class CgZeroMasterDlg : public CDialogEx

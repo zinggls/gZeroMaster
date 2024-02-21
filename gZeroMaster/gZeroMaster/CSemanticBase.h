@@ -2,11 +2,11 @@
 
 #include <map>
 #include "SemanticUserDefinedMessage.h"
-#include "CRegister.h"
 #include "IBase.h"
 
 class CgZeroMasterDlg;
 class CRawBase;
+class CRegister;
 
 class CStaticElem {
 	CStaticElem();
@@ -22,7 +22,7 @@ class CSemanticBase : public IBase
 	DECLARE_DYNAMIC(CSemanticBase)
 
 public:
-	CSemanticBase(CWnd* pParent, CRawBase* pRawBase);   // 표준 생성자입니다.
+	CSemanticBase(CWnd* pParent, CRawBase* pRawBase, CRegister* pReg);   // 표준 생성자입니다.
 	virtual ~CSemanticBase();
 
 	class CSelect {
@@ -115,7 +115,7 @@ public:
 	CString m_strFdBufCur;
 
 protected:
-	CRegister m_reg;
+	CRegister* m_pReg;
 
 public:
 	CgZeroMasterDlg* Parent();

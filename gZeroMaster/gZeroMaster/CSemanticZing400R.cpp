@@ -5,32 +5,34 @@
 #include "gZeroMaster.h"
 #include "CSemanticZing400R.h"
 #include "CRawBase.h"
+#include "CRegisterZing400R.h"
 
 
 // CSemanticZing400R 대화 상자
 
 IMPLEMENT_DYNAMIC(CSemanticZing400R, CSemanticBase)
 
-CSemanticZing400R::CSemanticZing400R(CWnd* pParent, CRawBase* pRawBase)
-	: CSemanticBase(pParent, pRawBase)
+CSemanticZing400R::CSemanticZing400R(CWnd* pParent, CRawBase* pRawBase, CRegister* pReg)
+	: CSemanticBase(pParent, pRawBase, pReg)
 {
 	m_staticMap.clear();
-	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::RefStage, CStaticElem(IDC_DEMOD_REF_STAGE_CURRENT_VALUE_STATIC, &m_reg.m_nDemodRefStageCur, m_strDemodRefStageCurrent)));
-	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::IpStage, CStaticElem(IDC_DEMOD_IP_STAGE_CURRENT_VALUE_STATIC, &m_reg.m_nDemodIPStageCur, m_strDemodIPStageCurrent)));
-	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::Fb, CStaticElem(IDC_LA_FB_CURRENT_VALUE_STATIC, &m_reg.m_nLaFBCur, m_strLaFBCurrent)));
-	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::Core, CStaticElem(IDC_LA_CORE_CURRENT_VALUE_STATIC, &m_reg.m_nLaCoreCur, m_strLaCoreCurrent)));
-	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::OP, CStaticElem(IDC_LA_OP_BUFFER_CURRENT_VALUE_STATIC, &m_reg.m_nLaOPBufCur, m_strLaOPBufferCurrent)));
-	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::IP, CStaticElem(IDC_LA_IP_BUFFER_CURRENT_VALUE_STATIC, &m_reg.m_nLaIPBufCur, m_strLaIPBufferCurrent)));
-	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::HL, CStaticElem(IDC_LA_HL_DATA_RATE_CURRENT_VALUE_STATIC, &m_reg.m_nLaHLDataRateCur, m_strLaHLDataRateCurrent)));
-	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::CMOS, CStaticElem(IDC_CMOS_GAIN_STAGE_CURRENT_VALUE_STATIC, &m_reg.m_nCMOSGainStageCur, m_strCMOSGainStageCurrent)));
-	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::CML, CStaticElem(IDC_CML_INTERFACE_STAGE_CURRENT_VALUE_STATIC, &m_reg.m_nCMLInterfaceStageCur, m_strCMLInterfaceStageCurrent)));
-	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::RxData, CStaticElem(IDC_RX_DATA_IF_ENABLE_VALUE_STATIC, &m_reg.m_nRxData, m_strRxDataInterface)));
-	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::LimAmp, CStaticElem(IDC_LIMITING_AMP_ENABLE_VALUE_STATIC, &m_reg.m_nLimitAmp, m_strLimitingAmplifier)));
-	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::BiasBlock, CStaticElem(IDC_BIAS_BLOCK_ENABLE_VALUE_STATIC, &m_reg.m_nBiasBlock, m_strBiasBlockEnable)));
+	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::RefStage, CStaticElem(IDC_DEMOD_REF_STAGE_CURRENT_VALUE_STATIC, &m_pReg->m_nDemodRefStageCur, m_strDemodRefStageCurrent)));
+	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::IpStage, CStaticElem(IDC_DEMOD_IP_STAGE_CURRENT_VALUE_STATIC, &m_pReg->m_nDemodIPStageCur, m_strDemodIPStageCurrent)));
+	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::Fb, CStaticElem(IDC_LA_FB_CURRENT_VALUE_STATIC, &m_pReg->m_nLaFBCur, m_strLaFBCurrent)));
+	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::Core, CStaticElem(IDC_LA_CORE_CURRENT_VALUE_STATIC, &m_pReg->m_nLaCoreCur, m_strLaCoreCurrent)));
+	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::OP, CStaticElem(IDC_LA_OP_BUFFER_CURRENT_VALUE_STATIC, &m_pReg->m_nLaOPBufCur, m_strLaOPBufferCurrent)));
+	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::IP, CStaticElem(IDC_LA_IP_BUFFER_CURRENT_VALUE_STATIC, &m_pReg->m_nLaIPBufCur, m_strLaIPBufferCurrent)));
+	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::HL, CStaticElem(IDC_LA_HL_DATA_RATE_CURRENT_VALUE_STATIC, &m_pReg->m_nLaHLDataRateCur, m_strLaHLDataRateCurrent)));
+	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::CMOS, CStaticElem(IDC_CMOS_GAIN_STAGE_CURRENT_VALUE_STATIC, &m_pReg->m_nCMOSGainStageCur, m_strCMOSGainStageCurrent)));
+	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::CML, CStaticElem(IDC_CML_INTERFACE_STAGE_CURRENT_VALUE_STATIC, &m_pReg->m_nCMLInterfaceStageCur, m_strCMLInterfaceStageCurrent)));
+	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::RxData, CStaticElem(IDC_RX_DATA_IF_ENABLE_VALUE_STATIC, &m_pReg->m_nRxData, m_strRxDataInterface)));
+	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::LimAmp, CStaticElem(IDC_LIMITING_AMP_ENABLE_VALUE_STATIC, &m_pReg->m_nLimitAmp, m_strLimitingAmplifier)));
+	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::BiasBlock, CStaticElem(IDC_BIAS_BLOCK_ENABLE_VALUE_STATIC, &m_pReg->m_nBiasBlock, m_strBiasBlockEnable)));
 }
 
 CSemanticZing400R::~CSemanticZing400R()
 {
+	delete m_pReg;
 }
 
 void CSemanticZing400R::DoDataExchange(CDataExchange* pDX)
@@ -174,16 +176,16 @@ void CSemanticZing400R::ControlValueEnable(BOOL b)
 
 const CRegister& CSemanticZing400R::Parse()
 {
-	UpdateRxReg1(m_pRawBase->m_strRxReg1, m_reg);
-	UpdateBiasReg1(m_pRawBase->m_strBiasReg1, m_reg);
-	UpdateBiasReg2(m_pRawBase->m_strBiasReg2, m_reg);
-	UpdateBiasReg3(m_pRawBase->m_strBiasReg3, m_reg);
-	UpdateBiasReg4(m_pRawBase->m_strBiasReg4, m_reg);
-	UpdateBiasReg5(m_pRawBase->m_strBiasReg5, m_reg);
-	UpdateBiasReg6(m_pRawBase->m_strBiasReg6, m_reg);
-	UpdateBiasReg7(m_pRawBase->m_strBiasReg7, m_reg);
-	UpdateBiasReg8(m_pRawBase->m_strBiasReg8, m_reg);
-	return m_reg;
+	UpdateRxReg1(m_pRawBase->m_strRxReg1, *m_pReg);
+	UpdateBiasReg1(m_pRawBase->m_strBiasReg1, *m_pReg);
+	UpdateBiasReg2(m_pRawBase->m_strBiasReg2, *m_pReg);
+	UpdateBiasReg3(m_pRawBase->m_strBiasReg3, *m_pReg);
+	UpdateBiasReg4(m_pRawBase->m_strBiasReg4, *m_pReg);
+	UpdateBiasReg5(m_pRawBase->m_strBiasReg5, *m_pReg);
+	UpdateBiasReg6(m_pRawBase->m_strBiasReg6, *m_pReg);
+	UpdateBiasReg7(m_pRawBase->m_strBiasReg7, *m_pReg);
+	UpdateBiasReg8(m_pRawBase->m_strBiasReg8, *m_pReg);
+	return *m_pReg;
 }
 
 void CSemanticZing400R::UpdateRegisters()

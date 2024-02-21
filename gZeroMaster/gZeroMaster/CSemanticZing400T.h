@@ -10,7 +10,7 @@ class CSemanticZing400T : public CSemanticBase
 	DECLARE_DYNAMIC(CSemanticZing400T)
 
 public:
-	CSemanticZing400T(CWnd* pParent, CRawBase* pRawBase);   // 표준 생성자입니다.
+	CSemanticZing400T(CWnd* pParent, CRawBase* pRawBase, CRegister* pReg);   // 표준 생성자입니다.
 	virtual ~CSemanticZing400T();
 
 	class CSelect :public CSemanticBase::CSelect {
