@@ -2,6 +2,8 @@
 
 class CRegister {
 public:
+	virtual ~CRegister() {}
+
 	//RX
 	int m_nRxData;
 	int m_nLimitAmp;
