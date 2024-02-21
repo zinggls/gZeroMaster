@@ -13,6 +13,24 @@ public:
 	CSemanticZing400R(CWnd* pParent, CRawBase* pRawBase, CRegister* pReg);   // 표준 생성자입니다.
 	virtual ~CSemanticZing400R();
 
+	class CSelect :public CSemanticBase::CSelect {
+	public:
+		static const UINT Ch3Block = 33;
+		static const UINT Ch3_Q = 34;
+		static const UINT Ch3_I = 35;
+		static const UINT Ch2Block = 36;
+		static const UINT Ch2_Q = 37;
+		static const UINT Ch2_I = 38;
+		static const UINT Ch1Block = 39;
+		static const UINT Ch1_Q = 40;
+		static const UINT Ch1_I = 41;
+		static const UINT Ch0Block = 42;
+		static const UINT Ch0_Q = 43;
+		static const UINT Ch0_I = 44;
+		static const UINT VspsBias = 45;
+		static const UINT LnasBias = 46;
+	};
+
 	// 대화 상자 데이터입니다.
 #ifdef AFX_DESIGN_TIME
 	enum { IDD = IDD_SEMANTIC_ZING400T_DIALOG };
