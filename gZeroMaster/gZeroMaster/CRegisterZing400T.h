@@ -1,13 +1,7 @@
 #pragma once
 
 #include "CRegister.h"
-
-class CBfBlock {
-public:
-	int m_nBlock;
-	int m_nQ;
-	int m_nI;
-};
+#include "CBfBlock.h"
 
 class CRegisterZing400T : public CRegister {
 public:
