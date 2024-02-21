@@ -15,6 +15,8 @@ IMPLEMENT_DYNAMIC(CSemanticZing400T, CSemanticBase)
 CSemanticZing400T::CSemanticZing400T(CWnd* pParent, CRawBase* pRawBase, CRegister* pReg)
 	: CSemanticBase(pParent, pRawBase, pReg)
 {
+	ASSERT(pReg == m_pReg);
+
 	m_staticMap.clear();
 	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::DutyCycle, CStaticElem(IDC_DUTY_CYCLE_VALUE_STATIC, &m_pReg->m_nDutyCycle, m_strDutyCycle)));
 	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::VcoOsc, CStaticElem(IDC_VCO_OSC_FREQ_VALUE_STATIC, &m_pReg->m_nVcoOsc, m_strVcoOscFreq)));

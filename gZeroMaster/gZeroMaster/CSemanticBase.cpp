@@ -50,6 +50,8 @@ CSemanticBase::CSemanticBase(CWnd* pParent, CRawBase* pRawBase, CRegister* pReg)
 {
 	m_pParentWnd = pParent;
 
+	ASSERT(pReg == m_pReg);
+
 	m_staticMap.clear();
 	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::LnaGain, CStaticElem(IDC_LNA_GAIN_VALUE_STATIC, &m_pReg->m_nLnaGain, m_strLnaGain)));
 	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::DutyCycle, CStaticElem(IDC_DUTY_CYCLE_VALUE_STATIC, &m_pReg->m_nDutyCycle, m_strDutyCycle)));
