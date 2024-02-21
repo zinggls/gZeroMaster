@@ -43,7 +43,7 @@ protected:
 
 	CVspsBlock m_vspsBlock[4];
 	CString m_strVspsBiasControlBit;
-	CString m_strVspsLnaControlBit;
+	CString m_strLnaControlBit;
 
 public:
 	virtual BOOL OnInitDialog();
