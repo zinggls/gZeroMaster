@@ -1,6 +1,7 @@
 #pragma once
 
 #include "CSemanticBase.h"
+#include "CVspsBlock.h"
 
 // CSemanticZing400R 대화 상자
 
@@ -21,6 +22,10 @@ protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV 지원입니다.
 
 	DECLARE_MESSAGE_MAP()
+
+	CVspsBlock m_vspsBlock[4];
+	CString m_strVspsBiasControlBit;
+	CString m_strVspsLnaControlBit;
 
 public:
 	virtual BOOL OnInitDialog();
