@@ -22,6 +22,7 @@ protected:
 
 	DECLARE_MESSAGE_MAP()
 
+public:
 	CString m_strRegOut24;
 	CString m_strRegOut25;
 	CString m_strRegOut26;
