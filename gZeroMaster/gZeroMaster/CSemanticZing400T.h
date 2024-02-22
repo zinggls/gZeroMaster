@@ -3,6 +3,8 @@
 #include "CSemanticBase.h"
 #include "CVspsBlock.h"
 
+class CRegisterZing400T;
+
 // CSemanticZing400T 대화 상자
 
 class CSemanticZing400T : public CSemanticBase
@@ -64,4 +66,5 @@ public:
 	static void UpdateRegOut29(CString strRegOut29, CRegister& reg);
 	static void UpdateRegOut2A(CString strRegOut2A, CRegister& reg);
 	static void UpdateRegOut2B(CString strRegOut2B, CRegister& reg);
+	void UpdateBiasBlockEnable(const CRegisterZing400T& reg);
 };

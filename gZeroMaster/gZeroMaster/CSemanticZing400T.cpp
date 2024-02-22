@@ -236,6 +236,10 @@ const CRegister& CSemanticZing400T::Parse()
 void CSemanticZing400T::UpdateRegisters()
 {
 	CSemanticBase::UpdateRegisters();
+
+	const CRegisterZing400T & derived = dynamic_cast<const CRegisterZing400T&>(Parse());
+	UpdateBiasBlockEnable(derived);
+	UpdateData(FALSE);
 }
 
 void CSemanticZing400T::UpdateTxReg1(CString strTxRegTop, CString strTxRegMid, CString strTxRegBot, CRegister& reg)
@@ -340,4 +344,9 @@ void CSemanticZing400T::UpdateRegOut2B(CString strRegOut2B, CRegister& reg)
 	int high = (derived.m_block[0].m_nQ) & 0x18;
 	int low = (hexa & 0xe0) >> 5;
 	derived.m_block[0].m_nQ = high | low;
+}
+
+void CSemanticZing400T::UpdateBiasBlockEnable(const CRegisterZing400T & reg)
+{
+	(reg.m_nBiasBlock) ? m_strBiasBlockEnable.Format(_T("enable")) : m_strBiasBlockEnable.Format(_T("disable"));
 }
