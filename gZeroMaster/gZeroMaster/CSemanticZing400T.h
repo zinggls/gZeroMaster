@@ -68,4 +68,5 @@ public:
 	static void UpdateRegOut2B(CString strRegOut2B, CRegister& reg);
 	void UpdateBiasBlockEnable(const CRegisterZing400T& reg);
 	void UpdateVspsPaBiasVoltage(const CRegisterZing400T& reg);
+	void UpdateVspsVgaBiasVoltage(const CRegisterZing400T& reg);
 };

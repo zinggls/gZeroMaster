@@ -240,6 +240,7 @@ void CSemanticZing400T::UpdateRegisters()
 	const CRegisterZing400T & derived = dynamic_cast<const CRegisterZing400T&>(Parse());
 	UpdateBiasBlockEnable(derived);
 	UpdateVspsPaBiasVoltage(derived);
+	UpdateVspsVgaBiasVoltage(derived);
 	UpdateData(FALSE);
 }
 
@@ -355,4 +356,9 @@ void CSemanticZing400T::UpdateBiasBlockEnable(const CRegisterZing400T & reg)
 void CSemanticZing400T::UpdateVspsPaBiasVoltage(const CRegisterZing400T& reg)
 {
 	m_strVspsPaBiasVoltage.Format(_T("0x%02x"), reg.m_nVspsPa);
+}
+
+void CSemanticZing400T::UpdateVspsVgaBiasVoltage(const CRegisterZing400T& reg)
+{
+	m_strVspsVgaBiasVoltage.Format(_T("0x%02x"), reg.m_nVspsVga);
 }
