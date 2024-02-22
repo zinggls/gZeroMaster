@@ -59,4 +59,5 @@ public:
 	static void UpdateRegOut24(CString strRegOut24, CRegister& reg);
 	static void UpdateRegOut25(CString strRegOut25, CRegister& reg);
 	static void UpdateRegOut26(CString strRegOut26, CRegister& reg);
+	static void UpdateRegOut27(CString strRegOut27, CRegister& reg);
 };
