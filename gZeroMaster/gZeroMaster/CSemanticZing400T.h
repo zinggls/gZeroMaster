@@ -81,4 +81,5 @@ public:
 	void UpdateCh1VspsPhaseControlBitI(const CRegisterZing400T& reg);
 	void UpdateCh0VspsBlockEnable(const CRegisterZing400T& reg);
 	void UpdateCh0VspsPhaseControlBitQ(const CRegisterZing400T& reg);
+	void UpdateCh0VspsPhaseControlBitI(const CRegisterZing400T& reg);
 };
