@@ -4,7 +4,7 @@
 #include "pch.h"
 #include "gZeroMaster.h"
 #include "CSemanticZing400T.h"
-#include "CRawBase.h"
+#include "CRawZing400T.h"
 #include "CRegisterZing400T.h"
 
 
@@ -218,6 +218,10 @@ const CRegister& CSemanticZing400T::Parse()
 {
 	UpdateTxReg1(m_pRawBase->m_strTxReg1Top, m_pRawBase->m_strTxReg1Mid, m_pRawBase->m_strTxReg1Bot, *m_pReg);
 	UpdateTxReg2(m_pRawBase->m_strTxReg2Top, m_pRawBase->m_strTxReg2Mid, m_pRawBase->m_strTxReg2Bot, *m_pReg);
+
+	CRawZing400T* pDeriv = dynamic_cast<CRawZing400T*>(m_pRawBase);
+	ASSERT(pDeriv);
+
 	return *m_pReg;
 }
 
