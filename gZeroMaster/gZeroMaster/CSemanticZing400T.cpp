@@ -30,6 +30,7 @@ CSemanticZing400T::CSemanticZing400T(CWnd* pParent, CRawBase* pRawBase, CRegiste
 	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::TestBufPow, CStaticElem(IDC_TEST_BUFFER_POWER_VALUE_STATIC, &m_pReg->m_nTestBufPower, m_strTestBufferPower)));
 	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::DataInp, CStaticElem(IDC_DATA_INPUT_SELECT_VALUE_STATIC, &m_pReg->m_nDataInpSel, m_strDataInputSelect)));
 	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::PaPow, CStaticElem(IDC_PA_POWER_VALUE_STATIC, &m_pReg->m_nPaPower, m_strPaPower)));
+	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::BiasBlock, CStaticElem(IDC_TX_BIAS_BLOCK_ENABLE_VALUE_STATIC, &m_pReg->m_nBiasBlock, m_strBiasBlockEnable)));
 
 	CRegisterZing400T* pDerived = dynamic_cast<CRegisterZing400T*>(pReg);
 	ASSERT(pDerived);
@@ -463,6 +464,7 @@ void CSemanticZing400T::UpdateCh0VspsPhaseControlBitI(const CRegisterZing400T& r
 void CSemanticZing400T::OnStnClickedTxBiasBlockEnableValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	SetComboGroup(CSelect::BiasBlock, _T("disable"), _T("enable"), getRegister().m_nBiasBlock, IDC_TX_BIAS_BLOCK_ENABLE_VALUE_STATIC);
 }
 
 void CSemanticZing400T::OnStnClickedTxVspsPaBiasVoltageValueStatic()
