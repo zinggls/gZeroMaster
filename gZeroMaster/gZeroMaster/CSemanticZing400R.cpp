@@ -4,7 +4,7 @@
 #include "pch.h"
 #include "gZeroMaster.h"
 #include "CSemanticZing400R.h"
-#include "CRawBase.h"
+#include "CRawZing400R.h"
 #include "CRegisterZing400R.h"
 
 
@@ -218,6 +218,9 @@ const CRegister& CSemanticZing400R::Parse()
 	UpdateBiasReg6(m_pRawBase->m_strBiasReg6, *m_pReg);
 	UpdateBiasReg7(m_pRawBase->m_strBiasReg7, *m_pReg);
 	UpdateBiasReg8(m_pRawBase->m_strBiasReg8, *m_pReg);
+
+	CRawZing400R* pDeriv = dynamic_cast<CRawZing400R*>(m_pRawBase);
+	ASSERT(pDeriv);
 	return *m_pReg;
 }
 
