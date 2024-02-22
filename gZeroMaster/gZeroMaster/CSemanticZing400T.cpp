@@ -484,6 +484,7 @@ void CSemanticZing400T::OnStnClickedTxVspsVgaBiasVoltageValueStatic()
 void CSemanticZing400T::OnStnClickedTxVspsCsBiasVoltageValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	SetSliderGroup(CSelect::VspsCs, 0, 15, m_strVspsCsBiasVoltage, 1, 1, 10, IDC_TX_VSPS_CS_BIAS_VOLTAGE_VALUE_STATIC);
 }
 
 
