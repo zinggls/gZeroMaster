@@ -251,6 +251,7 @@ void CSemanticZing400R::UpdateRegisters()
 	UpdateCh0VspsPhaseControlBitQ(derived);
 	UpdateCh0VspsPhaseControlBitI(derived);
 	UpdateVspsBiasControlBit(derived);
+	UpdateLnaControlBit(derived);
 	UpdateData(FALSE);
 }
 
@@ -401,4 +402,9 @@ void CSemanticZing400R::UpdateCh0VspsPhaseControlBitI(const CRegisterZing400R& r
 void CSemanticZing400R::UpdateVspsBiasControlBit(const CRegisterZing400R& reg)
 {
 	m_strVspsBiasControlBit.Format(_T("0x%02x"), reg.m_nVspsBias);
+}
+
+void CSemanticZing400R::UpdateLnaControlBit(const CRegisterZing400R& reg)
+{
+	m_strLnaControlBit.Format(_T("0x%02x"), reg.m_nLnaBias);
 }

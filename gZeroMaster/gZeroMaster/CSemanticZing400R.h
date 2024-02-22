@@ -75,4 +75,5 @@ public:
 	void UpdateCh0VspsPhaseControlBitQ(const CRegisterZing400R& reg);
 	void UpdateCh0VspsPhaseControlBitI(const CRegisterZing400R& reg);
 	void UpdateVspsBiasControlBit(const CRegisterZing400R& reg);
+	void UpdateLnaControlBit(const CRegisterZing400R& reg);
 };
