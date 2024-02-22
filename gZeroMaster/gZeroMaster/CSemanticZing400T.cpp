@@ -550,6 +550,7 @@ void CSemanticZing400T::OnStnClickedTxCh1QVspsPhaseControlBitValueStatic()
 void CSemanticZing400T::OnStnClickedTxCh1IVspsPhaseControlBitValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	SetSliderGroup(CSelect::Ch1_I, 0, 31, m_vspsBlock[1].m_strI_PhaseControlBit, 1, 1, 10, IDC_TX_CH1_I_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC);
 }
 
 
