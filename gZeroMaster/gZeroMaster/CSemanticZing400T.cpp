@@ -251,6 +251,7 @@ void CSemanticZing400T::UpdateRegisters()
 	UpdateCh1VspsBlockEnable(derived);
 	UpdateCh1VspsPhaseControlBitQ(derived);
 	UpdateCh1VspsPhaseControlBitI(derived);
+	UpdateCh0VspsBlockEnable(derived);
 	UpdateData(FALSE);
 }
 
@@ -421,4 +422,9 @@ void CSemanticZing400T::UpdateCh1VspsPhaseControlBitQ(const CRegisterZing400T& r
 void CSemanticZing400T::UpdateCh1VspsPhaseControlBitI(const CRegisterZing400T& reg)
 {
 	m_vspsBlock[1].m_strI_PhaseControlBit.Format(_T("0x%02x"), reg.m_block[1].m_nI);
+}
+
+void CSemanticZing400T::UpdateCh0VspsBlockEnable(const CRegisterZing400T& reg)
+{
+	(reg.m_block[0].m_nBlock) ? m_vspsBlock[0].m_strVspsBlockEnable.Format(_T("enable")) : m_vspsBlock[0].m_strVspsBlockEnable.Format(_T("disable"));
 }
