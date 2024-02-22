@@ -222,6 +222,7 @@ const CRegister& CSemanticZing400T::Parse()
 	CRawZing400T* pDeriv = dynamic_cast<CRawZing400T*>(m_pRawBase);
 	ASSERT(pDeriv);
 
+	UpdateRegOut24(pDeriv->m_strRegOut24, *m_pReg);
 	return *m_pReg;
 }
 
@@ -240,4 +241,9 @@ void CSemanticZing400T::UpdateTxReg1(CString strTxRegTop, CString strTxRegMid, C
 	reg.m_nVcoOsc = (bot & 0xe0) >> 5 | (mid << 3);
 	reg.m_nRegRef = (bot & 0x10) >> 4;
 	reg.m_nVcoVdd = bot & 0x0f;
+}
+
+void CSemanticZing400T::UpdateRegOut24(CString strRegOut24, CRegister& reg)
+{
+	reg.m_nBiasBlock = _tcstol(strRegOut24.GetBuffer(), NULL, 16) & 0x01;
 }
