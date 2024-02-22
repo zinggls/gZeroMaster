@@ -64,4 +64,5 @@ public:
 	static void UpdateRegOut2C(CString strRegOut2C, CRegisterZing400R& reg);
 	void UpdateCh3VspsBlockEnable(const CRegisterZing400R& reg);
 	void UpdateCh3VspsPhaseControlBitQ(const CRegisterZing400R& reg);
+	void UpdateCh3VspsPhaseControlBitI(const CRegisterZing400R& reg);
 };
