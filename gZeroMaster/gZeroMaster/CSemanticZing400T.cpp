@@ -122,6 +122,23 @@ BEGIN_MESSAGE_MAP(CSemanticZing400T, CSemanticBase)
 	ON_STN_CLICKED(IDC_TEST_BUFFER_POWER_VALUE_STATIC, &OnStnClickedTestBufferPowerValueStatic)
 	ON_STN_CLICKED(IDC_DATA_INPUT_SELECT_VALUE_STATIC, &OnStnClickedDataInputSelectValueStatic)
 	ON_STN_CLICKED(IDC_PA_POWER_VALUE_STATIC, &OnStnClickedPaPowerValueStatic)
+	ON_STN_CLICKED(IDC_TX_BIAS_BLOCK_ENABLE_VALUE_STATIC, &CSemanticZing400T::OnStnClickedTxBiasBlockEnableValueStatic)
+	ON_STN_CLICKED(IDC_TX_VSPS_PA_BIAS_VOLTAGE_VALUE_STATIC, &CSemanticZing400T::OnStnClickedTxVspsPaBiasVoltageValueStatic)
+	ON_STN_CLICKED(IDC_TX_VSPS_VGA_BIAS_VOLTAGE_VALUE_STATIC, &CSemanticZing400T::OnStnClickedTxVspsVgaBiasVoltageValueStatic)
+	ON_STN_CLICKED(IDC_TX_VSPS_CS_BIAS_VOLTAGE_VALUE_STATIC, &CSemanticZing400T::OnStnClickedTxVspsCsBiasVoltageValueStatic)
+	ON_STN_CLICKED(IDC_TX_CH3_VSPS_BLOCK_ENABLE_VALUE_STATIC, &CSemanticZing400T::OnStnClickedTxCh3VspsBlockEnableValueStatic)
+	ON_STN_CLICKED(IDC_TX_CH3_Q_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC, &CSemanticZing400T::OnStnClickedTxCh3QVspsPhaseControlBitValueStatic)
+	ON_STN_CLICKED(IDC_TX_CH3_I_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC, &CSemanticZing400T::OnStnClickedTxCh3IVspsPhaseControlBitValueStatic)
+	ON_STN_CLICKED(IDC_TX_CH2_VSPS_BLOCK_ENABLE_VALUE_STATIC, &CSemanticZing400T::OnStnClickedTxCh2VspsBlockEnableValueStatic)
+	ON_STN_CLICKED(IDC_TX_CH2_Q_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC, &CSemanticZing400T::OnStnClickedTxCh2QVspsPhaseControlBitValueStatic)
+	ON_STN_CLICKED(IDC_TX_CH2_I_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC, &CSemanticZing400T::OnStnClickedTxCh2IVspsPhaseControlBitValueStatic)
+	ON_STN_CLICKED(IDC_TX_CH1_VSPS_BLOCK_ENABLE_VALUE_STATIC, &CSemanticZing400T::OnStnClickedTxCh1VspsBlockEnableValueStatic)
+	ON_STN_CLICKED(IDC_TX_CH1_Q_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC, &CSemanticZing400T::OnStnClickedTxCh1QVspsPhaseControlBitValueStatic)
+	ON_STN_CLICKED(IDC_TX_CH1_I_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC, &CSemanticZing400T::OnStnClickedTxCh1IVspsPhaseControlBitValueStatic)
+	ON_STN_CLICKED(IDC_TX_CH0_VSPS_BLOCK_ENABLE_VALUE_STATIC, &CSemanticZing400T::OnStnClickedTxCh0VspsBlockEnableValueStatic)
+	ON_STN_CLICKED(IDC_TX_CH0_Q_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC, &CSemanticZing400T::OnStnClickedTxCh0QVspsPhaseControlBitValueStatic)
+	ON_STN_CLICKED(IDC_TX_CH0_I_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC, &CSemanticZing400T::OnStnClickedTxCh0IVspsPhaseControlBitValueStatic)
+
 END_MESSAGE_MAP()
 
 
@@ -441,4 +458,98 @@ void CSemanticZing400T::UpdateCh0VspsPhaseControlBitQ(const CRegisterZing400T& r
 void CSemanticZing400T::UpdateCh0VspsPhaseControlBitI(const CRegisterZing400T& reg)
 {
 	m_vspsBlock[0].m_strI_PhaseControlBit.Format(_T("0x%02x"), reg.m_block[0].m_nI);
+}
+
+void CSemanticZing400T::OnStnClickedTxBiasBlockEnableValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+}
+
+void CSemanticZing400T::OnStnClickedTxVspsPaBiasVoltageValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+}
+
+
+void CSemanticZing400T::OnStnClickedTxVspsVgaBiasVoltageValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+}
+
+
+void CSemanticZing400T::OnStnClickedTxVspsCsBiasVoltageValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+}
+
+
+void CSemanticZing400T::OnStnClickedTxCh3VspsBlockEnableValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+}
+
+
+void CSemanticZing400T::OnStnClickedTxCh3QVspsPhaseControlBitValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+}
+
+
+void CSemanticZing400T::OnStnClickedTxCh3IVspsPhaseControlBitValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+}
+
+
+void CSemanticZing400T::OnStnClickedTxCh2VspsBlockEnableValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+}
+
+
+void CSemanticZing400T::OnStnClickedTxCh2QVspsPhaseControlBitValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+}
+
+
+void CSemanticZing400T::OnStnClickedTxCh2IVspsPhaseControlBitValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+}
+
+
+void CSemanticZing400T::OnStnClickedTxCh1VspsBlockEnableValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+}
+
+
+void CSemanticZing400T::OnStnClickedTxCh1QVspsPhaseControlBitValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+}
+
+
+void CSemanticZing400T::OnStnClickedTxCh1IVspsPhaseControlBitValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+}
+
+
+void CSemanticZing400T::OnStnClickedTxCh0VspsBlockEnableValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+}
+
+
+void CSemanticZing400T::OnStnClickedTxCh0QVspsPhaseControlBitValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+}
+
+
+void CSemanticZing400T::OnStnClickedTxCh0IVspsPhaseControlBitValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 }
