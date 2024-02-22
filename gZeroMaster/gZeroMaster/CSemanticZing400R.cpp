@@ -236,6 +236,10 @@ const CRegister& CSemanticZing400R::Parse()
 void CSemanticZing400R::UpdateRegisters()
 {
 	CSemanticBase::UpdateRegisters();
+
+	const CRegisterZing400R& derived = dynamic_cast<const CRegisterZing400R&>(Parse());
+	UpdateCh3VspsBlockEnable(derived);
+	UpdateData(FALSE);
 }
 
 void CSemanticZing400R::UpdateRxReg1(CString strRxReg1, CRegister& reg)
@@ -320,4 +324,9 @@ void CSemanticZing400R::UpdateRegOut2C(CString strRegOut2C, CRegisterZing400R& r
 
 	reg.m_nVspsBias = (hexa & 0xf0) >> 4;
 	reg.m_nLnaBias = hexa & 0x0f;
+}
+
+void CSemanticZing400R::UpdateCh3VspsBlockEnable(const CRegisterZing400R& reg)
+{
+	(reg.m_block[3].m_nBlock) ? m_vspsBlock[3].m_strVspsBlockEnable.Format(_T("enable")) : m_vspsBlock[3].m_strVspsBlockEnable.Format(_T("disable"));
 }
