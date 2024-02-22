@@ -331,10 +331,13 @@ void CSemanticBase::OnBnClickedAutoWriteCheck()
 
 COLORREF CSemanticBase::SetColor(CDC* pDC, UINT given)
 {
-	if (m_selected == given)
+	if (m_selected == given) {
+		TRACE("SetColor m_selected:%u, given:%u, RED\n", m_selected, given);
 		return pDC->SetTextColor(RGB(255, 0, 0));
-	else
+	}
+	else {
 		return pDC->SetTextColor(RGB(0, 0, 0));
+	}
 }
 
 CString CSemanticBase::DecToBin(int dec)
@@ -708,8 +711,10 @@ HBRUSH CSemanticBase::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 
 	// TODO:  여기서 DC의 특성을 변경합니다.
 	for (std::map<UINT, CStaticElem>::iterator it = m_staticMap.begin(); it != m_staticMap.end(); ++it) {
-		if (pWnd->GetDlgCtrlID() == it->second.m_uIdc)
+		if (pWnd->GetDlgCtrlID() == it->second.m_uIdc) {
+			TRACE("ID:%u, CtrlID=%u\n", it->first, it->second.m_uIdc);
 			SetColor(pDC, it->first);
+		}
 	}
 
 	// TODO:  기본값이 적당하지 않으면 다른 브러시를 반환합니다.
