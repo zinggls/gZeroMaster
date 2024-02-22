@@ -72,4 +72,5 @@ public:
 	void UpdateVspsCsBiasVoltage(const CRegisterZing400T& reg);
 	void UpdateCh3VspsBlockEnable(const CRegisterZing400T& reg);
 	void UpdateCh3VspsPhaseControlBitQ(const CRegisterZing400T& reg);
+	void UpdateCh3VspsPhaseControlBitI(const CRegisterZing400T& reg);
 };
