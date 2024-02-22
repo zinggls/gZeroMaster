@@ -311,7 +311,7 @@ public:
 	afx_msg LRESULT OnSemHighlowDataRateCurrentClick(WPARAM w, LPARAM l);
 	afx_msg LRESULT OnSemCmosGainStageCurrentClick(WPARAM w, LPARAM l);
 	afx_msg LRESULT OnSemCmlInterfaceStageCurrentClick(WPARAM w, LPARAM l);
-	void ResetValues();
+	virtual void ResetValues();
 	afx_msg void OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar);
 	BOOL UpdateSemanticValue(int addr, int (*fpNewRegVal)(int, int), int newVal, void (CSemanticBase::* fpUpdateData)(const CRegister&));
 	BOOL UpdateSelected(UINT selected, BOOL bCommonControl);

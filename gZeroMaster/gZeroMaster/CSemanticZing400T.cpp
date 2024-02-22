@@ -257,6 +257,20 @@ void CSemanticZing400T::UpdateRegisters()
 	UpdateData(FALSE);
 }
 
+void CSemanticZing400T::ResetValues()
+{
+	m_strBiasBlockEnable.Empty();
+	m_strVspsPaBiasVoltage.Empty();
+	m_strVspsVgaBiasVoltage.Empty();
+	m_strVspsCsBiasVoltage.Empty();
+	for (int i = 0; i < 4; i++) {
+		m_vspsBlock[i].m_strI_PhaseControlBit.Empty();
+		m_vspsBlock[i].m_strQ_PhaseControlBit.Empty();
+		m_vspsBlock[i].m_strVspsBlockEnable.Empty();
+	}
+	CSemanticBase::ResetValues();
+}
+
 void CSemanticZing400T::UpdateTxReg1(CString strTxRegTop, CString strTxRegMid, CString strTxRegBot, CRegister& reg)
 {
 	int mid = _tcstol(strTxRegMid.GetBuffer(), NULL, 16) & 0xff;
