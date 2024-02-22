@@ -224,6 +224,7 @@ const CRegister& CSemanticZing400T::Parse()
 
 	UpdateRegOut24(pDeriv->m_strRegOut24, *m_pReg);
 	UpdateRegOut25(pDeriv->m_strRegOut25, *m_pReg);
+	UpdateRegOut26(pDeriv->m_strRegOut26, *m_pReg);
 	return *m_pReg;
 }
 
@@ -256,4 +257,18 @@ void CSemanticZing400T::UpdateRegOut25(CString strRegOut25, CRegister& reg)
 	int hexa = _tcstol(strRegOut25.GetBuffer(), NULL, 16);
 	derived.m_nVspsPa = (hexa & 0xf0)>>4;
 	derived.m_nVspsVga = hexa & 0x0f;
+}
+
+void CSemanticZing400T::UpdateRegOut26(CString strRegOut26, CRegister& reg)
+{
+	CRegisterZing400T& derived = dynamic_cast<CRegisterZing400T&>(reg);
+
+	int hexa = _tcstol(strRegOut26.GetBuffer(), NULL, 16);
+
+	derived.m_nVspsCs = (hexa & 0xf0) >> 4;
+	derived.m_block[3].m_nBlock = (hexa & 0x08) >> 3;
+
+	int high = (hexa & 0x07)<<2;
+	int low = derived.m_block[3].m_nQ & 0x03;
+	derived.m_block[3].m_nQ = high | low;
 }
