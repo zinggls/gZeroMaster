@@ -508,6 +508,8 @@ void CSemanticZing400T::OnStnClickedTxCh3IVspsPhaseControlBitValueStatic()
 void CSemanticZing400T::OnStnClickedTxCh2VspsBlockEnableValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	const CRegisterZing400T& derived = dynamic_cast<const CRegisterZing400T&>(getRegister());
+	SetComboGroup(CSelect::Ch2Block, _T("disable"), _T("enable"), derived.m_block[2].m_nBlock, IDC_TX_CH2_VSPS_BLOCK_ENABLE_VALUE_STATIC);
 }
 
 
