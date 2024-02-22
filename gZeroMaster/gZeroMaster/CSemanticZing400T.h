@@ -70,4 +70,5 @@ public:
 	void UpdateVspsPaBiasVoltage(const CRegisterZing400T& reg);
 	void UpdateVspsVgaBiasVoltage(const CRegisterZing400T& reg);
 	void UpdateVspsCsBiasVoltage(const CRegisterZing400T& reg);
+	void UpdateCh3VspsBlockEnable(const CRegisterZing400T& reg);
 };
