@@ -239,6 +239,7 @@ void CSemanticZing400R::UpdateRegisters()
 
 	const CRegisterZing400R& derived = dynamic_cast<const CRegisterZing400R&>(Parse());
 	UpdateCh3VspsBlockEnable(derived);
+	UpdateCh3VspsPhaseControlBitQ(derived);
 	UpdateData(FALSE);
 }
 
@@ -329,4 +330,9 @@ void CSemanticZing400R::UpdateRegOut2C(CString strRegOut2C, CRegisterZing400R& r
 void CSemanticZing400R::UpdateCh3VspsBlockEnable(const CRegisterZing400R& reg)
 {
 	(reg.m_block[3].m_nBlock) ? m_vspsBlock[3].m_strVspsBlockEnable.Format(_T("enable")) : m_vspsBlock[3].m_strVspsBlockEnable.Format(_T("disable"));
+}
+
+void CSemanticZing400R::UpdateCh3VspsPhaseControlBitQ(const CRegisterZing400R& reg)
+{
+	m_vspsBlock[3].m_strQ_PhaseControlBit.Format(_T("0x%02x"), reg.m_block[3].m_nQ);
 }
