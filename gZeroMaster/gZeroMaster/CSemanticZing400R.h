@@ -61,4 +61,5 @@ public:
 	void UpdateRegOut29(CString strRegOut29, CRegisterZing400R& reg);
 	void UpdateRegOut2A(CString strRegOut2A, CRegisterZing400R& reg);
 	void UpdateRegOut2B(CString strRegOut2B, CRegisterZing400R& reg);
+	void UpdateRegOut2C(CString strRegOut2C, CRegisterZing400R& reg);
 };
