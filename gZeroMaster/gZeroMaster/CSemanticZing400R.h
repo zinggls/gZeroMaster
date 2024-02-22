@@ -3,6 +3,8 @@
 #include "CSemanticBase.h"
 #include "CVspsBlock.h"
 
+class CRegisterZing400R;
+
 // CSemanticZing400R 대화 상자
 
 class CSemanticZing400R : public CSemanticBase
@@ -53,4 +55,5 @@ public:
 	virtual const CRegister& Parse();
 	virtual void UpdateRegisters();
 	void UpdateRxReg1(CString strRxReg1, CRegister& reg);
+	void UpdateRegOut26(CString strRegOut26, CRegisterZing400R& reg);
 };
