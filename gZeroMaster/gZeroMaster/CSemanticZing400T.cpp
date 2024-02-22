@@ -470,6 +470,7 @@ void CSemanticZing400T::OnStnClickedTxBiasBlockEnableValueStatic()
 void CSemanticZing400T::OnStnClickedTxVspsPaBiasVoltageValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	SetSliderGroup(CSelect::VspsPa, 0, 15, m_strVspsPaBiasVoltage, 1, 1, 10, IDC_TX_VSPS_PA_BIAS_VOLTAGE_VALUE_STATIC);
 }
 
 
