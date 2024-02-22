@@ -226,6 +226,7 @@ const CRegister& CSemanticZing400T::Parse()
 	UpdateRegOut25(pDeriv->m_strRegOut25, *m_pReg);
 	UpdateRegOut26(pDeriv->m_strRegOut26, *m_pReg);
 	UpdateRegOut27(pDeriv->m_strRegOut27, *m_pReg);
+	UpdateRegOut28(pDeriv->m_strRegOut28, *m_pReg);
 	return *m_pReg;
 }
 
@@ -285,4 +286,17 @@ void CSemanticZing400T::UpdateRegOut27(CString strRegOut27, CRegister& reg)
 	derived.m_block[3].m_nQ = high | low;
 	derived.m_block[3].m_nI = (hexa & 0x3e) >> 1;
 	derived.m_block[2].m_nBlock = hexa & 0x1;
+}
+
+void CSemanticZing400T::UpdateRegOut28(CString strRegOut28, CRegister& reg)
+{
+	CRegisterZing400T& derived = dynamic_cast<CRegisterZing400T&>(reg);
+
+	int hexa = _tcstol(strRegOut28.GetBuffer(), NULL, 16);
+
+	derived.m_block[2].m_nQ = (hexa & 0xf8) >> 3;
+
+	int high = (hexa & 0x7) << 2;
+	int low = derived.m_block[2].m_nI & 0x03;
+	derived.m_block[2].m_nI = high | low;
 }
