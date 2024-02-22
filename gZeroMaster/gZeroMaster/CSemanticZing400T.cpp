@@ -243,6 +243,7 @@ void CSemanticZing400T::UpdateRegisters()
 	UpdateVspsVgaBiasVoltage(derived);
 	UpdateVspsCsBiasVoltage(derived);
 	UpdateCh3VspsBlockEnable(derived);
+	UpdateCh3VspsPhaseControlBitQ(derived);
 	UpdateData(FALSE);
 }
 
@@ -373,4 +374,9 @@ void CSemanticZing400T::UpdateVspsCsBiasVoltage(const CRegisterZing400T& reg)
 void CSemanticZing400T::UpdateCh3VspsBlockEnable(const CRegisterZing400T& reg)
 {
 	(reg.m_block[3].m_nBlock) ? m_vspsBlock[3].m_strVspsBlockEnable.Format(_T("enable")) : m_vspsBlock[3].m_strVspsBlockEnable.Format(_T("disable"));
+}
+
+void CSemanticZing400T::UpdateCh3VspsPhaseControlBitQ(const CRegisterZing400T& reg)
+{
+	m_vspsBlock[3].m_strQ_PhaseControlBit.Format(_T("0x%02x"), reg.m_block[3].m_nQ);
 }
