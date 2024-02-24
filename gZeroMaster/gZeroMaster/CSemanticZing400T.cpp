@@ -38,17 +38,9 @@ CSemanticZing400T::CSemanticZing400T(CWnd* pParent, CRawBase* pRawBase, CRegiste
 	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::VspsVga, CStaticElem(IDC_TX_VSPS_VGA_BIAS_VOLTAGE_VALUE_STATIC, &pDerived->m_nVspsVga, m_strVspsVgaBiasVoltage)));
 	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::VspsCs, CStaticElem(IDC_TX_VSPS_CS_BIAS_VOLTAGE_VALUE_STATIC, &pDerived->m_nVspsCs, m_strVspsCsBiasVoltage)));
 	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::Ch3Block, CStaticElem(IDC_TX_CH3_VSPS_BLOCK_ENABLE_VALUE_STATIC, &pDerived->m_block[3].m_nBlock, m_vspsBlock[3].m_strVspsBlockEnable)));
-	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::Ch3_Q, CStaticElem(IDC_TX_CH3_Q_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC, &pDerived->m_block[3].m_nQ, m_vspsBlock[3].m_strQ_PhaseControlBit)));
-	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::Ch3_I, CStaticElem(IDC_TX_CH3_I_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC, &pDerived->m_block[3].m_nI, m_vspsBlock[3].m_strI_PhaseControlBit)));
 	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::Ch2Block, CStaticElem(IDC_TX_CH2_VSPS_BLOCK_ENABLE_VALUE_STATIC, &pDerived->m_block[2].m_nBlock, m_vspsBlock[2].m_strVspsBlockEnable)));
-	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::Ch2_Q, CStaticElem(IDC_TX_CH2_Q_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC, &pDerived->m_block[2].m_nQ, m_vspsBlock[2].m_strQ_PhaseControlBit)));
-	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::Ch2_I, CStaticElem(IDC_TX_CH2_I_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC, &pDerived->m_block[2].m_nI, m_vspsBlock[2].m_strI_PhaseControlBit)));
 	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::Ch1Block, CStaticElem(IDC_TX_CH1_VSPS_BLOCK_ENABLE_VALUE_STATIC, &pDerived->m_block[1].m_nBlock, m_vspsBlock[1].m_strVspsBlockEnable)));
-	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::Ch1_Q, CStaticElem(IDC_TX_CH1_Q_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC, &pDerived->m_block[1].m_nQ, m_vspsBlock[1].m_strQ_PhaseControlBit)));
-	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::Ch1_I, CStaticElem(IDC_TX_CH1_I_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC, &pDerived->m_block[1].m_nI, m_vspsBlock[1].m_strI_PhaseControlBit)));
 	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::Ch0Block, CStaticElem(IDC_TX_CH0_VSPS_BLOCK_ENABLE_VALUE_STATIC, &pDerived->m_block[0].m_nBlock, m_vspsBlock[0].m_strVspsBlockEnable)));
-	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::Ch0_Q, CStaticElem(IDC_TX_CH0_Q_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC, &pDerived->m_block[0].m_nQ, m_vspsBlock[0].m_strQ_PhaseControlBit)));
-	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::Ch0_I, CStaticElem(IDC_TX_CH0_I_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC, &pDerived->m_block[0].m_nI, m_vspsBlock[0].m_strI_PhaseControlBit)));
 }
 
 CSemanticZing400T::~CSemanticZing400T()
@@ -77,17 +69,9 @@ void CSemanticZing400T::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_TX_VSPS_VGA_BIAS_VOLTAGE_VALUE_STATIC, m_strVspsVgaBiasVoltage);
 	DDX_Text(pDX, IDC_TX_VSPS_CS_BIAS_VOLTAGE_VALUE_STATIC, m_strVspsCsBiasVoltage);
 	DDX_Text(pDX, IDC_TX_CH3_VSPS_BLOCK_ENABLE_VALUE_STATIC, m_vspsBlock[3].m_strVspsBlockEnable);
-	DDX_Text(pDX, IDC_TX_CH3_Q_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC, m_vspsBlock[3].m_strQ_PhaseControlBit);
-	DDX_Text(pDX, IDC_TX_CH3_I_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC, m_vspsBlock[3].m_strI_PhaseControlBit);
 	DDX_Text(pDX, IDC_TX_CH2_VSPS_BLOCK_ENABLE_VALUE_STATIC, m_vspsBlock[2].m_strVspsBlockEnable);
-	DDX_Text(pDX, IDC_TX_CH2_Q_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC, m_vspsBlock[2].m_strQ_PhaseControlBit);
-	DDX_Text(pDX, IDC_TX_CH2_I_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC, m_vspsBlock[2].m_strI_PhaseControlBit);
 	DDX_Text(pDX, IDC_TX_CH1_VSPS_BLOCK_ENABLE_VALUE_STATIC, m_vspsBlock[1].m_strVspsBlockEnable);
-	DDX_Text(pDX, IDC_TX_CH1_Q_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC, m_vspsBlock[1].m_strQ_PhaseControlBit);
-	DDX_Text(pDX, IDC_TX_CH1_I_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC, m_vspsBlock[1].m_strI_PhaseControlBit);
 	DDX_Text(pDX, IDC_TX_CH0_VSPS_BLOCK_ENABLE_VALUE_STATIC, m_vspsBlock[0].m_strVspsBlockEnable);
-	DDX_Text(pDX, IDC_TX_CH0_Q_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC, m_vspsBlock[0].m_strQ_PhaseControlBit);
-	DDX_Text(pDX, IDC_TX_CH0_I_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC, m_vspsBlock[0].m_strI_PhaseControlBit);
 	DDX_Control(pDX, IDC_CONTROL_SLIDER, m_controlSlider);
 	DDX_Check(pDX, IDC_SEMANTIC_EDIT_CHECK, m_bSemanticEdit);
 	DDX_Text(pDX, IDC_SELECTED_STATIC, m_strSelectedStatic);
@@ -128,18 +112,9 @@ BEGIN_MESSAGE_MAP(CSemanticZing400T, CSemanticBase)
 	ON_STN_CLICKED(IDC_TX_VSPS_VGA_BIAS_VOLTAGE_VALUE_STATIC, &CSemanticZing400T::OnStnClickedTxVspsVgaBiasVoltageValueStatic)
 	ON_STN_CLICKED(IDC_TX_VSPS_CS_BIAS_VOLTAGE_VALUE_STATIC, &CSemanticZing400T::OnStnClickedTxVspsCsBiasVoltageValueStatic)
 	ON_STN_CLICKED(IDC_TX_CH3_VSPS_BLOCK_ENABLE_VALUE_STATIC, &CSemanticZing400T::OnStnClickedTxCh3VspsBlockEnableValueStatic)
-	ON_STN_CLICKED(IDC_TX_CH3_Q_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC, &CSemanticZing400T::OnStnClickedTxCh3QVspsPhaseControlBitValueStatic)
-	ON_STN_CLICKED(IDC_TX_CH3_I_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC, &CSemanticZing400T::OnStnClickedTxCh3IVspsPhaseControlBitValueStatic)
 	ON_STN_CLICKED(IDC_TX_CH2_VSPS_BLOCK_ENABLE_VALUE_STATIC, &CSemanticZing400T::OnStnClickedTxCh2VspsBlockEnableValueStatic)
-	ON_STN_CLICKED(IDC_TX_CH2_Q_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC, &CSemanticZing400T::OnStnClickedTxCh2QVspsPhaseControlBitValueStatic)
-	ON_STN_CLICKED(IDC_TX_CH2_I_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC, &CSemanticZing400T::OnStnClickedTxCh2IVspsPhaseControlBitValueStatic)
 	ON_STN_CLICKED(IDC_TX_CH1_VSPS_BLOCK_ENABLE_VALUE_STATIC, &CSemanticZing400T::OnStnClickedTxCh1VspsBlockEnableValueStatic)
-	ON_STN_CLICKED(IDC_TX_CH1_Q_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC, &CSemanticZing400T::OnStnClickedTxCh1QVspsPhaseControlBitValueStatic)
-	ON_STN_CLICKED(IDC_TX_CH1_I_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC, &CSemanticZing400T::OnStnClickedTxCh1IVspsPhaseControlBitValueStatic)
 	ON_STN_CLICKED(IDC_TX_CH0_VSPS_BLOCK_ENABLE_VALUE_STATIC, &CSemanticZing400T::OnStnClickedTxCh0VspsBlockEnableValueStatic)
-	ON_STN_CLICKED(IDC_TX_CH0_Q_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC, &CSemanticZing400T::OnStnClickedTxCh0QVspsPhaseControlBitValueStatic)
-	ON_STN_CLICKED(IDC_TX_CH0_I_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC, &CSemanticZing400T::OnStnClickedTxCh0IVspsPhaseControlBitValueStatic)
-
 END_MESSAGE_MAP()
 
 
@@ -185,17 +160,9 @@ void CSemanticZing400T::ControlLabelEnable(BOOL b)
 	GetDlgItem(IDC_TX_VSPS_VGA_BIAS_VOLTAGE_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_TX_VSPS_CS_BIAS_VOLTAGE_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_TX_CH3_VSPS_BLOCK_ENABLE_STATIC)->EnableWindow(b);
-	GetDlgItem(IDC_TX_CH3_Q_VSPS_PHASE_CONTROL_BIT_STATIC)->EnableWindow(b);
-	GetDlgItem(IDC_TX_CH3_I_VSPS_PHASE_CONTROL_BIT_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_TX_CH2_VSPS_BLOCK_ENABLE_STATIC)->EnableWindow(b);
-	GetDlgItem(IDC_TX_CH2_Q_VSPS_PHASE_CONTROL_BIT_STATIC)->EnableWindow(b);
-	GetDlgItem(IDC_TX_CH2_I_VSPS_PHASE_CONTROL_BIT_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_TX_CH1_VSPS_BLOCK_ENABLE_STATIC)->EnableWindow(b);
-	GetDlgItem(IDC_TX_CH1_Q_VSPS_PHASE_CONTROL_BIT_STATIC)->EnableWindow(b);
-	GetDlgItem(IDC_TX_CH1_I_VSPS_PHASE_CONTROL_BIT_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_TX_CH0_VSPS_BLOCK_ENABLE_STATIC)->EnableWindow(b);
-	GetDlgItem(IDC_TX_CH0_Q_VSPS_PHASE_CONTROL_BIT_STATIC)->EnableWindow(b);
-	GetDlgItem(IDC_TX_CH0_I_VSPS_PHASE_CONTROL_BIT_STATIC)->EnableWindow(b);
 }
 
 void CSemanticZing400T::ControlValueEnable(BOOL b)
@@ -219,17 +186,9 @@ void CSemanticZing400T::ControlValueEnable(BOOL b)
 	GetDlgItem(IDC_TX_VSPS_VGA_BIAS_VOLTAGE_VALUE_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_TX_VSPS_CS_BIAS_VOLTAGE_VALUE_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_TX_CH3_VSPS_BLOCK_ENABLE_VALUE_STATIC)->EnableWindow(b);
-	GetDlgItem(IDC_TX_CH3_Q_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC)->EnableWindow(b);
-	GetDlgItem(IDC_TX_CH3_I_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_TX_CH2_VSPS_BLOCK_ENABLE_VALUE_STATIC)->EnableWindow(b);
-	GetDlgItem(IDC_TX_CH2_Q_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC)->EnableWindow(b);
-	GetDlgItem(IDC_TX_CH2_I_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_TX_CH1_VSPS_BLOCK_ENABLE_VALUE_STATIC)->EnableWindow(b);
-	GetDlgItem(IDC_TX_CH1_Q_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC)->EnableWindow(b);
-	GetDlgItem(IDC_TX_CH1_I_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_TX_CH0_VSPS_BLOCK_ENABLE_VALUE_STATIC)->EnableWindow(b);
-	GetDlgItem(IDC_TX_CH0_Q_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC)->EnableWindow(b);
-	GetDlgItem(IDC_TX_CH0_I_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC)->EnableWindow(b);
 }
 
 const CRegister& CSemanticZing400T::Parse()
@@ -496,39 +455,11 @@ void CSemanticZing400T::OnStnClickedTxCh3VspsBlockEnableValueStatic()
 }
 
 
-void CSemanticZing400T::OnStnClickedTxCh3QVspsPhaseControlBitValueStatic()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(CSelect::Ch3_Q, 0, 31, m_vspsBlock[3].m_strQ_PhaseControlBit, 1, 1, 10, IDC_TX_CH3_Q_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC);
-}
-
-
-void CSemanticZing400T::OnStnClickedTxCh3IVspsPhaseControlBitValueStatic()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(CSelect::Ch3_I, 0, 31, m_vspsBlock[3].m_strI_PhaseControlBit, 1, 1, 10, IDC_TX_CH3_I_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC);
-}
-
-
 void CSemanticZing400T::OnStnClickedTxCh2VspsBlockEnableValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	const CRegisterZing400T& derived = dynamic_cast<const CRegisterZing400T&>(getRegister());
 	SetComboGroup(CSelect::Ch2Block, _T("disable"), _T("enable"), derived.m_block[2].m_nBlock, IDC_TX_CH2_VSPS_BLOCK_ENABLE_VALUE_STATIC);
-}
-
-
-void CSemanticZing400T::OnStnClickedTxCh2QVspsPhaseControlBitValueStatic()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(CSelect::Ch2_Q, 0, 31, m_vspsBlock[2].m_strQ_PhaseControlBit, 1, 1, 10, IDC_TX_CH2_Q_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC);
-}
-
-
-void CSemanticZing400T::OnStnClickedTxCh2IVspsPhaseControlBitValueStatic()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(CSelect::Ch2_I, 0, 31, m_vspsBlock[2].m_strI_PhaseControlBit, 1, 1, 10, IDC_TX_CH2_I_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC);
 }
 
 
@@ -540,37 +471,9 @@ void CSemanticZing400T::OnStnClickedTxCh1VspsBlockEnableValueStatic()
 }
 
 
-void CSemanticZing400T::OnStnClickedTxCh1QVspsPhaseControlBitValueStatic()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(CSelect::Ch1_Q, 0, 31, m_vspsBlock[1].m_strQ_PhaseControlBit, 1, 1, 10, IDC_TX_CH1_Q_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC);
-}
-
-
-void CSemanticZing400T::OnStnClickedTxCh1IVspsPhaseControlBitValueStatic()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(CSelect::Ch1_I, 0, 31, m_vspsBlock[1].m_strI_PhaseControlBit, 1, 1, 10, IDC_TX_CH1_I_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC);
-}
-
-
 void CSemanticZing400T::OnStnClickedTxCh0VspsBlockEnableValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	const CRegisterZing400T& derived = dynamic_cast<const CRegisterZing400T&>(getRegister());
 	SetComboGroup(CSelect::Ch0Block, _T("disable"), _T("enable"), derived.m_block[0].m_nBlock, IDC_TX_CH0_VSPS_BLOCK_ENABLE_VALUE_STATIC);
-}
-
-
-void CSemanticZing400T::OnStnClickedTxCh0QVspsPhaseControlBitValueStatic()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(CSelect::Ch0_Q, 0, 31, m_vspsBlock[0].m_strQ_PhaseControlBit, 1, 1, 10, IDC_TX_CH0_Q_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC);
-}
-
-
-void CSemanticZing400T::OnStnClickedTxCh0IVspsPhaseControlBitValueStatic()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(CSelect::Ch0_I, 0, 31, m_vspsBlock[0].m_strI_PhaseControlBit, 1, 1, 10, IDC_TX_CH0_I_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC);
 }

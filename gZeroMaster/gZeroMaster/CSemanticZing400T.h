@@ -88,15 +88,7 @@ public:
 	afx_msg void OnStnClickedTxVspsVgaBiasVoltageValueStatic();
 	afx_msg void OnStnClickedTxVspsCsBiasVoltageValueStatic();
 	afx_msg void OnStnClickedTxCh3VspsBlockEnableValueStatic();
-	afx_msg void OnStnClickedTxCh3QVspsPhaseControlBitValueStatic();
-	afx_msg void OnStnClickedTxCh3IVspsPhaseControlBitValueStatic();
 	afx_msg void OnStnClickedTxCh2VspsBlockEnableValueStatic();
-	afx_msg void OnStnClickedTxCh2QVspsPhaseControlBitValueStatic();
-	afx_msg void OnStnClickedTxCh2IVspsPhaseControlBitValueStatic();
 	afx_msg void OnStnClickedTxCh1VspsBlockEnableValueStatic();
-	afx_msg void OnStnClickedTxCh1QVspsPhaseControlBitValueStatic();
-	afx_msg void OnStnClickedTxCh1IVspsPhaseControlBitValueStatic();
 	afx_msg void OnStnClickedTxCh0VspsBlockEnableValueStatic();
-	afx_msg void OnStnClickedTxCh0QVspsPhaseControlBitValueStatic();
-	afx_msg void OnStnClickedTxCh0IVspsPhaseControlBitValueStatic();
 };
