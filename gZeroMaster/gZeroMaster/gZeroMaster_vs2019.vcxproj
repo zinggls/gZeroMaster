@@ -118,6 +118,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="CBfBlock.h" />
+    <ClInclude Include="CPhaseTable.h" />
     <ClInclude Include="CRaw.h" />
     <ClInclude Include="CRawBase.h" />
     <ClInclude Include="CRawZing400R.h" />
@@ -140,6 +141,7 @@
     <ClInclude Include="SemanticUserDefinedMessage.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CPhaseTable.cpp" />
     <ClCompile Include="CRaw.cpp" />
     <ClCompile Include="CRawBase.cpp" />
     <ClCompile Include="CRawZing400R.cpp" />
