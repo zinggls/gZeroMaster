@@ -68,9 +68,13 @@ public:
 	void UpdateVspsVgaBiasVoltage(const CRegisterZing400T& reg);
 	void UpdateVspsCsBiasVoltage(const CRegisterZing400T& reg);
 	void UpdateCh3VspsBlockEnable(const CRegisterZing400T& reg);
+	void UpdateCh3Phase(const CRegisterZing400T& reg);
 	void UpdateCh2VspsBlockEnable(const CRegisterZing400T& reg);
+	void UpdateCh2Phase(const CRegisterZing400T& reg);
 	void UpdateCh1VspsBlockEnable(const CRegisterZing400T& reg);
+	void UpdateCh1Phase(const CRegisterZing400T& reg);
 	void UpdateCh0VspsBlockEnable(const CRegisterZing400T& reg);
+	void UpdateCh0Phase(const CRegisterZing400T& reg);
 	afx_msg void OnStnClickedTxBiasBlockEnableValueStatic();
 	afx_msg void OnStnClickedTxVspsPaBiasVoltageValueStatic();
 	afx_msg void OnStnClickedTxVspsVgaBiasVoltageValueStatic();
