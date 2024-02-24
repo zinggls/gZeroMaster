@@ -64,6 +64,6 @@ CString CPhaseTable::getPhase(int state)
 	if (nPhase100 == -1) return CString(_T("undefined"));
 
 	CString str;
-	str.Format(_T("%d"),nPhase100);
+	str.Format(_T("%.2f"),(float)nPhase100/100);
 	return str;
 }
