@@ -47,7 +47,7 @@ CString CPhaseTable::getPhase(int state)
 
 	int nPhase100;
 	if (state >= 1 && state <= 17) {
-		nPhase100 = (state-1)*1125;
+		nPhase100 = (state - 1) * 1125;
 	}
 	else {
 		nPhase100 = -18000 + (state - 17) * 1125;
