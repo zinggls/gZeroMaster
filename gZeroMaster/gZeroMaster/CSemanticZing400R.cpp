@@ -34,17 +34,9 @@ CSemanticZing400R::CSemanticZing400R(CWnd* pParent, CRawBase* pRawBase, CRegiste
 	CRegisterZing400R* pDerived = dynamic_cast<CRegisterZing400R*>(pReg);
 	ASSERT(pDerived);
 	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::Ch3Block, CStaticElem(IDC_RX_CH3_VSPS_BLOCK_ENABLE_VALUE_STATIC, &pDerived->m_block[3].m_nBlock, m_vspsBlock[3].m_strVspsBlockEnable)));
-	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::Ch3_Q, CStaticElem(IDC_RX_CH3_Q_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC, &pDerived->m_block[3].m_nQ, m_vspsBlock[3].m_strQ_PhaseControlBit)));
-	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::Ch3_I, CStaticElem(IDC_RX_CH3_I_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC, &pDerived->m_block[3].m_nI, m_vspsBlock[3].m_strI_PhaseControlBit)));
 	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::Ch2Block, CStaticElem(IDC_RX_CH2_VSPS_BLOCK_ENABLE_VALUE_STATIC, &pDerived->m_block[2].m_nBlock, m_vspsBlock[2].m_strVspsBlockEnable)));
-	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::Ch2_Q, CStaticElem(IDC_RX_CH2_Q_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC, &pDerived->m_block[2].m_nQ, m_vspsBlock[2].m_strQ_PhaseControlBit)));
-	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::Ch2_I, CStaticElem(IDC_RX_CH2_I_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC, &pDerived->m_block[2].m_nI, m_vspsBlock[2].m_strI_PhaseControlBit)));
 	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::Ch1Block, CStaticElem(IDC_RX_CH1_VSPS_BLOCK_ENABLE_VALUE_STATIC, &pDerived->m_block[1].m_nBlock, m_vspsBlock[1].m_strVspsBlockEnable)));
-	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::Ch1_Q, CStaticElem(IDC_RX_CH1_Q_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC, &pDerived->m_block[1].m_nQ, m_vspsBlock[1].m_strQ_PhaseControlBit)));
-	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::Ch1_I, CStaticElem(IDC_RX_CH1_I_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC, &pDerived->m_block[1].m_nI, m_vspsBlock[1].m_strI_PhaseControlBit)));
 	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::Ch0Block, CStaticElem(IDC_RX_CH0_VSPS_BLOCK_ENABLE_VALUE_STATIC, &pDerived->m_block[0].m_nBlock, m_vspsBlock[0].m_strVspsBlockEnable)));
-	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::Ch0_Q, CStaticElem(IDC_RX_CH0_Q_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC, &pDerived->m_block[0].m_nQ, m_vspsBlock[0].m_strQ_PhaseControlBit)));
-	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::Ch0_I, CStaticElem(IDC_RX_CH0_I_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC, &pDerived->m_block[0].m_nI, m_vspsBlock[0].m_strI_PhaseControlBit)));
 	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::VspsBias, CStaticElem(IDC_RX_VSPS_BIAS_CONTROL_BIT_VALUE_STATIC, &pDerived->m_nVspsBias, m_strVspsBiasControlBit)));
 	m_staticMap.insert(std::pair<UINT, CStaticElem>(CSelect::LnasBias, CStaticElem(IDC_RX_LNA_BIAS_CONTROL_BIT_VALUE_STATIC, &pDerived->m_nLnaBias, m_strLnaControlBit)));
 }
@@ -70,17 +62,9 @@ void CSemanticZing400R::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_CMOS_GAIN_STAGE_CURRENT_VALUE_STATIC, m_strCMOSGainStageCurrent);
 	DDX_Text(pDX, IDC_CML_INTERFACE_STAGE_CURRENT_VALUE_STATIC, m_strCMLInterfaceStageCurrent);
 	DDX_Text(pDX, IDC_RX_CH3_VSPS_BLOCK_ENABLE_VALUE_STATIC, m_vspsBlock[3].m_strVspsBlockEnable);
-	DDX_Text(pDX, IDC_RX_CH3_Q_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC, m_vspsBlock[3].m_strQ_PhaseControlBit);
-	DDX_Text(pDX, IDC_RX_CH3_I_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC, m_vspsBlock[3].m_strI_PhaseControlBit);
 	DDX_Text(pDX, IDC_RX_CH2_VSPS_BLOCK_ENABLE_VALUE_STATIC, m_vspsBlock[2].m_strVspsBlockEnable);
-	DDX_Text(pDX, IDC_RX_CH2_Q_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC, m_vspsBlock[2].m_strQ_PhaseControlBit);
-	DDX_Text(pDX, IDC_RX_CH2_I_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC, m_vspsBlock[2].m_strI_PhaseControlBit);
 	DDX_Text(pDX, IDC_RX_CH1_VSPS_BLOCK_ENABLE_VALUE_STATIC, m_vspsBlock[1].m_strVspsBlockEnable);
-	DDX_Text(pDX, IDC_RX_CH1_Q_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC, m_vspsBlock[1].m_strQ_PhaseControlBit);
-	DDX_Text(pDX, IDC_RX_CH1_I_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC, m_vspsBlock[1].m_strI_PhaseControlBit);
 	DDX_Text(pDX, IDC_RX_CH0_VSPS_BLOCK_ENABLE_VALUE_STATIC, m_vspsBlock[0].m_strVspsBlockEnable);
-	DDX_Text(pDX, IDC_RX_CH0_Q_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC, m_vspsBlock[0].m_strQ_PhaseControlBit);
-	DDX_Text(pDX, IDC_RX_CH0_I_VSPS_PHASE_CONTROL_BIT_VALUE_STATIC, m_vspsBlock[0].m_strI_PhaseControlBit);
 	DDX_Text(pDX, IDC_RX_VSPS_BIAS_CONTROL_BIT_VALUE_STATIC, m_strVspsBiasControlBit);
 	DDX_Text(pDX, IDC_RX_LNA_BIAS_CONTROL_BIT_VALUE_STATIC, m_strLnaControlBit);
 	DDX_Control(pDX, IDC_CONTROL_SLIDER, m_controlSlider);
@@ -239,17 +223,9 @@ void CSemanticZing400R::UpdateRegisters()
 
 	const CRegisterZing400R& derived = dynamic_cast<const CRegisterZing400R&>(Parse());
 	UpdateCh3VspsBlockEnable(derived);
-	UpdateCh3VspsPhaseControlBitQ(derived);
-	UpdateCh3VspsPhaseControlBitI(derived);
 	UpdateCh2VspsBlockEnable(derived);
-	UpdateCh2VspsPhaseControlBitQ(derived);
-	UpdateCh2VspsPhaseControlBitI(derived);
 	UpdateCh1VspsBlockEnable(derived);
-	UpdateCh1VspsPhaseControlBitQ(derived);
-	UpdateCh1VspsPhaseControlBitI(derived);
 	UpdateCh0VspsBlockEnable(derived);
-	UpdateCh0VspsPhaseControlBitQ(derived);
-	UpdateCh0VspsPhaseControlBitI(derived);
 	UpdateVspsBiasControlBit(derived);
 	UpdateLnaControlBit(derived);
 	UpdateData(FALSE);
@@ -344,29 +320,9 @@ void CSemanticZing400R::UpdateCh3VspsBlockEnable(const CRegisterZing400R& reg)
 	(reg.m_block[3].m_nBlock) ? m_vspsBlock[3].m_strVspsBlockEnable.Format(_T("enable")) : m_vspsBlock[3].m_strVspsBlockEnable.Format(_T("disable"));
 }
 
-void CSemanticZing400R::UpdateCh3VspsPhaseControlBitQ(const CRegisterZing400R& reg)
-{
-	m_vspsBlock[3].m_strQ_PhaseControlBit.Format(_T("0x%02x"), reg.m_block[3].m_nQ);
-}
-
-void CSemanticZing400R::UpdateCh3VspsPhaseControlBitI(const CRegisterZing400R& reg)
-{
-	m_vspsBlock[3].m_strI_PhaseControlBit.Format(_T("0x%02x"), reg.m_block[3].m_nI);
-}
-
 void CSemanticZing400R::UpdateCh2VspsBlockEnable(const CRegisterZing400R& reg)
 {
 	(reg.m_block[2].m_nBlock) ? m_vspsBlock[2].m_strVspsBlockEnable.Format(_T("enable")) : m_vspsBlock[2].m_strVspsBlockEnable.Format(_T("disable"));
-}
-
-void CSemanticZing400R::UpdateCh2VspsPhaseControlBitQ(const CRegisterZing400R& reg)
-{
-	m_vspsBlock[2].m_strQ_PhaseControlBit.Format(_T("0x%02x"), reg.m_block[2].m_nQ);
-}
-
-void CSemanticZing400R::UpdateCh2VspsPhaseControlBitI(const CRegisterZing400R& reg)
-{
-	m_vspsBlock[2].m_strI_PhaseControlBit.Format(_T("0x%02x"), reg.m_block[2].m_nI);
 }
 
 void CSemanticZing400R::UpdateCh1VspsBlockEnable(const CRegisterZing400R& reg)
@@ -374,29 +330,9 @@ void CSemanticZing400R::UpdateCh1VspsBlockEnable(const CRegisterZing400R& reg)
 	(reg.m_block[1].m_nBlock) ? m_vspsBlock[1].m_strVspsBlockEnable.Format(_T("enable")) : m_vspsBlock[1].m_strVspsBlockEnable.Format(_T("disable"));
 }
 
-void CSemanticZing400R::UpdateCh1VspsPhaseControlBitQ(const CRegisterZing400R& reg)
-{
-	m_vspsBlock[1].m_strQ_PhaseControlBit.Format(_T("0x%02x"), reg.m_block[1].m_nQ);
-}
-
-void CSemanticZing400R::UpdateCh1VspsPhaseControlBitI(const CRegisterZing400R& reg)
-{
-	m_vspsBlock[1].m_strI_PhaseControlBit.Format(_T("0x%02x"), reg.m_block[1].m_nI);
-}
-
 void CSemanticZing400R::UpdateCh0VspsBlockEnable(const CRegisterZing400R& reg)
 {
 	(reg.m_block[0].m_nBlock) ? m_vspsBlock[0].m_strVspsBlockEnable.Format(_T("enable")) : m_vspsBlock[0].m_strVspsBlockEnable.Format(_T("disable"));
-}
-
-void CSemanticZing400R::UpdateCh0VspsPhaseControlBitQ(const CRegisterZing400R& reg)
-{
-	m_vspsBlock[0].m_strQ_PhaseControlBit.Format(_T("0x%02x"), reg.m_block[0].m_nQ);
-}
-
-void CSemanticZing400R::UpdateCh0VspsPhaseControlBitI(const CRegisterZing400R& reg)
-{
-	m_vspsBlock[0].m_strI_PhaseControlBit.Format(_T("0x%02x"), reg.m_block[0].m_nI);
 }
 
 void CSemanticZing400R::UpdateVspsBiasControlBit(const CRegisterZing400R& reg)
