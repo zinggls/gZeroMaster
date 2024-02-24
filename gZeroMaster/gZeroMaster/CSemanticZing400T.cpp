@@ -222,6 +222,10 @@ const CRegister& CSemanticZing400T::Parse()
 	UpdateRegOut24(pDeriv->m_strRegOut24, *m_pReg);
 
 	CRegisterZing400T& regDeriv = dynamic_cast<CRegisterZing400T&>(*m_pReg);
+
+	//Register값을 채우기 전에 Phase값은 Invalid 값으로 초기화, 업데이트 후에는 Invalid값이 없음을 ASSERT하여 값이 정상적으로 세팅된 것을 확인
+	for(int i=0;i<4;i++) regDeriv.m_block[i].m_nPhase = -1;
+
 	UpdateRegOut25(pDeriv->m_strRegOut25, regDeriv);
 	UpdateRegOut26(pDeriv->m_strRegOut26, regDeriv);
 	UpdateRegOut27(pDeriv->m_strRegOut27, regDeriv);
