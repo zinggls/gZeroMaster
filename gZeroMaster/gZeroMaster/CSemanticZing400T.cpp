@@ -160,9 +160,13 @@ void CSemanticZing400T::ControlLabelEnable(BOOL b)
 	GetDlgItem(IDC_TX_VSPS_VGA_BIAS_VOLTAGE_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_TX_VSPS_CS_BIAS_VOLTAGE_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_TX_CH3_VSPS_BLOCK_ENABLE_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_TX_CH3_PHASE_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_TX_CH2_VSPS_BLOCK_ENABLE_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_TX_CH2_PHASE_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_TX_CH1_VSPS_BLOCK_ENABLE_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_TX_CH1_PHASE_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_TX_CH0_VSPS_BLOCK_ENABLE_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_TX_CH0_PHASE_STATIC)->EnableWindow(b);
 }
 
 void CSemanticZing400T::ControlValueEnable(BOOL b)
@@ -186,9 +190,13 @@ void CSemanticZing400T::ControlValueEnable(BOOL b)
 	GetDlgItem(IDC_TX_VSPS_VGA_BIAS_VOLTAGE_VALUE_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_TX_VSPS_CS_BIAS_VOLTAGE_VALUE_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_TX_CH3_VSPS_BLOCK_ENABLE_VALUE_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_TX_CH3_PHASE_VALUE_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_TX_CH2_VSPS_BLOCK_ENABLE_VALUE_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_TX_CH2_PHASE_VALUE_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_TX_CH1_VSPS_BLOCK_ENABLE_VALUE_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_TX_CH1_PHASE_VALUE_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_TX_CH0_VSPS_BLOCK_ENABLE_VALUE_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_TX_CH0_PHASE_VALUE_STATIC)->EnableWindow(b);
 }
 
 const CRegister& CSemanticZing400T::Parse()
