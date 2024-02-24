@@ -6,6 +6,7 @@
 #include "CSemanticZing400T.h"
 #include "CRawZing400T.h"
 #include "CRegisterZing400T.h"
+#include "CPhaseTable.h"
 
 
 // CSemanticZing400T 대화 상자
@@ -139,6 +140,73 @@ BOOL CSemanticZing400T::OnInitDialog()
 
 	// TODO:  여기에 추가 초기화 작업을 추가합니다.
 	InitialControlState();
+
+	ASSERT(CPhaseTable::getState(0x0, 0x0) == -1);	//잘못된 값 테스트
+	ASSERT(CPhaseTable::getState(0x1F, 0x10) == 1);
+	ASSERT(CPhaseTable::getState(0x1D, 0x19) == 2);
+	ASSERT(CPhaseTable::getState(0x1D, 0x1A) == 3);
+	ASSERT(CPhaseTable::getState(0x1D, 0x1B) == 4);
+	ASSERT(CPhaseTable::getState(0x1A, 0x1A) == 5);
+	ASSERT(CPhaseTable::getState(0x1A, 0x1B) == 6);
+	ASSERT(CPhaseTable::getState(0x18, 0x1B) == 7);
+	ASSERT(CPhaseTable::getState(0x15, 0x1B) == 8);
+	ASSERT(CPhaseTable::getState(0x8, 0x1C) == 9);
+	ASSERT(CPhaseTable::getState(0x6, 0x1C) == 10);
+	ASSERT(CPhaseTable::getState(0x5, 0x1C) == 11);
+	ASSERT(CPhaseTable::getState(0x3, 0x1D) == 12);
+	ASSERT(CPhaseTable::getState(0x2, 0x1C) == 13);
+	ASSERT(CPhaseTable::getState(0x1, 0x1C) == 14);
+	ASSERT(CPhaseTable::getState(0x1, 0x1B) == 15);
+	ASSERT(CPhaseTable::getState(0x0, 0x1A) == 16);
+	ASSERT(CPhaseTable::getState(0x0, 0xF) == 17);
+	ASSERT(CPhaseTable::getState(0x0, 0x5) == 18);
+	ASSERT(CPhaseTable::getState(0x2, 0x5) == 19);
+	ASSERT(CPhaseTable::getState(0x2, 0x4) == 20);
+	ASSERT(CPhaseTable::getState(0x4, 0x4) == 21);
+	ASSERT(CPhaseTable::getState(0x6, 0x4) == 22);
+	ASSERT(CPhaseTable::getState(0x6, 0x3) == 23);
+	ASSERT(CPhaseTable::getState(0x8, 0x3) == 24);
+	ASSERT(CPhaseTable::getState(0x18, 0x2) == 25);
+	ASSERT(CPhaseTable::getState(0x1A, 0x2) == 26);
+	ASSERT(CPhaseTable::getState(0x1B, 0x2) == 27);
+	ASSERT(CPhaseTable::getState(0x1C, 0x2) == 28);
+	ASSERT(CPhaseTable::getState(0x1D, 0x3) == 29);
+	ASSERT(CPhaseTable::getState(0x1D, 0x4) == 30);
+	ASSERT(CPhaseTable::getState(0x1E, 0x4) == 31);
+	ASSERT(CPhaseTable::getState(0x1D, 0x6) == 32);
+
+	ASSERT(CPhaseTable::getPhase(1)==CString(_T("0")));
+	ASSERT(CPhaseTable::getPhase(2) == CString(_T("1125")));
+	ASSERT(CPhaseTable::getPhase(3) == CString(_T("2250")));
+	ASSERT(CPhaseTable::getPhase(4) == CString(_T("3375")));
+	ASSERT(CPhaseTable::getPhase(5) == CString(_T("4500")));
+	ASSERT(CPhaseTable::getPhase(6) == CString(_T("5625")));
+	ASSERT(CPhaseTable::getPhase(7) == CString(_T("6750")));
+	ASSERT(CPhaseTable::getPhase(8) == CString(_T("7875")));
+	ASSERT(CPhaseTable::getPhase(9) == CString(_T("9000")));
+	ASSERT(CPhaseTable::getPhase(10) == CString(_T("10125")));
+	ASSERT(CPhaseTable::getPhase(11) == CString(_T("11250")));
+	ASSERT(CPhaseTable::getPhase(12) == CString(_T("12375")));
+	ASSERT(CPhaseTable::getPhase(13) == CString(_T("13500")));
+	ASSERT(CPhaseTable::getPhase(14) == CString(_T("14625")));
+	ASSERT(CPhaseTable::getPhase(15) == CString(_T("15750")));
+	ASSERT(CPhaseTable::getPhase(16) == CString(_T("16875")));
+	ASSERT(CPhaseTable::getPhase(17) == CString(_T("18000")));
+	ASSERT(CPhaseTable::getPhase(18) == CString(_T("-16875")));
+	ASSERT(CPhaseTable::getPhase(19) == CString(_T("-15750")));
+	ASSERT(CPhaseTable::getPhase(20) == CString(_T("-14625")));
+	ASSERT(CPhaseTable::getPhase(21) == CString(_T("-13500")));
+	ASSERT(CPhaseTable::getPhase(22) == CString(_T("-12375")));
+	ASSERT(CPhaseTable::getPhase(23) == CString(_T("-11250")));
+	ASSERT(CPhaseTable::getPhase(24) == CString(_T("-10125")));
+	ASSERT(CPhaseTable::getPhase(25) == CString(_T("-9000")));
+	ASSERT(CPhaseTable::getPhase(26) == CString(_T("-7875")));
+	ASSERT(CPhaseTable::getPhase(27) == CString(_T("-6750")));
+	ASSERT(CPhaseTable::getPhase(28) == CString(_T("-5625")));
+	ASSERT(CPhaseTable::getPhase(29) == CString(_T("-4500")));
+	ASSERT(CPhaseTable::getPhase(30) == CString(_T("-3375")));
+	ASSERT(CPhaseTable::getPhase(31) == CString(_T("-2250")));
+	ASSERT(CPhaseTable::getPhase(32) == CString(_T("-1125")));
 
 	return TRUE;  // return TRUE unless you set the focus to a control
 				  // 예외: OCX 속성 페이지는 FALSE를 반환해야 합니다.

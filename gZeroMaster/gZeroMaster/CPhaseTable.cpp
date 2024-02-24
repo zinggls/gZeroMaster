@@ -1,5 +1,4 @@
 #include "pch.h"
-#include <afx.h>
 #include "CPhaseTable.h"
 
 int CPhaseTable::getState(unsigned char I, unsigned char Q)
@@ -40,4 +39,21 @@ int CPhaseTable::getState(unsigned char I, unsigned char Q)
 	else if (hexa == 0x3A6) return 32;
 
 	return -1;
+}
+
+CString CPhaseTable::getPhase(int state)
+{
+	ASSERT(state >= 1 && state <= 32);
+
+	int nPhase100;
+	if (state >= 1 && state <= 17) {
+		nPhase100 = (state-1)*1125;
+	}
+	else {
+		nPhase100 = -18000 + (state - 17) * 1125;
+	}
+
+	CString str;
+	str.Format(_T("%d"),nPhase100);
+	return str;
 }
