@@ -207,6 +207,8 @@ BOOL CSemanticZing400T::OnInitDialog()
 	ASSERT(CPhaseTable::getPhase(30) == CString(_T("-33.75")));
 	ASSERT(CPhaseTable::getPhase(31) == CString(_T("-22.50")));
 	ASSERT(CPhaseTable::getPhase(32) == CString(_T("-11.25")));
+	ASSERT(CPhaseTable::getPhase(-1) == CString(_T("undefined")));	//범위 밖의 값 입력시
+	ASSERT(CPhaseTable::getPhase(33) == CString(_T("undefined")));	//범위 밖의 값 입력시
 
 	return TRUE;  // return TRUE unless you set the focus to a control
 				  // 예외: OCX 속성 페이지는 FALSE를 반환해야 합니다.
