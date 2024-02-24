@@ -112,9 +112,13 @@ BEGIN_MESSAGE_MAP(CSemanticZing400T, CSemanticBase)
 	ON_STN_CLICKED(IDC_TX_VSPS_VGA_BIAS_VOLTAGE_VALUE_STATIC, &CSemanticZing400T::OnStnClickedTxVspsVgaBiasVoltageValueStatic)
 	ON_STN_CLICKED(IDC_TX_VSPS_CS_BIAS_VOLTAGE_VALUE_STATIC, &CSemanticZing400T::OnStnClickedTxVspsCsBiasVoltageValueStatic)
 	ON_STN_CLICKED(IDC_TX_CH3_VSPS_BLOCK_ENABLE_VALUE_STATIC, &CSemanticZing400T::OnStnClickedTxCh3VspsBlockEnableValueStatic)
+	ON_STN_CLICKED(IDC_TX_CH3_PHASE_VALUE_STATIC, &CSemanticZing400T::OnStnClickedTxCh3PhaseValueStatic)
 	ON_STN_CLICKED(IDC_TX_CH2_VSPS_BLOCK_ENABLE_VALUE_STATIC, &CSemanticZing400T::OnStnClickedTxCh2VspsBlockEnableValueStatic)
+	ON_STN_CLICKED(IDC_TX_CH2_PHASE_VALUE_STATIC, &CSemanticZing400T::OnStnClickedTxCh2PhaseValueStatic)
 	ON_STN_CLICKED(IDC_TX_CH1_VSPS_BLOCK_ENABLE_VALUE_STATIC, &CSemanticZing400T::OnStnClickedTxCh1VspsBlockEnableValueStatic)
+	ON_STN_CLICKED(IDC_TX_CH1_PHASE_VALUE_STATIC, &CSemanticZing400T::OnStnClickedTxCh1PhaseValueStatic)
 	ON_STN_CLICKED(IDC_TX_CH0_VSPS_BLOCK_ENABLE_VALUE_STATIC, &CSemanticZing400T::OnStnClickedTxCh0VspsBlockEnableValueStatic)
+	ON_STN_CLICKED(IDC_TX_CH0_PHASE_VALUE_STATIC, &CSemanticZing400T::OnStnClickedTxCh0PhaseValueStatic)
 END_MESSAGE_MAP()
 
 
@@ -463,11 +467,23 @@ void CSemanticZing400T::OnStnClickedTxCh3VspsBlockEnableValueStatic()
 }
 
 
+void CSemanticZing400T::OnStnClickedTxCh3PhaseValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+}
+
+
 void CSemanticZing400T::OnStnClickedTxCh2VspsBlockEnableValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	const CRegisterZing400T& derived = dynamic_cast<const CRegisterZing400T&>(getRegister());
 	SetComboGroup(CSelect::Ch2Block, _T("disable"), _T("enable"), derived.m_block[2].m_nBlock, IDC_TX_CH2_VSPS_BLOCK_ENABLE_VALUE_STATIC);
+}
+
+
+void CSemanticZing400T::OnStnClickedTxCh2PhaseValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 }
 
 
@@ -479,9 +495,21 @@ void CSemanticZing400T::OnStnClickedTxCh1VspsBlockEnableValueStatic()
 }
 
 
+void CSemanticZing400T::OnStnClickedTxCh1PhaseValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+}
+
+
 void CSemanticZing400T::OnStnClickedTxCh0VspsBlockEnableValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	const CRegisterZing400T& derived = dynamic_cast<const CRegisterZing400T&>(getRegister());
 	SetComboGroup(CSelect::Ch0Block, _T("disable"), _T("enable"), derived.m_block[0].m_nBlock, IDC_TX_CH0_VSPS_BLOCK_ENABLE_VALUE_STATIC);
+}
+
+
+void CSemanticZing400T::OnStnClickedTxCh0PhaseValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 }
