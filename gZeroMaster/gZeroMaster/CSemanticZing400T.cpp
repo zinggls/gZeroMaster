@@ -73,9 +73,13 @@ void CSemanticZing400T::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_TX_VSPS_VGA_BIAS_VOLTAGE_VALUE_STATIC, m_strVspsVgaBiasVoltage);
 	DDX_Text(pDX, IDC_TX_VSPS_CS_BIAS_VOLTAGE_VALUE_STATIC, m_strVspsCsBiasVoltage);
 	DDX_Text(pDX, IDC_TX_CH3_VSPS_BLOCK_ENABLE_VALUE_STATIC, m_vspsBlock[3].m_strVspsBlockEnable);
+	DDX_Text(pDX, IDC_TX_CH3_PHASE_VALUE_STATIC, m_vspsBlock[3].m_strPhase);
 	DDX_Text(pDX, IDC_TX_CH2_VSPS_BLOCK_ENABLE_VALUE_STATIC, m_vspsBlock[2].m_strVspsBlockEnable);
+	DDX_Text(pDX, IDC_TX_CH2_PHASE_VALUE_STATIC, m_vspsBlock[2].m_strPhase);
 	DDX_Text(pDX, IDC_TX_CH1_VSPS_BLOCK_ENABLE_VALUE_STATIC, m_vspsBlock[1].m_strVspsBlockEnable);
+	DDX_Text(pDX, IDC_TX_CH1_PHASE_VALUE_STATIC, m_vspsBlock[1].m_strPhase);
 	DDX_Text(pDX, IDC_TX_CH0_VSPS_BLOCK_ENABLE_VALUE_STATIC, m_vspsBlock[0].m_strVspsBlockEnable);
+	DDX_Text(pDX, IDC_TX_CH0_PHASE_VALUE_STATIC, m_vspsBlock[0].m_strPhase);
 	DDX_Control(pDX, IDC_CONTROL_SLIDER, m_controlSlider);
 	DDX_Check(pDX, IDC_SEMANTIC_EDIT_CHECK, m_bSemanticEdit);
 	DDX_Text(pDX, IDC_SELECTED_STATIC, m_strSelectedStatic);
