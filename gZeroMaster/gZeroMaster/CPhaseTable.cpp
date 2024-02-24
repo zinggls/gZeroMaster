@@ -43,8 +43,6 @@ int CPhaseTable::getState(unsigned char I, unsigned char Q)
 
 int CPhaseTable::getPhase100Number(int state)
 {
-	ASSERT(state >= 1 && state <= 32);
-
 	int nPhase100;
 	if (state >= 1 && state <= 17) {
 		nPhase100 = (state - 1) * 1125;
