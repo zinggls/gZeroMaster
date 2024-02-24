@@ -41,7 +41,7 @@ int CPhaseTable::getState(unsigned char I, unsigned char Q)
 	return -1;
 }
 
-CString CPhaseTable::getPhase(int state)
+int CPhaseTable::getPhase100Number(int state)
 {
 	ASSERT(state >= 1 && state <= 32);
 
@@ -49,9 +49,21 @@ CString CPhaseTable::getPhase(int state)
 	if (state >= 1 && state <= 17) {
 		nPhase100 = (state - 1) * 1125;
 	}
-	else {
+	else if (state >= 18 && state <= 32) {
 		nPhase100 = -18000 + (state - 17) * 1125;
 	}
+	else {
+		nPhase100 = -1;
+	}
+	return nPhase100;
+}
+
+CString CPhaseTable::getPhase(int state)
+{
+	ASSERT(state >= 1 && state <= 32);
+
+	int nPhase100 = getPhase100Number(state);
+	if (nPhase100 == -1) return CString(_T("undefined"));
 
 	CString str;
 	str.Format(_T("%d"),nPhase100);

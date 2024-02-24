@@ -5,5 +5,6 @@
 class CPhaseTable {
 public:
 	static int getState(unsigned char I, unsigned char Q);
+	static int getPhase100Number(int state);
 	static CString getPhase(int state);
 };
