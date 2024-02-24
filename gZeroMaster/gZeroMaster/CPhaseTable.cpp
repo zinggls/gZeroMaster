@@ -58,7 +58,7 @@ int CPhaseTable::getPhase100Number(int state)
 
 CString CPhaseTable::getPhase(int state)
 {
-	ASSERT(state >= 1 && state <= 32);
+	if (state < 1 || state > 32) return CString(_T("undefined"));
 
 	int nPhase100 = getPhase100Number(state);
 	if (nPhase100 == -1) return CString(_T("undefined"));
