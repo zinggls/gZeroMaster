@@ -379,6 +379,7 @@ void CSemanticZing400T::UpdateRegOut27(CString strRegOut27, CRegisterZing400T& r
 	reg.m_block[3].m_nQ = high | low;
 	reg.m_block[3].m_nI = (hexa & 0x3e) >> 1;
 	reg.m_block[2].m_nBlock = hexa & 0x1;
+	reg.m_block[3].m_nPhase = CPhaseTable::getState((reg.m_block[3].m_nI) & 0x1f, (reg.m_block[3].m_nQ) && 0x1f);
 }
 
 void CSemanticZing400T::UpdateRegOut28(CString strRegOut28, CRegisterZing400T& reg)
@@ -401,6 +402,7 @@ void CSemanticZing400T::UpdateRegOut29(CString strRegOut29, CRegisterZing400T& r
 	reg.m_block[2].m_nI = high | low;
 	reg.m_block[1].m_nQ = hexa & 0x1f;
 	reg.m_block[1].m_nBlock = (hexa & 0x20) >> 5;
+	reg.m_block[2].m_nPhase = CPhaseTable::getState((reg.m_block[2].m_nI) & 0x1f, (reg.m_block[2].m_nQ) && 0x1f);
 }
 
 void CSemanticZing400T::UpdateRegOut2A(CString strRegOut2A, CRegisterZing400T& reg)
@@ -412,6 +414,7 @@ void CSemanticZing400T::UpdateRegOut2A(CString strRegOut2A, CRegisterZing400T& r
 	int high = (hexa & 0x3) << 3;
 	int low = (reg.m_block[0].m_nQ) & 0x7;
 	reg.m_block[0].m_nQ = high | low;
+	reg.m_block[1].m_nPhase = CPhaseTable::getState((reg.m_block[1].m_nI) & 0x1f, (reg.m_block[1].m_nQ) && 0x1f);
 }
 
 void CSemanticZing400T::UpdateRegOut2B(CString strRegOut2B, CRegisterZing400T& reg)
@@ -422,6 +425,7 @@ void CSemanticZing400T::UpdateRegOut2B(CString strRegOut2B, CRegisterZing400T& r
 	int high = (reg.m_block[0].m_nQ) & 0x18;
 	int low = (hexa & 0xe0) >> 5;
 	reg.m_block[0].m_nQ = high | low;
+	reg.m_block[0].m_nPhase = CPhaseTable::getState((reg.m_block[0].m_nI) & 0x1f, (reg.m_block[0].m_nQ) && 0x1f);
 }
 
 void CSemanticZing400T::UpdateBiasBlockEnable(const CRegisterZing400T & reg)
