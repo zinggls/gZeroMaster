@@ -78,3 +78,8 @@ unsigned int CPhaseTable::byteBitReverse(unsigned int num)
 	}
 	return reverse_num;
 }
+
+unsigned int CPhaseTable::reversePhaseBit(unsigned int num)
+{
+	return byteBitReverse(num) >> 3;
+}

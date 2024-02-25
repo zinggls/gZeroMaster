@@ -215,6 +215,12 @@ BOOL CSemanticZing400T::OnInitDialog()
 	ASSERT(CPhaseTable::byteBitReverse(0x9A) == 0x59);		//0x9A(1001 1010) -> 0x59(0101 1001)
 	ASSERT(CPhaseTable::byteBitReverse(0x6B) == 0xD6);		//0x6B(0110 1011) -> 0xD6(0101 1001)
 
+	ASSERT(CPhaseTable::reversePhaseBit(0x16) == 0xD);		//0x16(0001 0110) -> 0xD(0000 1101)
+	ASSERT(CPhaseTable::reversePhaseBit(0x1F) == 0x1F);		//0x1F(0001 1111) -> 0x1F(0001 1111)
+	ASSERT(CPhaseTable::reversePhaseBit(0x15) == 0x15);		//0x15(0001 0101) -> 0x15(0001 0101)
+	ASSERT(CPhaseTable::reversePhaseBit(0xB) == 0x1A);		//0xB(0000 1011) -> 0x1A(0001 1010)
+	ASSERT(CPhaseTable::reversePhaseBit(0x13) == 0x19);		//0x13(0001 0011) -> 0x19(0001 1001)
+
 	return TRUE;  // return TRUE unless you set the focus to a control
 				  // 예외: OCX 속성 페이지는 FALSE를 반환해야 합니다.
 }

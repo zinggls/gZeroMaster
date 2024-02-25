@@ -8,4 +8,5 @@ public:
 	static int getPhase100Number(int state);
 	static CString getPhase(int state);
 	static unsigned int byteBitReverse(unsigned int num);
+	static unsigned int reversePhaseBit(unsigned int num);
 };
