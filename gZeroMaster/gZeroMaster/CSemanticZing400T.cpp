@@ -210,6 +210,11 @@ BOOL CSemanticZing400T::OnInitDialog()
 	ASSERT(CPhaseTable::getPhase(-1) == CString(_T("undefined")));	//범위 밖의 값 입력시
 	ASSERT(CPhaseTable::getPhase(33) == CString(_T("undefined")));	//범위 밖의 값 입력시
 
+	ASSERT(CPhaseTable::byteBitReverse(0x1F) == 0xF8);		//0x1F(0001 1111) -> 0xF8(1111 1000)
+	ASSERT(CPhaseTable::byteBitReverse(0x1A) == 0x58);		//0x1A(0001 1010) -> 0x58(0101 1000)
+	ASSERT(CPhaseTable::byteBitReverse(0x9A) == 0x59);		//0x9A(1001 1010) -> 0x59(0101 1001)
+	ASSERT(CPhaseTable::byteBitReverse(0x6B) == 0xD6);		//0x6B(0110 1011) -> 0xD6(0101 1001)
+
 	return TRUE;  // return TRUE unless you set the focus to a control
 				  // 예외: OCX 속성 페이지는 FALSE를 반환해야 합니다.
 }

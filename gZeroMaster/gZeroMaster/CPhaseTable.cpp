@@ -67,3 +67,14 @@ CString CPhaseTable::getPhase(int state)
 	str.Format(_T("%.2f"),(float)nPhase100/100);
 	return str;
 }
+
+unsigned int CPhaseTable::byteBitReverse(unsigned int num)
+{
+	const unsigned int NO_OF_BITS = 8;
+	unsigned int reverse_num = 0;
+	for (unsigned int i = 0; i < NO_OF_BITS; i++) {
+		if ((num & (1 << i)))
+			reverse_num |= 1 << ((NO_OF_BITS - 1) - i);
+	}
+	return reverse_num;
+}
