@@ -78,6 +78,9 @@ public:
 	CString m_strSliderValue;
 	CString m_strSliderValueHex;
 	CString m_strSliderValueBin;
+	CString m_strSliderValuePhase;
+	CString m_strSliderValueI;
+	CString m_strSliderValueQ;
 	CComboBox m_controlCombo;
 	std::map<UINT, CStaticElem> m_staticMap;
 
