@@ -140,6 +140,7 @@ public:
 	COLORREF SetColor(CDC* pDC, UINT given);
 	static CString DecToBin(int dec);
 	int SliderValueUpdate();
+	void ControlSliderCommon(int min, int max, CString strCurVal, int ticFreq, int lineSize, int pageSize);
 	void SetControlSlider(int min, int max, CString strCurVal, int ticFreq, int lineSize, int pageSize);
 	void SetControlSliderForPhase(int min, int max, CString strCurVal, int ticFreq, int lineSize, int pageSize);
 	void SetSliderGroup(UINT ss, int min, int max, CString strCurVal, int ticFreq, int lineSize, int pageSize, UINT idcStatic, void(CSemanticBase::* pControl)(int,int,CString,int,int,int)=NULL);

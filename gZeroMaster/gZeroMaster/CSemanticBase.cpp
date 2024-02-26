@@ -372,21 +372,9 @@ int CSemanticBase::SliderValueUpdate()
 	return curPos;
 }
 
-void CSemanticBase::SetControlSlider(int min, int max, CString strCurVal, int ticFreq, int lineSize, int pageSize)
+void CSemanticBase::ControlSliderCommon(int min, int max, CString strCurVal, int ticFreq, int lineSize, int pageSize)
 {
 	int curVal = _tcstol(strCurVal.GetBuffer(), NULL, 16);
-
-	m_strSliderMin.Format(_T("Min:%d"), min);
-	if (min != 0) {
-		m_strSliderMin += _T("(");
-		m_strSliderMin += DecToBin(min).TrimLeft(_T('0')).TrimLeft();
-		m_strSliderMin += _T(")");
-	}
-
-	m_strSliderMax.Format(_T("Max:%d"), max);
-	m_strSliderMax += _T("(");
-	(max > 0xff) ? m_strSliderMax += DecToBin(max).Right(15) : m_strSliderMax += DecToBin(max).Right(10);
-	m_strSliderMax += _T(")");
 
 	//슬라이더 컨트롤이 최대값이 아래로 표시되기때문에 최대값을 -1을 곱하여 최소갑인것 처럼 표시
 	m_controlSlider.SetRange(-1 * max, -1 * min);
@@ -400,23 +388,29 @@ void CSemanticBase::SetControlSlider(int min, int max, CString strCurVal, int ti
 	SliderValueUpdate();
 }
 
+void CSemanticBase::SetControlSlider(int min, int max, CString strCurVal, int ticFreq, int lineSize, int pageSize)
+{
+	m_strSliderMin.Format(_T("Min:%d"), min);
+	if (min != 0) {
+		m_strSliderMin += _T("(");
+		m_strSliderMin += DecToBin(min).TrimLeft(_T('0')).TrimLeft();
+		m_strSliderMin += _T(")");
+	}
+
+	m_strSliderMax.Format(_T("Max:%d"), max);
+	m_strSliderMax += _T("(");
+	(max > 0xff) ? m_strSliderMax += DecToBin(max).Right(15) : m_strSliderMax += DecToBin(max).Right(10);
+	m_strSliderMax += _T(")");
+
+	ControlSliderCommon(min, max, strCurVal, ticFreq, lineSize, pageSize);
+}
+
 void CSemanticBase::SetControlSliderForPhase(int min, int max, CString strCurVal, int ticFreq, int lineSize, int pageSize)
 {
-	int curVal = _tcstol(strCurVal.GetBuffer(), NULL, 16);
-
 	m_strSliderMin.Format(_T("Min:%d I:11111 Q:10000"), min);
 	m_strSliderMax.Format(_T("Max:%d I:11101 Q:00110"), max);
 
-	//슬라이더 컨트롤이 최대값이 아래로 표시되기때문에 최대값을 -1을 곱하여 최소갑인것 처럼 표시
-	m_controlSlider.SetRange(-1 * max, -1 * min);
-	m_controlSlider.SetRangeMin(-1 * max);
-	m_controlSlider.SetRangeMax(-1 * min);
-	m_controlSlider.SetPos(-1 * curVal);
-	m_controlSlider.SetTicFreq(ticFreq);
-	m_controlSlider.SetLineSize(lineSize);
-	m_controlSlider.SetPageSize(pageSize);
-
-	SliderValueUpdate();
+	ControlSliderCommon(min, max, strCurVal, ticFreq, lineSize, pageSize);
 }
 
 void CSemanticBase::SetSliderGroup(UINT ss, int min, int max, CString strCurVal, int ticFreq, int lineSize, int pageSize, UINT idcStatic, void(CSemanticBase::* pControl)(int, int, CString, int, int, int))
