@@ -349,6 +349,20 @@ void CSemanticZing400T::ResetValues()
 	CSemanticBase::ResetValues();
 }
 
+void CSemanticZing400T::SetSliderGroup(UINT ss, int min, int max, CString strCurVal, int ticFreq, int lineSize, int pageSize, UINT idcStatic, void(CSemanticBase::* pControl)(int, int, CString, int, int, int))
+{
+	CSemanticBase::SetSliderGroup(ss, min, max, strCurVal, ticFreq, lineSize, pageSize, idcStatic, pControl);
+}
+
+void CSemanticZing400T::ShowSlider(int nCmdShow)
+{
+	CSemanticBase::ShowSlider(nCmdShow);
+
+	GetDlgItem(IDC_SLIDER_VALUE_PHASE_STATIC)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_SLIDER_VALUE_I_STATIC)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_SLIDER_VALUE_Q_STATIC)->ShowWindow(nCmdShow);
+}
+
 void CSemanticZing400T::UpdateTxReg1(CString strTxRegTop, CString strTxRegMid, CString strTxRegBot, CRegister& reg)
 {
 	int mid = _tcstol(strTxRegMid.GetBuffer(), NULL, 16) & 0xff;

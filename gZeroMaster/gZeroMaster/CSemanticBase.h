@@ -133,7 +133,7 @@ public:
 	static void UpdateBiasReg8(CString strBiasReg8, CRegister& reg);
 	static void UpdateBiasReg9(CString strBiasReg9, CRegister& reg);
 	int SliderPos();
-	void ShowSlider(int nCmdShow);
+	virtual void ShowSlider(int nCmdShow);
 	virtual void ControlValueEnable(BOOL b);
 	afx_msg void OnBnClickedSemanticEditCheck();
 	void OnBnClickedAutoWriteCheck();
@@ -143,7 +143,7 @@ public:
 	void ControlSliderCommon(int min, int max, CString strCurVal, int ticFreq, int lineSize, int pageSize);
 	void SetControlSlider(int min, int max, CString strCurVal, int ticFreq, int lineSize, int pageSize);
 	void SetControlSliderForPhase(int min, int max, CString strCurVal, int ticFreq, int lineSize, int pageSize);
-	void SetSliderGroup(UINT ss, int min, int max, CString strCurVal, int ticFreq, int lineSize, int pageSize, UINT idcStatic, void(CSemanticBase::* pControl)(int,int,CString,int,int,int)=NULL);
+	virtual void SetSliderGroup(UINT ss, int min, int max, CString strCurVal, int ticFreq, int lineSize, int pageSize, UINT idcStatic, void(CSemanticBase::* pControl)(int,int,CString,int,int,int)=NULL);
 	void SetComboGroup(UINT ss, CString strVal0, CString strVal1, int nVal, UINT idcStatic);
 	virtual void ControlLabelEnable(BOOL b);
 	int ComboSel();
