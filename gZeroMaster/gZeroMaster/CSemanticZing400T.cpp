@@ -89,6 +89,9 @@ void CSemanticZing400T::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_SLIDER_VALUE_STATIC, m_strSliderValue);
 	DDX_Text(pDX, IDC_SLIDER_VALUE_HEX_STATIC, m_strSliderValueHex);
 	DDX_Text(pDX, IDC_SLIDER_VALUE_BIN_STATIC, m_strSliderValueBin);
+	DDX_Text(pDX, IDC_SLIDER_VALUE_PHASE_STATIC, m_strSliderValuePhase);
+	DDX_Text(pDX, IDC_SLIDER_VALUE_I_STATIC, m_strSliderValueI);
+	DDX_Text(pDX, IDC_SLIDER_VALUE_Q_STATIC, m_strSliderValueQ);
 	DDX_Control(pDX, IDC_CONTROL_COMBO, m_controlCombo);
 	DDX_Check(pDX, IDC_AUTO_WRITE_CHECK, m_bAutoWrite);
 }
