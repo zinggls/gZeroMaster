@@ -400,6 +400,10 @@ void CSemanticBase::SetControlSlider(int min, int max, CString strCurVal, int ti
 	SliderValueUpdate();
 }
 
+void CSemanticBase::SetControlSliderForPhase(int min, int max, CString strCurVal, int ticFreq, int lineSize, int pageSize)
+{
+}
+
 void CSemanticBase::SetSliderGroup(UINT ss, int min, int max, CString strCurVal, int ticFreq, int lineSize, int pageSize, UINT idcStatic, void(CSemanticBase::* pControl)(int, int, CString, int, int, int))
 {
 	m_selected = ss;

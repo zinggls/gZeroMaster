@@ -141,6 +141,7 @@ public:
 	static CString DecToBin(int dec);
 	int SliderValueUpdate();
 	void SetControlSlider(int min, int max, CString strCurVal, int ticFreq, int lineSize, int pageSize);
+	void SetControlSliderForPhase(int min, int max, CString strCurVal, int ticFreq, int lineSize, int pageSize);
 	void SetSliderGroup(UINT ss, int min, int max, CString strCurVal, int ticFreq, int lineSize, int pageSize, UINT idcStatic, void(CSemanticBase::* pControl)(int,int,CString,int,int,int)=NULL);
 	void SetComboGroup(UINT ss, CString strVal0, CString strVal1, int nVal, UINT idcStatic);
 	virtual void ControlLabelEnable(BOOL b);
