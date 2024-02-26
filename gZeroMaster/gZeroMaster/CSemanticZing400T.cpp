@@ -404,10 +404,12 @@ void CSemanticZing400T::UpdateRegOut28(CString strRegOut28, CRegisterZing400T& r
 {
 	int hexa = _tcstol(strRegOut28.GetBuffer(), NULL, 16);
 
-	reg.m_block[2].m_nQ = (hexa & 0xf8) >> 3;
+	unsigned int phaseBits = (hexa & 0xf8) >> 3;
+	reg.m_block[2].m_nQ = CPhaseTable::reversePhaseBit(phaseBits);
 
-	int high = (hexa & 0x7) << 2;
-	int low = reg.m_block[2].m_nI & 0x03;
+	phaseBits = hexa & 0x07;
+	int high = 0x00;	//I_VGA3<2>,I_VGA4<2>는 UpdateRegOut29에서 채워지는 공간으로 비워 놓는다
+	int low = CPhaseTable::byteBitReverse(phaseBits) >> 5;
 	reg.m_block[2].m_nI = high | low;
 }
 
@@ -415,10 +417,11 @@ void CSemanticZing400T::UpdateRegOut29(CString strRegOut29, CRegisterZing400T& r
 {
 	int hexa = _tcstol(strRegOut29.GetBuffer(), NULL, 16);
 
-	int high = (reg.m_block[2].m_nI) & 0x1c;
-	int low = (hexa & 0xc0) >> 6;
-	reg.m_block[2].m_nI = high | low;
-	reg.m_block[1].m_nQ = hexa & 0x1f;
+	unsigned int phaseBits = (hexa & 0xc0) >> 6;
+	int high = CPhaseTable::byteBitReverse(phaseBits) >> 3;
+	reg.m_block[2].m_nI = high | reg.m_block[2].m_nI;
+
+	reg.m_block[1].m_nQ = CPhaseTable::reversePhaseBit(hexa & 0x1f);
 	reg.m_block[1].m_nBlock = (hexa & 0x20) >> 5;
 	reg.m_block[2].m_nPhase = CPhaseTable::getState((reg.m_block[2].m_nI) & 0x1f, (reg.m_block[2].m_nQ) & 0x1f);
 }
