@@ -366,6 +366,29 @@ void CSemanticZing400T::ShowSlider(int nCmdShow)
 	GetDlgItem(IDC_SLIDER_VALUE_Q_STATIC)->ShowWindow(nCmdShow);
 }
 
+int CSemanticZing400T::SliderValueUpdate()
+{
+	m_strSliderValuePhase.Format(_T("Phase: -"));
+	m_strSliderValueI.Format(_T("I: -"));
+	m_strSliderValueQ = _T("Q: -");
+	return CSemanticBase::SliderValueUpdate();
+}
+
+void CSemanticZing400T::ControlSliderCommon(int min, int max, CString strCurVal, int ticFreq, int lineSize, int pageSize)
+{
+	CSemanticBase::ControlSliderCommon(min, max, strCurVal, ticFreq, lineSize, pageSize);
+}
+
+void CSemanticZing400T::SetControlSlider(int min, int max, CString strCurVal, int ticFreq, int lineSize, int pageSize)
+{
+	CSemanticBase::SetControlSlider(min, max, strCurVal, ticFreq, lineSize, pageSize);
+}
+
+void CSemanticZing400T::SetControlSliderForPhase(int min, int max, CString strCurVal, int ticFreq, int lineSize, int pageSize)
+{
+	CSemanticBase::SetControlSliderForPhase(min, max, strCurVal, ticFreq, lineSize, pageSize);
+}
+
 void CSemanticZing400T::UpdateTxReg1(CString strTxRegTop, CString strTxRegMid, CString strTxRegBot, CRegister& reg)
 {
 	int mid = _tcstol(strTxRegMid.GetBuffer(), NULL, 16) & 0xff;
