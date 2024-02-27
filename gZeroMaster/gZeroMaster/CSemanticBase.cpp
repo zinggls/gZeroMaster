@@ -393,14 +393,14 @@ void CSemanticBase::ControlSliderCommon(int min, int max, CString strCurVal, int
 
 void CSemanticBase::SetControlSlider(int min, int max, CString strCurVal, int ticFreq, int lineSize, int pageSize)
 {
-	m_strSliderMin.Format(_T("Min:%d"), min);
+	m_strSliderMin.Format(_T("Min:%d "), min);
 	if (min != 0) {
 		m_strSliderMin += _T("(");
 		m_strSliderMin += DecToBin(min).TrimLeft(_T('0')).TrimLeft();
 		m_strSliderMin += _T(")");
 	}
 
-	m_strSliderMax.Format(_T("Max:%d"), max);
+	m_strSliderMax.Format(_T("Max:%d "), max);
 	m_strSliderMax += _T("(");
 	(max > 0xff) ? m_strSliderMax += DecToBin(max).Right(15) : m_strSliderMax += DecToBin(max).Right(10);
 	m_strSliderMax += _T(")");
@@ -410,8 +410,8 @@ void CSemanticBase::SetControlSlider(int min, int max, CString strCurVal, int ti
 
 void CSemanticBase::SetControlSliderForPhase(int min, int max, CString strCurVal, int ticFreq, int lineSize, int pageSize)
 {
-	m_strSliderMin.Format(_T("Min:%d I:11111 Q:10000"), min);
-	m_strSliderMax.Format(_T("Max:%d I:11101 Q:00110"), max);
+	m_strSliderMin.Format(_T("Min:%d (I:11111 Q:10000)"), min);
+	m_strSliderMax.Format(_T("Max:%d (I:11101 Q:00110)"), max);
 
 	ControlSliderCommon(min, max, strCurVal, ticFreq, lineSize, pageSize);
 }
