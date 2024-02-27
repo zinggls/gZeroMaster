@@ -424,6 +424,10 @@ BOOL CSemanticZing400T::UpdateSelected(UINT selected, BOOL bCommonControl)
 		bCommonControl ? updateValue = ComboSel() : updateValue = Ch1Block();
 		bRtn = UpdateSemanticValue(0x29, &OnNewCh1Block, updateValue, reinterpret_cast<void (CSemanticBase::*)(const CRegister&)>(&CSemanticZing400T::UpdateCh1Block));
 		break;
+	case CSelect::Ch0Block:
+		bCommonControl ? updateValue = ComboSel() : updateValue = Ch0Block();
+		bRtn = UpdateSemanticValue(0x2A, &OnNewCh0Block, updateValue, reinterpret_cast<void (CSemanticBase::*)(const CRegister&)>(&CSemanticZing400T::UpdateCh0Block));
+		break;
 	default:
 		break;
 	}
@@ -748,4 +752,20 @@ void CSemanticZing400T::UpdateCh1Block(const CRegister& reg)
 {
 	const CRegisterZing400T& derived = dynamic_cast<const CRegisterZing400T&>(reg);
 	(derived.m_block[1].m_nBlock) ? m_vspsBlock[1].m_strVspsBlockEnable.Format(_T("enable")) : m_vspsBlock[1].m_strVspsBlockEnable.Format(_T("disable"));
+}
+
+int CSemanticZing400T::Ch0Block()
+{
+	return disableOrEnable(m_vspsBlock[0].m_strVspsBlockEnable);
+}
+
+int CSemanticZing400T::OnNewCh0Block(int val, int newVal)
+{
+	return (val & 0xfb) | ((newVal & 0x1) << 2);
+}
+
+void CSemanticZing400T::UpdateCh0Block(const CRegister& reg)
+{
+	const CRegisterZing400T& derived = dynamic_cast<const CRegisterZing400T&>(reg);
+	(derived.m_block[0].m_nBlock) ? m_vspsBlock[0].m_strVspsBlockEnable.Format(_T("enable")) : m_vspsBlock[0].m_strVspsBlockEnable.Format(_T("disable"));
 }

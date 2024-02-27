@@ -104,4 +104,7 @@ public:
 	int Ch1Block();
 	static int OnNewCh1Block(int val, int newVal);
 	void UpdateCh1Block(const CRegister& reg);
+	int Ch0Block();
+	static int OnNewCh0Block(int val, int newVal);
+	void UpdateCh0Block(const CRegister& reg);
 };
