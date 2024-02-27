@@ -414,7 +414,7 @@ BOOL CSemanticZing400T::UpdateSelected(UINT selected, BOOL bCommonControl)
 		//ControlCombo
 	case CSelect::Ch3Block:
 		bCommonControl ? updateValue = ComboSel() : updateValue = Ch3Block();
-		bRtn = UpdateSemanticValue(38, &OnNewCh3Block, updateValue, reinterpret_cast<void (CSemanticBase::*)(const CRegister&)>(&CSemanticZing400T::UpdateCh3Block));
+		bRtn = UpdateSemanticValue(0x26, &OnNewCh3Block, updateValue, reinterpret_cast<void (CSemanticBase::*)(const CRegister&)>(&CSemanticZing400T::UpdateCh3Block));
 		break;
 	default:
 		break;
