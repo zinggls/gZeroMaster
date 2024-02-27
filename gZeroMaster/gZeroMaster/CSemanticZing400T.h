@@ -95,4 +95,7 @@ public:
 	afx_msg void OnStnClickedTxCh1PhaseValueStatic();
 	afx_msg void OnStnClickedTxCh0VspsBlockEnableValueStatic();
 	afx_msg void OnStnClickedTxCh0PhaseValueStatic();
+	int Ch3Block();
+	static int OnNewCh3Block(int val, int newVal);
+	void UpdateCh3Block(const CRegister& reg);
 };
