@@ -369,7 +369,9 @@ void CSemanticZing400T::ShowSlider(int nCmdShow)
 int CSemanticZing400T::SliderValueUpdate()
 {
 	if (m_selected == CSelect::Ch3Phase || m_selected == CSelect::Ch2Phase || m_selected == CSelect::Ch1Phase || m_selected == CSelect::Ch0Phase) {
-		m_strSliderValuePhase.Format(_T("Phase: -"));
+		m_strSliderValuePhase.Format(_T("Phase: "));
+		int curPos = SliderPos();
+		m_strSliderValuePhase += CPhaseTable::getPhase(curPos);
 		m_strSliderValueI.Format(_T("I: -"));
 		m_strSliderValueQ = _T("Q: -");
 	}
