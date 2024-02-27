@@ -429,6 +429,12 @@ BOOL CSemanticZing400T::UpdateSelected(UINT selected, BOOL bCommonControl)
 		bCommonControl ? updateValue = ComboSel() : updateValue = Ch0Block();
 		bRtn = UpdateSemanticValue(0x2A, &OnNewCh0Block, updateValue, reinterpret_cast<void (CSemanticBase::*)(const CRegister&)>(&CSemanticZing400T::UpdateCh0Block));
 		break;
+
+		//ControlSlide
+	case CSelect::VspsPa:
+		bCommonControl ? updateValue = SliderPos() : updateValue = VspsPa();
+		bRtn = UpdateSemanticValue(0x25, &OnNewVspsPa, updateValue, reinterpret_cast<void (CSemanticBase::*)(const CRegister&)>(&CSemanticZing400T::UpdateVspsPa));
+		break;
 	default:
 		break;
 	}
@@ -769,4 +775,22 @@ void CSemanticZing400T::UpdateCh0Block(const CRegister& reg)
 {
 	const CRegisterZing400T& derived = dynamic_cast<const CRegisterZing400T&>(reg);
 	(derived.m_block[0].m_nBlock) ? m_vspsBlock[0].m_strVspsBlockEnable.Format(_T("enable")) : m_vspsBlock[0].m_strVspsBlockEnable.Format(_T("disable"));
+}
+
+int CSemanticZing400T::VspsPa()
+{
+	int val = _tcstol(m_strVspsPaBiasVoltage.GetBuffer(), NULL, 16);
+	ASSERT(val >= 0 && val <= 0xf);
+	return val;
+}
+
+int CSemanticZing400T::OnNewVspsPa(int val, int newVal)
+{
+	return (val & 0x0f) | ((newVal & 0x0f) << 4);
+}
+
+void CSemanticZing400T::UpdateVspsPa(const CRegister& reg)
+{
+	const CRegisterZing400T& derived = dynamic_cast<const CRegisterZing400T&>(reg);
+	m_strVspsPaBiasVoltage.Format(_T("0x%02x"), derived.m_nVspsPa);
 }

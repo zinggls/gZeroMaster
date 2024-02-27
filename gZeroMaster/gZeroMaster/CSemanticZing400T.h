@@ -107,4 +107,7 @@ public:
 	int Ch0Block();
 	static int OnNewCh0Block(int val, int newVal);
 	void UpdateCh0Block(const CRegister& reg);
+	int VspsPa();
+	static int OnNewVspsPa(int val, int newVal);
+	void UpdateVspsPa(const CRegister& reg);
 };
