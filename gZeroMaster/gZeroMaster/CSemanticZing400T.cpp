@@ -586,7 +586,8 @@ void CSemanticZing400T::UpdateCh3Phase(const CRegisterZing400T& reg)
 		m_vspsBlock[3].m_strPhase = CString(_T("undefined"));
 	}
 	else {
-		m_vspsBlock[3].m_strPhase = CPhaseTable::getPhase(reg.m_block[3].m_nPhase);
+		m_vspsBlock[3].m_strPhase.Format(_T("%d / "), reg.m_block[3].m_nPhase);
+		m_vspsBlock[3].m_strPhase += CPhaseTable::getPhase(reg.m_block[3].m_nPhase);
 	}
 }
 
@@ -601,7 +602,8 @@ void CSemanticZing400T::UpdateCh2Phase(const CRegisterZing400T& reg)
 		m_vspsBlock[2].m_strPhase = CString(_T("undefined"));
 	}
 	else {
-		m_vspsBlock[2].m_strPhase = CPhaseTable::getPhase(reg.m_block[2].m_nPhase);
+		m_vspsBlock[2].m_strPhase.Format(_T("%d / "), reg.m_block[2].m_nPhase);
+		m_vspsBlock[2].m_strPhase += CPhaseTable::getPhase(reg.m_block[2].m_nPhase);
 	}
 }
 
@@ -616,7 +618,8 @@ void CSemanticZing400T::UpdateCh1Phase(const CRegisterZing400T& reg)
 		m_vspsBlock[1].m_strPhase = CString(_T("undefined"));
 	}
 	else {
-		m_vspsBlock[1].m_strPhase = CPhaseTable::getPhase(reg.m_block[1].m_nPhase);
+		m_vspsBlock[1].m_strPhase.Format(_T("%d / "), reg.m_block[1].m_nPhase);
+		m_vspsBlock[1].m_strPhase += CPhaseTable::getPhase(reg.m_block[1].m_nPhase);
 	}
 }
 
@@ -631,7 +634,8 @@ void CSemanticZing400T::UpdateCh0Phase(const CRegisterZing400T& reg)
 		m_vspsBlock[0].m_strPhase = CString(_T("undefined"));
 	}
 	else {
-		m_vspsBlock[0].m_strPhase = CPhaseTable::getPhase(reg.m_block[0].m_nPhase);
+		m_vspsBlock[0].m_strPhase.Format(_T("%d / "), reg.m_block[0].m_nPhase);
+		m_vspsBlock[0].m_strPhase += CPhaseTable::getPhase(reg.m_block[0].m_nPhase);
 	}
 }
 
