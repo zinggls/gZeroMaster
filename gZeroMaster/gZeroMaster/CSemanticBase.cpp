@@ -1724,7 +1724,7 @@ BOOL CSemanticBase::UpdateSemanticValue(int addr, int (*fpNewRegVal)(int, int), 
 
 BOOL CSemanticBase::UpdateSelected(UINT selected, BOOL bCommonControl)
 {
-	BOOL bRtn = TRUE;
+	BOOL bRtn = FALSE;
 	int updateValue;
 	switch (selected) {
 		//ControlCombo
