@@ -637,6 +637,7 @@ void CSemanticZing400T::OnStnClickedTxCh2VspsBlockEnableValueStatic()
 void CSemanticZing400T::OnStnClickedTxCh2PhaseValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	SetSliderGroup(CSelect::Ch2Phase, 1, 32, m_vspsBlock[2].m_strPhase, 1, 1, 10, IDC_TX_CH2_PHASE_VALUE_STATIC, &CSemanticBase::SetControlSliderForPhase);
 }
 
 
@@ -651,6 +652,7 @@ void CSemanticZing400T::OnStnClickedTxCh1VspsBlockEnableValueStatic()
 void CSemanticZing400T::OnStnClickedTxCh1PhaseValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	SetSliderGroup(CSelect::Ch1Phase, 1, 32, m_vspsBlock[1].m_strPhase, 1, 1, 10, IDC_TX_CH1_PHASE_VALUE_STATIC, &CSemanticBase::SetControlSliderForPhase);
 }
 
 
@@ -665,4 +667,5 @@ void CSemanticZing400T::OnStnClickedTxCh0VspsBlockEnableValueStatic()
 void CSemanticZing400T::OnStnClickedTxCh0PhaseValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	SetSliderGroup(CSelect::Ch0Phase, 1, 32, m_vspsBlock[0].m_strPhase, 1, 1, 10, IDC_TX_CH0_PHASE_VALUE_STATIC, &CSemanticBase::SetControlSliderForPhase);
 }
