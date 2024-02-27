@@ -405,13 +405,14 @@ void CSemanticZing400T::OnBnClickedWriteButton()
 
 BOOL CSemanticZing400T::UpdateSelected(UINT selected, BOOL bCommonControl)
 {
-	if (selected == CSelect::BiasBlock)
-		return CSemanticBase::UpdateSelected(selected, bCommonControl); //Bias Block Enable은 상위 클래스에서 구현되어 있다
-
 	BOOL bRtn = FALSE;
 	int updateValue;
 	switch (selected) {
 		//ControlCombo
+	case CSelect::BiasBlock:
+		bCommonControl ? updateValue = ComboSel() : updateValue = BiasBlock();
+		bRtn = UpdateSemanticValue(0x24, &OnNewBiasBlock, updateValue, &CSemanticBase::UpdateBiasBlockEnable);
+		break;
 	case CSelect::Ch3Block:
 		bCommonControl ? updateValue = ComboSel() : updateValue = Ch3Block();
 		bRtn = UpdateSemanticValue(0x26, &OnNewCh3Block, updateValue, reinterpret_cast<void (CSemanticBase::*)(const CRegister&)>(&CSemanticZing400T::UpdateCh3Block));
