@@ -60,6 +60,8 @@ public:
 	virtual void ControlSliderCommon(int min, int max, CString strCurVal, int ticFreq, int lineSize, int pageSize);
 	virtual void SetControlSlider(int min, int max, CString strCurVal, int ticFreq, int lineSize, int pageSize);
 	virtual void SetControlSliderForPhase(int min, int max, CString strCurVal, int ticFreq, int lineSize, int pageSize);
+	virtual afx_msg void OnBnClickedWriteButton();
+	virtual BOOL UpdateSelected(UINT selected, BOOL bCommonControl);
 	static void UpdateTxReg1(CString strTxRegTop, CString strTxRegMid, CString strTxRegBot, CRegister& reg);
 	static void UpdateRegOut24(CString strRegOut24, CRegister& reg);
 	static void UpdateRegOut25(CString strRegOut25, CRegisterZing400T& reg);

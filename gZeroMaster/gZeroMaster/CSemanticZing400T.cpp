@@ -398,6 +398,16 @@ void CSemanticZing400T::SetControlSliderForPhase(int min, int max, CString strCu
 	CSemanticBase::SetControlSliderForPhase(min, max, strCurVal, ticFreq, lineSize, pageSize);
 }
 
+void CSemanticZing400T::OnBnClickedWriteButton()
+{
+	CSemanticBase::OnBnClickedWriteButton();
+}
+
+BOOL CSemanticZing400T::UpdateSelected(UINT selected, BOOL bCommonControl)
+{
+	return TRUE;
+}
+
 void CSemanticZing400T::UpdateTxReg1(CString strTxRegTop, CString strTxRegMid, CString strTxRegBot, CRegister& reg)
 {
 	int mid = _tcstol(strTxRegMid.GetBuffer(), NULL, 16) & 0xff;
