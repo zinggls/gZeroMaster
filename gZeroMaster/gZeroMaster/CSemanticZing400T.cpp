@@ -439,6 +439,10 @@ BOOL CSemanticZing400T::UpdateSelected(UINT selected, BOOL bCommonControl)
 		bCommonControl ? updateValue = SliderPos() : updateValue = VspsVga();
 		bRtn = UpdateSemanticValue(0x25, &OnNewVspsVga, updateValue, reinterpret_cast<void (CSemanticBase::*)(const CRegister&)>(&CSemanticZing400T::UpdateVspsVga));
 		break;
+	case CSelect::VspsCs:
+		bCommonControl ? updateValue = SliderPos() : updateValue = VspsCs();
+		bRtn = UpdateSemanticValue(0x26, &OnNewVspsCs, updateValue, reinterpret_cast<void (CSemanticBase::*)(const CRegister&)>(&CSemanticZing400T::UpdateVspsCs));
+		break;
 	default:
 		break;
 	}
@@ -815,4 +819,22 @@ void CSemanticZing400T::UpdateVspsVga(const CRegister& reg)
 {
 	const CRegisterZing400T& derived = dynamic_cast<const CRegisterZing400T&>(reg);
 	m_strVspsVgaBiasVoltage.Format(_T("0x%02x"), derived.m_nVspsVga);
+}
+
+int CSemanticZing400T::VspsCs()
+{
+	int val = _tcstol(m_strVspsCsBiasVoltage.GetBuffer(), NULL, 16);
+	ASSERT(val >= 0 && val <= 0xf);
+	return val;
+}
+
+int CSemanticZing400T::OnNewVspsCs(int val, int newVal)
+{
+	return (val & 0x0f) | ((newVal & 0x0f) << 4);
+}
+
+void CSemanticZing400T::UpdateVspsCs(const CRegister& reg)
+{
+	const CRegisterZing400T& derived = dynamic_cast<const CRegisterZing400T&>(reg);
+	m_strVspsCsBiasVoltage.Format(_T("0x%02x"), derived.m_nVspsCs);
 }

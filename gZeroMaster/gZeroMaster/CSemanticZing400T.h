@@ -113,4 +113,7 @@ public:
 	int VspsVga();
 	static int OnNewVspsVga(int val, int newVal);
 	void UpdateVspsVga(const CRegister& reg);
+	int VspsCs();
+	static int OnNewVspsCs(int val, int newVal);
+	void UpdateVspsCs(const CRegister& reg);
 };
