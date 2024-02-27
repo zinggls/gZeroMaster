@@ -372,8 +372,10 @@ int CSemanticZing400T::SliderValueUpdate()
 		m_strSliderValuePhase.Format(_T("Phase: "));
 		int curPos = SliderPos();
 		m_strSliderValuePhase += CPhaseTable::getPhase(curPos);
-		m_strSliderValueI.Format(_T("I: -"));
-		m_strSliderValueQ = _T("Q: -");
+		m_strSliderValueI.Format(_T("I: "));
+		m_strSliderValueI += PhaseBitsToString(CPhaseTable::getI(curPos));
+		m_strSliderValueQ = _T("Q: ");
+		m_strSliderValueQ += PhaseBitsToString(CPhaseTable::getQ(curPos));
 	}
 	else {
 		m_strSliderValuePhase = m_strSliderValueI = m_strSliderValueQ = CString(_T(""));	//Phase 관련 변수가 선택되지 않는 경우는 아무값도 표시하지 않음

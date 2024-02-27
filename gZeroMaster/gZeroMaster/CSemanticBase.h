@@ -142,6 +142,7 @@ public:
 	void OnBnClickedAutoWriteCheck();
 	COLORREF SetColor(CDC* pDC, UINT given);
 	static CString DecToBin(int dec);
+	static CString PhaseBitsToString(unsigned char val);
 	virtual int SliderValueUpdate();
 	virtual void ControlSliderCommon(int min, int max, CString strCurVal, int ticFreq, int lineSize, int pageSize);
 	virtual void SetControlSlider(int min, int max, CString strCurVal, int ticFreq, int lineSize, int pageSize);

@@ -364,6 +364,19 @@ CString CSemanticBase::DecToBin(int dec)
 	return strBin;
 }
 
+CString CSemanticBase::PhaseBitsToString(unsigned char val)
+{
+	ASSERT((val & 0xe0) == 0);	//Phase Bits는 5비트로만 정의됨 따라서 상위 비트는 모두 0이어야 한다
+
+	CString str;
+	unsigned char mask = 0x10;
+	for (int i = 4; i >= 0; i--) {	//Phase Bits는 5비트
+		((val & mask) == 0) ? str += _T("0") : str += _T("1");
+		mask >>= 1;
+	}
+	return str;
+}
+
 int CSemanticBase::SliderValueUpdate()
 {
 	int curPos = SliderPos();
