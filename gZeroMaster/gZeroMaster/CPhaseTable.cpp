@@ -192,3 +192,112 @@ unsigned char CPhaseTable::getI(int state)
 	}
 	return val;
 }
+
+unsigned char CPhaseTable::getQ(int state)
+{
+	ASSERT(state >= 1 && state <= 32);
+
+	unsigned char val;
+	switch (state) {
+	case 1:
+		val = 0x10;
+		break;
+	case 2:
+		val = 0x19;
+		break;
+	case 3:
+		val = 0x1a;
+		break;
+	case 4:
+		val = 0x1b;
+		break;
+	case 5:
+		val = 0x1a;
+		break;
+	case 6:
+		val = 0x1b;
+		break;
+	case 7:
+		val = 0x1b;
+		break;
+	case 8:
+		val = 0x1b;
+		break;
+	case 9:
+		val = 0x1c;
+		break;
+	case 10:
+		val = 0x1c;
+		break;
+	case 11:
+		val = 0x1c;
+		break;
+	case 12:
+		val = 0x1d;
+		break;
+	case 13:
+		val = 0x1c;
+		break;
+	case 14:
+		val = 0x1c;
+		break;
+	case 15:
+		val = 0x1b;
+		break;
+	case 16:
+		val = 0x1a;
+		break;
+	case 17:
+		val = 0x0f;
+		break;
+	case 18:
+		val = 0x05;
+		break;
+	case 19:
+		val = 0x05;
+		break;
+	case 20:
+		val = 0x04;
+		break;
+	case 21:
+		val = 0x04;
+		break;
+	case 22:
+		val = 0x04;
+		break;
+	case 23:
+		val = 0x03;
+		break;
+	case 24:
+		val = 0x03;
+		break;
+	case 25:
+		val = 0x02;
+		break;
+	case 26:
+		val = 0x02;
+		break;
+	case 27:
+		val = 0x02;
+		break;
+	case 28:
+		val = 0x02;
+		break;
+	case 29:
+		val = 0x03;
+		break;
+	case 30:
+		val = 0x04;
+		break;
+	case 31:
+		val = 0x04;
+		break;
+	case 32:
+		val = 0x06;
+		break;
+	default:
+		ASSERT(FALSE);	//이곳에 도달하면 안됨
+		break;
+	}
+	return val;
+}

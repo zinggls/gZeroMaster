@@ -10,4 +10,5 @@ public:
 	static unsigned int byteBitReverse(unsigned int num);
 	static unsigned int reversePhaseBit(unsigned int num);
 	static unsigned char CPhaseTable::getI(int state);
+	static unsigned char CPhaseTable::getQ(int state);
 };
