@@ -646,27 +646,27 @@ void CSemanticZing400T::UpdateCh0Phase(const CRegisterZing400T& reg)
 void CSemanticZing400T::OnStnClickedTxBiasBlockEnableValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetComboGroup(CSelect::BiasBlock, _T("disable"), _T("enable"), getRegister().m_nBiasBlock, IDC_TX_BIAS_BLOCK_ENABLE_VALUE_STATIC);
+	SetComboGroup(CSelect::BiasBlock, _T("disable"), _T("enable"), getRegister().m_nBiasBlock, IDC_TX_BIAS_BLOCK_ENABLE_STATIC);
 }
 
 void CSemanticZing400T::OnStnClickedTxVspsPaBiasVoltageValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(CSelect::VspsPa, 0, 15, m_strVspsPaBiasVoltage, 1, 1, 10, IDC_TX_VSPS_PA_BIAS_VOLTAGE_VALUE_STATIC);
+	SetSliderGroup(CSelect::VspsPa, 0, 15, m_strVspsPaBiasVoltage, 1, 1, 10, IDC_TX_VSPS_PA_BIAS_VOLTAGE_STATIC);
 }
 
 
 void CSemanticZing400T::OnStnClickedTxVspsVgaBiasVoltageValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(CSelect::VspsVga, 0, 15, m_strVspsVgaBiasVoltage, 1, 1, 10, IDC_TX_VSPS_VGA_BIAS_VOLTAGE_VALUE_STATIC);
+	SetSliderGroup(CSelect::VspsVga, 0, 15, m_strVspsVgaBiasVoltage, 1, 1, 10, IDC_TX_VSPS_VGA_BIAS_VOLTAGE_STATIC);
 }
 
 
 void CSemanticZing400T::OnStnClickedTxVspsCsBiasVoltageValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(CSelect::VspsCs, 0, 15, m_strVspsCsBiasVoltage, 1, 1, 10, IDC_TX_VSPS_CS_BIAS_VOLTAGE_VALUE_STATIC);
+	SetSliderGroup(CSelect::VspsCs, 0, 15, m_strVspsCsBiasVoltage, 1, 1, 10, IDC_TX_VSPS_CS_BIAS_VOLTAGE_STATIC);
 }
 
 
@@ -674,14 +674,14 @@ void CSemanticZing400T::OnStnClickedTxCh3VspsBlockEnableValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	const CRegisterZing400T& derived = dynamic_cast<const CRegisterZing400T&>(getRegister());
-	SetComboGroup(CSelect::Ch3Block, _T("disable"), _T("enable"), derived.m_block[3].m_nBlock, IDC_TX_CH3_VSPS_BLOCK_ENABLE_VALUE_STATIC);
+	SetComboGroup(CSelect::Ch3Block, _T("disable"), _T("enable"), derived.m_block[3].m_nBlock, IDC_TX_CH3_VSPS_BLOCK_ENABLE_STATIC);
 }
 
 
 void CSemanticZing400T::OnStnClickedTxCh3PhaseValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(CSelect::Ch3Phase, 1, 32, m_vspsBlock[3].m_strPhase, 1, 1, 10, IDC_TX_CH3_PHASE_VALUE_STATIC, &CSemanticBase::SetControlSliderForPhase);
+	SetSliderGroup(CSelect::Ch3Phase, 1, 32, m_vspsBlock[3].m_strPhase, 1, 1, 10, IDC_TX_CH3_PHASE_STATIC, &CSemanticBase::SetControlSliderForPhase);
 }
 
 
@@ -689,14 +689,14 @@ void CSemanticZing400T::OnStnClickedTxCh2VspsBlockEnableValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	const CRegisterZing400T& derived = dynamic_cast<const CRegisterZing400T&>(getRegister());
-	SetComboGroup(CSelect::Ch2Block, _T("disable"), _T("enable"), derived.m_block[2].m_nBlock, IDC_TX_CH2_VSPS_BLOCK_ENABLE_VALUE_STATIC);
+	SetComboGroup(CSelect::Ch2Block, _T("disable"), _T("enable"), derived.m_block[2].m_nBlock, IDC_TX_CH2_VSPS_BLOCK_ENABLE_STATIC);
 }
 
 
 void CSemanticZing400T::OnStnClickedTxCh2PhaseValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(CSelect::Ch2Phase, 1, 32, m_vspsBlock[2].m_strPhase, 1, 1, 10, IDC_TX_CH2_PHASE_VALUE_STATIC, &CSemanticBase::SetControlSliderForPhase);
+	SetSliderGroup(CSelect::Ch2Phase, 1, 32, m_vspsBlock[2].m_strPhase, 1, 1, 10, IDC_TX_CH2_PHASE_STATIC, &CSemanticBase::SetControlSliderForPhase);
 }
 
 
@@ -704,14 +704,14 @@ void CSemanticZing400T::OnStnClickedTxCh1VspsBlockEnableValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	const CRegisterZing400T& derived = dynamic_cast<const CRegisterZing400T&>(getRegister());
-	SetComboGroup(CSelect::Ch1Block, _T("disable"), _T("enable"), derived.m_block[1].m_nBlock, IDC_TX_CH1_VSPS_BLOCK_ENABLE_VALUE_STATIC);
+	SetComboGroup(CSelect::Ch1Block, _T("disable"), _T("enable"), derived.m_block[1].m_nBlock, IDC_TX_CH1_VSPS_BLOCK_ENABLE_STATIC);
 }
 
 
 void CSemanticZing400T::OnStnClickedTxCh1PhaseValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(CSelect::Ch1Phase, 1, 32, m_vspsBlock[1].m_strPhase, 1, 1, 10, IDC_TX_CH1_PHASE_VALUE_STATIC, &CSemanticBase::SetControlSliderForPhase);
+	SetSliderGroup(CSelect::Ch1Phase, 1, 32, m_vspsBlock[1].m_strPhase, 1, 1, 10, IDC_TX_CH1_PHASE_STATIC, &CSemanticBase::SetControlSliderForPhase);
 }
 
 
@@ -719,14 +719,14 @@ void CSemanticZing400T::OnStnClickedTxCh0VspsBlockEnableValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	const CRegisterZing400T& derived = dynamic_cast<const CRegisterZing400T&>(getRegister());
-	SetComboGroup(CSelect::Ch0Block, _T("disable"), _T("enable"), derived.m_block[0].m_nBlock, IDC_TX_CH0_VSPS_BLOCK_ENABLE_VALUE_STATIC);
+	SetComboGroup(CSelect::Ch0Block, _T("disable"), _T("enable"), derived.m_block[0].m_nBlock, IDC_TX_CH0_VSPS_BLOCK_ENABLE_STATIC);
 }
 
 
 void CSemanticZing400T::OnStnClickedTxCh0PhaseValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	SetSliderGroup(CSelect::Ch0Phase, 1, 32, m_vspsBlock[0].m_strPhase, 1, 1, 10, IDC_TX_CH0_PHASE_VALUE_STATIC, &CSemanticBase::SetControlSliderForPhase);
+	SetSliderGroup(CSelect::Ch0Phase, 1, 32, m_vspsBlock[0].m_strPhase, 1, 1, 10, IDC_TX_CH0_PHASE_STATIC, &CSemanticBase::SetControlSliderForPhase);
 }
 
 int CSemanticZing400T::Ch3Block()
