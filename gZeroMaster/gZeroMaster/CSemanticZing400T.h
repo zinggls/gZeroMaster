@@ -117,4 +117,7 @@ public:
 	static int OnNewVspsCs(int val, int newVal);
 	void UpdateVspsCs(const CRegister& reg);
 	int Ch3Phase();
+	static int OnNewCh3PhaseQ(int val, int newVal);
+	static int OnNewCh3PhaseI(int val, int newVal);
+	void UpdateCh3PhaseIQ(const CRegister& reg);
 };
