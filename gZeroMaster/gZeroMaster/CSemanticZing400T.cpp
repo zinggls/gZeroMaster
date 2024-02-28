@@ -443,6 +443,9 @@ BOOL CSemanticZing400T::UpdateSelected(UINT selected, BOOL bCommonControl)
 		bCommonControl ? updateValue = SliderPos() : updateValue = VspsCs();
 		bRtn = UpdateSemanticValue(0x26, &OnNewVspsCs, updateValue, reinterpret_cast<void (CSemanticBase::*)(const CRegister&)>(&CSemanticZing400T::UpdateVspsCs));
 		break;
+	case CSelect::Ch3Phase:
+		bCommonControl ? updateValue = SliderPos() : updateValue = Ch3Phase();
+		break;
 	default:
 		break;
 	}
@@ -841,4 +844,12 @@ void CSemanticZing400T::UpdateVspsCs(const CRegister& reg)
 {
 	const CRegisterZing400T& derived = dynamic_cast<const CRegisterZing400T&>(reg);
 	m_strVspsCsBiasVoltage.Format(_T("0x%02x"), derived.m_nVspsCs);
+}
+
+int CSemanticZing400T::Ch3Phase()
+{
+	CString strPhaseState;
+	AfxExtractSubString(strPhaseState, m_vspsBlock[3].m_strPhase, 0, '/');
+	int val = _tcstol(strPhaseState.GetBuffer(), NULL, 10);	//"undefined"인 경우 val값은 0
+	return val;
 }

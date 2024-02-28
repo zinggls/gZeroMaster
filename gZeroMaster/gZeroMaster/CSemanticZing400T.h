@@ -116,4 +116,5 @@ public:
 	int VspsCs();
 	static int OnNewVspsCs(int val, int newVal);
 	void UpdateVspsCs(const CRegister& reg);
+	int Ch3Phase();
 };
