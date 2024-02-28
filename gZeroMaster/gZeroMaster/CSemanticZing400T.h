@@ -124,4 +124,8 @@ public:
 	static int OnNewCh2PhaseQ(int val, int newVal);
 	static int OnNewCh2PhaseI(int val, int newVal);
 	void UpdateCh2PhaseIQ(const CRegister& reg);
+	int Ch1Phase();
+	static int OnNewCh1PhaseQ(int val, int newVal);
+	static int OnNewCh1PhaseI(int val, int newVal);
+	void UpdateCh1PhaseIQ(const CRegister& reg);
 };
