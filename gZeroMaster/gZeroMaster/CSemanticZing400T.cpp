@@ -455,6 +455,10 @@ BOOL CSemanticZing400T::UpdateSelected(UINT selected, BOOL bCommonControl)
 		bCommonControl ? updateValue = SliderPos() : updateValue = Ch1Phase();
 		bRtn = UpdatePhaseValue(0x29, &OnNewCh1PhaseQ, &OnNewCh1PhaseI, updateValue, reinterpret_cast<void (CSemanticBase::*)(const CRegister&)>(&CSemanticZing400T::UpdateCh1PhaseIQ));
 		break;
+	case CSelect::Ch0Phase:
+		bCommonControl ? updateValue = SliderPos() : updateValue = Ch0Phase();
+		bRtn = UpdatePhaseValue(0x2A, &OnNewCh0PhaseQ, &OnNewCh0PhaseI, updateValue, reinterpret_cast<void (CSemanticBase::*)(const CRegister&)>(&CSemanticZing400T::UpdateCh0PhaseIQ));
+		break;
 	default:
 		break;
 	}
@@ -944,4 +948,35 @@ void CSemanticZing400T::UpdateCh1PhaseIQ(const CRegister& reg)
 	const CRegisterZing400T& derived = dynamic_cast<const CRegisterZing400T&>(reg);
 	m_vspsBlock[1].m_strPhase.Format(_T("%d / "), derived.m_block[1].m_nPhase);
 	m_vspsBlock[1].m_strPhase += CPhaseTable::getPhase(derived.m_block[1].m_nPhase);
+}
+
+int CSemanticZing400T::Ch0Phase()
+{
+	CString strPhaseState;
+	AfxExtractSubString(strPhaseState, m_vspsBlock[0].m_strPhase, 0, '/');
+	int val = _tcstol(strPhaseState.GetBuffer(), NULL, 10);	//"undefined"인 경우 val값은 0
+	return val;
+}
+
+int CSemanticZing400T::OnNewCh0PhaseQ(int val, int newVal)
+{
+	unsigned char q = CPhaseTable::reversePhaseBit(CPhaseTable::getQ(newVal));
+	ASSERT((q & 0xe0) == 0);	//Q Phase비트는 반드시 5비트이어야 함
+	return (val & 0xfc) | ((q & 0x18) >> 3);
+}
+
+int CSemanticZing400T::OnNewCh0PhaseI(int val, int newVal)
+{
+	unsigned char q = CPhaseTable::reversePhaseBit(CPhaseTable::getQ(newVal));
+	unsigned char i = CPhaseTable::reversePhaseBit(CPhaseTable::getI(newVal));
+	ASSERT((q & 0xe0) == 0);	//Q Phase비트는 반드시 5비트이어야 함
+	ASSERT((i & 0xe0) == 0);	//I Phase비트는 반드시 5비트이어야 함
+	return ((q & 0x7) << 5) | i;
+}
+
+void CSemanticZing400T::UpdateCh0PhaseIQ(const CRegister& reg)
+{
+	const CRegisterZing400T& derived = dynamic_cast<const CRegisterZing400T&>(reg);
+	m_vspsBlock[0].m_strPhase.Format(_T("%d / "), derived.m_block[0].m_nPhase);
+	m_vspsBlock[0].m_strPhase += CPhaseTable::getPhase(derived.m_block[0].m_nPhase);
 }

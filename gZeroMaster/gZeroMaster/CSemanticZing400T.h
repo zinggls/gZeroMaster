@@ -128,4 +128,8 @@ public:
 	static int OnNewCh1PhaseQ(int val, int newVal);
 	static int OnNewCh1PhaseI(int val, int newVal);
 	void UpdateCh1PhaseIQ(const CRegister& reg);
+	int Ch0Phase();
+	static int OnNewCh0PhaseQ(int val, int newVal);
+	static int OnNewCh0PhaseI(int val, int newVal);
+	void UpdateCh0PhaseIQ(const CRegister& reg);
 };
