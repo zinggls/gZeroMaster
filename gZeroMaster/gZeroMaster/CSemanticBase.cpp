@@ -1722,6 +1722,49 @@ BOOL CSemanticBase::UpdateSemanticValue(int addr, int (*fpNewRegVal)(int, int), 
 	return FALSE;
 }
 
+BOOL CSemanticBase::UpdatePhaseValue(int addrBase, int (*fpNewQ)(int, int), int (*fpNewI)(int, int), int newVal, void (CSemanticBase::* fpUpdateData)(const CRegister&))
+{
+	int oldRegVal[2], newRegVal[2];
+	char buffer[3];
+	int addr[2] = { addrBase, addrBase + 1 };
+
+	for (int i = 0; i < 2; i++) {
+		while (Parent()->ReadRegister(addr[i], 2, buffer, MAX_LOOP) != ERROR_SUCCESS) Sleep(10);	//Blocking 함수
+
+		oldRegVal[i] = (int)strtol(buffer, NULL, 16);
+
+		if (i == 0) newRegVal[i] = (*fpNewQ)(oldRegVal[i], newVal);	//newVal(1~32의 값을 가짐), 함수포인터가 가리키는 함수 안에서 newVal에 해당하는 Q값을 리턴한다
+		if (i == 1) newRegVal[i] = (*fpNewI)(oldRegVal[i], newVal);	//newVal(1~32의 값을 가짐), 함수포인터가 가리키는 함수 안에서 newVal에 해당하는 I값을 리턴한다
+
+		if (Parent()->WriteRegister(addr[i], newRegVal[i]) != TRUE) {
+			Parent()->L(_T("Error in WriteRegister"));
+			return FALSE;
+		}
+		else {
+#ifdef DEBUG_READ
+			CString str;
+			str.Format(_T("ReadRegister Address:0x%02x..."), addr[i]);
+			Parent()->L(str);
+#endif
+
+			Parent()->ReadRegister(addr[i]);	//Blocking함수 호출
+#ifdef DEBUG_READ
+			str.Format(_T("ReadRegister Address:0x%02x done"), addr[i]);
+			Parent()->L(str);
+#endif
+			if (fpUpdateData) {
+				(this->*fpUpdateData)(getRegister());
+				UpdateData(FALSE);
+
+				CString str;
+				str.Format(_T("Address:0x%02x %s 0x%02x -> 0x%02x"), addr[i], Parent()->RegisterName(addr[i]), oldRegVal[i], newRegVal[i]);
+				Parent()->L(str);
+			}
+		}
+	}
+	return TRUE;
+}
+
 BOOL CSemanticBase::UpdateSelected(UINT selected, BOOL bCommonControl)
 {
 	BOOL bRtn = FALSE;

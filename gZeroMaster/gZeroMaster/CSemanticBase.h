@@ -320,6 +320,7 @@ public:
 	virtual void ResetValues();
 	afx_msg void OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar);
 	BOOL UpdateSemanticValue(int addr, int (*fpNewRegVal)(int, int), int newVal, void (CSemanticBase::* fpUpdateData)(const CRegister&));
+	BOOL UpdatePhaseValue(int addrBase, int (*fpNewQ)(int, int), int (*fpNewI)(int, int), int newVal, void (CSemanticBase::* fpUpdateData)(const CRegister&));
 	virtual BOOL UpdateSelected(UINT selected, BOOL bCommonControl);
 	virtual afx_msg void OnBnClickedWriteButton();
 	virtual afx_msg void OnBnClickedReadAllButton();
