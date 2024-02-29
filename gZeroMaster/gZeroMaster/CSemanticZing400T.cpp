@@ -445,19 +445,19 @@ BOOL CSemanticZing400T::UpdateSelected(UINT selected, BOOL bCommonControl)
 		break;
 	case CSelect::Ch3Phase:
 		bCommonControl ? updateValue = SliderPos() : updateValue = Ch3Phase();
-		bRtn = UpdatePhaseValue(0x26, &OnNewCh3PhaseQ, &OnNewCh3PhaseI, updateValue, reinterpret_cast<void (CSemanticBase::*)(const CRegister&)>(&CSemanticZing400T::UpdateCh3PhaseIQ));
+		bRtn = UpdatePhaseValue(0x26, &OnNewCh3PhaseFirst, &OnNewCh3PhaseNext, updateValue, reinterpret_cast<void (CSemanticBase::*)(const CRegister&)>(&CSemanticZing400T::UpdateCh3PhaseIQ));
 		break;
 	case CSelect::Ch2Phase:
 		bCommonControl ? updateValue = SliderPos() : updateValue = Ch2Phase();
-		bRtn = UpdatePhaseValue(0x28, &OnNewCh2PhaseQ, &OnNewCh2PhaseI, updateValue, reinterpret_cast<void (CSemanticBase::*)(const CRegister&)>(&CSemanticZing400T::UpdateCh2PhaseIQ));
+		bRtn = UpdatePhaseValue(0x28, &OnNewCh2PhaseFirst, &OnNewCh2PhaseNext, updateValue, reinterpret_cast<void (CSemanticBase::*)(const CRegister&)>(&CSemanticZing400T::UpdateCh2PhaseIQ));
 		break;
 	case CSelect::Ch1Phase:
 		bCommonControl ? updateValue = SliderPos() : updateValue = Ch1Phase();
-		bRtn = UpdatePhaseValue(0x29, &OnNewCh1PhaseQ, &OnNewCh1PhaseI, updateValue, reinterpret_cast<void (CSemanticBase::*)(const CRegister&)>(&CSemanticZing400T::UpdateCh1PhaseIQ));
+		bRtn = UpdatePhaseValue(0x29, &OnNewCh1PhaseFirst, &OnNewCh1PhaseNext, updateValue, reinterpret_cast<void (CSemanticBase::*)(const CRegister&)>(&CSemanticZing400T::UpdateCh1PhaseIQ));
 		break;
 	case CSelect::Ch0Phase:
 		bCommonControl ? updateValue = SliderPos() : updateValue = Ch0Phase();
-		bRtn = UpdatePhaseValue(0x2A, &OnNewCh0PhaseQ, &OnNewCh0PhaseI, updateValue, reinterpret_cast<void (CSemanticBase::*)(const CRegister&)>(&CSemanticZing400T::UpdateCh0PhaseIQ));
+		bRtn = UpdatePhaseValue(0x2A, &OnNewCh0PhaseFirst, &OnNewCh0PhaseNext, updateValue, reinterpret_cast<void (CSemanticBase::*)(const CRegister&)>(&CSemanticZing400T::UpdateCh0PhaseIQ));
 		break;
 	default:
 		break;
@@ -867,14 +867,14 @@ int CSemanticZing400T::Ch3Phase()
 	return val;
 }
 
-int CSemanticZing400T::OnNewCh3PhaseQ(int val, int newVal)
+int CSemanticZing400T::OnNewCh3PhaseFirst(int val, int newVal)
 {
 	unsigned char q = CPhaseTable::reversePhaseBit(CPhaseTable::getQ(newVal));
 	ASSERT((q & 0xe0) == 0);	//Q Phase비트는 반드시 5비트이어야 함
 	return (val & 0xf8) | ((q & 0x1c) >> 2);
 }
 
-int CSemanticZing400T::OnNewCh3PhaseI(int val, int newVal)
+int CSemanticZing400T::OnNewCh3PhaseNext(int val, int newVal)
 {
 	unsigned char q = CPhaseTable::reversePhaseBit(CPhaseTable::getQ(newVal));
 	unsigned char i = CPhaseTable::reversePhaseBit(CPhaseTable::getI(newVal));
@@ -898,7 +898,7 @@ int CSemanticZing400T::Ch2Phase()
 	return val;
 }
 
-int CSemanticZing400T::OnNewCh2PhaseQ(int val, int newVal)
+int CSemanticZing400T::OnNewCh2PhaseFirst(int val, int newVal)
 {
 	unsigned char q = CPhaseTable::reversePhaseBit(CPhaseTable::getQ(newVal));
 	unsigned char i = CPhaseTable::reversePhaseBit(CPhaseTable::getI(newVal));
@@ -907,7 +907,7 @@ int CSemanticZing400T::OnNewCh2PhaseQ(int val, int newVal)
 	return (q << 3) | ((i & 0x1c) >> 2);
 }
 
-int CSemanticZing400T::OnNewCh2PhaseI(int val, int newVal)
+int CSemanticZing400T::OnNewCh2PhaseNext(int val, int newVal)
 {
 	unsigned char i = CPhaseTable::reversePhaseBit(CPhaseTable::getI(newVal));
 	ASSERT((i & 0xe0) == 0);	//I Phase비트는 반드시 5비트이어야 함
@@ -929,14 +929,14 @@ int CSemanticZing400T::Ch1Phase()
 	return val;
 }
 
-int CSemanticZing400T::OnNewCh1PhaseQ(int val, int newVal)
+int CSemanticZing400T::OnNewCh1PhaseFirst(int val, int newVal)
 {
 	unsigned char q = CPhaseTable::reversePhaseBit(CPhaseTable::getQ(newVal));
 	ASSERT((q & 0xe0) == 0);	//Q Phase비트는 반드시 5비트이어야 함
 	return (val & 0xe0) | q;
 }
 
-int CSemanticZing400T::OnNewCh1PhaseI(int val, int newVal)
+int CSemanticZing400T::OnNewCh1PhaseNext(int val, int newVal)
 {
 	unsigned char i = CPhaseTable::reversePhaseBit(CPhaseTable::getI(newVal));
 	ASSERT((i & 0xe0) == 0);	//I Phase비트는 반드시 5비트이어야 함
@@ -958,14 +958,14 @@ int CSemanticZing400T::Ch0Phase()
 	return val;
 }
 
-int CSemanticZing400T::OnNewCh0PhaseQ(int val, int newVal)
+int CSemanticZing400T::OnNewCh0PhaseFirst(int val, int newVal)
 {
 	unsigned char q = CPhaseTable::reversePhaseBit(CPhaseTable::getQ(newVal));
 	ASSERT((q & 0xe0) == 0);	//Q Phase비트는 반드시 5비트이어야 함
 	return (val & 0xfc) | ((q & 0x18) >> 3);
 }
 
-int CSemanticZing400T::OnNewCh0PhaseI(int val, int newVal)
+int CSemanticZing400T::OnNewCh0PhaseNext(int val, int newVal)
 {
 	unsigned char q = CPhaseTable::reversePhaseBit(CPhaseTable::getQ(newVal));
 	unsigned char i = CPhaseTable::reversePhaseBit(CPhaseTable::getI(newVal));
