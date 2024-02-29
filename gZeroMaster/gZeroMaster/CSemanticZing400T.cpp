@@ -348,6 +348,7 @@ void CSemanticZing400T::ResetValues()
 	m_strVspsCsBiasVoltage.Empty();
 	for (int i = 0; i < 4; i++) {
 		m_vspsBlock[i].m_strVspsBlockEnable.Empty();
+		m_vspsBlock[i].m_strPhase.Empty();
 	}
 	CSemanticBase::ResetValues();
 }
