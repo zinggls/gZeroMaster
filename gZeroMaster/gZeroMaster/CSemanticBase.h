@@ -328,4 +328,5 @@ public:
 	virtual void InitialControlState();
 	virtual const CRegister& Parse() = 0;
 	virtual afx_msg void OnBnClickedDefaultValueButton();
+	void L(const TCHAR* str, ...);
 };

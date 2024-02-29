@@ -2004,3 +2004,8 @@ void CSemanticBase::OnBnClickedDefaultValueButton()
 	Parent()->L(str);
 	Parent()->L(_T("Make sure to click 'Write All' if you want to save them to registers"));
 }
+
+void CSemanticBase::L(const TCHAR* str, ...)
+{
+	Parent()->L(str);
+}
