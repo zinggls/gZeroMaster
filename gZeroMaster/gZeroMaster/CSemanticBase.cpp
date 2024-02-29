@@ -1780,13 +1780,13 @@ BOOL CSemanticBase::UpdateSelected(UINT selected, BOOL bCommonControl)
 		bRtn = UpdateSemanticValue(2, &OnNewLimAmp, updateValue, &CSemanticBase::UpdateLimitAmp);
 		break;
 	case CSelect::RegRef:
-		if (Parent()->m_chip == _T("B0")) {
+		if (Parent()->m_chip == _T("B0") || Parent()->m_chip == _T("Zing400T")) {
 			bCommonControl ? updateValue = ComboSel() : updateValue = RegRef();
 			bRtn = UpdateSemanticValue(5, &OnNewRegRef, updateValue, &CSemanticBase::UpdateRegRefVolt);
 		}
 		break;
 	case CSelect::VcoPow:
-		if (Parent()->m_chip == _T("B0")) {
+		if (Parent()->m_chip == _T("B0") || Parent()->m_chip == _T("Zing400T")) {
 			bCommonControl ? updateValue = ComboSel() : updateValue = VcoPow();
 			bRtn = UpdateSemanticValue(13, &OnNewVcoPow, updateValue, &CSemanticBase::UpdateVcoPower);
 		}
@@ -1822,7 +1822,7 @@ BOOL CSemanticBase::UpdateSelected(UINT selected, BOOL bCommonControl)
 		bRtn = UpdateSemanticValue(7, &OnNewDutyCycle, updateValue, &CSemanticBase::UpdateDutyCycle);
 		break;
 	case CSelect::VcoOsc:
-		if (Parent()->m_chip == _T("B0")) {
+		if (Parent()->m_chip == _T("B0") || Parent()->m_chip == _T("Zing400T")) {
 			bCommonControl ? updateValue = SliderPos() : updateValue = VcoOsc();
 			bRtn = UpdateSemanticValue(6, &OnNewVcoOscUp, updateValue, NULL);
 			ASSERT(bRtn);
@@ -1830,7 +1830,7 @@ BOOL CSemanticBase::UpdateSelected(UINT selected, BOOL bCommonControl)
 		}
 		break;
 	case CSelect::VcoVdd:
-		if (Parent()->m_chip == _T("B0")) {
+		if (Parent()->m_chip == _T("B0") || Parent()->m_chip == _T("Zing400T")) {
 			bCommonControl ? updateValue = SliderPos() : updateValue = VcoVdd();
 			bRtn = UpdateSemanticValue(5, &OnNewVcoVdd, updateValue, &CSemanticBase::UpdateVcoVdd);
 		}
@@ -1965,6 +1965,7 @@ void CSemanticBase::OnBnClickedWriteAllButton()
 			Parent()->L(str);
 			errCnt++;
 		}
+		Sleep(10);
 	}
 	if (errCnt == 0)
 		Parent()->L(_T("All registers are updated"));

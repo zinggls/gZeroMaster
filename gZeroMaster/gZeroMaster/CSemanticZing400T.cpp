@@ -406,7 +406,9 @@ void CSemanticZing400T::OnBnClickedWriteButton()
 
 BOOL CSemanticZing400T::UpdateSelected(UINT selected, BOOL bCommonControl)
 {
-	BOOL bRtn = FALSE;
+	BOOL bRtn = CSemanticBase::UpdateSelected(selected, bCommonControl);
+	if (bRtn) return TRUE;
+
 	int updateValue;
 	switch (selected) {
 		//ControlCombo
@@ -464,6 +466,26 @@ BOOL CSemanticZing400T::UpdateSelected(UINT selected, BOOL bCommonControl)
 		break;
 	}
 	return bRtn;
+}
+
+void CSemanticZing400T::OnBnClickedWriteAllButton()
+{
+	int errCnt = 0;
+	CString str;
+	for (std::map<UINT, CStaticElem>::iterator it = m_staticMap.begin(); it != m_staticMap.end(); ++it) {
+		if (!UpdateSelected(it->first, FALSE)) {
+			str.Format(_T("Update failed at SelectStatic:%d"), it->first);
+			L(str);
+			errCnt++;
+		}
+	}
+	if (errCnt == 0)
+		L(_T("All registers are updated"));
+	else {
+		str.Format(_T("%d Update failures"), errCnt);
+		L(str);
+	}
+	OnBnClickedReadAllButton();
 }
 
 void CSemanticZing400T::UpdateTxReg1(CString strTxRegTop, CString strTxRegMid, CString strTxRegBot, CRegister& reg)
