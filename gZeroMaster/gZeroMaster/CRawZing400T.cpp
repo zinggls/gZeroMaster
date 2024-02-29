@@ -288,11 +288,11 @@ void CRawZing400T::DefaultValues(CString strChip)
 	m_strTxReg2Bot = _T("0x07");
 	m_strRegOut24 = _T("0x01");
 	m_strRegOut25 = _T("0x78");
-	m_strRegOut26 = _T("0x80");
-	m_strRegOut27 = _T("0x00");
-	m_strRegOut28 = _T("0x00");
-	m_strRegOut29 = _T("0x00");
-	m_strRegOut2A = _T("0x00");
-	m_strRegOut2B = _T("0x00");
+	m_strRegOut26 = _T("0x88");
+	m_strRegOut27 = _T("0x7F");
+	m_strRegOut28 = _T("0x0F");
+	m_strRegOut29 = _T("0xE1");
+	m_strRegOut2A = _T("0xFC");
+	m_strRegOut2B = _T("0x3F");
 	UpdateData(FALSE);
 }
