@@ -1908,11 +1908,17 @@ BOOL CSemanticBase::UpdateSelected(UINT selected, BOOL bCommonControl)
 			bCommonControl ? updateValue = SliderPos() : updateValue = FdCore();
 			bRtn = UpdateSemanticValue(25, &OnNewFdCore, updateValue, &CSemanticBase::UpdateFdCoreCurrent);
 		}
+		else {
+			bRtn = TRUE;	//A0칩이 아니면 업데이트가 필요없으므로 성공으로 본다
+		}
 		break;
 	case CSelect::FdBuf:
 		if (Parent()->m_chip == _T("A0")) {
 			bCommonControl ? updateValue = SliderPos() : updateValue = FdBuf();
 			bRtn = UpdateSemanticValue(25, &OnNewFdBuf, updateValue, &CSemanticBase::UpdateFdBufferCurrent);
+		}
+		else {
+			bRtn = TRUE;	//A0칩이 아니면 업데이트가 필요없으므로 성공으로 본다
 		}
 		break;
 	default:
