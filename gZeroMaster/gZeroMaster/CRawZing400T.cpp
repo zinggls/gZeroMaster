@@ -284,15 +284,15 @@ void CRawZing400T::DefaultValues(CString strChip)
 	m_strTxReg1Mid = _T("0x10");
 	m_strTxReg1Bot = _T("0x10");
 	m_strTxReg2Top = _T("0x01");
-	m_strTxReg2Mid = _T("0xE0");
+	m_strTxReg2Mid = _T("0xe0");
 	m_strTxReg2Bot = _T("0x07");
 	m_strRegOut24 = _T("0x01");
 	m_strRegOut25 = _T("0x78");
 	m_strRegOut26 = _T("0x88");
-	m_strRegOut27 = _T("0x7F");
-	m_strRegOut28 = _T("0x0F");
-	m_strRegOut29 = _T("0xE1");
-	m_strRegOut2A = _T("0xFC");
-	m_strRegOut2B = _T("0x3F");
+	m_strRegOut27 = _T("0x7f");
+	m_strRegOut28 = _T("0x0f");
+	m_strRegOut29 = _T("0xe1");
+	m_strRegOut2A = _T("0xfc");
+	m_strRegOut2B = _T("0x3f");
 	UpdateData(FALSE);
 }
