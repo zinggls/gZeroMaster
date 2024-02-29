@@ -78,6 +78,7 @@ public:
 	void CheckRxReg1(CString strRxReg1);
 	void CheckTxReg2Top(CString strTxReg2Top);
 	void CheckBiasReg1(CString strBiasReg1);
+	BOOL LoadRegisterZing400T(CString fileName);
 	BOOL LoadRegisters(CString fileName);
 	afx_msg void OnStnDblclickLogoStatic();
 	void OnChipZing200x();

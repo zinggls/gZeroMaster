@@ -575,7 +575,7 @@ void CgZeroMasterDlg::OnMainmenuLoad()
 
 BOOL CgZeroMasterDlg::LoadValue(TCHAR *regTagName, CString *pTargetStr, CString fileName)
 {
-	ASSERT(m_chip == _T("A0") || m_chip == _T("B0"));
+	ASSERT(m_chip == _T("A0") || m_chip == _T("B0") || m_chip == _T("Zing400T"));
 
 	TCHAR strTmp[256];
 	CString strSec(m_chip);
@@ -608,8 +608,40 @@ void CgZeroMasterDlg::CheckBiasReg1(CString strBiasReg1)
 }
 
 
+BOOL CgZeroMasterDlg::LoadRegisterZing400T(CString fileName)
+{
+	ASSERT(m_chip == _T("Zing400T"));
+
+	if (!LoadValue(_T("TX_REG1_23-16"), &m_pRaw->m_strTxReg1Top, fileName)) return FALSE;
+	if (!LoadValue(_T("TX_REG1_15-8"), &m_pRaw->m_strTxReg1Mid, fileName)) return FALSE;
+	if (!LoadValue(_T("TX_REG1_7-0"), &m_pRaw->m_strTxReg1Bot, fileName)) return FALSE;
+	if (!LoadValue(_T("TX_REG2_16"), &m_pRaw->m_strTxReg2Top, fileName)) return FALSE;
+	if (!LoadValue(_T("TX_REG2_15-13"), &m_pRaw->m_strTxReg2Mid, fileName)) return FALSE;
+	if (!LoadValue(_T("TX_REG2_3-0"), &m_pRaw->m_strTxReg2Bot, fileName)) return FALSE;
+
+	CRawZing400T* pDeriv = dynamic_cast<CRawZing400T*>(m_pRaw);
+	ASSERT(pDeriv);
+	if (!LoadValue(_T("REG_OUT24_0"), &pDeriv->m_strRegOut24, fileName)) return FALSE;
+	if (!LoadValue(_T("REG_OUT25_7-0"), &pDeriv->m_strRegOut25, fileName)) return FALSE;
+	if (!LoadValue(_T("REG_OUT26_7-0"), &pDeriv->m_strRegOut26, fileName)) return FALSE;
+	if (!LoadValue(_T("REG_OUT27_7-0"), &pDeriv->m_strRegOut27, fileName)) return FALSE;
+	if (!LoadValue(_T("REG_OUT28_7-0"), &pDeriv->m_strRegOut28, fileName)) return FALSE;
+	if (!LoadValue(_T("REG_OUT29_7-0"), &pDeriv->m_strRegOut29, fileName)) return FALSE;
+	if (!LoadValue(_T("REG_OUT2A_7-0"), &pDeriv->m_strRegOut2A, fileName)) return FALSE;
+	if (!LoadValue(_T("REG_OUT2B_7-0"), &pDeriv->m_strRegOut2B, fileName)) return FALSE;
+
+	pDeriv->UpdateData(FALSE);
+
+	CSemanticZing400T* pSemDeriv = dynamic_cast<CSemanticZing400T*>(m_pSemantic);
+	ASSERT(pSemDeriv);
+	pSemDeriv->UpdateRegisters();
+	return TRUE;
+}
+
+
 BOOL CgZeroMasterDlg::LoadRegisters(CString fileName)
 {
+	if (m_chip == _T("Zing400T")) return LoadRegisterZing400T(fileName);
 	ASSERT(m_chip == _T("A0") || m_chip == _T("B0"));
 
 	if (!LoadValue(_T("RX_REG1_4-0"), &m_pRaw->m_strRxReg1, fileName)) return FALSE;
