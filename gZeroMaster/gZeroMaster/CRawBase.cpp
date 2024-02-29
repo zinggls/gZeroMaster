@@ -418,6 +418,7 @@ void CRawBase::OnBnClickedWriteAllButton()
 		else {
 			Parent()->L(it->first + _T(" update failed"));
 		}
+		Sleep(10);
 	}
 	OnBnClickedReadAllButton();
 }
