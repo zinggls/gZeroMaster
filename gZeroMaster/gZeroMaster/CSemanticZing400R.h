@@ -89,4 +89,7 @@ public:
 	int Ch2Block();
 	static int OnNewCh2Block(int val, int newVal);
 	void UpdateCh2Block(const CRegister& reg);
+	int Ch1Block();
+	static int OnNewCh1Block(int val, int newVal);
+	void UpdateCh1Block(const CRegister& reg);
 };
