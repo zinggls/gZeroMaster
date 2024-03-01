@@ -321,6 +321,10 @@ BOOL CSemanticZing400R::UpdateSelected(UINT selected, BOOL bCommonControl)
 		bCommonControl ? updateValue = SliderPos() : updateValue = VspsBias();
 		bRtn = UpdateSemanticValue(0x2C, &OnNewVspsBias, updateValue, reinterpret_cast<void (CSemanticBase::*)(const CRegister&)>(&CSemanticZing400R::UpdateVspsBias));
 		break;
+	case CSelect::LnaBias:
+		bCommonControl ? updateValue = SliderPos() : updateValue = LnaBias();
+		bRtn = UpdateSemanticValue(0x2C, &OnNewLnaBias, updateValue, reinterpret_cast<void (CSemanticBase::*)(const CRegister&)>(&CSemanticZing400R::UpdateLnaBias));
+		break;
 	default:
 		break;
 	}
@@ -647,4 +651,22 @@ void CSemanticZing400R::UpdateVspsBias(const CRegister& reg)
 {
 	const CRegisterZing400R& derived = dynamic_cast<const CRegisterZing400R&>(reg);
 	m_strVspsBiasControlBit.Format(_T("0x%02x"), derived.m_nVspsBias);
+}
+
+int CSemanticZing400R::LnaBias()
+{
+	int val = _tcstol(m_strLnaControlBit.GetBuffer(), NULL, 16);
+	ASSERT(val >= 0 && val <= 0xf);
+	return val;
+}
+
+int CSemanticZing400R::OnNewLnaBias(int val, int newVal)
+{
+	return (val & 0xf0) | (newVal & 0x0f);
+}
+
+void CSemanticZing400R::UpdateLnaBias(const CRegister& reg)
+{
+	const CRegisterZing400R& derived = dynamic_cast<const CRegisterZing400R&>(reg);
+	m_strLnaControlBit.Format(_T("0x%02x"), derived.m_nLnaBias);
 }

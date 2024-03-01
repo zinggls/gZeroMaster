@@ -98,4 +98,7 @@ public:
 	int VspsBias();
 	static int OnNewVspsBias(int val, int newVal);
 	void UpdateVspsBias(const CRegister& reg);
+	int LnaBias();
+	static int OnNewLnaBias(int val, int newVal);
+	void UpdateLnaBias(const CRegister& reg);
 };
