@@ -236,6 +236,17 @@ void CSemanticZing400R::UpdateRegisters()
 	UpdateData(FALSE);
 }
 
+void CSemanticZing400R::ResetValues()
+{
+	m_strVspsBiasControlBit.Empty();
+	m_strLnaControlBit.Empty();
+	for (int i = 0; i < 4; i++) {
+		m_vspsBlock[i].m_strVspsBlockEnable.Empty();
+		m_vspsBlock[i].m_strPhase.Empty();
+	}
+	CSemanticBase::ResetValues();
+}
+
 void CSemanticZing400R::UpdateRxReg1(CString strRxReg1, CRegister& reg)
 {
 	int val = _tcstol(strRxReg1.GetBuffer(), NULL, 16) & 0xff;
