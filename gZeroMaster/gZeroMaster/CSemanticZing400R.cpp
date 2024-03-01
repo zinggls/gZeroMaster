@@ -333,6 +333,10 @@ BOOL CSemanticZing400R::UpdateSelected(UINT selected, BOOL bCommonControl)
 		bCommonControl ? updateValue = SliderPos() : updateValue = Ch2Phase();
 		bRtn = UpdatePhaseValue(0x28, &OnNewCh2PhaseFirst, &OnNewCh2PhaseNext, updateValue, reinterpret_cast<void (CSemanticBase::*)(const CRegister&)>(&CSemanticZing400R::UpdateCh2PhaseIQ));
 		break;
+	case CSelect::Ch1Phase:
+		bCommonControl ? updateValue = SliderPos() : updateValue = Ch1Phase();
+		bRtn = UpdatePhaseValue(0x29, &OnNewCh1PhaseFirst, &OnNewCh1PhaseNext, updateValue, reinterpret_cast<void (CSemanticBase::*)(const CRegister&)>(&CSemanticZing400R::UpdateCh1PhaseIQ));
+		break;
 	default:
 		break;
 	}
@@ -739,4 +743,33 @@ void CSemanticZing400R::UpdateCh2PhaseIQ(const CRegister& reg)
 	const CRegisterZing400R& derived = dynamic_cast<const CRegisterZing400R&>(reg);
 	m_vspsBlock[2].m_strPhase.Format(_T("%d / "), derived.m_block[2].m_nPhase);
 	m_vspsBlock[2].m_strPhase += CPhaseTable::getPhase(derived.m_block[2].m_nPhase);
+}
+
+int CSemanticZing400R::Ch1Phase()
+{
+	CString strPhaseState;
+	AfxExtractSubString(strPhaseState, m_vspsBlock[1].m_strPhase, 0, '/');
+	int val = _tcstol(strPhaseState.GetBuffer(), NULL, 10);	//"undefined"인 경우 val값은 0
+	return val;
+}
+
+int CSemanticZing400R::OnNewCh1PhaseFirst(int val, int newVal)
+{
+	unsigned char q = CPhaseTable::reversePhaseBit(CPhaseTable::getQ(newVal));
+	ASSERT((q & 0xe0) == 0);	//Q Phase비트는 반드시 5비트이어야 함
+	return (val & 0xe0) | q;
+}
+
+int CSemanticZing400R::OnNewCh1PhaseNext(int val, int newVal)
+{
+	unsigned char i = CPhaseTable::reversePhaseBit(CPhaseTable::getI(newVal));
+	ASSERT((i & 0xe0) == 0);	//I Phase비트는 반드시 5비트이어야 함
+	return (val & 0x7) | (i << 3);
+}
+
+void CSemanticZing400R::UpdateCh1PhaseIQ(const CRegister& reg)
+{
+	const CRegisterZing400R& derived = dynamic_cast<const CRegisterZing400R&>(reg);
+	m_vspsBlock[1].m_strPhase.Format(_T("%d / "), derived.m_block[1].m_nPhase);
+	m_vspsBlock[1].m_strPhase += CPhaseTable::getPhase(derived.m_block[1].m_nPhase);
 }

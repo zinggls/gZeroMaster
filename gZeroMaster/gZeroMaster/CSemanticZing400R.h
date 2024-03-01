@@ -109,4 +109,8 @@ public:
 	static int OnNewCh2PhaseFirst(int val, int newVal);
 	static int OnNewCh2PhaseNext(int val, int newVal);
 	void UpdateCh2PhaseIQ(const CRegister& reg);
+	int Ch1Phase();
+	static int OnNewCh1PhaseFirst(int val, int newVal);
+	static int OnNewCh1PhaseNext(int val, int newVal);
+	void UpdateCh1PhaseIQ(const CRegister& reg);
 };
