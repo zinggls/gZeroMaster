@@ -250,8 +250,8 @@ void CSemanticZing400R::UpdateRegOut26(CString strRegOut26, CRegisterZing400R& r
 	reg.m_block[3].m_nBlock = (hexa & 0x08) >> 3;
 
 	int phaseBits = hexa & 0x7;	//0x7 (0000 0111)
-	int high = CPhaseTable::byteBitReverse(phaseBits) >> 3;		//1110 0000 -> 1110 0
-	int low = 0x00;		//Q_VGA4<3>,Q_VGA4<4>는 UpdateRegOut27에서 채워지는 공간으로 비워 놓는다
+	int high = 0x00;			//Q_VGA4<3>,Q_VGA4<4>는 UpdateRegOut27에서 채워지는 공간으로 비워 놓는다
+	int low = CPhaseTable::byteBitReverse(phaseBits) >> 3;		//1110 0000 -> 1110 0
 	reg.m_block[3].m_nQ = high | low;
 }
 
@@ -259,9 +259,9 @@ void CSemanticZing400R::UpdateRegOut27(CString strRegOut27, CRegisterZing400R& r
 {
 	int hexa = _tcstol(strRegOut27.GetBuffer(), NULL, 16);
 
-	int phaseBits = hexa & 0xc0;
-	int low = CPhaseTable::byteBitReverse(phaseBits) & 0x3;	//0x3(0000 0011)연산을 할 필요는 없으나 명시적으로 마지막 두비트임을 나타내고자
-	reg.m_block[3].m_nQ = reg.m_block[3].m_nQ | low;
+	int phaseBits = (hexa & 0xc0) >> 6;
+	int high = CPhaseTable::byteBitReverse(phaseBits) >> 3;
+	reg.m_block[3].m_nQ = high | reg.m_block[3].m_nQ;
 
 	phaseBits = (hexa & 0x3e) >> 1;
 	reg.m_block[3].m_nI = CPhaseTable::reversePhaseBit(phaseBits);
