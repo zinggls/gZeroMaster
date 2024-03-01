@@ -346,7 +346,7 @@ void CSemanticZing400R::UpdateRegOut26(CString strRegOut26, CRegisterZing400R& r
 
 	int phaseBits = hexa & 0x7;	//0x7 (0000 0111)
 	int high = 0x00;			//Q_VGA4<3>,Q_VGA4<4>는 UpdateRegOut27에서 채워지는 공간으로 비워 놓는다
-	int low = CPhaseTable::byteBitReverse(phaseBits) >> 3;		//1110 0000 -> 1110 0
+	int low = CPhaseTable::byteBitReverse(phaseBits) >> 5;
 	reg.m_block[3].m_nQ = high | low;
 }
 
