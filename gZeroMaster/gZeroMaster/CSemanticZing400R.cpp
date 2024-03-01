@@ -257,6 +257,7 @@ void CSemanticZing400R::UpdateRegOut27(CString strRegOut27, CRegisterZing400R& r
 
 	phaseBits = (hexa & 0x3e) >> 1;
 	reg.m_block[3].m_nI = CPhaseTable::reversePhaseBit(phaseBits);
+	reg.m_block[3].m_nPhase = CPhaseTable::getState((reg.m_block[3].m_nI) & 0x1f, (reg.m_block[3].m_nQ) & 0x1f);
 	reg.m_block[2].m_nBlock = hexa & 0x01;
 }
 
@@ -280,6 +281,7 @@ void CSemanticZing400R::UpdateRegOut29(CString strRegOut29, CRegisterZing400R& r
 	int phaseBits = (hexa & 0xc0) >> 6;
 	int low = CPhaseTable::byteBitReverse(phaseBits) >> 6;
 	reg.m_block[2].m_nI = reg.m_block[2].m_nI | low;
+	reg.m_block[2].m_nPhase = CPhaseTable::getState((reg.m_block[2].m_nI) & 0x1f, (reg.m_block[2].m_nQ) & 0x1f);
 
 	reg.m_block[1].m_nBlock = (hexa & 0x20) >> 5;
 	reg.m_block[1].m_nQ = CPhaseTable::reversePhaseBit(hexa & 0x1f);
@@ -291,6 +293,7 @@ void CSemanticZing400R::UpdateRegOut2A(CString strRegOut2A, CRegisterZing400R& r
 
 	int phaseBits = (hexa & 0xf8) >> 3;
 	reg.m_block[1].m_nI = CPhaseTable::reversePhaseBit(phaseBits);
+	reg.m_block[1].m_nPhase = CPhaseTable::getState((reg.m_block[1].m_nI) & 0x1f, (reg.m_block[1].m_nQ) & 0x1f);
 	reg.m_block[0].m_nBlock = (hexa & 0x04) >> 2;
 
 	phaseBits = hexa & 0x03;
@@ -309,6 +312,7 @@ void CSemanticZing400R::UpdateRegOut2B(CString strRegOut2B, CRegisterZing400R& r
 
 	phaseBits = hexa & 0x1f;
 	reg.m_block[0].m_nI = CPhaseTable::reversePhaseBit(phaseBits);
+	reg.m_block[0].m_nPhase = CPhaseTable::getState((reg.m_block[0].m_nI) & 0x1f, (reg.m_block[0].m_nQ) & 0x1f);
 }
 
 void CSemanticZing400R::UpdateRegOut2C(CString strRegOut2C, CRegisterZing400R& reg)
