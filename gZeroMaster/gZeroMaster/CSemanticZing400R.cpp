@@ -181,9 +181,13 @@ void CSemanticZing400R::ControlValueEnable(BOOL b)
 	GetDlgItem(IDC_CML_INTERFACE_STAGE_CURRENT_VALUE_STATIC)->EnableWindow(b);
 
 	GetDlgItem(IDC_RX_CH3_VSPS_BLOCK_ENABLE_VALUE_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_RX_CH3_PHASE_VALUE_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_RX_CH2_VSPS_BLOCK_ENABLE_VALUE_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_RX_CH2_PHASE_VALUE_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_RX_CH1_VSPS_BLOCK_ENABLE_VALUE_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_RX_CH1_PHASE_VALUE_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_RX_CH0_VSPS_BLOCK_ENABLE_VALUE_STATIC)->EnableWindow(b);
+	GetDlgItem(IDC_RX_CH0_PHASE_VALUE_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_RX_VSPS_BIAS_CONTROL_BIT_VALUE_STATIC)->EnableWindow(b);
 	GetDlgItem(IDC_RX_LNA_BIAS_CONTROL_BIT_VALUE_STATIC)->EnableWindow(b);
 }
