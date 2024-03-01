@@ -18,19 +18,15 @@ public:
 	class CSelect :public CSemanticBase::CSelect {
 	public:
 		static const UINT Ch3Block = 33;
-		static const UINT Ch3_Q = 34;
-		static const UINT Ch3_I = 35;
-		static const UINT Ch2Block = 36;
-		static const UINT Ch2_Q = 37;
-		static const UINT Ch2_I = 38;
-		static const UINT Ch1Block = 39;
-		static const UINT Ch1_Q = 40;
-		static const UINT Ch1_I = 41;
-		static const UINT Ch0Block = 42;
-		static const UINT Ch0_Q = 43;
-		static const UINT Ch0_I = 44;
-		static const UINT VspsBias = 45;
-		static const UINT LnasBias = 46;
+		static const UINT Ch3Phase = 34;
+		static const UINT Ch2Block = 35;
+		static const UINT Ch2Phase = 36;
+		static const UINT Ch1Block = 37;
+		static const UINT Ch1Phase = 38;
+		static const UINT Ch0Block = 39;
+		static const UINT Ch0Phase = 40;
+		static const UINT VspsBias = 41;
+		static const UINT LnasBias = 42;
 	};
 
 	// 대화 상자 데이터입니다.
