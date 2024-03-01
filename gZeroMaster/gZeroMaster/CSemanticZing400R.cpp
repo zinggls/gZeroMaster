@@ -66,9 +66,13 @@ void CSemanticZing400R::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_CMOS_GAIN_STAGE_CURRENT_VALUE_STATIC, m_strCMOSGainStageCurrent);
 	DDX_Text(pDX, IDC_CML_INTERFACE_STAGE_CURRENT_VALUE_STATIC, m_strCMLInterfaceStageCurrent);
 	DDX_Text(pDX, IDC_RX_CH3_VSPS_BLOCK_ENABLE_VALUE_STATIC, m_vspsBlock[3].m_strVspsBlockEnable);
+	DDX_Text(pDX, IDC_RX_CH3_PHASE_VALUE_STATIC, m_vspsBlock[3].m_strPhase);
 	DDX_Text(pDX, IDC_RX_CH2_VSPS_BLOCK_ENABLE_VALUE_STATIC, m_vspsBlock[2].m_strVspsBlockEnable);
+	DDX_Text(pDX, IDC_RX_CH2_PHASE_VALUE_STATIC, m_vspsBlock[2].m_strPhase);
 	DDX_Text(pDX, IDC_RX_CH1_VSPS_BLOCK_ENABLE_VALUE_STATIC, m_vspsBlock[1].m_strVspsBlockEnable);
+	DDX_Text(pDX, IDC_RX_CH1_PHASE_VALUE_STATIC, m_vspsBlock[1].m_strPhase);
 	DDX_Text(pDX, IDC_RX_CH0_VSPS_BLOCK_ENABLE_VALUE_STATIC, m_vspsBlock[0].m_strVspsBlockEnable);
+	DDX_Text(pDX, IDC_RX_CH0_PHASE_VALUE_STATIC, m_vspsBlock[0].m_strPhase);
 	DDX_Text(pDX, IDC_RX_VSPS_BIAS_CONTROL_BIT_VALUE_STATIC, m_strVspsBiasControlBit);
 	DDX_Text(pDX, IDC_RX_LNA_BIAS_CONTROL_BIT_VALUE_STATIC, m_strLnaControlBit);
 	DDX_Control(pDX, IDC_CONTROL_SLIDER, m_controlSlider);
