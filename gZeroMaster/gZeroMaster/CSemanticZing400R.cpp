@@ -289,11 +289,13 @@ void CSemanticZing400R::UpdateRegOut2A(CString strRegOut2A, CRegisterZing400R& r
 {
 	int hexa = _tcstol(strRegOut2A.GetBuffer(), NULL, 16);
 
-	reg.m_block[1].m_nI = (hexa & 0xf8) >> 3;
+	int phaseBits = (hexa & 0xf8) >> 3;
+	reg.m_block[1].m_nI = CPhaseTable::reversePhaseBit(phaseBits);
 	reg.m_block[0].m_nBlock = (hexa & 0x04) >> 2;
 
-	int high = (hexa & 0x03) << 3;
-	int low = reg.m_block[0].m_nQ & 0x07;
+	phaseBits = hexa & 0x03;
+	int high = CPhaseTable::byteBitReverse(phaseBits) >> 3;
+	int low = 0X00;		//Q_VGA1<2>,Q_VGA1<3>,Q_VGA1<4>는 UpdateRegOut2B에서 채워지는 공간으로 비워 놓는다
 	reg.m_block[0].m_nQ = high | low;
 }
 
