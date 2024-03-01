@@ -211,7 +211,7 @@ const CRegister& CSemanticZing400R::Parse()
 	UpdateRegOut26(pDeriv->m_strRegOut26, regDeriv);
 	UpdateRegOut27(pDeriv->m_strRegOut27, regDeriv);
 	UpdateRegOut28(pDeriv->m_strRegOut28, regDeriv);
-	UpdateRegOut29(pDeriv->m_strRegOut28, regDeriv);
+	UpdateRegOut29(pDeriv->m_strRegOut29, regDeriv);
 	UpdateRegOut2A(pDeriv->m_strRegOut2A, regDeriv);
 	UpdateRegOut2B(pDeriv->m_strRegOut2B, regDeriv);
 	UpdateRegOut2C(pDeriv->m_strRegOut2C, regDeriv);
@@ -277,8 +277,8 @@ void CSemanticZing400R::UpdateRegOut28(CString strRegOut28, CRegisterZing400R& r
 	reg.m_block[2].m_nQ = CPhaseTable::reversePhaseBit(phaseBits);
 
 	phaseBits = hexa & 0x7;
-	int high = CPhaseTable::byteBitReverse(phaseBits) >> 3;
-	int low = 0x00;		//I_VGA3<3>,I_VGA3<4>는 UpdateRegOut29에서 채워지는 공간으로 비워 놓는다
+	int high = 0x00;	//I_VGA3<3>,I_VGA3<4>는 UpdateRegOut29에서 채워지는 공간으로 비워 놓는다
+	int low = CPhaseTable::byteBitReverse(phaseBits) >> 5;
 	reg.m_block[2].m_nI = high | low;
 }
 
@@ -287,8 +287,8 @@ void CSemanticZing400R::UpdateRegOut29(CString strRegOut29, CRegisterZing400R& r
 	int hexa = _tcstol(strRegOut29.GetBuffer(), NULL, 16);
 
 	int phaseBits = (hexa & 0xc0) >> 6;
-	int low = CPhaseTable::byteBitReverse(phaseBits) >> 6;
-	reg.m_block[2].m_nI = reg.m_block[2].m_nI | low;
+	int high = CPhaseTable::byteBitReverse(phaseBits) >> 3;
+	reg.m_block[2].m_nI = high | reg.m_block[2].m_nI;
 	reg.m_block[2].m_nPhase = CPhaseTable::getState((reg.m_block[2].m_nI) & 0x1f, (reg.m_block[2].m_nQ) & 0x1f);
 
 	reg.m_block[1].m_nBlock = (hexa & 0x20) >> 5;
