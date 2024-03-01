@@ -95,4 +95,7 @@ public:
 	int Ch0Block();
 	static int OnNewCh0Block(int val, int newVal);
 	void UpdateCh0Block(const CRegister& reg);
+	int VspsBias();
+	static int OnNewVspsBias(int val, int newVal);
+	void UpdateVspsBias(const CRegister& reg);
 };
