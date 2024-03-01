@@ -120,6 +120,8 @@ BEGIN_MESSAGE_MAP(CSemanticZing400R, CSemanticBase)
 	ON_STN_CLICKED(IDC_RX_CH1_PHASE_VALUE_STATIC, &CSemanticZing400R::OnStnClickedRxCh1PhaseValueStatic)
 	ON_STN_CLICKED(IDC_RX_CH0_VSPS_BLOCK_ENABLE_VALUE_STATIC, &CSemanticZing400R::OnStnClickedRxCh0VspsBlockEnableValueStatic)
 	ON_STN_CLICKED(IDC_RX_CH0_PHASE_VALUE_STATIC, &CSemanticZing400R::OnStnClickedRxCh0PhaseValueStatic)
+	ON_STN_CLICKED(IDC_RX_VSPS_BIAS_CONTROL_BIT_VALUE_STATIC, &OnStnClickedRxVspsBiasControlBitValueStatic)
+	ON_STN_CLICKED(IDC_RX_LNA_BIAS_CONTROL_BIT_VALUE_STATIC, &OnStnClickedRxLnaBiasControlBitValueStatic)
 END_MESSAGE_MAP()
 
 
@@ -481,4 +483,16 @@ void CSemanticZing400R::OnStnClickedRxCh0PhaseValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	SetSliderGroup(CSelect::Ch0Phase, 1, 32, m_vspsBlock[0].m_strPhase, 1, 1, 10, IDC_RX_CH0_PHASE_STATIC, &CSemanticBase::SetControlSliderForPhase);
+}
+
+void CSemanticZing400R::OnStnClickedRxVspsBiasControlBitValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	SetSliderGroup(CSelect::VspsBias, 0, 15, m_strVspsBiasControlBit, 0, 1, 10, IDC_RX_VSPS_BIAS_CONTROL_BIT_STATIC);
+}
+
+void CSemanticZing400R::OnStnClickedRxLnaBiasControlBitValueStatic()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	SetSliderGroup(CSelect::LnasBias, 0, 15, m_strLnaControlBit, 0, 1, 10, IDC_RX_LNA_BIAS_CONTROL_BIT_STATIC);
 }

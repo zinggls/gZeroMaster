@@ -77,4 +77,6 @@ public:
 	afx_msg void OnStnClickedRxCh1PhaseValueStatic();
 	afx_msg void OnStnClickedRxCh0VspsBlockEnableValueStatic();
 	afx_msg void OnStnClickedRxCh0PhaseValueStatic();
+	afx_msg void OnStnClickedRxVspsBiasControlBitValueStatic();
+	afx_msg void OnStnClickedRxLnaBiasControlBitValueStatic();
 };
