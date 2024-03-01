@@ -69,4 +69,12 @@ public:
 	void UpdateCh0Phase(const CRegisterZing400R& reg);
 	void UpdateVspsBiasControlBit(const CRegisterZing400R& reg);
 	void UpdateLnaControlBit(const CRegisterZing400R& reg);
+	afx_msg void OnStnClickedRxCh3VspsBlockEnableValueStatic();
+	afx_msg void OnStnClickedRxCh3PhaseValueStatic();
+	afx_msg void OnStnClickedRxCh2VspsBlockEnableValueStatic();
+	afx_msg void OnStnClickedRxCh2PhaseValueStatic();
+	afx_msg void OnStnClickedRxCh1VspsBlockEnableValueStatic();
+	afx_msg void OnStnClickedRxCh1PhaseValueStatic();
+	afx_msg void OnStnClickedRxCh0VspsBlockEnableValueStatic();
+	afx_msg void OnStnClickedRxCh0PhaseValueStatic();
 };
