@@ -72,6 +72,7 @@ public:
 	void SaveRegisterA0(CString fileName);
 	void SaveRegisterB0(CString fileName);
 	void SaveRegisterZing400T(CString fileName);
+	void SaveRegisterZing400R(CString fileName);
 	void SaveRegisters(CString fileName);
 	afx_msg void OnMainmenuLoad();
 	BOOL LoadValue(TCHAR *regTagName, CString *pTargetStr, CString fileName);

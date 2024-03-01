@@ -544,13 +544,37 @@ void CgZeroMasterDlg::SaveRegisterZing400T(CString fileName)
 }
 
 
+void CgZeroMasterDlg::SaveRegisterZing400R(CString fileName)
+{
+	ASSERT(m_chip == _T("Zing400R"));
+	WritePrivateProfileString(_T("Zing400R Registers"), _T("RX_REG1_4-3"), m_pRaw->m_strRxReg1, fileName);
+	WritePrivateProfileString(_T("Zing400R Registers"), _T("BIAS_REG1_0"), m_pRaw->m_strBiasReg1, fileName);
+	WritePrivateProfileString(_T("Zing400R Registers"), _T("BIAS_REG4_7-0"), m_pRaw->m_strBiasReg4, fileName);
+	WritePrivateProfileString(_T("Zing400R Registers"), _T("BIAS_REG5_7-0"), m_pRaw->m_strBiasReg5, fileName);
+	WritePrivateProfileString(_T("Zing400R Registers"), _T("BIAS_REG6_7-0"), m_pRaw->m_strBiasReg6, fileName);
+	WritePrivateProfileString(_T("Zing400R Registers"), _T("BIAS_REG7_7-0"), m_pRaw->m_strBiasReg7, fileName);
+	WritePrivateProfileString(_T("Zing400R Registers"), _T("BIAS_REG8_7-0"), m_pRaw->m_strBiasReg8, fileName);
+
+	CRawZing400R* pDeriv = dynamic_cast<CRawZing400R*>(m_pRaw);
+	ASSERT(pDeriv);
+	WritePrivateProfileString(_T("Zing400R Registers"), _T("REG_OUT26_3-0"), pDeriv->m_strRegOut26, fileName);
+	WritePrivateProfileString(_T("Zing400R Registers"), _T("REG_OUT27_7-0"), pDeriv->m_strRegOut27, fileName);
+	WritePrivateProfileString(_T("Zing400R Registers"), _T("REG_OUT28_7-0"), pDeriv->m_strRegOut28, fileName);
+	WritePrivateProfileString(_T("Zing400R Registers"), _T("REG_OUT29_7-0"), pDeriv->m_strRegOut29, fileName);
+	WritePrivateProfileString(_T("Zing400R Registers"), _T("REG_OUT2A_7-0"), pDeriv->m_strRegOut2A, fileName);
+	WritePrivateProfileString(_T("Zing400R Registers"), _T("REG_OUT2B_7-0"), pDeriv->m_strRegOut2B, fileName);
+	WritePrivateProfileString(_T("Zing400R Registers"), _T("REG_OUT2C_7-0"), pDeriv->m_strRegOut2C, fileName);
+}
+
+
 void CgZeroMasterDlg::SaveRegisters(CString fileName)
 {
-	ASSERT(m_chip == _T("A0") || m_chip == _T("B0") || m_chip == _T("Zing400T"));
+	ASSERT(m_chip == _T("A0") || m_chip == _T("B0") || m_chip == _T("Zing400T") || m_chip == _T("Zing400R"));
 
 	if (m_chip == _T("A0")) SaveRegisterA0(fileName);
 	if (m_chip == _T("B0")) SaveRegisterB0(fileName);
 	if (m_chip == _T("Zing400T")) SaveRegisterZing400T(fileName);
+	if (m_chip == _T("Zing400R")) SaveRegisterZing400R(fileName);
 }
 
 void CgZeroMasterDlg::OnMainmenuLoad()
