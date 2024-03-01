@@ -6,6 +6,7 @@
 #include "CSemanticZing400R.h"
 #include "CRawZing400R.h"
 #include "CRegisterZing400R.h"
+#include "CPhaseTable.h"
 
 
 // CSemanticZing400R 대화 상자
@@ -240,8 +241,9 @@ void CSemanticZing400R::UpdateRegOut26(CString strRegOut26, CRegisterZing400R& r
 	int hexa = _tcstol(strRegOut26.GetBuffer(), NULL, 16);
 	reg.m_block[3].m_nBlock = (hexa & 0x08) >> 3;
 
-	int high = (hexa & 0x07) << 2;
-	int low = (reg.m_block[3].m_nQ) & 0x03;
+	int phaseBits = hexa & 0x7;	//0x7 (0000 0111)
+	int high = CPhaseTable::byteBitReverse(phaseBits) >> 3;		//1110 0000 -> 1110 0
+	int low = 0x00;		//Q_VGA4<3>,Q_VGA4<4>는 UpdateRegOut27에서 채워지는 공간으로 비워 놓는다
 	reg.m_block[3].m_nQ = high | low;
 }
 
