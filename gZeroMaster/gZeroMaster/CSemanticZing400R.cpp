@@ -260,6 +260,15 @@ void CSemanticZing400R::ResetValues()
 	CSemanticBase::ResetValues();
 }
 
+void CSemanticZing400R::ShowSlider(int nCmdShow)
+{
+	CSemanticBase::ShowSlider(nCmdShow);
+
+	GetDlgItem(IDC_RX_SLIDER_VALUE_PHASE_STATIC)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_RX_SLIDER_VALUE_I_STATIC)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_RX_SLIDER_VALUE_Q_STATIC)->ShowWindow(nCmdShow);
+}
+
 int CSemanticZing400R::SliderValueUpdate()
 {
 	if (m_selected == CSelect::Ch3Phase || m_selected == CSelect::Ch2Phase || m_selected == CSelect::Ch1Phase || m_selected == CSelect::Ch0Phase) {
