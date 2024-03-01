@@ -347,6 +347,26 @@ BOOL CSemanticZing400R::UpdateSelected(UINT selected, BOOL bCommonControl)
 	return bRtn;
 }
 
+void CSemanticZing400R::OnBnClickedWriteAllButton()
+{
+	int errCnt = 0;
+	CString str;
+	for (std::map<UINT, CStaticElem>::iterator it = m_staticMap.begin(); it != m_staticMap.end(); ++it) {
+		if (!UpdateSelected(it->first, FALSE)) {
+			str.Format(_T("Update failed at SelectStatic:%d"), it->first);
+			L(str);
+			errCnt++;
+		}
+	}
+	if (errCnt == 0)
+		L(_T("All registers are updated"));
+	else {
+		str.Format(_T("%d Update failures"), errCnt);
+		L(str);
+	}
+	OnBnClickedReadAllButton();
+}
+
 void CSemanticZing400R::UpdateRxReg1(CString strRxReg1, CRegister& reg)
 {
 	int val = _tcstol(strRxReg1.GetBuffer(), NULL, 16) & 0xff;
