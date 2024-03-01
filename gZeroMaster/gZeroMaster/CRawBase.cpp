@@ -519,7 +519,7 @@ void CRawBase::OnStnClickedTxReg1MidStatic()
 {
 	CStringList msgList;
 	msgList.AddTail(_T("TX_REG1[15:8]"));
-	ASSERT(Parent()->m_chip == _T("A0") || Parent()->m_chip == _T("B0"));
+	ASSERT(Parent()->m_chip == _T("A0") || Parent()->m_chip == _T("Zing200x"));
 	if (Parent()->m_chip == _T("A0")) {
 		msgList.AddTail(_T("    [7]:Modulator power down 0: MOD off, 1: MOD on"));
 		msgList.AddTail(_T("    [6]:Test buffer power down 0: test buff off, 1: test buff on"));
@@ -538,7 +538,7 @@ void CRawBase::OnStnClickedTxReg1BotStatic()
 {
 	CStringList msgList;
 	msgList.AddTail(_T("TX_REG1[7:0]"));
-	ASSERT(Parent()->m_chip == _T("A0") || Parent()->m_chip == _T("B0"));
+	ASSERT(Parent()->m_chip == _T("A0") || Parent()->m_chip == _T("Zing200x"));
 	if (Parent()->m_chip == _T("A0")) {
 		msgList.AddTail(_T("    [7:4]:PA gain control 1"));
 		msgList.AddTail(_T("    [3:0]:Test Buffer Current control"));

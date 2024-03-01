@@ -149,7 +149,7 @@ void CRaw::OnHideRegisterButtons(CString strChosenRegister)
 
 void CRaw::OnChipConnect(CString chipModel)
 {
-	ASSERT(chipModel == _T("A0") || chipModel == _T("B0"));
+	ASSERT(chipModel == _T("A0") || chipModel == _T("Zing200x"));
 
 	m_regMap.clear();
 	m_regMap.insert(std::pair<CString, CReg>(_T("RX_REG1 [4:0]"), CReg(2, &m_strRxReg1, IDC_RX_REG1_STATIC)));
@@ -165,7 +165,7 @@ void CRaw::OnChipConnect(CString chipModel)
 	m_regMap.insert(std::pair<CString, CReg>(_T("BIAS_REG7 [7:0]"), CReg(23, &m_strBiasReg7, IDC_BIAS_REG7_STATIC)));
 	m_regMap.insert(std::pair<CString, CReg>(_T("BIAS_REG8 [7:0]"), CReg(24, &m_strBiasReg8, IDC_BIAS_REG8_STATIC)));
 
-	if (chipModel == _T("B0")) {
+	if (chipModel == _T("Zing200x")) {
 		m_regMap.insert(std::pair<CString, CReg>(_T("TX_REG2 [16]"), CReg(13, &m_strTxReg2Top, IDC_TX_REG2_TOP_STATIC)));
 		m_regMap.insert(std::pair<CString, CReg>(_T("TX_REG2 [15:8]"), CReg(12, &m_strTxReg2Mid, IDC_TX_REG2_MID_STATIC)));
 		m_regMap.insert(std::pair<CString, CReg>(_T("TX_REG2 [7:0]"), CReg(11, &m_strTxReg2Bot, IDC_TX_REG2_BOT_STATIC)));
@@ -197,7 +197,7 @@ void CRaw::OnChipConnect(CString chipModel)
 
 void CRaw::DefaultValues(CString strChip)
 {
-	ASSERT(strChip == _T("A0") || strChip == _T("B0"));
+	ASSERT(strChip == _T("A0") || strChip == _T("Zing200x"));
 
 	m_strRxReg1 = _T("0x18");
 	m_strTxReg1Top = _T("0x00");
@@ -215,7 +215,7 @@ void CRaw::DefaultValues(CString strChip)
 		m_strBiasReg8 = _T("0x06");
 		m_strBiasReg9 = _T("0x99");
 	}
-	else if (strChip == _T("B0")) {
+	else if (strChip == _T("Zing200x")) {
 		m_strTxReg1Mid = _T("0x10");
 		m_strTxReg1Bot = _T("0x10");
 		m_strTxReg2Top = _T("0x01");

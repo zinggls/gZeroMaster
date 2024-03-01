@@ -152,7 +152,7 @@ BOOL CgZeroMasterDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// 작은 아이콘을 설정합니다.
 
 	// TODO: 여기에 추가 초기화 작업을 추가합니다.
-	m_chipSelect.AddString(_T("B0"));
+	m_chipSelect.AddString(_T("Zing200x"));
 	m_chipSelect.AddString(_T("Zing400T"));
 	m_chipSelect.AddString(_T("Zing400R"));
 	m_chipSelect.SetCurSel(0);	//디폴트 선택은 B0
@@ -303,7 +303,7 @@ void CgZeroMasterDlg::SerialClose(CString& str)
 
 char CgZeroMasterDlg::ModelToAscii(CString strModel)
 {
-	if (strModel == _T("B0")) {
+	if (strModel == _T("Zing200x")) {
 		return '1';
 	}
 	else if (strModel == _T("Zing400R")) {
@@ -501,22 +501,22 @@ void CgZeroMasterDlg::SaveRegisterA0(CString fileName)
 
 void CgZeroMasterDlg::SaveRegisterB0(CString fileName)
 {
-	ASSERT(m_chip == _T("B0"));
-	WritePrivateProfileString(_T("B0 Registers"), _T("RX_REG1_4-0"), m_pRaw->m_strRxReg1, fileName);
-	WritePrivateProfileString(_T("B0 Registers"), _T("TX_REG1_23-16"), m_pRaw->m_strTxReg1Top, fileName);
-	WritePrivateProfileString(_T("B0 Registers"), _T("TX_REG1_15-8"), m_pRaw->m_strTxReg1Mid, fileName);
-	WritePrivateProfileString(_T("B0 Registers"), _T("TX_REG1_7-0"), m_pRaw->m_strTxReg1Bot, fileName);
-	WritePrivateProfileString(_T("B0 Registers"), _T("TX_REG2_16"), m_pRaw->m_strTxReg2Top, fileName);
-	WritePrivateProfileString(_T("B0 Registers"), _T("TX_REG2_15-8"), m_pRaw->m_strTxReg2Mid, fileName);
-	WritePrivateProfileString(_T("B0 Registers"), _T("TX_REG2_7-0"), m_pRaw->m_strTxReg2Bot, fileName);
-	WritePrivateProfileString(_T("B0 Registers"), _T("BIAS_REG1_0"), m_pRaw->m_strBiasReg1, fileName);
-	WritePrivateProfileString(_T("B0 Registers"), _T("BIAS_REG2_7-0"), m_pRaw->m_strBiasReg2, fileName);
-	WritePrivateProfileString(_T("B0 Registers"), _T("BIAS_REG3_7-0"), m_pRaw->m_strBiasReg3, fileName);
-	WritePrivateProfileString(_T("B0 Registers"), _T("BIAS_REG4_7-0"), m_pRaw->m_strBiasReg4, fileName);
-	WritePrivateProfileString(_T("B0 Registers"), _T("BIAS_REG5_7-0"), m_pRaw->m_strBiasReg5, fileName);
-	WritePrivateProfileString(_T("B0 Registers"), _T("BIAS_REG6_7-0"), m_pRaw->m_strBiasReg6, fileName);
-	WritePrivateProfileString(_T("B0 Registers"), _T("BIAS_REG7_7-0"), m_pRaw->m_strBiasReg7, fileName);
-	WritePrivateProfileString(_T("B0 Registers"), _T("BIAS_REG8_7-0"), m_pRaw->m_strBiasReg8, fileName);
+	ASSERT(m_chip == _T("Zing200x"));
+	WritePrivateProfileString(_T("Zing200x Registers"), _T("RX_REG1_4-0"), m_pRaw->m_strRxReg1, fileName);
+	WritePrivateProfileString(_T("Zing200x Registers"), _T("TX_REG1_23-16"), m_pRaw->m_strTxReg1Top, fileName);
+	WritePrivateProfileString(_T("Zing200x Registers"), _T("TX_REG1_15-8"), m_pRaw->m_strTxReg1Mid, fileName);
+	WritePrivateProfileString(_T("Zing200x Registers"), _T("TX_REG1_7-0"), m_pRaw->m_strTxReg1Bot, fileName);
+	WritePrivateProfileString(_T("Zing200x Registers"), _T("TX_REG2_16"), m_pRaw->m_strTxReg2Top, fileName);
+	WritePrivateProfileString(_T("Zing200x Registers"), _T("TX_REG2_15-8"), m_pRaw->m_strTxReg2Mid, fileName);
+	WritePrivateProfileString(_T("Zing200x Registers"), _T("TX_REG2_7-0"), m_pRaw->m_strTxReg2Bot, fileName);
+	WritePrivateProfileString(_T("Zing200x Registers"), _T("BIAS_REG1_0"), m_pRaw->m_strBiasReg1, fileName);
+	WritePrivateProfileString(_T("Zing200x Registers"), _T("BIAS_REG2_7-0"), m_pRaw->m_strBiasReg2, fileName);
+	WritePrivateProfileString(_T("Zing200x Registers"), _T("BIAS_REG3_7-0"), m_pRaw->m_strBiasReg3, fileName);
+	WritePrivateProfileString(_T("Zing200x Registers"), _T("BIAS_REG4_7-0"), m_pRaw->m_strBiasReg4, fileName);
+	WritePrivateProfileString(_T("Zing200x Registers"), _T("BIAS_REG5_7-0"), m_pRaw->m_strBiasReg5, fileName);
+	WritePrivateProfileString(_T("Zing200x Registers"), _T("BIAS_REG6_7-0"), m_pRaw->m_strBiasReg6, fileName);
+	WritePrivateProfileString(_T("Zing200x Registers"), _T("BIAS_REG7_7-0"), m_pRaw->m_strBiasReg7, fileName);
+	WritePrivateProfileString(_T("Zing200x Registers"), _T("BIAS_REG8_7-0"), m_pRaw->m_strBiasReg8, fileName);
 }
 
 
@@ -568,10 +568,10 @@ void CgZeroMasterDlg::SaveRegisterZing400R(CString fileName)
 
 void CgZeroMasterDlg::SaveRegisters(CString fileName)
 {
-	ASSERT(m_chip == _T("A0") || m_chip == _T("B0") || m_chip == _T("Zing400T") || m_chip == _T("Zing400R"));
+	ASSERT(m_chip == _T("A0") || m_chip == _T("Zing200x") || m_chip == _T("Zing400T") || m_chip == _T("Zing400R"));
 
 	if (m_chip == _T("A0")) SaveRegisterA0(fileName);
-	if (m_chip == _T("B0")) SaveRegisterB0(fileName);
+	if (m_chip == _T("Zing200x")) SaveRegisterB0(fileName);
 	if (m_chip == _T("Zing400T")) SaveRegisterZing400T(fileName);
 	if (m_chip == _T("Zing400R")) SaveRegisterZing400R(fileName);
 }
@@ -598,7 +598,7 @@ void CgZeroMasterDlg::OnMainmenuLoad()
 
 BOOL CgZeroMasterDlg::LoadValue(TCHAR *regTagName, CString *pTargetStr, CString fileName)
 {
-	ASSERT(m_chip == _T("A0") || m_chip == _T("B0") || m_chip == _T("Zing400T") || m_chip == _T("Zing400R"));
+	ASSERT(m_chip == _T("A0") || m_chip == _T("Zing200x") || m_chip == _T("Zing400T") || m_chip == _T("Zing400R"));
 
 	TCHAR strTmp[256];
 	CString strSec(m_chip);
@@ -697,7 +697,7 @@ BOOL CgZeroMasterDlg::LoadRegisters(CString fileName)
 {
 	if (m_chip == _T("Zing400T")) return LoadRegisterZing400T(fileName);
 	if (m_chip == _T("Zing400R")) return LoadRegisterZing400R(fileName);
-	ASSERT(m_chip == _T("A0") || m_chip == _T("B0"));
+	ASSERT(m_chip == _T("A0") || m_chip == _T("Zing200x"));
 
 	if (!LoadValue(_T("RX_REG1_4-0"), &m_pRaw->m_strRxReg1, fileName)) return FALSE;
 	CheckRxReg1(m_pRaw->m_strRxReg1);
@@ -706,7 +706,7 @@ BOOL CgZeroMasterDlg::LoadRegisters(CString fileName)
 	if (!LoadValue(_T("TX_REG1_15-8"), &m_pRaw->m_strTxReg1Mid, fileName)) return FALSE;
 	if (!LoadValue(_T("TX_REG1_7-0"), &m_pRaw->m_strTxReg1Bot, fileName)) return FALSE;
 
-	if (m_chip == _T("B0")) {
+	if (m_chip == _T("Zing200x")) {
 		if (!LoadValue(_T("TX_REG2_16"), &m_pRaw->m_strTxReg2Top, fileName)) return FALSE;
 		CheckTxReg2Top(m_pRaw->m_strTxReg2Top);
 		if (!LoadValue(_T("TX_REG2_15-8"), &m_pRaw->m_strTxReg2Mid, fileName)) return FALSE;
@@ -786,7 +786,7 @@ void CgZeroMasterDlg::OnCbnSelchangeChipCombo()
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_chipSelect.GetLBText(m_chipSelect.GetCurSel(), m_chip);
 
-	if (m_chip == _T("A0") || m_chip == _T("B0"))
+	if (m_chip == _T("A0") || m_chip == _T("Zing200x"))
 		OnChipZing200x();
 	else if (m_chip == _T("Zing400T"))
 		OnChipZing400T();
@@ -1236,7 +1236,7 @@ void CgZeroMasterDlg::Parse(CRegister& reg)
 {
 	CSemanticBase::UpdateRxReg1(m_pRaw->m_strRxReg1, reg);
 	CSemanticBase::UpdateTxReg1(m_pRaw->m_strTxReg1Top, m_pRaw->m_strTxReg1Mid, m_pRaw->m_strTxReg1Bot, reg, m_pRaw->Parent()->m_chip);
-	if (m_pRaw->Parent()->m_chip == _T("B0"))
+	if (m_pRaw->Parent()->m_chip == _T("Zing200x"))
 		CSemanticBase::UpdateTxReg2(m_pRaw->m_strTxReg2Top, m_pRaw->m_strTxReg2Mid, m_pRaw->m_strTxReg2Bot, reg);
 
 	CSemanticBase::UpdateBiasReg1(m_pRaw->m_strBiasReg1, reg);

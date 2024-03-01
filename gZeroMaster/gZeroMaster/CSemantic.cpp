@@ -135,7 +135,7 @@ BOOL CSemantic::OnInitDialog()
 
 void CSemantic::OnChipConnect(CString chipModel)
 {
-	ASSERT(chipModel == _T("A0") || chipModel == _T("B0"));
+	ASSERT(chipModel == _T("A0") || chipModel == _T("Zing200x"));
 
 	if (chipModel == _T("A0")) {
 		GetDlgItem(IDC_VCO_OSC_FREQ_STATIC)->ShowWindow(SW_HIDE);
@@ -152,7 +152,7 @@ void CSemantic::OnChipConnect(CString chipModel)
 		GetDlgItem(IDC_FD_CORE_CURRENT_VALUE_STATIC)->ShowWindow(SW_SHOW);
 		GetDlgItem(IDC_FD_BUFFER_CURRENT_VALUE_STATIC)->ShowWindow(SW_SHOW);
 	}
-	else if (chipModel == _T("B0")) {
+	else if (chipModel == _T("Zing200x")) {
 		GetDlgItem(IDC_VCO_OSC_FREQ_STATIC)->ShowWindow(SW_SHOW);
 		GetDlgItem(IDC_REG_REF_VOLT_STATIC)->ShowWindow(SW_SHOW);
 		GetDlgItem(IDC_VCO_VDD_STATIC)->ShowWindow(SW_SHOW);
@@ -173,7 +173,7 @@ const CRegister& CSemantic::Parse()
 {
 	CSemanticBase::UpdateRxReg1(m_pRawBase->m_strRxReg1, *m_pReg);
 	CSemanticBase::UpdateTxReg1(m_pRawBase->m_strTxReg1Top, m_pRawBase->m_strTxReg1Mid, m_pRawBase->m_strTxReg1Bot, *m_pReg, m_pRawBase->Parent()->m_chip);
-	if (m_pRawBase->Parent()->m_chip == _T("B0"))
+	if (m_pRawBase->Parent()->m_chip == _T("Zing200x"))
 		CSemanticBase::UpdateTxReg2(m_pRawBase->m_strTxReg2Top, m_pRawBase->m_strTxReg2Mid, m_pRawBase->m_strTxReg2Bot, *m_pReg);
 
 	CSemanticBase::UpdateBiasReg1(m_pRawBase->m_strBiasReg1, *m_pReg);
