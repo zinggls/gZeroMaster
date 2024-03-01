@@ -101,4 +101,8 @@ public:
 	int LnaBias();
 	static int OnNewLnaBias(int val, int newVal);
 	void UpdateLnaBias(const CRegister& reg);
+	int Ch3Phase();
+	static int OnNewCh3PhaseFirst(int val, int newVal);
+	static int OnNewCh3PhaseNext(int val, int newVal);
+	void UpdateCh3PhaseIQ(const CRegister& reg);
 };

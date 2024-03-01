@@ -325,6 +325,10 @@ BOOL CSemanticZing400R::UpdateSelected(UINT selected, BOOL bCommonControl)
 		bCommonControl ? updateValue = SliderPos() : updateValue = LnaBias();
 		bRtn = UpdateSemanticValue(0x2C, &OnNewLnaBias, updateValue, reinterpret_cast<void (CSemanticBase::*)(const CRegister&)>(&CSemanticZing400R::UpdateLnaBias));
 		break;
+	case CSelect::Ch3Phase:
+		bCommonControl ? updateValue = SliderPos() : updateValue = Ch3Phase();
+		bRtn = UpdatePhaseValue(0x26, &OnNewCh3PhaseFirst, &OnNewCh3PhaseNext, updateValue, reinterpret_cast<void (CSemanticBase::*)(const CRegister&)>(&CSemanticZing400R::UpdateCh3PhaseIQ));
+		break;
 	default:
 		break;
 	}
@@ -669,4 +673,35 @@ void CSemanticZing400R::UpdateLnaBias(const CRegister& reg)
 {
 	const CRegisterZing400R& derived = dynamic_cast<const CRegisterZing400R&>(reg);
 	m_strLnaControlBit.Format(_T("0x%02x"), derived.m_nLnaBias);
+}
+
+int CSemanticZing400R::Ch3Phase()
+{
+	CString strPhaseState;
+	AfxExtractSubString(strPhaseState, m_vspsBlock[3].m_strPhase, 0, '/');
+	int val = _tcstol(strPhaseState.GetBuffer(), NULL, 10);	//"undefined"인 경우 val값은 0
+	return val;
+}
+
+int CSemanticZing400R::OnNewCh3PhaseFirst(int val, int newVal)
+{
+	unsigned char q = CPhaseTable::reversePhaseBit(CPhaseTable::getQ(newVal));
+	ASSERT((q & 0xe0) == 0);	//Q Phase비트는 반드시 5비트이어야 함
+	return (val & 0xf8) | ((q & 0x1c) >> 2);
+}
+
+int CSemanticZing400R::OnNewCh3PhaseNext(int val, int newVal)
+{
+	unsigned char q = CPhaseTable::reversePhaseBit(CPhaseTable::getQ(newVal));
+	unsigned char i = CPhaseTable::reversePhaseBit(CPhaseTable::getI(newVal));
+	ASSERT((q & 0xe0) == 0);	//Q Phase비트는 반드시 5비트이어야 함
+	ASSERT((i & 0xe0) == 0);	//I Phase비트는 반드시 5비트이어야 함
+	return (val & 0x01) | ((q & 0x3) << 6) | (i << 1);
+}
+
+void CSemanticZing400R::UpdateCh3PhaseIQ(const CRegister& reg)
+{
+	const CRegisterZing400R& derived = dynamic_cast<const CRegisterZing400R&>(reg);
+	m_vspsBlock[3].m_strPhase.Format(_T("%d / "), derived.m_block[3].m_nPhase);
+	m_vspsBlock[3].m_strPhase += CPhaseTable::getPhase(derived.m_block[3].m_nPhase);
 }
