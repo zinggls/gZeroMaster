@@ -220,9 +220,13 @@ void CSemanticZing400R::UpdateRegisters()
 
 	const CRegisterZing400R& derived = dynamic_cast<const CRegisterZing400R&>(Parse());
 	UpdateCh3VspsBlockEnable(derived);
+	UpdateCh3Phase(derived);
 	UpdateCh2VspsBlockEnable(derived);
+	UpdateCh2Phase(derived);
 	UpdateCh1VspsBlockEnable(derived);
+	UpdateCh1Phase(derived);
 	UpdateCh0VspsBlockEnable(derived);
+	UpdateCh0Phase(derived);
 	UpdateVspsBiasControlBit(derived);
 	UpdateLnaControlBit(derived);
 	UpdateData(FALSE);
@@ -328,9 +332,31 @@ void CSemanticZing400R::UpdateCh3VspsBlockEnable(const CRegisterZing400R& reg)
 	(reg.m_block[3].m_nBlock) ? m_vspsBlock[3].m_strVspsBlockEnable.Format(_T("enable")) : m_vspsBlock[3].m_strVspsBlockEnable.Format(_T("disable"));
 }
 
+void CSemanticZing400R::UpdateCh3Phase(const CRegisterZing400R& reg)
+{
+	if (reg.m_block[3].m_nPhase == -1) {
+		m_vspsBlock[3].m_strPhase = CString(_T("undefined"));
+	}
+	else {
+		m_vspsBlock[3].m_strPhase.Format(_T("%d / "), reg.m_block[3].m_nPhase);
+		m_vspsBlock[3].m_strPhase += CPhaseTable::getPhase(reg.m_block[3].m_nPhase);
+	}
+}
+
 void CSemanticZing400R::UpdateCh2VspsBlockEnable(const CRegisterZing400R& reg)
 {
 	(reg.m_block[2].m_nBlock) ? m_vspsBlock[2].m_strVspsBlockEnable.Format(_T("enable")) : m_vspsBlock[2].m_strVspsBlockEnable.Format(_T("disable"));
+}
+
+void CSemanticZing400R::UpdateCh2Phase(const CRegisterZing400R& reg)
+{
+	if (reg.m_block[2].m_nPhase == -1) {
+		m_vspsBlock[2].m_strPhase = CString(_T("undefined"));
+	}
+	else {
+		m_vspsBlock[2].m_strPhase.Format(_T("%d / "), reg.m_block[2].m_nPhase);
+		m_vspsBlock[2].m_strPhase += CPhaseTable::getPhase(reg.m_block[2].m_nPhase);
+	}
 }
 
 void CSemanticZing400R::UpdateCh1VspsBlockEnable(const CRegisterZing400R& reg)
@@ -338,9 +364,31 @@ void CSemanticZing400R::UpdateCh1VspsBlockEnable(const CRegisterZing400R& reg)
 	(reg.m_block[1].m_nBlock) ? m_vspsBlock[1].m_strVspsBlockEnable.Format(_T("enable")) : m_vspsBlock[1].m_strVspsBlockEnable.Format(_T("disable"));
 }
 
+void CSemanticZing400R::UpdateCh1Phase(const CRegisterZing400R& reg)
+{
+	if (reg.m_block[1].m_nPhase == -1) {
+		m_vspsBlock[1].m_strPhase = CString(_T("undefined"));
+	}
+	else {
+		m_vspsBlock[1].m_strPhase.Format(_T("%d / "), reg.m_block[1].m_nPhase);
+		m_vspsBlock[1].m_strPhase += CPhaseTable::getPhase(reg.m_block[1].m_nPhase);
+	}
+}
+
 void CSemanticZing400R::UpdateCh0VspsBlockEnable(const CRegisterZing400R& reg)
 {
 	(reg.m_block[0].m_nBlock) ? m_vspsBlock[0].m_strVspsBlockEnable.Format(_T("enable")) : m_vspsBlock[0].m_strVspsBlockEnable.Format(_T("disable"));
+}
+
+void CSemanticZing400R::UpdateCh0Phase(const CRegisterZing400R& reg)
+{
+	if (reg.m_block[0].m_nPhase == -1) {
+		m_vspsBlock[0].m_strPhase = CString(_T("undefined"));
+	}
+	else {
+		m_vspsBlock[0].m_strPhase.Format(_T("%d / "), reg.m_block[0].m_nPhase);
+		m_vspsBlock[0].m_strPhase += CPhaseTable::getPhase(reg.m_block[0].m_nPhase);
+	}
 }
 
 void CSemanticZing400R::UpdateVspsBiasControlBit(const CRegisterZing400R& reg)

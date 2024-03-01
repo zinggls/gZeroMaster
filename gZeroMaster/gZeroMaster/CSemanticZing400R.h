@@ -59,9 +59,13 @@ public:
 	static void UpdateRegOut2B(CString strRegOut2B, CRegisterZing400R& reg);
 	static void UpdateRegOut2C(CString strRegOut2C, CRegisterZing400R& reg);
 	void UpdateCh3VspsBlockEnable(const CRegisterZing400R& reg);
+	void UpdateCh3Phase(const CRegisterZing400R& reg);
 	void UpdateCh2VspsBlockEnable(const CRegisterZing400R& reg);
+	void UpdateCh2Phase(const CRegisterZing400R& reg);
 	void UpdateCh1VspsBlockEnable(const CRegisterZing400R& reg);
+	void UpdateCh1Phase(const CRegisterZing400R& reg);
 	void UpdateCh0VspsBlockEnable(const CRegisterZing400R& reg);
+	void UpdateCh0Phase(const CRegisterZing400R& reg);
 	void UpdateVspsBiasControlBit(const CRegisterZing400R& reg);
 	void UpdateLnaControlBit(const CRegisterZing400R& reg);
 };
