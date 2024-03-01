@@ -264,10 +264,12 @@ void CSemanticZing400R::UpdateRegOut28(CString strRegOut28, CRegisterZing400R& r
 {
 	int hexa = _tcstol(strRegOut28.GetBuffer(), NULL, 16);
 
-	reg.m_block[2].m_nQ = (hexa & 0xf8) >> 3;
+	int phaseBits = (hexa & 0xf8) >> 3;
+	reg.m_block[2].m_nQ = CPhaseTable::reversePhaseBit(phaseBits);
 
-	int high = (hexa & 0x07) << 2;
-	int low = (reg.m_block[2].m_nI) & 0x03;
+	phaseBits = hexa & 0x7;
+	int high = CPhaseTable::byteBitReverse(phaseBits) >> 3;
+	int low = 0x00;		//I_VGA3<3>,I_VGA3<4>는 UpdateRegOut29에서 채워지는 공간으로 비워 놓는다
 	reg.m_block[2].m_nI = high | low;
 }
 
