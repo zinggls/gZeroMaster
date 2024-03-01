@@ -155,7 +155,7 @@ BOOL CgZeroMasterDlg::OnInitDialog()
 	m_chipSelect.AddString(_T("Zing200x"));
 	m_chipSelect.AddString(_T("Zing400T"));
 	m_chipSelect.AddString(_T("Zing400R"));
-	m_chipSelect.SetCurSel(0);	//디폴트 선택은 B0
+	m_chipSelect.SetCurSel(0);	//디폴트 선택은 Zing200x
 
 	HKEY hKey;
 	TCHAR RegData[20];
@@ -499,7 +499,7 @@ void CgZeroMasterDlg::SaveRegisterA0(CString fileName)
 }
 
 
-void CgZeroMasterDlg::SaveRegisterB0(CString fileName)
+void CgZeroMasterDlg::SaveRegisterZing200x(CString fileName)
 {
 	ASSERT(m_chip == _T("Zing200x"));
 	WritePrivateProfileString(_T("Zing200x Registers"), _T("RX_REG1_4-0"), m_pRaw->m_strRxReg1, fileName);
@@ -571,7 +571,7 @@ void CgZeroMasterDlg::SaveRegisters(CString fileName)
 	ASSERT(m_chip == _T("A0") || m_chip == _T("Zing200x") || m_chip == _T("Zing400T") || m_chip == _T("Zing400R"));
 
 	if (m_chip == _T("A0")) SaveRegisterA0(fileName);
-	if (m_chip == _T("Zing200x")) SaveRegisterB0(fileName);
+	if (m_chip == _T("Zing200x")) SaveRegisterZing200x(fileName);
 	if (m_chip == _T("Zing400T")) SaveRegisterZing400T(fileName);
 	if (m_chip == _T("Zing400R")) SaveRegisterZing400R(fileName);
 }

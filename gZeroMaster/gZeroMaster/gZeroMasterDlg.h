@@ -70,7 +70,7 @@ public:
 	afx_msg void OnMainmenuClearlog();
 	afx_msg void OnMainmenuSave();
 	void SaveRegisterA0(CString fileName);
-	void SaveRegisterB0(CString fileName);
+	void SaveRegisterZing200x(CString fileName);
 	void SaveRegisterZing400T(CString fileName);
 	void SaveRegisterZing400R(CString fileName);
 	void SaveRegisters(CString fileName);
