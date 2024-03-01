@@ -83,4 +83,7 @@ public:
 	afx_msg void OnStnClickedRxCh0PhaseValueStatic();
 	afx_msg void OnStnClickedRxVspsBiasControlBitValueStatic();
 	afx_msg void OnStnClickedRxLnaBiasControlBitValueStatic();
+	int Ch3Block();
+	static int OnNewCh3Block(int val, int newVal);
+	void UpdateCh3Block(const CRegister& reg);
 };

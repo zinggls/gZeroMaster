@@ -293,8 +293,20 @@ void CSemanticZing400R::OnBnClickedWriteButton()
 
 BOOL CSemanticZing400R::UpdateSelected(UINT selected, BOOL bCommonControl)
 {
-	//TO DO
-	return FALSE;
+	BOOL bRtn = CSemanticBase::UpdateSelected(selected, bCommonControl);
+	if (bRtn) return TRUE;
+
+	int updateValue;
+	switch (selected) {
+		//ControlCombo
+	case CSelect::Ch3Block:
+		bCommonControl ? updateValue = ComboSel() : updateValue = Ch3Block();
+		bRtn = UpdateSemanticValue(0x26, &OnNewCh3Block, updateValue, reinterpret_cast<void (CSemanticBase::*)(const CRegister&)>(&CSemanticZing400R::UpdateCh3Block));
+		break;
+	default:
+		break;
+	}
+	return bRtn;
 }
 
 void CSemanticZing400R::UpdateRxReg1(CString strRxReg1, CRegister& reg)
@@ -535,4 +547,20 @@ void CSemanticZing400R::OnStnClickedRxLnaBiasControlBitValueStatic()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	SetSliderGroup(CSelect::LnasBias, 0, 15, m_strLnaControlBit, 0, 1, 10, IDC_RX_LNA_BIAS_CONTROL_BIT_STATIC);
+}
+
+int CSemanticZing400R::Ch3Block()
+{
+	return disableOrEnable(m_vspsBlock[3].m_strVspsBlockEnable);
+}
+
+int CSemanticZing400R::OnNewCh3Block(int val, int newVal)
+{
+	return (val & 0x7) | ((newVal & 0x1) << 3);
+}
+
+void CSemanticZing400R::UpdateCh3Block(const CRegister& reg)
+{
+	const CRegisterZing400R& derived = dynamic_cast<const CRegisterZing400R&>(reg);
+	(derived.m_block[3].m_nBlock) ? m_vspsBlock[3].m_strVspsBlockEnable.Format(_T("enable")) : m_vspsBlock[3].m_strVspsBlockEnable.Format(_T("disable"));
 }
