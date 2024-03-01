@@ -84,6 +84,9 @@ void CSemanticZing400R::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_SLIDER_VALUE_STATIC, m_strSliderValue);
 	DDX_Text(pDX, IDC_SLIDER_VALUE_HEX_STATIC, m_strSliderValueHex);
 	DDX_Text(pDX, IDC_SLIDER_VALUE_BIN_STATIC, m_strSliderValueBin);
+	DDX_Text(pDX, IDC_RX_SLIDER_VALUE_PHASE_STATIC, m_strSliderValuePhase);
+	DDX_Text(pDX, IDC_RX_SLIDER_VALUE_I_STATIC, m_strSliderValueI);
+	DDX_Text(pDX, IDC_RX_SLIDER_VALUE_Q_STATIC, m_strSliderValueQ);
 	DDX_Control(pDX, IDC_CONTROL_COMBO, m_controlCombo);
 	DDX_Check(pDX, IDC_AUTO_WRITE_CHECK, m_bAutoWrite);
 }
@@ -255,6 +258,23 @@ void CSemanticZing400R::ResetValues()
 		m_vspsBlock[i].m_strPhase.Empty();
 	}
 	CSemanticBase::ResetValues();
+}
+
+int CSemanticZing400R::SliderValueUpdate()
+{
+	if (m_selected == CSelect::Ch3Phase || m_selected == CSelect::Ch2Phase || m_selected == CSelect::Ch1Phase || m_selected == CSelect::Ch0Phase) {
+		m_strSliderValuePhase.Format(_T("Phase: "));
+		int curPos = SliderPos();
+		m_strSliderValuePhase += CPhaseTable::getPhase(curPos);
+		m_strSliderValueI.Format(_T("I: "));
+		m_strSliderValueI += PhaseBitsToString(CPhaseTable::getI(curPos));
+		m_strSliderValueQ = _T("Q: ");
+		m_strSliderValueQ += PhaseBitsToString(CPhaseTable::getQ(curPos));
+	}
+	else {
+		m_strSliderValuePhase = m_strSliderValueI = m_strSliderValueQ = CString(_T(""));	//Phase 관련 변수가 선택되지 않는 경우는 아무값도 표시하지 않음
+	}
+	return CSemanticBase::SliderValueUpdate();
 }
 
 void CSemanticZing400R::UpdateRxReg1(CString strRxReg1, CRegister& reg)
