@@ -26,7 +26,7 @@ public:
 		static const UINT Ch0Block = 39;
 		static const UINT Ch0Phase = 40;
 		static const UINT VspsBias = 41;
-		static const UINT LnasBias = 42;
+		static const UINT LnaBias = 42;
 	};
 
 	// 대화 상자 데이터입니다.
