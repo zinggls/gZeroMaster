@@ -277,12 +277,12 @@ void CSemanticZing400R::UpdateRegOut29(CString strRegOut29, CRegisterZing400R& r
 {
 	int hexa = _tcstol(strRegOut29.GetBuffer(), NULL, 16);
 
-	int high = (reg.m_block[2].m_nI) & 0x1c;
-	int low = (hexa & 0xc0) >> 6;
-	reg.m_block[2].m_nI = high | low;
+	int phaseBits = (hexa & 0xc0) >> 6;
+	int low = CPhaseTable::byteBitReverse(phaseBits) >> 6;
+	reg.m_block[2].m_nI = reg.m_block[2].m_nI | low;
 
 	reg.m_block[1].m_nBlock = (hexa & 0x20) >> 5;
-	reg.m_block[1].m_nQ = hexa & 0x1f;
+	reg.m_block[1].m_nQ = CPhaseTable::reversePhaseBit(hexa & 0x1f);
 }
 
 void CSemanticZing400R::UpdateRegOut2A(CString strRegOut2A, CRegisterZing400R& reg)
