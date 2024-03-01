@@ -286,6 +286,17 @@ int CSemanticZing400R::SliderValueUpdate()
 	return CSemanticBase::SliderValueUpdate();
 }
 
+void CSemanticZing400R::OnBnClickedWriteButton()
+{
+	CSemanticBase::OnBnClickedWriteButton();
+}
+
+BOOL CSemanticZing400R::UpdateSelected(UINT selected, BOOL bCommonControl)
+{
+	//TO DO
+	return FALSE;
+}
+
 void CSemanticZing400R::UpdateRxReg1(CString strRxReg1, CRegister& reg)
 {
 	int val = _tcstol(strRxReg1.GetBuffer(), NULL, 16) & 0xff;

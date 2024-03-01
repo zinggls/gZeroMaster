@@ -53,6 +53,8 @@ public:
 	virtual void ResetValues();
 	virtual void ShowSlider(int nCmdShow);
 	virtual int SliderValueUpdate();
+	virtual afx_msg void OnBnClickedWriteButton();
+	virtual BOOL UpdateSelected(UINT selected, BOOL bCommonControl);
 	static void UpdateRxReg1(CString strRxReg1, CRegister& reg);
 	static void UpdateRegOut26(CString strRegOut26, CRegisterZing400R& reg);
 	static void UpdateRegOut27(CString strRegOut27, CRegisterZing400R& reg);
