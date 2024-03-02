@@ -406,8 +406,16 @@ void CSemanticZing400T::OnBnClickedWriteButton()
 
 BOOL CSemanticZing400T::UpdateSelected(UINT selected, BOOL bCommonControl)
 {
-	BOOL bRtn = CSemanticBase::UpdateSelected(selected, bCommonControl);
-	if (bRtn) return TRUE;
+	BOOL bRtn;
+
+	// 주의
+	// BiasBlock인 경우는 상위클래스에서 핸들링하면 안되고 Zing400T에서 정의된 함수에서 처리되어야 한다
+	// BiasBlock Block Enable 레지스터 주소를 Zing200x와 Zing400R은 같은 주소 0x11를 사용하고 있으나 Zing400T는 전혀 다른 0x24를 사용하고 있기 때문이다
+	// 따라서 BiasBlock 관련 기능은 Zing200x,Zing400R은 동일하게 취급할 수 있으나 Zing400T는 다르다.
+	if (selected != CSelect::BiasBlock) {
+		bRtn = CSemanticBase::UpdateSelected(selected, bCommonControl);
+		if (bRtn) return TRUE;
+	}
 
 	int updateValue;
 	switch (selected) {

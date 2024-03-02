@@ -40,7 +40,6 @@ protected:
 
 	DECLARE_MESSAGE_MAP()
 
-	CString m_strBiasBlockEnable;
 	CString m_strVspsPaBiasVoltage;
 	CString m_strVspsVgaBiasVoltage;
 	CString m_strVspsCsBiasVoltage;
