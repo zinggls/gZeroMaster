@@ -1032,8 +1032,8 @@ void CgZeroMasterDlg::setSliders()
 	m_sliders.emplace_back("Duty Cycle", UDM_SEM_DUTY_CYCLE_CLICK);
 	m_sliders.emplace_back("VCO Oscillation Freq", UDM_SEM_VCO_OSC_FREQ_CLICK);
 	m_sliders.emplace_back("VCO VDD", UDM_SEM_VCO_VDD_CLICK);
-	m_sliders.emplace_back("PA Gain Control1", UDM_SEM_PA_GAIN_CONTROL1);
-	m_sliders.emplace_back("PA Gain Control2", UDM_SEM_PA_GAIN_CONTROL2);
+	m_sliders.emplace_back("PA Gain Control1", UDM_SEM_PA_GAIN_CONTROL1_CLICK);
+	m_sliders.emplace_back("PA Gain Control2", UDM_SEM_PA_GAIN_CONTROL2_CLICK);
 	m_sliders.emplace_back("Test Buffer Current", UDM_SEM_TEST_BUFFER_CURRENT_CLICK);
 
 	m_sliders.emplace_back("1st Stage Bias Current", UDM_SEM_1ST_STAGE_BIAS_CURRENT_CLICK);
