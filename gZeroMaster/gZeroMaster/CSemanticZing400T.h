@@ -94,6 +94,17 @@ public:
 	afx_msg void OnStnClickedTxCh1PhaseValueStatic();
 	afx_msg void OnStnClickedTxCh0VspsBlockEnableValueStatic();
 	afx_msg void OnStnClickedTxCh0PhaseValueStatic();
+	virtual afx_msg LRESULT OnSemVspsPaBiasVoltageClick(WPARAM w, LPARAM l);
+	virtual afx_msg LRESULT OnSemVspsVgaBiasVoltageClick(WPARAM w, LPARAM l);
+	virtual afx_msg LRESULT OnSemVspsCsBiasVoltageClick(WPARAM w, LPARAM l);
+	virtual afx_msg LRESULT OnSemCh3VspsBlockEnableClick(WPARAM w, LPARAM l);
+	virtual afx_msg LRESULT OnSemCh3PhaseClick(WPARAM w, LPARAM l);
+	virtual afx_msg LRESULT OnSemCh2VspsBlockEnableClick(WPARAM w, LPARAM l);
+	virtual afx_msg LRESULT OnSemCh2PhaseClick(WPARAM w, LPARAM l);
+	virtual afx_msg LRESULT OnSemCh1VspsBlockEnableClick(WPARAM w, LPARAM l);
+	virtual afx_msg LRESULT OnSemCh1PhaseClick(WPARAM w, LPARAM l);
+	virtual afx_msg LRESULT OnSemCh0VspsBlockEnableClick(WPARAM w, LPARAM l);
+	virtual afx_msg LRESULT OnSemCh0PhaseClick(WPARAM w, LPARAM l);
 	int Ch3Block();
 	static int OnNewCh3Block(int val, int newVal);
 	void UpdateCh3Block(const CRegister& reg);

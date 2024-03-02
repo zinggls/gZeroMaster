@@ -766,6 +766,72 @@ void CSemanticZing400T::OnStnClickedTxCh0PhaseValueStatic()
 	SetSliderGroup(CSelect::Ch0Phase, 1, 32, m_vspsBlock[0].m_strPhase, 1, 1, 10, IDC_TX_CH0_PHASE_STATIC, &CSemanticBase::SetControlSliderForPhase);
 }
 
+LRESULT CSemanticZing400T::OnSemVspsPaBiasVoltageClick(WPARAM w, LPARAM l)
+{
+	OnStnClickedTxVspsPaBiasVoltageValueStatic();
+	return 0;
+}
+
+LRESULT CSemanticZing400T::OnSemVspsVgaBiasVoltageClick(WPARAM w, LPARAM l)
+{
+	OnStnClickedTxVspsVgaBiasVoltageValueStatic();
+	return 0;
+}
+
+LRESULT CSemanticZing400T::OnSemVspsCsBiasVoltageClick(WPARAM w, LPARAM l)
+{
+	OnStnClickedTxVspsCsBiasVoltageValueStatic();
+	return 0;
+}
+
+LRESULT CSemanticZing400T::OnSemCh3VspsBlockEnableClick(WPARAM w, LPARAM l)
+{
+	OnStnClickedTxCh3VspsBlockEnableValueStatic();
+	return 0;
+}
+
+LRESULT CSemanticZing400T::OnSemCh3PhaseClick(WPARAM w, LPARAM l)
+{
+	OnStnClickedTxCh3PhaseValueStatic();
+	return 0;
+}
+
+LRESULT CSemanticZing400T::OnSemCh2VspsBlockEnableClick(WPARAM w, LPARAM l)
+{
+	OnStnClickedTxCh2VspsBlockEnableValueStatic();
+	return 0;
+}
+
+LRESULT CSemanticZing400T::OnSemCh2PhaseClick(WPARAM w, LPARAM l)
+{
+	OnStnClickedTxCh2PhaseValueStatic();
+	return 0;
+}
+
+LRESULT CSemanticZing400T::OnSemCh1VspsBlockEnableClick(WPARAM w, LPARAM l)
+{
+	OnStnClickedTxCh1VspsBlockEnableValueStatic();
+	return 0;
+}
+
+LRESULT CSemanticZing400T::OnSemCh1PhaseClick(WPARAM w, LPARAM l)
+{
+	OnStnClickedTxCh1PhaseValueStatic();
+	return 0;
+}
+
+LRESULT CSemanticZing400T::OnSemCh0VspsBlockEnableClick(WPARAM w, LPARAM l)
+{
+	OnStnClickedTxCh0VspsBlockEnableValueStatic();
+	return 0;
+}
+
+LRESULT CSemanticZing400T::OnSemCh0PhaseClick(WPARAM w, LPARAM l)
+{
+	OnStnClickedTxCh0PhaseValueStatic();
+	return 0;
+}
+
 int CSemanticZing400T::Ch3Block()
 {
 	return disableOrEnable(m_vspsBlock[3].m_strVspsBlockEnable);
