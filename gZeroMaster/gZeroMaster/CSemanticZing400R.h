@@ -84,6 +84,16 @@ public:
 	afx_msg void OnStnClickedRxCh0PhaseValueStatic();
 	afx_msg void OnStnClickedRxVspsBiasControlBitValueStatic();
 	afx_msg void OnStnClickedRxLnaBiasControlBitValueStatic();
+	virtual afx_msg LRESULT OnSemCh3VspsBlockEnableClick(WPARAM w, LPARAM l);
+	virtual afx_msg LRESULT OnSemCh3PhaseClick(WPARAM w, LPARAM l);
+	virtual afx_msg LRESULT OnSemCh2VspsBlockEnableClick(WPARAM w, LPARAM l);
+	virtual afx_msg LRESULT OnSemCh2PhaseClick(WPARAM w, LPARAM l);
+	virtual afx_msg LRESULT OnSemCh1VspsBlockEnableClick(WPARAM w, LPARAM l);
+	virtual afx_msg LRESULT OnSemCh1PhaseClick(WPARAM w, LPARAM l);
+	virtual afx_msg LRESULT OnSemCh0VspsBlockEnableClick(WPARAM w, LPARAM l);
+	virtual afx_msg LRESULT OnSemCh0PhaseClick(WPARAM w, LPARAM l);
+	virtual afx_msg LRESULT OnSemVspsBiasControlBitClick(WPARAM w, LPARAM l);
+	virtual afx_msg LRESULT OnSemLnaBiasControlBitClick(WPARAM w, LPARAM l);
 	int Ch3Block();
 	static int OnNewCh3Block(int val, int newVal);
 	void UpdateCh3Block(const CRegister& reg);

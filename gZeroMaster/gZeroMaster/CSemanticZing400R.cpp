@@ -607,6 +607,66 @@ void CSemanticZing400R::OnStnClickedRxLnaBiasControlBitValueStatic()
 	SetSliderGroup(CSelect::LnaBias, 0, 15, m_strLnaControlBit, 0, 1, 10, IDC_RX_LNA_BIAS_CONTROL_BIT_STATIC);
 }
 
+LRESULT CSemanticZing400R::OnSemCh3VspsBlockEnableClick(WPARAM w, LPARAM l)
+{
+	OnStnClickedRxCh3VspsBlockEnableValueStatic();
+	return 0;
+}
+
+LRESULT CSemanticZing400R::OnSemCh3PhaseClick(WPARAM w, LPARAM l)
+{
+	OnStnClickedRxCh3PhaseValueStatic();
+	return 0;
+}
+
+LRESULT CSemanticZing400R::OnSemCh2VspsBlockEnableClick(WPARAM w, LPARAM l)
+{
+	OnStnClickedRxCh2VspsBlockEnableValueStatic();
+	return 0;
+}
+
+LRESULT CSemanticZing400R::OnSemCh2PhaseClick(WPARAM w, LPARAM l)
+{
+	OnStnClickedRxCh2PhaseValueStatic();
+	return 0;
+}
+
+LRESULT CSemanticZing400R::OnSemCh1VspsBlockEnableClick(WPARAM w, LPARAM l)
+{
+	OnStnClickedRxCh1VspsBlockEnableValueStatic();
+	return 0;
+}
+
+LRESULT CSemanticZing400R::OnSemCh1PhaseClick(WPARAM w, LPARAM l)
+{
+	OnStnClickedRxCh1PhaseValueStatic();
+	return 0;
+}
+
+LRESULT CSemanticZing400R::OnSemCh0VspsBlockEnableClick(WPARAM w, LPARAM l)
+{
+	OnStnClickedRxCh0VspsBlockEnableValueStatic();
+	return 0;
+}
+
+LRESULT CSemanticZing400R::OnSemCh0PhaseClick(WPARAM w, LPARAM l)
+{
+	OnStnClickedRxCh0PhaseValueStatic();
+	return 0;
+}
+
+LRESULT CSemanticZing400R::OnSemVspsBiasControlBitClick(WPARAM w, LPARAM l)
+{
+	OnStnClickedRxVspsBiasControlBitValueStatic();
+	return 0;
+}
+
+LRESULT CSemanticZing400R::OnSemLnaBiasControlBitClick(WPARAM w, LPARAM l)
+{
+	OnStnClickedRxLnaBiasControlBitValueStatic();
+	return 0;
+}
+
 int CSemanticZing400R::Ch3Block()
 {
 	return disableOrEnable(m_vspsBlock[3].m_strVspsBlockEnable);
