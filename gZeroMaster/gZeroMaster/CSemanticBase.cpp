@@ -1626,6 +1626,84 @@ LRESULT CSemanticBase::OnSemCmlInterfaceStageCurrentClick(WPARAM w, LPARAM l)
 	return 0;
 }
 
+LRESULT CSemanticBase::OnSemVspsPaBiasVoltageClick(WPARAM w, LPARAM l)
+{
+	//CSemanticBase를 상속받는 하위 클래스에서 Overriding한다
+	return 0;
+}
+
+LRESULT CSemanticBase::OnSemVspsVgaBiasVoltageClick(WPARAM w, LPARAM l)
+{
+	//CSemanticBase를 상속받는 하위 클래스에서 Overriding한다
+	return 0;
+}
+
+LRESULT CSemanticBase::OnSemVspsCsBiasVoltageClick(WPARAM w, LPARAM l)
+{
+	//CSemanticBase를 상속받는 하위 클래스에서 Overriding한다
+	return 0;
+}
+
+LRESULT CSemanticBase::OnSemCh3VspsBlockEnableClick(WPARAM w, LPARAM l)
+{
+	//CSemanticBase를 상속받는 하위 클래스에서 Overriding한다
+	return 0;
+}
+
+LRESULT CSemanticBase::OnSemCh3PhaseClick(WPARAM w, LPARAM l)
+{
+	//CSemanticBase를 상속받는 하위 클래스에서 Overriding한다
+	return 0;
+}
+
+LRESULT CSemanticBase::OnSemCh2VspsBlockEnableClick(WPARAM w, LPARAM l)
+{
+	//CSemanticBase를 상속받는 하위 클래스에서 Overriding한다
+	return 0;
+}
+
+LRESULT CSemanticBase::OnSemCh2PhaseClick(WPARAM w, LPARAM l)
+{
+	//CSemanticBase를 상속받는 하위 클래스에서 Overriding한다
+	return 0;
+}
+
+LRESULT CSemanticBase::OnSemCh1VspsBlockEnableClick(WPARAM w, LPARAM l)
+{
+	//CSemanticBase를 상속받는 하위 클래스에서 Overriding한다
+	return 0;
+}
+
+LRESULT CSemanticBase::OnSemCh1PhaseClick(WPARAM w, LPARAM l)
+{
+	//CSemanticBase를 상속받는 하위 클래스에서 Overriding한다
+	return 0;
+}
+
+LRESULT CSemanticBase::OnSemCh0VspsBlockEnableClick(WPARAM w, LPARAM l)
+{
+	//CSemanticBase를 상속받는 하위 클래스에서 Overriding한다
+	return 0;
+}
+
+LRESULT CSemanticBase::OnSemCh0PhaseClick(WPARAM w, LPARAM l)
+{
+	//CSemanticBase를 상속받는 하위 클래스에서 Overriding한다
+	return 0;
+}
+
+LRESULT CSemanticBase::OnSemVspsBiasControlBitClick(WPARAM w, LPARAM l)
+{
+	//CSemanticBase를 상속받는 하위 클래스에서 Overriding한다
+	return 0;
+}
+
+LRESULT CSemanticBase::OnSemLnaBiasControlBitClick(WPARAM w, LPARAM l)
+{
+	//CSemanticBase를 상속받는 하위 클래스에서 Overriding한다
+	return 0;
+}
+
 void CSemanticBase::ResetValues()
 {
 	m_strRxDataInterface.Empty();
