@@ -1,0 +1,28 @@
+{
+	"TX": {
+		"Duty Cycle": 255,
+		"VCO Oscillation Freq": 2047,
+		"Regulator Ref Voltage": false,
+		"VCO VDD": 15,
+		"VCO Power": false,
+		"Modulator Power": false,
+		"Test Buffer Power": false,
+		"Data Input Select": false,
+		"PA Power": false,
+		"PA Gain Control1": 15,
+		"PA Gain Control2": 15,
+		"Test Buffer Current": 15
+	},
+	"BIAS": {
+		"BIAS Block Enable": false
+	},
+	"BEAMFORMING": {
+		"VSPS PA Bias Voltage": 15,
+		"VSPS VGA Bias Voltage": 15,
+		"VSPS CS Bias Voltage": 15,
+		"CH3 Phase": "32 / -11.25",
+		"CH2 Phase": "32 / -11.25",
+		"CH1 Phase": "32 / -11.25",
+		"CH0 Phase": "32 / -11.25"
+	}
+}
