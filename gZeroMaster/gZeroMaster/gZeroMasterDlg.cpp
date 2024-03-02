@@ -1022,6 +1022,11 @@ void CgZeroMasterDlg::setCombos()
 	m_combos.emplace_back("PA Power", UDM_SEM_PA_POWER_CLICK);
 
 	m_combos.emplace_back("BIAS Block Enable", UDM_SEM_BIAS_BLOCK_ENABLE_CLICK);
+
+	m_combos.emplace_back("CH3 VSPS Block Enable", UDM_SEM_CH3_VSPS_BLOCK_ENABLE_CLICK);
+	m_combos.emplace_back("CH2 VSPS Block Enable", UDM_SEM_CH2_VSPS_BLOCK_ENABLE_CLICK);
+	m_combos.emplace_back("CH1 VSPS Block Enable", UDM_SEM_CH1_VSPS_BLOCK_ENABLE_CLICK);
+	m_combos.emplace_back("CH0 VSPS Block Enable", UDM_SEM_CH0_VSPS_BLOCK_ENABLE_CLICK);
 }
 
 
@@ -1050,6 +1055,16 @@ void CgZeroMasterDlg::setSliders()
 	m_sliders.emplace_back("High/Low Data Rate Current", UDM_SEM_HIGHLOW_DATA_RATE_CURRENT_CLICK);
 	m_sliders.emplace_back("CMOS Gain Stage Current", UDM_SEM_CMOS_GAIN_STAGE_CURRENT_CLICK);
 	m_sliders.emplace_back("CML Interface Stage Current", UDM_SEM_CML_INTERFACE_STAGE_CURRENT_CLICK);
+
+	m_sliders.emplace_back("VSPS PA Bias Voltage", UDM_SEM_VSPS_PA_BIAS_VOLTAGE_CLICK);
+	m_sliders.emplace_back("VSPS VGA Bias Voltage", UDM_SEM_VSPS_VGA_BIAS_VOLTAGE_CLICK);
+	m_sliders.emplace_back("VSPS CS Bias Voltage", UDM_SEM_VSPS_CS_BIAS_VOLTAGE_CLICK);
+	m_sliders.emplace_back("CH3 Phase", UDM_SEM_CH3_PHASE_CLICK);
+	m_sliders.emplace_back("CH2 Phase", UDM_SEM_CH2_PHASE_CLICK);
+	m_sliders.emplace_back("CH1 Phase", UDM_SEM_CH1_PHASE_CLICK);
+	m_sliders.emplace_back("CH0 Phase", UDM_SEM_CH0_PHASE_CLICK);
+	m_sliders.emplace_back("VSPS Bias Control Bit", UDM_SEM_VSPS_BIAS_CONTROL_BIT_CLIC);
+	m_sliders.emplace_back("LNA Bias Control Bit", UDM_SEM_LNA_BIAS_CONTROL_BIT_CLICK);
 }
 
 
