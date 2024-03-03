@@ -127,6 +127,7 @@ END_MESSAGE_MAP()
 
 void CgZeroMasterDlg::TestCases()
 {
+	//정규표현식을 이용한 문자열 비교 테스트 케이스
 	std::regex pat("CH. Phase");
 	
 	std::string str0 = "CH0 Phase";
