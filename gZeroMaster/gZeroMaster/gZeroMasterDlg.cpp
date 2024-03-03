@@ -122,6 +122,12 @@ END_MESSAGE_MAP()
 
 // CgZeroMasterDlg 메시지 처리기
 
+
+void CgZeroMasterDlg::TestCases()
+{
+}
+
+
 BOOL CgZeroMasterDlg::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
@@ -152,6 +158,8 @@ BOOL CgZeroMasterDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// 작은 아이콘을 설정합니다.
 
 	// TODO: 여기에 추가 초기화 작업을 추가합니다.
+	TestCases();
+
 	m_chipSelect.AddString(_T("Zing200x"));
 	m_chipSelect.AddString(_T("Zing400T"));
 	m_chipSelect.AddString(_T("Zing400R"));

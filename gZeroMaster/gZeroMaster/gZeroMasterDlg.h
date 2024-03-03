@@ -37,6 +37,7 @@ protected:
 	HICON m_hIcon;
 
 	// 생성된 메시지 맵 함수
+	static void TestCases();
 	virtual BOOL OnInitDialog();
 	afx_msg void OnSysCommand(UINT nID, LPARAM lParam);
 	afx_msg void OnPaint();
