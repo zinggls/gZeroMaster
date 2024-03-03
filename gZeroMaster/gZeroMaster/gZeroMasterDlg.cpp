@@ -20,6 +20,7 @@
 #include "CRegisterZing400T.h"
 #include "CRegisterZing400R.h"
 #include <regex>
+#include <sstream>
 
 using json = nlohmann::json;
 
@@ -137,6 +138,14 @@ void CgZeroMasterDlg::TestCases()
 	ASSERT(std::regex_match(str1, pat) == TRUE);
 	ASSERT(std::regex_match(str2, pat) == TRUE);
 	ASSERT(std::regex_match(str3, pat) == TRUE);
+
+	//"32 / -11.25" 문자열에서 32를 추출하는 테스트
+	std::string strPhase = "32 / -11.25";
+	std::stringstream ss(strPhase);
+	std::string strResult;
+	std::getline(ss, strResult, '/');
+	ASSERT(strResult.compare("32 ") == 0);	//끝에 공백이 있음에 주의
+	ASSERT(std::atoi(strResult.c_str()) == 32);
 }
 
 
