@@ -129,7 +129,7 @@ void CgZeroMasterDlg::TestCases()
 {
 	//정규표현식을 이용한 문자열 비교 테스트 케이스
 	std::regex pat("CH. Phase");
-	
+
 	std::string str0 = "CH0 Phase";
 	std::string str1 = "CH1 Phase";
 	std::string str2 = "CH2 Phase";
@@ -141,12 +141,26 @@ void CgZeroMasterDlg::TestCases()
 	ASSERT(std::regex_match(str3, pat) == TRUE);
 
 	//"32 / -11.25" 문자열에서 32를 추출하는 테스트
-	std::string strPhase = "32 / -11.25";
-	std::stringstream ss(strPhase);
-	std::string strResult;
-	std::getline(ss, strResult, '/');
-	ASSERT(strResult.compare("32 ") == 0);	//끝에 공백이 있음에 주의
-	ASSERT(std::atoi(strResult.c_str()) == 32);
+	{
+		std::string strPhase = "32 / -11.25";
+		std::stringstream ss(strPhase);
+		std::string strResult;
+		std::getline(ss, strResult, '/');
+		ASSERT(strResult.compare("32 ") == 0);	//끝에 공백이 있음에 주의
+		ASSERT(std::atoi(strResult.c_str()) == 32);
+	}
+
+	//실제 메모리에서 읽어오는 값은 "\"32 / -11.25\"" 형태임, 이 형태에서 32를 추출하는 테스트
+	{
+		std::string strPhase = "\"32 / -11.25\"";
+		std::stringstream ss(strPhase);
+		std::string strResult;
+		std::getline(ss, strResult, '/');
+		ASSERT(strResult.compare("\"32 ") == 0);	//끝에 공백이 있음에 주의
+		strResult.erase(0, 1);
+		ASSERT(strResult.compare("32 ") == 0);	//끝에 공백이 있음에 주의
+		ASSERT(std::atoi(strResult.c_str()) == 32);
+	}
 }
 
 
