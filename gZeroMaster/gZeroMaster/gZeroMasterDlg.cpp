@@ -19,6 +19,7 @@
 #include "CRegister.h"
 #include "CRegisterZing400T.h"
 #include "CRegisterZing400R.h"
+#include <regex>
 
 using json = nlohmann::json;
 
@@ -125,6 +126,17 @@ END_MESSAGE_MAP()
 
 void CgZeroMasterDlg::TestCases()
 {
+	std::regex pat("CH. Phase");
+	
+	std::string str0 = "CH0 Phase";
+	std::string str1 = "CH1 Phase";
+	std::string str2 = "CH2 Phase";
+	std::string str3 = "CH3 Phase";
+
+	ASSERT(std::regex_match(str0, pat) == TRUE);
+	ASSERT(std::regex_match(str1, pat) == TRUE);
+	ASSERT(std::regex_match(str2, pat) == TRUE);
+	ASSERT(std::regex_match(str3, pat) == TRUE);
 }
 
 
