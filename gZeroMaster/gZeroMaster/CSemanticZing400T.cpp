@@ -148,13 +148,8 @@ END_MESSAGE_MAP()
 // CSemanticZing400T 메시지 처리기
 
 
-BOOL CSemanticZing400T::OnInitDialog()
+void CSemanticZing400T::TestCases()
 {
-	CDialogEx::OnInitDialog();
-
-	// TODO:  여기에 추가 초기화 작업을 추가합니다.
-	InitialControlState();
-
 	ASSERT(CPhaseTable::getState(0x0, 0x0) == -1);	//잘못된 값 테스트
 	ASSERT(CPhaseTable::getState(0x1F, 0x10) == 1);
 	ASSERT(CPhaseTable::getState(0x1D, 0x19) == 2);
@@ -189,7 +184,7 @@ BOOL CSemanticZing400T::OnInitDialog()
 	ASSERT(CPhaseTable::getState(0x1E, 0x4) == 31);
 	ASSERT(CPhaseTable::getState(0x1D, 0x6) == 32);
 
-	ASSERT(CPhaseTable::getPhase(1)==CString(_T("0.00")));
+	ASSERT(CPhaseTable::getPhase(1) == CString(_T("0.00")));
 	ASSERT(CPhaseTable::getPhase(2) == CString(_T("11.25")));
 	ASSERT(CPhaseTable::getPhase(3) == CString(_T("22.50")));
 	ASSERT(CPhaseTable::getPhase(4) == CString(_T("33.75")));
@@ -234,6 +229,16 @@ BOOL CSemanticZing400T::OnInitDialog()
 	ASSERT(CPhaseTable::reversePhaseBit(0x15) == 0x15);		//0x15(0001 0101) -> 0x15(0001 0101)
 	ASSERT(CPhaseTable::reversePhaseBit(0xB) == 0x1A);		//0xB(0000 1011) -> 0x1A(0001 1010)
 	ASSERT(CPhaseTable::reversePhaseBit(0x13) == 0x19);		//0x13(0001 0011) -> 0x19(0001 1001)
+}
+
+
+BOOL CSemanticZing400T::OnInitDialog()
+{
+	CDialogEx::OnInitDialog();
+
+	// TODO:  여기에 추가 초기화 작업을 추가합니다.
+	TestCases();
+	InitialControlState();
 
 	return TRUE;  // return TRUE unless you set the focus to a control
 				  // 예외: OCX 속성 페이지는 FALSE를 반환해야 합니다.

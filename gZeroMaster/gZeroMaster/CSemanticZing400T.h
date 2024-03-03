@@ -46,6 +46,7 @@ protected:
 	CVspsBlock m_vspsBlock[4];
 
 public:
+	static void TestCases();
 	virtual BOOL OnInitDialog();
 	virtual void OnChipConnect(CString chipModel);
 	virtual void ControlLabelEnable(BOOL b);
