@@ -1026,8 +1026,9 @@ CString CgZeroMasterDlg::str2CStr(std::string str)
 }
 
 
-BOOL CgZeroMasterDlg::iterateJson(nlohmann::json j,CString &strErr)
+BOOL CgZeroMasterDlg::iterateJson(nlohmann::json j, CString& strErr)
 {
+	std::regex pat("CH. Phase");
 	for (json::iterator it = j.begin(); it != j.end(); ++it) {
 		std::string key = it.key();
 		std::string value = it->dump();
@@ -1042,8 +1043,21 @@ BOOL CgZeroMasterDlg::iterateJson(nlohmann::json j,CString &strErr)
 		ASSERT(nUdmCombo == -1);
 		int nUdmSlider = findSliders(key);
 		if (nUdmSlider != -1) {
-			strErr = handleSlider(nUdmSlider, key, std::stoi(value));
-			if (!strErr.IsEmpty()) return FALSE;
+			if (std::regex_match(key, pat)) {
+				std::string phase = value;
+				std::stringstream ss(phase);
+				std::string state;
+				std::getline(ss, state, '/');
+				state.erase(0, 1);
+				int nState = std::atoi(state.c_str());
+				ASSERT(nState >= 1 && nState <= 32);
+				strErr = handleSlider(nUdmSlider, key, nState);
+				if (!strErr.IsEmpty()) return FALSE;
+			}
+			else {
+				strErr = handleSlider(nUdmSlider, key, std::stoi(value));
+				if (!strErr.IsEmpty()) return FALSE;
+			}
 		}
 		else {
 			L(_T("json warning: unhandled key found,") + str2CStr(key) + _T("=") + str2CStr(value));

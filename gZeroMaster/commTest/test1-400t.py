@@ -13,3 +13,6 @@ print(json_data)
 
 data = util.readData(jsonFilePath)          #data type = <class 'str'>
 print(data)
+
+socket.send_string(data);
+print("Response:%s" %socket.recv_string())
