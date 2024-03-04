@@ -6,7 +6,6 @@
 #define IDD_ABOUTBOX                    17
 #define IDS_ABOUTBOX                    18
 #define IDD_GZEROMASTER_DIALOG          19
-#define IDI_GLS_ICON                    20
 #define IDD_SEMANTIC_DIALOG             21
 #define IDD_RAW_DIALOG                  22
 #define IDD_RAW_ZING400R_DIALOG         23
