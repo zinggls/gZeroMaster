@@ -796,11 +796,11 @@ void CgZeroMasterDlg::OnChipZing200x()
 {
 	if (m_pRaw != NULL) delete m_pRaw;
 	m_pRaw = new CRawZing200x(this);
-	m_pRaw->Create(IDD_RAW_DIALOG, &m_tab);
+	m_pRaw->Create(IDD_RAW_ZING200X_DIALOG, &m_tab);
 
 	if (m_pSemantic != NULL) delete m_pSemantic;
 	m_pSemantic = new CSemanticZing200x(this, m_pRaw, new CRegister());
-	m_pSemantic->Create(IDD_SEMANTIC_DIALOG, &m_tab);
+	m_pSemantic->Create(IDD_SEMANTIC_ZING200X_DIALOG, &m_tab);
 }
 
 void CgZeroMasterDlg::OnChipZing400T()
