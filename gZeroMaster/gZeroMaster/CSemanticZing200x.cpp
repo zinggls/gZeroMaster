@@ -1,30 +1,30 @@
-﻿// CSemantic.cpp: 구현 파일
+﻿// CSemanticZing200x.cpp: 구현 파일
 //
 
 #include "pch.h"
 #include "gZeroMaster.h"
-#include "CSemantic.h"
+#include "CSemanticZing200x.h"
 #include "afxdialogex.h"
 #include "gZeroMasterDlg.h"
 #include "CRawBase.h"
 #include "CRegister.h"
 
 
-// CSemantic 대화 상자
+// CSemanticZing200x 대화 상자
 
-IMPLEMENT_DYNAMIC(CSemantic, CSemanticBase)
+IMPLEMENT_DYNAMIC(CSemanticZing200x, CSemanticBase)
 
-CSemantic::CSemantic(CWnd* pParent, CRawBase* pRawBase, CRegister* pReg)
+CSemanticZing200x::CSemanticZing200x(CWnd* pParent, CRawBase* pRawBase, CRegister* pReg)
 	: CSemanticBase(pParent, pRawBase, pReg)
 {
 }
 
-CSemantic::~CSemantic()
+CSemanticZing200x::~CSemanticZing200x()
 {
 	delete m_pReg;
 }
 
-void CSemantic::DoDataExchange(CDataExchange* pDX)
+void CSemanticZing200x::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
 	DDX_Text(pDX, IDC_RX_DATA_IF_ENABLE_VALUE_STATIC, m_strRxDataInterface);
@@ -73,7 +73,7 @@ void CSemantic::DoDataExchange(CDataExchange* pDX)
 }
 
 
-BEGIN_MESSAGE_MAP(CSemantic, CSemanticBase)
+BEGIN_MESSAGE_MAP(CSemanticZing200x, CSemanticBase)
 	ON_BN_CLICKED(IDC_SEMANTIC_EDIT_CHECK, &OnBnClickedSemanticEditCheck)
 	ON_WM_CTLCOLOR()
 	ON_STN_CLICKED(IDC_LNA_GAIN_VALUE_STATIC, &OnStnClickedLnaGainValueStatic)
@@ -118,10 +118,10 @@ BEGIN_MESSAGE_MAP(CSemantic, CSemanticBase)
 END_MESSAGE_MAP()
 
 
-// CSemantic 메시지 처리기
+// CSemanticZing200x 메시지 처리기
 
 
-BOOL CSemantic::OnInitDialog()
+BOOL CSemanticZing200x::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
 
@@ -133,7 +133,7 @@ BOOL CSemantic::OnInitDialog()
 }
 
 
-void CSemantic::OnChipConnect(CString chipModel)
+void CSemanticZing200x::OnChipConnect(CString chipModel)
 {
 	ASSERT(chipModel == _T("A0") || chipModel == _T("Zing200x"));
 
@@ -169,7 +169,7 @@ void CSemantic::OnChipConnect(CString chipModel)
 	}
 }
 
-const CRegister& CSemantic::Parse()
+const CRegister& CSemanticZing200x::Parse()
 {
 	CSemanticBase::UpdateRxReg1(m_pRawBase->m_strRxReg1, *m_pReg);
 	CSemanticBase::UpdateTxReg1(m_pRawBase->m_strTxReg1Top, m_pRawBase->m_strTxReg1Mid, m_pRawBase->m_strTxReg1Bot, *m_pReg, m_pRawBase->Parent()->m_chip);
@@ -189,7 +189,7 @@ const CRegister& CSemantic::Parse()
 	return *m_pReg;
 }
 
-void CSemantic::UpdateRegisters()
+void CSemanticZing200x::UpdateRegisters()
 {
 	CSemanticBase::UpdateRegisters();
 }

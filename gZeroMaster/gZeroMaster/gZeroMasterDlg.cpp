@@ -7,8 +7,8 @@
 #include "gZeroMaster.h"
 #include "gZeroMasterDlg.h"
 #include "afxdialogex.h"
-#include "CSemantic.h"
-#include "CRaw.h"
+#include "CSemanticZing200x.h"
+#include "CRawZing200x.h"
 #include <fstream>
 #include <zmq.h>
 #include <Dbt.h>
@@ -795,11 +795,11 @@ void CgZeroMasterDlg::OnStnDblclickLogoStatic()
 void CgZeroMasterDlg::OnChipZing200x()
 {
 	if (m_pRaw != NULL) delete m_pRaw;
-	m_pRaw = new CRaw(this);
+	m_pRaw = new CRawZing200x(this);
 	m_pRaw->Create(IDD_RAW_DIALOG, &m_tab);
 
 	if (m_pSemantic != NULL) delete m_pSemantic;
-	m_pSemantic = new CSemantic(this, m_pRaw, new CRegister());
+	m_pSemantic = new CSemanticZing200x(this, m_pRaw, new CRegister());
 	m_pSemantic->Create(IDD_SEMANTIC_DIALOG, &m_tab);
 }
 

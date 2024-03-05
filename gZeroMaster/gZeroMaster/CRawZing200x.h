@@ -2,15 +2,15 @@
 
 #include "CRawBase.h"
 
-// CRaw 대화 상자
+// CRawZing200x 대화 상자
 
-class CRaw : public CRawBase
+class CRawZing200x : public CRawBase
 {
-	DECLARE_DYNAMIC(CRaw)
+	DECLARE_DYNAMIC(CRawZing200x)
 
 public:
-	CRaw(CWnd* pParent = nullptr);   // 표준 생성자입니다.
-	virtual ~CRaw();
+	CRawZing200x(CWnd* pParent = nullptr);   // 표준 생성자입니다.
+	virtual ~CRawZing200x();
 
 // 대화 상자 데이터입니다.
 #ifdef AFX_DESIGN_TIME

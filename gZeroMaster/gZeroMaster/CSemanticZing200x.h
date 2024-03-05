@@ -4,13 +4,13 @@
 
 // CSemantic 대화 상자
 
-class CSemantic : public CSemanticBase
+class CSemanticZing200x : public CSemanticBase
 {
-	DECLARE_DYNAMIC(CSemantic)
+	DECLARE_DYNAMIC(CSemanticZing200x)
 
 public:
-	CSemantic(CWnd* pParent, CRawBase* pRawBase, CRegister* pRegister);   // 표준 생성자입니다.
-	virtual ~CSemantic();
+	CSemanticZing200x(CWnd* pParent, CRawBase* pRawBase, CRegister* pRegister);   // 표준 생성자입니다.
+	virtual ~CSemanticZing200x();
 
 // 대화 상자 데이터입니다.
 #ifdef AFX_DESIGN_TIME

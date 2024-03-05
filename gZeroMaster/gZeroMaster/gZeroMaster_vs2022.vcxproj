@@ -119,15 +119,15 @@
   <ItemGroup>
     <ClInclude Include="CBfBlock.h" />
     <ClInclude Include="CPhaseTable.h" />
-    <ClInclude Include="CRaw.h" />
     <ClInclude Include="CRawBase.h" />
+    <ClInclude Include="CRawZing200x.h" />
     <ClInclude Include="CRawZing400R.h" />
     <ClInclude Include="CRawZing400T.h" />
     <ClInclude Include="CRegister.h" />
     <ClInclude Include="CRegisterZing400R.h" />
     <ClInclude Include="CRegisterZing400T.h" />
-    <ClInclude Include="CSemantic.h" />
     <ClInclude Include="CSemanticBase.h" />
+    <ClInclude Include="CSemanticZing200x.h" />
     <ClInclude Include="CSemanticZing400R.h" />
     <ClInclude Include="CSemanticZing400T.h" />
     <ClInclude Include="CVspsBlock.h" />
@@ -142,12 +142,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CPhaseTable.cpp" />
-    <ClCompile Include="CRaw.cpp" />
     <ClCompile Include="CRawBase.cpp" />
+    <ClCompile Include="CRawZing200x.cpp" />
     <ClCompile Include="CRawZing400R.cpp" />
     <ClCompile Include="CRawZing400T.cpp" />
-    <ClCompile Include="CSemantic.cpp" />
     <ClCompile Include="CSemanticBase.cpp" />
+    <ClCompile Include="CSemanticZing200x.cpp" />
     <ClCompile Include="CSemanticZing400R.cpp" />
     <ClCompile Include="CSemanticZing400T.cpp" />
     <ClCompile Include="gZeroMaster.cpp" />

@@ -1,29 +1,29 @@
-﻿// CRaw.cpp: 구현 파일
+﻿// CRawZing200x.cpp: 구현 파일
 //
 
 #include "pch.h"
 #include "gZeroMaster.h"
-#include "CRaw.h"
+#include "CRawZing200x.h"
 #include "afxdialogex.h"
 #include "gZeroMasterDlg.h"
-#include "CSemantic.h"
+#include "CSemanticZing200x.h"
 #include <list>
 
 
-// CRaw 대화 상자
+// CRawZing200x 대화 상자
 
-IMPLEMENT_DYNAMIC(CRaw, CRawBase)
+IMPLEMENT_DYNAMIC(CRawZing200x, CRawBase)
 
-CRaw::CRaw(CWnd* pParent /*=nullptr*/)
+CRawZing200x::CRawZing200x(CWnd* pParent /*=nullptr*/)
 	: CRawBase(pParent)
 {
 }
 
-CRaw::~CRaw()
+CRawZing200x::~CRawZing200x()
 {
 }
 
-void CRaw::DoDataExchange(CDataExchange* pDX)
+void CRawZing200x::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
 	DDX_Text(pDX, IDC_RX_REG1_STATIC, m_strRxReg1);
@@ -56,7 +56,7 @@ void CRaw::DoDataExchange(CDataExchange* pDX)
 }
 
 
-BEGIN_MESSAGE_MAP(CRaw, CDialogEx)
+BEGIN_MESSAGE_MAP(CRawZing200x, CDialogEx)
 	ON_STN_CLICKED(IDC_RX_REG1_STATIC, &OnStnClickedRxReg1Static)
 	ON_STN_CLICKED(IDC_TX_REG1_TOP_STATIC, &OnStnClickedTxReg1TopStatic)
 	ON_STN_CLICKED(IDC_TX_REG1_MID_STATIC, &OnStnClickedTxReg1MidStatic)
@@ -84,16 +84,16 @@ BEGIN_MESSAGE_MAP(CRaw, CDialogEx)
 	ON_BN_CLICKED(IDC_BIT0_BUTTON, &OnBnClickedBit0Button)
 	ON_BN_CLICKED(IDC_READ_ALL_BUTTON, &OnBnClickedReadAllButton)
 	ON_BN_CLICKED(IDC_WRITE_BUTTON, &OnBnClickedWriteButton)
-	ON_BN_CLICKED(IDC_DEFAULT_VALUE_BUTTON, &CRaw::OnBnClickedDefaultValueButton)
-	ON_BN_CLICKED(IDC_WRITE_ALL_BUTTON, &CRaw::OnBnClickedWriteAllButton)
+	ON_BN_CLICKED(IDC_DEFAULT_VALUE_BUTTON, &CRawZing200x::OnBnClickedDefaultValueButton)
+	ON_BN_CLICKED(IDC_WRITE_ALL_BUTTON, &CRawZing200x::OnBnClickedWriteAllButton)
 	ON_WM_CTLCOLOR()
 END_MESSAGE_MAP()
 
 
-// CRaw 메시지 처리기
+// CRawZing200x 메시지 처리기
 
 
-BOOL CRaw::OnInitDialog()
+BOOL CRawZing200x::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
 
@@ -129,7 +129,7 @@ BOOL CRaw::OnInitDialog()
 	24				18				BIAS_REG8[7:0]	: 50
 */
 
-void CRaw::OnHideRegisterButtons(CString strChosenRegister)
+void CRawZing200x::OnHideRegisterButtons(CString strChosenRegister)
 {
 	if (strChosenRegister == _T("RX_REG1 [4:0]")) {
 		GetDlgItem(IDC_BIT7_BUTTON)->ShowWindow(SW_HIDE);
@@ -147,7 +147,7 @@ void CRaw::OnHideRegisterButtons(CString strChosenRegister)
 	}
 }
 
-void CRaw::OnChipConnect(CString chipModel)
+void CRawZing200x::OnChipConnect(CString chipModel)
 {
 	ASSERT(chipModel == _T("A0") || chipModel == _T("Zing200x"));
 
@@ -195,7 +195,7 @@ void CRaw::OnChipConnect(CString chipModel)
 	}
 }
 
-void CRaw::DefaultValues(CString strChip)
+void CRawZing200x::DefaultValues(CString strChip)
 {
 	ASSERT(strChip == _T("A0") || strChip == _T("Zing200x"));
 
