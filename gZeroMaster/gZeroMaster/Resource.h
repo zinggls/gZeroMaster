@@ -263,6 +263,7 @@
 #define IDC_RX_CH0_PHASE_STATIC         1246
 #define IDC_CH_PHASE_SYNCH_CHECK        1247
 #define IDC_CH_PHASE_DIFF_COMBO         1248
+#define IDC_CH_PHASE_DIFF_STATIC        1249
 #define ID_MAINMENU_CLEARLOG            32771
 #define ID_MAINMENU_SAVE                32772
 #define ID_MAINMENU_LOAD                32773
@@ -279,7 +280,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        131
 #define _APS_NEXT_COMMAND_VALUE         32780
-#define _APS_NEXT_CONTROL_VALUE         1249
+#define _APS_NEXT_CONTROL_VALUE         1250
 #define _APS_NEXT_SYMED_VALUE           1347
 #endif
 #endif
