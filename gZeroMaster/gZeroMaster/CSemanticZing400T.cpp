@@ -244,7 +244,11 @@ BOOL CSemanticZing400T::OnInitDialog()
 	// TODO:  여기에 추가 초기화 작업을 추가합니다.
 	TestCases();
 	InitialControlState();
-	for (int i = 1; i <= 32; i++) m_phaseDiffCombo.AddString(CPhaseTable::getPhase(i));
+	for (int i = 1; i <= 32; i++) {
+		CString str;
+		str.Format(_T("%.2f"), CPhaseTable::getAbsFloatPhase(i));
+		m_phaseDiffCombo.AddString(str);
+	}
 	m_phaseDiffCombo.SetCurSel(0);
 
 	return TRUE;  // return TRUE unless you set the focus to a control
