@@ -1124,5 +1124,6 @@ void CSemanticZing400T::OnClickedChPhaseSynchCheck()
 		UpdateCh1Phase(*pDerived);
 		UpdateCh0Phase(*pDerived);
 		UpdateData(FALSE);
+		OnStnClickedTxCh0PhaseValueStatic();	//포커싱을 채널0으로 변경
 	}
 }
