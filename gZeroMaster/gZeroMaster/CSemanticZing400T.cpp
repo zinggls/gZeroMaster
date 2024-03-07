@@ -1106,4 +1106,23 @@ void CSemanticZing400T::OnSelchangeChPhaseDiffCombo()
 void CSemanticZing400T::OnClickedChPhaseSynchCheck()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	m_bChPhaseSync = !m_bChPhaseSync;
+
+	if (m_bChPhaseSync) {
+		CRegisterZing400T* pDerived = dynamic_cast<CRegisterZing400T*>(m_pReg);
+		ASSERT(pDerived);
+
+		//채널0의 세팅값으로 모두 Sync
+		for (int i = 1; i < 4; i++) {
+			pDerived->m_block[i].m_nBlock = pDerived->m_block[0].m_nBlock;
+			pDerived->m_block[i].m_nI = pDerived->m_block[0].m_nI;
+			pDerived->m_block[i].m_nPhase = pDerived->m_block[0].m_nPhase;
+			pDerived->m_block[i].m_nQ = pDerived->m_block[0].m_nQ;
+		}
+		UpdateCh3Phase(*pDerived);
+		UpdateCh2Phase(*pDerived);
+		UpdateCh1Phase(*pDerived);
+		UpdateCh0Phase(*pDerived);
+		UpdateData(FALSE);
+	}
 }
