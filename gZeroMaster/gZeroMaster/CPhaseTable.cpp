@@ -43,7 +43,8 @@ int CPhaseTable::getState(unsigned char I, unsigned char Q)
 
 float CPhaseTable::getAbsFloatPhase(int state)
 {
-	return 11.25F * state;
+	ASSERT(state >= 1 && state <= 32);
+	return 11.25F * (state-1);
 }
 
 int CPhaseTable::getPhase100Number(int state)
