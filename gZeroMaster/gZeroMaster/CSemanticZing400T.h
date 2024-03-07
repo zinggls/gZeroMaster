@@ -146,4 +146,5 @@ public:
 	static int OnNewCh0PhaseNext(int val, int newVal);
 	void UpdateCh0PhaseIQ(const CRegister& reg);
 	afx_msg void OnSelchangeChPhaseDiffCombo();
+	afx_msg void OnClickedChPhaseSynchCheck();
 };
