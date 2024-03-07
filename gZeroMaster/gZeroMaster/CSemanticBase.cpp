@@ -390,7 +390,7 @@ int CSemanticBase::SliderValueUpdate()
 
 void CSemanticBase::ControlSliderCommon(int min, int max, CString strCurVal, int ticFreq, int lineSize, int pageSize)
 {
-	int curVal = _tcstol(strCurVal.GetBuffer(), NULL, 16);
+	int curVal = _tcstol(strCurVal.GetBuffer(), NULL, 10);
 
 	//슬라이더 컨트롤이 최대값이 아래로 표시되기때문에 최대값을 -1을 곱하여 최소갑인것 처럼 표시
 	m_controlSlider.SetRange(-1 * max, -1 * min);
