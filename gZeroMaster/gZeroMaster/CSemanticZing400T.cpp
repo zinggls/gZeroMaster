@@ -145,6 +145,7 @@ BEGIN_MESSAGE_MAP(CSemanticZing400T, CSemanticBase)
 	ON_MESSAGE(UDM_SEM_CH1_PHASE_CLICK, OnSemCh1PhaseClick)
 	ON_MESSAGE(UDM_SEM_CH0_VSPS_BLOCK_ENABLE_CLICK, OnSemCh0VspsBlockEnableClick)
 	ON_MESSAGE(UDM_SEM_CH0_PHASE_CLICK, OnSemCh0PhaseClick)
+	ON_CBN_SELCHANGE(IDC_CH_PHASE_DIFF_COMBO, &CSemanticZing400T::OnSelchangeChPhaseDiffCombo)
 END_MESSAGE_MAP()
 
 
@@ -1093,4 +1094,9 @@ void CSemanticZing400T::UpdateCh0PhaseIQ(const CRegister& reg)
 	const CRegisterZing400T& derived = dynamic_cast<const CRegisterZing400T&>(reg);
 	m_vspsBlock[0].m_strPhase.Format(_T("%d / "), derived.m_block[0].m_nPhase);
 	m_vspsBlock[0].m_strPhase += CPhaseTable::getPhase(derived.m_block[0].m_nPhase);
+}
+
+void CSemanticZing400T::OnSelchangeChPhaseDiffCombo()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 }
