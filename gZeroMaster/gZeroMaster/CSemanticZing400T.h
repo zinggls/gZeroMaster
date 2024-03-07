@@ -44,6 +44,8 @@ protected:
 	CString m_strVspsVgaBiasVoltage;
 	CString m_strVspsCsBiasVoltage;
 	CVspsBlock m_vspsBlock[4];
+	BOOL m_bChPhaseSync;
+	CComboBox m_phaseDiffCombo;
 
 public:
 	static void TestCases();
