@@ -1129,6 +1129,7 @@ void CSemanticZing400T::OnClickedChPhaseSynchCheck()
 		UpdateCh0Phase(*pDerived);
 		UpdateData(FALSE);
 		OnStnClickedTxCh0PhaseValueStatic();	//포커싱을 채널0으로 변경
+		m_phaseDiffCombo.SetCurSel(0);			//디폴트로 Phase Diff값은 0도로 지정
 	}
 	else {
 		UpdateRegisters();
