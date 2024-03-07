@@ -381,6 +381,8 @@ void CSemanticZing400T::ShowSlider(int nCmdShow)
 	GetDlgItem(IDC_SLIDER_VALUE_PHASE_STATIC)->ShowWindow(nCmdShow);
 	GetDlgItem(IDC_SLIDER_VALUE_I_STATIC)->ShowWindow(nCmdShow);
 	GetDlgItem(IDC_SLIDER_VALUE_Q_STATIC)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_CH_PHASE_SYNCH_CHECK)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_CH_PHASE_DIFF_COMBO)->ShowWindow(nCmdShow);
 }
 
 int CSemanticZing400T::SliderValueUpdate()
