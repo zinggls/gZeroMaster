@@ -250,6 +250,7 @@ BOOL CSemanticZing400T::OnInitDialog()
 		m_phaseDiffCombo.AddString(str);
 	}
 	m_phaseDiffCombo.SetCurSel(0);
+	GetDlgItem(IDC_CH_PHASE_DIFF_COMBO)->EnableWindow(FALSE);
 
 	return TRUE;  // return TRUE unless you set the focus to a control
 				  // 예외: OCX 속성 페이지는 FALSE를 반환해야 합니다.
@@ -1131,8 +1132,10 @@ void CSemanticZing400T::OnClickedChPhaseSynchCheck()
 		UpdateData(FALSE);
 		OnStnClickedTxCh0PhaseValueStatic();	//포커싱을 채널0으로 변경
 		m_phaseDiffCombo.SetCurSel(0);			//디폴트로 Phase Diff값은 0도로 지정
+		GetDlgItem(IDC_CH_PHASE_DIFF_COMBO)->EnableWindow(TRUE);
 	}
 	else {
+		GetDlgItem(IDC_CH_PHASE_DIFF_COMBO)->EnableWindow(FALSE);
 		UpdateRegisters();
 	}
 }
