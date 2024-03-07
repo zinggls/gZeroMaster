@@ -1,8 +1,8 @@
 //{{NO_DEPENDENCIES}}
-// Microsoft Visual C++ generated include file.
-// Used by 
+// Microsoft Visual C++에서 생성한 포함 파일입니다.
+// gZeroMaster.rc에서 사용되고 있습니다.
 //
-#define IDM_ABOUTBOX                   0x10
+#define IDM_ABOUTBOX                    0x10
 #define IDD_ABOUTBOX                    17
 #define IDS_ABOUTBOX                    18
 #define IDD_GZEROMASTER_DIALOG          19
@@ -261,6 +261,8 @@
 #define IDC_RX_CH2_PHASE_STATIC         1244
 #define IDC_RX_CH1_PHASE_STATIC         1245
 #define IDC_RX_CH0_PHASE_STATIC         1246
+#define IDC_CH_PHASE_SYNCH_CHECK        1247
+#define IDC_CH_PHASE_DIFF_COMBO         1248
 #define ID_MAINMENU_CLEARLOG            32771
 #define ID_MAINMENU_SAVE                32772
 #define ID_MAINMENU_LOAD                32773
@@ -272,12 +274,12 @@
 #define ID_FILE_LOADJSON                32779
 
 // Next default values for new objects
-//
+// 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        131
 #define _APS_NEXT_COMMAND_VALUE         32780
-#define _APS_NEXT_CONTROL_VALUE         1247
+#define _APS_NEXT_CONTROL_VALUE         1249
 #define _APS_NEXT_SYMED_VALUE           1347
 #endif
 #endif
