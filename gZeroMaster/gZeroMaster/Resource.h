@@ -1,6 +1,6 @@
 //{{NO_DEPENDENCIES}}
 // Microsoft Visual C++에서 생성한 포함 파일입니다.
-// gZeroMaster.rc에서 사용되고 있습니다.
+// gZeroMaster.rc 에서 사용되고 있습니다.
 //
 #define IDM_ABOUTBOX                    0x10
 #define IDD_ABOUTBOX                    17
