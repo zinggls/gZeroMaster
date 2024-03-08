@@ -1112,13 +1112,10 @@ void CSemanticZing400T::ShiftPhase(CRegisterZing400T* pReg, int nCur, int nState
 {
 	ASSERT(pReg);
 
-	for (int i = 1; i < 4; i++) {
+	for (int i = 0; i < 4; i++) {
 		pReg->m_block[i].m_nPhase = AddState(nCur, nState * i);
 		pReg->m_block[i].m_nI = CPhaseTable::getI(pReg->m_block[i].m_nPhase);
 		pReg->m_block[i].m_nQ = CPhaseTable::getQ(pReg->m_block[i].m_nPhase);
-	}
-
-	for (int i = 0; i < 4; i++) {
 		m_vspsBlock[i].m_strPhase.Format(_T("%d / "), pReg->m_block[i].m_nPhase);
 		m_vspsBlock[i].m_strPhase += CPhaseTable::getPhase(pReg->m_block[i].m_nPhase);
 	}
