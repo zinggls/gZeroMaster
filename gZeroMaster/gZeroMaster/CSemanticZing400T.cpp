@@ -401,6 +401,8 @@ void CSemanticZing400T::ShowSlider(int nCmdShow)
 	GetDlgItem(IDC_SLIDER_VALUE_I_STATIC)->ShowWindow(nCmdShow);
 	GetDlgItem(IDC_SLIDER_VALUE_Q_STATIC)->ShowWindow(nCmdShow);
 	ShowPhaseSync(nCmdShow);
+
+	if (m_selected != CSelect::Ch3Phase && m_selected != CSelect::Ch2Phase && m_selected != CSelect::Ch1Phase && m_selected != CSelect::Ch0Phase) ShowPhaseSync(SW_HIDE);
 }
 
 int CSemanticZing400T::SliderValueUpdate()
