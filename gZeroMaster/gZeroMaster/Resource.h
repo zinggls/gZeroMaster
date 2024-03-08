@@ -266,11 +266,15 @@
 #define IDC_RX_CH0_PHASE_STATIC         1246
 #define IDC_CH_PHASE_DIFF_COMBO         1248
 #define IDC_CH_PHASE_DIFF_STATIC        1249
-#define IDC_CH0_STATIC                  1250
-#define IDC_CH1_STATIC                  1251
-#define IDC_CH2_STATIC                  1252
-#define IDC_CH3_STATIC                  1253
+#define IDC_CH0_VALUE_STATIC            1250
+#define IDC_CH1_VALUE_STATIC            1251
+#define IDC_CH2_VALUE_STATIC            1252
+#define IDC_CH3_VALUE_STATIC            1253
 #define IDC_ZING400T_PIC_STATIC         1254
+#define IDC_CH0_STATIC                  1255
+#define IDC_CH1_STATIC                  1256
+#define IDC_CH2_STATIC                  1257
+#define IDC_CH3_STATIC                  1258
 #define ID_MAINMENU_CLEARLOG            32771
 #define ID_MAINMENU_SAVE                32772
 #define ID_MAINMENU_LOAD                32773
@@ -287,7 +291,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        135
 #define _APS_NEXT_COMMAND_VALUE         32780
-#define _APS_NEXT_CONTROL_VALUE         1255
+#define _APS_NEXT_CONTROL_VALUE         1259
 #define _APS_NEXT_SYMED_VALUE           1347
 #endif
 #endif
