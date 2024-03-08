@@ -80,6 +80,7 @@
 #define IDC_BIAS_REG9_LABEL             1061
 #define IDC_EDIT_CHECK                  1062
 #define IDC_BUTTON1                     1063
+#define IDC_CH_PHASE_SYNCH_BUTTON       1063
 #define IDC_WRITE_BUTTON                1064
 #define IDC_TCP_BIND_PORT_BUTTON        1065
 #define IDC_BIT7_BUTTON                 1066
@@ -261,7 +262,6 @@
 #define IDC_RX_CH2_PHASE_STATIC         1244
 #define IDC_RX_CH1_PHASE_STATIC         1245
 #define IDC_RX_CH0_PHASE_STATIC         1246
-#define IDC_CH_PHASE_SYNCH_CHECK        1247
 #define IDC_CH_PHASE_DIFF_COMBO         1248
 #define IDC_CH_PHASE_DIFF_STATIC        1249
 #define ID_MAINMENU_CLEARLOG            32771

@@ -15,7 +15,6 @@ IMPLEMENT_DYNAMIC(CSemanticZing400T, CSemanticBase)
 
 CSemanticZing400T::CSemanticZing400T(CWnd* pParent, CRawBase* pRawBase, CRegister* pReg)
 	: CSemanticBase(pParent, pRawBase, pReg)
-	, m_bChPhaseSync(FALSE)
 {
 	ASSERT(pReg == m_pReg);
 
@@ -95,7 +94,6 @@ void CSemanticZing400T::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_SLIDER_VALUE_Q_STATIC, m_strSliderValueQ);
 	DDX_Control(pDX, IDC_CONTROL_COMBO, m_controlCombo);
 	DDX_Check(pDX, IDC_AUTO_WRITE_CHECK, m_bAutoWrite);
-	DDX_Check(pDX, IDC_CH_PHASE_SYNCH_CHECK, m_bChPhaseSync);
 	DDX_Control(pDX, IDC_CH_PHASE_DIFF_COMBO, m_phaseDiffCombo);
 }
 
@@ -146,7 +144,7 @@ BEGIN_MESSAGE_MAP(CSemanticZing400T, CSemanticBase)
 	ON_MESSAGE(UDM_SEM_CH0_VSPS_BLOCK_ENABLE_CLICK, OnSemCh0VspsBlockEnableClick)
 	ON_MESSAGE(UDM_SEM_CH0_PHASE_CLICK, OnSemCh0PhaseClick)
 	ON_CBN_SELCHANGE(IDC_CH_PHASE_DIFF_COMBO, &CSemanticZing400T::OnSelchangeChPhaseDiffCombo)
-	ON_BN_CLICKED(IDC_CH_PHASE_SYNCH_CHECK, &CSemanticZing400T::OnClickedChPhaseSynchCheck)
+	ON_BN_CLICKED(IDC_CH_PHASE_SYNCH_BUTTON, &CSemanticZing400T::OnBnClickedChPhaseSynchButton)
 END_MESSAGE_MAP()
 
 
@@ -388,7 +386,7 @@ void CSemanticZing400T::SetSliderGroup(UINT ss, int min, int max, CString strCur
 
 void CSemanticZing400T::ShowPhaseSync(int nCmdShow)
 {
-	GetDlgItem(IDC_CH_PHASE_SYNCH_CHECK)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_CH_PHASE_SYNCH_BUTTON)->ShowWindow(nCmdShow);
 	GetDlgItem(IDC_CH_PHASE_DIFF_STATIC)->ShowWindow(nCmdShow);
 	GetDlgItem(IDC_CH_PHASE_DIFF_COMBO)->ShowWindow(nCmdShow);
 }
@@ -1142,34 +1140,25 @@ void CSemanticZing400T::OnSelchangeChPhaseDiffCombo()
 	ShiftPhase(pDerived, nCur, nShift);
 }
 
-
-void CSemanticZing400T::OnClickedChPhaseSynchCheck()
+void CSemanticZing400T::OnBnClickedChPhaseSynchButton()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_bChPhaseSync = !m_bChPhaseSync;
+	CRegisterZing400T* pDerived = dynamic_cast<CRegisterZing400T*>(m_pReg);
+	ASSERT(pDerived);
 
-	if (m_bChPhaseSync) {
-		CRegisterZing400T* pDerived = dynamic_cast<CRegisterZing400T*>(m_pReg);
-		ASSERT(pDerived);
-
-		//채널0의 세팅값으로 모두 Sync
-		for (int i = 1; i < 4; i++) {
-			pDerived->m_block[i].m_nBlock = pDerived->m_block[0].m_nBlock;
-			pDerived->m_block[i].m_nI = pDerived->m_block[0].m_nI;
-			pDerived->m_block[i].m_nPhase = pDerived->m_block[0].m_nPhase;
-			pDerived->m_block[i].m_nQ = pDerived->m_block[0].m_nQ;
-		}
-		UpdateCh3Phase(*pDerived);
-		UpdateCh2Phase(*pDerived);
-		UpdateCh1Phase(*pDerived);
-		UpdateCh0Phase(*pDerived);
-		UpdateData(FALSE);
-		OnStnClickedTxCh0PhaseValueStatic();	//포커싱을 채널0으로 변경
-		m_phaseDiffCombo.SetCurSel(0);			//디폴트로 Phase Diff값은 0도로 지정
-		GetDlgItem(IDC_CH_PHASE_DIFF_COMBO)->EnableWindow(TRUE);
+	//채널0의 세팅값으로 모두 Sync
+	for (int i = 1; i < 4; i++) {
+		pDerived->m_block[i].m_nBlock = pDerived->m_block[0].m_nBlock;
+		pDerived->m_block[i].m_nI = pDerived->m_block[0].m_nI;
+		pDerived->m_block[i].m_nPhase = pDerived->m_block[0].m_nPhase;
+		pDerived->m_block[i].m_nQ = pDerived->m_block[0].m_nQ;
 	}
-	else {
-		GetDlgItem(IDC_CH_PHASE_DIFF_COMBO)->EnableWindow(FALSE);
-		UpdateRegisters();
-	}
+	UpdateCh3Phase(*pDerived);
+	UpdateCh2Phase(*pDerived);
+	UpdateCh1Phase(*pDerived);
+	UpdateCh0Phase(*pDerived);
+	UpdateData(FALSE);
+	OnStnClickedTxCh0PhaseValueStatic();	//포커싱을 채널0으로 변경
+	m_phaseDiffCombo.SetCurSel(0);			//디폴트로 Phase Diff값은 0도로 지정
+	GetDlgItem(IDC_CH_PHASE_DIFF_COMBO)->EnableWindow(TRUE);
 }

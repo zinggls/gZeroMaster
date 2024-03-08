@@ -44,7 +44,6 @@ protected:
 	CString m_strVspsVgaBiasVoltage;
 	CString m_strVspsCsBiasVoltage;
 	CVspsBlock m_vspsBlock[4];
-	BOOL m_bChPhaseSync;
 	CComboBox m_phaseDiffCombo;
 
 public:
@@ -149,5 +148,5 @@ public:
 	static int AddState(int nCur, int nState);
 	void ShiftPhase(CRegisterZing400T* pReg, int nCur, int nState);
 	afx_msg void OnSelchangeChPhaseDiffCombo();
-	afx_msg void OnClickedChPhaseSynchCheck();
+	afx_msg void OnBnClickedChPhaseSynchButton();
 };
