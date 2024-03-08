@@ -395,6 +395,10 @@ void CSemanticZing400T::ShowChipPic(int nCmdShow)
 	GetDlgItem(IDC_CH1_STATIC)->ShowWindow(nCmdShow);
 	GetDlgItem(IDC_CH2_STATIC)->ShowWindow(nCmdShow);
 	GetDlgItem(IDC_CH3_STATIC)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_CH0_VALUE_STATIC)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_CH1_VALUE_STATIC)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_CH2_VALUE_STATIC)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_CH3_VALUE_STATIC)->ShowWindow(nCmdShow);
 }
 
 void CSemanticZing400T::ShowPhaseSync(int nCmdShow)
