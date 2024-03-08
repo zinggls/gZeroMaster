@@ -16,6 +16,9 @@
 #define IDR_MENU1                       28
 #define IDD_SEMANTIC_ZING400R_DIALOG    29
 #define IDR_MAINFRAME                   130
+#define IDB_ZING400R_BITMAP             133
+#define IDB_BITMAP2                     134
+#define IDB_ZING400T_BITMAP             134
 #define IDC_LOG_LIST                    1000
 #define IDC_COM_COMBO                   1001
 #define IDC_CONNECT_BUTTON              1002
@@ -278,7 +281,7 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        131
+#define _APS_NEXT_RESOURCE_VALUE        135
 #define _APS_NEXT_COMMAND_VALUE         32780
 #define _APS_NEXT_CONTROL_VALUE         1250
 #define _APS_NEXT_SYMED_VALUE           1347

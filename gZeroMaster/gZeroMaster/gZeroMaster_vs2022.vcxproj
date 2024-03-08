@@ -168,6 +168,8 @@
     <Image Include="res\gls.ico" />
     <Image Include="res\gZeroMaster.ico" />
     <Image Include="res\Oxygen-Icons.org-Oxygen-Categories-applications-system.ico" />
+    <Image Include="res\Zing400R.bmp" />
+    <Image Include="res\Zing400T.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
