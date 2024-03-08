@@ -1105,6 +1105,7 @@ void CSemanticZing400T::UpdateCh0PhaseIQ(const CRegister& reg)
 
 int CSemanticZing400T::AddState(int nCur, int nState)
 {
+	if (nState == 0) return nCur;
 	return (nCur + nState) % 32;
 }
 
