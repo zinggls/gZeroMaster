@@ -386,6 +386,13 @@ void CSemanticZing400T::SetSliderGroup(UINT ss, int min, int max, CString strCur
 	CSemanticBase::SetSliderGroup(ss, min, max, strCurVal, ticFreq, lineSize, pageSize, idcStatic, pControl);
 }
 
+void CSemanticZing400T::ShowPhaseSync(int nCmdShow)
+{
+	GetDlgItem(IDC_CH_PHASE_SYNCH_CHECK)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_CH_PHASE_DIFF_STATIC)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_CH_PHASE_DIFF_COMBO)->ShowWindow(nCmdShow);
+}
+
 void CSemanticZing400T::ShowSlider(int nCmdShow)
 {
 	CSemanticBase::ShowSlider(nCmdShow);
@@ -393,9 +400,7 @@ void CSemanticZing400T::ShowSlider(int nCmdShow)
 	GetDlgItem(IDC_SLIDER_VALUE_PHASE_STATIC)->ShowWindow(nCmdShow);
 	GetDlgItem(IDC_SLIDER_VALUE_I_STATIC)->ShowWindow(nCmdShow);
 	GetDlgItem(IDC_SLIDER_VALUE_Q_STATIC)->ShowWindow(nCmdShow);
-	GetDlgItem(IDC_CH_PHASE_SYNCH_CHECK)->ShowWindow(nCmdShow);
-	GetDlgItem(IDC_CH_PHASE_DIFF_STATIC)->ShowWindow(nCmdShow);
-	GetDlgItem(IDC_CH_PHASE_DIFF_COMBO)->ShowWindow(nCmdShow);
+	ShowPhaseSync(nCmdShow);
 }
 
 int CSemanticZing400T::SliderValueUpdate()

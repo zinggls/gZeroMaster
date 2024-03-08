@@ -57,6 +57,7 @@ public:
 	virtual void UpdateRegisters();
 	virtual void ResetValues();
 	virtual void SetSliderGroup(UINT ss, int min, int max, CString strCurVal, int ticFreq, int lineSize, int pageSize, UINT idcStatic, void(CSemanticBase::* pControl)(int, int, CString, int, int, int) = NULL);
+	void ShowPhaseSync(int nCmdShow);
 	virtual void ShowSlider(int nCmdShow);
 	virtual int SliderValueUpdate();
 	virtual void ControlSliderCommon(int min, int max, CString strCurVal, int ticFreq, int lineSize, int pageSize);
