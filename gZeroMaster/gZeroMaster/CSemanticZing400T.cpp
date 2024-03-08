@@ -1111,7 +1111,9 @@ void CSemanticZing400T::UpdateCh0PhaseIQ(const CRegister& reg)
 int CSemanticZing400T::AddState(int nCur, int nState)
 {
 	if (nState == 0) return nCur;
-	return (nCur + nState) % 32;
+
+	int nVal = (nCur + nState) % 32;
+	return (nVal == 0) ? 32 : nVal;
 }
 
 void CSemanticZing400T::ShiftPhase(CRegisterZing400T* pReg, int nCur, int nState)
