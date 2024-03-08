@@ -759,6 +759,7 @@ void CSemanticZing400T::OnStnClickedTxCh3VspsBlockEnableValueStatic()
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	const CRegisterZing400T& derived = dynamic_cast<const CRegisterZing400T&>(getRegister());
 	SetComboGroup(CSelect::Ch3Block, _T("disable"), _T("enable"), derived.m_block[3].m_nBlock, IDC_TX_CH3_VSPS_BLOCK_ENABLE_STATIC);
+	ShowChipPic(SW_SHOW);
 }
 
 
@@ -774,6 +775,7 @@ void CSemanticZing400T::OnStnClickedTxCh2VspsBlockEnableValueStatic()
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	const CRegisterZing400T& derived = dynamic_cast<const CRegisterZing400T&>(getRegister());
 	SetComboGroup(CSelect::Ch2Block, _T("disable"), _T("enable"), derived.m_block[2].m_nBlock, IDC_TX_CH2_VSPS_BLOCK_ENABLE_STATIC);
+	ShowChipPic(SW_SHOW);
 }
 
 
@@ -789,6 +791,7 @@ void CSemanticZing400T::OnStnClickedTxCh1VspsBlockEnableValueStatic()
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	const CRegisterZing400T& derived = dynamic_cast<const CRegisterZing400T&>(getRegister());
 	SetComboGroup(CSelect::Ch1Block, _T("disable"), _T("enable"), derived.m_block[1].m_nBlock, IDC_TX_CH1_VSPS_BLOCK_ENABLE_STATIC);
+	ShowChipPic(SW_SHOW);
 }
 
 
@@ -804,6 +807,7 @@ void CSemanticZing400T::OnStnClickedTxCh0VspsBlockEnableValueStatic()
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	const CRegisterZing400T& derived = dynamic_cast<const CRegisterZing400T&>(getRegister());
 	SetComboGroup(CSelect::Ch0Block, _T("disable"), _T("enable"), derived.m_block[0].m_nBlock, IDC_TX_CH0_VSPS_BLOCK_ENABLE_STATIC);
+	ShowChipPic(SW_SHOW);
 }
 
 
