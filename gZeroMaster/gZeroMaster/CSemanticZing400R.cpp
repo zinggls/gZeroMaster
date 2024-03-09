@@ -93,6 +93,7 @@ void CSemanticZing400R::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_RX_SLIDER_VALUE_Q_STATIC, m_strSliderValueQ);
 	DDX_Control(pDX, IDC_CONTROL_COMBO, m_controlCombo);
 	DDX_Check(pDX, IDC_AUTO_WRITE_CHECK, m_bAutoWrite);
+	DDX_Control(pDX, IDC_CH_PHASE_DIFF_COMBO, m_phaseDiffCombo);
 }
 
 
@@ -151,6 +152,13 @@ BOOL CSemanticZing400R::OnInitDialog()
 
 	// TODO:  여기에 추가 초기화 작업을 추가합니다.
 	InitialControlState();
+	for (int i = 1; i <= 32; i++) {
+		CString str;
+		str.Format(_T("%.2f"), CPhaseTable::getAbsFloatPhase(i));
+		m_phaseDiffCombo.AddString(str);
+	}
+	m_phaseDiffCombo.SetCurSel(0);
+	GetDlgItem(IDC_CH_PHASE_DIFF_COMBO)->EnableWindow(FALSE);
 
 	return TRUE;  // return TRUE unless you set the focus to a control
 				  // 예외: OCX 속성 페이지는 FALSE를 반환해야 합니다.

@@ -42,6 +42,7 @@ protected:
 	CVspsBlock m_vspsBlock[4];
 	CString m_strVspsBiasControlBit;
 	CString m_strLnaControlBit;
+	CComboBox m_phaseDiffCombo;
 
 public:
 	virtual BOOL OnInitDialog();
