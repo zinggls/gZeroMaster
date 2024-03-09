@@ -390,7 +390,7 @@ void CSemanticZing400T::SetSliderGroup(UINT ss, int min, int max, CString strCur
 
 void CSemanticZing400T::ShowChipPic(int nCmdShow)
 {
-	GetDlgItem(IDC_ZING400T_PIC_STATIC)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_ZING400_PIC_STATIC)->ShowWindow(nCmdShow);
 	GetDlgItem(IDC_CH0_STATIC)->ShowWindow(nCmdShow);
 	GetDlgItem(IDC_CH1_STATIC)->ShowWindow(nCmdShow);
 	GetDlgItem(IDC_CH2_STATIC)->ShowWindow(nCmdShow);

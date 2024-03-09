@@ -272,7 +272,7 @@ void CSemanticZing400R::ResetValues()
 
 void CSemanticZing400R::ShowChipPic(int nCmdShow)
 {
-	GetDlgItem(IDC_ZING400R_PIC_STATIC)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_ZING400_PIC_STATIC)->ShowWindow(nCmdShow);
 	GetDlgItem(IDC_CH0_STATIC)->ShowWindow(nCmdShow);
 	GetDlgItem(IDC_CH1_STATIC)->ShowWindow(nCmdShow);
 	GetDlgItem(IDC_CH2_STATIC)->ShowWindow(nCmdShow);

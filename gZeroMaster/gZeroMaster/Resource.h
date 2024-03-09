@@ -270,12 +270,11 @@
 #define IDC_CH1_VALUE_STATIC            1251
 #define IDC_CH2_VALUE_STATIC            1252
 #define IDC_CH3_VALUE_STATIC            1253
-#define IDC_ZING400T_PIC_STATIC         1254
+#define IDC_ZING400_PIC_STATIC          1254
 #define IDC_CH0_STATIC                  1255
 #define IDC_CH1_STATIC                  1256
 #define IDC_CH2_STATIC                  1257
 #define IDC_CH3_STATIC                  1258
-#define IDC_ZING400R_PIC_STATIC         1259
 #define ID_MAINMENU_CLEARLOG            32771
 #define ID_MAINMENU_SAVE                32772
 #define ID_MAINMENU_LOAD                32773
