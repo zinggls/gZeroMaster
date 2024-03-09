@@ -51,6 +51,8 @@ public:
 	virtual const CRegister& Parse();
 	virtual void UpdateRegisters();
 	virtual void ResetValues();
+	void ShowChipPic(int nCmdShow);
+	void ShowPhaseSync(int nCmdShow);
 	virtual void ShowSlider(int nCmdShow);
 	virtual int SliderValueUpdate();
 	virtual afx_msg void OnBnClickedWriteButton();

@@ -270,6 +270,28 @@ void CSemanticZing400R::ResetValues()
 	CSemanticBase::ResetValues();
 }
 
+void CSemanticZing400R::ShowChipPic(int nCmdShow)
+{
+	GetDlgItem(IDC_ZING400R_PIC_STATIC)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_CH0_STATIC)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_CH1_STATIC)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_CH2_STATIC)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_CH3_STATIC)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_CH0_VALUE_STATIC)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_CH1_VALUE_STATIC)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_CH2_VALUE_STATIC)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_CH3_VALUE_STATIC)->ShowWindow(nCmdShow);
+}
+
+void CSemanticZing400R::ShowPhaseSync(int nCmdShow)
+{
+	GetDlgItem(IDC_CH_PHASE_SYNCH_BUTTON)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_CH_PHASE_DIFF_STATIC)->ShowWindow(nCmdShow);
+	GetDlgItem(IDC_CH_PHASE_DIFF_COMBO)->ShowWindow(nCmdShow);
+
+	ShowChipPic(nCmdShow);
+}
+
 void CSemanticZing400R::ShowSlider(int nCmdShow)
 {
 	CSemanticBase::ShowSlider(nCmdShow);
@@ -277,6 +299,9 @@ void CSemanticZing400R::ShowSlider(int nCmdShow)
 	GetDlgItem(IDC_RX_SLIDER_VALUE_PHASE_STATIC)->ShowWindow(nCmdShow);
 	GetDlgItem(IDC_RX_SLIDER_VALUE_I_STATIC)->ShowWindow(nCmdShow);
 	GetDlgItem(IDC_RX_SLIDER_VALUE_Q_STATIC)->ShowWindow(nCmdShow);
+	ShowPhaseSync(nCmdShow);
+
+	if (m_selected != CSelect::Ch3Phase && m_selected != CSelect::Ch2Phase && m_selected != CSelect::Ch1Phase && m_selected != CSelect::Ch0Phase) ShowPhaseSync(SW_HIDE);
 }
 
 int CSemanticZing400R::SliderValueUpdate()
