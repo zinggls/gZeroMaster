@@ -275,6 +275,7 @@
 #define IDC_CH1_STATIC                  1256
 #define IDC_CH2_STATIC                  1257
 #define IDC_CH3_STATIC                  1258
+#define IDC_ZING400R_PIC_STATIC         1259
 #define ID_MAINMENU_CLEARLOG            32771
 #define ID_MAINMENU_SAVE                32772
 #define ID_MAINMENU_LOAD                32773
@@ -291,7 +292,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        135
 #define _APS_NEXT_COMMAND_VALUE         32780
-#define _APS_NEXT_CONTROL_VALUE         1259
+#define _APS_NEXT_CONTROL_VALUE         1260
 #define _APS_NEXT_SYMED_VALUE           1347
 #endif
 #endif
