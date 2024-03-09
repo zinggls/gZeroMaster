@@ -131,6 +131,8 @@ public:
 	static int OnNewCh0PhaseFirst(int val, int newVal);
 	static int OnNewCh0PhaseNext(int val, int newVal);
 	void UpdateCh0PhaseIQ(const CRegister& reg);
+	static int AddState(int nCur, int nState);
+	void ShiftPhase(CRegisterZing400R* pReg, int nCur, int nState);
 	afx_msg void OnSelchangeChPhaseDiffCombo();
 	afx_msg void OnBnClickedChPhaseSynchButton();
 };

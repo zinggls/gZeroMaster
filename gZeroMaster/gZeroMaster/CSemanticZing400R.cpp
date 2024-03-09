@@ -942,9 +942,38 @@ void CSemanticZing400R::UpdateCh0PhaseIQ(const CRegister& reg)
 	m_vspsBlock[0].m_strPhase += CPhaseTable::getPhase(derived.m_block[0].m_nPhase);
 }
 
+int CSemanticZing400R::AddState(int nCur, int nState)
+{
+	if (nState == 0) return nCur;
+
+	int nVal = (nCur + nState) % 32;
+	return (nVal == 0) ? 32 : nVal;
+}
+
+void CSemanticZing400R::ShiftPhase(CRegisterZing400R* pReg, int nCur, int nState)
+{
+	ASSERT(pReg);
+
+	for (int i = 0; i < 4; i++) {
+		pReg->m_block[i].m_nPhase = AddState(nCur, nState * i);
+		pReg->m_block[i].m_nI = CPhaseTable::getI(pReg->m_block[i].m_nPhase);
+		pReg->m_block[i].m_nQ = CPhaseTable::getQ(pReg->m_block[i].m_nPhase);
+		m_vspsBlock[i].m_strPhase.Format(_T("%d / "), pReg->m_block[i].m_nPhase);
+		m_vspsBlock[i].m_strPhase += CPhaseTable::getPhase(pReg->m_block[i].m_nPhase);
+	}
+	UpdateData(FALSE);
+}
+
 void CSemanticZing400R::OnSelchangeChPhaseDiffCombo()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	int nShift = m_phaseDiffCombo.GetCurSel();
+	int nCur = -1 * m_controlSlider.GetPos();
+
+	CRegisterZing400R* pDerived = dynamic_cast<CRegisterZing400R*>(m_pReg);
+	ASSERT(pDerived);
+
+	ShiftPhase(pDerived, nCur, nShift);
 }
 
 void CSemanticZing400R::OnBnClickedChPhaseSynchButton()
