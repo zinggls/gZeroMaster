@@ -950,4 +950,23 @@ void CSemanticZing400R::OnSelchangeChPhaseDiffCombo()
 void CSemanticZing400R::OnBnClickedChPhaseSynchButton()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	CRegisterZing400R* pDerived = dynamic_cast<CRegisterZing400R*>(m_pReg);
+	ASSERT(pDerived);
+
+	//채널0의 세팅값으로 모두 Sync
+	for (int i = 1; i < 4; i++) {
+		pDerived->m_block[i].m_nBlock = pDerived->m_block[0].m_nBlock;
+		pDerived->m_block[i].m_nI = pDerived->m_block[0].m_nI;
+		pDerived->m_block[i].m_nPhase = pDerived->m_block[0].m_nPhase;
+		pDerived->m_block[i].m_nQ = pDerived->m_block[0].m_nQ;
+	}
+	UpdateCh3Phase(*pDerived);
+	UpdateCh2Phase(*pDerived);
+	UpdateCh1Phase(*pDerived);
+	UpdateCh0Phase(*pDerived);
+	UpdateData(FALSE);
+	OnStnClickedRxCh0PhaseValueStatic();	//포커싱을 채널0으로 변경
+	m_phaseDiffCombo.SetCurSel(0);			//디폴트로 Phase Diff값은 0도로 지정
+	GetDlgItem(IDC_CH_PHASE_DIFF_COMBO)->EnableWindow(TRUE);
+	L(_T("Channel Phases are synchronized with the CH0 Phase"));
 }
