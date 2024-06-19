@@ -192,6 +192,14 @@ void Zing400Tx_reg_show(void)
 
 void Zing500Rx_reg_show(void)
 {
+	reg_show("RX_REG1[7:0] : ",0x00);
+	reg_show("BIAS_REG1[7:0] : ",0x10);
+	reg_show("BIAS_REG2[7:0] : ",0x11);
+	reg_show("BIAS_REG3[7:0] : ",0x12);
+	reg_show("BIAS_REG4[7:0] : ",0x13);
+	reg_show("BIAS_REG5[7:0] : ",0x14);
+	reg_show("BIAS_REG6[7:0] : ",0x15);
+	reg_show("BIAS_REG7[7:0] : ",0x16);
 }
 
 void Zing500Tx_reg_show(void)
