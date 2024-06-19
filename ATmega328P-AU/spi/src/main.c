@@ -204,6 +204,11 @@ void Zing500Rx_reg_show(void)
 
 void Zing500Tx_reg_show(void)
 {
+	reg_show("TX_REG1[7:0] : ",0x01);
+	reg_show("TX_REG1[15:8] : ",0x02);
+	reg_show("TX_REG1[23:16] : ",0x03);
+	reg_show("TX_REG1[31:24] : ",0x04);
+	reg_show("TX_REG1[39:32] : ",0x05);
 }
 
 void Init(uint8_t n)
