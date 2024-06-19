@@ -112,6 +112,14 @@ void Zing400Tx_Init(void)
 	SPI_0_write_reg(0x2b, 0x00); //RegOut2b[7:0] INIT
 }
 
+void Zing500Rx_Init(void)
+{
+}
+
+void Zing500Tx_Init(void)
+{
+}
+
 void reg_show(char *name,uint8_t addr)
 {
 	uint8_t rx_data = 0;
@@ -182,6 +190,14 @@ void Zing400Tx_reg_show(void)
 	reg_show("RegOut2b[7:0] : ",0x2b);
 }
 
+void Zing500Rx_reg_show(void)
+{
+}
+
+void Zing500Tx_reg_show(void)
+{
+}
+
 void Init(uint8_t n)
 {
 	switch(n){
@@ -193,6 +209,12 @@ void Init(uint8_t n)
 		break;
 	case 3:
 		Zing400Tx_Init();
+		break;
+	case 4:
+		Zing500Rx_Init();
+		break;
+	case 5:
+		Zing500Tx_Init();
 		break;
 	default:
 		break;
@@ -211,6 +233,12 @@ void show(uint8_t n)
 	case 3:
 		Zing400Tx_reg_show();
 		break;
+	case 4:
+		Zing500Rx_reg_show();
+		break;
+	case 5:
+		Zing500Tx_reg_show();
+		break;
 	default:
 		break;
 	}
@@ -228,6 +256,12 @@ void show_chip(uint8_t n)
 	case 3:
 		UART_TX_STR("[Zing400T] ");
 		break;
+	case 4:
+		UART_TX_STR("[Zing500R] ");
+		break;
+	case 5:
+		UART_TX_STR("[Zing500T] ");
+		break;
 	default:
 		break;
 	}
@@ -238,14 +272,14 @@ uint8_t choose()
 	char buffer[4] = {0, };
 	
 	while(1) {
-		UART_TX_STR("Choose chipset model number to use, Zing200x(1), Zing400R(2) Zing400T(3) : ");
+		UART_TX_STR("Choose chipset model number to use, Zing200x(1), Zing400R(2) Zing400T(3) Zing500R(4) Zing500T(5) : ");
 		UART_RX_STR(buffer);
 		UART_TX_STR(buffer);
 		UART_TX_CH(0x0A);
 		UART_TX_CH(0x0D);
 	
 		uint8_t number = (uint8_t)(strtol(buffer, NULL, 10));
-		if(number>=1 && number<=3) {
+		if(number>=1 && number<=5) {
 			show_chip(number);
 			UART_TX_STR("selected\n");
 			return number;
