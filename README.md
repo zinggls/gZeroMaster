@@ -6,3 +6,5 @@ GLS Zing Register Control Software Suite (consists of firmware and GUI software)
 * Zing200x
 * Zing400R
 * Zing400T
+* Zing500R
+* Zing500T
