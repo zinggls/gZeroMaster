@@ -126,6 +126,11 @@ void Zing500Rx_Init(void)
 
 void Zing500Tx_Init(void)
 {
+	SPI_0_write_reg(0x01, 0x7f); //TX_REG1[7:0] INIT
+	SPI_0_write_reg(0x02, 0xff); //TX_REG1[15:8] INIT
+	SPI_0_write_reg(0x03, 0xfb); //TX_REG1[23:16] INIT
+	SPI_0_write_reg(0x04, 0xbb); //TX_REG1[31:24] INIT
+	SPI_0_write_reg(0x05, 0xc0); //TX_REG1[39:32] INIT
 }
 
 void reg_show(char *name,uint8_t addr)
