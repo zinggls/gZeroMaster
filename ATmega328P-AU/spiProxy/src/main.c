@@ -118,6 +118,27 @@ void Zing400Tx_Init(void)
 	SPI_0_write_reg(0x2b, 0x00); //RegOut2b[7:0] INIT
 }
 
+void Zing500Rx_Init(void)
+{
+	SPI_0_write_reg(0x00, 0xee); //RX_REG1[7:0] INIT
+	SPI_0_write_reg(0x10, 0x80); //BIAS_REG1[7:0] INIT
+	SPI_0_write_reg(0x11, 0x66); //BIAS_REG2[7:0] INIT
+	SPI_0_write_reg(0x12, 0x66); //BIAS_REG3[7:0] INIT
+	SPI_0_write_reg(0x13, 0x66); //BIAS_REG4[7:0] INIT
+	SPI_0_write_reg(0x14, 0x66); //BIAS_REG5[7:0] INIT
+	SPI_0_write_reg(0x15, 0x60); //BIAS_REG6[7:0] INIT
+	SPI_0_write_reg(0x16, 0xe0); //BIAS_REG7[7:0] INIT
+}
+
+void Zing500Tx_Init(void)
+{
+	SPI_0_write_reg(0x01, 0x7f); //TX_REG1[7:0] INIT
+	SPI_0_write_reg(0x02, 0xff); //TX_REG1[15:8] INIT
+	SPI_0_write_reg(0x03, 0xfb); //TX_REG1[23:16] INIT
+	SPI_0_write_reg(0x04, 0xbb); //TX_REG1[31:24] INIT
+	SPI_0_write_reg(0x05, 0xc0); //TX_REG1[39:32] INIT
+}
+
 void eeprom_update_byte_from_SPI_0_read_reg(uint8_t addr)
 {
 	uint8_t readData;
@@ -187,6 +208,27 @@ void Zing400Tx_SaveData()
 	eeprom_update_byte_from_SPI_0_read_reg(0x2b);
 }
 
+void Zing500Rx_SaveData()
+{
+	eeprom_update_byte_from_SPI_0_read_reg(0x00);
+	eeprom_update_byte_from_SPI_0_read_reg(0x10);
+	eeprom_update_byte_from_SPI_0_read_reg(0x11);
+	eeprom_update_byte_from_SPI_0_read_reg(0x12);
+	eeprom_update_byte_from_SPI_0_read_reg(0x13);
+	eeprom_update_byte_from_SPI_0_read_reg(0x14);
+	eeprom_update_byte_from_SPI_0_read_reg(0x15);
+	eeprom_update_byte_from_SPI_0_read_reg(0x16);
+}
+
+void Zing500Tx_SaveData()
+{
+	eeprom_update_byte_from_SPI_0_read_reg(0x01);
+	eeprom_update_byte_from_SPI_0_read_reg(0x02);
+	eeprom_update_byte_from_SPI_0_read_reg(0x03);
+	eeprom_update_byte_from_SPI_0_read_reg(0x04);
+	eeprom_update_byte_from_SPI_0_read_reg(0x05);
+}
+
 void SaveData(uint8_t n)
 {
 	switch(n){
@@ -198,6 +240,12 @@ void SaveData(uint8_t n)
 		break;
 	case 3:
 		Zing400Tx_SaveData();
+		break;
+	case 4:
+		Zing500Rx_SaveData();
+		break;
+	case 5:
+		Zing500Tx_SaveData();
 		break;
 	default:
 		break;
@@ -272,6 +320,27 @@ void Zing400Tx_LoadData()
 	SPI_0_write_reg_from_eeprom_read_byte(0x2b);
 }
 
+void Zing500Rx_LoadData()
+{
+	SPI_0_write_reg_from_eeprom_read_byte(0x00);
+	SPI_0_write_reg_from_eeprom_read_byte(0x10);
+	SPI_0_write_reg_from_eeprom_read_byte(0x11);
+	SPI_0_write_reg_from_eeprom_read_byte(0x12);
+	SPI_0_write_reg_from_eeprom_read_byte(0x13);
+	SPI_0_write_reg_from_eeprom_read_byte(0x14);
+	SPI_0_write_reg_from_eeprom_read_byte(0x15);
+	SPI_0_write_reg_from_eeprom_read_byte(0x16);
+}
+
+void Zing500Tx_LoadData()
+{	
+	SPI_0_write_reg_from_eeprom_read_byte(0x01);
+	SPI_0_write_reg_from_eeprom_read_byte(0x02);
+	SPI_0_write_reg_from_eeprom_read_byte(0x03);
+	SPI_0_write_reg_from_eeprom_read_byte(0x04);
+	SPI_0_write_reg_from_eeprom_read_byte(0x05);
+}
+
 void LoadData(uint8_t n)
 {
 	switch(n){
@@ -283,6 +352,12 @@ void LoadData(uint8_t n)
 		break;
 	case 3:
 		Zing400Tx_LoadData();
+		break;
+	case 4:
+		Zing500Rx_LoadData();
+		break;
+	case 5:
+		Zing500Tx_LoadData();
 		break;
 	default:
 		break;
@@ -303,6 +378,14 @@ void Init(uint8_t n)
 	case 3:
 		Zing400Tx_Init();
 		UART_TX_STR("Zing400Tx_Init");
+		break;
+	case 4:
+		Zing500Rx_Init();
+		UART_TX_STR("Zing500Rx_Init");
+		break;
+	case 5:
+		Zing500Tx_Init();
+		UART_TX_STR("Zing500Tx_Init");
 		break;
 	default:
 		UART_TX_STR("Init Error");
@@ -330,6 +413,12 @@ void SendChipName(uint8_t n)
 		break;
 	case 3:
 		UART_TX_STR("CHIP:BT");		//Chip model name	(MUST BE 7Bytes long)
+		break;
+	case 4:
+		UART_TX_STR("CHIP:5R");		//Chip model name	(MUST BE 7Bytes long)
+		break;
+	case 5:
+		UART_TX_STR("CHIP:5T");		//Chip model name	(MUST BE 7Bytes long)
 		break;
 	default:
 		break;
