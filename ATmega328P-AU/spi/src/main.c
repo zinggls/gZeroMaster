@@ -114,6 +114,14 @@ void Zing400Tx_Init(void)
 
 void Zing500Rx_Init(void)
 {
+	SPI_0_write_reg(0x00, 0xee); //RX_REG1[7:0] INIT
+	SPI_0_write_reg(0x10, 0x80); //BIAS_REG1[7:0] INIT
+	SPI_0_write_reg(0x11, 0x66); //BIAS_REG2[7:0] INIT
+	SPI_0_write_reg(0x12, 0x66); //BIAS_REG3[7:0] INIT
+	SPI_0_write_reg(0x13, 0x66); //BIAS_REG4[7:0] INIT
+	SPI_0_write_reg(0x14, 0x66); //BIAS_REG5[7:0] INIT
+	SPI_0_write_reg(0x15, 0x60); //BIAS_REG6[7:0] INIT
+	SPI_0_write_reg(0x16, 0xe0); //BIAS_REG7[7:0] INIT
 }
 
 void Zing500Tx_Init(void)
